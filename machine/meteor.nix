@@ -1,8 +1,16 @@
 { config, lib, pkgs, modulesPath, ... }:
+let
+  nixos-hardware = builtins.fetchGit {
+    url = "https://github.com/NixOS/nixos-hardware.git";
+    ref = "master";
+  };
+in
 {
   networking.hostName = "meteor";
 
   imports = [
+    "${nixos-hardware}/lenovo/thinkpad/t420"
+
     ../module/common/boot/grub.nix
     ../module/common/service/printing.nix
     ../module/common/service/syncthing.nix
