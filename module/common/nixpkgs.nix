@@ -27,7 +27,7 @@ in
           let
             package = pkgs.callPackage (import pkg) {};
           in
-            lib.nameValuePair package.pname package
+            lib.nameValuePair (lib.removeSuffix ".pkg.nix" (builtins.baseNameOf pkg)) package
       ) (findModules ../../pkg));
     };
   };
