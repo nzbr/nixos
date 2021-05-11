@@ -1,10 +1,9 @@
-{ lib, fetchFromGitHub, stdenv, python3, python3Packages, zip }:
+{ lib, fetchFromGitHub, stdenv, pkgs, zip }:
 let
-  py = python3.withPackages (pythonPackages: with pythonPackages; [ panflute ]);
+  py = pkgs.unstable.python3.withPackages (pythonPackages: with pkgs.unstable.python3Packages; [ panflute ]);
 in
 stdenv.mkDerivation rec {
   version = "1.0.1";
-  pname = "pandocode";
   name = "pandocode-${version}";
   nativeBuildInputs = [ zip ];
   src = fetchFromGitHub {
