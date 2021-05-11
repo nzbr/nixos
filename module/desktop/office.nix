@@ -8,5 +8,6 @@
       scheme-tetex
       dinbrief;
     })
+    local.pandocode
   ];
 }
