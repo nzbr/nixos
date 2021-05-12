@@ -1,18 +1,42 @@
-{ config, lib, pkgs, modulesPath, ... }:
 let
   unstableTarball = fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-
-  findModules = with builtins; with lib; dir: flatten (mapAttrsToList (name: type:
-    if type == "directory" then
-      findModules (dir + "/${name}")
-    else
-      let
-        fileName = dir + "/${name}";
-      in
-        if hasSuffix ".pkg.nix" fileName
-          then fileName
-          else []
-  ) (readDir dir));
+  ragonTarball = fetchTarball "https://gitlab.hochkamp.eu/ragon/nixos/-/archive/main/nixos-main.tar.gz?path=packages";
+in
+{ config, lib, pkgs, modulesPath, ... }:
+let
+  findModules =
+    with builtins; with lib;
+    suffix: dir:
+      flatten (
+        mapAttrsToList (
+          name: type:
+            if type == "directory" then
+              findModules (dir + "/${name}")
+            else
+              let
+                fileName = dir + "/${name}";
+              in
+                if hasSuffix suffix fileName
+                  then fileName
+                  else []
+        ) (readDir dir)
+      );
+  loadPackages =
+    with builtins; with lib;
+    channel: suffix: dir:
+      listToAttrs (
+        map (
+          pkg:
+            nameValuePair
+              # String carries context of the derivation the file comes from.
+              # It is only used to find the derivation that should carry that information anyway.
+              # It should be safe to discard it. (I hope)
+              (unsafeDiscardStringContext (removeSuffix suffix (baseNameOf pkg)))
+              (channel.callPackage (import pkg) {})
+        ) (
+          findModules suffix dir
+        )
+      );
 in
 {
   nixpkgs.config = {
@@ -22,13 +46,8 @@ in
       unstable = import unstableTarball {
         config = config.nixpkgs.config;
       };
-      local = lib.listToAttrs (builtins.map (
-        pkg:
-          let
-            package = pkgs.callPackage (import pkg) {};
-          in
-            lib.nameValuePair (lib.removeSuffix ".pkg.nix" (builtins.baseNameOf pkg)) package
-      ) (findModules ../../pkg));
+      local = loadPackages pkgs ".pkg.nix" ../../pkg;
+      ragon = loadPackages pkgs.unstable ".nix" (ragonTarball + "/packages");
     };
   };
 }

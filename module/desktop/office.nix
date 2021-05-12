@@ -8,6 +8,6 @@
       scheme-tetex
       dinbrief;
     })
-    local.pandocode
+    ragon.pandocode
   ];
 }
