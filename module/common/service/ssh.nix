@@ -19,9 +19,9 @@
     };
   };
 
+  programs.ssh.setXAuthLocation = lib.mkForce true;
   services.openssh = {
     enable = true;
-    startWhenNeeded = lib.mkDefault false;
     openFirewall = true;
     passwordAuthentication = false;
     challengeResponseAuthentication = false;

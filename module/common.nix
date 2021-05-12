@@ -5,6 +5,7 @@
     common/cli/lorri.nix
     common/cli/sudo.nix
     common/gpg.nix
+    common/home-manager.nix
     common/nix-store.nix
     common/nixpkgs.nix
     common/service/ssh.nix

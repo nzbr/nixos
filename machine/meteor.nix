@@ -14,10 +14,11 @@ in
     ../module/common/boot/grub.nix
     ../module/common/service/printing.nix
     ../module/common/service/syncthing.nix
+
     ../module/desktop.nix
     ../module/desktop/development.nix
     ../module/desktop/gnome.nix
-    ../module/desktop/office.nix
+    ../module/desktop/latex.nix
   ];
 
   boot = {

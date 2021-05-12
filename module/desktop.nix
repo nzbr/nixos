@@ -14,6 +14,8 @@
 
     discord
     unstable.element-desktop
+
+    libreoffice-fresh
   ];
 
   fonts.fonts = with pkgs; [
