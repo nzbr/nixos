@@ -2,15 +2,16 @@
 {
   services.lorri.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    direnv
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      direnv
+    ];
 
-  programs.bash.interactiveShellInit = ''
-    eval "$(direnv hook bash)"
-  '';
-
-  programs.zsh.interactiveShellInit = ''
-    eval "$(direnv hook bash)"
-  '';
+    etc."shell-hooks/99-direnv.sh" = {
+      mode = "0755";
+      text = ''
+        eval "$(direnv hook $(ps -p $$ -ocmd=))"
+      '';
+    };
+  };
 }

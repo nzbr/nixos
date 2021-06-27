@@ -15,13 +15,15 @@ in
     ../module/common/service/printing.nix
     ../module/common/service/syncthing.nix
 
-    ../module/desktop.nix
+    ../module/laptop.nix
     ../module/desktop/development.nix
     ../module/desktop/gnome.nix
-    ../module/desktop/latex.nix
+    # ../module/desktop/latex.nix
   ];
 
   boot = {
+    loader.grub.device = "/dev/sda";
+    loader.grub.configurationLimit = 5;
     initrd = {
       availableKernelModules = [ "ehci_pci" "ahci" "usb_storage" "sd_mod" "sdhci_pci" "f2fs" "xfs" ];
       kernelModules = [ ];
@@ -67,4 +69,13 @@ in
   swapDevices = [
     { device = "/swapfile"; }
   ];
+
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages;
+  services.xserver.videoDrivers = [ "nvidiaLegacy390" ];
+  boot.plymouth.enable = lib.mkForce false; # Does not work with proprietary nvidia driver
+
+  # Backlight
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="acpi_video0", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"
+  '';
 }

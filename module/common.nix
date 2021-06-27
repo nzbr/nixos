@@ -1,32 +1,40 @@
 { config, lib, pkgs, modulesPath, ... }:
 {
   imports = [
-    common/cli/dotfiles.nix
-    common/cli/lorri.nix
-    common/cli/sudo.nix
-    common/gpg.nix
-    common/home-manager.nix
-    common/nix-store.nix
-    common/nixpkgs.nix
-    common/service/ssh.nix
-    common/vscode-server.nix
+    ./common/cli/dotfiles.nix
+    ./common/cli/lorri.nix
+    ./common/cli/shell-init.nix
+    ./common/cli/sudo.nix
+    ./common/gpg.nix
+    ./common/home-manager.nix
+    ./common/nix-store.nix
+    ./common/nixpkgs.nix
+    ./common/service/docker.nix
+    ./common/service/ssh.nix
+    ./common/vscode-server.nix
   ];
 
   environment.systemPackages = with pkgs; [
     file
     git
     gnupg
+    inetutils
     killall
     stow
     vim
     wget
+
+    cabextract p7zip unzip zip
+
+    ntfs3g
   ];
 
   programs.zsh.enable = true;
 
   i18n = {
     defaultLocale = "de_DE.UTF-8";
-    supportedLocales = [
+    supportedLocales = lib.mkDefault [
+      "de_DE.UTF-8/UTF-8"
       "en_US.UTF-8/UTF-8"
     ];
   };
@@ -34,31 +42,42 @@
 
   time.timeZone = "Europe/Berlin";
 
+  networking.useDHCP = false; # Is deprecated and has to be set to false
+
   networking.firewall = {
     enable = true;
+    allowPing = true;
     allowedTCPPorts = [];
     allowedUDPPorts = [];
   };
 
-  users = {
+  users = let
+    keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIkFgHr6OMwsnGhdG4TwKdthlJC/B9ELqZfrmJ9Sf7qk nzbr@hurricane"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH8RjUQ6DDDDgsVbqq+6zz1q6cBkus/BLUGa9JoWsqB4 nzbr@meteor"
+    ];
+  in {
     defaultUserShell = pkgs.zsh;
     mutableUsers = false;
     users.root = {
       hashedPassword = lib.removeSuffix "\n" (builtins.readFile (builtins.toString ../secret/common/root.password));
+      openssh.authorizedKeys.keys = keys;
     };
     users.nzbr = {
       isNormalUser = true;
       hashedPassword = lib.removeSuffix "\n" (builtins.readFile (builtins.toString ../secret/common/nzbr.password));
+      openssh.authorizedKeys.keys = keys;
       extraGroups = [ "wheel" ];
     };
   };
 
   boot.kernel.sysctl = {
+    "kernel.sysrq" = 1;
     "vm.swappiness" = 1;
   };
 
   hardware.enableRedistributableFirmware = true;
-  powerManagement.cpuFreqGovernor = "ondemand";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

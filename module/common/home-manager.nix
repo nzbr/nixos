@@ -10,10 +10,9 @@
     useGlobalPkgs = true;
     users =
       let
-        # homeCfg = (import ../../home/home.nix) {config = config; lib = lib; pkgs = pkgs; };
         homeCfg = {
           imports = [
-            ../../home/home.nix
+            (import ../../home/home.nix {sys=config;})
           ];
         };
       in {

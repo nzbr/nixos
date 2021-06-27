@@ -4,8 +4,10 @@
     pandoc
     (texlive.combine {
       inherit (texlive)
-      scheme-tetex
-      dinbrief;
+      scheme-medium
+
+      dinbrief
+      ;
     })
     ragon.pandocode
   ];

@@ -21,11 +21,11 @@ in
         overrideDevices = true;
         overrideFolders = true;
         devices = {
-          # earthquake = {
-          #   addresses = [ "quic://earthquake.nzbr.de:22000" "quic://10.42.0.2:22000" ];
-          #   id = "";
-          #   introducer = true;
-          # };
+          earthquake = {
+            addresses = [ "quic://earthquake.nzbr.de:22000" "quic://10.42.0.2:22000" ];
+            id = "JDXIQUR-4FUQQK6-CZFNZTA-NCWBFEU-HCZFDW5-E7X2KKX-BIQWZZZ-2B42XQF";
+            introducer = true;
+          };
           hurricane = {
             id = "OJZKKKY-KG7PO72-VOJGPMU-X3Q6GRZ-HHA75HN-NGIGMRV-WZYPO5F-6PKEHAB";
           };
@@ -35,19 +35,28 @@ in
           meteor = {
             id = "7RPEIWJ-QQDVCWD-M46KH3U-237GDWG-ZL6EEF2-WPZVAF2-7L5JRX2-HHHKKAB";
           };
+
+          uli = {
+            id = "ZOTIOGW-NRF4IWB-BXJGBLB-QGZLA6A-NEOX3CV-5DK5O2V-6PFKBXH-VK4F3AK";
+          };
         };
         folders =
-          lib.mapAttrs' (n: v: lib.nameValuePair (baseDir + n) v) ( # Prepend base directory to folder name
+          lib.mapAttrs' (n: v: lib.nameValuePair n (v // { path = (baseDir + n);})) ( # Set the path
           lib.filterAttrs (n: v: lib.any(it: it == host) v.devices) { # Only add folders that should be synced with the current host
             Projekte = {
               id = "projekte";
               label = "Projekte";
-              devices = [ "hurricane" "landslide" "meteor" ];
+              devices = [ "earthquake" "hurricane" "landslide" "meteor" ];
             };
             devsaur = {
               id = "devsaur";
               label = "devsaur";
-              devices = [ "hurricane" "landslide" "meteor" ];
+              devices = [ "earthquake" "hurricane" "landslide" "meteor" ];
+            };
+            mp3 = {
+              id = "mp3";
+              label = "MP3";
+              devices = [ "earhquake" "uli" ];
             };
           });
       };

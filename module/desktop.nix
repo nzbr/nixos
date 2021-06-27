@@ -2,12 +2,17 @@
 {
   imports = [
     ./common.nix
-    desktop/device/razer-nari.nix
-    desktop/plymouth/plymouth.nix
+
+    ./common/java.nix
+
+    ./desktop/pulseaudio.nix
+    ./desktop/device/razer.nix
+    ./desktop/device/razer-nari.nix
+    ./desktop/plymouth/plymouth.nix
   ];
 
   environment.systemPackages = with pkgs; [
-    vivaldi vivaldi-widevine vivaldi-ffmpeg-codecs
+    unstable.vivaldi unstable.vivaldi-widevine unstable.vivaldi-ffmpeg-codecs
 
     vlc
     spotify
@@ -15,7 +20,13 @@
     discord
     unstable.element-desktop
 
+    virt-manager
+
     libreoffice-fresh
+
+    xsel
+
+    lm_sensors
   ];
 
   fonts.fonts = with pkgs; [
@@ -43,6 +54,8 @@
       ];
     };
   };
+  users.users.nzbr.extraGroups = [ "networkmanager" ];
 
-  boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 }

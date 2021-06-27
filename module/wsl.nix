@@ -44,10 +44,20 @@ in
 
   networking.dhcpcd.enable = false;
 
-  users.users.root = {
-    shell = "${syschdemd}/bin/syschdemd";
-    extraGroups = [ "root" ]; # Otherwise WSL fails to login as root with "initgroups failed 5"
+  users.users = {
+    root = {
+      shell = "${syschdemd}/bin/syschdemd";
+      extraGroups = [ "root" ]; # Otherwise WSL fails to login as root with "initgroups failed 5"
+    };
+    "${defaultUser}" = {
+      uid = 1000;
+      extraGroups = [ "docker" ];
+    };
   };
+
+  i18n.supportedLocales = [
+    "en_US.UTF-8/UTF-8"
+  ];
 
   security.sudo.wheelNeedsPassword = false;
 

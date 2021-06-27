@@ -5,6 +5,8 @@
   imports = [
     ../module/wsl.nix
 
+    ../module/common/development.nix
+
     ../module/desktop/latex.nix
   ];
 }

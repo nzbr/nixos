@@ -3,7 +3,7 @@
   boot.loader.grub = {
     enable = true;
     version = 2;
-    device = "nodev";
+    device = lib.mkDefault "nodev";
     enableCryptodisk = true;
     extraConfig = ''
       set gfxpayload=keep

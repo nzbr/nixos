@@ -19,6 +19,7 @@
     };
   };
 
+  programs.mosh.enable = true;
   programs.ssh.setXAuthLocation = lib.mkForce true;
   services.openssh = {
     enable = true;
@@ -37,27 +38,25 @@
         path = "/etc/ssh/ssh_host_rsa_key";
       }
     ];
-    knownHosts = {
-      # storm = {
-      #   hostNames = [
-      #     "storm.nzbr.de"
-      #     "storm6.nzbr.de"
-      #   ];
-      #   publicKeyFile = ../secret/storm/ssh/ssh_host_ed25519_key.pub;
-      # };
-      # avalanche = {
-      #   hostNames = [
-      #     "avalanche.nzbr.de"
-      #     "avalanche6.nzbr.de"
-      #   ];
-      #   publicKeyFile = ../secret/avalanche/ssh/ssh_host_ed25519_key.pub;
-      # };
-      # earthquake = {
-      #   hostNames = [
-      #     "earthquake.nzbr.de"
-      #   ];
-      #   publicKeyFile = ../secret/earthquake/ssh/ssh_host_ed25519_key.pub;
-      # };
-    };
+    knownHosts = lib.listToAttrs
+      (builtins.map
+        (hostname: {
+          name = hostname;
+          value = {
+            hostNames = [
+              hostname
+              "${hostname}.nzbr.de"
+              "${hostname}4.nzbr.de"
+              "${hostname}6.nzbr.de"
+            ];
+            publicKeyFile = ../../../secret + "/${hostname}/ssh/ssh_host_ed25519_key.pub";
+          };
+        })
+        (
+          lib.mapAttrsToList
+            (name: _: lib.removeSuffix ".nix" name)
+            (builtins.readDir ../../../machine)
+        )
+      );
   };
 }

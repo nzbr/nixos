@@ -1,6 +1,10 @@
 let
   unstableTarball = fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-  ragonTarball = fetchTarball "https://gitlab.hochkamp.eu/ragon/nixos/-/archive/main/nixos-main.tar.gz?path=packages";
+  # ragonTarball = fetchTarball "https://gitlab.hochkamp.eu/ragon/nixos/-/archive/main/nixos-main.tar.gz?path=packages";
+  ragonTarball = builtins.fetchGit {
+    url = "ssh://git@gitlab.hochkamp.eu/ragon/nixos.git";
+    ref = "main";
+  };
 in
 { config, lib, pkgs, modulesPath, ... }:
 let

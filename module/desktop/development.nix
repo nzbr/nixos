@@ -1,12 +1,17 @@
 { config, lib, pkgs, modulesPath, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    unstable.jetbrains.idea-ultimate
+  imports = [
+    ../common/development.nix
+  ];
 
-    unstable.vscode
-    global
-    desktop-file-utils
+  environment.systemPackages = with pkgs.unstable; [
+    gitkraken
+    insomnia
+    jetbrains.idea-ultimate
+    tabnine
+    vscode
 
-    unstable.tabnine
+    teams
+    timeular
   ];
 }
