@@ -37,10 +37,14 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  services.xserver = {
-    enable = true;
-    libinput.enable = true;
-    layout = "de";
+  services = {
+    xserver = {
+      enable = true;
+      libinput.enable = true;
+      layout = "de";
+    };
+
+    teamviewer.enable = true;
   };
 
   networking = {
