@@ -1,4 +1,27 @@
 { config, lib, pkgs, modulesPath, ... }:
+let
+  secrets = ../../../secret;
+  keys = with builtins; with lib;
+    map
+      (x: removeSuffix "\n" x)
+      (
+        map
+          (x: readFile (secrets + "/${x.name}/ssh/id_ed25519.pub"))
+          (
+            filter
+              (x:
+                (x.type == "directory")
+                && (hasAttr "ssh" (readDir (secrets + "/${x.name}")))
+                && (hasAttr "id_ed25519.pub" (readDir (secrets + "/${x.name}/ssh")))
+              )
+              (
+                mapAttrsToList
+                  (name: type: {name = name; type = type;})
+                  (readDir secrets)
+              )
+          )
+      );
+in
 {
   environment.etc = {
     "ssh/ssh_host_ed25519_key" = {
@@ -58,5 +81,10 @@
             (builtins.readDir ../../../machine)
         )
       );
+  };
+
+  users.users = {
+    root.openssh.authorizedKeys.keys = keys;
+    nzbr.openssh.authorizedKeys.keys = keys;
   };
 }

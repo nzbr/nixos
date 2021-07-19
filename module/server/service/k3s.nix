@@ -24,7 +24,6 @@
 
   environment.systemPackages = with pkgs; [
     k3s kubectl helm
-    openiscsi
   ];
 
   networking.firewall.trustedInterfaces = [ "tunl0" ];

@@ -1,10 +1,8 @@
 let
   unstableTarball = fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
+  ragonTarball = builtins.fetchGit "https://github.com/ragon000/nixos-config.git";
   # ragonTarball = fetchTarball "https://gitlab.hochkamp.eu/ragon/nixos/-/archive/main/nixos-main.tar.gz?path=packages";
-  ragonTarball = builtins.fetchGit {
-    url = "ssh://git@gitlab.hochkamp.eu/ragon/nixos.git";
-    ref = "main";
-  };
+  # ragonTarball = ../../.ragon;
 in
 { config, lib, pkgs, modulesPath, ... }:
 let
@@ -15,7 +13,7 @@ let
         mapAttrsToList (
           name: type:
             if type == "directory" then
-              findModules (dir + "/${name}")
+              findModules suffix (dir + "/${name}")
             else
               let
                 fileName = dir + "/${name}";
@@ -52,6 +50,7 @@ in
       };
       local = loadPackages pkgs ".pkg.nix" ../../pkg;
       ragon = loadPackages pkgs.unstable ".nix" (ragonTarball + "/packages");
+      comma = pkgs.callPackage (import (builtins.fetchGit "https://github.com/shopify/comma.git")) {};
     };
   };
 }

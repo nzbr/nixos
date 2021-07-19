@@ -8,6 +8,15 @@
     ./module/ssh.nix
   ];
 
+  config = {
+    home.file.cache-marker = {
+      target = ".cache/CACHEDIR.TAG";
+      text = ''
+        Signature: 8a477f597d28d172789f06886806bc55
+      '';
+    };
+  };
+
   options = with lib; {
     networking.hostName = mkOption {
       default = sys.networking.hostName;

@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
 
   uuid = "pop-shell@system76.com";
 
-  nativeBuildInputs = [ glib nodePackages.typescript];
+  nativeBuildInputs = [ glib nodePackages.typescript ];
 
   makeFlags = [ "INSTALLBASE=$(out)/share/gnome-shell/extensions" ];
 

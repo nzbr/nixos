@@ -15,12 +15,16 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    comma
     file
     git
     gnupg
+    htop
     inetutils
     killall
+    rsync
     stow
+    tmux
     vim
     wget
 
@@ -51,22 +55,15 @@
     allowedUDPPorts = [];
   };
 
-  users = let
-    keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIkFgHr6OMwsnGhdG4TwKdthlJC/B9ELqZfrmJ9Sf7qk nzbr@hurricane"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH8RjUQ6DDDDgsVbqq+6zz1q6cBkus/BLUGa9JoWsqB4 nzbr@meteor"
-    ];
-  in {
+  users = {
     defaultUserShell = pkgs.zsh;
     mutableUsers = false;
     users.root = {
       hashedPassword = lib.removeSuffix "\n" (builtins.readFile (builtins.toString ../secret/common/root.password));
-      openssh.authorizedKeys.keys = keys;
     };
     users.nzbr = {
       isNormalUser = true;
       hashedPassword = lib.removeSuffix "\n" (builtins.readFile (builtins.toString ../secret/common/nzbr.password));
-      openssh.authorizedKeys.keys = keys;
       extraGroups = [ "wheel" ];
     };
   };
