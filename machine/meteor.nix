@@ -75,8 +75,23 @@ in
   services.xserver.videoDrivers = [ "nvidiaLegacy390" ];
   boot.plymouth.enable = lib.mkForce false; # Does not work with proprietary nvidia driver
 
-  # Backlight
+  # Backlight (doesn't work yet?)
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="acpi_video0", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"
   '';
+
+  # Fan controller
+  boot.extraModprobeConfig = ''
+    options thinkpad_acpi fan_control=1
+  '';
+  services.thinkfan = {
+    enable = true;
+    sensors = ''
+      hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp3_input
+      hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp4_input
+      hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input
+      hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp5_input
+      hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp2_input
+    '';
+  };
 }

@@ -6,5 +6,6 @@
 
   powerManagement.cpuFreqGovernor = "conservative";
   services.thermald.enable = true;
+  services.tlp.enable = true;
 
 }
