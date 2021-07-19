@@ -53,6 +53,11 @@ in
               label = "devsaur";
               devices = [ "earthquake" "hurricane" "landslide" "meteor" ];
             };
+            ".local/share/fonts/sync" = {
+              id = "fonts";
+              label = "Fonts";
+              devices = [ "landslide" "meteor" ]; # TODO: earthquake
+            };
             mp3 = {
               id = "mp3";
               label = "MP3";

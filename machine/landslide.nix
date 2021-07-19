@@ -11,6 +11,7 @@
 
     ../module/desktop.nix
     ../module/desktop/development.nix
+    ../module/desktop/gaming.nix
     ../module/desktop/gnome.nix
     ../module/desktop/latex.nix
   ];

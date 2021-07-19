@@ -13,12 +13,14 @@
 
   environment.systemPackages = with pkgs; [
     unstable.vivaldi unstable.vivaldi-widevine unstable.vivaldi-ffmpeg-codecs
+    # vivaldi vivaldi-widevine vivaldi-ffmpeg-codecs
 
     vlc
     spotify
 
     discord
     unstable.element-desktop
+    signal-desktop
 
     virt-manager
 
@@ -45,7 +47,10 @@
     };
 
     teamviewer.enable = true;
+    flatpak.enable = true;
   };
+
+  xdg.portal.enable = true;
 
   networking = {
     wireless.iwd.enable = true;

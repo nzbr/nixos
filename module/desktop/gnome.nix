@@ -22,6 +22,7 @@
     local.gnome-shell-extension-pop-shell
 
     pop-gtk-theme
+    local.papirus-icon-theme-mod
    ] /* ++ (with pkgs.gnomeExtensions; [
      caffeine
      dash-to-dock
