@@ -1,10 +1,4 @@
-let
-  unstableTarball = fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-  ragonTarball = builtins.fetchGit "https://github.com/ragon000/nixos-config.git";
-  # ragonTarball = fetchTarball "https://gitlab.hochkamp.eu/ragon/nixos/-/archive/main/nixos-main.tar.gz?path=packages";
-  # ragonTarball = ../../.ragon;
-in
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, inputs, system, pkgs, modulesPath, ... }:
 let
   findModules =
     with builtins; with lib;
@@ -45,12 +39,16 @@ in
     allowUnfree = true;
 
     packageOverrides = {
-      unstable = import unstableTarball {
+      unstable = import inputs.nixpkgs-unstable {
+        inherit system;
+        config = config.nixpkgs.config;
+      };
+      ragon = import inputs.ragon {
+        inherit system;
         config = config.nixpkgs.config;
       };
       local = loadPackages pkgs ".pkg.nix" ../../pkg;
-      ragon = loadPackages pkgs.unstable ".nix" (ragonTarball + "/packages");
-      comma = pkgs.callPackage (import (builtins.fetchGit "https://github.com/shopify/comma.git")) {};
+      comma = pkgs.callPackage (import inputs.comma) {};
     };
   };
 }

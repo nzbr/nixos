@@ -1,7 +1,7 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, inputs, pkgs, modulesPath, ... }:
 {
   imports = [
-    (import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/release-20.09.tar.gz}/nixos")
+    inputs.home-manager.nixosModules.home-manager
   ];
 
 

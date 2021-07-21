@@ -1,10 +1,7 @@
-{ config, lib, pkgs, modulesPath, ... }:
-let
-  unstableTarball = fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-in
+{ config, lib, inputs, pkgs, modulesPath, ... }:
 {
   imports = [
-    "${unstableTarball}/nixos/modules/services/networking/iscsi/initiator.nix"
+    "${inputs.nixpkgs-unstable}/nixos/modules/services/networking/iscsi/initiator.nix"
   ];
 
   environment.systemPackages = with pkgs; [

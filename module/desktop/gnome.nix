@@ -15,7 +15,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    gnome3.gnome-boxes
+    # gnome3.gnome-boxes
     gnome3.gnome-tweak-tool
     gnome3.seahorse
 

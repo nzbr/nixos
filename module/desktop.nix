@@ -2,6 +2,7 @@
 {
   imports = [
     ./common.nix
+    ./gui-base.nix
 
     ./common/java.nix
 
@@ -22,18 +23,9 @@
     unstable.element-desktop
     signal-desktop
 
-    virt-manager
-
     libreoffice-fresh
 
-    xsel
-
     lm_sensors
-  ];
-
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    roboto roboto-slab roboto-mono
   ];
 
   sound.enable = true;

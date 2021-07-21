@@ -1,10 +1,7 @@
+{ config, lib, inputs, pkgs, modulesPath, ... }:
 let
-  repo = builtins.fetchGit {
-    url = "https://github.com/imustafin/razer-nari-pulseaudio-profile.git";
-    ref = "master";
-  };
+  repo = inputs.razer-nari;
 in
-{ config, lib, pkgs, modulesPath, ... }:
 {
   services.udev.extraRules = builtins.readFile "${repo}/91-pulseaudio-razer-nari.rules";
 

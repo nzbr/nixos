@@ -1,15 +1,9 @@
-{ config, lib, pkgs, modulesPath, ... }:
-let
-  nixos-hardware = builtins.fetchGit {
-    url = "https://github.com/NixOS/nixos-hardware.git";
-    ref = "master";
-  };
-in
+{ config, lib, inputs, pkgs, modulesPath, ... }:
 {
   networking.hostName = "meteor";
 
   imports = [
-    "${nixos-hardware}/lenovo/thinkpad/t420"
+    "${inputs.nixos-hardware}/lenovo/thinkpad/t420"
 
     ../module/common/boot/grub.nix
     ../module/common/service/printing.nix
@@ -18,11 +12,12 @@ in
     ../module/laptop.nix
     ../module/desktop/development.nix
     ../module/desktop/gnome.nix
-    # ../module/desktop/latex.nix
+    ../module/desktop/latex.nix
   ];
 
   boot = {
     loader.grub.device = "/dev/sda";
+    loader.grub.configurationLimit = 1;
 
     initrd = {
       availableKernelModules = [ "ehci_pci" "ahci" "usb_storage" "sd_mod" "sdhci_pci" "f2fs" "xfs" ];

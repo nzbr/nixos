@@ -14,6 +14,12 @@
     ./common/vscode-server.nix
   ];
 
+  # flakey flakey, rise and shine
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = "experimental-features = nix-command flakes";
+  };
+
   environment.systemPackages = with pkgs; [
     comma
     file
@@ -75,13 +81,4 @@
 
   hardware.enableRedistributableFirmware = true;
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It's perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  # Did you read the comment?
-  system.stateVersion = "20.09";
 }

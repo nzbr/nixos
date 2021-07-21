@@ -1,8 +1,8 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, inputs, pkgs, modulesPath, ... }:
 {
   imports = [
-    (builtins.fetchTarball https://github.com/nzbr/nixos-vscode-server/tarball/master)
+    # inputs.vscode-server
   ];
 
-  services.vscode-server.enable = true;
+  # services.vscode-server.enable = true;
 }

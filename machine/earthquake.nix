@@ -5,14 +5,15 @@
 
   imports = [
     ../module/common/boot/systemd-boot.nix
+    ../module/common/service/libvirtd.nix
     ../module/common/service/syncthing.nix
     ../module/common/service/wireguard.nix
     ../module/server.nix
     ../module/server/restic.nix
     ../module/server/service/k3s.nix
 
-    ../container/watchtower.nix
-    ../container/machinaris.nix
+    # ../container/watchtower.nix
+    # ../container/machinaris.nix
   ];
 
   boot = {
@@ -100,12 +101,16 @@
       device = "hottub/backup";
       fsType = "zfs";
     };
+    "/storage/chia" = {
+      device = "hottub/chia";
+      fsType = "zfs";
+    };
     "/storage/kubernetes" = {
       device = "hottub/kubernetes";
       fsType = "zfs";
     };
-    "/storage/chia" = {
-      device = "hottub/chia";
+    "/storage/libvirt" = {
+      device = "hottub/libvirt";
       fsType = "zfs";
     };
 
@@ -159,21 +164,23 @@
         keyFile = "/mnt-root/etc/lukskey";
       };
     };
-
-    # kubernetes #
-    # TODO: Bind mount these to /storage on the other servers as well?
-    "/var/lib/rancher/k3s/storage" = {
-      device = "/storage/kubernetes/local-path";
-      options = [ "bind" ];
-    };
-    "/var/lib/longhorn" = {
-      device = "/storage/kubernetes/longhorn";
-      options = [ "bind" ];
-    };
-    "/var/lib/etcd" = {
-      device = "/storage/kubernetes/etcd";
-      options = [ "bind" ];
-    };
+  }
+  //
+  lib.mapAttrs'
+    (to: from:
+      {
+        name = to;
+        value = {
+          device = from;
+          options = [ "bind" ];
+        };
+      }
+    )
+  {
+    "/var/lib/rancher/k3s/storage" = "/storage/kubernetes/local-path";
+    "/var/lib/longhorn" = "/storage/kubernetes/longhorn";
+    "/var/lib/etcd" = "/storage/kubernetes/etcd";
+    "/var/lib/libvirt" = "/storage/libvirt";
   };
 
   boot.initrd = {
@@ -298,6 +305,50 @@
     ];
   };
 
+
+  # Based on https://docs.pi-hole.net/guides/dns/unbound/
+  # services.unbound =
+  # let
+  #   rootHints = builtins.fetchurl "https://www.internic.net/domain/named.root";
+  # in {
+  #   enable = true;
+  #   extraConfig = ''
+  #     # server:
+  #       verbosity: 0
+  #       port: 5353
+
+  #       do-ip4: yes
+  #       do-ip6: yes
+  #       do-udp: yes
+  #       do-tcp: yes
+  #       prefer-ip6: yes
+
+  #       # root-hints: "${rootHints}"
+  #       root-hints: "/etc/unbound/named.root"
+
+  #       harden-glue: yes
+  #       harden-dnssec-stripped: yes
+  #       use-caps-for-id: no
+  #       edns-buffer-size: 1472
+
+  #       prefetch: yes
+
+  #       num-threads: 1
+  #       so-rcvbuf: 1m
+
+  #       private-address: 192.168.0.0/16
+  #       private-address: 169.254.0.0/16
+  #       private-address: 172.16.0.0/12
+  #       private-address: 10.0.0.0/8
+  #       private-address: fd00::/8
+  #       private-address: fe80::/10
+  #   '';
+  # };
+  # networking.resolvconf.useLocalResolver = false;
+
+  # CHIA #
+  environment.systemPackages = [ pkgs.unstable.chia ];
+
   # BACKUPS #
   nzbr.restic = {
     remote = "jotta-archive";
@@ -310,6 +361,7 @@
       "hottub/backup"
       "hottub/chia/config"
       "hottub/kubernetes"
+      "hottub/libvirt"
       "hottub/media"
       "hottub/nzbr"
     ];
@@ -327,6 +379,7 @@
           { name = "backup"; mountpoint = "/backup"; }
           { name = "chia"; mountpoint = "/chia"; }
           { name = "kubernetes"; mountpoint = "/kubernetes"; }
+          { name = "libvirt"; mountpoint = "/libvirt"; }
         ];
       }
     ];
