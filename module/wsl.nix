@@ -1,7 +1,7 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, inputs, pkgs, modulesPath, ... }:
 let
   defaultUser = "nzbr";
-  syschdemd = import /etc/nixos/syschdemd.nix { inherit lib pkgs config defaultUser; };
+  syschdemd = import "${inputs.nixos-wsl}/syschdemd.nix" { inherit lib pkgs config defaultUser; };
 in
 {
   imports = [
@@ -9,7 +9,16 @@ in
 
     ./common.nix
     ./common/boot/grub.nix
+    ./gui-base.nix
   ];
+
+  # basic gui environment
+  # services.xserver.desktopManager.lxqt.enable = true;
+  # environment.systemPackages = with pkgs; [
+  #   unstable.gnome3.gnome-tweak-tool
+  # ];
+  # programs.dconf.enable = true;
+  # services.dbus.packages = with pkgs; [ unstable.gnome3.dconf ];
 
   environment.etc = {
     hosts.enable = false;
@@ -22,6 +31,21 @@ in
       root=/drv/
       options=metadata,uid=1000,gid=100
     '';
+
+    # Set environment variables for WSLg
+    "shell-hooks/10-wslg.sh" = {
+      mode = "0755";
+      text = ''
+        export XDG_RUNTIME_DIR=/drv/wslg/runtime-dir
+        export PULSE_SERVER=/drv/wslg/PulseServer
+        export WAYLAND_DISPLAY=wayland-0
+        export DISPLAY=:0
+        export WSL_INTEROP="$(find /run/WSL -name '*_interop' | sort -V | tail -1)"
+
+        export QT_QPA_PLATFORMTHEME=gtk2
+        export XDG_CURRENT_DESKTOP=gnome
+      '';
+      };
   };
 
   fileSystems = {
@@ -79,4 +103,5 @@ in
     wants = [ "user@${defaultUser}.service" ];
     wantedBy = [ "multi-user.target" ];
   };
+
 }

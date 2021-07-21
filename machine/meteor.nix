@@ -17,7 +17,7 @@
 
   boot = {
     loader.grub.device = "/dev/sda";
-    loader.grub.configurationLimit = 1;
+    loader.grub.configurationLimit = 5;
 
     initrd = {
       availableKernelModules = [ "ehci_pci" "ahci" "usb_storage" "sd_mod" "sdhci_pci" "f2fs" "xfs" ];
@@ -67,7 +67,9 @@
   ];
 
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages;
-  services.xserver.videoDrivers = [ "nvidiaLegacy390" ];
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
+  # services.xserver.videoDrivers = [ "nvidiaLegacy390" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
   boot.plymouth.enable = lib.mkForce false; # Does not work with proprietary nvidia driver
 
   # Backlight (doesn't work yet?)
@@ -81,12 +83,12 @@
   '';
   services.thinkfan = {
     enable = true;
-    sensors = ''
-      hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp3_input
-      hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp4_input
-      hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input
-      hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp5_input
-      hwmon /sys/devices/platform/coretemp.0/hwmon/hwmon4/temp2_input
-    '';
+    sensors = [
+      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp3_input" ; type = "hwmon"; }
+      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp4_input" ; type = "hwmon"; }
+      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input" ; type = "hwmon"; }
+      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp5_input" ; type = "hwmon"; }
+      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp2_input" ; type = "hwmon"; }
+    ];
   };
 }

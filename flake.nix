@@ -3,10 +3,11 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    home-manager.url = "github:nix-community/home-manager/release-20.09";
+    home-manager.url = "github:nix-community/home-manager/release-21.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-wsl.url = "github:Trundle/NixOS-WSL";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
 
     ragon = {
       url = "github:ragon000/nixos-config";
@@ -51,7 +52,7 @@
                 # of this flake.
                 system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
 
-                system.stateVersion = "20.09";
+                system.stateVersion = "21.05";
               })
               (import (./machine + "/${path}"))
             ];

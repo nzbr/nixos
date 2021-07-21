@@ -1,6 +1,6 @@
 # https://github.com/NixOS/nixpkgs/issues/92769#issuecomment-673744092
 
-{ stdenv, fetchFromGitHub, nodejs, nodePackages, glib }:
+{ stdenv, lib, fetchFromGitHub, nodejs, nodePackages, glib }:
 
 stdenv.mkDerivation rec {
   pname = "gnome-shell-extension-pop-shell";
@@ -28,7 +28,7 @@ stdenv.mkDerivation rec {
 
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "i3wm-like keyboard-driven layer for GNOME Shell";
     homepage = "https://github.com/pop-os/shell";
     license = licenses.gpl3;
