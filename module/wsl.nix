@@ -21,11 +21,12 @@ in
   services.xserver.displayManager.gdm.enable = lib.mkForce false;
   services.xserver.displayManager.autoLogin.enable = lib.mkForce false;
   networking.networkmanager.enable = lib.mkForce false;
-  environment.systemPackages = with pkgs; [
-    virt-manager
-  ];
 
   environment = {
+    systemPackages = with pkgs; [
+      chromium
+      virt-manager
+    ];
 
     variables = {
       DISPLAY = ":0";
@@ -40,7 +41,7 @@ in
       XDG_CURRENT_DESKTOP = "gnome";
     };
 
-    environment.etc = {
+    etc = {
       hosts.enable = false;
       "resolv.conf".enable = false;
 
