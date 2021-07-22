@@ -2,7 +2,6 @@
 {
   imports = [
     ./common.nix
-    ./gui-base.nix
 
     ./common/java.nix
 
@@ -26,8 +25,16 @@
     libreoffice-fresh
 
     hyper
+    xsel
+
+    virt-manager
 
     lm_sensors
+  ];
+
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    roboto roboto-slab roboto-mono
   ];
 
   sound.enable = true;

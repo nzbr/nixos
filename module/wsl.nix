@@ -9,7 +9,6 @@ in
 
     ./common.nix
     ./common/boot/grub.nix
-    ./gui-base.nix
   ];
 
   # basic gui environment
