@@ -23,7 +23,9 @@
   };
 
   environment.systemPackages = with pkgs; [
-    k3s kubectl helm
+    k3s
+    kubectl
+    helm
   ];
 
   networking.firewall.trustedInterfaces = [ "tunl0" ];

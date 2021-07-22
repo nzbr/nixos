@@ -15,7 +15,8 @@ in
     declarative =
       let
         baseDir = (lib.removeSuffix "/" config.services.syncthing.dataDir) + "/";
-      in {
+      in
+      {
         cert = "${cert}";
         key = "${key}";
         overrideDevices = true;
@@ -41,29 +42,30 @@ in
           };
         };
         folders =
-          lib.mapAttrs' (n: v: lib.nameValuePair n (v // { path = (baseDir + n);})) ( # Set the path
-          lib.filterAttrs (n: v: lib.any(it: it == host) v.devices) { # Only add folders that should be synced with the current host
-            Projekte = {
-              id = "projekte";
-              label = "Projekte";
-              devices = [ "earthquake" "hurricane" "landslide" "meteor" ];
-            };
-            devsaur = {
-              id = "devsaur";
-              label = "devsaur";
-              devices = [ "earthquake" "hurricane" "landslide" "meteor" ];
-            };
-            ".local/share/fonts/sync" = {
-              id = "fonts";
-              label = "Fonts";
-              devices = [ "landslide" "meteor" ]; # TODO: earthquake
-            };
-            mp3 = {
-              id = "mp3";
-              label = "MP3";
-              devices = [ "earhquake" "uli" ];
-            };
-          });
+          lib.mapAttrs' (n: v: lib.nameValuePair n (v // { path = (baseDir + n); })) (# Set the path
+            lib.filterAttrs (n: v: lib.any (it: it == host) v.devices) {
+              # Only add folders that should be synced with the current host
+              Projekte = {
+                id = "projekte";
+                label = "Projekte";
+                devices = [ "earthquake" "hurricane" "landslide" "meteor" ];
+              };
+              devsaur = {
+                id = "devsaur";
+                label = "devsaur";
+                devices = [ "earthquake" "hurricane" "landslide" "meteor" ];
+              };
+              ".local/share/fonts/sync" = {
+                id = "fonts";
+                label = "Fonts";
+                devices = [ "landslide" "meteor" ]; # TODO: earthquake
+              };
+              mp3 = {
+                id = "mp3";
+                label = "MP3";
+                devices = [ "earhquake" "uli" ];
+              };
+            });
       };
   };
 }

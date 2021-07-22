@@ -16,7 +16,7 @@ let
               )
               (
                 mapAttrsToList
-                  (name: type: {name = name; type = type;})
+                  (name: type: { name = name; type = type; })
                   (readDir secrets)
               )
           )

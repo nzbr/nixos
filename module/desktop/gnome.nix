@@ -20,7 +20,7 @@
     gnome.seahorse
 
     local.gnome-shell-extension-pop-shell
-   ] /* ++ (with pkgs.gnomeExtensions; [
+  ] /* ++ (with pkgs.gnomeExtensions; [
      caffeine
      dash-to-dock
      gsconnect
@@ -44,7 +44,7 @@
               };
               transparencyPatch = repo + "/transparency.patch";
             in
-              [ transparencyPatch ];
+            [ transparencyPatch ];
         });
       });
     })

@@ -32,7 +32,7 @@
 
         "e1000e" # Early boot network
       ];
-      kernelModules = [];
+      kernelModules = [ ];
       supportedFilesystems = [ "zfs" ];
     };
     kernelModules = [ "dm-snapshot" "kvm-intel" ];
@@ -139,31 +139,33 @@
       options = [ "size=4G" ];
     };
     "/old/storage" =
-    let label = "cr_storage";
-    in {
-      device = "/dev/mapper/${label}";
-      fsType = "btrfs";
-      neededForBoot = false;
-      encrypted = {
-        enable = true;
-        blkDev = "/dev/disk/by-uuid/38627a12-ce2f-43ac-9cfd-24fc20e00e26";
-        label = label;
-        keyFile = "/mnt-root/etc/lukskey";
+      let label = "cr_storage";
+      in
+      {
+        device = "/dev/mapper/${label}";
+        fsType = "btrfs";
+        neededForBoot = false;
+        encrypted = {
+          enable = true;
+          blkDev = "/dev/disk/by-uuid/38627a12-ce2f-43ac-9cfd-24fc20e00e26";
+          label = label;
+          keyFile = "/mnt-root/etc/lukskey";
+        };
       };
-    };
     "/old/storage/Backup" =
-    let label = "cr_backup";
-    in {
-      device = "/dev/mapper/${label}";
-      fsType = "btrfs";
-      neededForBoot = false;
-      encrypted = {
-        enable = true;
-        blkDev = "/dev/disk/by-uuid/bdb010d6-48a2-4d59-b935-821dced8d912";
-        label = label;
-        keyFile = "/mnt-root/etc/lukskey";
+      let label = "cr_backup";
+      in
+      {
+        device = "/dev/mapper/${label}";
+        fsType = "btrfs";
+        neededForBoot = false;
+        encrypted = {
+          enable = true;
+          blkDev = "/dev/disk/by-uuid/bdb010d6-48a2-4d59-b935-821dced8d912";
+          label = label;
+          keyFile = "/mnt-root/etc/lukskey";
+        };
       };
-    };
   }
   //
   lib.mapAttrs'
@@ -176,16 +178,17 @@
         };
       }
     )
-  {
-    "/var/lib/rancher/k3s/storage" = "/storage/kubernetes/local-path";
-    "/var/lib/longhorn" = "/storage/kubernetes/longhorn";
-    "/var/lib/etcd" = "/storage/kubernetes/etcd";
-    "/var/lib/libvirt" = "/storage/libvirt";
-  };
+    {
+      "/var/lib/rancher/k3s/storage" = "/storage/kubernetes/local-path";
+      "/var/lib/longhorn" = "/storage/kubernetes/longhorn";
+      "/var/lib/etcd" = "/storage/kubernetes/etcd";
+      "/var/lib/libvirt" = "/storage/libvirt";
+    };
 
   boot.initrd = {
     luks.devices = {
-      "cr_root" = { # /old
+      "cr_root" = {
+        # /old
         device = "/dev/disk/by-uuid/13187d61-8666-4533-b853-fd32e20eed2c";
         preLVM = true;
       };
@@ -272,10 +275,14 @@
 
   networking.firewall.allowedTCPPorts = [
     445 # SMB
-    137 138 139 # NetBIOS
+    137
+    138
+    139 # NetBIOS
   ];
   networking.firewall.allowedUDPPorts = [
-    137 138 139 # NetBIOS
+    137
+    138
+    139 # NetBIOS
   ];
 
   nzbr.wgIp = "10.42.0.2";
@@ -285,7 +292,8 @@
       "fd42:42::7a24:afff:febc:c07/64"
     ];
     peers = [
-      { # storm
+      {
+        # storm
         publicKey = (lib.fileContents ../secret/storm/wireguard/public.key);
         endpoint = "storm.nzbr.de:51820";
         allowedIPs = [
@@ -294,7 +302,8 @@
           "172.18.0.0/16" # storm's Docker network
         ];
       }
-      { # avalanche
+      {
+        # avalanche
         publicKey = (lib.fileContents ../secret/avalanche/wireguard/public.key);
         endpoint = "avalanche.nzbr.de:51820";
         allowedIPs = [

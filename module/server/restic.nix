@@ -21,31 +21,31 @@ in
           };
           preStart =
             lib.concatStringsSep "\n"
-            (
-              [
-                "set -euxo pipefail"
-              ] ++ lib.flatten
-                (
-                  builtins.map
-                    (pool:
-                      [
-                        "zfs destroy -r ${pool.name}@${cfg.snapshotName} || true"
-                        "zfs snapshot -r ${pool.name}@${cfg.snapshotName}"
-                        "mkdir -p /tmp/.snapshot/${pool.name}"
-                        "mount -t zfs ${pool.name}@${cfg.snapshotName} /tmp/.snapshot/${pool.name}"
-                      ] ++ (
-                        builtins.map
-                          (subvol:
-                            [
-                              "mount -t zfs ${pool.name}/${subvol.name}@${cfg.snapshotName} /tmp/.snapshot/${pool.name}/${subvol.mountpoint}"
-                            ]
-                          )
-                          pool.subvols
+              (
+                [
+                  "set -euxo pipefail"
+                ] ++ lib.flatten
+                  (
+                    builtins.map
+                      (pool:
+                        [
+                          "zfs destroy -r ${pool.name}@${cfg.snapshotName} || true"
+                          "zfs snapshot -r ${pool.name}@${cfg.snapshotName}"
+                          "mkdir -p /tmp/.snapshot/${pool.name}"
+                          "mount -t zfs ${pool.name}@${cfg.snapshotName} /tmp/.snapshot/${pool.name}"
+                        ] ++ (
+                          builtins.map
+                            (subvol:
+                              [
+                                "mount -t zfs ${pool.name}/${subvol.name}@${cfg.snapshotName} /tmp/.snapshot/${pool.name}/${subvol.mountpoint}"
+                              ]
+                            )
+                            pool.subvols
+                        )
                       )
-                    )
-                    cfg.pools
-                )
-            );
+                      cfg.pools
+                  )
+              );
           script = with builtins; ''
             set -euxo pipefail
 
@@ -72,31 +72,31 @@ in
           );
           postStop =
             lib.concatStringsSep "\n"
-            (
-              [
-                "set -euxo pipefail"
-                "rm -f /tmp/restic.lock"
-              ] ++ lib.flatten
-                (
-                  builtins.map
-                    (pool:
-                      (
-                        builtins.map
-                          (subvol:
-                            [
-                              "umount /tmp/.snapshot/${pool.name}/${subvol.mountpoint}"
-                            ]
-                          )
-                          (lib.reverseList pool.subvols)
-                      ) ++ [
-                        "umount /tmp/.snapshot/${pool.name}"
-                        "rmdir /tmp/.snapshot/${pool.name}"
-                        "zfs destroy -r ${pool.name}@${cfg.snapshotName}"
-                      ]
-                    )
-                    (lib.reverseList cfg.pools)
-                )
-            );
+              (
+                [
+                  "set -euxo pipefail"
+                  "rm -f /tmp/restic.lock"
+                ] ++ lib.flatten
+                  (
+                    builtins.map
+                      (pool:
+                        (
+                          builtins.map
+                            (subvol:
+                              [
+                                "umount /tmp/.snapshot/${pool.name}/${subvol.mountpoint}"
+                              ]
+                            )
+                            (lib.reverseList pool.subvols)
+                        ) ++ [
+                          "umount /tmp/.snapshot/${pool.name}"
+                          "rmdir /tmp/.snapshot/${pool.name}"
+                          "zfs destroy -r ${pool.name}@${cfg.snapshotName}"
+                        ]
+                      )
+                      (lib.reverseList cfg.pools)
+                  )
+              );
         };
 
         restic-prune = {
@@ -185,14 +185,14 @@ in
         };
       };
       pools = mkOption {
-        default = [];
+        default = [ ];
         type = listOf (submodule {
           options = {
             name = mkOption {
               type = str;
             };
             subvols = mkOption {
-              default = [];
+              default = [ ];
               type = listOf (submodule {
                 options = {
                   name = mkOption {

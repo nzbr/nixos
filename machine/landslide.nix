@@ -55,7 +55,7 @@
     resumeDevice = "/dev/vg_ssd/swap";
   };
 
-  fileSystems= {
+  fileSystems = {
     "/" = {
       device = "/dev/vg_ssd/root";
       fsType = "f2fs";
@@ -82,4 +82,3 @@
     { device = "/dev/vg_ssd/swap"; }
   ];
 }
-

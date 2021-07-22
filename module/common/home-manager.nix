@@ -12,10 +12,11 @@
       let
         homeCfg = {
           imports = [
-            (import ../../home/home.nix {sys=config;})
+            (import ../../home/home.nix { sys = config; })
           ];
         };
-      in {
+      in
+      {
         root = homeCfg;
         nzbr = homeCfg;
       };

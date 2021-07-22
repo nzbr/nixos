@@ -34,7 +34,10 @@
     vim
     wget
 
-    cabextract p7zip unzip zip
+    cabextract
+    p7zip
+    unzip
+    zip
 
     ntfs3g
   ];
@@ -57,8 +60,8 @@
   networking.firewall = {
     enable = true;
     allowPing = true;
-    allowedTCPPorts = [];
-    allowedUDPPorts = [];
+    allowedTCPPorts = [ ];
+    allowedUDPPorts = [ ];
   };
 
   users = {

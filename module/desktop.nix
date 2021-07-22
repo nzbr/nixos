@@ -13,7 +13,9 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    unstable.vivaldi unstable.vivaldi-widevine unstable.vivaldi-ffmpeg-codecs
+    unstable.vivaldi
+    unstable.vivaldi-widevine
+    unstable.vivaldi-ffmpeg-codecs
     # vivaldi vivaldi-widevine vivaldi-ffmpeg-codecs
 
     vlc
@@ -35,7 +37,9 @@
 
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    roboto roboto-slab roboto-mono
+    roboto
+    roboto-slab
+    roboto-mono
   ];
 
   sound.enable = true;

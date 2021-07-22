@@ -84,11 +84,11 @@
   services.thinkfan = {
     enable = true;
     sensors = [
-      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp3_input" ; type = "hwmon"; }
-      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp4_input" ; type = "hwmon"; }
-      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input" ; type = "hwmon"; }
-      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp5_input" ; type = "hwmon"; }
-      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp2_input" ; type = "hwmon"; }
+      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp3_input"; type = "hwmon"; }
+      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp4_input"; type = "hwmon"; }
+      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input"; type = "hwmon"; }
+      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp5_input"; type = "hwmon"; }
+      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp2_input"; type = "hwmon"; }
     ];
   };
 }

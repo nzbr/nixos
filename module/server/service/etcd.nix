@@ -6,7 +6,7 @@ let
     earthquake = "10.42.0.2";
     # avalanche = "10.42.0.4";
   };
-  ip = lib.attrByPath [hostname] null ips;
+  ip = lib.attrByPath [ hostname ] null ips;
 in
 {
   nixpkgs.overlays = [
