@@ -236,7 +236,6 @@
     enableNmbd = true;
     enableWinbindd = true;
     nsswins = true;
-    syncPasswordsByPam = true;
 
     extraConfig = ''
       workgroup = WORKGROUP
