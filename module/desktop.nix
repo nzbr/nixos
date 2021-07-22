@@ -25,6 +25,8 @@
 
     libreoffice-fresh
 
+    hyper
+
     lm_sensors
   ];
 
