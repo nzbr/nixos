@@ -11,7 +11,6 @@
     tabnine
     vscode
 
-    teams
     timeular
   ];
 }
