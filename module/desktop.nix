@@ -5,6 +5,7 @@
 
     ./common/java.nix
 
+    ./desktop/theme.nix
     ./desktop/pulseaudio.nix
     ./desktop/device/razer.nix
     ./desktop/device/razer-nari.nix

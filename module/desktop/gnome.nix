@@ -15,14 +15,11 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # gnome3.gnome-boxes
+    # gnome.gnome-boxes
     gnome.gnome-tweak-tool
     gnome.seahorse
 
     local.gnome-shell-extension-pop-shell
-
-    pop-gtk-theme
-    local.papirus-icon-theme-mod
    ] /* ++ (with pkgs.gnomeExtensions; [
      caffeine
      dash-to-dock
