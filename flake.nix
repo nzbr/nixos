@@ -6,7 +6,7 @@
     home-manager.url = "github:nix-community/home-manager/release-21.05";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nixos-wsl.url = "github:Trundle/NixOS-WSL";
+    nixos-wsl.url = "github:nzbr/NixOS-WSL/WSLg";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
     nixpkgs-legacy.url = "github:NixOS/nixpkgs/nixos-20.09";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -30,38 +30,38 @@
     };
   };
 
-  outputs = inputs @ {
-    self,
-    flake-utils,
-    nixpkgs,
-    ...
-  # }: flake-utils.lib.eachDefaultSystem (system: with builtins; with nixpkgs; with lib; rec {
-  }:
-  let
-    system = "x86_64-linux";
-  in
-  (with builtins; with nixpkgs; with lib; rec {
-    nixosConfigurations = (listToAttrs (map
-      (path:
-        {
-          name = removeSuffix ".nix" path;
-          value = nixosSystem {
-            inherit system;
-            specialArgs = { inherit lib inputs system; };
-            modules = [
-              ({pkgs, ...}: {
-                # Let 'nixos-version --json' know about the Git revision
-                # of this flake.
-                system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+  outputs =
+    inputs @ { self
+    , flake-utils
+    , nixpkgs
+    , ...
+      # }: flake-utils.lib.eachDefaultSystem (system: with builtins; with nixpkgs; with lib; rec {
+    }:
+    let
+      system = "x86_64-linux";
+    in
+    (with builtins; with nixpkgs; with lib; rec {
+      nixosConfigurations = (listToAttrs (map
+        (path:
+          {
+            name = removeSuffix ".nix" path;
+            value = nixosSystem {
+              inherit system;
+              specialArgs = { inherit lib inputs system; };
+              modules = [
+                ({ pkgs, ... }: {
+                  # Let 'nixos-version --json' know about the Git revision
+                  # of this flake.
+                  system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
 
-                system.stateVersion = "21.05";
-              })
-              (import (./machine + "/${path}"))
-            ];
-          };
-        }
-      )
-      (mapAttrsToList (name: type: name) (readDir ./machine))
-    ));
-  });
+                  system.stateVersion = "21.05";
+                })
+                (import (./machine + "/${path}"))
+              ];
+            };
+          }
+        )
+        (mapAttrsToList (name: type: name) (readDir ./machine))
+      ));
+    });
 }

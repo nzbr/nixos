@@ -1,7 +1,8 @@
 { config, lib, inputs, pkgs, modulesPath, ... }:
 let
   defaultUser = "nzbr";
-  syschdemd = import "${inputs.nixos-wsl}/syschdemd.nix" { inherit lib pkgs config defaultUser; };
+  automountPath = "/drv";
+  syschdemd = import "${inputs.nixos-wsl}/syschdemd.nix" { inherit lib pkgs config defaultUser automountPath; };
 in
 {
   imports = [
@@ -24,38 +25,42 @@ in
     virt-manager
   ];
 
-  environment.etc = {
-    hosts.enable = false;
-    "resolv.conf".enable = false;
+  environment = {
 
-    "wsl.conf".text = ''
-      [automount]
-      enabled=true
-      mountFsTab=true
-      root=/drv/
-      options=metadata,uid=1000,gid=100
-    '';
+    variables = {
+      DISPLAY = ":0";
+      WAYLAND_DISPLAY = "wayland-0";
 
-    # Set environment variables for WSLg
-    "shell-hooks/10-wslg.sh" = {
-      mode = "0755";
-      text = ''
-        export XDG_RUNTIME_DIR=/drv/wslg/runtime-dir
-        export PULSE_SERVER=/drv/wslg/PulseServer
-        export WAYLAND_DISPLAY=wayland-0
-        export DISPLAY=:0
-        export WSL_INTEROP="$(find /run/WSL -name '*_interop' | sort -V | tail -1)"
+      PULSE_SERVER = "${automountPath}/wslg/PulseServer";
+      XDG_RUNTIME_DIR = "${automountPath}/wslg/runtime-dir";
+      WSL_INTEROP = "/run/WSL/1_interop";
 
-        export QT_QPA_PLATFORMTHEME=gtk2
-        export XDG_CURRENT_DESKTOP=gnome
+      # Theme config
+      QT_QPA_PLATFORMTHEME = "gtk2";
+      XDG_CURRENT_DESKTOP = "gnome";
+    };
+
+    environment.etc = {
+      hosts.enable = false;
+      "resolv.conf".enable = false;
+
+      "wsl.conf".text = ''
+        [automount]
+        enabled=true
+        mountFsTab=true
+        root=/drv/
+        options=metadata,uid=1000,gid=100
       '';
-      };
+    };
   };
 
   # Copy application launchers for WSLg
   system.activationScripts.copy-launchers.text = ''
-    rm -rf /usr/share/applications
-    cp -r /run/current-system/sw/share/applications/. /usr/share/applications
+    for x in applications icons; do
+      echo "Copying /usr/share/$x"
+      rm -rf /usr/share/$x
+      cp -r $systemConfig/sw/share/$x/. /usr/share/$x
+    done
   '';
 
   fileSystems = {
@@ -71,9 +76,9 @@ in
   } // lib.listToAttrs (
     map
       (distro: lib.nameValuePair
-        ("/drv/"+distro)
-        {label = distro; fsType = "ext4"; options = ["defaults" "noauto"];}
-      ) ["Arch" "Ubuntu"]
+        ("/drv/" + distro)
+        { label = distro; fsType = "ext4"; options = [ "defaults" "noauto" ]; }
+      ) [ "Arch" "Ubuntu" ]
   );
 
   networking.dhcpcd.enable = false;
