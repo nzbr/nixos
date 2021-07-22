@@ -9,15 +9,20 @@ in
 
     ./common.nix
     ./common/boot/grub.nix
+
+    ./desktop/theme.nix
+    ./desktop/gnome.nix
   ];
 
   # basic gui environment
+  environment.noXlibs = lib.mkForce false;
   # services.xserver.desktopManager.lxqt.enable = true;
-  # environment.systemPackages = with pkgs; [
-  #   unstable.gnome3.gnome-tweak-tool
-  # ];
-  # programs.dconf.enable = true;
-  # services.dbus.packages = with pkgs; [ unstable.gnome3.dconf ];
+  services.xserver.displayManager.gdm.enable = lib.mkForce false;
+  services.xserver.displayManager.autoLogin.enable = lib.mkForce false;
+  networking.networkmanager.enable = lib.mkForce false;
+  environment.systemPackages = with pkgs; [
+    virt-manager
+  ];
 
   environment.etc = {
     hosts.enable = false;
@@ -46,6 +51,12 @@ in
       '';
       };
   };
+
+  # Copy application launchers for WSLg
+  system.activationScripts.copy-launchers.text = ''
+    rm -rf /usr/share/applications
+    cp -r /run/current-system/sw/share/applications/. /usr/share/applications
+  '';
 
   fileSystems = {
     "/" = {

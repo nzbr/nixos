@@ -15,7 +15,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # gnome.gnome-boxes
+    gnome.gnome-boxes
     gnome.gnome-tweak-tool
     gnome.seahorse
 
@@ -29,7 +29,7 @@
   programs.gnupg.agent.pinentryFlavor = "gnome3";
 
   programs.dconf.enable = true;
-  services.dbus.packages = with pkgs; [ gnome3.dconf ];
+  services.dbus.packages = with pkgs; [ gnome.dconf ];
 
   nixpkgs.overlays = [
     (self: super: {
