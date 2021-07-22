@@ -16,8 +16,8 @@
 
   environment.systemPackages = with pkgs; [
     # gnome3.gnome-boxes
-    gnome3.gnome-tweak-tool
-    gnome3.seahorse
+    gnome.gnome-tweak-tool
+    gnome.seahorse
 
     local.gnome-shell-extension-pop-shell
 
@@ -36,8 +36,9 @@
 
   nixpkgs.overlays = [
     (self: super: {
-      gnome3 = super.gnome3.overrideScope' (self': super': {
-        gnome-terminal = super'.gnome-terminal.overrideAttrs (oldAttrs: rec {
+      gnome = super.gnome.overrideScope' (self': super': {
+        gnome-shell = super.legacy.gnome3.gnome-shell;
+        gnome-terminal = super.legacy.gnome3.gnome-terminal.overrideAttrs (oldAttrs: rec {
           patches =
             let
               repo = builtins.fetchGit {

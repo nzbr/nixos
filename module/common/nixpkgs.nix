@@ -43,6 +43,10 @@ in
         inherit system;
         config = config.nixpkgs.config;
       };
+      legacy = import inputs.nixpkgs-legacy {
+        inherit system;
+        config = config.nixpkgs.config;
+      };
       ragon = import inputs.ragon {
         inherit system;
         config = config.nixpkgs.config;
