@@ -1,6 +1,6 @@
 { stdenv }:
 stdenv.mkDerivation rec {
-  pname = "papirus-icon-theme";
+  pname = "papirus-icon-theme-mod";
   version = "20210601";
 
   src = builtins.fetchGit {
@@ -21,9 +21,8 @@ stdenv.mkDerivation rec {
     mkdir -p "$out"
   '';
 
-  installPhase = "make DESTDIR=$out install";
-
-  postInstall = ''
+  installPhase = ''
+    make DESTDIR=$out install
     mv -v $out/usr/share $out/share
     rmdir -v $out/usr
   '';
