@@ -17,7 +17,7 @@
 
   boot = {
     loader.grub.device = "/dev/sda";
-    loader.grub.configurationLimit = 5;
+    loader.grub.configurationLimit = 1;
 
     initrd = {
       availableKernelModules = [ "ehci_pci" "ahci" "usb_storage" "sd_mod" "sdhci_pci" "f2fs" "xfs" ];
@@ -84,11 +84,11 @@
   services.thinkfan = {
     enable = true;
     sensors = [
-      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp3_input"; type = "hwmon"; }
-      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp4_input"; type = "hwmon"; }
-      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input"; type = "hwmon"; }
-      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp5_input"; type = "hwmon"; }
-      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp2_input"; type = "hwmon"; }
+      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input"; type = "hwmon"; }
+      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp2_input"; type = "hwmon"; }
+      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp3_input"; type = "hwmon"; }
+      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp4_input"; type = "hwmon"; }
+      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp5_input"; type = "hwmon"; }
     ];
   };
 }
