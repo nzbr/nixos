@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 {
-  gtk = lib.mkIf config.services.xserver.enable {
+  gtk = {
     iconTheme = {
       package = pkgs.local.papirus-icon-theme-mod;
       name = "Papirus-dark";
