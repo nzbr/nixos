@@ -8,6 +8,7 @@
     ../module/common/service/libvirtd.nix
     ../module/common/service/syncthing.nix
     ../module/common/service/wireguard.nix
+
     ../module/server.nix
     ../module/server/restic.nix
     ../module/server/service/k3s.nix
@@ -15,6 +16,8 @@
     # ../container/watchtower.nix
     # ../container/machinaris.nix
   ];
+
+  boot.loader.systemd-boot.configurationLimit = 1;
 
   boot = {
     initrd = {
@@ -29,8 +32,6 @@
         "hid_roccat"
         "hid_roccat_common"
         "hid_roccat_isku"
-
-        "e1000e" # Early boot network
       ];
       kernelModules = [ ];
       supportedFilesystems = [ "zfs" ];
