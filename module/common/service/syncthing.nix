@@ -27,19 +27,13 @@ in
             id = "JDXIQUR-4FUQQK6-CZFNZTA-NCWBFEU-HCZFDW5-E7X2KKX-BIQWZZZ-2B42XQF";
             introducer = true;
           };
-          hurricane = {
-            id = "OJZKKKY-KG7PO72-VOJGPMU-X3Q6GRZ-HHA75HN-NGIGMRV-WZYPO5F-6PKEHAB";
-          };
-          landslide = {
-            id = "Q67E6XX-AQTLKAS-2SPVS7T-OUUPVXZ-UX632XY-DN7H2AZ-Y3N2CFJ-5EGDVAB";
-          };
-          meteor = {
-            id = "7RPEIWJ-QQDVCWD-M46KH3U-237GDWG-ZL6EEF2-WPZVAF2-7L5JRX2-HHHKKAB";
-          };
 
-          uli = {
-            id = "ZOTIOGW-NRF4IWB-BXJGBLB-QGZLA6A-NEOX3CV-5DK5O2V-6PFKBXH-VK4F3AK";
-          };
+          hurricane.id = "OJZKKKY-KG7PO72-VOJGPMU-X3Q6GRZ-HHA75HN-NGIGMRV-WZYPO5F-6PKEHAB";
+          landslide.id = "Q67E6XX-AQTLKAS-2SPVS7T-OUUPVXZ-UX632XY-DN7H2AZ-Y3N2CFJ-5EGDVAB";
+          meteor.id = "7RPEIWJ-QQDVCWD-M46KH3U-237GDWG-ZL6EEF2-WPZVAF2-7L5JRX2-HHHKKAB";
+
+          uli.id = "ZOTIOGW-NRF4IWB-BXJGBLB-QGZLA6A-NEOX3CV-5DK5O2V-6PFKBXH-VK4F3AK";
+          earthquake-macos.id = "QCCLSA4-AFZQSHS-D4DQ2F6-VCPWNTQ-MOQSJY2-HUA5PSA-J3FTLTH-XXJAWAW";
         };
         folders =
           lib.mapAttrs' (n: v: lib.nameValuePair n (v // { path = (baseDir + n); })) (# Set the path
@@ -53,7 +47,7 @@ in
               devsaur = {
                 id = "devsaur";
                 label = "devsaur";
-                devices = [ "earthquake" "hurricane" "landslide" "meteor" ];
+                devices = [ "earthquake" "hurricane" "landslide" "meteor" "earthquake-macos" ];
               };
               ".local/share/fonts/sync" = {
                 id = "fonts";
