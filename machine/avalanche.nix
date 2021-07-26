@@ -16,6 +16,7 @@
 
   boot = {
     loader.grub.device = "/dev/sda";
+    loader.grub.configurationLimit = 1;
 
     initrd = {
       availableKernelModules = [
