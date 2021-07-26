@@ -13,4 +13,11 @@
 
     timeular
   ];
+
+  programs.adb.enable = true;
+  users.users.nzbr.extraGroups = [ "adbusers" ];
+
+  services.udev.packages = [
+    pkgs.android-udev-rules
+  ];
 }
