@@ -4,7 +4,7 @@ let
   ips = {
     storm = "10.42.0.1";
     earthquake = "10.42.0.2";
-    # avalanche = "10.42.0.4";
+    avalanche = "10.42.0.4";
   };
   ip = lib.attrByPath [ hostname ] null ips;
 in
