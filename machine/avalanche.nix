@@ -95,7 +95,7 @@
 
   networking = {
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
-    interfaces.enp0s3 = {
+    interfaces.ens3 = {
       useDHCP = true;
     };
   };
