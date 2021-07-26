@@ -41,7 +41,7 @@
       fsType = "zfs";
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/A100-EA42";
+      device = "/dev/disk/by-uuid/F3BE-8A41";
       fsType = "vfat";
     };
     "/tmp" = {
@@ -78,7 +78,7 @@
 
   swapDevices = [
     {
-      device = "/dev/disk/by-partuuid/2fde6ca7-8523-4fa0-916b-54d916e60ef4";
+      device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi0-0-0-0-part3";
       randomEncryption.enable = true;
     }
   ];
@@ -95,7 +95,7 @@
 
   networking = {
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
-    interfaces.ens3 = {
+    interfaces.enp0s3 = {
       useDHCP = true;
     };
   };
