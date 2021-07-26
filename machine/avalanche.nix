@@ -78,7 +78,7 @@
   swapDevices = [
     {
       device = "/dev/disk/by-partuuid/2fde6ca7-8523-4fa0-916b-54d916e60ef4";
-      randromEncryption.enable = true;
+      randomEncryption.enable = true;
     }
   ];
 
@@ -138,7 +138,7 @@
       "zroot/storage"
     ];
     healthcheck = {
-      backups = "https://hc-ping.com/a4db4963-0a73-4aeb-8207-f884341ba04d";
+      backup = "https://hc-ping.com/a4db4963-0a73-4aeb-8207-f884341ba04d";
       prune = "https://hc-ping.com/be3cdc9a-3eb4-4f85-b8ad-c51dc361f9e7";
     };
     pools = [

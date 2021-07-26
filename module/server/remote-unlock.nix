@@ -72,7 +72,7 @@ in
     nzbr.remote-unlock = {
       luks = mkOption {
         default = true;
-        type = boolean;
+        type = bool;
       };
       zfs = mkOption {
         default = [ ];
