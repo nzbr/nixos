@@ -1,46 +1,83 @@
 { config, lib, pkgs, modulesPath, ... }:
+let
+  cfg = config.nzbr.remote-unlock;
+in
 {
-  boot.initrd.network = {
-    enable = true;
-    ssh = {
-      enable = true;
-      port = 22;
-      authorizedKeys = config.users.users.root.openssh.authorizedKeys.keys;
-      hostKeys = [
-        (../../secret + "/${config.networking.hostName}/ssh/ssh_host_ed25519_key")
+  config = {
+    boot.initrd = {
+      availableKernelModules = [
+        "e1000e" # Early boot network
       ];
-    };
-    postCommands =
-    let
-      ipconfig = with builtins; with lib;
-        concatStringsSep "\n" (
-          flatten (
-            mapAttrsToList (
-              name: value:
+      network = {
+        enable = true;
+        ssh = {
+          enable = true;
+          port = 22;
+          authorizedKeys = config.users.users.root.openssh.authorizedKeys.keys;
+          hostKeys = [
+            (../../secret + "/${config.networking.hostName}/ssh/ssh_host_ed25519_key")
+          ];
+        };
+        postCommands =
+          let
+            ipconfig = with builtins; with lib;
+              concatStringsSep "\n" (
                 flatten (
-                  map
-                    (ip: "ip addr add ${ip.address}/${toString ip.prefixLength} dev ${name}")
-                    value.ipv4.addresses
+                  mapAttrsToList
+                    (
+                      name: value:
+                        flatten
+                          (
+                            map
+                              (ip: "ip addr add ${ip.address}/${toString ip.prefixLength} dev ${name}")
+                              value.ipv4.addresses
+                          )
+                        ++ [ "ip link set ${name} up" ]
+                    )
+                    (config.networking.interfaces)
                 )
-                ++ [ "ip link set ${name} up" ]
-            )
-            (config.networking.interfaces)
-        )
-      );
-    in ''
-      # Ask for luks password when logging in via SSH
-      echo 'cryptsetup-askpass' >> /root/.profile
+              );
+              luks = if cfg.luks then
+                "echo 'cryptsetup-askpass' >> /root/.profile"
+              else
+                "";
+              zfs = lib.concatStringsSep "\n"
+              (
+                builtins.map
+                (vol: "zfs load-key ${vol} && killall zfs >> /root/.profile")
+                cfg.zfs
+              );
+          in
+          ''
+            # Ask for luks password when logging in via SSH
+            ${luks}
+            ${zfs}
 
-      # Setup network
-      ${ipconfig}
+            # Setup network
+            ${ipconfig}
 
-      echo ""
-      echo '######################'
-      echo '# NETWORK INTERFACES #'
-      echo '######################'
-      echo ""
-      ip a
-      echo ""
-    '';
+            echo ""
+            echo '######################'
+            echo '# NETWORK INTERFACES #'
+            echo '######################'
+            echo ""
+            ip a
+            echo ""
+          '';
+      };
+    };
+  };
+
+  options = with lib; with types; {
+    nzbr.remote-unlock = {
+      luks = mkOption {
+        default = true;
+        type = boolean;
+      };
+      zfs = mkOption {
+        default = [ ];
+        type = listOf str;
+      };
+    };
   };
 }

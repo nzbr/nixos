@@ -218,6 +218,11 @@
     trim.enable = true;
   };
 
+  nzbr.remote-unlock = {
+    luks = false;
+    zfs = [ "beach" ];
+  };
+
   networking = {
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     interfaces.eno1 = {
