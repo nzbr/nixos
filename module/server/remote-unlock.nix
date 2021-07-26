@@ -37,15 +37,16 @@ in
                     (config.networking.interfaces)
                 )
               );
-              luks = if cfg.luks then
+            luks =
+              if cfg.luks then
                 "echo 'cryptsetup-askpass' >> /root/.profile"
               else
                 "";
-              zfs = lib.concatStringsSep "\n"
+            zfs = lib.concatStringsSep "\n"
               (
                 builtins.map
-                (vol: "zfs load-key ${vol} && killall zfs >> /root/.profile")
-                cfg.zfs
+                  (vol: "zfs load-key ${vol} && killall zfs >> /root/.profile")
+                  cfg.zfs
               );
           in
           ''
