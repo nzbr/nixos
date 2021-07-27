@@ -5,9 +5,6 @@ in
 {
   config = {
     boot.initrd = {
-      availableKernelModules = [
-        "e1000e" # Early boot network
-      ];
       network = {
         enable = true;
         ssh = {

@@ -26,6 +26,8 @@
         "virtio_scsi"
         "sd_mod"
         "sr_mod"
+
+        "virtio_net" # Early boot network
       ];
       kernelModules = [ ];
       supportedFilesystems = [ "zfs" ];

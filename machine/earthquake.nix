@@ -32,6 +32,8 @@
         "hid_roccat"
         "hid_roccat_common"
         "hid_roccat_isku"
+
+        "e1000e" # Early boot network
       ];
       kernelModules = [ ];
       supportedFilesystems = [ "zfs" ];
