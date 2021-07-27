@@ -2,9 +2,9 @@
 set -euxo pipefail
 
 if [ "$1" == "--remote" ]; then
-    nixos-rebuild switch --upgrade
+    nixos-rebuild switch --flake /etc/nixos/config -v
     # nix-store --optimize
-    # nix-collect-garbage
+    nix-collect-garbage
     exit 0
 fi
 
