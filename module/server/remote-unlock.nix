@@ -42,7 +42,7 @@ in
             zfs = lib.concatStringsSep "\n"
               (
                 builtins.map
-                  (vol: "zfs load-key ${vol} && killall zfs >> /root/.profile")
+                  (vol: "echo 'zfs load-key ${vol} && killall zfs' >> /root/.profile")
                   cfg.zfs
               );
           in
