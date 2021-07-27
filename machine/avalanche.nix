@@ -106,7 +106,7 @@
   networking.wireguard.interfaces.wg0 = {
     ips = [
       "10.42.0.4/24"
-      "fs42:42::88fc:d9ff:fe45:ead8/64"
+      "fd42:42::88fc:d9ff:fe45:ead8/64"
     ];
     peers = [
       {
