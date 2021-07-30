@@ -19,6 +19,8 @@
       + " --flannel-backend=none"
       + " --datastore-endpoint=http://127.0.0.1:2379"
       + " --disable-network-policy"
+      + " --write-kubeconfig /run/kubeconfig"
+      + " --snapshotter=native"
     ;
   };
 
@@ -27,6 +29,13 @@
     kubectl
     helm
   ];
+
+  environment.etc."shell-hooks/99-kubeconfig.sh" = {
+    mode = "0755";
+    text = ''
+      export KUBECONFIG=/run/kubeconfig
+    '';
+  };
 
   networking.firewall.trustedInterfaces = [ "tunl0" ];
 }

@@ -33,5 +33,9 @@ in
       Restart = "on-failure";
       RestartSec = 5;
     };
+    environment = {
+      ETCD_AUTO_COMPACTION_MODE = "revision";
+      ETCD_AUTO_COMPACTION_RETENTION = "1000";
+    };
   };
 }
