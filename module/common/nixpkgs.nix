@@ -47,6 +47,10 @@ in
         inherit system;
         config = config.nixpkgs.config;
       };
+      bleeding-edge = import inputs.nixpkgs-bleeding-edge {
+        inherit system;
+        config = config.nixpkgs.config;
+      };
       legacy = import inputs.nixpkgs-legacy {
         inherit system;
         config = config.nixpkgs.config;

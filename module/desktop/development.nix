@@ -4,14 +4,14 @@
     ../common/development.nix
   ];
 
-  environment.systemPackages = with pkgs.unstable; [
-    gitkraken
-    insomnia
-    jetbrains.idea-ultimate
-    tabnine
-    vscode
+  environment.systemPackages = with pkgs; [
+    bleeding-edge.jetbrains.idea-ultimate
 
-    timeular
+    unstable.gitkraken
+    unstable.insomnia
+    unstable.vscode
+
+    unstable.timeular
   ];
 
   programs.adb.enable = true;

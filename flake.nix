@@ -10,6 +10,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
     nixpkgs-legacy.url = "github:NixOS/nixpkgs/nixos-20.09";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-bleeding-edge.url = "github:NixOS/nixpkgs/master";
 
     ragon = {
       url = "github:ragon000/nixos-config";
