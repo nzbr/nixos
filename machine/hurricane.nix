@@ -6,6 +6,7 @@
     ../module/wsl.nix
 
     ../module/common/development.nix
+    ../module/common/service/syncthing.nix
 
     ../module/desktop/latex.nix
   ];

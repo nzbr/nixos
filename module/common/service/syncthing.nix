@@ -28,7 +28,8 @@ in
             introducer = true;
           };
 
-          hurricane.id = "OJZKKKY-KG7PO72-VOJGPMU-X3Q6GRZ-HHA75HN-NGIGMRV-WZYPO5F-6PKEHAB";
+          hurricane-win.id = "OJZKKKY-KG7PO72-VOJGPMU-X3Q6GRZ-HHA75HN-NGIGMRV-WZYPO5F-6PKEHAB";
+          hurricane.id = "RNHGREZ-WXBCXDW-KLJYXSB-I5RIE2P-FZIPGRV-44SFZAS-OPVLV4B-TRL4LA2";
           landslide.id = "Q67E6XX-AQTLKAS-2SPVS7T-OUUPVXZ-UX632XY-DN7H2AZ-Y3N2CFJ-5EGDVAB";
           meteor.id = "7RPEIWJ-QQDVCWD-M46KH3U-237GDWG-ZL6EEF2-WPZVAF2-7L5JRX2-HHHKKAB";
 
@@ -42,12 +43,12 @@ in
               Projekte = {
                 id = "projekte";
                 label = "Projekte";
-                devices = [ "earthquake" "hurricane" "landslide" "meteor" ];
+                devices = [ "earthquake" "hurricane-win" "landslide" "meteor" ];
               };
               devsaur = {
                 id = "devsaur";
                 label = "devsaur";
-                devices = [ "earthquake" "hurricane" "landslide" "meteor" "earthquake-macos" ];
+                devices = [ "earthquake" "hurricane" "hurricane-win" "landslide" "meteor" "earthquake-macos" ];
               };
               ".local/share/fonts/sync" = {
                 id = "fonts";
