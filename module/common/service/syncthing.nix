@@ -53,7 +53,7 @@ in
               ".local/share/fonts/sync" = {
                 id = "fonts";
                 label = "Fonts";
-                devices = [ "landslide" "meteor" ]; # TODO: earthquake
+                devices = [ "hurricane" "landslide" "meteor" ]; # TODO: earthquake
               };
               mp3 = {
                 id = "mp3";
