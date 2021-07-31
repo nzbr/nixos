@@ -46,7 +46,7 @@
     let
       # system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages."${system}";
-      # lib = pkgs.lib.extend (self: super: { nzbr = import ./lib { lib = self; }; } );
+      lib = nixpkgs.lib.extend (self: super: import ./lib { inherit pkgs; lib = self; } );
       naersk-lib = inputs.naersk.lib."${system}";
     in
     (with builtins; with nixpkgs; with lib; rec {
@@ -55,7 +55,7 @@
         wsld = naersk-lib.buildPackage {
           pname = "wsld";
           root = inputs.wsld;
-          targets = [ "client" ];
+          cargoBuildOptions = (default: default ++ [ "-p" "wsld" ]);
         };
 
         nixosConfigurations = (listToAttrs (map
