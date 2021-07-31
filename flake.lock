@@ -475,18 +475,13 @@
     },
     "nixpkgs-bleeding-edge": {
       "locked": {
-        "lastModified": 1627738595,
-        "narHash": "sha256-QXr5p4nbGz16qRlDJsCWdDV6UzPeWm8YnBTkEeJPw6I=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "802d7396dd3d28f3094f8558f24c6bdae0f762e0",
-        "type": "github"
+        "narHash": "sha256-RtlYHM7tODqX2/6t+Jo2NWUB8tlZW9tiXCt2+jgrIoA=",
+        "path": "/drv/d/Projekte/nixos/.nixpkgs",
+        "type": "path"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
+        "path": "/drv/d/Projekte/nixos/.nixpkgs",
+        "type": "path"
       }
     },
     "nixpkgs-legacy": {
@@ -673,11 +668,11 @@
         "zsh-vim-mode": "zsh-vim-mode"
       },
       "locked": {
-        "lastModified": 1627671686,
-        "narHash": "sha256-OCIa9DU9bo75FXkgQQjWdJQ4sQn/BwmEfj83VM5Rj/o=",
+        "lastModified": 1627742417,
+        "narHash": "sha256-XMz9jRvFgOD/hbBuuSlCIG8ibDvNGQCLkyQiAZqUYUk=",
         "owner": "ragon000",
         "repo": "nixos-config",
-        "rev": "11b9d11d41d718ccafa3ffcb8cf520ae12f15b4f",
+        "rev": "4bbe18003fd246248c17dd223ee5e872b580f727",
         "type": "github"
       },
       "original": {
