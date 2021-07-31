@@ -29,7 +29,7 @@ in
     ];
 
     variables = {
-      DISPLAY = ":0";
+      DISPLAY = ":1";
       WAYLAND_DISPLAY = "wayland-0";
 
       PULSE_SERVER = "${automountPath}/wslg/PulseServer";
@@ -62,6 +62,16 @@ in
       ${pkgs.rsync}/bin/rsync -ar --delete $systemConfig/sw/share/$x/. /usr/share/$x
     done
   '';
+
+  home-manager.users.root.home.file.".wsld.toml".text = ''
+    [x11]
+    display = 1
+  '';
+  systemd.services."wsld" = {
+    path = [ pkgs.local.wsld ];
+    script = "wsld";
+    wantedBy = [ "multi-user.target" ];
+  };
 
   fileSystems = {
     "/" = {
