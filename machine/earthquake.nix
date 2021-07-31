@@ -277,8 +277,23 @@
         "directory mask" = "0750";
         "force group" = "media";
       };
+      tmp = {
+        path = "/tmp/smb";
+        browseable = "yes";
+        public = "no";
+        "read only" = "no";
+        "create mask" = "0660";
+        "directory mask" = "0770";
+        "force group" = "users";
+      };
     };
   };
+
+  system.activationScripts.tmp-share-mkdir.text = ''
+    mkdir -p /tmp/smb
+    chown -R nzbr:users /tmp/smb
+    chmod 0770 /tmp/smb
+  '';
 
   networking.firewall.allowedTCPPorts = [
     445 # SMB
