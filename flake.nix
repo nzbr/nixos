@@ -2,15 +2,16 @@
   description = "my very own special snowflake";
 
   inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
-    home-manager.url = "github:nix-community/home-manager/release-21.05";
-
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-wsl.url = "github:nzbr/NixOS-WSL/WSLg";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
     nixpkgs-legacy.url = "github:NixOS/nixpkgs/nixos-20.09";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-bleeding-edge.url = "github:NixOS/nixpkgs/master";
+
+    flake-utils.url = "github:numtide/flake-utils";
+    home-manager.url = "github:nix-community/home-manager/release-21.05";
+    naersk.url = "github:nix-community/naersk"; # rust package builder
 
     ragon = {
       url = "github:ragon000/nixos-config";
@@ -29,6 +30,10 @@
       flake = false;
       url = "github:msteen/nixos-vscode-server";
     };
+    wsld = {
+      flake = false;
+      url = "github:nbdd0121/wsld";
+    };
   };
 
   outputs =
@@ -36,24 +41,35 @@
     , flake-utils
     , nixpkgs
     , ...
-      # }: flake-utils.lib.eachDefaultSystem (system: with builtins; with nixpkgs; with lib; rec {
-    }:
+    }: flake-utils.lib.eachDefaultSystem (system:
+    # }:
     let
-      system = "x86_64-linux";
+      # system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages."${system}";
+      # lib = pkgs.lib.extend (self: super: { nzbr = import ./lib { lib = self; }; } );
+      naersk-lib = inputs.naersk.lib."${system}";
     in
     (with builtins; with nixpkgs; with lib; rec {
-      nixosConfigurations = (listToAttrs (map
+
+      packages = {
+        wsld = naersk-lib.buildPackage {
+          pname = "wsld";
+          root = inputs.wsld;
+          targets = [ "client" ];
+        };
+
+        nixosConfigurations = (listToAttrs (map
         (path:
           {
             name = removeSuffix ".nix" path;
             value = nixosSystem {
               inherit system;
-              specialArgs = { inherit lib inputs system; };
+              specialArgs = { inherit lib inputs system; local-pkgs = self.packages."${system}"; };
               modules = [
                 ({ pkgs, ... }: {
                   # Let 'nixos-version --json' know about the Git revision
                   # of this flake.
-                  system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+                  system.configurationRevision = lib.mkIf (self ? rev) self.rev;
 
                   system.stateVersion = "21.05";
                 })
@@ -64,5 +80,7 @@
         )
         (mapAttrsToList (name: type: name) (readDir ./machine))
       ));
-    });
+      };
+
+    }));
 }

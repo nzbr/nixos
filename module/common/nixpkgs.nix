@@ -1,4 +1,4 @@
-{ config, lib, inputs, system, pkgs, modulesPath, ... }:
+{ config, lib, inputs, system, pkgs, local-pkgs, modulesPath, ... }:
 let
   findModules =
     with builtins; with lib;
@@ -59,7 +59,7 @@ in
         inherit system;
         config = config.nixpkgs.config;
       };
-      local = loadPackages pkgs ".pkg.nix" ../../pkg;
+      local = loadPackages pkgs ".pkg.nix" ../../pkg // local-pkgs; # TODO: Move to flake.nix
       comma = pkgs.callPackage (import inputs.comma) { };
     };
   };
