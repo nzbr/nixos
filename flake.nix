@@ -46,41 +46,44 @@
     let
       # system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages."${system}";
-      lib = nixpkgs.lib.extend (self: super: import ./lib { inherit pkgs; lib = self; } );
+      lib = nixpkgs.lib.extend (self: super: import ./lib { inherit pkgs; lib = self; });
       naersk-lib = inputs.naersk.lib."${system}";
     in
     (with builtins; with nixpkgs; with lib; rec {
 
-      packages = {
-        wsld = naersk-lib.buildPackage {
-          pname = "wsld";
-          root = inputs.wsld;
-          cargoBuildOptions = (default: default ++ [ "-p" "wsld" ]);
+      packages =
+        lib.loadPackages pkgs ".pkg.nix" ./pkg # import all packages from pkg directory
+        // {
+
+          wsld = naersk-lib.buildPackage {
+            pname = "wsld";
+            root = inputs.wsld;
+            cargoBuildOptions = (default: default ++ [ "-p" "wsld" ]);
+          };
+
+          nixosConfigurations = (listToAttrs (map
+            (path:
+              {
+                name = removeSuffix ".nix" path;
+                value = nixosSystem {
+                  inherit system;
+                  specialArgs = { inherit lib inputs system; local-pkgs = self.packages."${system}"; };
+                  modules = [
+                    ({ pkgs, ... }: {
+                      # Let 'nixos-version --json' know about the Git revision
+                      # of this flake.
+                      system.configurationRevision = lib.mkIf (self ? rev) self.rev;
+
+                      system.stateVersion = "21.05";
+                    })
+                    (import (./machine + "/${path}"))
+                  ];
+                };
+              }
+            )
+            (mapAttrsToList (name: type: name) (readDir ./machine))
+          ));
         };
-
-        nixosConfigurations = (listToAttrs (map
-        (path:
-          {
-            name = removeSuffix ".nix" path;
-            value = nixosSystem {
-              inherit system;
-              specialArgs = { inherit lib inputs system; local-pkgs = self.packages."${system}"; };
-              modules = [
-                ({ pkgs, ... }: {
-                  # Let 'nixos-version --json' know about the Git revision
-                  # of this flake.
-                  system.configurationRevision = lib.mkIf (self ? rev) self.rev;
-
-                  system.stateVersion = "21.05";
-                })
-                (import (./machine + "/${path}"))
-              ];
-            };
-          }
-        )
-        (mapAttrsToList (name: type: name) (readDir ./machine))
-      ));
-      };
 
     }));
 }
