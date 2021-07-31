@@ -42,18 +42,20 @@
     , nixpkgs
     , ...
     }: flake-utils.lib.eachDefaultSystem (system:
-    # }:
     let
-      # system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages."${system}";
       lib = nixpkgs.lib.extend (self: super: import ./lib { inherit pkgs; lib = self; });
       naersk-lib = inputs.naersk.lib."${system}";
     in
     (with builtins; with nixpkgs; with lib; rec {
 
+      inherit lib;
+
       packages =
         lib.loadPackages pkgs ".pkg.nix" ./pkg # import all packages from pkg directory
         // {
+
+          comma = pkgs.callPackage (import inputs.comma) { };
 
           wsld = naersk-lib.buildPackage {
             pname = "wsld";
@@ -67,15 +69,38 @@
                 name = removeSuffix ".nix" path;
                 value = nixosSystem {
                   inherit system;
-                  specialArgs = { inherit lib inputs system; local-pkgs = self.packages."${system}"; };
+                  specialArgs = { inherit lib inputs system; };
                   modules = [
-                    ({ pkgs, ... }: {
+                    ({ pkgs, config, ... }: {
+
+                      nixpkgs.config = {
+                        allowUnfree = true;
+
+                        packageOverrides =
+                          {
+                            local = self.packages."${system}"; # import local packages
+                          } //
+                          # import packages from inputs
+                          lib.mapAttrs
+                            (name: value: import value {
+                              inherit system;
+                              config = config.nixpkgs.config;
+                            })
+                            (with inputs; {
+                              unstable = nixpkgs-unstable;
+                              bleeding-edge = nixpkgs-bleeding-edge;
+                              legacy = nixpkgs-legacy;
+                              ragon = ragon;
+                            });
+                      };
+
                       # Let 'nixos-version --json' know about the Git revision
                       # of this flake.
                       system.configurationRevision = lib.mkIf (self ? rev) self.rev;
 
                       system.stateVersion = "21.05";
                     })
+
                     (import (./machine + "/${path}"))
                   ];
                 };

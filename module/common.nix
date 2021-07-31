@@ -8,7 +8,6 @@
     ./common/gpg.nix
     ./common/home-manager.nix
     ./common/nix-store.nix
-    ./common/nixpkgs.nix
     ./common/service/docker.nix
     ./common/service/ssh.nix
     ./common/vscode-server.nix
@@ -21,7 +20,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    comma
     file
     git
     gnupg
@@ -40,6 +38,8 @@
     zip
 
     ntfs3g
+
+    local.comma
   ];
 
   programs.zsh.enable = true;

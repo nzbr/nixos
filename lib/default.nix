@@ -1,4 +1,4 @@
-{ lib, pkgs }:
+{ lib, pkgs, ... }:
 {
 
   # Given a filename suffix and a path to a directory,
