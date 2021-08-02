@@ -20,6 +20,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    bat
+    exa
     file
     git
     gnupg
