@@ -3,7 +3,7 @@
   networking.hostName = "landslide";
 
   imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
+    "${modulesPath}/installer/scan/not-detected.nix"
 
     ../module/common/boot/grub.nix
     ../module/common/service/printing.nix

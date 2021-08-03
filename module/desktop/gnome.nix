@@ -1,7 +1,10 @@
 { config, lib, pkgs, modulesPath, ... }:
 {
   services.xserver = {
-    desktopManager.gnome.enable = true;
+    desktopManager.gnome = {
+      enable = true;
+      # TODO: favoriteAppsOverride
+    };
     displayManager = {
       gdm = {
         enable = true;

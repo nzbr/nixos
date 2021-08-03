@@ -1,7 +1,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 let
   secrets = ../../../secret;
-  keys = with builtins; with lib;
+  keys = with builtins; with lib; # TODO: Restrict to certain hosts (configurable)
     map
       (x: removeSuffix "\n" x)
       (

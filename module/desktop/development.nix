@@ -5,7 +5,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    unstable.jetbrains.idea-ultimate
+    bleeding-edge.jetbrains.idea-ultimate
 
     unstable.gitkraken
     unstable.insomnia
