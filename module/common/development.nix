@@ -2,6 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     desktop-file-utils
+    flutter
     global
     go
     python3
