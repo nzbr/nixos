@@ -425,11 +425,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1627666012,
-        "narHash": "sha256-Dx93VcfFwFlUex2Me4i+lS2IFwNrSVEvTvZuP/vmmXQ=",
+        "lastModified": 1628440507,
+        "narHash": "sha256-xXnG0f3fuuCbBpiVuzsIOd59AMgTGNE0/tAhMV+oEHY=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "09ed30ff3bb67f5efe9c77e0d79aca01793526ca",
+        "rev": "7da029f26849f8696ac49652312c9171bf9eb170",
         "type": "github"
       },
       "original": {
@@ -477,11 +477,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1627995529,
-        "narHash": "sha256-u34ZbkVm7zTHm0D6vQg3F5EMBtq7kH2zxzoBKC0vIjs=",
+        "lastModified": 1628528682,
+        "narHash": "sha256-qwS0NUiKtrHHnwhyvfrjUWRSKqx3RPdEFqGu+2oKb2c=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "66f8529d91e8104d6535a42e0400bebeab0d2411",
+        "rev": "3b4e2d722b851bd6b8d182f4cf189a6f7e800175",
         "type": "github"
       },
       "original": {
@@ -491,11 +491,11 @@
     },
     "nixpkgs-bleeding-edge": {
       "locked": {
-        "lastModified": 1627995529,
-        "narHash": "sha256-u34ZbkVm7zTHm0D6vQg3F5EMBtq7kH2zxzoBKC0vIjs=",
+        "lastModified": 1628528835,
+        "narHash": "sha256-Q6bNIoyvfHeqqCrlUfdbeFU5dMBU7ZycwtBEsq08iUY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "66f8529d91e8104d6535a42e0400bebeab0d2411",
+        "rev": "250ea10c0f0e09b92cba7a1b35f3c2422731ae86",
         "type": "github"
       },
       "original": {
@@ -539,11 +539,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1627857416,
-        "narHash": "sha256-AV0MsFVzbWI2MZbJ2j0kc8ooFLGSCZHuM9ipaWR9ds4=",
+        "lastModified": 1628465643,
+        "narHash": "sha256-QSNw9bDq9uGUniQQtakRuw4m21Jxugm23SXLVgEV4DM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "aaf9676fbb7fb4570216ca1e189a3dc769d62c45",
+        "rev": "6ef4f522d63f22b40004319778761040d3197390",
         "type": "github"
       },
       "original": {
@@ -555,11 +555,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1627995529,
-        "narHash": "sha256-u34ZbkVm7zTHm0D6vQg3F5EMBtq7kH2zxzoBKC0vIjs=",
+        "lastModified": 1628528682,
+        "narHash": "sha256-qwS0NUiKtrHHnwhyvfrjUWRSKqx3RPdEFqGu+2oKb2c=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "66f8529d91e8104d6535a42e0400bebeab0d2411",
+        "rev": "3b4e2d722b851bd6b8d182f4cf189a6f7e800175",
         "type": "github"
       },
       "original": {
@@ -584,11 +584,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1627892869,
-        "narHash": "sha256-Fg0KPi9oGTZ7Ju7rb8foq0GOZI3++ZaF6wf10ClMA58=",
+        "lastModified": 1628427351,
+        "narHash": "sha256-WuZUIQ07AvRw+T9wvQ3qFf8MXmKZ+ktZz9drNgWXDbs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d4590d21006387dcb190c516724cb1e41c0f8fdf",
+        "rev": "348bc5de8bca09c624f5c4975f538684da4713d2",
         "type": "github"
       },
       "original": {
@@ -706,11 +706,11 @@
         "zsh-vim-mode": "zsh-vim-mode"
       },
       "locked": {
-        "lastModified": 1627930104,
-        "narHash": "sha256-4tc6gWXoJ1wcBIiW8mDn66uDLESaODoQ74kGq6/bt7g=",
+        "lastModified": 1628524921,
+        "narHash": "sha256-mW3JSdZIAJkbLe9FCjMOg+zRQ8YMd2MXls+CAnGQbLk=",
         "owner": "ragon000",
         "repo": "nixos-config",
-        "rev": "e298ab470b6dc9c8445f6aa16217dc6860e7336b",
+        "rev": "3b1e0e5b1595deea53db7442f7a849b1e91ee587",
         "type": "github"
       },
       "original": {
@@ -848,11 +848,11 @@
     "vscode-server": {
       "flake": false,
       "locked": {
-        "lastModified": 1627034536,
-        "narHash": "sha256-QxRte3v2pLb+BYpbFLY98igh1uHcs13VmTsV1+MGbSM=",
+        "lastModified": 1628029847,
+        "narHash": "sha256-nhuU4nExK6IZEsCHYPnyrl4Om+WOtWZ0lmzVDRcibms=",
         "owner": "msteen",
         "repo": "nixos-vscode-server",
-        "rev": "4476395d7901db135394156e08b3cc0322975b68",
+        "rev": "9ae8e9e3262c415c9c75ce1a48909180aea51606",
         "type": "github"
       },
       "original": {
