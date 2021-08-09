@@ -110,6 +110,22 @@
         "type": "github"
       }
     },
+    "dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1627122841,
+        "narHash": "sha256-zO7FUUh6mxV6Kt9M/EhvbK6Hp0AXbEYfARar/6rQfq8=",
+        "owner": "nzbr",
+        "repo": "dotfiles",
+        "rev": "01e91c0c47a4892994afedb8fcb62f4cb3af49c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nzbr",
+        "repo": "dotfiles",
+        "type": "github"
+      }
+    },
     "dwm": {
       "flake": false,
       "locked": {
@@ -744,6 +760,7 @@
     "root": {
       "inputs": {
         "comma": "comma",
+        "dotfiles": "dotfiles",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "naersk": "naersk",
