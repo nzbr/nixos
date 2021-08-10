@@ -22,6 +22,10 @@
       flake = false;
       url = "github:Shopify/comma";
     };
+    dotfiles = {
+      url = "github:nzbr/dotfiles";
+      flake = false;
+    };
     razer-nari = {
       flake = false;
       url = "github:imustafin/razer-nari-pulseaudio-profile";
@@ -52,7 +56,7 @@
       inherit lib;
 
       packages =
-        lib.loadPackages pkgs ".pkg.nix" ./pkg # import all packages from pkg directory
+        lib.loadPackages pkgs ".pkg.nix" ./package # import all packages from pkg directory
         // {
 
           comma = pkgs.callPackage (import inputs.comma) { };
