@@ -5,7 +5,7 @@
       stow
     ];
 
-    etc."shell-hooks/00-dotfiles.sh" = {
+    etc."shell-hooks/10-dotfiles.sh" = {
       mode = "0755";
       text = ''
         if ! [ -d $HOME/.dotfiles ]; then
