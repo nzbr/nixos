@@ -84,11 +84,12 @@
       randomEncryption.enable = true;
     }
   ];
-
   services.zfs = {
     autoScrub.enable = true;
     trim.enable = true;
   };
+
+  services.qemuGuest.enable = true;
 
   nzbr.remote-unlock = {
     luks = false;
