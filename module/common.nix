@@ -75,7 +75,7 @@
     users.nzbr = {
       isNormalUser = true;
       hashedPassword = lib.removeSuffix "\n" (builtins.readFile (builtins.toString ../secret/common/nzbr.password));
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "plugdev" ];
     };
   };
 
