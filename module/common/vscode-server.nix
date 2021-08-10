@@ -1,8 +1,8 @@
 { config, lib, inputs, pkgs, modulesPath, ... }:
 {
   imports = [
-    # inputs.vscode-server
+    "${inputs.vscode-server}"
   ];
 
-  # services.vscode-server.enable = true;
+  services.vscode-server.enable = true;
 }
