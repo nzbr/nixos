@@ -3,7 +3,7 @@
   services.xserver = {
     desktopManager.gnome = {
       enable = true;
-      # TODO: favoriteAppsOverride
+      # TODO: favoriteAppsOverride (see: live.nix)
     };
     displayManager = {
       gdm = {
@@ -18,7 +18,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    gnome.gnome-boxes
+    # gnome.gnome-boxes
     gnome.gnome-tweak-tool
     gnome.seahorse
 
