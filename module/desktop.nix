@@ -9,14 +9,13 @@
     ./desktop/pulseaudio.nix
     ./desktop/device/razer.nix
     ./desktop/device/razer-nari.nix
-    ./desktop/plymouth/plymouth.nix
+    ./desktop/plymouth
   ];
 
   environment.systemPackages = with pkgs; [
     unstable.vivaldi
     unstable.vivaldi-widevine
     unstable.vivaldi-ffmpeg-codecs
-    # vivaldi vivaldi-widevine vivaldi-ffmpeg-codecs
 
     vlc
     spotify
@@ -27,7 +26,6 @@
 
     libreoffice-fresh
 
-    hyper
     xsel
 
     virt-manager
@@ -41,9 +39,6 @@
     roboto-slab
     roboto-mono
   ];
-
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
 
   services = {
     xserver = {
