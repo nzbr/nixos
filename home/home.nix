@@ -3,6 +3,7 @@
 {
   imports = [
     ./module/git.nix
+    ./module/gnome.nix
     ./module/theme.nix
     ./module/zsh.nix
     ./module/ssh.nix
