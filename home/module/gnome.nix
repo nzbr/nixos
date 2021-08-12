@@ -12,8 +12,18 @@
       gtk-theme = "Pop-dark";
       icon-theme = "Papirus-Dark";
     };
+    "org/gnome/desktop/session" = {
+      idle-delay = 0;
+    };
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,maximize,close";
+    };
+    "org/gnome/settings-daemon/plugins/power" = {
+      idle-dim = false;
+      power-button-action = "suspend";
+      sleep-inactive-ac-type = "nothing";
+      sleep-inactive-battery-timeout = 1800;
+      sleep-inactive-battery-type = "hibernate";
     };
     "org/gnome/shell" = {
       enabled-extensions = [
@@ -38,8 +48,12 @@
     "org/gnome/shell/extensions/dash-to-panel" = {
       appicon-margin = 2;
       appicon-padding = 4;
-      dot-color-dominant = true;
-      dot-color-override = false;
+      dot-color-1 = config.sys.nzbr.theme.accentColor;
+      dot-color-2 = config.sys.nzbr.theme.accentColor;
+      dot-color-3 = config.sys.nzbr.theme.accentColor;
+      dot-color-4 = config.sys.nzbr.theme.accentColor;
+      dot-color-dominant = false;
+      dot-color-override = true;
       dot-position = "TOP";
       dot-size = 2;
       dot-style-focused = "METRO";
@@ -56,7 +70,7 @@
       isolate-monitors = true;
       leftbox-padding = -1;
       middle-click-action = "LAUNCH";
-      panel-anchors = builtins.toJSON {"0" = "MIDDLE"; };
+      panel-anchors = builtins.toJSON { "0" = "MIDDLE"; };
       panel-element-positions = builtins.toJSON {
         "0" = [
           { element = "showAppsButton"; visible = true; position = "stackedTL"; }

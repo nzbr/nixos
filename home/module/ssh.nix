@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  secrets = ../../secret + "/${config.networking.hostName}/ssh";
+  secrets = ../../secret + "/${config.sys.networking.hostName}/ssh";
   id = "${secrets}/id_ed25519";
   id_pub = "${secrets}/id_ed25519.pub";
 in

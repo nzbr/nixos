@@ -19,9 +19,9 @@
   };
 
   options = with lib; {
-    networking.hostName = mkOption {
-      default = sys.networking.hostName;
-      type = types.str;
+    sys = mkOption {
+      default = sys;
+      type = types.unspecified;
     };
   };
 }
