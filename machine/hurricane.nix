@@ -11,4 +11,5 @@
     ../module/desktop/latex.nix
     ../module/desktop/development.nix
   ];
+
 }
