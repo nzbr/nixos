@@ -73,7 +73,7 @@
                 name = removeSuffix ".nix" path;
                 value = nixosSystem {
                   inherit system;
-                  specialArgs = { inherit lib inputs system; };
+                  specialArgs = { inherit lib inputs system; flake = self; };
                   modules = [
                     ({ pkgs, config, ... }: {
 
