@@ -1,0 +1,40 @@
+diff --git a/gtk/src/light/gtk-3.0/_colors.scss b/gtk/src/light/gtk-3.0/_colors.scss
+index 15f0eb2b..e393803b 100644
+--- a/gtk/src/light/gtk-3.0/_colors.scss
++++ b/gtk/src/light/gtk-3.0/_colors.scss
+@@ -8,8 +8,11 @@ $text_color: if($variant == 'light', #272727, #cccccc);
+ $bg_color: if($variant == 'light', #F6F6F6, #303030);
+ $fg_color: if($variant == 'light', #292929, #cccccc);
+
+-$selected_fg_color: #000;
+-$selected_bg_color: if($variant=='light', #63B1BC, #94EBEB);
++$accent_color: ACCENTCOLOR;
++$accent_fg: if((red($accent_color)*0.299 + green($accent_color)*0.587 + blue($accent_color)*0.114) > 186, #000, #fff);
++
++$selected_fg_color: $accent_fg;
++$selected_bg_color: $accent_color;
+
+ $selected_borders_color: if($variant== 'light', darken($selected_bg_color, 15%), darken($selected_bg_color, 30%));
+ $borders_color: if($variant == 'light', rgba(darken($bg_color, 18%), 0.5), rgba(darken($bg_color, 10%), 0.5));
+@@ -75,6 +78,6 @@ $suggested_bg_color: if($variant=='light', #82BF8C, #90CFB0);
+ $suggested_border_color: if($variant=='light', darken($suggested_bg_color, 15%), $suggested_bg_color);
+ $progress_bg_color: if($variant=='light', #63B1BC, #6ACAD8);
+ $progress_border_color: if($variant=='light', darken($progress_bg_color, 15%), darken($progress_bg_color, 30%));
+-$checkradio_bg_color: if($variant=='light', #FFAD00, #FBB86C);
+-$checkradio_fg_color: #000;
++$checkradio_bg_color: $accent_color;
++$checkradio_fg_color: $accent_fg;
+ $spinner_fg_color: $fg_color;
+diff --git a/gtk/src/light/gtk-3.0/_tweaks.scss b/gtk/src/light/gtk-3.0/_tweaks.scss
+index febc8c40..cb9db372 100644
+--- a/gtk/src/light/gtk-3.0/_tweaks.scss
++++ b/gtk/src/light/gtk-3.0/_tweaks.scss
+@@ -524,7 +524,7 @@ button.titlebutton {
+   }
+
+   &.close {
+-    $_close_button_color: mix(#FFAD00, #E56A54, 50%);
++    $_close_button_color: $accent_color;
+     color: $headerbar_fg_color;
+     @include draw_circle($_close_button_color);
+
