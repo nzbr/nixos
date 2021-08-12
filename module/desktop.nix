@@ -5,7 +5,7 @@
 
     ./common/java.nix
 
-    ./desktop/theme.nix
+    ./desktop/theme
     ./desktop/pulseaudio.nix
     ./desktop/device/razer.nix
     ./desktop/device/razer-nari.nix
@@ -44,7 +44,7 @@
     xserver = {
       enable = true;
       libinput.enable = true;
-      layout = "de";
+      layout = "eu";
     };
 
     teamviewer.enable = true;

@@ -11,7 +11,7 @@ in
     ./common.nix
     ./common/boot/grub.nix
 
-    ./desktop/theme.nix
+    ./desktop/theme
     ./desktop/gnome.nix
   ];
 
