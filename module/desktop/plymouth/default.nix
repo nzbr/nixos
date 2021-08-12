@@ -9,9 +9,9 @@ in
     theme = "bgrt";
   };
 
-  nixpkgs.overlays = [
-    (self: super: {
-      plymouth = super.unstable.plymouth;
-    })
-  ];
+  # nixpkgs.overlays = [
+  #   (self: super: {
+  #     plymouth = super.unstable.plymouth;
+  #   })
+  # ];
 }
