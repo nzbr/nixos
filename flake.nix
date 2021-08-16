@@ -74,7 +74,7 @@
                 name = removeSuffix ".nix" path;
                 value = nixosSystem {
                   inherit system;
-                  specialArgs = { inherit lib inputs system; root = ./.; assets = path; };
+                  specialArgs = { inherit lib inputs system; root = "${self}"; assets = path; };
                   modules = [
                     inputs.agenix.nixosModules.age
 

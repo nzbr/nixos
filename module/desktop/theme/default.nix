@@ -15,14 +15,21 @@
     in
     {
       environment.systemPackages = with pkgs; [
-        pop-gtk-theme
         local.papirus-icon-theme-mod
+
+        (pop-gtk-theme.overrideAttrs (oldAttrs: rec {
+          patches = with builtins; [ (toFile "pop-gtk.patch" (replaceStrings [ "ACCENTCOLOR" ] [ cfg.accentColor ] (readFile ./pop-gtk.patch))) ];
+        }))
+
+        # ()
       ];
 
       nixpkgs.overlays = [
         (self: super: {
-          pop-gtk-theme = super.pop-gtk-theme.overrideAttrs (oldAttrs: rec {
-            patches = with builtins; [ (toFile "accent.patch" (replaceStrings [ "ACCENTCOLOR" ] [ cfg.accentColor ] (readFile ./accent.patch))) ];
+          gnome = super.gnome.overrideScope' (self': super': {
+            gnome-shell = super'.gnome-shell.overrideAttrs (oldAttrs: rec {
+              patches = with builtins; oldAttrs.patches ++ ([ (toFile "gnome-shell.patch" (replaceStrings [ "ACCENTCOLOR" ] [ cfg.accentColor ] (readFile ./gnome-shell.patch))) ]);
+            });
           });
         })
       ];
