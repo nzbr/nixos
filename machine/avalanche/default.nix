@@ -6,12 +6,12 @@
   };
 
   imports = [
-    ../module/common/boot/grub.nix
-    ../module/common/service/wireguard.nix
+    "${root}/module/common/boot/grub.nix"
+    "${root}/module/common/service/wireguard.nix"
 
-    ../module/server.nix
-    ../module/server/restic.nix
-    ../module/server/service/k3s.nix
+    "${root}/module/server.nix"
+    "${root}/module/server/restic.nix"
+    "${root}/module/server/service/k3s.nix"
   ];
 
   boot = {

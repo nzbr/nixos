@@ -1,4 +1,4 @@
-{ config, lib, inputs, pkgs, modulesPath, ... }:
+{ config, lib, inputs, pkgs, modulesPath, root, ... }:
 {
   networking.hostName = "live";
 
@@ -6,12 +6,12 @@
     "${modulesPath}/installer/cd-dvd/installation-cd-base.nix"
     "${modulesPath}/installer/cd-dvd/channel.nix"
 
-    ../module/common.nix
+    "${root}/module/common.nix"
     # desktop.nix contents are provided within this file
-    ../module/desktop/gnome.nix
-    ../module/desktop/theme
-    ../module/desktop/pulseaudio.nix
-    ../module/desktop/device/razer-nari.nix
+    "${root}/module/desktop/gnome.nix"
+    "${root}/module/desktop/theme"
+    "${root}/module/desktop/pulseaudio.nix"
+    "${root}/module/desktop/device/razer-nari.nix"
   ];
 
 

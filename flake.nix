@@ -12,6 +12,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     naersk.url = "github:nix-community/naersk"; # rust package builder
+    agenix.url = "github:ryantm/agenix";
 
     ragon = {
       url = "github:ragon000/nixos-config";
@@ -73,8 +74,10 @@
                 name = removeSuffix ".nix" path;
                 value = nixosSystem {
                   inherit system;
-                  specialArgs = { inherit lib inputs system; flake = self; };
+                  specialArgs = { inherit lib inputs system; root = ./.; assets = path; };
                   modules = [
+                    inputs.agenix.nixosModules.age
+
                     ({ pkgs, config, ... }: {
 
                       nixpkgs.config = {

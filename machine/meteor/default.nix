@@ -5,14 +5,14 @@
   imports = [
     "${inputs.nixos-hardware}/lenovo/thinkpad/t420"
 
-    ../module/common/boot/grub.nix
-    ../module/common/service/printing.nix
-    ../module/common/service/syncthing.nix
+    "${root}/module/common/boot/grub.nix"
+    "${root}/module/common/service/printing.nix"
+    "${root}/module/common/service/syncthing.nix"
 
-    ../module/laptop.nix
-    ../module/desktop/development.nix
-    ../module/desktop/gnome.nix
-    ../module/desktop/latex.nix
+    "${root}/module/laptop.nix"
+    "${root}/module/desktop/development.nix"
+    "${root}/module/desktop/gnome.nix"
+    "${root}/module/desktop/latex.nix"
   ];
 
   boot = {
@@ -39,6 +39,7 @@
     };
 
     kernelModules = [ "kvm-intel" ];
+    kernelParams = [ "systemd.unit=multi-user.target" ];
     extraModulePackages = [ ];
 
     # TODO: resumeDevice

@@ -1,19 +1,19 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, modulesPath, root, ... }:
 {
   networking.hostName = "landslide";
 
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
 
-    ../module/common/boot/grub.nix
-    ../module/common/service/printing.nix
-    ../module/common/service/syncthing.nix
+    "${root}/module/common/boot/grub.nix"
+    "${root}/module/common/service/printing.nix"
+    "${root}/module/common/service/syncthing.nix"
 
-    ../module/desktop.nix
-    ../module/desktop/development.nix
-    ../module/desktop/gaming.nix
-    ../module/desktop/gnome.nix
-    ../module/desktop/latex.nix
+    "${root}/module/desktop.nix"
+    "${root}/module/desktop/development.nix"
+    "${root}/module/desktop/gaming.nix"
+    "${root}/module/desktop/gnome.nix"
+    "${root}/module/desktop/latex.nix"
   ];
 
   boot = {

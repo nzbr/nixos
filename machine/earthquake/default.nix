@@ -4,17 +4,17 @@
   networking.hostId = "b93ad358";
 
   imports = [
-    ../module/common/boot/systemd-boot.nix
-    ../module/common/service/libvirtd.nix
-    ../module/common/service/syncthing.nix
-    ../module/common/service/wireguard.nix
+    "${root}/module/common/boot/systemd-boot.nix"
+    "${root}/module/common/service/libvirtd.nix"
+    "${root}/module/common/service/syncthing.nix"
+    "${root}/module/common/service/wireguard.nix"
 
-    ../module/server.nix
-    ../module/server/restic.nix
-    ../module/server/service/k3s.nix
+    "${root}/module/server.nix"
+    "${root}/module/server/restic.nix"
+    "${root}/module/server/service/k3s.nix"
 
-    # ../container/watchtower.nix
-    # ../container/machinaris.nix
+    # "${root}/container/watchtower.nix"
+    # "${root}/container/machinaris.nix"
   ];
 
   boot.loader.systemd-boot.configurationLimit = 1;
