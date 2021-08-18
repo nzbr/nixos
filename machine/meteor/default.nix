@@ -1,4 +1,4 @@
-{ config, lib, inputs, pkgs, modulesPath, ... }:
+{ config, lib, inputs, pkgs, modulesPath, root, ... }:
 {
   networking.hostName = "meteor";
 

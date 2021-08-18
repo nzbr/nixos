@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, modulesPath, root, ... }:
 {
   networking.hostName = "earthquake";
   networking.hostId = "b93ad358";
