@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, root, ... }:
 {
   dconf.settings = {
     "org/gnome/desktop/background" = {
@@ -46,7 +46,8 @@
       arc-menu-icon = 7;
       arc-menu-placement = "DTP";
       available-placement = [false true false];
-      custom-menu-button-icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg";
+      # custom-menu-button-icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg";
+      custom-menu-button-icon = "${root}/secret/common/Start.png";
       custom-menu-button-icon-size = 24;
       custom-menu-button-text = "";
       default-menu-view = "Frequent_Apps";
@@ -72,7 +73,7 @@
     };
     "org/gnome/shell/extensions/dash-to-panel" = {
       appicon-margin = 2;
-      appicon-padding = 4;
+      appicon-padding = 6;
       dot-color-1 = config.sys.nzbr.theme.accentColor;
       dot-color-2 = config.sys.nzbr.theme.accentColor;
       dot-color-3 = config.sys.nzbr.theme.accentColor;
