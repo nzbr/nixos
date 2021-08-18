@@ -34,7 +34,7 @@
         };
       };
       secrets = {
-        "lukskey" = ../secret + "/${config.networking.hostName}/lukskey";
+        "lukskey" = "${root}/secret/${config.networking.hostName}/lukskey";
       };
     };
 

@@ -5,11 +5,11 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    bleeding-edge.jetbrains.idea-ultimate
+    jetbrains.idea-ultimate
 
     unstable.gitkraken
     unstable.insomnia
-    unstable.vscode
+    vscode
 
     unstable.timeular
 

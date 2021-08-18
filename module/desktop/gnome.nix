@@ -3,10 +3,10 @@
   services.xserver = {
     desktopManager.gnome = {
       enable = true;
-      favoriteAppsOverride = ''
-        [org.gnome.shell]
-        favorite-apps=[ 'vivalid-stable.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'code.desktop', 'idea-ultimate.desktop', 'gitkraken.desktop', 'insomnia.desktop', 'timeular.desktop', 'discord.desktop', 'spotify.desktop' ]
-      '';
+      # favoriteAppsOverride = ''
+      #   [org.gnome.shell]
+      #   favorite-apps=[ 'vivalid-stable.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'code.desktop', 'idea-ultimate.desktop', 'gitkraken.desktop', 'insomnia.desktop', 'timeular.desktop', 'discord.desktop', 'spotify.desktop' ]
+      # '';
     };
     displayManager = {
       gdm = {
@@ -28,6 +28,7 @@
 
     local.gnome-shell-extension-pop-shell
   ] ++ (with pkgs.gnomeExtensions; [
+    arcmenu
     audio-switcher-40
     blur-my-shell
     caffeine
