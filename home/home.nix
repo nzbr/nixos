@@ -1,4 +1,3 @@
-{ sys }:
 { config, lib, pkgs, ... }:
 {
   imports = [
@@ -9,19 +8,10 @@
     ./module/ssh.nix
   ];
 
-  config = {
-    home.file.cache-marker = {
-      target = ".cache/CACHEDIR.TAG";
-      text = ''
-        Signature: 8a477f597d28d172789f06886806bc55
-      '';
-    };
-  };
-
-  options = with lib; {
-    sys = mkOption {
-      default = sys;
-      type = types.unspecified;
-    };
+  home.file.cache-marker = {
+    target = ".cache/CACHEDIR.TAG";
+    text = ''
+      Signature: 8a477f597d28d172789f06886806bc55
+    '';
   };
 }

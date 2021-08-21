@@ -1,4 +1,4 @@
-{ config, lib, pkgs, root, ... }:
+{ config, lib, pkgs, root, sys, ... }:
 {
   dconf.settings = {
     "org/gnome/desktop/background" = {
@@ -74,10 +74,10 @@
     "org/gnome/shell/extensions/dash-to-panel" = {
       appicon-margin = 2;
       appicon-padding = 6;
-      dot-color-1 = config.sys.nzbr.theme.accentColor;
-      dot-color-2 = config.sys.nzbr.theme.accentColor;
-      dot-color-3 = config.sys.nzbr.theme.accentColor;
-      dot-color-4 = config.sys.nzbr.theme.accentColor;
+      dot-color-1 = sys.nzbr.theme.accentColor;
+      dot-color-2 = sys.nzbr.theme.accentColor;
+      dot-color-3 = sys.nzbr.theme.accentColor;
+      dot-color-4 = sys.nzbr.theme.accentColor;
       dot-color-dominant = false;
       dot-color-override = true;
       dot-position = "TOP";
