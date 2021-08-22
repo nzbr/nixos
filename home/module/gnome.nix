@@ -61,7 +61,7 @@
       gnome-dash-show-applications = true;
       hot-corners = "Disabled";
       menu-button-appearance = "Icon";
-      menu-button-disable-rounded-corners = false;
+      menu-button-disable-rounded-corners = true;
       menu-button-icon = "Custom_Icon";
       menu-hotkey = "Super_L";
       menu-lyout = "Default";
