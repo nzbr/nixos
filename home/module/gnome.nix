@@ -12,6 +12,10 @@
       gtk-theme = "Pop-dark";
       icon-theme = "Papirus-Dark";
     };
+    "org/gnome/desktop/screensaver" = {
+      lock-delay = 0;
+      lock-enabled = true;
+    };
     "org/gnome/desktop/session" = {
       idle-delay = 0;
     };
