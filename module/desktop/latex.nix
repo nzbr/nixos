@@ -25,6 +25,7 @@
         ly1
         mathspec
         mdframed
+        moderncv
         multirow
         needspace
         parskip

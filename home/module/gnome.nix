@@ -3,7 +3,7 @@
   dconf.settings = {
     "org/gnome/desktop/background" = {
       picture-options = "zoom";
-      picture-uri = "file://${../../secret/common/Starfield2.png}";
+      picture-uri = "file://${root}/secret/common/Starfield2.png";
       primary-color = "#000000";
       secondary-color = "#ffffff";
       show-desktop-icons = false;
