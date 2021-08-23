@@ -20,8 +20,6 @@
         (pop-gtk-theme.overrideAttrs (oldAttrs: rec {
           patches = with builtins; [ (toFile "pop-gtk.patch" (replaceStrings [ "ACCENTCOLOR" ] [ cfg.accentColor ] (readFile ./pop-gtk.patch))) ];
         }))
-
-        # ()
       ];
 
       nixpkgs.overlays = [

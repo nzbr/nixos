@@ -49,8 +49,11 @@
     }: flake-utils.lib.eachDefaultSystem (system:
     let
       pkgs = nixpkgs.legacyPackages."${system}";
-      lib = nixpkgs.lib.extend (self: super: import ./lib { inherit pkgs; lib = self; });
       naersk-lib = inputs.naersk.lib."${system}";
+      baseLib = import ./lib/base.nix { inherit pkgs; lib = nixpkgs.lib; };
+      lib = nixpkgs.lib.extend (self': super:
+        with nixpkgs.lib; foldl (trivial.mergeAttrs) { } (map (x: import x { inherit pkgs; lib = self'; }) (baseLib.findModules ".nix" ./lib))
+      );
     in
     (with builtins; with nixpkgs; with lib; rec {
 
@@ -70,9 +73,9 @@
 
           nixosConfigurations = (listToAttrs (map
             (path:
-              {
-                name = removeSuffix ".nix" path;
-                value = nixosSystem {
+              lib.nameValuePair
+                (removeSuffix ".nix" path)
+                (nixosSystem {
                   inherit system;
                   specialArgs = { inherit lib inputs system; root = "${self}"; assets = path; };
                   modules = [
@@ -110,8 +113,7 @@
 
                     (import (./machine + "/${path}"))
                   ];
-                };
-              }
+                })
             )
             (mapAttrsToList (name: type: name) (readDir ./machine))
           ));

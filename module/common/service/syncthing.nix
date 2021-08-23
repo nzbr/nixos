@@ -1,8 +1,8 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, modulesPath, root, ... }:
 let
   host = config.networking.hostName;
-  cert = ../../../secret + "/${host}/syncthing/cert.pem";
-  key = ../../../secret + "/${host}/syncthing/key.pem";
+  cert = "${root}/secret/${host}/syncthing/cert.pem";
+  key = "${root}/secret/${host}/syncthing/key.pem";
 in
 {
   services.syncthing = {

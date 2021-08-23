@@ -12,6 +12,7 @@
     "${root}/module/server.nix"
     "${root}/module/server/restic.nix"
     "${root}/module/server/service/k3s.nix"
+    "${root}/module/server/service/ddns.nix"
 
     # "${root}/container/watchtower.nix"
     # "${root}/container/machinaris.nix"
@@ -44,7 +45,7 @@
   };
 
   environment.etc."lukskey" = {
-    source = ../secret + "/${config.networking.hostName}/lukskey";
+    source = "${root}/secret/${config.networking.hostName}/lukskey";
     mode = "0400";
   };
 
@@ -316,7 +317,7 @@
     peers = [
       {
         # storm
-        publicKey = (lib.fileContents ../secret/storm/wireguard/public.key);
+        publicKey = (lib.fileContents "${root}/secret/storm/wireguard/public.key");
         endpoint = "storm.nzbr.de:51820";
         allowedIPs = [
           "10.42.0.0/26"
@@ -326,7 +327,7 @@
       }
       {
         # avalanche
-        publicKey = (lib.fileContents ../secret/avalanche/wireguard/public.key);
+        publicKey = (lib.fileContents "${root}/secret/avalanche/wireguard/public.key");
         endpoint = "avalanche.nzbr.de:51820";
         allowedIPs = [
           "10.42.0.4/32"
@@ -422,4 +423,9 @@
     options kvm_intel emulate_invalid_guest_state=0
     options kvm ignore_msrs=1 report_ignored_msrs=0
   '';
+
+  nzbr.ddns = {
+    enable = true;
+    domain = "earthquake.nzbr.de";
+  };
 }

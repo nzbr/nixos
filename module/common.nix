@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, modulesPath, root, ... }:
 {
   imports = [
     ./common/cli/dotfiles.nix
@@ -70,11 +70,11 @@
     defaultUserShell = pkgs.zsh;
     mutableUsers = false;
     users.root = {
-      hashedPassword = lib.removeSuffix "\n" (builtins.readFile (builtins.toString ../secret/common/root.password));
+      hashedPassword = lib.removeSuffix "\n" (builtins.readFile (builtins.toString "${root}/secret/common/root.password"));
     };
     users.nzbr = {
       isNormalUser = true;
-      hashedPassword = lib.removeSuffix "\n" (builtins.readFile (builtins.toString ../secret/common/nzbr.password));
+      hashedPassword = lib.removeSuffix "\n" (builtins.readFile (builtins.toString "${root}/secret/common/nzbr.password"));
       extraGroups = [ "wheel" "plugdev" ];
     };
   };

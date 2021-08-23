@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, modulesPath, root, ... }:
 let
   cfg = config.nzbr.remote-unlock;
 in
@@ -12,7 +12,7 @@ in
           port = 22;
           authorizedKeys = config.users.users.root.openssh.authorizedKeys.keys;
           hostKeys = [
-            (../../secret + "/${config.networking.hostName}/ssh/ssh_host_ed25519_key")
+            (builtins.unsafeDiscardStringContext "${root}/secret/${config.networking.hostName}/ssh/ssh_host_ed25519_key")
           ];
         };
         postCommands =

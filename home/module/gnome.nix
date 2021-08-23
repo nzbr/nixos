@@ -1,6 +1,6 @@
 { config, lib, pkgs, root, sys, ... }:
 {
-  dconf.settings = {
+  dconf.settings = lib.mkIf sys.services.xserver.desktopManager.gnome.enable {
     "org/gnome/desktop/background" = {
       picture-options = "zoom";
       picture-uri = "file://${root}/secret/common/Starfield2.png";
@@ -49,7 +49,7 @@
     "org/gnome/shell/extensions/arcmenu" = {
       arc-menu-icon = 7;
       arc-menu-placement = "DTP";
-      available-placement = [false true false];
+      available-placement = [ false true false ];
       # custom-menu-button-icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg";
       custom-menu-button-icon = "${root}/secret/common/Start.png";
       custom-menu-button-icon-size = 24;

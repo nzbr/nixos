@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, modulesPath, root, ... }:
 {
   options = with lib; {
     nzbr.wgIp = mkOption {
@@ -12,7 +12,7 @@
       wireguard = {
         enable = true;
         interfaces.wg0 = {
-          privateKey = (lib.fileContents (../../../secret + "/${config.networking.hostName}/wireguard/private.key"));
+          privateKey = (lib.fileContents "${root}/secret/${config.networking.hostName}/wireguard/private.key");
           listenPort = lib.mkDefault 51820;
         };
       };

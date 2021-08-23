@@ -1,6 +1,6 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, modulesPath, root, ... }:
 let
-  secrets = ../../../secret;
+  secrets = "${root}/secret";
   keys = with builtins; with lib; # TODO: Restrict to certain hosts (configurable)
     map
       (x: removeSuffix "\n" x)
@@ -10,13 +10,13 @@ let
           (
             filter
               (x:
-                (x.type == "directory")
+                (x.value == "directory")
                 && (hasAttr "ssh" (readDir (secrets + "/${x.name}")))
                 && (hasAttr "id_ed25519.pub" (readDir (secrets + "/${x.name}/ssh")))
               )
               (
                 mapAttrsToList
-                  (name: type: { name = name; type = type; })
+                  (name: type: nameValuePair name type)
                   (readDir secrets)
               )
           )
@@ -26,19 +26,19 @@ in
   environment.etc = {
     "ssh/ssh_host_ed25519_key" = {
       mode = "0400";
-      source = ../../../secret + "/${config.networking.hostName}/ssh/ssh_host_ed25519_key";
+      source = "${root}/secret/${config.networking.hostName}/ssh/ssh_host_ed25519_key";
     };
     "ssh/ssh_host_ed25519_key.pub" = {
       mode = "0400";
-      source = ../../../secret + "/${config.networking.hostName}/ssh/ssh_host_ed25519_key.pub";
+      source = "${root}/secret/${config.networking.hostName}/ssh/ssh_host_ed25519_key.pub";
     };
     "ssh/ssh_host_rsa_key" = {
       mode = "0400";
-      source = ../../../secret + "/${config.networking.hostName}/ssh/ssh_host_rsa_key";
+      source = "${root}/secret/${config.networking.hostName}/ssh/ssh_host_rsa_key";
     };
     "ssh/ssh_host_rsa_key.pub" = {
       mode = "0400";
-      source = ../../../secret + "/${config.networking.hostName}/ssh/ssh_host_rsa_key.pub";
+      source = "${root}/secret/${config.networking.hostName}/ssh/ssh_host_rsa_key.pub";
     };
   };
 
@@ -63,21 +63,22 @@ in
     ];
     knownHosts = lib.listToAttrs
       (builtins.map
-        (hostname: {
-          name = hostname;
-          value = {
-            hostNames = [
-              hostname
-              "${hostname}.nzbr.de"
-              "${hostname}4.nzbr.de"
-              "${hostname}6.nzbr.de"
-            ];
-            publicKeyFile = ../../../secret + "/${hostname}/ssh/ssh_host_ed25519_key.pub";
-          };
-        })
+        (hostname:
+          lib.nameValuePair
+            hostname
+            {
+              hostNames = [
+                hostname
+                "${hostname}.nzbr.de"
+                "${hostname}4.nzbr.de"
+                "${hostname}6.nzbr.de"
+              ];
+              publicKeyFile = "${root}/secret/${hostname}/ssh/ssh_host_ed25519_key.pub";
+            }
+        )
         (
           lib.mapAttrsToList
-            (name: _: lib.removeSuffix ".nix" name)
+            (name: _: name)
             (builtins.readDir ../../../machine)
         )
       );
