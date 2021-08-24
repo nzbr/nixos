@@ -123,18 +123,24 @@
       device = "/dev/mapper/cr_root";
       fsType = "btrfs";
       options = [ "subvol=@" "ssd" ];
-      neededForBoot = true;
+      neededForBoot = false;
+      encrypted = {
+        enable = true;
+        blkDev = "/dev/disk/by-uuid/13187d61-8666-4533-b853-fd32e20eed2c";
+        label = "cr_root";
+        keyFile = "/mnt-root/etc/lukskey";
+      };
     };
     "/old/nix/store" = {
       device = "/dev/mapper/cr_root";
       fsType = "btrfs";
       options = [ "subvol=@/nix/store" "ssd" "noatime" ];
-      neededForBoot = true;
+      neededForBoot = false;
     };
     "/old/boot" = {
       device = "/dev/disk/by-uuid/799C-AA37";
       fsType = "vfat";
-      neededForBoot = true;
+      neededForBoot = false;
       noCheck = true;
     };
     "/old/tmp" = {
@@ -189,15 +195,15 @@
       "/var/lib/libvirt" = "/storage/libvirt";
     };
 
-  boot.initrd = {
-    luks.devices = {
-      "cr_root" = {
-        # /old
-        device = "/dev/disk/by-uuid/13187d61-8666-4533-b853-fd32e20eed2c";
-        preLVM = true;
-      };
-    };
-  };
+  # boot.initrd = {
+  #   luks.devices = {
+  #     "cr_root" = {
+  #       # /old
+  #       device = "/dev/disk/by-uuid/13187d61-8666-4533-b853-fd32e20eed2c";
+  #       preLVM = true;
+  #     };
+  #   };
+  # };
 
   swapDevices = [
     {
@@ -231,6 +237,10 @@
     interfaces.eno1 = {
       useDHCP = true;
     };
+    tempAddresses = "disabled";
+    dhcpcd.extraConfig = ''
+      slaac hwaddr
+    '';
   };
 
   services.syncthing.dataDir = "/storage/nzbr";
