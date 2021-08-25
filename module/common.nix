@@ -53,7 +53,7 @@
       "en_US.UTF-8/UTF-8"
     ];
   };
-  console.keyMap = "de-latin1";
+  console.keyMap = "us";
 
   time.timeZone = "Europe/Berlin";
 
