@@ -75,6 +75,7 @@
     {
       "/var/lib/rancher/k3s/storage" = "/storage/kubernetes/local-path";
       "/var/lib/longhorn" = "/storage/kubernetes/longhorn";
+      "/var/lib/rook" = "/storage/kubernetes/rook";
       "/var/lib/etcd" = "/storage/kubernetes/etcd";
     };
 
