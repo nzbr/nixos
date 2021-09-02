@@ -1,6 +1,6 @@
 { config, lib, inputs, pkgs, modulesPath, ... }:
 (import "${inputs.vscode-server}/modules/vscode-server/module.nix"
-  ({name, description, serviceConfig}: {
+  ({ name, description, serviceConfig }: {
     systemd.services."${name}-root" = {
       inherit description;
       wantedBy = [ "multi-user.target" ];
@@ -16,4 +16,4 @@
       };
     };
   })
-){ inherit lib pkgs; }
+) { inherit lib pkgs; }
