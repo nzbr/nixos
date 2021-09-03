@@ -23,13 +23,13 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    androidComposition.androidsdk
+    # androidComposition.androidsdk
 
     desktop-file-utils
-    flutter
     global
     go
     python3
+    unstable.flutter
     unstable.dotnet-sdk_5
     unstable.tabnine
   ];

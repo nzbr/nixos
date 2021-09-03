@@ -1,4 +1,4 @@
-{ config, lib, inputs, pkgs, modulesPath, root, ... }:
+{ config, lib, inputs, pkgs, modulesPath, root, host, ... }:
 {
   networking.hostName = "meteor";
 
@@ -17,7 +17,7 @@
 
   boot = {
     loader.grub.device = "/dev/sda";
-    loader.grub.configurationLimit = 1;
+    # loader.grub.configurationLimit = 5;
 
     initrd = {
       availableKernelModules = [ "ehci_pci" "ahci" "usb_storage" "sd_mod" "sdhci_pci" "f2fs" "xfs" ];
@@ -33,9 +33,14 @@
           keyFile = "/lukskey";
         };
       };
-      secrets = {
-        "lukskey" = "${root}/secret/${config.networking.hostName}/lukskey";
-      };
+      # secrets = {
+
+      # };
+      # preDeviceCommands = ''
+      #   set -x
+      #   ${pkgs.rage}/bin/rage -i /ssh_host_ed25519_key -o /lukskey -d /lukskey.age
+      #   set +x
+      # '';
     };
 
     kernelModules = [ "kvm-intel" ];
@@ -43,6 +48,11 @@
     extraModulePackages = [ ];
 
     # TODO: resumeDevice
+  };
+
+  nzbr.initrdSecrets = {
+    "ssh_host_ed25519_key" = "/etc/ssh/ssh_host_ed25519_key";
+    "lukskey" = "${host}/lukskey.age";
   };
 
   fileSystems = {
@@ -82,14 +92,18 @@
   boot.extraModprobeConfig = ''
     options thinkpad_acpi fan_control=1
   '';
+  system.activationScripts.thinkfan.text = ''
+    echo Setting up /run/thinkfan...
+    ln -sf /sys/devices/platform/coretemp.0/hwmon/hwmon* /run/thinkfan
+  '';
   services.thinkfan = {
     enable = true;
     sensors = [
-      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input"; type = "hwmon"; }
-      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp2_input"; type = "hwmon"; }
-      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp3_input"; type = "hwmon"; }
-      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp4_input"; type = "hwmon"; }
-      { query = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp5_input"; type = "hwmon"; }
+      { query = "/run/thinkfan/temp1_input"; type = "hwmon"; }
+      { query = "/run/thinkfan/temp2_input"; type = "hwmon"; }
+      { query = "/run/thinkfan/temp3_input"; type = "hwmon"; }
+      { query = "/run/thinkfan/temp4_input"; type = "hwmon"; }
+      { query = "/run/thinkfan/temp5_input"; type = "hwmon"; }
     ];
   };
 }

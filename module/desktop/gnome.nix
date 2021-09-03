@@ -65,4 +65,9 @@
       });
     })
   ];
+
+  age.secrets = {
+    "Starfield2.png".mode = "0644";
+    "Start.png".mode = "0644";
+  };
 }

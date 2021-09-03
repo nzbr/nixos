@@ -1,6 +1,8 @@
 { config, lib, pkgs, modulesPath, root, ... }:
 {
   imports = [
+    ./common/agenix.nix
+    ./common/initrd-secrets.nix
     ./common/cli/dotfiles.nix
     ./common/cli/lorri.nix
     ./common/cli/shell-init.nix
@@ -70,11 +72,11 @@
     defaultUserShell = pkgs.zsh;
     mutableUsers = false;
     users.root = {
-      hashedPassword = lib.removeSuffix "\n" (builtins.readFile (builtins.toString "${root}/secret/common/root.password"));
+      passwordFile = config.nzbr.assets."root.password";
     };
     users.nzbr = {
       isNormalUser = true;
-      hashedPassword = lib.removeSuffix "\n" (builtins.readFile (builtins.toString "${root}/secret/common/nzbr.password"));
+      passwordFile = config.nzbr.assets."nzbr.password";
       extraGroups = [ "wheel" "plugdev" ];
     };
   };
@@ -86,4 +88,7 @@
 
   hardware.enableRedistributableFirmware = true;
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
+
+  # TODO: Move this somewhere else
+  age.secrets."ssh/id_ed25519".owner = "nzbr";
 }

@@ -3,7 +3,7 @@
   dconf.settings = lib.mkIf sys.services.xserver.desktopManager.gnome.enable {
     "org/gnome/desktop/background" = {
       picture-options = "zoom";
-      picture-uri = "file://${root}/secret/common/Starfield2.png";
+      picture-uri = "file://${sys.nzbr.assets."Starfield2.png"}";
       primary-color = "#000000";
       secondary-color = "#ffffff";
       show-desktop-icons = false;
@@ -51,7 +51,7 @@
       arc-menu-placement = "DTP";
       available-placement = [ false true false ];
       # custom-menu-button-icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg";
-      custom-menu-button-icon = "${root}/secret/common/Start.png";
+      custom-menu-button-icon = "${sys.nzbr.assets."Start.png"}";
       custom-menu-button-icon-size = 24;
       custom-menu-button-text = "";
       default-menu-view = "Frequent_Apps";

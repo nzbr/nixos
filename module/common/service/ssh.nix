@@ -1,6 +1,6 @@
 { config, lib, pkgs, modulesPath, root, ... }:
 let
-  secrets = "${root}/secret";
+  secrets = "${root}/machine";
   keys = with builtins; with lib; # TODO: Restrict to certain hosts (configurable)
     map
       (x: removeSuffix "\n" x)
@@ -23,24 +23,6 @@ let
       );
 in
 {
-  environment.etc = {
-    "ssh/ssh_host_ed25519_key" = {
-      mode = "0400";
-      source = "${root}/secret/${config.networking.hostName}/ssh/ssh_host_ed25519_key";
-    };
-    "ssh/ssh_host_ed25519_key.pub" = {
-      mode = "0400";
-      source = "${root}/secret/${config.networking.hostName}/ssh/ssh_host_ed25519_key.pub";
-    };
-    "ssh/ssh_host_rsa_key" = {
-      mode = "0400";
-      source = "${root}/secret/${config.networking.hostName}/ssh/ssh_host_rsa_key";
-    };
-    "ssh/ssh_host_rsa_key.pub" = {
-      mode = "0400";
-      source = "${root}/secret/${config.networking.hostName}/ssh/ssh_host_rsa_key.pub";
-    };
-  };
 
   programs.mosh.enable = true;
   programs.ssh.setXAuthLocation = lib.mkForce true;
@@ -73,7 +55,7 @@ in
                 "${hostname}4.nzbr.de"
                 "${hostname}6.nzbr.de"
               ];
-              publicKeyFile = "${root}/secret/${hostname}/ssh/ssh_host_ed25519_key.pub";
+              publicKeyFile = "${root}/host-keys/${hostname}/ssh_host_ed25519_key.pub";
             }
         )
         (

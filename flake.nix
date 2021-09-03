@@ -12,7 +12,10 @@
     flake-utils.url = "github:numtide/flake-utils";
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     naersk.url = "github:nix-community/naersk"; # rust package builder
-    agenix.url = "github:ryantm/agenix";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     ragon = {
       url = "github:ragon000/nixos-config";
@@ -25,6 +28,10 @@
     };
     dotfiles = {
       url = "github:nzbr/dotfiles";
+      flake = false;
+    };
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
       flake = false;
     };
     razer-nari = {
@@ -51,8 +58,8 @@
       pkgs = nixpkgs.legacyPackages."${system}";
       naersk-lib = inputs.naersk.lib."${system}";
       baseLib = import ./lib/base.nix { inherit pkgs; lib = nixpkgs.lib; };
-      lib = nixpkgs.lib.extend (self': super:
-        with nixpkgs.lib; foldl (trivial.mergeAttrs) { } (map (x: import x { inherit pkgs; lib = self'; }) (baseLib.findModules ".nix" ./lib))
+      lib = nixpkgs.lib.extend (self': super':
+        with nixpkgs.lib; foldl recursiveUpdate { } (map (x: import x { inherit pkgs; lib = self'; }) (baseLib.findModules ".nix" ./lib))
       );
     in
     (with builtins; with nixpkgs; with lib; rec {
@@ -84,12 +91,17 @@
           };
 
           nixosConfigurations = (listToAttrs (map
-            (path:
+            (hostName:
               lib.nameValuePair
-                (removeSuffix ".nix" path)
+                hostName
                 (nixosSystem {
                   inherit system;
-                  specialArgs = { inherit lib inputs system; root = "${self}"; assets = path; };
+                  specialArgs = {
+                    inherit lib inputs system;
+                    root = "${self}";
+                    assets = "${self}/assets";
+                    host = "${self}/machine/${hostName}";
+                  };
                   modules = [
                     inputs.agenix.nixosModules.age
 
@@ -123,7 +135,7 @@
                       system.stateVersion = "21.05";
                     })
 
-                    (import (./machine + "/${path}"))
+                    (import (./machine + "/${hostName}"))
                   ];
                 })
             )

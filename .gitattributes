@@ -1,3 +1,4 @@
 secret/** filter=git-crypt diff=git-crypt
 host-keys/** filter=git-crypt diff=git-crypt
 *.pub filter diff
+*.age filter diff

@@ -30,7 +30,7 @@ with builtins; with lib; {
     nameValuePair (unsafeDiscardStringContext name) value;
 
   # Given an instance of nixpkgs, a filename suffix and a path to a directory,
-  # uses findModules to recursivelz find files with names that end in the specified suffix and
+  # uses findModules to recursively find files with names that end in the specified suffix and
   # loads those files as packages using callPackage from the specified nixpkgs instance.
   # Returns a list of derivations
   loadPackages =
@@ -47,5 +47,8 @@ with builtins; with lib; {
           findModules suffix dir
         )
     );
+
+  # Given a file path, returns the file contents removing a trailing newline if it is present
+  readFile' = path: removeSuffix "\n" (readFile path);
 
 }

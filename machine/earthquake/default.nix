@@ -328,7 +328,7 @@
     peers = [
       {
         # storm
-        publicKey = (lib.fileContents "${root}/secret/storm/wireguard/public.key");
+        publicKey = (lib.fileContents lib.fileContents config.nzbr.foreignAssets.storm."wireguard/public.key");
         endpoint = "storm.nzbr.de:51820";
         allowedIPs = [
           "10.42.0.0/26"
@@ -338,7 +338,7 @@
       }
       {
         # avalanche
-        publicKey = (lib.fileContents "${root}/secret/avalanche/wireguard/public.key");
+        publicKey = (lib.fileContents lib.fileContents config.nzbr.foreignAssets.avalanche."wireguard/public.key");
         endpoint = "avalanche.nzbr.de:51820";
         allowedIPs = [
           "10.42.0.4/32"

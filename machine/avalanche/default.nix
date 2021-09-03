@@ -113,7 +113,7 @@
     peers = [
       {
         # storm
-        publicKey = (lib.fileContents "${root}/secret/storm/wireguard/public.key");
+        publicKey = (lib.fileContents config.nzbr.foreignAssets.storm."wireguard/public.key");
         endpoint = "storm.nzbr.de:51820";
         allowedIPs = [
           "10.42.0.0/26"
@@ -123,7 +123,7 @@
       }
       {
         # earthquake
-        publicKey = (lib.fileContents "${root}/secret/earthquake/wireguard/public.key");
+        publicKey = (lib.fileContents config.nzbr.foreignAssets.earthquake."wireguard/public.key");
         endpoint = "earthquake.nzbr.de:51820";
         allowedIPs = [
           "10.42.0.2/32"

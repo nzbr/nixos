@@ -13,7 +13,7 @@ in
           path = with pkgs; [ curl rclone restic utillinux zfs ];
           environment = {
             HOME = "/root";
-            RESTIC_PASSWORD_FILE = "${root}/secret/${hostname}/resticpass";
+            RESTIC_PASSWORD_FILE = config.nzbr.assets."resticpass";
             RESTIC_REPOSITORY = "rclone:${backupDir}";
           };
           serviceConfig = {
@@ -103,7 +103,7 @@ in
           path = with pkgs; [ curl rclone restic utillinux zfs ];
           environment = {
             HOME = "/root";
-            RESTIC_PASSWORD_FILE = "${root}/secret/${hostname}/resticpass";
+            RESTIC_PASSWORD_FILE = config.nzbr.assets."resticpass";
             RESTIC_REPOSITORY = "rclone:${backupDir}";
           };
           serviceConfig = {

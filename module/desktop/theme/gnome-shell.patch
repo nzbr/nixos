@@ -1,8 +1,14 @@
 diff --git a/data/theme/gnome-shell-sass/_colors.scss b/data/theme/gnome-shell-sass/_colors.scss
-index 9d8f72f2a..bb5866a4f 100644
+index 9d8f72f2a..059649dd8 100644
 --- a/data/theme/gnome-shell-sass/_colors.scss
 +++ b/data/theme/gnome-shell-sass/_colors.scss
-@@ -6,7 +6,7 @@ $bg_color: if($variant == 'light', #f6f5f4, darken(desaturate(#3d3846, 100%), 4%
+@@ -1,12 +1,12 @@
+ // When color definition differs for dark and light variant,
+ // it gets @if ed depending on $variant
+ 
+-$base_color: if($variant == 'light', #fff, lighten(desaturate(#241f31, 20%), 2%));
++$base_color: #00ff00; // if($variant == 'light', #fff, lighten(desaturate(#241f31, 20%), 2%));
+ $bg_color: if($variant == 'light', #f6f5f4, darken(desaturate(#3d3846, 100%), 4%));
  $fg_color: if($variant == 'light', #2e3436, #eeeeec);
  
  $selected_fg_color: #fff;

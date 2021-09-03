@@ -12,7 +12,8 @@ in
           port = 22;
           authorizedKeys = config.users.users.root.openssh.authorizedKeys.keys;
           hostKeys = [
-            (builtins.unsafeDiscardStringContext "${root}/secret/${config.networking.hostName}/ssh/ssh_host_ed25519_key")
+            "/etc/ssh/ssh_host_ed25519_key"
+            # (builtins.unsafeDiscardStringContext "${root}/machine/${config.networking.hostName}/ssh/ssh_host_ed25519_key")
           ];
         };
         postCommands =
