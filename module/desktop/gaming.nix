@@ -5,4 +5,7 @@
   environment.systemPackages = with pkgs; [
     unstable.lutris
   ];
+
+  hardware.xpadneo.enable = true;
+  services.hardware.xow.enable = true;
 }

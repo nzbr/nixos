@@ -11,6 +11,7 @@
 
     "${root}/module/laptop.nix"
     "${root}/module/desktop/development.nix"
+    "${root}/module/desktop/gaming.nix"
     "${root}/module/desktop/gnome.nix"
     "${root}/module/desktop/latex.nix"
   ];
