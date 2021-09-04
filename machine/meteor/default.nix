@@ -93,10 +93,6 @@
   boot.extraModprobeConfig = ''
     options thinkpad_acpi fan_control=1
   '';
-  system.activationScripts.thinkfan.text = ''
-    echo Setting up /run/thinkfan...
-    ln -sf /sys/devices/platform/coretemp.0/hwmon/hwmon* /run/thinkfan
-  '';
   services.thinkfan = {
     enable = true;
     sensors = [
@@ -107,4 +103,7 @@
       { query = "/run/thinkfan/temp5_input"; type = "hwmon"; }
     ];
   };
+  systemd.services.thinkfan.preStart = ''
+    ln -sfT /sys/devices/platform/coretemp.0/hwmon/hwmon* /run/thinkfan
+  '';
 }
