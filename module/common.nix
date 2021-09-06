@@ -13,6 +13,9 @@ with builtins; with lib; {
     ./common/service/docker.nix
     ./common/service/ssh.nix
     ./common/vscode-server.nix
+
+    # proper module
+    ./desktop/mullvad.nix
   ];
 
   options = with types; {
