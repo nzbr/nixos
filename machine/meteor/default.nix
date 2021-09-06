@@ -106,4 +106,6 @@
   systemd.services.thinkfan.preStart = ''
     ln -sfT /sys/devices/platform/coretemp.0/hwmon/hwmon* /run/thinkfan
   '';
+
+  nzbr.mullvad.enable = true;
 }

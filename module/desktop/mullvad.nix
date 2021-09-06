@@ -1,10 +1,14 @@
 { config, lib, pkgs, ... }:
-with builtins; with lib; {
+with builtins; with lib;
+let
+  cfg = config.nzbr.mullvad;
+in
+{
   options = with types; {
-    nzbr.mullvad = mkEnableOption "Enables the mullvad desktop client";
+    nzbr.mullvad.enable = mkEnableOption "Enables the mullvad desktop client";
   };
 
-  config = mkIf config.nzbr.mullvad {
+  config = mkIf cfg.enable {
     services.mullvad-vpn.enable = true;
     environment.systemPackages = with pkgs; [
       mullvad-vpn
