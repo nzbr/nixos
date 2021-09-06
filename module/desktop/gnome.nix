@@ -15,7 +15,7 @@
       };
       autoLogin = {
         enable = true;
-        user = "nzbr";
+        user = config.nzbr.user;
       };
     };
   };

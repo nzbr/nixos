@@ -8,5 +8,5 @@
     qemuPackage = pkgs.unstable.qemu;
   };
 
-  users.users.nzbr.extraGroups = [ "kvm" "libvirtd" ];
+  users.users.${config.nzbr.user}.extraGroups = [ "kvm" "libvirtd" ];
 }

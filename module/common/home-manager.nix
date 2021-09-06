@@ -19,7 +19,7 @@
       in
       {
         root = homeCfg;
-        nzbr = homeCfg;
+        ${config.nzbr.user} = homeCfg;
       };
   };
 }

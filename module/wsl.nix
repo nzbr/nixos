@@ -1,8 +1,7 @@
 { config, lib, inputs, pkgs, modulesPath, ... }:
 let
-  defaultUser = "nzbr";
   automountPath = "/drv";
-  syschdemd = import "${inputs.nixos-wsl}/syschdemd.nix" { inherit lib pkgs config defaultUser automountPath; };
+  syschdemd = import "${inputs.nixos-wsl}/syschdemd.nix" { inherit lib pkgs config automountPath; defaultUser = config.nzbr.user; };
 in
 {
   imports = [
@@ -98,7 +97,7 @@ in
       shell = "${syschdemd}/bin/syschdemd";
       extraGroups = [ "root" ]; # Otherwise WSL fails to login as root with "initgroups failed 5"
     };
-    "${defaultUser}" = {
+    ${config.nzbr.user} = {
       uid = 1000;
       extraGroups = [ "docker" ];
     };
@@ -125,7 +124,7 @@ in
 
   # Force-Start user daemon for the default user
   systemd.targets.user-daemon = {
-    wants = [ "user@${defaultUser}.service" ];
+    wants = [ "user@${config.nzbr.user}.service" ];
     wantedBy = [ "multi-user.target" ];
   };
 

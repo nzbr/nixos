@@ -8,7 +8,7 @@ in
   services.syncthing = {
     enable = true;
     systemService = true;
-    user = "nzbr";
+    user = config.nzbr.user;
     group = "users";
     openDefaultPorts = true;
     dataDir = lib.mkDefault "/home/nzbr";

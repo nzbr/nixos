@@ -8,11 +8,11 @@
         User = "root";
       };
     };
-    systemd.services."${name}-nzbr" = {
+    systemd.services."${name}-${config.nzbr.user}" = {
       inherit description;
       wantedBy = [ "multi-user.target" ];
       serviceConfig = serviceConfig // {
-        User = "nzbr";
+        User = "${config.nzbr.user}";
       };
     };
   })

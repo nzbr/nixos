@@ -1,6 +1,7 @@
 { config, lib, inputs, pkgs, modulesPath, root, ... }:
 {
   networking.hostName = "live";
+  nzbr.user = "live";
 
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-base.nix"
@@ -72,11 +73,11 @@
     isoName = with config.system.nixos; with config.isoImage; lib.mkForce "${isoBaseName}-${edition}-${release}-${codeName}-${pkgs.stdenv.hostPlatform.system}.iso";
   };
 
-  users.users.nzbr = {
+  users.users.${config.nzbr.user} = {
     uid = 1000;
     extraGroups = [ "networkmanager" ];
   };
-  services.getty.autologinUser = lib.mkForce "nzbr";
+  services.getty.autologinUser = lib.mkForce ${config.nzbr.user};
 
   services = {
     xserver = {
@@ -148,7 +149,7 @@
         for i in ${toString config.environment.systemPackages}; do
             PATH=$PATH:$i/bin:$i/sbin
         done
-        sudo -u nzbr bash "${script}"
+        sudo -u ${config.nzbr.user} bash "${script}"
         HOME=/root bash "${script}"
       '';
   };
