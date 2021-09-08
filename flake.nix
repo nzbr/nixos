@@ -61,6 +61,7 @@
       lib = nixpkgs.lib.extend (self': super':
         with nixpkgs.lib; foldl recursiveUpdate { } (map (x: import x { inherit pkgs; lib = self'; }) (baseLib.findModules ".nix" ./lib))
       );
+      scripts = (import ./scripts.nix) { inherit lib self; pkgs = (pkgs // self.packages.${system}); };
     in
     (with builtins; with nixpkgs; with lib; rec {
 
@@ -74,8 +75,24 @@
           git-crypt
 
           nixpkgs-fmt
-        ];
+        ]
+        ++
+        mapAttrsToList
+        (name: drv: pkgs.writeShellScriptBin name "${pkgs.nixUnstable}/bin/nix run ${self}#${name} \"$@\"")
+        scripts;
       };
+
+      apps = mapAttrs' (name: value:
+        nameValuePair'
+        name
+        (flake-utils.lib.mkApp
+          {
+            inherit name;
+            drv = pkgs.writeShellScriptBin name value;
+          }
+        )
+      )
+      scripts;
 
       packages =
         loadPackages pkgs ".pkg.nix" ./package # import all packages from pkg directory
