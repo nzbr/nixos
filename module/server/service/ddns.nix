@@ -58,7 +58,8 @@ with builtins; with lib; {
               StateDirectory = dataDir;
             };
             preStart = ''
-              sed 's/PASSWORD/''${cat ${cfg.passwordFile}}/' > ${dataDir}/inadyn.cfg
+              PASSFILE=${cfg.passwordFile}
+              sed 's/PASSWORD/''${cat $PASSFILE}/' > ${dataDir}/inadyn.cfg
             '';
             script = "inadyn -n --cache-dir=${cacheDir} -f ${dataDir}/inadyn.cfg";
           };

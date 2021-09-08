@@ -12,7 +12,7 @@
       wireguard = {
         enable = true;
         interfaces.wg0 = {
-          privateKey = (lib.fileContents "${root}/secret/${config.networking.hostName}/wireguard/private.key");
+          privateKeyFile = config.nzbr.assets."wireguard/private.key";
           listenPort = lib.mkDefault 51820;
         };
       };

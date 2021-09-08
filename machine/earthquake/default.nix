@@ -51,7 +51,7 @@
 
   fileSystems = {
     "/" = {
-      device = "beach";
+      device = "beach"; # -> zroot
       fsType = "zfs";
     };
     "/boot" = {
@@ -64,7 +64,7 @@
       options = [ "size=4G" ];
     };
 
-    "/tmp/.cr_storage_1" = {
+    "/run/.cr_storage/1" = {
       device = "tmpfs";
       fsType = "tmpfs";
       options = [ "ro" "size=0" ];
@@ -75,7 +75,7 @@
         keyFile = "/mnt-root/etc/lukskey";
       };
     };
-    "/tmp/.cr_storage_2" = {
+    "/run/.cr_storage/2" = {
       device = "tmpfs";
       fsType = "tmpfs";
       options = [ "ro" "size=0" ];
@@ -86,7 +86,7 @@
         keyFile = "/mnt-root/etc/lukskey";
       };
     };
-    "/tmp/.cr_storage_3" = {
+    "/run/.cr_storage/3" = {
       device = "tmpfs";
       fsType = "tmpfs";
       options = [ "ro" "size=0" ];
@@ -98,7 +98,7 @@
       };
     };
     "/storage" = {
-      device = "hottub";
+      device = "hottub"; # -> hoard
       fsType = "zfs";
     };
     "/storage/backup" = {
