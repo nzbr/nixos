@@ -45,7 +45,7 @@
   };
 
   environment.etc."lukskey" = {
-    source = "${root}/secret/${config.networking.hostName}/lukskey";
+    source = config.nzbr.assets."lukskey";
     mode = "0400";
   };
 
@@ -328,7 +328,7 @@
     peers = [
       {
         # storm
-        publicKey = (lib.fileContents lib.fileContents config.nzbr.foreignAssets.storm."wireguard/public.key");
+        publicKey = (lib.fileContents config.nzbr.foreignAssets.storm."wireguard/public.key");
         endpoint = "storm.nzbr.de:51820";
         allowedIPs = [
           "10.42.0.0/26"
@@ -338,7 +338,7 @@
       }
       {
         # avalanche
-        publicKey = (lib.fileContents lib.fileContents config.nzbr.foreignAssets.avalanche."wireguard/public.key");
+        publicKey = (lib.fileContents config.nzbr.foreignAssets.avalanche."wireguard/public.key");
         endpoint = "avalanche.nzbr.de:51820";
         allowedIPs = [
           "10.42.0.4/32"
@@ -388,9 +388,6 @@
   #   '';
   # };
   # networking.resolvconf.useLocalResolver = false;
-
-  # CHIA #
-  environment.systemPackages = [ pkgs.unstable.chia ];
 
   # BACKUPS #
   nzbr.restic = {

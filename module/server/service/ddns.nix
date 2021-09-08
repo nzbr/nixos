@@ -57,7 +57,9 @@ with builtins; with lib; {
               RuntimeDirectory = dataDir;
               StateDirectory = dataDir;
             };
-            preStart = "sed 's/PASSWORD/''${cat ${cfg.passwordFile}}/' > ${dataDir}/inadyn.cfg";
+            preStart = ''
+              sed 's/PASSWORD/''${cat ${cfg.passwordFile}}/' > ${dataDir}/inadyn.cfg
+            '';
             script = "inadyn -n --cache-dir=${cacheDir} -f ${dataDir}/inadyn.cfg";
           };
         tmpfiles.rules = [

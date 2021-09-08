@@ -77,7 +77,7 @@
     uid = 1000;
     extraGroups = [ "networkmanager" ];
   };
-  services.getty.autologinUser = lib.mkForce ${config.nzbr.user};
+  services.getty.autologinUser = lib.mkForce config.nzbr.user;
 
   services = {
     xserver = {

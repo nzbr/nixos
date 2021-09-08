@@ -18,7 +18,6 @@
 
   boot = {
     loader.grub.device = "/dev/sda";
-    # loader.grub.configurationLimit = 5;
 
     initrd = {
       availableKernelModules = [ "ehci_pci" "ahci" "usb_storage" "sd_mod" "sdhci_pci" "f2fs" "xfs" ];

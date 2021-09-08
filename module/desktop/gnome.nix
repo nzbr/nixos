@@ -50,8 +50,7 @@
   nixpkgs.overlays = [
     (self: super: {
       gnome = super.gnome.overrideScope' (self': super': {
-        # gnome-shell = super.legacy.gnome3.gnome-shell;
-        gnome-terminal = super.gnome.gnome-terminal.overrideAttrs (oldAttrs: rec {
+        gnome-terminal = super'.gnome-terminal.overrideAttrs (oldAttrs: rec {
           patches =
             let
               repo = builtins.fetchGit {
