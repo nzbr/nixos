@@ -1,4 +1,15 @@
 { config, lib, pkgs, root, sys, ... }:
+let
+  displays = [ "0" "1" ];
+  forEachDisplay = value:
+    builtins.toJSON (
+      builtins.listToAttrs (
+        map
+          (num: lib.nameValuePair num value)
+          displays
+      )
+    );
+in
 {
   dconf.settings = lib.mkIf sys.services.xserver.desktopManager.gnome.enable {
     "org/gnome/desktop/background" = {
@@ -100,23 +111,21 @@
       isolate-monitors = true;
       leftbox-padding = -1;
       middle-click-action = "LAUNCH";
-      panel-anchors = builtins.toJSON { "0" = "MIDDLE"; };
-      panel-element-positions = builtins.toJSON {
-        "0" = [
-          { element = "showAppsButton"; visible = false; position = "stackedTL"; }
-          { element = "activitiesButton"; visible = false; position = "stackedTL"; }
-          { element = "leftBox"; visible = true; position = "stackedTL"; }
-          { element = "taskbar"; visible = true; position = "stackedTL"; }
-          { element = "centerBox"; visible = true; position = "stackedBR"; }
-          { element = "dateMenu"; visible = true; position = "stackedBR"; }
-          { element = "rightBox"; visible = true; position = "stackedBR"; }
-          { element = "systemMenu"; visible = true; position = "stackedBR"; }
-          { element = "desktopButton"; visible = false; position = "stackedBR"; }
-        ];
-      };
-      panel-lengths = builtins.toJSON { "0" = 100; };
-      panel-positions = builtins.toJSON { "0" = "TOP"; };
-      panel-sizes = builtins.toJSON { "0" = 32; };
+      panel-anchors = forEachDisplay "MIDDLE";
+      panel-element-positions = forEachDisplay [
+        { element = "showAppsButton"; visible = false; position = "stackedTL"; }
+        { element = "activitiesButton"; visible = false; position = "stackedTL"; }
+        { element = "leftBox"; visible = true; position = "stackedTL"; }
+        { element = "taskbar"; visible = true; position = "stackedTL"; }
+        { element = "centerBox"; visible = true; position = "stackedBR"; }
+        { element = "dateMenu"; visible = true; position = "stackedBR"; }
+        { element = "rightBox"; visible = true; position = "stackedBR"; }
+        { element = "systemMenu"; visible = true; position = "stackedBR"; }
+        { element = "desktopButton"; visible = false; position = "stackedBR"; }
+      ];
+      panel-lengths = forEachDisplay 100;
+      panel-positions = forEachDisplay "TOP";
+      panel-sizes = forEachDisplay 32;
       scroll-panel-action = "NOTHING";
       secondarymenu-contains-showdetails = false;
       shift-click-action = "LAUNCH";

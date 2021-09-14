@@ -18,7 +18,6 @@
   update = ''
     set -euxo pipefail
     #!${pkgs.bash}/bin/bash
-    cd ${self}
     ${pkgs.nixUnstable}/bin/nix flake update
     ${pkgs.git}/bin/git add flake.lock
     ${pkgs.git}/bin/git commit -m "update flakes"
