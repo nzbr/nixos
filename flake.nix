@@ -78,7 +78,7 @@
         ]
         ++
         mapAttrsToList
-          (name: drv: pkgs.writeShellScriptBin name "${pkgs.nixUnstable}/bin/nix run ${self}#${name} \"$@\"")
+          (name: drv: pkgs.writeShellScriptBin name "${pkgs.nixUnstable}/bin/nix run .#${name} \"$@\"")
           scripts;
       };
 

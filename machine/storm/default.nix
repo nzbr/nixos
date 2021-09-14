@@ -154,4 +154,30 @@
       }
     ];
   };
+
+  services.postgresql =
+  let
+    services = [
+      "nextcloud"
+    ];
+  in
+  {
+    enable = true;
+    dataDir = "/storage/postgres/${config.services.postgresql.package.psqlSchema}";
+    enableTCPIP = true;
+    ensureDatabases = services;
+    ensureUsers = map
+      (name: {
+        inherit name;
+        ensurePermissions = {
+          "DATABASE ${name}" = "ALL PRIVILEGES";
+        };
+      })
+      services;
+    initialScript = config.nzbr.assets."postgres-setup.sql";
+  };
+  systemd.tmpfiles.rules = [
+    "d /storage/postgres 0755 postgres users"
+  ];
+  age.secrets."postgres-setup.sql".owner = "postgres";
 }
