@@ -4,6 +4,7 @@
   networking.hostId = "b93ad358";
 
   imports = [
+    "${root}/module/common/java.nix"
     "${root}/module/common/boot/systemd-boot.nix"
     "${root}/module/common/service/libvirtd.nix"
     "${root}/module/common/service/syncthing.nix"
@@ -13,6 +14,11 @@
     "${root}/module/server/restic.nix"
     "${root}/module/server/service/k3s.nix"
     "${root}/module/server/service/ddns.nix"
+
+    "${root}/module/desktop/development.nix"
+    # "${root}/module/desktop/gnome.nix"
+    "${root}/module/desktop/pulseaudio.nix"
+    "${root}/module/desktop/theme"
 
     # "${root}/container/watchtower.nix"
     # "${root}/container/machinaris.nix"
@@ -436,4 +442,43 @@
     enable = true;
     domain = "earthquake.nzbr.de";
   };
+
+  # remote desktop
+  programs.x2goserver = {
+    enable = true;
+    superenicer.enable = true;
+  };
+  services.xrdp = {
+    enable = true;
+    # defaultWindowManager = "${pkgs.gnome3.gnome-session}/bin/gnome-session";
+    # defaultWindowManager = "${pkgs.lxterminal}/bin/lxterminal";
+    defaultWindowManager = "${pkgs.plasma-workspace}/bin/startplasma-x11";
+  };
+
+  environment.systemPackages = with pkgs; [
+    unstable.vivaldi
+    unstable.vivaldi-widevine
+    unstable.vivaldi-ffmpeg-codecs
+  ];
+
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    roboto
+    roboto-slab
+    roboto-mono
+  ];
+
+  # services.xserver.displayManager.gdm.enable = lib.mkForce false;
+  # services.xserver.displayManager.autoLogin.enable = lib.mkForce false;
+  # services.xserver.desktopManager.lxqt.enable = true;
+  # services.xserver.windowManager.openbox.enable = true;
+  # services.xserver.windowManager.metacity.enable = true;
+  services.xserver.desktopManager.plasma5 = {
+    enable = true;
+    phononBackend = "vlc";
+  };
+
+  xdg.portal.enable = true;
+
+  networking.networkmanager.enable = lib.mkForce false;
 }

@@ -50,6 +50,7 @@ in
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
         "gsconnect@andyholmes.github.io"
         "hibernate@dafne.rocks"
+        "remmina-search-provider@alexmurray.github.com"
         "syncthingicon@jay.strict@posteo.de"
         "trayIconsReloaded@selfmade.pl"
         "tweaks-system-menu@extensions.gnome-shell.fifi.org"

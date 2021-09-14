@@ -28,7 +28,9 @@
 
     xsel
 
+    remmina
     virt-manager
+    x2goclient
 
     lm_sensors
   ];

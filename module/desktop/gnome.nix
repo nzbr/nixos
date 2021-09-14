@@ -34,6 +34,7 @@
     caffeine
     dash-to-panel
     gsconnect
+    remmina-search-provider
     system-action-hibernate
     syncthing-icon
     tray-icons-reloaded
