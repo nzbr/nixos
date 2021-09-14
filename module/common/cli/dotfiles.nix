@@ -3,6 +3,7 @@
   environment = {
     systemPackages = with pkgs; [
       stow
+      pwgen
     ];
 
     etc."shell-hooks/10-dotfiles.sh" = {
