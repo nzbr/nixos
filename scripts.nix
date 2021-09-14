@@ -10,6 +10,7 @@
 
     set -euxo pipefail
 
+    cd ${self}
     ${pkgs.rsync}/bin/rsync -avr --info=progress2 --delete --exclude ".git" . $1:/etc/nixos/config
     ssh -t $1 -- nixos-rebuild switch --flake /etc/nixos/config -v --show-trace
   '';
@@ -17,77 +18,78 @@
   update = ''
     set -euxo pipefail
     #!${pkgs.bash}/bin/bash
+    cd ${self}
     ${pkgs.nixUnstable}/bin/nix flake update
     ${pkgs.git}/bin/git add flake.lock
     ${pkgs.git}/bin/git commit -m "update flakes"
   '';
 
   enrage =
-  let
-    nixInstantiate="${pkgs.nixUnstable}/bin/nix-instantiate";
-    sedBin="${pkgs.gnused}/bin/sed";
-    ageBin="${pkgs.rage}/bin/rage";
-  in
-  ''
-    #!${pkgs.bash}/bin/bash
-    # This file contains code from https://github.com/ryantm/agenix/blob/master/pkgs/agenix.nix
+    let
+      nixInstantiate = "${pkgs.nixUnstable}/bin/nix-instantiate";
+      sedBin = "${pkgs.gnused}/bin/sed";
+      ageBin = "${pkgs.rage}/bin/rage";
+    in
+    ''
+      #!${pkgs.bash}/bin/bash
+      # This file contains code from https://github.com/ryantm/agenix/blob/master/pkgs/agenix.nix
 
-    for input in "$@"; do
-        if ! [ -f "$input" ]; then
-            echo input file \"$input\" does not exist
-            exit 1
-        fi
+      for input in "$@"; do
+          if ! [ -f "$input" ]; then
+              echo input file \"$input\" does not exist
+              exit 1
+          fi
 
-        if [ -e "''${input}.age" ]; then
-            echo output file \"''${input}.age\" already exists, aborting
-            exit 1
-        fi
-    done
+          if [ -e "''${input}.age" ]; then
+              echo output file \"''${input}.age\" already exists, aborting
+              exit 1
+          fi
+      done
 
-    set -euxo pipefail
+      set -euxo pipefail
 
 
-    RULES=''${RULES:-./secrets.nix}
+      RULES=''${RULES:-./secrets.nix}
 
-    for input in "$@"; do
-        FILE="''${input}.age"
+      for input in "$@"; do
+          FILE="''${input}.age"
 
-        KEYS=$((${nixInstantiate} --eval -E "(let rules = import $RULES; in builtins.concatStringsSep \"\n\" rules.\"$FILE\".publicKeys)" | ${sedBin} 's/"//g' | ${sedBin} 's/\\n/\n/g') || exit 1)
+          KEYS=$((${nixInstantiate} --eval -E "(let rules = import $RULES; in builtins.concatStringsSep \"\n\" rules.\"$FILE\".publicKeys)" | ${sedBin} 's/"//g' | ${sedBin} 's/\\n/\n/g') || exit 1)
 
-        if [ -z "$KEYS" ]
-        then
-            >&2 echo "There is no rule for $FILE in $RULES."
-            exit 1
-        fi
+          if [ -z "$KEYS" ]
+          then
+              >&2 echo "There is no rule for $FILE in $RULES."
+              exit 1
+          fi
 
-        ENCRYPT=()
-        while IFS= read -r key
-        do
-            ENCRYPT+=(--recipient "$key")
-        done <<< "$KEYS"
+          ENCRYPT=()
+          while IFS= read -r key
+          do
+              ENCRYPT+=(--recipient "$key")
+          done <<< "$KEYS"
 
-        ${ageBin} "''${ENCRYPT[@]}" -o "''${FILE}" < "''${input}"
-        rm "$input"
-    done
-  '';
+          ${ageBin} "''${ENCRYPT[@]}" -o "''${FILE}" < "''${input}"
+          rm "$input"
+      done
+    '';
 
   unrage =
-  let
-    ageBin = "${pkgs.rage}/bin/rage";
-  in
-  ''
-    #!${pkgs.bash}/bin/bash
-    FILE="''${1%.age}"
+    let
+      ageBin = "${pkgs.rage}/bin/rage";
+    in
+    ''
+      #!${pkgs.bash}/bin/bash
+      FILE="''${1%.age}"
 
-    if [ -e "$FILE" ]; then
-        echo output file exists, aborting
-        exit 1
-    fi
+      if [ -e "$FILE" ]; then
+          echo output file exists, aborting
+          exit 1
+      fi
 
-    set -euxo pipefail
-    ${ageBin} -i ~/.ssh/id_ed25519 -o "$FILE" -d "$1"
-    rm "$1"
-  '';
+      set -euxo pipefail
+      ${ageBin} -i ~/.ssh/id_ed25519 -o "$FILE" -d "$1"
+      rm "$1"
+    '';
 
   mkiso = ''
     #!${pkgs.bash}/bin/bash

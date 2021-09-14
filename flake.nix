@@ -78,21 +78,22 @@
         ]
         ++
         mapAttrsToList
-        (name: drv: pkgs.writeShellScriptBin name "${pkgs.nixUnstable}/bin/nix run ${self}#${name} \"$@\"")
-        scripts;
+          (name: drv: pkgs.writeShellScriptBin name "${pkgs.nixUnstable}/bin/nix run ${self}#${name} \"$@\"")
+          scripts;
       };
 
-      apps = mapAttrs' (name: value:
-        nameValuePair'
-        name
-        (flake-utils.lib.mkApp
-          {
-            inherit name;
-            drv = pkgs.writeShellScriptBin name value;
-          }
+      apps = mapAttrs'
+        (name: value:
+          nameValuePair'
+            name
+            (flake-utils.lib.mkApp
+              {
+                inherit name;
+                drv = pkgs.writeShellScriptBin name value;
+              }
+            )
         )
-      )
-      scripts;
+        scripts;
 
       packages =
         loadPackages pkgs ".pkg.nix" ./package # import all packages from pkg directory
