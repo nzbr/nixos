@@ -101,6 +101,17 @@
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     interfaces.ens3 = {
       useDHCP = true;
+      ipv6 = {
+        addresses = [{
+          address = "2a03:4000:53:7a::";
+          prefixLength = 64;
+        }];
+        routes = [{
+          address = "::";
+          prefixLength = 0;
+          via = "fe80::1";
+        }];
+      };
     };
   };
 
