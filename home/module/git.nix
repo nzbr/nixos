@@ -11,6 +11,7 @@
     lfs.enable = true;
     delta.enable = true;
     extraConfig = {
+      core.autocrlf = "input";
       init.defaultBranch = "main";
       pull.rebase = false;
     };
