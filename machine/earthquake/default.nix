@@ -17,6 +17,7 @@
 
     "${root}/module/desktop/development.nix"
     # "${root}/module/desktop/gnome.nix"
+    "${root}/module/desktop/latex.nix"
     "${root}/module/desktop/pulseaudio.nix"
     "${root}/module/desktop/theme"
 
