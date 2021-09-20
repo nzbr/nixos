@@ -27,7 +27,7 @@ in
   };
 
   systemd.services.etcd = {
-    after = [ "wireguard-wg0" ];
+    after = [ "wireguard-wg0" ]; # TODO: Wait for connection to at least one other node
     requires = [ "wireguard-wg0" ];
     serviceConfig = {
       Restart = "on-failure";

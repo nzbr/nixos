@@ -5,5 +5,5 @@
     ./server/remote-unlock.nix
   ];
 
-  # boot.kernelPackages = pkgs.linuxPackages_hardened;
+  boot.kernelPackages = pkgs.linuxPackages_hardened;
 }
