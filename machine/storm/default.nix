@@ -170,6 +170,7 @@
     let
       services = [
         "bitwarden"
+        "gitlab"
         "nextcloud"
       ];
     in
