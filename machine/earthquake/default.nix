@@ -58,7 +58,7 @@
 
   fileSystems = {
     "/" = {
-      device = "beach"; # -> zroot
+      device = "zroot";
       fsType = "zfs";
     };
     "/boot" = {
@@ -105,23 +105,23 @@
       };
     };
     "/storage" = {
-      device = "hottub"; # -> hoard
+      device = "hoard";
       fsType = "zfs";
     };
     "/storage/backup" = {
-      device = "hottub/backup";
+      device = "hoard/backup";
       fsType = "zfs";
     };
     "/storage/chia" = {
-      device = "hottub/chia";
+      device = "hoard/chia";
       fsType = "zfs";
     };
     "/storage/kubernetes" = {
-      device = "hottub/kubernetes";
+      device = "hoard/kubernetes";
       fsType = "zfs";
     };
     "/storage/libvirt" = {
-      device = "hottub/libvirt";
+      device = "hoard/libvirt";
       fsType = "zfs";
     };
 
@@ -237,7 +237,7 @@
 
   nzbr.remote-unlock = {
     luks = false;
-    zfs = [ "beach" ];
+    zfs = [ "zroot" ];
   };
 
   networking = {
@@ -400,17 +400,17 @@
   nzbr.restic = {
     remote = "jotta-archive";
     include = [
-      "beach/etc"
-      "beach/home"
-      "beach/root"
-      "beach/srv"
+      "zroot/etc"
+      "zroot/home"
+      "zroot/root"
+      "zroot/srv"
 
-      "hottub/backup"
-      "hottub/chia/config"
-      "hottub/kubernetes"
-      "hottub/libvirt"
-      "hottub/media"
-      "hottub/nzbr"
+      "hoard/backup"
+      "hoard/chia/config"
+      "hoard/kubernetes"
+      "hoard/libvirt"
+      "hoard/media"
+      "hoard/nzbr"
     ];
     healthcheck = {
       backup = "https://hc-ping.com/f904595a-cd31-4261-b714-21b14be2cdc2";
@@ -418,10 +418,10 @@
     };
     pools = [
       {
-        name = "beach";
+        name = "zroot";
       }
       {
-        name = "hottub";
+        name = "hoard";
         subvols = [
           { name = "backup"; mountpoint = "/backup"; }
           { name = "chia"; mountpoint = "/chia"; }
