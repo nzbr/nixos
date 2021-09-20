@@ -10,6 +10,7 @@
     role = "server";
     extraFlags =
       "--disable=traefik"
+      + " --docker"
       + " --cluster-cidr=10.12.0.0/16"
       + " --service-cidr=10.13.0.0/13"
       + " --cluster-dns=10.13.0.10"
@@ -29,6 +30,11 @@
     kubectl
     helm
   ];
+
+  # networking.firewall.allowedTCPPorts = [
+  #   80
+  #   443
+  # ];
 
   environment.etc."shell-hooks/99-kubeconfig.sh" = {
     mode = "0755";
