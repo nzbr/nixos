@@ -31,10 +31,10 @@
     helm
   ];
 
-  # networking.firewall.allowedTCPPorts = [
-  #   80
-  #   443
-  # ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 
   environment.etc."shell-hooks/99-kubeconfig.sh" = {
     mode = "0755";
