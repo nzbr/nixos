@@ -28,7 +28,7 @@
   environment.systemPackages = with pkgs; [
     k3s
     kubectl
-    helm
+    kubernetes-helm
   ];
 
   networking.firewall.allowedTCPPorts = [
