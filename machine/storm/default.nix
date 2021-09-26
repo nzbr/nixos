@@ -178,15 +178,19 @@
       enable = true;
       dataDir = "/storage/postgres/${config.services.postgresql.package.psqlSchema}";
       enableTCPIP = true;
+      authentication = ''
+        host all all 10.42.0.0/24 md5
+      '';
       ensureDatabases = services;
-      ensureUsers = map
-        (name: {
-          inherit name;
-          ensurePermissions = {
-            "DATABASE ${name}" = "ALL PRIVILEGES";
-          };
-        })
-        services;
+      ensureUsers =
+        map
+          (name: {
+            inherit name;
+            ensurePermissions = {
+              "DATABASE ${name}" = "ALL PRIVILEGES";
+            };
+          })
+          services;
       initialScript = config.nzbr.assets."postgres-setup.sql";
     };
   systemd.tmpfiles.rules = [
