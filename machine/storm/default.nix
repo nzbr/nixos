@@ -171,6 +171,7 @@
       services = [
         "bitwarden"
         "gitlab"
+        "kubernetes"
         "nextcloud"
       ];
     in
