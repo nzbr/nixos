@@ -23,7 +23,6 @@
     "agenix_2": {
       "inputs": {
         "nixpkgs": [
-          "ragon",
           "nixpkgs"
         ]
       },

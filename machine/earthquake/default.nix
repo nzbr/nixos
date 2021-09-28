@@ -340,7 +340,6 @@
         allowedIPs = [
           "10.42.0.0/26"
           "fd42:42::/32"
-          "172.18.0.0/16" # storm's Docker network
         ];
       }
       {
