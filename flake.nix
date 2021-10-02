@@ -118,7 +118,7 @@
                     inherit lib inputs system;
                     root = "${self}";
                     assets = "${self}/assets";
-                    host = "${self}/machine/${hostName}";
+                    host = "${self}/host/${hostName}";
                   };
                   modules = [
                     inputs.agenix.nixosModules.age
@@ -153,11 +153,11 @@
                       system.stateVersion = "21.05";
                     })
 
-                    (import (./machine + "/${hostName}"))
+                    (import (./host + "/${hostName}"))
                   ];
                 })
             )
-            (mapAttrsToList (name: type: name) (readDir ./machine))
+            (mapAttrsToList (name: type: name) (readDir ./host))
           ));
         };
 

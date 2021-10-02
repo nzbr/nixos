@@ -1,6 +1,6 @@
 { config, lib, pkgs, modulesPath, root, ... }:
 let
-  secrets = "${root}/machine";
+  secrets = "${root}/host";
   keys = with builtins; with lib; # TODO: Restrict to certain hosts (configurable)
     map
       (x: removeSuffix "\n" x)
@@ -61,7 +61,7 @@ in
         (
           lib.mapAttrsToList
             (name: _: name)
-            (builtins.readDir ../../../machine)
+            (builtins.readDir ../../../host)
         )
       );
   };

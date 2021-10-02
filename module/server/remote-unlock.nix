@@ -13,7 +13,7 @@ in
           authorizedKeys = config.users.users.root.openssh.authorizedKeys.keys;
           hostKeys = [
             "/etc/ssh/ssh_host_ed25519_key"
-            # (builtins.unsafeDiscardStringContext "${root}/machine/${config.networking.hostName}/ssh/ssh_host_ed25519_key")
+            # (builtins.unsafeDiscardStringContext "${root}/host/${config.networking.hostName}/ssh/ssh_host_ed25519_key")
           ];
         };
         postCommands =

@@ -9,7 +9,7 @@ in
 with builtins; with lib;
 (
   let
-    globalKeys = map (host: readFile' (./machine + "/${host}/ssh/id_ed25519.pub")) globalKeyHosts;
+    globalKeys = map (host: readFile' (./host + "/${host}/ssh/id_ed25519.pub")) globalKeyHosts;
 
     hostKeys = (
       mapAttrs'
@@ -56,7 +56,7 @@ with builtins; with lib;
     (
       mapAttrsToList
         (name: keys:
-          genAgeConfig (globalKeys ++ keys) (./machine + "/${name}")
+          genAgeConfig (globalKeys ++ keys) (./host + "/${name}")
         )
         hostKeys
     )
