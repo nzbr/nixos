@@ -117,7 +117,7 @@
                   specialArgs = {
                     inherit lib inputs system;
                     root = "${self}";
-                    assets = "${self}/assets";
+                    assets = "${self}/asset";
                     host = "${self}/host/${hostName}";
                   };
                   modules = [

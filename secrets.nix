@@ -50,7 +50,7 @@ with builtins; with lib;
   in
   foldl recursiveUpdate { } (
     [
-      (genAgeConfig (globalKeys ++ allHostKeys) ./assets)
+      (genAgeConfig (globalKeys ++ allHostKeys) ./asset)
     ]
     ++
     (
