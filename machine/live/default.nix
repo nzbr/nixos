@@ -23,6 +23,7 @@
     fsarchiver
     gparted
     partimage
+    squashfsTools
     testdisk
     testdisk-qt
 
