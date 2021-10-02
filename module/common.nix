@@ -5,7 +5,6 @@ with builtins; with lib; {
     ./common/initrd-secrets.nix
     ./common/cli/dotfiles.nix
     ./common/cli/lorri.nix
-    ./common/cli/shell-init.nix
     ./common/cli/sudo.nix
     ./common/gpg.nix
     ./common/home-manager.nix

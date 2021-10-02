@@ -107,6 +107,14 @@ in
     "en_US.UTF-8/UTF-8"
   ];
 
+  # SSH Agent
+  environment.extraInit = ''
+    if ! [ -f /tmp/ssh-agent.pid ]; then
+      ssh-agent >/tmp/ssh-agent.env
+    fi
+    source /tmp/ssh-agent.env >/dev/null
+  '';
+
   security.sudo.wheelNeedsPassword = false;
 
   # Disable systemd units that don't make sense on WSL

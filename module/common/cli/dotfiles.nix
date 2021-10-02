@@ -6,13 +6,10 @@
       pwgen
     ];
 
-    etc."shell-hooks/10-dotfiles.sh" = {
-      mode = "0755";
-      text = ''
-        if ! [ -d $HOME/.dotfiles ]; then
-          curl -fsSL https://raw.githubusercontent.com/nzbr/dotfiles/master/control.sh | bash
-        fi
-      '';
-    };
+    extraInit = ''
+      if ! [ -d $HOME/.dotfiles ]; then
+        curl -fsSL https://raw.githubusercontent.com/nzbr/dotfiles/master/control.sh | bash
+      fi
+    '';
   };
 }

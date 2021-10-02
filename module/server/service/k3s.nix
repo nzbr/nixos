@@ -45,12 +45,9 @@
     443
   ];
 
-  environment.etc."shell-hooks/99-kubeconfig.sh" = {
-    mode = "0755";
-    text = ''
-      export KUBECONFIG=/run/kubeconfig
-    '';
-  };
+  environment.extraInit = ''
+    export KUBECONFIG=/run/kubeconfig
+  '';
 
   networking.firewall.trustedInterfaces = [ "tunl0" ];
 }

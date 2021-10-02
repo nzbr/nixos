@@ -6,12 +6,13 @@
     systemPackages = with pkgs; [
       direnv
     ];
-
-    etc."shell-hooks/99-direnv.sh" = {
-      mode = "0755";
-      text = ''
-        eval "$(direnv hook $(ps -p $$ -ocmd=))"
-      '';
-    };
   };
+
+  programs.bash.interactiveShellInit = ''
+    eval "$(direnv hook bash)"
+  '';
+
+  programs.zsh.interactiveShellInit = ''
+    eval "$(direnv hook zsh)"
+  '';
 }
