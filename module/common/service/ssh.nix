@@ -25,7 +25,10 @@ in
 {
 
   programs.mosh.enable = true;
-  programs.ssh.setXAuthLocation = lib.mkForce true;
+  programs.ssh = {
+    setXAuthLocation = lib.mkForce true;
+    startAgent = true;
+  };
   services.openssh = {
     enable = true;
     openFirewall = true;
