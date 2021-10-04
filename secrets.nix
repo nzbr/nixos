@@ -18,22 +18,22 @@ with builtins; with lib;
             name
             (
               mapAttrsToList
-                (name': type': readFile' (./host-keys + "/${name}/${name'}"))
+                (name': type': readFile' (./host-key + "/${name}/${name'}"))
                 (
                   filterAttrs
                     (name': type': (hasSuffix ".pub" name'))
-                    (readDir (./host-keys + "/${name}"))
+                    (readDir (./host-key + "/${name}"))
                 )
             )
         )
         (
           filterAttrs
             (name: type: type == "directory")
-            (readDir ./host-keys)
+            (readDir ./host-key)
         )
     );
 
-    allHostKeys = foldl trivial.concat [ ] (mapAttrsToList (host: keys: keys) hostKeys);
+    allHostKeys = flatten (mapAttrsToList (host: keys: keys) hostKeys);
 
     find = dir: map (path: removePrefix "${toString ./.}/" (toString path)) (findModules "" dir);
     genAgeConfig =

@@ -1,15 +1,17 @@
-{ config, lib, pkgs, modulesPath, root, ... }:
+{ config, lib, pkgs, modulesPath, ... }:
 {
   networking.hostName = "hurricane";
 
-  imports = [
-    "${root}/module/wsl.nix"
+  nzbr = {
+    patterns = [ "wsl" "development" "hapra" ];
 
-    "${root}/module/common/development.nix"
-    "${root}/module/common/service/syncthing.nix"
+    service = {
+      syncthing.enable = true;
+    };
 
-    "${root}/module/desktop/latex.nix"
-    "${root}/module/desktop/development.nix"
-  ];
+    program = {
+      latex.enable = true;
+    };
+  };
 
 }

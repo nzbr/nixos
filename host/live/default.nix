@@ -1,20 +1,52 @@
-{ config, lib, inputs, pkgs, modulesPath, root, ... }:
-{
+{ config, lib, inputs, pkgs, modulesPath, ... }:
+let
+  root = config.nzbr.flake.root;
+in
+with builtins; with lib; {
   networking.hostName = "live";
-  nzbr.user = "live";
 
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-base.nix"
     "${modulesPath}/installer/cd-dvd/channel.nix"
-
-    "${root}/module/common.nix"
-    # desktop.nix contents are provided within this file
-    "${root}/module/desktop/gnome.nix"
-    "${root}/module/desktop/theme"
-    "${root}/module/desktop/pulseaudio.nix"
-    "${root}/module/desktop/device/razer-nari.nix"
   ];
 
+  nzbr = {
+    patterns = [ "common" ]; # desktop contents are provided within this file
+
+    user = "nixos";
+    agenix.enable = false;
+
+    desktop = {
+      gnome.enable = true;
+      pulseaudio.enable = true;
+    };
+
+    home.config = {
+      dconf.settings = {
+        "org/gnome/desktop/background" = {
+          picture-uri = mkForce (builtins.fetchurl {
+            # Use a free image from unsplash
+            # 482eb40256a904860fbad4c983f65f37ad7439b4d41202eead244e62e271c2a7 https://unsplash.com/photos/IWenq-4JHqo/download\?force\=true
+            url = "https://unsplash.com/photos/2HqpqSqy0zg/download\?force\=true";
+            sha256 = "29e19663b210b1e952a2dd8bef3c1226edcc10ec3b635b1e3f1751ba96349b81";
+          });
+        };
+
+        "org/gnome/shell" = {
+          favorite-apps = mkForce [
+            "vivaldi-stable.desktop"
+            "org.gnome.Nautilus.desktop"
+            "org.gnome.Terminal.desktop"
+            "org.gnome.DiskUtility.desktop"
+            "gparted.desktop"
+          ];
+        };
+      };
+    };
+
+    # desktop.nix entries
+    device.razerNari.enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
 
@@ -26,9 +58,6 @@
     squashfsTools
     testdisk
     testdisk-qt
-
-    # Needed for the dotfiles
-    antibody
 
     # Desktop packages
     unstable.vivaldi
@@ -72,12 +101,15 @@
   isoImage = {
     edition = "nzbr";
     isoName = with config.system.nixos; with config.isoImage; lib.mkForce "${isoBaseName}-${edition}-${release}-${codeName}-${pkgs.stdenv.hostPlatform.system}.iso";
+    squashfsCompression = "zstd";
   };
 
   users.users.${config.nzbr.user} = {
     uid = 1000;
     extraGroups = [ "networkmanager" ];
+    passwordFile = mkForce null;
   };
+  users.users.root.passwordFile = mkForce null;
   services.getty.autologinUser = lib.mkForce config.nzbr.user;
 
   services = {
@@ -86,11 +118,6 @@
       libinput.enable = true;
 
       ### GNOME ###
-
-      desktopManager.gnome.favoriteAppsOverride = lib.mkForce ''
-        [org.gnome.shell]
-        favorite-apps=[ 'vivaldi-stable.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.DiskUtility.desktop', 'gparted.desktop' ]
-      '';
 
       displayManager = {
         gdm = {
@@ -129,31 +156,5 @@
     };
   };
 
-  system.activationScripts.copy-dotfiles = {
-    deps = [ "etc" ];
-    text =
-      let
-        script = pkgs.writeScript "dotfiles.sh" ''
-          echo "Setting up dotfiles for $(whoami)..."
-          rsync -ar "${inputs.dotfiles}/." "$HOME/.dotfiles"
-          mkdir -p $HOME/{.cache,.config,.local/{bin,share,lib}}
-          touch $HOME/{.cache,.config,.local/{bin,share,lib}}/.stowkeep
-          export DOT_NOINSTALL=1 && source $HOME/.dotfiles/control.sh && autolink_all
-          rm -f $HOME/{.cache,.config,.local/{bin,share,lib}}/.stowkeep
-          # sha256sum $HOME/.zsh_plugins.txt $HOME/.zshrc > $HOME/.zsh.sha
-          mkdir -p "$HOME/.cache/antibody"
-          ln -s "${pkgs.antibody}/bin/antibody" "$HOME/.cache/antibody/antibody"
-        '';
-      in
-      ''
-        # Add all installed packages to path
-        for i in ${toString config.environment.systemPackages}; do
-            PATH=$PATH:$i/bin:$i/sbin
-        done
-        sudo -u ${config.nzbr.user} bash "${script}"
-        HOME=/root bash "${script}"
-      '';
-  };
-
-  environment.etc."nixos/config".source = ./..;
+  environment.etc."nixos/config".source = config.nzbr.flake.root;
 }

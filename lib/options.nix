@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 with builtins; with lib; with types; {
   boolOption = mkOption { type = bool; };
   mkBoolOpt = default:

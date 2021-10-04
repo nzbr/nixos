@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 with builtins; with lib; {
   # Given a filename suffix and a path to a directory,
   # recursively finds all files whose names end in that suffix.
@@ -25,7 +25,7 @@ with builtins; with lib; {
   nameValuePair' =
     name: value:
     # String carries context of the derivation the file comes from.
-    # It is only used to find the derivation that should carry that information anyway.
+    # It is only used as the name of an attribute here.
     # It should be safe to discard it. (I hope)
     nameValuePair (unsafeDiscardStringContext name) value;
 

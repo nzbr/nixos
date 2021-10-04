@@ -1,18 +1,49 @@
-{ config, lib, root, ... }:
+{ config, lib, pkgs, ... }:
 {
   networking = {
     hostName = "storm";
     hostId = "e23e7d0a";
   };
 
-  imports = [
-    "${root}/module/common/boot/grub.nix"
-    "${root}/module/common/service/wireguard.nix"
+  nzbr = {
+    patterns = [ "server" ];
 
-    "${root}/module/server.nix"
-    "${root}/module/server/restic.nix"
-    "${root}/module/server/service/k3s.nix"
-  ];
+    boot = {
+      grub.enable = true;
+      remoteUnlock = {
+        luks = false;
+        zfs = [ "zroot" ];
+      };
+    };
+
+    service = {
+      k3s.enable = true;
+      restic = {
+        enable = true;
+        remote = "jotta-archive";
+        include = [
+          "zroot/etc"
+          "zroot/home"
+          "zroot/root"
+          "zroot/srv"
+          "zroot/storage"
+        ];
+        healthcheck = {
+          backup = "https://hc-ping.com/6d9994af-6806-4cf1-91ee-3a217176df7f";
+          prune = "https://hc-ping.com/433ab5bb-9267-4dda-b5a9-5fa8573f5ed8";
+        };
+        pools = [
+          {
+            name = "zroot";
+            subvols = [
+              { name = "nix-store"; mountpoint = "/nix/store"; }
+              { name = "kubernetes"; mountpoint = "/storage/kubernetes"; }
+            ];
+          }
+        ];
+      };
+    };
+  };
 
   boot = {
     loader.grub.device = "/dev/sda";
@@ -91,11 +122,6 @@
 
   services.qemuGuest.enable = true;
 
-  nzbr.remote-unlock = {
-    luks = false;
-    zfs = [ "zroot" ];
-  };
-
   networking = {
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     interfaces.ens3 = {
@@ -114,7 +140,10 @@
     };
   };
 
-  nzbr.wgIp = "10.42.0.1";
+  nzbr.service.wireguard = {
+    enable = true;
+    ip = "10.42.0.1";
+  };
   networking.wireguard.interfaces.wg0 = {
     ips = [
       "10.42.0.1/24"
@@ -143,30 +172,7 @@
     ];
   };
 
-  nzbr.restic = {
-    remote = "jotta-archive";
-    include = [
-      "zroot/etc"
-      "zroot/home"
-      "zroot/root"
-      "zroot/srv"
-      "zroot/storage"
-    ];
-    healthcheck = {
-      backup = "https://hc-ping.com/6d9994af-6806-4cf1-91ee-3a217176df7f";
-      prune = "https://hc-ping.com/433ab5bb-9267-4dda-b5a9-5fa8573f5ed8";
-    };
-    pools = [
-      {
-        name = "zroot";
-        subvols = [
-          { name = "nix-store"; mountpoint = "/nix/store"; }
-          { name = "kubernetes"; mountpoint = "/storage/kubernetes"; }
-        ];
-      }
-    ];
-  };
-
+  # TODO: Dump backups
   services.postgresql =
     let
       services = [
@@ -178,6 +184,7 @@
     in
     {
       enable = true;
+      package = pkgs.postgresql_13;
       dataDir = "/storage/postgres/${config.services.postgresql.package.psqlSchema}";
       enableTCPIP = true;
       authentication = ''
