@@ -10,7 +10,6 @@ with builtins; with lib;
     mkIf cfg.enable {
 
       nzbr = {
-        pattern.common.enable = mkDefault true;
         program.java.enable = true;
 
         boot = {

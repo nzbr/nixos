@@ -9,7 +9,7 @@ in
   };
 
   nzbr = {
-    patterns = [ "server" ];
+    patterns = [ "common" "server" ];
 
     boot = {
       grub.enable = true;

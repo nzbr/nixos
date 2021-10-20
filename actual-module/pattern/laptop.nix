@@ -8,8 +8,6 @@ with builtins; with lib;
       cfg = config.nzbr.pattern.laptop;
     in
     mkIf cfg.enable {
-      nzbr.pattern.desktop.enable = lib.mkDefault true;
-
       services.thermald.enable = true;
       services.power-profiles-daemon.enable = false;
       services.tlp = {

@@ -7,7 +7,7 @@ in
   networking.hostId = "b93ad358";
 
   nzbr = {
-    patterns = [ "server" "development" ];
+    patterns = [ "common" "server" "development" ];
 
     boot = {
       remoteUnlock = {

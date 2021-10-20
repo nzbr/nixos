@@ -7,7 +7,7 @@
   ];
 
   nzbr = {
-    patterns = [ "desktop" "development" "gaming" ];
+    patterns = [ "common" "desktop" "development" "gaming" ];
 
     boot.grub.enable = true;
 
@@ -33,7 +33,7 @@
     };
 
     initrd = {
-      availableKernelModules = [ "ehci_pci" "ahci" "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sr_mod" "aes_x86_64" "aesni_intel" "cryptd" ];
+      availableKernelModules = [ "ehci_pci" "ahci" "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
       kernelModules = [ "dm-snapshot" ];
 
       luks.devices = {

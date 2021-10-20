@@ -10,7 +10,7 @@ in
   ];
 
   nzbr = {
-    patterns = [ "laptop" "development" "gaming" ];
+    patterns = [ "common" "desktop" "laptop" "development" "gaming" ];
 
     program = {
       latex.enable = true;

@@ -3,7 +3,7 @@
   networking.hostName = "hurricane";
 
   nzbr = {
-    patterns = [ "wsl" "development" "hapra" ];
+    patterns = [ "common" "wsl" "development" "hapra" ];
 
     service = {
       syncthing.enable = true;
