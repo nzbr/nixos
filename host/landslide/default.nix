@@ -8,6 +8,7 @@
 
   nzbr = {
     patterns = [ "common" "desktop" "development" "gaming" ];
+    pattern.development.guiTools = true;
 
     boot.grub.enable = true;
 

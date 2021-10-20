@@ -1,7 +1,10 @@
 { config, lib, pkgs, modulesPath, ... }:
 with builtins; with lib;
 {
-  options.nzbr.pattern.development.enable = mkEnableOption "Development Tools";
+  options.nzbr.pattern.development = {
+    enable = mkEnableOption "Development Tools";
+    guiTools = mkEnableOption "GUI Tools";
+  };
 
   config = mkIf config.nzbr.pattern.development.enable (
     let
@@ -41,7 +44,7 @@ with builtins; with lib;
         unstable.dotnet-sdk_5
         unstable.tabnine
       ] ++ (
-        if config.nzbr.pattern.desktop.enable then
+        if config.nzbr.pattern.development.guiTools then
           [
             jetbrains.idea-ultimate
 

@@ -11,6 +11,7 @@ in
 
   nzbr = {
     patterns = [ "common" "desktop" "laptop" "development" "gaming" ];
+    pattern.development.guiTools = true;
 
     program = {
       latex.enable = true;
