@@ -66,7 +66,7 @@
 
       nixosModules = map
         (file: import file)
-        (lib.findModules ".nix" "${self}/actual-module");
+        (lib.findModules ".nix" "${self}/module");
     } //
     (flake-utils.lib.eachDefaultSystem
       (system:
