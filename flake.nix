@@ -28,6 +28,7 @@
     };
     dotfiles = {
       url = "github:nzbr/dotfiles";
+      # TODO: submodules = true;
       flake = false;
     };
     flake-compat = {
@@ -53,113 +54,136 @@
     , flake-utils
     , nixpkgs
     , ...
-    }: flake-utils.lib.eachDefaultSystem (system:
+    }:
     let
-      pkgs = nixpkgs.legacyPackages."${system}";
-      naersk-lib = inputs.naersk.lib."${system}";
-      baseLib = import ./lib/base.nix { inherit pkgs; lib = nixpkgs.lib; };
+      baseLib = import ./lib/base.nix { lib = nixpkgs.lib; };
       lib = nixpkgs.lib.extend (self': super':
-        with nixpkgs.lib; foldl recursiveUpdate { } (map (x: import x { inherit pkgs; lib = self'; }) (baseLib.findModules ".nix" ./lib))
+        with nixpkgs.lib; foldl recursiveUpdate { } (map (x: import x { lib = self'; }) (baseLib.findModules ".nix" ./lib))
       );
-      scripts = (import ./scripts.nix) { inherit lib self; pkgs = (pkgs // self.packages.${system}); };
     in
-    (with builtins; with nixpkgs; with lib; rec {
-
+    {
       inherit lib;
 
-      devShell = pkgs.mkShell {
-        buildInputs = with pkgs; with self.packages.${system}; [
-          agenix
-          rage
+      nixosModules = map
+        (file: import file)
+        (lib.findModules ".nix" "${self}/module");
+    } //
+    (flake-utils.lib.eachDefaultSystem
+      (system:
+      let
+        pkgs = nixpkgs.legacyPackages."${system}";
+        naersk-lib = inputs.naersk.lib."${system}";
+        scripts = (import ./scripts.nix) { inherit lib self; pkgs = (pkgs // self.packages.${system}); };
+      in
+      (with builtins; with nixpkgs; with lib; {
 
-          git-crypt
+        devShell = pkgs.mkShell {
+          buildInputs = with pkgs; with self.packages.${system}; [
+            agenix
+            rage
 
-          nixpkgs-fmt
-        ]
-        ++
-        mapAttrsToList
-          (name: drv: pkgs.writeShellScriptBin name "${pkgs.nixUnstable}/bin/nix run .#${name} \"$@\"")
-          scripts;
-      };
+            git-crypt
 
-      apps = mapAttrs'
-        (name: value:
-          nameValuePair'
-            name
-            (flake-utils.lib.mkApp
-              {
-                inherit name;
-                drv = pkgs.writeShellScriptBin name value;
-              }
-            )
-        )
-        scripts;
-
-      packages =
-        loadPackages pkgs ".pkg.nix" ./package # import all packages from pkg directory
-        // inputs.agenix.packages.${system} # import all packages from agenix flake
-        // {
-
-          comma = pkgs.callPackage (import inputs.comma) { };
-
-          wsld = naersk-lib.buildPackage {
-            pname = "wsld";
-            root = inputs.wsld;
-            cargoBuildOptions = (default: default ++ [ "-p" "wsld" ]);
-          };
-
-          nixosConfigurations = (listToAttrs (map
-            (hostName:
-              lib.nameValuePair
-                hostName
-                (nixosSystem {
-                  inherit system;
-                  specialArgs = {
-                    inherit lib inputs system;
-                    root = "${self}";
-                    assets = "${self}/asset";
-                    host = "${self}/host/${hostName}";
-                  };
-                  modules = [
-                    inputs.agenix.nixosModules.age
-
-                    ({ pkgs, config, ... }: {
-
-                      nixpkgs.config = {
-                        allowUnfree = true;
-
-                        packageOverrides =
-                          {
-                            local = self.packages."${system}"; # import local packages
-                          } //
-                          # import packages from inputs
-                          lib.mapAttrs
-                            (name: value: import value {
-                              inherit system;
-                              config = config.nixpkgs.config;
-                            })
-                            (with inputs; {
-                              unstable = nixpkgs-unstable;
-                              bleeding-edge = nixpkgs-bleeding-edge;
-                              legacy = nixpkgs-legacy;
-                              ragon = ragon;
-                            });
-                      };
-
-                      # Let 'nixos-version --json' know about the Git revision
-                      # of this flake.
-                      system.configurationRevision = lib.mkIf (self ? rev) self.rev;
-
-                      system.stateVersion = "21.05";
-                    })
-
-                    (import (./host + "/${hostName}"))
-                  ];
-                })
-            )
-            (mapAttrsToList (name: type: name) (readDir ./host))
-          ));
+            nixpkgs-fmt
+          ]
+          ++
+          mapAttrsToList
+            (name: drv: pkgs.writeShellScriptBin name "${pkgs.nixUnstable}/bin/nix run .#${name} \"$@\"")
+            scripts;
         };
 
-    }));
+        apps = mapAttrs'
+          (name: value:
+            nameValuePair'
+              name
+              (flake-utils.lib.mkApp
+                {
+                  inherit name;
+                  drv = pkgs.writeShellScriptBin name value;
+                }
+              )
+          )
+          scripts;
+
+        packages =
+          loadPackages pkgs ".pkg.nix" ./package # import all packages from pkg directory
+          // inputs.agenix.packages.${system} # import all packages from agenix flake
+          // {
+
+            comma = pkgs.callPackage (import inputs.comma) { };
+
+            wsld = naersk-lib.buildPackage {
+              pname = "wsld";
+              root = inputs.wsld;
+              cargoBuildOptions = (default: default ++ [ "-p" "wsld" ]);
+            };
+
+            nixosConfigurations = (listToAttrs (map
+              (hostName:
+                lib.nameValuePair
+                  hostName
+                  (nixosSystem {
+                    inherit system;
+                    specialArgs = {
+                      inherit lib inputs system;
+                    };
+                    modules = [
+                      inputs.agenix.nixosModules.age
+
+                      ({ pkgs, config, ... }: {
+
+                        nixpkgs.config = {
+                          allowUnfree = true;
+
+                          packageOverrides =
+                            {
+                              local = self.packages.${system}; # import local packages
+                            } //
+                            # import packages from inputs
+                            lib.mapAttrs
+                              (name: value: import value {
+                                inherit system;
+                                config = config.nixpkgs.config;
+                              })
+                              (with inputs; {
+                                unstable = nixpkgs-unstable;
+                                bleeding-edge = nixpkgs-bleeding-edge;
+                                legacy = nixpkgs-legacy;
+                                ragon = ragon;
+                              });
+                        };
+
+                        # Let 'nixos-version --json' know about the Git revision
+                        # of this flake.
+                        system.configurationRevision = lib.mkIf (self ? rev) self.rev;
+
+                        system.stateVersion = "21.05";
+                      })
+
+                      ({ ... }: {
+                        imports = self.nixosModules;
+
+                        config = {
+                          nzbr.flake = {
+                            root = "${self}";
+                            assets = "${self}/asset";
+                            host = "${self}/host/${hostName}";
+                          };
+                        };
+                      })
+
+                      ({ ... }: {
+                        imports = [
+                          "${self}/host/${hostName}/default.nix"
+                        ];
+                      })
+                    ];
+                  })
+              )
+              (mapAttrsToList (name: type: name) (readDir ./host))
+            ));
+          };
+
+      }))
+    );
 }

@@ -1,7 +1,17 @@
 { lib, pkgs, self, ... }:
+let
+  checkflake = ''
+    if ! [ -f flake.nix ]; then
+      echo "No flake.nix found in the current directory"
+      exit 1
+    fi
+  '';
+in
 {
   deploy = ''
     #!${pkgs.bash}/bin/bash
+
+    ${checkflake}
 
     if [ -z "''${1:-}" ]; then
       echo "No target specified"
@@ -10,14 +20,20 @@
 
     set -euxo pipefail
 
-    cd ${self}
-    ${pkgs.rsync}/bin/rsync -avr --info=progress2 --delete --exclude ".git" . $1:/etc/nixos/config
+    HOST=$(ssh ''${1} -- hostname)
+    ${pkgs.nixUnstable}/bin/nix copy -s --to ssh://''${1} ".#nixosConfigurations.''${HOST}.config.system.build.toplevel" -v
+
+    # --exclude ".git"
+    ${pkgs.rsync}/bin/rsync -avr --info=progress2 --delete . $1:/etc/nixos/config
     ssh -t $1 -- nixos-rebuild switch --flake /etc/nixos/config -v --show-trace
   '';
 
   update = ''
-    set -euxo pipefail
     #!${pkgs.bash}/bin/bash
+    set -euxo pipefail
+
+    ${checkflake}
+
     ${pkgs.nixUnstable}/bin/nix flake update
     ${pkgs.git}/bin/git add flake.lock
     ${pkgs.git}/bin/git commit -m "update flakes"
@@ -93,14 +109,28 @@
   mkiso = ''
     #!${pkgs.bash}/bin/bash
     set -euxo pipefail
-    ${pkgs.nixUnstable}/bin/nix build '${self}#nixosConfigurations.live.config.system.build.isoImage' -v
+
+    ${checkflake}
+
+    ${pkgs.nixUnstable}/bin/nix build '.#nixosConfigurations.live.config.system.build.isoImage' -v
+  '';
+
+  toplevel = ''
+    #!${pkgs.bash}/bin/bash
+    set -euxo pipefail
+
+    ${checkflake}
+
+    ${pkgs.nixUnstable}/bin/nix build ".#nixosConfigurations.''${1}.config.system.build.toplevel" -v
   '';
 
   vm = ''
     #!${pkgs.bash}/bin/bash
     set -euxo pipefail
 
-    ${pkgs.nixUnstable}/bin/nix build "${self}#nixosConfigurations.''${1}.config.system.build.vm" -v
+    ${checkflake}
+
+    ${pkgs.nixUnstable}/bin/nix build ".#nixosConfigurations.''${1}.config.system.build.vm" -v
 
     mkdir -p /tmp/nixvm
     if [ -f /tmp/nixvm/hostname ]; then

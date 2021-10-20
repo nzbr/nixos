@@ -1,30 +1,74 @@
-{ config, lib, pkgs, modulesPath, root, ... }:
+{ config, lib, pkgs, modulesPath, ... }:
+let
+  root = config.nzbr.flake.root;
+in
 {
   networking.hostName = "earthquake";
   networking.hostId = "b93ad358";
 
-  imports = [
-    "${root}/module/common/java.nix"
-    "${root}/module/common/boot/systemd-boot.nix"
-    "${root}/module/common/service/libvirtd.nix"
-    "${root}/module/common/service/syncthing.nix"
-    "${root}/module/common/service/wireguard.nix"
+  nzbr = {
+    patterns = [ "common" "server" "development" ];
 
-    "${root}/module/server.nix"
-    "${root}/module/server/restic.nix"
-    "${root}/module/server/service/k3s.nix"
-    "${root}/module/server/service/ddns.nix"
+    boot = {
+      remoteUnlock = {
+        luks = false;
+        zfs = [ "zroot" ];
+      };
+    };
 
-    "${root}/module/desktop/development.nix"
-    # "${root}/module/desktop/gnome.nix"
-    "${root}/module/desktop/latex.nix"
-    "${root}/module/desktop/pulseaudio.nix"
-    "${root}/module/desktop/theme"
+    service = {
+      k3s.enable = true;
+      ddns = {
+        enable = true;
+        domain = "earthquake.nzbr.de";
+      };
+      wireguard = {
+        enable = true;
+        ip = "10.42.0.2";
+      };
+      restic = {
+        enable = true;
+        remote = "jotta-archive";
+        include = [
+          "zroot/etc"
+          "zroot/home"
+          "zroot/root"
+          "zroot/srv"
 
-    # "${root}/container/watchtower.nix"
-    # "${root}/container/machinaris.nix"
-  ];
+          "hoard/backup"
+          "hoard/chia/config"
+          "hoard/kubernetes"
+          "hoard/libvirt"
+          "hoard/media"
+          "hoard/nzbr"
+        ];
+        healthcheck = {
+          backup = "https://hc-ping.com/f904595a-cd31-4261-b714-21b14be2cdc2";
+          prune = "https://hc-ping.com/d9588269-0518-4804-8a8a-512c117954ab";
+        };
+        pools = [
+          {
+            name = "zroot";
+          }
+          {
+            name = "hoard";
+            subvols = [
+              { name = "backup"; mountpoint = "/backup"; }
+              { name = "chia"; mountpoint = "/chia"; }
+              { name = "kubernetes"; mountpoint = "/kubernetes"; }
+              { name = "libvirt"; mountpoint = "/libvirt"; }
+            ];
+          }
+        ];
+      };
+    };
 
+    program = {
+      latex.enable = true;
+    };
+  };
+
+  boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 1;
 
   boot = {
@@ -235,11 +279,6 @@
     trim.enable = true;
   };
 
-  nzbr.remote-unlock = {
-    luks = false;
-    zfs = [ "zroot" ];
-  };
-
   networking = {
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     interfaces.eno1 = {
@@ -326,7 +365,6 @@
     139 # NetBIOS
   ];
 
-  nzbr.wgIp = "10.42.0.2";
   networking.wireguard.interfaces.wg0 = {
     ips = [
       "10.42.0.2/24"
@@ -395,42 +433,6 @@
   # };
   # networking.resolvconf.useLocalResolver = false;
 
-  # BACKUPS #
-  nzbr.restic = {
-    remote = "jotta-archive";
-    include = [
-      "zroot/etc"
-      "zroot/home"
-      "zroot/root"
-      "zroot/srv"
-
-      "hoard/backup"
-      "hoard/chia/config"
-      "hoard/kubernetes"
-      "hoard/libvirt"
-      "hoard/media"
-      "hoard/nzbr"
-    ];
-    healthcheck = {
-      backup = "https://hc-ping.com/f904595a-cd31-4261-b714-21b14be2cdc2";
-      prune = "https://hc-ping.com/d9588269-0518-4804-8a8a-512c117954ab";
-    };
-    pools = [
-      {
-        name = "zroot";
-      }
-      {
-        name = "hoard";
-        subvols = [
-          { name = "backup"; mountpoint = "/backup"; }
-          { name = "chia"; mountpoint = "/chia"; }
-          { name = "kubernetes"; mountpoint = "/kubernetes"; }
-          { name = "libvirt"; mountpoint = "/libvirt"; }
-        ];
-      }
-    ];
-  };
-
   # Modprobe config for macOS VM
   boot.extraModprobeConfig = ''
     options kvm_intel nested=1
@@ -438,47 +440,8 @@
     options kvm ignore_msrs=1 report_ignored_msrs=0
   '';
 
-  nzbr.ddns = {
-    enable = true;
-    domain = "earthquake.nzbr.de";
-  };
+  nzbr.service.libvirtd.enable = true;
+  nzbr.service.syncthing.enable = true;
 
-  # remote desktop
-  programs.x2goserver = {
-    enable = true;
-    superenicer.enable = true;
-  };
-  services.xrdp = {
-    enable = true;
-    # defaultWindowManager = "${pkgs.gnome3.gnome-session}/bin/gnome-session";
-    # defaultWindowManager = "${pkgs.lxterminal}/bin/lxterminal";
-    defaultWindowManager = "${pkgs.plasma-workspace}/bin/startplasma-x11";
-  };
-
-  environment.systemPackages = with pkgs; [
-    unstable.vivaldi
-    unstable.vivaldi-widevine
-    unstable.vivaldi-ffmpeg-codecs
-  ];
-
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    roboto
-    roboto-slab
-    roboto-mono
-  ];
-
-  # services.xserver.displayManager.gdm.enable = lib.mkForce false;
-  # services.xserver.displayManager.autoLogin.enable = lib.mkForce false;
-  # services.xserver.desktopManager.lxqt.enable = true;
-  # services.xserver.windowManager.openbox.enable = true;
-  # services.xserver.windowManager.metacity.enable = true;
-  services.xserver.desktopManager.plasma5 = {
-    enable = true;
-    phononBackend = "vlc";
-  };
-
-  xdg.portal.enable = true;
-
-  networking.networkmanager.enable = lib.mkForce false;
+  nzbr.program.java.enable = true;
 }

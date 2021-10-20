@@ -1,18 +1,56 @@
-{ config, lib, pkgs, modulesPath, root, ... }:
+{ config, lib, pkgs, modulesPath, ... }:
+let
+  root = config.nzbr.flake.root;
+in
 {
   networking = {
     hostName = "avalanche";
     hostId = "24071395";
   };
 
-  imports = [
-    "${root}/module/common/boot/grub.nix"
-    "${root}/module/common/service/wireguard.nix"
+  nzbr = {
+    patterns = [ "common" "server" ];
 
-    "${root}/module/server.nix"
-    "${root}/module/server/restic.nix"
-    "${root}/module/server/service/k3s.nix"
-  ];
+    boot = {
+      grub.enable = true;
+      remoteUnlock = {
+        luks = false;
+        zfs = [ "zroot" ];
+      };
+    };
+
+    service = {
+      k3s.enable = true;
+      wireguard = {
+        enable = true;
+        ip = "10.42.0.4";
+      };
+      restic = {
+        enable = true;
+        remote = "jotta-archive";
+        include = [
+          "zroot/etc"
+          "zroot/home"
+          "zroot/root"
+          "zroot/srv"
+          "zroot/storage"
+        ];
+        healthcheck = {
+          backup = "https://hc-ping.com/a4db4963-0a73-4aeb-8207-f884341ba04d";
+          prune = "https://hc-ping.com/be3cdc9a-3eb4-4f85-b8ad-c51dc361f9e7";
+        };
+        pools = [
+          {
+            name = "zroot";
+            subvols = [
+              { name = "nix-store"; mountpoint = "/nix/store"; }
+              { name = "kubernetes"; mountpoint = "/storage/kubernetes"; }
+            ];
+          }
+        ];
+      };
+    };
+  };
 
   boot = {
     loader.grub.device = "/dev/sda";
@@ -92,11 +130,6 @@
 
   services.qemuGuest.enable = true;
 
-  nzbr.remote-unlock = {
-    luks = false;
-    zfs = [ "zroot" ];
-  };
-
   networking = {
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     interfaces.ens3 = {
@@ -115,7 +148,6 @@
     };
   };
 
-  nzbr.wgIp = "10.42.0.4";
   networking.wireguard.interfaces.wg0 = {
     ips = [
       "10.42.0.4/24"
@@ -139,30 +171,6 @@
           "10.42.0.2/32"
           "fd42:42::7a24:afff:febc:c07/128"
           "10.0.0.0/16" # LAN
-        ];
-      }
-    ];
-  };
-
-  nzbr.restic = {
-    remote = "jotta-archive";
-    include = [
-      "zroot/etc"
-      "zroot/home"
-      "zroot/root"
-      "zroot/srv"
-      "zroot/storage"
-    ];
-    healthcheck = {
-      backup = "https://hc-ping.com/a4db4963-0a73-4aeb-8207-f884341ba04d";
-      prune = "https://hc-ping.com/be3cdc9a-3eb4-4f85-b8ad-c51dc361f9e7";
-    };
-    pools = [
-      {
-        name = "zroot";
-        subvols = [
-          { name = "nix-store"; mountpoint = "/nix/store"; }
-          { name = "kubernetes"; mountpoint = "/storage/kubernetes"; }
         ];
       }
     ];

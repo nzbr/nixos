@@ -1,6 +1,12 @@
 { config, lib, pkgs, modulesPath, ... }:
-{
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.extraModules = [ pkgs.pulseaudio-modules-bt ];
+with builtins; with lib; {
+  options.nzbr.desktop.pulseaudio = {
+    enable = mkEnableOption "Pulseaudio";
+  };
+
+  config = mkIf config.nzbr.desktop.pulseaudio.enable {
+    sound.enable = true;
+    hardware.pulseaudio.enable = true;
+    hardware.pulseaudio.extraModules = [ pkgs.pulseaudio-modules-bt ];
+  };
 }

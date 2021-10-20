@@ -1,17 +1,16 @@
 { config, lib, pkgs, modulesPath, ... }:
-{
-  options = with lib; with types; {
-    nzbr.theme = {
-      accentColor = mkOption {
-        default = "#6916A3";
-        type = str;
-      };
+with builtins; with lib; {
+  options.nzbr.desktop.theme = with types; {
+    enable = mkEnableOption "Theme config";
+    accentColor = mkOption {
+      default = "#6916A3";
+      type = str;
     };
   };
 
   config =
     let
-      cfg = config.nzbr.theme;
+      cfg = config.nzbr.desktop.theme;
     in
     {
       environment.systemPackages = with pkgs; [
@@ -31,5 +30,18 @@
           });
         })
       ];
+
+      nzbr.home.config = {
+        gtk = {
+          iconTheme = {
+            # package = pkgs.local.papirus-icon-theme-mod;
+            name = "Papirus-dark";
+          };
+          theme = {
+            # package = pkgs.pop-gtk-theme;
+            name = "Pop-dark";
+          };
+        };
+      };
     };
 }
