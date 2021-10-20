@@ -1,7 +1,7 @@
 let
   flake = (import ./default.nix);
   system = builtins.currentSystem;
-  lib = flake.lib.${system};
+  lib = flake.lib;
 
   # The SSH private (user) keys on these hosts will be able to decrypt all secrets
   globalKeyHosts = [ "hurricane" "meteor" "landslide" ];
