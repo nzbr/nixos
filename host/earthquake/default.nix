@@ -392,47 +392,6 @@ in
     ];
   };
 
-
-  # Based on https://docs.pi-hole.net/guides/dns/unbound/
-  # services.unbound =
-  # let
-  #   rootHints = builtins.fetchurl "https://www.internic.net/domain/named.root";
-  # in {
-  #   enable = true;
-  #   extraConfig = ''
-  #     # server:
-  #       verbosity: 0
-  #       port: 5353
-
-  #       do-ip4: yes
-  #       do-ip6: yes
-  #       do-udp: yes
-  #       do-tcp: yes
-  #       prefer-ip6: yes
-
-  #       # root-hints: "${rootHints}"
-  #       root-hints: "/etc/unbound/named.root"
-
-  #       harden-glue: yes
-  #       harden-dnssec-stripped: yes
-  #       use-caps-for-id: no
-  #       edns-buffer-size: 1472
-
-  #       prefetch: yes
-
-  #       num-threads: 1
-  #       so-rcvbuf: 1m
-
-  #       private-address: 192.168.0.0/16
-  #       private-address: 169.254.0.0/16
-  #       private-address: 172.16.0.0/12
-  #       private-address: 10.0.0.0/8
-  #       private-address: fd00::/8
-  #       private-address: fe80::/10
-  #   '';
-  # };
-  # networking.resolvconf.useLocalResolver = false;
-
   # Modprobe config for macOS VM
   boot.extraModprobeConfig = ''
     options kvm_intel nested=1
