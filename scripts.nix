@@ -144,4 +144,12 @@ in
     export NIX_DISK_IMAGE=/tmp/nixvm/root.qcow2
     result/bin/run-live-vm
   '';
+
+  wifiedit = ''
+    #!${pkgs.bash}/bin/bash
+    set -euxo pipefail
+
+    FILE="asset/iwd/$(echo -n $1 | sha256sum | awk '{print $1;}').age"
+    ${pkgs.agenix}/bin/agenix -e "$FILE"
+  '';
 }
