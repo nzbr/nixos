@@ -6,13 +6,20 @@
   };
 
   nzbr = {
-    patterns = [ "server" ];
+    patterns = [ "common" "server" ];
 
     boot = {
       grub.enable = true;
       remoteUnlock = {
         luks = false;
         zfs = [ "zroot" ];
+      };
+    };
+
+    network = {
+      wireguard = {
+        enable = true;
+        ip = "10.42.0.1";
       };
     };
 
@@ -140,10 +147,6 @@
     };
   };
 
-  nzbr.service.wireguard = {
-    enable = true;
-    ip = "10.42.0.1";
-  };
   networking.wireguard.interfaces.wg0 = {
     ips = [
       "10.42.0.1/24"

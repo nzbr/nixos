@@ -1,6 +1,6 @@
 { config, lib, pkgs, modulesPath, ... }:
 with builtins; with lib; {
-  options.nzbr.service.wireguard = with lib; {
+  options.nzbr.network.wireguard = with lib; {
     enable = mkEnableOption "wireguard VPN";
     ip = mkOption {
       default = "";
@@ -10,7 +10,7 @@ with builtins; with lib; {
 
   config =
     let
-      cfg = config.nzbr.service.wireguard;
+      cfg = config.nzbr.network.wireguard;
     in
     mkIf cfg.enable {
       networking = {

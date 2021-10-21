@@ -19,12 +19,15 @@ in
       };
     };
 
-    service = {
-      k3s.enable = true;
+    network = {
       wireguard = {
         enable = true;
         ip = "10.42.0.4";
       };
+    };
+
+    service = {
+      k3s.enable = true;
       restic = {
         enable = true;
         remote = "jotta-archive";

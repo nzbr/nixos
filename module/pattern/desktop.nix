@@ -25,6 +25,10 @@ with builtins; with lib;
           gnome.enable = true;
           pulseaudio.enable = true;
         };
+
+        network = {
+          iwd.enable = true;
+        };
       };
 
       environment.systemPackages = with pkgs; [
@@ -77,10 +81,8 @@ with builtins; with lib;
       xdg.portal.enable = true;
 
       networking = {
-        wireless.iwd.enable = true;
         networkmanager = {
           enable = true;
-          wifi.backend = "iwd";
           packages = with pkgs; [
             networkmanager-openvpn
             networkmanager-openconnect

@@ -16,15 +16,18 @@ in
       };
     };
 
+    network = {
+      wireguard = {
+        enable = true;
+        ip = "10.42.0.2";
+      };
+    };
+
     service = {
       k3s.enable = true;
       ddns = {
         enable = true;
         domain = "earthquake.nzbr.de";
-      };
-      wireguard = {
-        enable = true;
-        ip = "10.42.0.2";
       };
       restic = {
         enable = true;
