@@ -30,20 +30,29 @@ with builtins; with lib; {
       gnome.seahorse
 
       local.gnome-shell-extension-pop-shell
-    ] ++ (with pkgs.gnomeExtensions; [
-      arcmenu
-      audio-switcher-40
-      bluetooth-quick-connect
-      blur-my-shell
-      caffeine
-      dash-to-panel
-      gsconnect
-      remmina-search-provider
-      system-action-hibernate
-      syncthing-icon
-      tray-icons-reloaded
-      tweaks-in-system-menu
-    ]);
+    ] ++ (with pkgs.gnomeExtensions;
+      let
+        unstable = pkgs.unstable.gnomeExtensions;
+      in
+      [
+        arcmenu
+        audio-switcher-40
+        bluetooth-quick-connect
+        blur-my-shell
+        caffeine
+        dash-to-panel
+        unstable.expandable-notifications
+        gsconnect
+        notification-banner-position
+        unstable.notification-counter
+        remmina-search-provider
+        unstable.spotify-artwork-fixer
+        system-action-hibernate
+        syncthing-icon
+        tray-icons-reloaded
+        tweaks-in-system-menu
+      ]
+    );
 
     programs.gnupg.agent.pinentryFlavor = "gnome3";
 
@@ -125,9 +134,13 @@ with builtins; with lib; {
               "caffeine@patapon.info"
               "dash-to-panel@jderose9.github.com"
               "drive-menu@gnome-shell-extensions.gcampax.github.com"
+              "expandable-notifications@kaan.g.inam.org"
               "gsconnect@andyholmes.github.io"
               "hibernate@dafne.rocks"
+              "notification-position@drugo.dev"
+              "NotificationCounter@coolllsk"
               "remmina-search-provider@alexmurray.github.com"
+              "spotify-artwork-fixer@wjt.me.uk"
               "syncthingicon@jay.strict@posteo.de"
               "trayIconsReloaded@selfmade.pl"
               "tweaks-system-menu@extensions.gnome-shell.fifi.org"
