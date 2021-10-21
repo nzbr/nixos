@@ -53,8 +53,6 @@ with builtins; with lib; {
           zref
           ;
       })
-
-      # ragon.pandocode
     ];
   };
 }

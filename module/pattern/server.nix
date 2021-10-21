@@ -4,7 +4,5 @@ with builtins; with lib; {
 
   config = mkIf config.nzbr.pattern.server.enable {
     nzbr.boot.remoteUnlock.enable = true;
-
-    boot.kernelPackages = pkgs.linuxPackages_hardened;
   };
 }

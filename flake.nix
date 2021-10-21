@@ -17,11 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ragon = {
-      url = "github:ragon000/nixos-config";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
     comma = {
       flake = false;
       url = "github:Shopify/comma";
@@ -149,7 +144,6 @@
                                 unstable = nixpkgs-unstable;
                                 bleeding-edge = nixpkgs-bleeding-edge;
                                 legacy = nixpkgs-legacy;
-                                ragon = ragon;
                               });
                         };
 
