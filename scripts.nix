@@ -34,9 +34,7 @@ in
 
     ${checkflake}
 
-    ${pkgs.nixUnstable}/bin/nix flake update
-    ${pkgs.git}/bin/git add flake.lock
-    ${pkgs.git}/bin/git commit -m "update flakes"
+    ${pkgs.nixUnstable}/bin/nix flake update --commit-lock-file
   '';
 
   enrage =
