@@ -75,11 +75,9 @@
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; with self.packages.${system}; [
             agenix
-            rage
-
-            git-crypt
-
+            morph
             nixpkgs-fmt
+            rage
           ]
           ++
           mapAttrsToList
