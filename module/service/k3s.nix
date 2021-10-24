@@ -48,9 +48,9 @@ with builtins; with lib; {
       443
     ];
 
-    environment.extraInit = ''
-      export KUBECONFIG=/run/kubeconfig
-    '';
+    environment.variables = {
+      KUBECONFIG = "/run/kubeconfig";
+    };
 
     networking.firewall.trustedInterfaces = [ "tunl0" ];
 

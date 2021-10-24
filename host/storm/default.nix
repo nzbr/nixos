@@ -50,6 +50,10 @@
         ];
       };
     };
+
+    kubernetes = {
+      enable = true;
+    };
   };
 
   boot = {
