@@ -11,6 +11,8 @@ in
   nzbr = {
     patterns = [ "common" "server" ];
 
+    deployment.targetHost = "avalanche.nzbr.de";
+
     boot = {
       grub.enable = true;
       remoteUnlock = {

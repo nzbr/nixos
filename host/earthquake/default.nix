@@ -9,6 +9,8 @@ in
   nzbr = {
     patterns = [ "common" "server" "development" ];
 
+    deployment.targetHost = "earthquake.nzbr.de";
+
     boot = {
       remoteUnlock = {
         luks = false;
