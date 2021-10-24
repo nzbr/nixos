@@ -155,6 +155,4 @@ with builtins; with lib; {
       ];
     };
   };
-
-  environment.etc."nixos/config".source = config.nzbr.flake.root;
 }

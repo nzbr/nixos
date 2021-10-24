@@ -8,6 +8,7 @@ with builtins; with lib; with types; {
     };
 
   strOption = mkOption { type = str; };
+  strOptOrNull = mkOption { type = nullOr str; default = null; };
   mkStrOpt = default:
     mkOption {
       type = str;

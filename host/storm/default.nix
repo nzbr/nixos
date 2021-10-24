@@ -8,6 +8,8 @@
   nzbr = {
     patterns = [ "common" "server" ];
 
+    deployment.targetHost = "storm.nzbr.de";
+
     boot = {
       grub.enable = true;
       remoteUnlock = {
