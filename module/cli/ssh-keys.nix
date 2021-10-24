@@ -2,7 +2,7 @@
 with builtins; with lib; {
   config =
     (
-      mkIf (hasAttr "ssh/id_ed25519" config.nzbr.assets) {
+      mkIf (config.nzbr.assets ? "ssh/id_ed25519") {
         age.secrets."ssh/id_ed25519".owner = config.nzbr.user;
 
         environment.extraInit =

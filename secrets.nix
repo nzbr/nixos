@@ -17,12 +17,16 @@ with builtins; with lib;
           nameValuePair
             name
             (
-              mapAttrsToList
-                (name': type': readFile' (./host-key + "/${name}/${name'}"))
+              filter
+                (hasPrefix "ssh-ed25519")
                 (
-                  filterAttrs
-                    (name': type': (hasSuffix ".pub" name'))
-                    (readDir (./host-key + "/${name}"))
+                  mapAttrsToList
+                    (name': type': readFile' (./host-key + "/${name}/${name'}"))
+                    (
+                      filterAttrs
+                        (name': type': (hasSuffix ".pub" name'))
+                        (readDir (./host-key + "/${name}"))
+                    )
                 )
             )
         )

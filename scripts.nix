@@ -7,7 +7,7 @@ let
     fi
   '';
 in
-{
+rec {
   deploy = ''
     #!${pkgs.bash}/bin/bash
 
@@ -148,6 +148,11 @@ in
     set -euxo pipefail
 
     FILE="asset/iwd/$(echo -n $1 | sha256sum | awk '{print $1;}').age"
+    if ! [ -f "$FILE" ]; then
+      NOEXT="''${FILE%.*}"
+      touch "$NOEXT"
+      ${pkgs.writeShellScript "enrage" enrage} "$NOEXT"
+    fi
     ${pkgs.agenix}/bin/agenix -e "$FILE"
   '';
 }
