@@ -12,7 +12,7 @@ with builtins; with lib; {
     let
       cfg = config.nzbr.desktop.theme;
     in
-    {
+    mkIf cfg.enable {
       environment.systemPackages = with pkgs; [
         local.papirus-icon-theme-mod
 
