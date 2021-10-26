@@ -1,4 +1,4 @@
-{lib, ...}:
+{ lib, ... }:
 with builtins; with lib; {
   types = with types; {
     strOrPathType = oneOf [ str (coercedTo path toString str) ];
