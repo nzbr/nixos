@@ -37,7 +37,7 @@ with builtins; with lib; {
         description = "Kubectl package to use for kubectl apply";
       };
       deployment = mkOption {
-        type = attrsOf deploymentType;
+        type = attrsOf kubernetesDeployment;
         default = { };
         description = "A set of kubernetes deployments that can be activated";
         example = ''

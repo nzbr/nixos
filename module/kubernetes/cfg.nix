@@ -53,9 +53,11 @@
           {
             apiVersion = "v1";
             kind = "Namespace";
-            name = "cert-manager";
-            labels = {
-              "certmanager.k8s.io/disable-validation" = false;
+            metadata = {
+              name = "cert-manager";
+              labels = {
+                "certmanager.k8s.io/disable-validation" = "true";
+              };
             };
           }
           config.nzbr.assets."k8s/cert-manager-letsencrypt-config.yaml"
