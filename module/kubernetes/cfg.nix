@@ -6,6 +6,7 @@
     helmPackage = pkgs.kubernetes-helm;
     helmRepository = {
       bitnami = "https://charts.bitnami.com/bitnami";
+      jetstack = "https://charts.jetstack.io";
       k8s-at-home = "https://k8s-at-home.com/charts/";
       nicholaswilde = "https://nicholaswilde.github.io/helm-charts";
     };
@@ -36,6 +37,28 @@
               };
             };
           }
+        ];
+      };
+      cert-manager = {
+        enable = true;
+        steps = [
+          {
+            chart = "jetstack/cert-manager";
+            name = "cert-manager";
+            namespace = "cert-manager";
+            values = {
+              installCRDs = true;
+            };
+          }
+          {
+            apiVersion = "v1";
+            kind = "Namespace";
+            name = "cert-manager";
+            labels = {
+              "certmanager.k8s.io/disable-validation" = false;
+            };
+          }
+          config.nzbr.assets."k8s/cert-manager-letsencrypt-config.yaml"
         ];
       };
     };
