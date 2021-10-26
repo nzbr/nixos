@@ -35,8 +35,8 @@ with builtins; with lib; {
         };
         restartTriggers =
           mapAttrsToList
-          (name: type: hashFile "sha256" "${config.nzbr.flake.assets}/iwd/${name}")
-          (readDir "${config.nzbr.flake.assets}/iwd/");
+            (name: type: hashFile "sha256" "${config.nzbr.flake.assets}/iwd/${name}")
+            (readDir "${config.nzbr.flake.assets}/iwd/");
       };
     };
 }

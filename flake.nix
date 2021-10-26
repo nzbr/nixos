@@ -52,9 +52,7 @@
     }:
     let
       baseLib = import ./lib/base.nix { lib = nixpkgs.lib; };
-      lib = nixpkgs.lib.extend (self': super':
-        with nixpkgs.lib; foldl recursiveUpdate { } (map (x: import x { lib = self'; }) (baseLib.findModules ".nix" ./lib))
-      );
+      lib = with nixpkgs.lib; foldl recursiveUpdate nixpkgs.lib (map (x: import x { inherit lib; }) (baseLib.findModules ".nix" ./lib));
     in
     {
       inherit lib;

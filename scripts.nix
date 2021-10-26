@@ -9,54 +9,55 @@ let
 in
 rec {
   deploy =
-  let
-    config = attr: "$(nix-instantiate --eval -E \"(builtins.getFlake (toString ./.)).packages.x86_64-linux.nixosConfigurations.$host.config.nzbr.deployment.${attr}\" | tr -d \\\")";
-    getOutputByNum = "${pkgs.python3}/bin/python3 -c 'import sys; import json; print(json.loads(sys.argv[2])[int(sys.argv[1])][\"outputs\"][\"out\"])'";
-  in ''
-    #!${pkgs.bash}/bin/bash
-    IFS=$',' # Split on , instead of whitespace
+    let
+      config = attr: "$(nix-instantiate --eval -E \"(builtins.getFlake (toString ./.)).packages.x86_64-linux.nixosConfigurations.$host.config.nzbr.deployment.${attr}\" | tr -d \\\")";
+      getOutputByNum = "${pkgs.python3}/bin/python3 -c 'import sys; import json; print(json.loads(sys.argv[2])[int(sys.argv[1])][\"outputs\"][\"out\"])'";
+    in
+    ''
+      #!${pkgs.bash}/bin/bash
+      IFS=$',' # Split on , instead of whitespace
 
-    ${checkflake}
+      ${checkflake}
 
-    if [ -z "''${1:-}" ]; then
-      echo "No target specified"
-      exit 1
-    fi
-    if [ -z "''${2:-}" ]; then
-      echo "No action specified"
-      exit 1
-    fi
-
-    set -euxo pipefail
-
-    BUILD=""
-    for host in $1; do
-      BUILD="$BUILD,.#nixosConfigurations.''${host}.config.system.build.toplevel"
-    done
-    BUILD=''${BUILD:1}
-
-    # Build
-    OUT="$(nix build --no-link --json -v $BUILD)"
-
-    # Copy
-    NUM=0
-    for host in $1; do
-      STOREPATH=$(${getOutputByNum} ''${NUM} "$OUT")
-      if ${config "substituteOnDestination"}; then
-        SUBSTITUTE="-s"
-      else
-        SUBSTITUTE=""
+      if [ -z "''${1:-}" ]; then
+        echo "No target specified"
+        exit 1
       fi
-      USER=${config "targetUser"}
-      HOST=${config "targetHost"}
-      ${pkgs.nixUnstable}/bin/nix copy $SUBSTITUTE --to ssh://''${USER}@''${HOST} "''${STOREPATH}" -v
+      if [ -z "''${2:-}" ]; then
+        echo "No action specified"
+        exit 1
+      fi
 
-      # Activate
-      ssh -t ''${USER}@''${HOST} -- ''${STOREPATH}/bin/switch-to-configuration $2
+      set -euxo pipefail
 
-      NUM=$(( NUM + 1 ))
-    done
-  '';
+      BUILD=""
+      for host in $1; do
+        BUILD="$BUILD,.#nixosConfigurations.''${host}.config.system.build.toplevel"
+      done
+      BUILD=''${BUILD:1}
+
+      # Build
+      OUT="$(nix build --no-link --json -v $BUILD)"
+
+      # Copy
+      NUM=0
+      for host in $1; do
+        STOREPATH=$(${getOutputByNum} ''${NUM} "$OUT")
+        if ${config "substituteOnDestination"}; then
+          SUBSTITUTE="-s"
+        else
+          SUBSTITUTE=""
+        fi
+        USER=${config "targetUser"}
+        HOST=${config "targetHost"}
+        ${pkgs.nixUnstable}/bin/nix copy $SUBSTITUTE --to ssh://''${USER}@''${HOST} "''${STOREPATH}" -v
+
+        # Activate
+        ssh -t ''${USER}@''${HOST} -- ''${STOREPATH}/bin/switch-to-configuration $2
+
+        NUM=$(( NUM + 1 ))
+      done
+    '';
 
   update = ''
     #!${pkgs.bash}/bin/bash
