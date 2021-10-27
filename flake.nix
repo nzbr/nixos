@@ -3,17 +3,32 @@
 
   inputs = {
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nixos-wsl.url = "github:nzbr/NixOS-WSL/WSLg";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
     nixpkgs-legacy.url = "github:NixOS/nixpkgs/nixos-20.09";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-bleeding-edge.url = "github:NixOS/nixpkgs/master";
-
     flake-utils.url = "github:numtide/flake-utils";
-    home-manager.url = "github:nix-community/home-manager/release-21.05";
-    naersk.url = "github:nix-community/naersk"; # rust package builder
+    home-manager = {
+      url = "github:nix-community/home-manager/release-21.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-wsl = {
+      url = "github:nzbr/NixOS-WSL/WSLg";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    naersk = { # rust package builder
+      url = "github:nix-community/naersk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agenix = {
       url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    kubenix = {
+      url = "github:nzbr/kubenix";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -118,7 +133,9 @@
                     specialArgs = {
                       inherit lib inputs system;
                     };
-                    modules = [
+                    modules =
+                    inputs.kubenix.nixosModules
+                    ++ [
                       inputs.agenix.nixosModules.age
 
                       ({ pkgs, config, ... }: {
