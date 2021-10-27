@@ -52,9 +52,17 @@
         ];
       };
     };
+  };
 
-    kubernetes = {
-      enable = true;
+  kubenix = {
+    enable = true;
+    kubeconfigPath = "/run/kubeconfig";
+    waitForUnits = [ "network-online.target" "k3s.service" ];
+    helmPackage = pkgs.kubernetes-helm;
+    kubectlPackage = pkgs.kubectl;
+    deployment = {
+      calico.enable = true;
+      cert-manager.enable = true;
     };
   };
 

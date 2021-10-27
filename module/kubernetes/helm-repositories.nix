@@ -2,7 +2,7 @@
 with builtins; with lib; {
   config =
     let
-      cfg = config.nzbr.kubernetes;
+      cfg = config.kubenix;
     in
     mkIf cfg.enable {
       systemd.services = {

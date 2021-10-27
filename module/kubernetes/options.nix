@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 with builtins; with lib; {
-  options.nzbr.kubernetes = with types;
+  options.kubenix = with types;
     {
       enable = mkEnableOption "Kubernetes Deployments";
       waitForUnits = mkOption {
