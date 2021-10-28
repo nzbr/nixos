@@ -58,6 +58,7 @@
     enable = true;
     kubeconfigPath = "/run/kubeconfig";
     waitForUnits = [ "network-online.target" "k3s.service" ];
+    helmNixPath = config.nzbr.flake.root;
     helmPackage = pkgs.kubernetes-helm;
     kubectlPackage = pkgs.kubectl;
     deployment = {

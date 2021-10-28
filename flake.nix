@@ -91,6 +91,8 @@
             morph
             nixpkgs-fmt
             rage
+            inputs.kubenix.packages.${system}.helm-update
+            inputs.kubenix.packages.${system}.yaml2nix
           ]
           ++
           mapAttrsToList
