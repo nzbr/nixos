@@ -64,6 +64,7 @@
     deployment = {
       calico.enable = true;
       cert-manager.enable = true;
+      rook-ceph.enable = true;
     };
   };
 

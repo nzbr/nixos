@@ -117,11 +117,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1635394031,
-        "narHash": "sha256-1pAqmrW8dExgMW2iFfnk/93xcjU1SoW21u+xGZo7mAs=",
+        "lastModified": 1635395501,
+        "narHash": "sha256-FabAjC7VkfKFUuwX0L3sr9RUgLORKqVZRZHAjZTpd6c=",
         "owner": "nzbr",
         "repo": "kubenix",
-        "rev": "cd1821cf490caac13c267246eeca7bf20c63fc17",
+        "rev": "272b5e85191aaae48ecdf9040e301306b2b214de",
         "type": "github"
       },
       "original": {
@@ -270,6 +270,23 @@
         "type": "github"
       }
     },
+    "rook": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1635368341,
+        "narHash": "sha256-hEbI6pWVzpMM28sJNFNhAtYwKN6JhlFZEB1PDUj1i5o=",
+        "owner": "rook",
+        "repo": "rook",
+        "rev": "90103f53d82d47b5e990dbd0f50e2281861bd94b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rook",
+        "ref": "release-1.7",
+        "repo": "rook",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -287,6 +304,7 @@
         "nixpkgs-legacy": "nixpkgs-legacy",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "razer-nari": "razer-nari",
+        "rook": "rook",
         "vscode-server": "vscode-server",
         "wsld": "wsld"
       }
