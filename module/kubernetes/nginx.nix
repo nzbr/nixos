@@ -12,6 +12,7 @@ with builtins; with lib; {
         apiVersion = "cert-manager.io/v1";
         kind = "Certificate";
         metadata.name = "wildcard-nzbr-de";
+        metadata.namespace = "nginx";
         spec = {
           secretName = "wildcard-nzbr-de";
           dnsNames = [

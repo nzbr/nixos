@@ -67,6 +67,7 @@
       nginx.enable = true;
       redis.enable = true;
       rook-ceph.enable = true;
+      vaultwarden.enable = true;
     };
   };
 
@@ -201,6 +202,7 @@
         "gitlab"
         "kubernetes"
         "nextcloud"
+        "vaultwarden"
       ];
     in
     {
