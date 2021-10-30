@@ -4,7 +4,7 @@ let
   namespace = "keycloak";
 in {
   kubenix.deployment.keycloak = {
-    dependencies = [ "openldap" ];
+    dependencies = [ "openldap" "nginx" ];
     steps = [
       {
         apiVersion = "v1";

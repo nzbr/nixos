@@ -65,6 +65,7 @@
       calico.enable = true;
       cert-manager.enable = true;
       keycloak.enable = true;
+      nextcloud.enable = true;
       nginx.enable = true;
       openldap.enable = true;
       redis.enable = true;
