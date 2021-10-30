@@ -64,6 +64,7 @@
     deployment = {
       calico.enable = true;
       cert-manager.enable = true;
+      keycloak.enable = true;
       nginx.enable = true;
       openldap.enable = true;
       redis.enable = true;
@@ -201,6 +202,7 @@
       services = [
         "bitwarden"
         "gitlab"
+        "keycloak"
         "kubernetes"
         "nextcloud"
         "vaultwarden"
