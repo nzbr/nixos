@@ -65,6 +65,7 @@
       calico.enable = true;
       cert-manager.enable = true;
       nginx.enable = true;
+      openldap.enable = true;
       redis.enable = true;
       rook-ceph.enable = true;
       vaultwarden.enable = true;
