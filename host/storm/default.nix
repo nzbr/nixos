@@ -64,6 +64,7 @@
     deployment = {
       calico.enable = true;
       cert-manager.enable = true;
+      hedgedoc.enable = true;
       keycloak.enable = true;
       nextcloud.enable = true;
       nginx.enable = true;
@@ -203,6 +204,7 @@
       services = [
         "bitwarden"
         "gitlab"
+        "hedgedoc"
         "keycloak"
         "kubernetes"
         "nextcloud"
