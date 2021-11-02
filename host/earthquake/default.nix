@@ -352,11 +352,9 @@ in
     };
   };
 
-  system.activationScripts.tmp-share-mkdir.text = ''
-    mkdir -p /tmp/smb
-    chown -R nzbr:users /tmp/smb
-    chmod 0770 /tmp/smb
-  '';
+  systemd.tmpfiles.rules = [
+    "d /tmp/smb 0770 nzbr users 1d"
+  ];
 
   networking.firewall.allowedTCPPorts = [
     445 # SMB
