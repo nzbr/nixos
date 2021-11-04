@@ -4,15 +4,10 @@ with builtins; with lib; {
     dependencies = [ "cert-manager" ];
     steps = [
       {
-        apiVersion = "v1";
-        kind = "Namespace";
-        metadata.name = "nginx";
-      }
-      {
         apiVersion = "cert-manager.io/v1";
         kind = "Certificate";
         metadata.name = "wildcard-nzbr-de";
-        metadata.namespace = "nginx";
+        metadata.namespace = "default";
         spec = {
           secretName = "wildcard-nzbr-de";
           dnsNames = [
@@ -33,13 +28,14 @@ with builtins; with lib; {
         };
         name = "nginx";
         namespace = "nginx";
-        values.config = {
-          hsts-preload = true;
-          ssl-redirect = true;
-          hostNetwork = true;
-          extraArgs = [
-            { default-ssl-certificate = "wildcard-nzbr-de"; }
-          ];
+        values.controller = {
+          config = {
+            hsts-preload = true;
+            ssl-redirect = true;
+          };
+          extraArgs = {
+            default-ssl-certificate = "default/wildcard-nzbr-de";
+          };
         };
       }
     ];
