@@ -18,7 +18,9 @@ with builtins; with lib; {
         nzbr.pattern.common.enable = true;
         nzbr.desktop.gnome.enable = true;
 
-        nzbr.boot.grub.enable = true;
+        # Pretend that there is a bootloader
+        boot.loader.grub.enable = false;
+        system.build.installBootLoader = pkgs.writeShellScript "fake-bootloader" "#!/usr/bin/env bash";
 
         # basic gui environment
         environment.noXlibs = lib.mkForce false;

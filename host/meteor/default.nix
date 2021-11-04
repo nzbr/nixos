@@ -21,6 +21,7 @@ in
     service = {
       printing.enable = true;
       syncthing.enable = true;
+      tailscale.enable = true;
     };
   };
 
@@ -45,12 +46,12 @@ in
     kernelParams = [ "systemd.unit=multi-user.target" ];
     extraModulePackages = [ ];
 
-    resumeDevice = "/dev/disk/by-uuid/70c5ef50-d64b-4715-9332-342a05a7a261";
+    resumeDevice = "/dev/vg_root/swap";
   };
 
   fileSystems = {
     "/" = {
-      device = "/dev/mapper/cr_root";
+      device = "/dev/vg_root/root";
       fsType = "btrfs";
       options = [ "ssd" "discard=async" ];
       neededForBoot = true;
@@ -61,7 +62,7 @@ in
       neededForBoot = true;
     };
     "/home" = {
-      device = "/dev/disk/by-uuid/1e198723-5768-4853-b8c1-49547fb72abd";
+      device = "/dev/vg_home/home";
       fsType = "btrfs";
       neededForBoot = false;
     };
@@ -73,7 +74,7 @@ in
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/70c5ef50-d64b-4715-9332-342a05a7a261"; }
+    { device = config.boot.resumeDevice; }
   ];
 
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages;
