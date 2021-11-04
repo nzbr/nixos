@@ -20,7 +20,9 @@ with builtins; with lib; {
     mkIf cfg.enable {
       users.users.inadyn = {
         isSystemUser = true;
+        group = "inadyn";
       };
+      users.groups.inadyn = {};
 
       systemd = {
         services.ddns =
