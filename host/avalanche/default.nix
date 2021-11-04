@@ -29,6 +29,7 @@ in
     };
 
     service = {
+      tailscale.enable = true;
       k3s.enable = true;
       restic = {
         enable = true;

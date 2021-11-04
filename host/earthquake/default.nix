@@ -26,6 +26,7 @@ in
     };
 
     service = {
+      tailscale.enable = true;
       k3s.enable = true;
       ddns = {
         enable = true;
