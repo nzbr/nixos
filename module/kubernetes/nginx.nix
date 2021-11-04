@@ -32,6 +32,7 @@ with builtins; with lib; {
           config = {
             hsts-preload = true;
             ssl-redirect = true;
+            access-log-path = "/dev/null";
           };
           extraArgs = {
             default-ssl-certificate = "default/wildcard-nzbr-de";
