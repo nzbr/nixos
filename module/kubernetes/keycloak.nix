@@ -95,7 +95,6 @@ in {
           }];
           tls = [{
             hosts = [ "sso.nzbr.de" ];
-            secretName = "sso-nzbr-de";
           }];
         };
       }
