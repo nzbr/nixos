@@ -2,9 +2,15 @@
 with builtins; with lib; {
   options.nzbr.service.k3s = {
     enable = mkEnableOption "K3s";
+    nodeIp = strOption;
+    dbHost = mkStrOpt "storm.nzbr.github.beta.tailscale.net";
   };
 
-  config = mkIf config.nzbr.service.k3s.enable {
+  config =
+  let
+    cfg = config.nzbr.service.k3s;
+  in
+  mkIf cfg.enable {
     # Was needed for longhorn, which I don't use anymore
     # nzbr.service.openIscsi.enable = true;
 
@@ -24,11 +30,10 @@ with builtins; with lib; {
           + " --service-cidr=10.13.0.0/13"
           + " --cluster-dns=10.13.0.10"
           + " --cluster-domain=kube"
-          + " --node-ip=${config.nzbr.network.wireguard.ip}"
-          + " --node-external-ip=${config.nzbr.network.wireguard.ip}"
+          + " --node-ip=${cfg.nodeIp}"
+          + " --node-external-ip=${cfg.nodeIp}"
           + " --flannel-backend=none"
-          # + " --datastore-endpoint=http://127.0.0.1:2379"
-          + " --datastore-endpoint=postgres://kubernetes:$(cat ${config.nzbr.assets."k3s-db.password"})@10.42.0.1:5432/kubernetes?sslmode=disable"
+          + " --datastore-endpoint=postgres://kubernetes:$(cat ${config.nzbr.assets."k3s-db.password"})@${cfg.dbHost}:5432/kubernetes?sslmode=disable"
           + " --disable-network-policy"
           + " --write-kubeconfig /run/kubeconfig"
           + " --snapshotter=native"

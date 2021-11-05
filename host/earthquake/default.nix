@@ -18,16 +18,19 @@ in
       };
     };
 
-    network = {
-      wireguard = {
-        enable = true;
-        ip = "10.42.0.2";
-      };
-    };
+    # network = {
+    #   wireguard = {
+    #     enable = true;
+    #     ip = "10.42.0.2";
+    #   };
+    # };
 
     service = {
       tailscale.enable = true;
-      k3s.enable = true;
+      k3s = {
+        enable = true;
+        nodeIp = "100.71.200.40";
+      };
       ddns = {
         enable = true;
         domain = "earthquake.nzbr.de";
@@ -369,32 +372,32 @@ in
     139 # NetBIOS
   ];
 
-  networking.wireguard.interfaces.wg0 = {
-    ips = [
-      "10.42.0.2/24"
-      "fd42:42::7a24:afff:febc:c07/64"
-    ];
-    peers = [
-      {
-        # storm
-        publicKey = (lib.fileContents config.nzbr.foreignAssets.storm."wireguard/public.key");
-        endpoint = "storm.nzbr.de:51820";
-        allowedIPs = [
-          "10.42.0.0/26"
-          "fd42:42::/32"
-        ];
-      }
-      {
-        # avalanche
-        publicKey = (lib.fileContents config.nzbr.foreignAssets.avalanche."wireguard/public.key");
-        endpoint = "avalanche.nzbr.de:51820";
-        allowedIPs = [
-          "10.42.0.4/32"
-          "fd42:42::88fc:d9ff:fe45:ead8/128"
-        ];
-      }
-    ];
-  };
+  # networking.wireguard.interfaces.wg0 = {
+  #   ips = [
+  #     "10.42.0.2/24"
+  #     "fd42:42::7a24:afff:febc:c07/64"
+  #   ];
+  #   peers = [
+  #     {
+  #       # storm
+  #       publicKey = (lib.fileContents config.nzbr.foreignAssets.storm."wireguard/public.key");
+  #       endpoint = "storm.nzbr.de:51820";
+  #       allowedIPs = [
+  #         "10.42.0.0/26"
+  #         "fd42:42::/32"
+  #       ];
+  #     }
+  #     {
+  #       # avalanche
+  #       publicKey = (lib.fileContents config.nzbr.foreignAssets.avalanche."wireguard/public.key");
+  #       endpoint = "avalanche.nzbr.de:51820";
+  #       allowedIPs = [
+  #         "10.42.0.4/32"
+  #         "fd42:42::88fc:d9ff:fe45:ead8/128"
+  #       ];
+  #     }
+  #   ];
+  # };
 
   # Modprobe config for macOS VM
   boot.extraModprobeConfig = ''

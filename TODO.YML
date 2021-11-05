@@ -1,0 +1,29 @@
+- common -> base
+- refind bootloader
+- only one call to nix-instantiate (per system) in deploy script
+- kubernetes backup (velero)
+- prometheus/grafana
+- synapse
+
+- kubenix:
+  - documentation
+
+- theme:
+  - profile picture
+  - custom start button
+  - progress bars haben falsche Farbe
+  - folder colors
+  - accent color in gnome shell
+  - get rid of date
+  - font
+
+- live:
+   - pre-download zsh plugins
+   - bundle vivaldi profile
+
+- earthquake:
+  - smbpasswd activation script
+  - NZBGet
+
+- wormhole:
+  - ULAs

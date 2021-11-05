@@ -21,16 +21,19 @@ in
       };
     };
 
-    network = {
-      wireguard = {
-        enable = true;
-        ip = "10.42.0.4";
-      };
-    };
+    # network = {
+    #   wireguard = {
+    #     enable = true;
+    #     ip = "10.42.0.4";
+    #   };
+    # };
 
     service = {
       tailscale.enable = true;
-      k3s.enable = true;
+      k3s = {
+        enable = true;
+        nodeIp = "100.86.174.117";
+      };
       restic = {
         enable = true;
         remote = "jotta-archive";
@@ -154,31 +157,31 @@ in
     };
   };
 
-  networking.wireguard.interfaces.wg0 = {
-    ips = [
-      "10.42.0.4/24"
-      "fd42:42::88fc:d9ff:fe45:ead8/64"
-    ];
-    peers = [
-      {
-        # storm
-        publicKey = (lib.fileContents config.nzbr.foreignAssets.storm."wireguard/public.key");
-        endpoint = "storm.nzbr.de:51820";
-        allowedIPs = [
-          "10.42.0.0/26"
-          "fd42:42::/32"
-        ];
-      }
-      {
-        # earthquake
-        publicKey = (lib.fileContents config.nzbr.foreignAssets.earthquake."wireguard/public.key");
-        endpoint = "earthquake.nzbr.de:51820";
-        allowedIPs = [
-          "10.42.0.2/32"
-          "fd42:42::7a24:afff:febc:c07/128"
-          "10.0.0.0/16" # LAN
-        ];
-      }
-    ];
-  };
+  # networking.wireguard.interfaces.wg0 = {
+  #   ips = [
+  #     "10.42.0.4/24"
+  #     "fd42:42::88fc:d9ff:fe45:ead8/64"
+  #   ];
+  #   peers = [
+  #     {
+  #       # storm
+  #       publicKey = (lib.fileContents config.nzbr.foreignAssets.storm."wireguard/public.key");
+  #       endpoint = "storm.nzbr.de:51820";
+  #       allowedIPs = [
+  #         "10.42.0.0/26"
+  #         "fd42:42::/32"
+  #       ];
+  #     }
+  #     {
+  #       # earthquake
+  #       publicKey = (lib.fileContents config.nzbr.foreignAssets.earthquake."wireguard/public.key");
+  #       endpoint = "earthquake.nzbr.de:51820";
+  #       allowedIPs = [
+  #         "10.42.0.2/32"
+  #         "fd42:42::7a24:afff:febc:c07/128"
+  #         "10.0.0.0/16" # LAN
+  #       ];
+  #     }
+  #   ];
+  # };
 }
