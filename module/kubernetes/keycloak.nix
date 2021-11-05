@@ -34,7 +34,7 @@ in {
                 { name = "KEYCLOAK_PASSWORD"; valueFrom.secretKeyRef = { key = "adminpassword"; name = "keycloak"; }; }
                 { name = "PROXY_ADDRESS_FORWARDING"; value = "true"; }
                 { name = "DB_VENDOR"; value = "postgres"; }
-                { name = "DB_ADDR"; value = "10.42.0.1"; }
+                { name = "DB_ADDR"; value = "storm.nzbr.github.beta.tailscale.net"; }
                 { name = "DB_DATABASE"; value = "keycloak"; }
                 { name = "DB_USER"; value = "keycloak"; }
                 { name = "DB_PASSWORD"; valueFrom.secretKeyRef = { key = "postgrespassword"; name = "keycloak"; }; }
