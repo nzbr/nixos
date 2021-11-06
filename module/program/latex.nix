@@ -18,6 +18,7 @@ with builtins; with lib; {
           bookmark
           booktabs
           caption
+          circuitikz
           csquotes
           dinbrief
           fancyvrb
