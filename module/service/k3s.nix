@@ -2,7 +2,6 @@
 with builtins; with lib; {
   options.nzbr.service.k3s = {
     enable = mkEnableOption "K3s";
-    nodeIp = strOption;
     dbHost = mkStrOpt "storm.nzbr.github.beta.tailscale.net";
   };
 
@@ -27,12 +26,13 @@ with builtins; with lib; {
           + " --disable=traefik"
           + " --docker"
           + " --cluster-cidr=10.12.0.0/16"
-          + " --service-cidr=10.13.0.0/13"
+          + " --service-cidr=10.13.0.0/16"
           + " --cluster-dns=10.13.0.10"
           + " --cluster-domain=kube"
-          + " --node-ip=${cfg.nodeIp}"
-          + " --node-external-ip=${cfg.nodeIp}"
-          + " --flannel-backend=none"
+          + " --node-ip=${config.nzbr.nodeIp}"
+          + " --node-external-ip=${config.nzbr.nodeIp}"
+          + " --flannel-iface=tailscale0"
+          + " --flannel-backend=vxlan"
           + " --datastore-endpoint=postgres://kubernetes:$(cat ${config.nzbr.assets."k3s-db.password"})@${cfg.dbHost}:5432/kubernetes?sslmode=disable"
           + " --disable-network-policy"
           + " --write-kubeconfig /run/kubeconfig"

@@ -10,6 +10,7 @@ in
 
   nzbr = {
     patterns = [ "common" "server" ];
+    nodeIp = "100.86.174.117";
 
     deployment.targetHost = "avalanche.nzbr.de";
 
@@ -30,10 +31,8 @@ in
 
     service = {
       tailscale.enable = true;
-      k3s = {
-        enable = true;
-        nodeIp = "100.86.174.117";
-      };
+      ceph.enable = true;
+      k3s.enable = true;
       restic = {
         enable = true;
         remote = "jotta-archive";

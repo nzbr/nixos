@@ -8,6 +8,7 @@ in
 
   nzbr = {
     patterns = [ "common" "server" "development" ];
+    nodeIp = "100.71.200.40";
 
     deployment.targetHost = "earthquake.nzbr.de";
 
@@ -27,10 +28,8 @@ in
 
     service = {
       tailscale.enable = true;
-      k3s = {
-        enable = true;
-        nodeIp = "100.71.200.40";
-      };
+      ceph.enable = true;
+      k3s.enable = true;
       ddns = {
         enable = true;
         domain = "earthquake.nzbr.de";

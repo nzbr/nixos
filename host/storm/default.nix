@@ -7,6 +7,7 @@
 
   nzbr = {
     patterns = [ "common" "server" ];
+    nodeIp = "100.87.184.78";
 
     deployment.targetHost = "storm.nzbr.de";
 
@@ -27,10 +28,8 @@
 
     service = {
       tailscale.enable = true;
-      k3s = {
-        enable = true;
-        nodeIp = "100.87.184.78";
-      };
+      ceph.enable = true;
+      k3s.enable = true;
       restic = {
         enable = true;
         remote = "jotta-archive";
@@ -66,7 +65,6 @@
     helmPackage = pkgs.kubernetes-helm;
     kubectlPackage = pkgs.kubectl;
     deployment = {
-      calico.enable = true;
       cert-manager.enable = true;
       hedgedoc.enable = true;
       keycloak.enable = true;
@@ -74,7 +72,6 @@
       nginx.enable = true;
       openldap.enable = true;
       redis.enable = true;
-      rook-ceph.enable = true;
       vaultwarden.enable = true;
     };
   };
