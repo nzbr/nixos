@@ -58,9 +58,9 @@
       flake = false;
       url = "github:nbdd0121/wsld";
     };
-    rook = {
+    ceph-csi = {
       flake = false;
-      url = "github:rook/rook/release-1.7";
+      url = "github:ceph/ceph-csi/release-v3.4";
     };
   };
 

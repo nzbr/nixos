@@ -65,6 +65,7 @@
     helmPackage = pkgs.kubernetes-helm;
     kubectlPackage = pkgs.kubectl;
     deployment = {
+      ceph-csi.enable = true;
       cert-manager.enable = true;
       hedgedoc.enable = true;
       keycloak.enable = true;
@@ -138,6 +139,7 @@
       "/var/lib/longhorn" = "/storage/kubernetes/longhorn";
       "/var/lib/rook" = "/storage/kubernetes/rook";
       "/var/lib/etcd" = "/storage/kubernetes/etcd";
+      "/var/lib/ceph" = "/storage/ceph";
     };
 
   swapDevices = [
@@ -170,34 +172,6 @@
       };
     };
   };
-
-  # networking.wireguard.interfaces.wg0 = {
-  #   ips = [
-  #     "10.42.0.1/24"
-  #     "fd42:42::b45c:e0ff:fe75:cb6a/64"
-  #   ];
-  #   peers = [
-  #     {
-  #       # earthquake
-  #       publicKey = (lib.fileContents config.nzbr.foreignAssets.earthquake."wireguard/public.key");
-  #       endpoint = "earthquake.nzbr.de:51820";
-  #       allowedIPs = [
-  #         "10.42.0.2/32"
-  #         "fd42:42::7a24:afff:febc:c07/128"
-  #         "10.0.0.0/16" # LAN
-  #       ];
-  #     }
-  #     {
-  #       # avalanche
-  #       publicKey = (lib.fileContents config.nzbr.foreignAssets.avalanche."wireguard/public.key");
-  #       endpoint = "avalanche.nzbr.de:51820";
-  #       allowedIPs = [
-  #         "10.42.0.4/32"
-  #         "fd42:42::88fc:d9ff:fe45:ead8/128"
-  #       ];
-  #     }
-  #   ];
-  # };
 
   # TODO: Dump backups
   services.postgresql =
@@ -238,4 +212,6 @@
     "d /storage/postgres 0755 postgres users"
   ];
   age.secrets."postgres-setup.sql".owner = "postgres";
+
+  services.ceph.osd.daemons = [ "0" ];
 }

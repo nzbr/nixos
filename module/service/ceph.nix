@@ -44,6 +44,14 @@ with builtins; with lib; {
         enable = true;
         daemons = [ config.networking.hostName ];
       };
+      mds = {
+        enable = true;
+        daemons = [ config.networking.hostName ];
+      };
+      osd = {
+        enable = true;
+        daemons = mkDefault [ ];
+      };
     };
 
     system.activationScripts.ceph = {

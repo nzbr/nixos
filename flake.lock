@@ -20,6 +20,23 @@
         "type": "github"
       }
     },
+    "ceph-csi": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1635308704,
+        "narHash": "sha256-Z2y7SpiTXFU6NyFjba6Nw8Fi+dB831VDtKSLFjwS85A=",
+        "owner": "ceph",
+        "repo": "ceph-csi",
+        "rev": "c893a451178655da4984ff13849f00a784411372",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ceph",
+        "ref": "release-v3.4",
+        "repo": "ceph-csi",
+        "type": "github"
+      }
+    },
     "comma": {
       "flake": false,
       "locked": {
@@ -270,26 +287,10 @@
         "type": "github"
       }
     },
-    "rook": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1636556957,
-        "narHash": "sha256-3dlIms9Gxue2j4gnXfwvcc0rkz3wyN2NWEz5WSVNEEc=",
-        "owner": "rook",
-        "repo": "rook",
-        "rev": "396ef3b20ff3c264dd0ded5ca56e07c7800c38ef",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rook",
-        "ref": "release-1.7",
-        "repo": "rook",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "ceph-csi": "ceph-csi",
         "comma": "comma",
         "dotfiles": "dotfiles",
         "flake-compat": "flake-compat",
@@ -304,7 +305,6 @@
         "nixpkgs-legacy": "nixpkgs-legacy",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "razer-nari": "razer-nari",
-        "rook": "rook",
         "vscode-server": "vscode-server",
         "wsld": "wsld"
       }

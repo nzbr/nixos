@@ -1,4 +1,4 @@
-- common -> base
+- netcup pattern
 - refind bootloader
 - only one call to nix-instantiate (per system) in deploy script
 - kubernetes backup (velero)

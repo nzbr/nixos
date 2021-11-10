@@ -43,12 +43,7 @@ in
           "zroot/root"
           "zroot/srv"
 
-          "hoard/backup"
-          "hoard/chia/config"
-          "hoard/kubernetes"
-          "hoard/libvirt"
-          "hoard/media"
-          "hoard/nzbr"
+          "hoard"
         ];
         healthcheck = {
           backup = "https://hc-ping.com/f904595a-cd31-4261-b714-21b14be2cdc2";
@@ -252,6 +247,7 @@ in
       "/var/lib/longhorn" = "/storage/kubernetes/longhorn";
       "/var/lib/etcd" = "/storage/kubernetes/etcd";
       "/var/lib/rook" = "/storage/kubernetes/rook";
+      "/var/lib/ceph" = "/storage/ceph";
       "/var/lib/libvirt" = "/storage/libvirt";
     };
 
@@ -371,33 +367,6 @@ in
     139 # NetBIOS
   ];
 
-  # networking.wireguard.interfaces.wg0 = {
-  #   ips = [
-  #     "10.42.0.2/24"
-  #     "fd42:42::7a24:afff:febc:c07/64"
-  #   ];
-  #   peers = [
-  #     {
-  #       # storm
-  #       publicKey = (lib.fileContents config.nzbr.foreignAssets.storm."wireguard/public.key");
-  #       endpoint = "storm.nzbr.de:51820";
-  #       allowedIPs = [
-  #         "10.42.0.0/26"
-  #         "fd42:42::/32"
-  #       ];
-  #     }
-  #     {
-  #       # avalanche
-  #       publicKey = (lib.fileContents config.nzbr.foreignAssets.avalanche."wireguard/public.key");
-  #       endpoint = "avalanche.nzbr.de:51820";
-  #       allowedIPs = [
-  #         "10.42.0.4/32"
-  #         "fd42:42::88fc:d9ff:fe45:ead8/128"
-  #       ];
-  #     }
-  #   ];
-  # };
-
   # Modprobe config for macOS VM
   boot.extraModprobeConfig = ''
     options kvm_intel nested=1
@@ -409,4 +378,6 @@ in
   nzbr.service.syncthing.enable = true;
 
   nzbr.program.java.enable = true;
+
+  services.ceph.osd.daemons = [ "2" ];
 }
