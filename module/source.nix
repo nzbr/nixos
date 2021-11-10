@@ -10,7 +10,7 @@ with builtins; with lib; {
     system.activationScripts.inputs.text = ''
       echo linking inputs
       mkdir -p /run/inputs
-      ${concatStringsSep " && " (mapAttrsToList (name: val: "ln -sf ${val} /run/inputs/${name}") inputs)}
+      ${concatStringsSep " && " (mapAttrsToList (name: val: "ln -nsf ${val} /run/inputs/${name}") inputs)}
     '';
   };
 }
