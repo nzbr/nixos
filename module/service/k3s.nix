@@ -47,6 +47,7 @@ with builtins; with lib; {
       kubectl
       kubernetes-helm
       local.kubectl-kadalu
+      local.kubectl-killnamespace
     ];
 
     networking.firewall.allowedTCPPorts = [
