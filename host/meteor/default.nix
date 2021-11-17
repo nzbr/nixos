@@ -10,7 +10,7 @@ in
   ];
 
   nzbr = {
-    patterns = [ "common" "desktop" "laptop" "development" "gaming" ];
+    patterns = [ "common" "desktop" "laptop" "development" "hapra" ];
     pattern.development.guiTools = true;
 
     program = {
@@ -104,4 +104,16 @@ in
   systemd.services.thinkfan.preStart = ''
     ln -sfT /sys/devices/platform/coretemp.0/hwmon/hwmon* /run/thinkfan
   '';
+
+  systemd.services.delayed-gui-hack = {
+    wantedBy = [ "multi-user.target" ];
+    after = [ "getty.target" ];
+    serviceConfig.Type = "oneshot";
+    script = ''
+      if ! cat /proc/cmdline | grep -q nogui && ! systemctl status graphical.target >/dev/null; then
+        sleep 5s
+        exec systemctl start graphical.target
+      fi
+    '';
+  };
 }
