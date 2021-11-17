@@ -67,6 +67,7 @@
     deployment = {
       ceph-csi.enable = true;
       cert-manager.enable = true;
+      debug-shell.enable = true;
       hedgedoc.enable = true;
       keycloak.enable = true;
       nextcloud.enable = true;
