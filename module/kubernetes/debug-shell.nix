@@ -9,6 +9,7 @@ let
     "neofetch"
     "nmap"
     "vim"
+    "wget"
   ];
 in
 {
