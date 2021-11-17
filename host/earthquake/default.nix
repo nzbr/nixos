@@ -13,6 +13,7 @@ in
     deployment.targetHost = "earthquake.nzbr.de";
 
     boot = {
+      grub.enable = true;
       remoteUnlock = {
         luks = false;
         zfs = [ "zroot" ];
@@ -71,10 +72,17 @@ in
     };
   };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 1;
-
   boot = {
+    loader = {
+      efi = {
+        efiSysMountPoint = "/boot";
+      };
+      grub = {
+        efiSupport = true;
+        copyKernels = true;
+      };
+    };
+
     initrd = {
       availableKernelModules = [
         "xhci_pci"
