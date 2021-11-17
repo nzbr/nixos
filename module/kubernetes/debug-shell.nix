@@ -1,7 +1,15 @@
 { config, lib, pkgs, inputs, ... }:
 with builtins; with lib;
 let
-  pkgs = [ "base" "base-devel" "git" ];
+  pkgs = [
+    "base"
+    "base-devel"
+    "bind-tools"
+    "git"
+    "neofetch"
+    "nmap"
+    "vim"
+  ];
 in
 {
   kubenix.deployment.debug-shell.steps = [
@@ -21,7 +29,7 @@ in
             containers = [{
               name = "shell";
               image = "docker.io/library/archlinux";
-              command = [ "bash" "-c" "pacman -Syu --noconfirm ${concatStringsSep " " pkgs} && exec sleep infinity" ];
+              command = [ "bash" "-c" "pacman -Syu --noconfirm ${concatStringsSep " " pkgs} && neofetch && exec sleep infinity" ];
             }];
             terminationGracePeriodSeconds = 30;
             tolerations = [{
