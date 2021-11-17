@@ -58,10 +58,10 @@
       flake = false;
       url = "github:nbdd0121/wsld";
     };
-    ceph-csi = {
-      flake = false;
-      url = "github:ceph/ceph-csi/release-v3.4";
-    };
+    # ceph-csi = {
+    #   flake = false;
+    #   url = "github:ceph/ceph-csi/release-v3.4";
+    # };
   };
 
   outputs =

@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 with builtins; with lib; {
   kubenix.deployment.redis = {
-    dependencies = [ "ceph-csi" ];
+    dependencies = [ ]; # TODO: kadalu
     steps = [
       {
         chart = {

@@ -28,7 +28,7 @@
 
     service = {
       tailscale.enable = true;
-      ceph.enable = true;
+      # ceph.enable = true;
       k3s.enable = true;
       restic = {
         enable = true;
@@ -65,7 +65,6 @@
     helmPackage = pkgs.kubernetes-helm;
     kubectlPackage = pkgs.kubectl;
     deployment = {
-      ceph-csi.enable = true;
       cert-manager.enable = true;
       debug-shell.enable = true;
       hedgedoc.enable = true;

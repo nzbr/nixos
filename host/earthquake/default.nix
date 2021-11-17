@@ -29,7 +29,7 @@ in
 
     service = {
       tailscale.enable = true;
-      ceph.enable = true;
+      # ceph.enable = true;
       k3s.enable = true;
       ddns = {
         enable = true;

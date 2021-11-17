@@ -20,23 +20,6 @@
         "type": "github"
       }
     },
-    "ceph-csi": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1635308704,
-        "narHash": "sha256-Z2y7SpiTXFU6NyFjba6Nw8Fi+dB831VDtKSLFjwS85A=",
-        "owner": "ceph",
-        "repo": "ceph-csi",
-        "rev": "c893a451178655da4984ff13849f00a784411372",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ceph",
-        "ref": "release-v3.4",
-        "repo": "ceph-csi",
-        "type": "github"
-      }
-    },
     "comma": {
       "flake": false,
       "locked": {
@@ -290,7 +273,6 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "ceph-csi": "ceph-csi",
         "comma": "comma",
         "dotfiles": "dotfiles",
         "flake-compat": "flake-compat",
