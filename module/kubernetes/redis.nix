@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 with builtins; with lib; {
   kubenix.deployment.redis = {
-    dependencies = [ "rook-ceph" ];
+    dependencies = [ "ceph-csi" ];
     steps = [
       {
         chart = {

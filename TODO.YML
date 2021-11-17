@@ -4,6 +4,7 @@
 - kubernetes backup (velero)
 - prometheus/grafana
 - synapse
+- kadalu -> kubenix
 
 - kubenix:
   - documentation

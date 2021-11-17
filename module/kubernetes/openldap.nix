@@ -4,7 +4,7 @@ let
   namespace = "ldap";
 in {
   kubenix.deployment.openldap = {
-    dependencies = [ "rook-ceph" ];
+    dependencies = [ ];
     steps = [
       {
         apiVersion = "v1";
@@ -21,7 +21,7 @@ in {
         };
         spec = {
           accessModes = [ "ReadWriteOnce" ];
-          storageClassName = "rook-ceph-block";
+          storageClassName = "kadalu.pool";
           resources.requests.storage = "512M";
         };
       }

@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 with builtins; with lib; {
   kubenix.deployment.vaultwarden = {
-    dependencies = [ "nginx" "rook-ceph" ];
+    dependencies = [ "nginx" ];
     steps = [
       {
         chart = {
