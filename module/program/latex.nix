@@ -13,7 +13,9 @@ with builtins; with lib; {
         inherit (texlive)
           scheme-medium
 
+          academicons
           adjustbox
+          arydshln
           bidi
           bookmark
           booktabs
@@ -23,6 +25,7 @@ with builtins; with lib; {
           dinbrief
           fancyvrb
           float
+          fontawesome5
           footmisc
           footnotebackref
           fvextra
@@ -36,9 +39,7 @@ with builtins; with lib; {
           needspace
           parskip
           pagecolor
-          # pgfpages
           polyglossia
-          # scrlayer-scrpage
           selnolig
           setspace
           sourcesanspro
@@ -49,7 +50,6 @@ with builtins; with lib; {
           unicode-math
           upquote
           xcolor
-          # xeCJK
           xpatch
           zref
           ;
