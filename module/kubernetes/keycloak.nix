@@ -2,7 +2,8 @@
 with builtins; with lib;
 let
   namespace = "keycloak";
-in {
+in
+{
   kubenix.deployment.keycloak = {
     dependencies = [ "openldap" "nginx" ];
     steps = [

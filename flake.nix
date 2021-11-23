@@ -72,7 +72,7 @@
     }:
     let
       baseLib = import ./lib/base.nix { lib = nixpkgs.lib; };
-      lib = with nixpkgs.lib; foldl recursiveUpdate nixpkgs.lib (map (x: import x { inherit lib; }) (baseLib.findModules ".nix" ./lib));
+      lib = with nixpkgs.lib; foldl recursiveUpdate nixpkgs.lib ((map (x: import x { inherit lib; }) (baseLib.findModules ".nix" ./lib)) ++ [ inputs.kubenix.lib ]);
     in
     {
       inherit lib;
