@@ -73,6 +73,7 @@
       nginx.enable = true;
       openldap.enable = true;
       redis.enable = true;
+      stash.enable = true;
       vaultwarden.enable = true;
     };
   };

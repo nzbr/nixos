@@ -1,4 +1,5 @@
 {
+  appscode = "https://charts.appscode.com/stable/";
   bitnami = "https://charts.bitnami.com/bitnami";
   ingress-nginx = "https://kubernetes.github.io/ingress-nginx";
   jetstack = "https://charts.jetstack.io";
