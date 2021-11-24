@@ -61137,6 +61137,10 @@
   },
   "jetstack": {
     "cert-manager": {
+      "v1.6.1": {
+        "digest": "a6a70d098d77e50021c92a945f0c742eb6a23aedba44e501c9a72964430bf473",
+        "url": "charts/cert-manager-v1.6.1.tgz"
+      },
       "v1.6.0": {
         "digest": "0a28b158cff6019170ec6590dc28f9a1e4fe3ff537414874d56d424ad4afffc5",
         "url": "charts/cert-manager-v1.6.0.tgz"
@@ -61507,12 +61511,20 @@
       }
     },
     "cert-manager-approver-policy": {
+      "v0.2.0": {
+        "digest": "2e498328fa376a4bb79b9cabca1e620d0787863556b1ec1d73a6350ade254cd4",
+        "url": "charts/cert-manager-approver-policy-v0.2.0.tgz"
+      },
       "v0.1.0": {
         "digest": "ed0fb900e13fae3975c8902bb40ca728a84b297eef55de536275414ac41f7ef7",
         "url": "charts/cert-manager-approver-policy-v0.1.0.tgz"
       }
     },
     "cert-manager-csi-driver": {
+      "v0.2.0": {
+        "digest": "a5d507ca27a6fb068dc75367d475af0c69c6ce02fa178f0302a3b8c8fe353c9f",
+        "url": "charts/cert-manager-csi-driver-v0.2.0.tgz"
+      },
       "v0.1.2": {
         "digest": "18f96db29627bfcb782f10b68ae84d961a8622c22bce71b0205f57d9076a4705",
         "url": "charts/cert-manager-csi-driver-v0.1.2.tgz"
@@ -61533,6 +61545,10 @@
       }
     },
     "cert-manager-istio-csr": {
+      "v0.3.1": {
+        "digest": "1760eb94b248addd882e5dc96bc4e8b0871591f78b98e3cbda5609e7fe517eae",
+        "url": "charts/cert-manager-istio-csr-v0.3.1.tgz"
+      },
       "v0.3.0": {
         "digest": "52de8838f6e4f5beea831fc98fb8f86defff741a557b68d04f863cdeadabcd67",
         "url": "charts/cert-manager-istio-csr-v0.3.0.tgz"
@@ -61584,6 +61600,16 @@
       "v0.0.1-alpha.0": {
         "digest": "f5231b8cc421cfc0f9278d156bdad48d9868736a3446700a0c44ee447564eb30",
         "url": "charts/cert-manager-istio-csr-v0.0.1-alpha.0.tgz"
+      }
+    },
+    "cert-manager-trust": {
+      "v0.1.1": {
+        "digest": "fa0eae281a85c5c5db20cc71478ad269a317314fb840522e773a9e19ebc8f358",
+        "url": "charts/cert-manager-trust-v0.1.1.tgz"
+      },
+      "v0.1.0": {
+        "digest": "74f6ecd237c14d7b855aeec058d1e99d4c16c67740d04e675d8b17e67fc6bbdc",
+        "url": "charts/cert-manager-trust-v0.1.0.tgz"
       }
     }
   },

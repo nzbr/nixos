@@ -30,8 +30,8 @@ with builtins; with lib; {
       in
       {
         script = ''
-          ${pkgs.kubectl}/bin/kubectl -n ${namespace} apply -f ${config.nzbr.assets."k8s/stash-repo-wasabi.yaml"}
-          ${pkgs.kubectl}/bin/kubectl -n ${namespace} apply -f ${repository}
+          kubectl -n ${namespace} apply -f ${config.nzbr.assets."k8s/stash-repo-wasabi.yaml"}
+          kubectl -n ${namespace} apply -f ${repository}
         '';
       };
 
@@ -53,7 +53,7 @@ with builtins; with lib; {
           {
             script = ''
               source ${config.nzbr.assets."k8s/stash-license-variables.env"}
-              CLUSTER=$(${pkgs.kubectl}/bin/kubectl get ns kube-system -o=jsonpath='{.metadata.uid}')
+              CLUSTER=$(kubectl get ns kube-system -o=jsonpath='{.metadata.uid}')
               ${pkgs.curl}/bin/curl -X POST -d "name=$NAME&email=$EMAIL&product=stash-community&cluster=$CLUSTER&tos=true&token=$TOKEN" https://license-issuer.appscode.com/issue-license >${tokenPath}
               ${pkgs.jq}/bin/jq --arg val "$(cat ${tokenPath})" '.global.license = $val' ${values} > ${valuesPath}
             '';
@@ -70,7 +70,7 @@ with builtins; with lib; {
           }
           {
             script = ''
-              ${pkgs.kubectl}/bin/kubectl -n kube-system rollout status deployment stash-stash-community --timeout=5m
+              kubectl -n kube-system rollout status deployment stash-stash-community --timeout=5m
               sleep 30s
             '';
           }

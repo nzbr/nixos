@@ -67,6 +67,7 @@
     deployment = {
       cert-manager.enable = true;
       debug-shell.enable = true;
+      gitlab.enable = true;
       hedgedoc.enable = true;
       keycloak.enable = true;
       nextcloud.enable = true;
