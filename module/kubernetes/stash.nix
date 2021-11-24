@@ -7,7 +7,7 @@ with builtins; with lib; {
   };
 
   config = {
-    setupStashRepo = config: namespace:
+    setupStashRepo = namespace:
       let
         repository = pkgs.writeText "stash-repository-${namespace}.yaml"
           (toJSON {

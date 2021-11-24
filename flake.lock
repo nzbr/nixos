@@ -117,11 +117,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1637218079,
-        "narHash": "sha256-cMQwlDAZJoMjyeQwXJy3L/jryOQgAeUHdOu9Qiq5luE=",
+        "lastModified": 1637744389,
+        "narHash": "sha256-tMHG+AgvsPsgNzovYTT2dTuhNJG0aFxq2ULkHEHvb+Y=",
         "owner": "nzbr",
         "repo": "kubenix",
-        "rev": "cfb506de8b5878d6f8f1b2ab77519675101a5e5a",
+        "rev": "cc9e5e94ea18d7c6bc2c6b3dfe45a219499dd27e",
         "type": "github"
       },
       "original": {

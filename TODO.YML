@@ -1,7 +1,6 @@
 - netcup pattern
 - refind bootloader
 - only one call to nix-instantiate (per system) in deploy script
-- kubernetes backup (velero)
 - prometheus/grafana
 - synapse
 - kadalu -> kubenix

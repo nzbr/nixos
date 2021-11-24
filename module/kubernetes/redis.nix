@@ -12,7 +12,9 @@ with builtins; with lib; {
         namespace = "redis";
         values = config.nzbr.assets."k8s/redis-values.yaml";
       }
-      (config.setupStashRepo config "redis")
+
+      # stash backup
+      (config.setupStashRepo "redis")
       {
         apiVersion = "stash.appscode.com/v1beta1";
         kind = "BackupConfiguration";

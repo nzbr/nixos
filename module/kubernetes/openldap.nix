@@ -5,7 +5,7 @@ let
 in
 {
   kubenix.deployment.openldap = {
-    dependencies = [ ];
+    dependencies = [ "stash" ]; # TODO: kadalu
     steps = [
       {
         apiVersion = "v1";
@@ -175,7 +175,7 @@ in
       }
 
       # stash backup
-      (config.setupStashRepo config namespace)
+      (config.setupStashRepo namespace)
       {
         apiVersion = "stash.appscode.com/v1beta1";
         kind = "BackupConfiguration";
