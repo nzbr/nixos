@@ -1,29 +1,18 @@
 { config, lib, pkgs, inputs, ... }:
 with builtins; with lib; {
   kubenix.deployment.vaultwarden =
-    let
-      namespace = "vaultwarden";
-    in
     {
       dependencies = [ "nginx" "stash" ]; # TODO: kadalu
       steps = [
-        {
-          chart = {
-            repository = "k8s-at-home";
-            name = "vaultwarden";
-          };
-          name = "vaultwarden";
-          inherit namespace;
-          values = config.nzbr.assets."k8s/vaultwarden-values.yaml";
-        }
+        (kube.installHelmChart "k8s-at-home" "vaultwarden" config.nzbr.assets."k8s/vaultwarden-values.yaml")
 
         # stash backup
-        (config.setupStashRepo namespace)
+        (config.setupStashRepo "vaultwarden")
         {
           apiVersion = "stash.appscode.com/v1beta1";
           kind = "BackupConfiguration";
           metadata = {
-            inherit namespace;
+            namespace = "vaultwarden";
             name = "vaultwarden-backup";
           };
           spec = {

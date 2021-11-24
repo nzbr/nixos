@@ -2,17 +2,7 @@
 with builtins; with lib; {
   kubenix.deployment.cert-manager = {
     steps = [
-      {
-        chart = {
-          repository = "jetstack";
-          name = "cert-manager";
-        };
-        name = "cert-manager";
-        namespace = "cert-manager";
-        values = {
-          installCRDs = true;
-        };
-      }
+      (kube.installHelmChart "jetstack" "cert-manager" { installCRDs = true; })
       {
         apiVersion = "v1";
         kind = "Namespace";
@@ -23,7 +13,7 @@ with builtins; with lib; {
           };
         };
       }
-      config.nzbr.assets."k8s/cert-manager-letsencrypt-config.yaml"
+      (config.nzbr.assets."k8s/cert-manager-letsencrypt-config.yaml")
     ];
   };
 }

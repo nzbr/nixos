@@ -7,12 +7,8 @@ in
   kubenix.deployment.openldap = {
     dependencies = [ "stash" ]; # TODO: kadalu
     steps = [
-      {
-        apiVersion = "v1";
-        kind = "Namespace";
-        metadata.name = namespace;
-      }
-      config.nzbr.assets."k8s/openldap-secret.yaml"
+      (kube.createNamespace namespace)
+      (config.nzbr.assets."k8s/openldap-secret.yaml")
       {
         apiVersion = "v1";
         kind = "PersistentVolumeClaim";

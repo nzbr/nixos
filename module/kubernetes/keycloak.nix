@@ -7,12 +7,8 @@ in
   kubenix.deployment.keycloak = {
     dependencies = [ "openldap" "nginx" ];
     steps = [
-      {
-        apiVersion = "v1";
-        kind = "Namespace";
-        metadata.name = namespace;
-      }
-      config.nzbr.assets."k8s/keycloak-secret.yaml"
+      (kube.createNamespace namespace)
+      (config.nzbr.assets."k8s/keycloak-secret.yaml")
       {
         apiVersion = "apps/v1";
         kind = "Deployment";

@@ -3,15 +3,7 @@ with builtins; with lib; {
   kubenix.deployment.redis = {
     dependencies = [ "stash" ]; # TODO: kadalu
     steps = [
-      {
-        chart = {
-          repository = "bitnami";
-          name = "redis";
-        };
-        name = "redis";
-        namespace = "redis";
-        values = config.nzbr.assets."k8s/redis-values.yaml";
-      }
+      (kube.installHelmChart "bitnami" "redis" config.nzbr.assets."k8s/redis-values.yaml")
 
       # stash backup
       (config.setupStashRepo "redis")

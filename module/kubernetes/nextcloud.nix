@@ -4,15 +4,7 @@ with builtins; with lib;
   kubenix.deployment.nextcloud = {
     dependencies = [ "keycloak" "nginx" ];
     steps = [
-      {
-        chart = {
-          repository = "nextcloud";
-          name = "nextcloud";
-        };
-        name = "nextcloud";
-        namespace = "nextcloud";
-        values = config.nzbr.assets."k8s/nextcloud-values.yaml";
-      }
+      (kube.installHelmChart "nextcloud" "nextcloud" config.nzbr.assets."k8s/nextcloud-values.yaml")
     ];
   };
 }
