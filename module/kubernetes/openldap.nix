@@ -2,7 +2,8 @@
 with builtins; with lib;
 let
   namespace = "ldap";
-in {
+in
+{
   kubenix.deployment.openldap = {
     dependencies = [ ];
     steps = [
@@ -160,7 +161,7 @@ in {
         metadata = {
           labels = { "app.kubernetes.io/name" = "phpldapadmin"; };
           name = "phpldapadmin";
-          namespace = "ldap";
+          inherit namespace;
         };
         spec = {
           ports = [{
@@ -170,6 +171,52 @@ in {
           }];
           selector = { "app.kubernetes.io/name" = "phpldapadmin"; };
           type = "ClusterIP";
+        };
+      }
+
+      # stash backup
+      (config.setupStashRepo config namespace)
+      {
+        apiVersion = "stash.appscode.com/v1beta1";
+        kind = "BackupConfiguration";
+        metadata = {
+          inherit namespace;
+          name = "ldap-backup";
+        };
+        spec = {
+          repository.name = "wasabi-repo";
+          schedule = "0 2 * * *";
+          target = rec {
+            ref = {
+              apiVersion = "apps/v1";
+              kind = "Deployment";
+              name = "openldap";
+            };
+            volumeMounts = [
+              {
+                mountPath = "/var/lib/ldap";
+                name = "vol";
+                subPath = "database";
+              }
+              {
+                mountPath = "/etc/ldap/slapd.d";
+                name = "vol";
+                subPath = "config";
+              }
+            ];
+            paths = map (x: x.mountPath) volumeMounts;
+          };
+          runtimeSettings.container.securityContext = {
+            runAsUser = 0;
+            runAsGroup = 0;
+          };
+          retentionPolicy = {
+            name = "last-year";
+            keepDaily = 7;
+            keepWeekly = 4;
+            keepMonthly = 12;
+            prune = true;
+          };
         };
       }
     ];
