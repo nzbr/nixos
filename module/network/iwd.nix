@@ -19,7 +19,7 @@ with builtins; with lib; {
         text = ''
           mkdir -p /run/iwd
           find /run/iwd/ -type f -delete
-          for net in /run/secrets/iwd/*; do
+          for net in ${config.age.secretsMountPoint}/*/iwd/*; do
             FILE="/run/iwd/$(head -n1 $net)"
             tail -n+2 $net > "$FILE"
           done
@@ -35,8 +35,8 @@ with builtins; with lib; {
         };
         restartTriggers =
           mapAttrsToList
-          (name: type: hashFile "sha256" "${config.nzbr.flake.assets}/iwd/${name}")
-          (readDir "${config.nzbr.flake.assets}/iwd/");
+            (name: type: hashFile "sha256" "${config.nzbr.flake.assets}/iwd/${name}")
+            (readDir "${config.nzbr.flake.assets}/iwd/");
       };
     };
 }
