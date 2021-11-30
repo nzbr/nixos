@@ -95,12 +95,9 @@ with builtins; with lib; {
                   syncthingtray
                 ];
 
-                nzbr.home.config = {
-                  home.file.syncthingtray-autostart = {
-                    target = ".config/autostart/synchthingtray.desktop";
-                    source = "${syncthingtray}/share/applications/syncthingtray.desktop";
-                  };
-                };
+                nzbr.home.autostart = [
+                  "${syncthingtray}/share/applications/syncthingtray.desktop"
+                ];
 
               }
             )

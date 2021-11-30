@@ -21,13 +21,17 @@ with builtins; with lib; {
         config.services.tailscale.package
       ];
 
+      nzbr.home.autostart = mkIf config.nzbr.pattern.desktop.enable [
+        "${pkgs.local.tailscale-ui}/bin/tailscale-ui"
+      ];
+
       # create a oneshot job to authenticate to Tailscale
-      systemd.services.tailscale-autoconnect = {
+      systemd.services.tailscale-autoconnect = rec {
         description = "Automatic connection to Tailscale";
 
         # make sure tailscale is running before trying to connect to tailscale
         after = [ "network-pre.target" "tailscale.service" ];
-        wants = [ "network-pre.target" "tailscale.service" ];
+        wants = after;
         wantedBy = [ "multi-user.target" ];
 
         # set this service as a oneshot job
