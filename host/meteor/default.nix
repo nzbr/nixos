@@ -10,7 +10,7 @@ in
   ];
 
   nzbr = {
-    patterns = [ "common" "desktop" "laptop" "development" "hapra" ];
+    patterns = [ "common" "desktop" "laptop" "development" "hapra" "gaming" ];
     pattern.development.guiTools = true;
 
     program = {

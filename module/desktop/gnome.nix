@@ -30,28 +30,16 @@ with builtins; with lib; {
       gnome.seahorse
 
       local.gnome-shell-extension-pop-shell
-    ] ++ (with pkgs.gnomeExtensions;
+    ] ++ (
       let
-        unstable = pkgs.unstable.gnomeExtensions;
+        extensions =
+          pkgs.unstable.gnome40Extensions
+            // pkgs.gnome40Extensions
+            // { "arcmenu@arcmenu.com" = pkgs.gnomeExtensions.arcmenu; }; # other arcmenu package is broken for some reason
       in
-      [
-        arcmenu
-        audio-switcher-40
-        bluetooth-quick-connect
-        blur-my-shell
-        caffeine
-        dash-to-panel
-        unstable.expandable-notifications
-        gsconnect
-        notification-banner-position
-        unstable.notification-counter
-        remmina-search-provider
-        unstable.spotify-artwork-fixer
-        system-action-hibernate
-        syncthing-icon
-        tray-icons-reloaded
-        tweaks-in-system-menu
-      ]
+      map
+        (ext: extensions.${ext})
+        config.nzbr.home.config.dconf.settings."org/gnome/shell".enabled-extensions
     );
 
     programs.gnupg.agent.pinentryFlavor = "gnome3";
@@ -126,11 +114,12 @@ with builtins; with lib; {
             sleep-inactive-battery-type = "hibernate";
           };
           "org/gnome/shell" = {
+            disable-user-extensions = false;
             enabled-extensions = [
+              "appindicatorsupport@rgcjonas.gmail.com"
               "arcmenu@arcmenu.com"
               "audio-switcher@albertomosconi"
               "bluetooth-quick-connect@bjarosze.gmail.com"
-              # "blur-my-shell@aunetx"
               "caffeine@patapon.info"
               "dash-to-panel@jderose9.github.com"
               "drive-menu@gnome-shell-extensions.gcampax.github.com"
@@ -141,9 +130,11 @@ with builtins; with lib; {
               "NotificationCounter@coolllsk"
               "remmina-search-provider@alexmurray.github.com"
               "spotify-artwork-fixer@wjt.me.uk"
-              "syncthingicon@jay.strict@posteo.de"
-              "trayIconsReloaded@selfmade.pl"
               "tweaks-system-menu@extensions.gnome-shell.fifi.org"
+              "user-theme@gnome-shell-extensions.gcampax.github.com"
+              # "blur-my-shell@aunetx"
+              # "syncthingicon@jay.strict@posteo.de"
+              # "trayIconsReloaded@selfmade.pl"
             ];
             favorite-apps = [
               "vivaldi-stable.desktop"

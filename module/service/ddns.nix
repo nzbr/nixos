@@ -22,7 +22,7 @@ with builtins; with lib; {
         isSystemUser = true;
         group = "inadyn";
       };
-      users.groups.inadyn = {};
+      users.groups.inadyn = { };
 
       systemd = {
         services.ddns =
