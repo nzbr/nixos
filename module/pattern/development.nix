@@ -33,12 +33,17 @@ with builtins; with lib;
       environment.systemPackages = with pkgs; [
         # androidComposition.androidsdk
 
+        clang
+        cmake
         desktop-file-utils
         gcc
         global
         go
+        gtk3
         kubectl
         kubernetes-helm
+        ninja
+        pkg-config
         python3
         unstable.flutter
         unstable.dotnet-sdk_5

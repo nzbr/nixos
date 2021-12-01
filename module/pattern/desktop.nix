@@ -54,6 +54,10 @@ with builtins; with lib;
         lm_sensors
       ];
 
+      environment.variables = {
+        CHROME_EXECUTABLE = "${pkgs.chromium}/bin/chromium";
+      };
+
       fonts.fonts = with pkgs; [
         (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
         roboto
