@@ -9,8 +9,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    networking.firewall.checkReversePath = false;
-
     services.mullvad-vpn.enable = true;
     environment.systemPackages = with pkgs; [
       mullvad-vpn

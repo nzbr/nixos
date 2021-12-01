@@ -18,7 +18,7 @@ with builtins; with lib; {
       # TODO: Replace with the same stuff the live ISO uses
       environment = {
         systemPackages = with pkgs; [
-          unstable.xstow
+          xstow
           pwgen
         ];
       };

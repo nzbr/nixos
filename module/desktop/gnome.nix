@@ -33,9 +33,8 @@ with builtins; with lib; {
     ] ++ (
       let
         extensions =
-          pkgs.unstable.gnome40Extensions
-            // pkgs.gnome40Extensions
-            // { "arcmenu@arcmenu.com" = pkgs.gnomeExtensions.arcmenu; }; # other arcmenu package is broken for some reason
+            pkgs.gnome41Extensions
+            // { "arcmenu@arcmenu.com" = pkgs.unstable.gnomeExtensions.arcmenu; }; # other arcmenu package is broken for some reason
       in
       map
         (ext: extensions.${ext})
@@ -57,7 +56,7 @@ with builtins; with lib; {
               let
                 repo = builtins.fetchGit {
                   url = "https://aur.archlinux.org/gnome-terminal-transparency.git";
-                  rev = "b319fb2fa68d7aaff8361cbbca79b23c4e2b29c9";
+                  rev = "7dd7cd2471e42af8130cda7905b2b2c2a334ac4b";
                 };
                 transparencyPatch = repo + "/transparency.patch";
               in
@@ -118,22 +117,21 @@ with builtins; with lib; {
             enabled-extensions = [
               "appindicatorsupport@rgcjonas.gmail.com"
               "arcmenu@arcmenu.com"
-              "audio-switcher@albertomosconi"
+              # "audio-switcher@albertomosconi"
               "bluetooth-quick-connect@bjarosze.gmail.com"
               "caffeine@patapon.info"
               "dash-to-panel@jderose9.github.com"
               "drive-menu@gnome-shell-extensions.gcampax.github.com"
               "expandable-notifications@kaan.g.inam.org"
               "gsconnect@andyholmes.github.io"
-              "hibernate@dafne.rocks"
+              # "hibernate@dafne.rocks"
+              "hibernate-status@dromi" # Placeholder for the above extension
               "notification-position@drugo.dev"
-              "NotificationCounter@coolllsk"
-              "remmina-search-provider@alexmurray.github.com"
+              # "remmina-search-provider@alexmurray.github.com"
               "spotify-artwork-fixer@wjt.me.uk"
-              "tweaks-system-menu@extensions.gnome-shell.fifi.org"
+              # "tweaks-system-menu@extensions.gnome-shell.fifi.org"
               "user-theme@gnome-shell-extensions.gcampax.github.com"
               # "blur-my-shell@aunetx"
-              # "syncthingicon@jay.strict@posteo.de"
               # "trayIconsReloaded@selfmade.pl"
             ];
             favorite-apps = [

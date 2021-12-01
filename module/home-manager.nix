@@ -57,7 +57,7 @@ with builtins; with lib; {
             nameValuePair'
             "autostart-launcher-${name}"
             {
-              target = ".config/autostart/${name}" + (if hasSuffix ".desktop" name then "" else ".desktop");
+              target = (unsafeDiscardStringContext ".config/autostart/${name}" + (if hasSuffix ".desktop" name then "" else ".desktop"));
               source =
                 if hasSuffix ".desktop" name
                 then file

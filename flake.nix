@@ -4,13 +4,12 @@
   inputs = {
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-wsl.url = "github:nzbr/NixOS-WSL/WSLg";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
-    nixpkgs-legacy.url = "github:NixOS/nixpkgs/nixos-20.09";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-bleeding-edge.url = "github:NixOS/nixpkgs/master";
 
     flake-utils.url = "github:numtide/flake-utils";
-    home-manager.url = "github:nix-community/home-manager/release-21.05";
+    home-manager.url = "github:nix-community/home-manager/release-21.11";
     naersk.url = "github:nix-community/naersk"; # rust package builder
     agenix = {
       url = "github:ryantm/agenix";
@@ -141,7 +140,6 @@
                               (with inputs; {
                                 unstable = nixpkgs-unstable;
                                 bleeding-edge = nixpkgs-bleeding-edge;
-                                legacy = nixpkgs-legacy;
                               });
                         };
 
@@ -149,7 +147,7 @@
                         # of this flake.
                         system.configurationRevision = lib.mkIf (self ? rev) self.rev;
 
-                        system.stateVersion = "21.05";
+                        system.stateVersion = "21.11";
                       })
 
                       ({ ... }: {
