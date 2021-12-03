@@ -64,6 +64,7 @@ with builtins; with lib; {
                 else (
                   pkgs.writeText "${name}.desktop" ''
                     [Desktop Entry]
+                    Name=${name}
                     Type=Application
                     Exec=${file}
                   ''
