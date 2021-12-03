@@ -38,6 +38,7 @@ with builtins; with lib;
         desktop-file-utils
         gcc
         global
+        gnumake
         go
         gtk3
         kubectl
@@ -64,6 +65,26 @@ with builtins; with lib;
           ]
         else [ ]
       );
+
+      environment.variables =
+      let
+        devPkgs = with pkgs; [
+          glib
+          gtk3
+        ];
+      in
+      {
+        PKG_CONFIG_PATH = concatStringsSep ":" (
+          map
+            (pkg: "${pkg.dev}/lib/pkgconfig")
+            devPkgs
+        );
+        CMAKE_PREFIX_PATH = "${pkgs.cmake}:${pkgs.pkg-config}:" + concatStringsSep ":" (
+          map
+            (pkg: "${pkg.dev}")
+            devPkgs
+        );
+      };
 
       nzbr.cli.git = {
         enable = true;
