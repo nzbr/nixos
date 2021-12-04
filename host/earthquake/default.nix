@@ -10,7 +10,7 @@ in
     patterns = [ "common" "server" "development" ];
     nodeIp = "100.71.200.40";
 
-    deployment.targetHost = "earthquake.nzbr.de";
+    deployment.targetHost = "earthquake.nzbr.github.beta.tailscale.net";
 
     boot = {
       grub.enable = true;
@@ -34,6 +34,11 @@ in
       ddns = {
         enable = true;
         domain = "earthquake.nzbr.de";
+      };
+      gitaly = {
+        enable = true;
+        gitalySecretFile = config.nzbr.assets."k8s/gitlab/gitaly-secret";
+        gitlabShellSecretFile = config.nzbr.assets."k8s/gitlab/gitlab-shell-secret";
       };
       restic = {
         enable = true;
@@ -61,6 +66,7 @@ in
               { name = "chia"; mountpoint = "/chia"; }
               { name = "kubernetes"; mountpoint = "/kubernetes"; }
               { name = "libvirt"; mountpoint = "/libvirt"; }
+              { name = "gitaly"; mountpoint = "/gitaly"; }
             ];
           }
         ];
@@ -71,6 +77,10 @@ in
       latex.enable = true;
     };
   };
+
+  age.secrets."k8s/gitlab/gitaly-secret".owner = "1000";
+  age.secrets."k8s/gitlab/gitlab-shell-secret".owner = "1000";
+
 
   boot = {
     loader = {
@@ -177,6 +187,10 @@ in
     };
     "/storage/libvirt" = {
       device = "hoard/libvirt";
+      fsType = "zfs";
+    };
+    "/storage/gitaly" = {
+      device = "hoard/gitaly";
       fsType = "zfs";
     };
 

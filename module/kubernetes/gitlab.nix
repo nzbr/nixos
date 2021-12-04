@@ -26,12 +26,12 @@ with builtins; with lib; {
         };
       }
 
-      (config.nzbr.assets."k8s/gitlab-secrets.yaml")
+      (config.nzbr.assets."k8s/gitlab/gitlab-secrets.yaml")
 
       {
         script = ''
-          kubectl create -n gitlab secret generic gitlab-rails-storage --from-file=connection=${config.nzbr.assets."k8s/gitlab-rails-storage.yaml"} --from-file=config=${config.nzbr.assets."k8s/gitlab-registry-storage.yaml"} --dry-run=client -o yaml | kubectl apply -f -
-          kubectl create -n gitlab secret generic toolbox-storage --from-file=config=${config.nzbr.assets."k8s/gitlab-toolbox-storage"} --dry-run=client -o yaml | kubectl apply -f -
+          kubectl create -n gitlab secret generic gitlab-rails-storage --from-file=connection=${config.nzbr.assets."k8s/gitlab/gitlab-rails-storage.yaml"} --from-file=config=${config.nzbr.assets."k8s/gitlab/gitlab-registry-storage.yaml"} --dry-run=client -o yaml | kubectl apply -f -
+          kubectl create -n gitlab secret generic toolbox-storage --from-file=config=${config.nzbr.assets."k8s/gitlab/gitlab-toolbox-storage"} --dry-run=client -o yaml | kubectl apply -f -
         '';
       }
 
@@ -149,7 +149,7 @@ with builtins; with lib; {
               };
               enabled = false;
               external = [{
-                hostname = "gitlab-gitaly.gitlab.svc.kube";
+                hostname = "earthquake.nzbr.github.beta.tailscale.net";
                 name = "default";
               }];
             };

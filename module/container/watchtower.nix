@@ -9,6 +9,7 @@ with builtins; with lib; {
         TZ = "Europe/Berlin";
         WATCHTOWER_CLEANUP = "true";
         WATCHTOWER_POLL_INTERVAL = "10800";
+        WATCHTOWER_LABEL_ENABLE = "true";
       };
       volumes = [
         "/var/run/docker.sock:/var/run/docker.sock"
