@@ -67,24 +67,24 @@ with builtins; with lib;
       );
 
       environment.variables =
-      let
-        devPkgs = with pkgs; [
-          glib
-          gtk3
-        ];
-      in
-      {
-        PKG_CONFIG_PATH = concatStringsSep ":" (
-          map
-            (pkg: "${pkg.dev}/lib/pkgconfig")
-            devPkgs
-        );
-        CMAKE_PREFIX_PATH = "${pkgs.cmake}:${pkgs.pkg-config}:" + concatStringsSep ":" (
-          map
-            (pkg: "${pkg.dev}")
-            devPkgs
-        );
-      };
+        let
+          devPkgs = with pkgs; [
+            glib
+            gtk3
+          ];
+        in
+        {
+          PKG_CONFIG_PATH = concatStringsSep ":" (
+            map
+              (pkg: "${pkg.dev}/lib/pkgconfig")
+              devPkgs
+          );
+          CMAKE_PREFIX_PATH = "${pkgs.cmake}:${pkgs.pkg-config}:" + concatStringsSep ":" (
+            map
+              (pkg: "${pkg.dev}")
+              devPkgs
+          );
+        };
 
       nzbr.cli.git = {
         enable = true;

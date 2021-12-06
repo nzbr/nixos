@@ -33,7 +33,7 @@ with builtins; with lib; {
     ] ++ (
       let
         extensions =
-            pkgs.gnome41Extensions
+          pkgs.gnome41Extensions
             // { "arcmenu@arcmenu.com" = pkgs.unstable.gnomeExtensions.arcmenu; }; # other arcmenu package is broken for some reason
       in
       map

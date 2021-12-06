@@ -48,31 +48,32 @@ with builtins; with lib; {
 
     nzbr.home.config = {
       home.file =
-      listToAttrs (
-        map
-          (file:
-            let
-              name = baseNameOf file;
-            in
-            nameValuePair'
-            "autostart-launcher-${name}"
-            {
-              target = (unsafeDiscardStringContext ".config/autostart/${name}" + (if hasSuffix ".desktop" name then "" else ".desktop"));
-              source =
-                if hasSuffix ".desktop" name
-                then file
-                else (
-                  pkgs.writeText "${name}.desktop" ''
-                    [Desktop Entry]
-                    Name=${name}
-                    Type=Application
-                    Exec=${file}
-                  ''
-                );
-            }
-          )
-        config.nzbr.home.autostart
-      );
+        listToAttrs (
+          map
+            (file:
+              let
+                name = baseNameOf file;
+              in
+              nameValuePair'
+                "autostart-launcher-${name}"
+                {
+                  target = (unsafeDiscardStringContext ".config/autostart/${name}" + (if hasSuffix ".desktop" name then "" else ".desktop"));
+                  source =
+                    if hasSuffix ".desktop" name
+                    then file
+                    else
+                      (
+                        pkgs.writeText "${name}.desktop" ''
+                          [Desktop Entry]
+                          Name=${name}
+                          Type=Application
+                          Exec=${file}
+                        ''
+                      );
+                }
+            )
+            config.nzbr.home.autostart
+        );
     };
 
   };
