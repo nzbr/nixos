@@ -23,8 +23,8 @@ with builtins; with lib; {
             group = "users";
             openDefaultPorts = true;
             dataDir = lib.mkDefault "/home/nzbr";
-            declarative =
-              let
+          } // (
+            let
                 baseDir = (lib.removeSuffix "/" config.services.syncthing.dataDir) + "/";
               in
               {
@@ -34,7 +34,7 @@ with builtins; with lib; {
                 overrideFolders = true;
                 devices = {
                   earthquake = {
-                    addresses = [ "quic://earthquake.nzbr.de:22000" "quic://10.42.0.2:22000" ];
+                    addresses = [ "quic://earthquake.nzbr.de:22000" "quic://earthquake.nzbr.github.beta.tailscale.net:22000" ];
                     id = "JDXIQUR-4FUQQK6-CZFNZTA-NCWBFEU-HCZFDW5-E7X2KKX-BIQWZZZ-2B42XQF";
                     introducer = true;
                   };
@@ -43,7 +43,7 @@ with builtins; with lib; {
                   landslide.id = "Q67E6XX-AQTLKAS-2SPVS7T-OUUPVXZ-UX632XY-DN7H2AZ-Y3N2CFJ-5EGDVAB";
                   meteor.id = "7RPEIWJ-QQDVCWD-M46KH3U-237GDWG-ZL6EEF2-WPZVAF2-7L5JRX2-HHHKKAB";
 
-                  hurricane-win.id = "OJZKKKY-KG7PO72-VOJGPMU-X3Q6GRZ-HHA75HN-NGIGMRV-WZYPO5F-6PKEHAB";
+                  hurricane-win.id = "ORTVEOF-CUZIQQI-HXPIVQW-FSS4B3F-JVSDTQV-GBB233Q-ESXFKKW-GWNPNQN";
                   earthquake-macos.id = "QCCLSA4-AFZQSHS-D4DQ2F6-VCPWNTQ-MOQSJY2-HUA5PSA-J3FTLTH-XXJAWAW";
                   uli.id = "ZOTIOGW-NRF4IWB-BXJGBLB-QGZLA6A-NEOX3CV-5DK5O2V-6PFKBXH-VK4F3AK";
                 };
@@ -77,8 +77,8 @@ with builtins; with lib; {
                         devices = [ "earhquake" "uli" ];
                       };
                     });
-              };
-          };
+              }
+          );
         }
       )
     );
