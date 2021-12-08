@@ -20,7 +20,7 @@ with builtins; with lib; {
 
         # Pretend that there is a bootloader
         boot.loader.grub.enable = false;
-        system.build.installBootLoader = pkgs.writeShellScript "fake-bootloader" "#!/usr/bin/env bash";
+        system.build.installBootLoader = pkgs.writeShellScript "fake-bootloader" "";
 
         # basic gui environment
         environment.noXlibs = lib.mkForce false;
@@ -55,7 +55,7 @@ with builtins; with lib; {
             WSL_INTEROP = "/run/WSL/1_interop";
 
             # Theme config
-            QT_QPA_PLATFORMTHEME = "gtk2";
+            # QT_QPA_PLATFORMTHEME = "gtk2"; # already set somewhere else?
             XDG_CURRENT_DESKTOP = "gnome";
           };
 

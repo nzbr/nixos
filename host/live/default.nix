@@ -100,7 +100,7 @@ with builtins; with lib; {
 
   isoImage = {
     edition = "nzbr";
-    isoName = with config.system.nixos; with config.isoImage; lib.mkForce "${isoBaseName}-${edition}-${release}-${codeName}-${pkgs.stdenv.hostPlatform.system}.iso";
+    isoName = with config.system.nixos; with config.isoImage; lib.mkForce "${isoBaseName}-${edition}-${release}-${codeName}-${pkgs.stdenv.hostPlatform.system}-${config.boot.kernelPackages.kernel.version}.iso";
     squashfsCompression = "zstd";
   };
 
