@@ -30,6 +30,7 @@
     service = {
       tailscale.enable = true;
       # ceph.enable = true;
+      gitlab-runner.enable = true;
       k3s.enable = true;
       restic = {
         enable = true;

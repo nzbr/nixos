@@ -46,6 +46,7 @@ in
         enable = true;
         domain = "earthquake.nzbr.de";
       };
+      gitlab-runner.enable = true;
       restic = {
         enable = true;
         remote = "jotta-archive";

@@ -33,6 +33,7 @@ in
       tailscale.enable = true;
       # ceph.enable = true;
       k3s.enable = true;
+      gitlab-runner.enable = true;
       restic = {
         enable = true;
         remote = "jotta-archive";
