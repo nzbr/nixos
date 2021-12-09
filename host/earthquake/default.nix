@@ -20,6 +20,15 @@ in
       };
     };
 
+    container = {
+      watchtower.enable = true;
+      gitaly = {
+        enable = true;
+        gitalySecretFile = config.nzbr.assets."k8s/gitlab/gitaly-secret";
+        gitlabShellSecretFile = config.nzbr.assets."k8s/gitlab/gitlab-shell-secret";
+      };
+    };
+
     # network = {
     #   wireguard = {
     #     enable = true;
@@ -34,11 +43,6 @@ in
       ddns = {
         enable = true;
         domain = "earthquake.nzbr.de";
-      };
-      gitaly = {
-        enable = true;
-        gitalySecretFile = config.nzbr.assets."k8s/gitlab/gitaly-secret";
-        gitlabShellSecretFile = config.nzbr.assets."k8s/gitlab/gitlab-shell-secret";
       };
       restic = {
         enable = true;

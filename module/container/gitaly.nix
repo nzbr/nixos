@@ -17,6 +17,12 @@ with builtins; with lib; {
     mkIf cfg.enable {
       virtualisation.oci-containers.containers.gitaly =
         let
+          gitalyVersion = readFile' (
+            pkgs.runCommand "gitaly-version" {} ''
+              ${pkgs.gnutar}/bin/tar -xvf ${helm.getTar "${inputs.self}" "gitlab" "gitlab" null}
+              ${pkgs.yq}/bin/yq -r '.appVersion' < gitlab/charts/gitlab/charts/gitaly/Chart.yaml > $out
+            ''
+          );
           configDrv = pkgs.writeText "config.toml.erb" ''
             # The directory where Gitaly's executables are stored
             bin_dir = "/usr/local/bin"
@@ -73,14 +79,12 @@ with builtins; with lib; {
         in
         {
           autoStart = true;
-          # image = "registry.gitlab.com/gitlab-org/build/cng/gitaly:latest";
-          image = "registry.gitlab.com/gitlab-org/build/cng/gitaly:v14.5.2";
+          image = "registry.gitlab.com/gitlab-org/build/cng/gitaly:v${gitalyVersion}";
           volumes = [
             "${configDrv}:/etc/gitaly/templates/config.toml.erb:ro"
             "${cfg.gitalySecretFile}:/etc/gitlab-secrets/gitaly/gitaly_token:ro"
             "${cfg.gitlabShellSecretFile}:/etc/gitlab-secrets/shell/.gitlab_shell_secret:ro"
             "${cfg.dataPath}:/home/git/repositories"
-            "${inputs.self}/asset/k8s/gitlab/certs:/etc/ssl/certs"
           ];
           environment = {
             CONFIG_TEMPLATE_DIRECTORY = "/etc/gitaly/templates";
