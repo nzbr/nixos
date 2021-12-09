@@ -62,11 +62,6 @@ with builtins; with lib; {
         local.kubectl-killnamespace
       ];
 
-      networking.firewall.allowedTCPPorts = [
-        80
-        443
-      ];
-
       environment.variables = {
         KUBECONFIG = "/run/kubeconfig";
       };
