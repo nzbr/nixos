@@ -5,7 +5,7 @@ with builtins; with lib;
 
   config =
     let
-      cfg = config.nzbr.pattern.laptop;
+      cfg = config.nzbr.pattern.desktop;
     in
     mkIf cfg.enable {
 
