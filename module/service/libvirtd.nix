@@ -13,9 +13,11 @@ with builtins; with lib; {
       virtualisation.libvirtd = {
         enable = true;
         onBoot = "start";
-        qemuOvmf = true;
         onShutdown = "suspend";
-        qemuPackage = pkgs.unstable.qemu;
+        qemu = {
+          ovmf.enable = true;
+          package = pkgs.unstable.qemu;
+        };
       };
 
       # TPM Emulator for Windows 11 VMs (does not work, TPM is not detected)
