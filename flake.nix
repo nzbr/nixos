@@ -138,10 +138,13 @@
                   specialArgs = {
                     inherit lib inputs system;
                   };
-                  modules = [
-                    inputs.agenix.nixosModules.age
-
+                  modules =
+                  [
                     ({ pkgs, config, ... }: {
+
+                      imports = [
+                        inputs.agenix.nixosModules.age
+                      ] ++ inputs.kubenix.nixosModules;
 
                       nixpkgs.config = {
                         allowUnfree = true;
