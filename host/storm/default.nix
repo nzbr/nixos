@@ -7,6 +7,7 @@
 
   nzbr = {
     patterns = [ "common" "server" ];
+    nodeIp = "100.87.184.78";
 
     deployment.targetHost = "storm.nzbr.de";
 
@@ -18,15 +19,18 @@
       };
     };
 
-    network = {
-      wireguard = {
-        enable = true;
-        ip = "10.42.0.1";
-      };
-    };
+    # network = {
+    #   wireguard = {
+    #     enable = true;
+    #     ip = "10.42.0.1";
+    #   };
+    # };
+    network.k3s-firewall.enable = true;
 
     service = {
       tailscale.enable = true;
+      # ceph.enable = true;
+      gitlab-runner.enable = true;
       k3s.enable = true;
       restic = {
         enable = true;
@@ -52,6 +56,28 @@
           }
         ];
       };
+    };
+  };
+
+  kubenix = {
+    enable = true;
+    kubeconfigPath = "/run/kubeconfig";
+    waitForUnits = [ "network-online.target" "k3s.service" ];
+    helmNixPath = config.nzbr.flake.root;
+    helmPackage = pkgs.kubernetes-helm;
+    kubectlPackage = pkgs.kubectl;
+    deployment = {
+      cert-manager.enable = true;
+      debug-shell.enable = true;
+      gitlab.enable = true;
+      hedgedoc.enable = true;
+      keycloak.enable = true;
+      nextcloud.enable = true;
+      nginx.enable = true;
+      openldap.enable = true;
+      redis.enable = true;
+      stash.enable = true;
+      vaultwarden.enable = true;
     };
   };
 
@@ -117,6 +143,7 @@
       "/var/lib/longhorn" = "/storage/kubernetes/longhorn";
       "/var/lib/rook" = "/storage/kubernetes/rook";
       "/var/lib/etcd" = "/storage/kubernetes/etcd";
+      "/var/lib/ceph" = "/storage/ceph";
     };
 
   swapDevices = [
@@ -150,42 +177,17 @@
     };
   };
 
-  networking.wireguard.interfaces.wg0 = {
-    ips = [
-      "10.42.0.1/24"
-      "fd42:42::b45c:e0ff:fe75:cb6a/64"
-    ];
-    peers = [
-      {
-        # earthquake
-        publicKey = (lib.fileContents config.nzbr.foreignAssets.earthquake."wireguard/public.key");
-        endpoint = "earthquake.nzbr.de:51820";
-        allowedIPs = [
-          "10.42.0.2/32"
-          "fd42:42::7a24:afff:febc:c07/128"
-          "10.0.0.0/16" # LAN
-        ];
-      }
-      {
-        # avalanche
-        publicKey = (lib.fileContents config.nzbr.foreignAssets.avalanche."wireguard/public.key");
-        endpoint = "avalanche.nzbr.de:51820";
-        allowedIPs = [
-          "10.42.0.4/32"
-          "fd42:42::88fc:d9ff:fe45:ead8/128"
-        ];
-      }
-    ];
-  };
-
   # TODO: Dump backups
   services.postgresql =
     let
       services = [
         "bitwarden"
         "gitlab"
+        "hedgedoc"
+        "keycloak"
         "kubernetes"
         "nextcloud"
+        "vaultwarden"
       ];
     in
     {
@@ -196,6 +198,7 @@
       authentication = ''
         host all all 10.42.0.0/24 md5
         host all all 10.12.0.0/16 md5
+        host all all 100.64.0.0/10 md5
       '';
       ensureDatabases = services;
       ensureUsers =
@@ -213,4 +216,6 @@
     "d /storage/postgres 0755 postgres users"
   ];
   age.secrets."postgres-setup.sql".owner = "postgres";
+
+  services.ceph.osd.daemons = [ "0" ];
 }

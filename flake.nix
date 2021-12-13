@@ -3,16 +3,32 @@
 
   inputs = {
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nixos-wsl.url = "github:ajgrf/NixOS-WSL/env-passthru";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-bleeding-edge.url = "github:NixOS/nixpkgs/master";
-
     flake-utils.url = "github:numtide/flake-utils";
-    home-manager.url = "github:nix-community/home-manager/release-21.11";
-    naersk.url = "github:nix-community/naersk"; # rust package builder
+    home-manager = {
+      url = "github:nix-community/home-manager/release-21.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-wsl = {
+      url = "github:ajgrf/NixOS-WSL/env-passthru";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    naersk = {
+      # rust package builder
+      url = "github:nix-community/naersk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agenix = {
       url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    kubenix = {
+      url = "github:nzbr/kubenix";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -41,6 +57,10 @@
       flake = false;
       url = "github:nbdd0121/wsld";
     };
+    # ceph-csi = {
+    #   flake = false;
+    #   url = "github:ceph/ceph-csi/release-v3.4";
+    # };
   };
 
   outputs =
@@ -51,9 +71,7 @@
     }:
     let
       baseLib = import ./lib/base.nix { lib = nixpkgs.lib; };
-      lib = nixpkgs.lib.extend (self': super':
-        with nixpkgs.lib; foldl recursiveUpdate { } (map (x: import x { lib = self'; }) (baseLib.findModules ".nix" ./lib))
-      );
+      lib = with nixpkgs.lib; foldl recursiveUpdate nixpkgs.lib ((map (x: import x { inherit lib; }) (baseLib.findModules ".nix" ./lib)) ++ [ inputs.kubenix.lib ]);
     in
     {
       inherit lib;
@@ -77,6 +95,8 @@
             morph
             nixpkgs-fmt
             rage
+            inputs.kubenix.packages.${system}.helm-update
+            inputs.kubenix.packages.${system}.yaml2nix
           ]
           ++
           mapAttrsToList
@@ -118,10 +138,13 @@
                   specialArgs = {
                     inherit lib inputs system;
                   };
-                  modules = [
-                    inputs.agenix.nixosModules.age
-
+                  modules =
+                  [
                     ({ pkgs, config, ... }: {
+
+                      imports = [
+                        inputs.agenix.nixosModules.age
+                      ] ++ inputs.kubenix.nixosModules;
 
                       nixpkgs.config = {
                         allowUnfree = true;

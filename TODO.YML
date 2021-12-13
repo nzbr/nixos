@@ -1,0 +1,31 @@
+- netcup pattern
+- refind bootloader
+- only one call to nix-instantiate (per system) in deploy script
+- prometheus/grafana
+- synapse
+- kadalu -> kubenix
+
+- kubenix:
+  - documentation
+  - option to pre-render helm chart
+  - option to only store specific charts in lockfile
+
+- theme:
+  - profile picture
+  - custom start button
+  - progress bars haben falsche Farbe
+  - folder colors
+  - accent color in gnome shell
+  - get rid of date
+  - font
+
+- live:
+   - pre-download zsh plugins
+   - bundle vivaldi profile
+
+- earthquake:
+  - smbpasswd activation script
+  - NZBGet
+
+- wormhole:
+  - ULAs
