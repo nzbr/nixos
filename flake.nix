@@ -3,7 +3,7 @@
 
   inputs = {
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nixos-wsl.url = "github:nzbr/NixOS-WSL/WSLg";
+    nixos-wsl.url = "github:ajgrf/NixOS-WSL/env-passthru";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-bleeding-edge.url = "github:NixOS/nixpkgs/master";

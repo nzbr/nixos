@@ -157,16 +157,16 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1626988105,
-        "narHash": "sha256-n6Mvr3l1g5cvc604IKpRDMsjUhxwhu0jS9GFY702TuM=",
-        "owner": "nzbr",
+        "lastModified": 1634137719,
+        "narHash": "sha256-KQmPXGy3sHAqEgn/obNmxDCWH7Vg6nBBagBeQKVJyQU=",
+        "owner": "ajgrf",
         "repo": "NixOS-WSL",
-        "rev": "0987d5ae99acc4e0c72d7384e70eb79bd2f2aa28",
+        "rev": "7b80b7ee832b5b471ab92a24b9edc30cb5b149f5",
         "type": "github"
       },
       "original": {
-        "owner": "nzbr",
-        "ref": "WSLg",
+        "owner": "ajgrf",
+        "ref": "env-passthru",
         "repo": "NixOS-WSL",
         "type": "github"
       }

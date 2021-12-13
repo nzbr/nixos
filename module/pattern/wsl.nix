@@ -46,13 +46,6 @@ with builtins; with lib; {
 
           variables = {
             DISPLAY = ":1";
-            WAYLAND_DISPLAY = "wayland-0";
-            WSL_DISTRO_NAME = "NixOS"; # TODO: Get the real one
-
-            PULSE_SERVER = "${automountPath}/wslg/PulseServer";
-            XDG_RUNTIME_DIR = "${automountPath}/wslg/runtime-dir";
-            XDG_DATA_DIRS = lib.mkForce "${config.system.path}/share";
-            WSL_INTEROP = "/run/WSL/1_interop";
 
             # Theme config
             # QT_QPA_PLATFORMTHEME = "gtk2"; # already set somewhere else?
@@ -126,8 +119,11 @@ with builtins; with lib; {
           "en_US.UTF-8/UTF-8"
         ];
 
-        # SSH Agent
         environment.extraInit = ''
+          # Include Windows %PATH% in Linux $PATH.
+          PATH="$PATH:$WSLPATH"
+
+          # SSH Agent
           if ! [ -f /tmp/ssh-agent.''${USER}.pid ]; then
             ssh-agent >/tmp/ssh-agent.''${USER}.env
           fi
