@@ -17,6 +17,12 @@ with builtins; with lib; {
       type = attrsOf anything;
       default = { };
     };
+
+    autostart = mkOption {
+      description = "XDG Autostart entries";
+      type = listOf (coercedTo path (p: "${p}") str);
+      default = [ ];
+    };
   };
 
   config = {
@@ -39,6 +45,37 @@ with builtins; with lib; {
           source /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh
       fi
     '';
+
+    nzbr.home.config = {
+      home.file =
+        listToAttrs (
+          map
+            (file:
+              let
+                name = baseNameOf file;
+              in
+              nameValuePair'
+                "autostart-launcher-${name}"
+                {
+                  target = (unsafeDiscardStringContext ".config/autostart/${name}" + (if hasSuffix ".desktop" name then "" else ".desktop"));
+                  source =
+                    if hasSuffix ".desktop" name
+                    then file
+                    else
+                      (
+                        pkgs.writeText "${name}.desktop" ''
+                          [Desktop Entry]
+                          Name=${name}
+                          Type=Application
+                          Exec=${file}
+                        ''
+                      );
+                }
+            )
+            config.nzbr.home.autostart
+        );
+    };
+
   };
 
 }

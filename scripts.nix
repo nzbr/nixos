@@ -139,9 +139,14 @@ rec {
     #!${pkgs.bash}/bin/bash
     set -euxo pipefail
 
+    subconfig=""
+    if [ -n "''${1:-}" ]; then
+      subconfig=".$1"
+    fi
+
     ${checkflake}
 
-    ${pkgs.nixUnstable}/bin/nix build '.#nixosConfigurations.live.config.system.build.isoImage' -v
+    ${pkgs.nixUnstable}/bin/nix build ".#nixosConfigurations.live''${subconfig}.config.system.build.isoImage" -v
   '';
 
   toplevel = ''

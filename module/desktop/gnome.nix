@@ -30,28 +30,15 @@ with builtins; with lib; {
       gnome.seahorse
 
       local.gnome-shell-extension-pop-shell
-    ] ++ (with pkgs.gnomeExtensions;
+    ] ++ (
       let
-        unstable = pkgs.unstable.gnomeExtensions;
+        extensions =
+          pkgs.gnome41Extensions
+            // { "arcmenu@arcmenu.com" = pkgs.unstable.gnomeExtensions.arcmenu; }; # other arcmenu package is broken for some reason
       in
-      [
-        arcmenu
-        audio-switcher-40
-        bluetooth-quick-connect
-        blur-my-shell
-        caffeine
-        dash-to-panel
-        unstable.expandable-notifications
-        gsconnect
-        notification-banner-position
-        unstable.notification-counter
-        remmina-search-provider
-        unstable.spotify-artwork-fixer
-        system-action-hibernate
-        syncthing-icon
-        tray-icons-reloaded
-        tweaks-in-system-menu
-      ]
+      map
+        (ext: extensions.${ext})
+        config.nzbr.home.config.dconf.settings."org/gnome/shell".enabled-extensions
     );
 
     programs.gnupg.agent.pinentryFlavor = "gnome3";
@@ -69,7 +56,7 @@ with builtins; with lib; {
               let
                 repo = builtins.fetchGit {
                   url = "https://aur.archlinux.org/gnome-terminal-transparency.git";
-                  rev = "b319fb2fa68d7aaff8361cbbca79b23c4e2b29c9";
+                  rev = "7dd7cd2471e42af8130cda7905b2b2c2a334ac4b";
                 };
                 transparencyPatch = repo + "/transparency.patch";
               in
@@ -126,24 +113,26 @@ with builtins; with lib; {
             sleep-inactive-battery-type = "hibernate";
           };
           "org/gnome/shell" = {
+            disable-user-extensions = false;
             enabled-extensions = [
+              "appindicatorsupport@rgcjonas.gmail.com"
               "arcmenu@arcmenu.com"
-              "audio-switcher@albertomosconi"
+              # "audio-switcher@albertomosconi"
               "bluetooth-quick-connect@bjarosze.gmail.com"
-              # "blur-my-shell@aunetx"
               "caffeine@patapon.info"
               "dash-to-panel@jderose9.github.com"
               "drive-menu@gnome-shell-extensions.gcampax.github.com"
               "expandable-notifications@kaan.g.inam.org"
               "gsconnect@andyholmes.github.io"
-              "hibernate@dafne.rocks"
+              # "hibernate@dafne.rocks"
+              "hibernate-status@dromi" # Placeholder for the above extension
               "notification-position@drugo.dev"
-              "NotificationCounter@coolllsk"
-              "remmina-search-provider@alexmurray.github.com"
+              # "remmina-search-provider@alexmurray.github.com"
               "spotify-artwork-fixer@wjt.me.uk"
-              "syncthingicon@jay.strict@posteo.de"
-              "trayIconsReloaded@selfmade.pl"
-              "tweaks-system-menu@extensions.gnome-shell.fifi.org"
+              # "tweaks-system-menu@extensions.gnome-shell.fifi.org"
+              "user-theme@gnome-shell-extensions.gcampax.github.com"
+              # "blur-my-shell@aunetx"
+              # "trayIconsReloaded@selfmade.pl"
             ];
             favorite-apps = [
               "vivaldi-stable.desktop"

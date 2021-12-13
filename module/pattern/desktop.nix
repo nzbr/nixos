@@ -54,6 +54,10 @@ with builtins; with lib;
         lm_sensors
       ];
 
+      environment.variables = {
+        CHROME_EXECUTABLE = "${pkgs.chromium}/bin/chromium";
+      };
+
       fonts.fonts = with pkgs; [
         (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
         roboto
@@ -90,6 +94,13 @@ with builtins; with lib;
         };
       };
       users.groups.networkmanager.members = [ config.nzbr.user ];
+
+      nzbr.home.autostart = [
+        # Fix spotify being stuck in full screen when switching to a smaller display resolution
+        (pkgs.writeShellScript "fix-spotify.sh" ''
+          sed -i '/app.window/d' $HOME/.config/spotify/prefs
+        '')
+      ];
 
       # boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
       boot.kernelPackages = pkgs.linuxPackages_zen;

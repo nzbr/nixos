@@ -10,7 +10,10 @@ in
   ];
 
   nzbr = {
-    patterns = [ "common" "desktop" "laptop" "development" "hapra" ];
+    deployment.targetHost = "meteor.nzbr.github.beta.tailscale.net";
+    deployment.substituteOnDestination = false;
+
+    patterns = [ "common" "desktop" "laptop" "development" "hapra" "gaming" ];
     pattern.development.guiTools = true;
 
     program = {
@@ -19,6 +22,7 @@ in
     };
 
     service = {
+      fprintd.enable = true;
       printing.enable = true;
       syncthing.enable = true;
       tailscale.enable = true;
