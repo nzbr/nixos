@@ -324,7 +324,7 @@ in
   };
 
   services.syncthing.dataDir = "/storage/nzbr";
-  services.syncthing.declarative.folders.mp3.path = lib.mkForce "/storage/media/MP3";
+  services.syncthing.folders.mp3.path = lib.mkForce "/storage/media/MP3";
 
   users.groups."media".members = [
     "nzbr"
