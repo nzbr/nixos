@@ -48,7 +48,6 @@ with builtins; with lib;
         python3
         unstable.flutter
         unstable.dotnet-sdk_5
-        unstable.tabnine
       ] ++ (
         if config.nzbr.pattern.development.guiTools then
           [
