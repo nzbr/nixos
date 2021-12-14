@@ -4,6 +4,11 @@
 - prometheus/grafana
 - synapse
 - kadalu -> kubenix
+- nixos-install patch for sub-configs
+- debug-shell readiness probe
+
+- gitlab:
+  - SAML
 
 - kubenix:
   - documentation

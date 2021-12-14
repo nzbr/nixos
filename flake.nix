@@ -4,6 +4,7 @@
   inputs = {
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+    nixpkgs-legacy.url = "github:NixOS/nixpkgs/nixos-21.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-bleeding-edge.url = "github:NixOS/nixpkgs/master";
     flake-utils.url = "github:numtide/flake-utils";
@@ -160,6 +161,7 @@
                               config = config.nixpkgs.config;
                             })
                             (with inputs; {
+                              legacy = nixpkgs-legacy;
                               unstable = nixpkgs-unstable;
                               bleeding-edge = nixpkgs-bleeding-edge;
                             });
