@@ -74,8 +74,11 @@ with builtins; with lib; {
               ${pkgs.rsync}/bin/rsync -ar --delete $systemConfig/sw/share/$x/. /usr/share/$x
             done
           '';
+
           wsl-cleanup.text = ''
-            rmdir /wsl* || true
+            for x in $(${pkgs.findutils}/bin/find / -maxdepth 1 -name 'wsl*'); do
+              rmdir $x || true
+            done
           '';
         };
 
@@ -135,7 +138,12 @@ with builtins; with lib; {
           source /tmp/ssh-agent.''${USER}.env >/dev/null
         '';
 
-        security.sudo.wheelNeedsPassword = false;
+        security.sudo = {
+          extraConfig = ''
+            Defaults env_keep+=INSIDE_NAMESPACE
+          '';
+          wheelNeedsPassword = false;
+        };
 
         # Disable systemd units that don't make sense on WSL
         systemd.services."serial-getty@ttyS0".enable = false;

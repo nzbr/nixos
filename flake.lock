@@ -176,16 +176,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1634137719,
-        "narHash": "sha256-KQmPXGy3sHAqEgn/obNmxDCWH7Vg6nBBagBeQKVJyQU=",
-        "owner": "ajgrf",
+        "lastModified": 1639452412,
+        "narHash": "sha256-fzYz80K/vYo0fgjLfcsCY2JtayLW8W0gWbey9Z/lU8I=",
+        "owner": "nzbr",
         "repo": "NixOS-WSL",
-        "rev": "7b80b7ee832b5b471ab92a24b9edc30cb5b149f5",
+        "rev": "a487bcf303bffb418edda23c9e5ec1d5dbf739c3",
         "type": "github"
       },
       "original": {
-        "owner": "ajgrf",
-        "ref": "env-passthru",
+        "owner": "nzbr",
         "repo": "NixOS-WSL",
         "type": "github"
       }
