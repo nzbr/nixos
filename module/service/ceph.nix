@@ -54,34 +54,31 @@ with builtins; with lib; {
         };
       };
 
-      system.activationScripts.ceph = {
-        deps = [ "agenix" "etc" ];
-        text = ''
-          echo setting up ceph
-          mkdir -p /run/ceph /var/lib/ceph
+      system.activationScripts.ceph = stringAfter [ "agenix" "etc" ] ''
+        echo setting up ceph
+        mkdir -p /run/ceph /var/lib/ceph
 
-          # copy secrets
-          cp ${config.nzbr.assets."ceph/ceph.mon.keyring"} /run/ceph/ceph.mon.keyring
-          cp ${config.nzbr.assets."ceph/ceph.client.admin.keyring"} /etc/ceph/ceph.client.admin.keyring
-          cp ${config.nzbr.assets."ceph/bootstrap-osd.keyring"} /etc/ceph/ceph.client.bootstrap-osd.keyring
+        # copy secrets
+        cp ${config.nzbr.assets."ceph/ceph.mon.keyring"} /run/ceph/ceph.mon.keyring
+        cp ${config.nzbr.assets."ceph/ceph.client.admin.keyring"} /etc/ceph/ceph.client.admin.keyring
+        cp ${config.nzbr.assets."ceph/bootstrap-osd.keyring"} /etc/ceph/ceph.client.bootstrap-osd.keyring
 
-          # import keys to mon keyring
-          ${pkgs.ceph}/bin/ceph-authtool /run/ceph/ceph.mon.keyring --import-keyring /etc/ceph/ceph.client.admin.keyring
-          ${pkgs.ceph}/bin/ceph-authtool /run/ceph/ceph.mon.keyring --import-keyring /etc/ceph/ceph.client.bootstrap-osd.keyring
+        # import keys to mon keyring
+        ${pkgs.ceph}/bin/ceph-authtool /run/ceph/ceph.mon.keyring --import-keyring /etc/ceph/ceph.client.admin.keyring
+        ${pkgs.ceph}/bin/ceph-authtool /run/ceph/ceph.mon.keyring --import-keyring /etc/ceph/ceph.client.bootstrap-osd.keyring
 
-          # build the monmap
-          ${pkgs.ceph}/bin/monmaptool --create --clobber --fsid ${config.services.ceph.global.fsid} /run/ceph/monmap
-          ${concatStringsSep "&&" (map (host: "${pkgs.ceph}/bin/monmaptool --add ${hosts.${host}.config.networking.hostName} ${hosts.${host}.config.nzbr.nodeIp} /run/ceph/monmap") cephHosts)}
+        # build the monmap
+        ${pkgs.ceph}/bin/monmaptool --create --clobber --fsid ${config.services.ceph.global.fsid} /run/ceph/monmap
+        ${concatStringsSep "&&" (map (host: "${pkgs.ceph}/bin/monmaptool --add ${hosts.${host}.config.networking.hostName} ${hosts.${host}.config.nzbr.nodeIp} /run/ceph/monmap") cephHosts)}
 
-          # initialize mon
-          if ! [ -d "/var/lib/ceph/mon/ceph-${config.networking.hostName}/store.db" ]; then
-            mkdir -p "/var/lib/ceph/mon/ceph-${config.networking.hostName}"
-            ${pkgs.sudo}/bin/sudo -u ceph ${pkgs.ceph}/bin/ceph-mon --mkfs -i "${config.networking.hostName}" --monmap /run/ceph/monmap --keyring /run/ceph/ceph.mon.keyring
-          fi
+        # initialize mon
+        if ! [ -d "/var/lib/ceph/mon/ceph-${config.networking.hostName}/store.db" ]; then
+          mkdir -p "/var/lib/ceph/mon/ceph-${config.networking.hostName}"
+          ${pkgs.sudo}/bin/sudo -u ceph ${pkgs.ceph}/bin/ceph-mon --mkfs -i "${config.networking.hostName}" --monmap /run/ceph/monmap --keyring /run/ceph/ceph.mon.keyring
+        fi
 
-          chown -R ceph:ceph /run/ceph /etc/ceph /var/lib/ceph
-        '';
-      };
+        chown -R ceph:ceph /run/ceph /etc/ceph /var/lib/ceph
+      '';
 
       systemd.services."ceph-mgr-${config.networking.hostName}" = {
         after = [ "ceph-mon.target" ];

@@ -66,13 +66,18 @@ with builtins; with lib; {
           };
         };
 
-        # Copy application launchers for WSLg
-        system.activationScripts.copy-launchers.text = ''
-          for x in applications icons; do
-            echo "Copying /usr/share/$x"
-            ${pkgs.rsync}/bin/rsync -ar --delete $systemConfig/sw/share/$x/. /usr/share/$x
-          done
-        '';
+        system.activationScripts = {
+          # Copy application launchers for WSLg
+          copy-launchers.text = ''
+            for x in applications icons; do
+              echo "Copying /usr/share/$x"
+              ${pkgs.rsync}/bin/rsync -ar --delete $systemConfig/sw/share/$x/. /usr/share/$x
+            done
+          '';
+          wsl-cleanup.text = ''
+            rmdir /wsl* || true
+          '';
+        };
 
         home-manager.users.root.home.file.".wsld.toml".text = ''
           [x11]
