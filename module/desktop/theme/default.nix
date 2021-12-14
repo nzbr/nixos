@@ -17,7 +17,7 @@ with builtins; with lib; {
         local.papirus-icon-theme-mod
 
         (pop-gtk-theme.overrideAttrs (oldAttrs: rec {
-          patches = with builtins; [ (toFile "pop-gtk.patch" (replaceStrings [ "ACCENTCOLOR" ] [ cfg.accentColor ] (readFile ./pop-gtk.patch))) ];
+          patches = [ (pkgs.substituteAll { name = "pop-gtk.patch"; src = ./pop-gtk.patch; inherit (cfg) accentColor; } ) ];
         }))
       ];
 
