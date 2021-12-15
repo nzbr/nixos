@@ -3,7 +3,6 @@
 - only one call to nix-instantiate (per system) in deploy script
 - prometheus/grafana
 - synapse
-- kadalu -> kubenix
 - nixos-install patch for sub-configs
 - debug-shell readiness probe
 - move scripts to separate files and use pkgs.substituteAll

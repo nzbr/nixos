@@ -5,7 +5,7 @@ let
 in
 {
   kubenix.deployment.openldap = {
-    dependencies = [ "stash" ]; # TODO: kadalu
+    dependencies = [ "stash" "kadalu" ];
     steps = [
       (kube.createNamespace namespace)
       (config.nzbr.assets."k8s/openldap-secret.yaml")
