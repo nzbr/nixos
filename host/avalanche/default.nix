@@ -32,8 +32,7 @@ in
     service = {
       tailscale.enable = true;
       # ceph.enable = true;
-      k3s.enable = true;
-      gitlab-runner.enable = true;
+      gitlab-runner.enable = false;
       restic = {
         enable = true;
         remote = "jotta-archive";

@@ -67,7 +67,7 @@ in
         };
       }
       {
-        apiVersion = "networking.k8s.io/v1beta1";
+        apiVersion = "networking.k8s.io/v1";
         kind = "Ingress";
         metadata = {
           annotations = {
@@ -82,16 +82,14 @@ in
             host = "sso.nzbr.de";
             http = {
               paths = [{
-                backend = {
-                  serviceName = "keycloak";
-                  servicePort = 8080;
+                backend.service = {
+                  name = "keycloak";
+                  port.number = 8080;
                 };
                 path = "/";
+                pathType = "Prefix";
               }];
             };
-          }];
-          tls = [{
-            hosts = [ "sso.nzbr.de" ];
           }];
         };
       }

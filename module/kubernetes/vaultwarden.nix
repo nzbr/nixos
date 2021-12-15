@@ -2,7 +2,7 @@
 with builtins; with lib; {
   kubenix.deployment.vaultwarden =
     {
-      dependencies = [ "nginx" "stash" ]; # TODO: kadalu
+      dependencies = [ "nginx" "stash" "kadalu" ];
       steps = [
         (kube.installHelmChart "k8s-at-home" "vaultwarden" config.nzbr.assets."k8s/vaultwarden-values.yaml")
 

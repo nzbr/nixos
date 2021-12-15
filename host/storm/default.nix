@@ -30,7 +30,7 @@
     service = {
       tailscale.enable = true;
       # ceph.enable = true;
-      gitlab-runner.enable = true;
+      gitlab-runner.enable = false;
       restic = {
         enable = true;
         remote = "jotta-archive";
@@ -40,6 +40,7 @@
           "zroot/root"
           "zroot/srv"
           "zroot/storage"
+          "zroot/var/lib/rancher/k3s"
         ];
         healthcheck = {
           backup = "https://hc-ping.com/6d9994af-6806-4cf1-91ee-3a217176df7f";
@@ -68,9 +69,10 @@
     deployment = {
       cert-manager.enable = true;
       debug-shell.enable = true;
-      gitlab.enable = true;
+      # gitlab.enable = true;
       hedgedoc.enable = true;
       kadalu.enable = true;
+      keycloak.enable = true;
       nextcloud.enable = true;
       nginx.enable = true;
       openldap.enable = true;
