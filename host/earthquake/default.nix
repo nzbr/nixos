@@ -41,7 +41,6 @@ in
     service = {
       tailscale.enable = true;
       # ceph.enable = true;
-      k3s.enable = true;
       ddns = {
         enable = true;
         domain = "earthquake.nzbr.de";
@@ -55,6 +54,8 @@ in
           "zroot/home"
           "zroot/root"
           "zroot/srv"
+          "zroot/var/lib/rancher/k3s"
+          "zroot/var/lib/libvirt"
 
           "hoard"
         ];
@@ -409,4 +410,9 @@ in
   nzbr.program.java.enable = true;
 
   services.ceph.osd.daemons = [ "2" ];
+
+  services.k3s = {
+    enable = true;
+    role = "agent";
+  };
 }

@@ -43,6 +43,7 @@ in
           "zroot/root"
           "zroot/srv"
           "zroot/storage"
+          "zroot/var/lib/rancher/k3s"
         ];
         healthcheck = {
           backup = "https://hc-ping.com/a4db4963-0a73-4aeb-8207-f884341ba04d";
@@ -159,4 +160,9 @@ in
   };
 
   services.ceph.osd.daemons = [ "1" ];
+
+  services.k3s = {
+    enable = true;
+    role = "agent";
+  };
 }

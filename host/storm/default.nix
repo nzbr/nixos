@@ -31,7 +31,6 @@
       tailscale.enable = true;
       # ceph.enable = true;
       gitlab-runner.enable = true;
-      k3s.enable = true;
       restic = {
         enable = true;
         remote = "jotta-archive";
@@ -71,7 +70,7 @@
       debug-shell.enable = true;
       gitlab.enable = true;
       hedgedoc.enable = true;
-      keycloak.enable = true;
+      kadalu.enable = true;
       nextcloud.enable = true;
       nginx.enable = true;
       openldap.enable = true;
@@ -218,4 +217,9 @@
   age.secrets."postgres-setup.sql".owner = "postgres";
 
   services.ceph.osd.daemons = [ "0" ];
+
+  services.k3s = {
+    enable = true;
+    role = "server";
+  };
 }
