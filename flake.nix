@@ -2,11 +2,15 @@
   description = "my very own special snowflake";
 
   inputs = {
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     nixpkgs-legacy.url = "github:NixOS/nixpkgs/nixos-21.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-bleeding-edge.url = "github:NixOS/nixpkgs/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager/release-21.11";
@@ -143,9 +147,10 @@
                   [
                     ({ pkgs, config, ... }: {
 
-                      imports = [
+                      imports = flatten [
                         inputs.agenix.nixosModules.age
-                      ] ++ inputs.kubenix.nixosModules;
+                        inputs.kubenix.nixosModules
+                      ];
 
                       nixpkgs.config = {
                         allowUnfree = true;
@@ -194,11 +199,7 @@
                     ({ ... }: {
                       imports = [
                         "${self}/host/${hostName}/default.nix"
-                      ] ++ (
-                        map
-                          (x: "${self}/host/${hostName}/${x}")
-                          extraModules
-                      );
+                      ] ++ extraModules;
                     })
                   ];
                 });
@@ -212,12 +213,16 @@
                         mkDefaultSystem hostName
                       ) // (
                         mapAttrs'
-                          (n: v: nameValuePair' (removeSuffix ".nix" n) (mkSystem hostName [ n ]))
+                          (n: v: nameValuePair' (removeSuffix ".nix" n) (mkSystem hostName [ "${self}/host/${hostName}/${n}" ]))
                           (
                             filterAttrs
                               (n: v: (v == "regular") && (hasSuffix ".nix" n) && (n != "default.nix"))
                               (readDir "${self}/host/${hostName}")
                           )
+                      ) // (
+                        mapAttrs'
+                          (n: v: nameValuePair' n (mkSystem hostName [ v ]))
+                          inputs.nixos-generators.nixosModules
                       )
                     )
                 )
