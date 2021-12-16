@@ -18,7 +18,7 @@ with builtins; with lib; {
       virtualisation.oci-containers.containers.gitaly =
         let
           gitalyVersion = readFile' (
-            pkgs.runCommand "gitaly-version" {} ''
+            pkgs.runCommand "gitaly-version" { } ''
               ${pkgs.gnutar}/bin/tar -xvf ${helm.getTar "${inputs.self}" "gitlab" "gitlab" null}
               ${pkgs.yq}/bin/yq -r '.appVersion' < gitlab/charts/gitlab/charts/gitaly/Chart.yaml > $out
             ''
