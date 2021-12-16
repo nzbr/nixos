@@ -167,6 +167,11 @@
                             });
                       };
 
+                      nix.envVars.TMPDIR = "/nix/build";
+                      systemd.tmpfiles.rules = [
+                        "d /nix/build 0777 root root"
+                      ];
+
                       # Let 'nixos-version --json' know about the Git revision
                       # of this flake.
                       system.configurationRevision = lib.mkIf (self ? rev) self.rev;
