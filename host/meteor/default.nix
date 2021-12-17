@@ -16,6 +16,8 @@ in
     patterns = [ "common" "desktop" "laptop" "development" "hapra" "gaming" ];
     pattern.development.guiTools = true;
 
+    remoteNixBuild.enable = true;
+
     program = {
       latex.enable = true;
       mullvad.enable = true;

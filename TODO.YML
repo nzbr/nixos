@@ -6,6 +6,8 @@
 - nixos-install patch for sub-configs
 - debug-shell readiness probe
 - move scripts to separate files and use pkgs.substituteAll
+- ci
+- auto-updates and reboot notification
 
 - gitlab:
   - SAML

@@ -144,64 +144,64 @@
                     inherit lib inputs system;
                   };
                   modules =
-                  [
-                    ({ pkgs, config, ... }: {
+                    [
+                      ({ pkgs, config, ... }: {
 
-                      imports = flatten [
-                        inputs.agenix.nixosModules.age
-                        inputs.kubenix.nixosModules
-                      ];
+                        imports = flatten [
+                          inputs.agenix.nixosModules.age
+                          inputs.kubenix.nixosModules
+                        ];
 
-                      nixpkgs.config = {
-                        allowUnfree = true;
+                        nixpkgs.config = {
+                          allowUnfree = true;
 
-                        packageOverrides =
-                          {
-                            local = self.packages.${system}; # import local packages
-                          } //
-                          # import packages from inputs
-                          lib.mapAttrs
-                            (name: value: import value {
-                              inherit system;
-                              config = config.nixpkgs.config;
-                            })
-                            (with inputs; {
-                              legacy = nixpkgs-legacy;
-                              unstable = nixpkgs-unstable;
-                              bleeding-edge = nixpkgs-bleeding-edge;
-                            });
-                      };
-
-                      nix.envVars.TMPDIR = "/nix/build";
-                      systemd.tmpfiles.rules = [
-                        "d /nix/build 0777 root root"
-                      ];
-
-                      # Let 'nixos-version --json' know about the Git revision
-                      # of this flake.
-                      system.configurationRevision = lib.mkIf (self ? rev) self.rev;
-
-                      system.stateVersion = "21.11";
-                    })
-
-                    ({ ... }: {
-                      imports = self.nixosModules;
-
-                      config = {
-                        nzbr.flake = {
-                          root = "${self}";
-                          assets = "${self}/asset";
-                          host = "${self}/host/${hostName}";
+                          packageOverrides =
+                            {
+                              local = self.packages.${system}; # import local packages
+                            } //
+                            # import packages from inputs
+                            lib.mapAttrs
+                              (name: value: import value {
+                                inherit system;
+                                config = config.nixpkgs.config;
+                              })
+                              (with inputs; {
+                                legacy = nixpkgs-legacy;
+                                unstable = nixpkgs-unstable;
+                                bleeding-edge = nixpkgs-bleeding-edge;
+                              });
                         };
-                      };
-                    })
 
-                    ({ ... }: {
-                      imports = [
-                        "${self}/host/${hostName}/default.nix"
-                      ] ++ extraModules;
-                    })
-                  ];
+                        nix.envVars.TMPDIR = "/nix/build";
+                        systemd.tmpfiles.rules = [
+                          "d /nix/build 0777 root root"
+                        ];
+
+                        # Let 'nixos-version --json' know about the Git revision
+                        # of this flake.
+                        system.configurationRevision = lib.mkIf (self ? rev) self.rev;
+
+                        system.stateVersion = "21.11";
+                      })
+
+                      ({ ... }: {
+                        imports = self.nixosModules;
+
+                        config = {
+                          nzbr.flake = {
+                            root = "${self}";
+                            assets = "${self}/asset";
+                            host = "${self}/host/${hostName}";
+                          };
+                        };
+                      })
+
+                      ({ ... }: {
+                        imports = [
+                          "${self}/host/${hostName}/default.nix"
+                        ] ++ extraModules;
+                      })
+                    ];
                 });
               in
               (listToAttrs (map

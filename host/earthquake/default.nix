@@ -39,6 +39,10 @@ in
     network.k3s-firewall.enable = true;
 
     service = {
+      buildServer = {
+        enable = true;
+        maxJobs = 8;
+      };
       tailscale.enable = true;
       # ceph.enable = true;
       ddns = {

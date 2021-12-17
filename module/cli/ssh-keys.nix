@@ -1,9 +1,12 @@
-{ config, lib, ... }:
+{ config, lib, inputs, system, ... }:
 with builtins; with lib; {
   config =
     (
       mkIf (config.nzbr.assets ? "ssh/id_ed25519") {
-        age.secrets."ssh/id_ed25519".owner = config.nzbr.user;
+        age.secrets."ssh/id_ed25519" = {
+          owner = config.nzbr.user;
+          mode = "0600";
+        };
 
         environment.extraInit =
           let
@@ -33,7 +36,14 @@ with builtins; with lib; {
                       "${hostname}.nzbr.de"
                       "${hostname}4.nzbr.de"
                       "${hostname}6.nzbr.de"
-                    ];
+                    ] ++ (
+                      let
+                        nixosConfigs = inputs.self.packages.${system}.nixosConfigurations;
+                      in
+                      if hasAttrByPath [ hostname "config" "nzbr" "nodeIp" ] nixosConfigs
+                      then [ nixosConfigs.${hostname}.config.nzbr.nodeIp ]
+                      else []
+                    );
                     publicKeyFile = "${root}/host-key/${hostname}/ssh_host_ed25519_key.pub";
                   }
               )

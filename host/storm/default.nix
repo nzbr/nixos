@@ -28,6 +28,10 @@
     network.k3s-firewall.enable = true;
 
     service = {
+      buildServer = {
+        enable = true;
+        maxJobs = 4;
+      };
       tailscale.enable = true;
       # ceph.enable = true;
       gitlab-runner.enable = false;
