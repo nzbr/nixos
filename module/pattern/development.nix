@@ -40,6 +40,7 @@ with builtins; with lib;
         global
         gnumake
         go
+        google-cloud-sdk
         gtk3
         kubectl
         kubernetes-helm
@@ -56,7 +57,7 @@ with builtins; with lib;
             unstable.lens
             unstable.gitkraken
             unstable.insomnia
-            vscode
+            (mkIf (! config.nzbr.pattern.wsl.enable) vscode)
 
             unstable.timeular
 
