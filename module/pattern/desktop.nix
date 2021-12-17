@@ -74,6 +74,8 @@ with builtins; with lib;
         pcscd.enable = true;
       };
 
+      virtualisation.waydroid.enable = true;
+
       programs.gnupg.agent = {
         enable = true;
         enableBrowserSocket = true;
