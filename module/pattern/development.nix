@@ -84,6 +84,7 @@ with builtins; with lib;
               (pkg: "${pkg.dev}")
               devPkgs
           );
+          CHROME_EXECUTABLE = "${pkgs.chromium}/bin/chromium";
         };
 
       nzbr.cli.git = {
