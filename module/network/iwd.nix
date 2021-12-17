@@ -14,14 +14,16 @@ with builtins; with lib; {
         networkmanager.wifi.backend = "iwd";
       };
 
-      system.activationScripts.iwd = mkIf config.nzbr.agenix.enable stringAfter [ "agenix" ] ''
-        mkdir -p /run/iwd
-        find /run/iwd/ -type f -delete
-        for net in ${config.age.secretsMountPoint}/*/iwd/*; do
-          FILE="/run/iwd/$(head -n1 $net)"
-          tail -n+2 $net > "$FILE"
-        done
-      '';
+      system.activationScripts.iwd = mkIf config.nzbr.agenix.enable (
+        stringAfter [ "agenix" ] ''
+          mkdir -p /run/iwd
+          find /run/iwd/ -type f -delete
+          for net in ${config.age.secretsMountPoint}/*/iwd/*; do
+            FILE="/run/iwd/$(head -n1 $net)"
+            tail -n+2 $net > "$FILE"
+          done
+        ''
+      );
 
       systemd.services.iwd = {
         environment = {
