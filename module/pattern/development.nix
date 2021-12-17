@@ -37,6 +37,7 @@ with builtins; with lib;
         cmake
         desktop-file-utils
         gcc
+        git-crypt
         global
         gnumake
         go
