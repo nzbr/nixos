@@ -37,10 +37,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    comma = {
-      flake = false;
-      url = "github:Shopify/comma";
-    };
     dotfiles = {
       url = "github:nzbr/dotfiles";
       # TODO: submodules = true;
@@ -126,8 +122,6 @@
           loadPackages pkgs ".pkg.nix" ./package # import all packages from pkg directory
           // inputs.agenix.packages.${system} # import all packages from agenix flake
           // {
-
-            comma = pkgs.callPackage (import inputs.comma) { };
 
             wsld = naersk-lib.buildPackage {
               pname = "wsld";
