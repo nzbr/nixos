@@ -31,19 +31,13 @@ with builtins; with lib; {
                 lib.nameValuePair
                   hostname
                   {
-                    hostNames = [
+                    hostNames = filter (x: x != "") ([
                       hostname
                       "${hostname}.nzbr.de"
                       "${hostname}4.nzbr.de"
                       "${hostname}6.nzbr.de"
-                    ] ++ (
-                      let
-                        nixosConfigs = inputs.self.packages.${system}.nixosConfigurations;
-                      in
-                      if hasAttrByPath [ hostname "config" "nzbr" "nodeIp" ] nixosConfigs
-                      then [ nixosConfigs.${hostname}.config.nzbr.nodeIp ]
-                      else []
-                    );
+                      "${hostname}.nzbr.github.beta.tailscale.net"
+                    ]);
                     publicKeyFile = "${root}/host-key/${hostname}/ssh_host_ed25519_key.pub";
                   }
               )
