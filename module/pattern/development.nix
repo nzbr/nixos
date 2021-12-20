@@ -55,7 +55,7 @@ with builtins; with lib;
           [
             jetbrains.idea-ultimate
 
-            unstable.lens
+            lens
             unstable.gitkraken
             unstable.insomnia
             (mkIf (! config.nzbr.pattern.wsl.enable) vscode)
