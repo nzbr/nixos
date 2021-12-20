@@ -45,8 +45,6 @@ with builtins; with lib; {
           ];
 
           variables = {
-            DISPLAY = ":1";
-
             # Theme config
             # QT_QPA_PLATFORMTHEME = "gtk2"; # already set somewhere else?
             XDG_CURRENT_DESKTOP = "gnome";
