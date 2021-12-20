@@ -7,6 +7,7 @@ in
   networking.hostId = "b93ad358";
 
   nzbr = {
+    system = "x86_64-linux";
     patterns = [ "common" "server" "development" ];
     nodeIp = "100.71.200.40";
 

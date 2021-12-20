@@ -17,11 +17,11 @@ with builtins; with lib;
 
         initrd = {
           availableKernelModules = [ "ata_piix" "mptspi" "uhci_hcd" "ehci_pci" "sd_mod" "sr_mod" ];
-          kernelModules = [];
+          kernelModules = [ ];
         };
 
-        kernelModules = [];
-        extraModulePackages = [];
+        kernelModules = [ ];
+        extraModulePackages = [ ];
       };
 
       networking.interfaces.ens33.useDHCP = true;

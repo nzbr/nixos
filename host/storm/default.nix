@@ -6,6 +6,7 @@
   };
 
   nzbr = {
+    system = "x86_64-linux";
     patterns = [ "common" "server" ];
     nodeIp = "100.87.184.78";
 

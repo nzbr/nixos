@@ -1,6 +1,7 @@
 { lib, ... }:
 with builtins; with lib; {
   options.nzbr = with types; {
+    system = strOption;
     user = mkStrOpt "nzbr";
     nodeIp = mkOption {
       type = str;

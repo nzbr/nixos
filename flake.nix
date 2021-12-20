@@ -80,6 +80,18 @@
       nixosModules = map
         (file: import file)
         (lib.findModules ".nix" "${self}/module");
+
+      nixosConfigurations = with lib;
+        mapAttrs
+        (n: v:
+          inputs.self.packages.${v.config.nzbr.system}.nixosConfigurations.${n}
+          // (
+            mapAttrs
+            (n': v': inputs.self.packages.${(traceVal v').config.nzbr.system}.nixosConfigurations.${n}.${n'})
+            (filterAttrs (n': v': v' ? config.nzbr) v)
+          )
+        )
+        inputs.self.packages.x86_64-linux.nixosConfigurations;
     } //
     (flake-utils.lib.eachDefaultSystem
       (system:
@@ -213,11 +225,11 @@
                               (n: v: (v == "regular") && (hasSuffix ".nix" n) && (n != "default.nix"))
                               (readDir "${self}/host/${hostName}")
                           )
-                      ) // (
-                        mapAttrs'
-                          (n: v: nameValuePair' n (mkSystem hostName [ v ]))
-                          inputs.nixos-generators.nixosModules
-                      )
+                      ) # // (
+                      #   mapAttrs'
+                      #     (n: v: nameValuePair' n (mkSystem hostName [ v ]))
+                      #     inputs.nixos-generators.nixosModules
+                      # )
                     )
                 )
                 (mapAttrsToList (name: type: name) (readDir "${self}/host"))

@@ -8,6 +8,7 @@
 - move scripts to separate files and use pkgs.substituteAll
 - ci
 - auto-updates and reboot notification
+- servers as substituters
 
 - gitlab:
   - SAML

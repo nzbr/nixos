@@ -11,6 +11,7 @@ with builtins; with lib; {
   ];
 
   nzbr = {
+    system = "x86_64-linux";
     patterns = [ "common" ]; # desktop contents are provided within this file
 
     user = "nixos";

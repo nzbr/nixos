@@ -73,7 +73,7 @@ with builtins; with lib;
         ntfs3g
 
         local."import"
-        local.comma # TODO: Replace comma by something that just invokes nix-run
+        local.comma
 
         # Move to a docker module
         docker-compose

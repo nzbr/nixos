@@ -7,6 +7,7 @@
   ];
 
   nzbr = {
+    system = "x86_64-linux";
     patterns = [ "common" "desktop" "development" "gaming" ];
     pattern.development.guiTools = true;
 

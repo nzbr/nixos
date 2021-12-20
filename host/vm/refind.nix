@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 {
   nzbr = {
-    # deployment.targetHost = ""
-    patterns = [ "common" "desktop" "vmware" ];
+    deployment.targetHost = "192.168.88.133";
+    patterns = [ "desktop" "vmware" ];
   };
 
   fileSystems = {
