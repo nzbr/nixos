@@ -43,6 +43,7 @@ in
       buildServer = {
         enable = true;
         maxJobs = 8;
+        systems = [ "x86_64-linux" "aarch64-linux" ];
       };
       tailscale.enable = true;
       # ceph.enable = true;
@@ -96,6 +97,8 @@ in
 
 
   boot = {
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
+
     loader = {
       efi = {
         efiSysMountPoint = "/boot";

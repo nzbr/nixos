@@ -10,7 +10,7 @@ in
 rec {
   deploy =
     let
-      config = attr: "$(nix-instantiate --eval -E \"(builtins.getFlake (toString ./.)).packages.x86_64-linux.nixosConfigurations.$host.config.nzbr.deployment.${attr}\" | tr -d \\\")";
+      config = attr: "$(nix-instantiate --eval -E \"(builtins.getFlake (toString ./.)).nixosConfigurations.$host.config.nzbr.deployment.${attr}\" | tr -d \\\")";
       getOutputByNum = "${pkgs.python3}/bin/python3 -c 'import sys; import json; print(json.loads(sys.argv[2])[int(sys.argv[1])][\"outputs\"][\"out\"])'";
     in
     ''

@@ -7,6 +7,8 @@
     patterns = [ "common" "wsl" "development" "hapra" ];
     pattern.development.guiTools = true;
 
+    remoteNixBuild.enable = true;
+
     service = {
       syncthing.enable = true;
     };
@@ -15,5 +17,7 @@
       latex.enable = true;
     };
   };
+
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
 }

@@ -6,7 +6,6 @@ with builtins; with lib; {
     maxJobs = mkIntOpt 1;
     systems = mkOption {
       description = "Architectures that are supported by this server";
-      default = [ "x86_64-linux" ];
       type = listOf str;
     };
   };
@@ -16,6 +15,10 @@ with builtins; with lib; {
       cfg = config.nzbr.service.buildServer;
     in
     mkIf cfg.enable {
+      nzbr.service.buildServer = {
+        systems = mkDefault [ config.nzbr.system ];
+      };
+
       users = {
         users.${cfg.user} = {
           isSystemUser = true;
