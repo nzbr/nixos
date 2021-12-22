@@ -19,6 +19,8 @@ with builtins; with lib; {
         systems = mkDefault [ config.nzbr.system ];
       };
 
+      boot.binfmt.emulatedSystems = filter (x: x != config.nzbr.system) cfg.systems;
+
       users = {
         users.${cfg.user} = {
           isSystemUser = true;

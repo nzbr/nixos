@@ -97,8 +97,6 @@ in
 
 
   boot = {
-    binfmt.emulatedSystems = [ "aarch64-linux" ];
-
     loader = {
       efi = {
         efiSysMountPoint = "/boot";
