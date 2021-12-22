@@ -81,17 +81,121 @@
         (file: import file)
         (lib.findModules ".nix" "${self}/module");
 
-      nixosConfigurations = with lib;
+      nixosConfigurations = with builtins; with lib;
+        let
+          allSystems = listToAttrs (
+            map
+              (system:
+                nameValuePair'
+                  system
+                  (
+                    let
+                      mkDefaultSystem = hostName: mkSystem hostName [ ];
+                      mkSystem = hostName: extraModules: (nixosSystem {
+                        inherit system;
+                        specialArgs = {
+                          inherit lib inputs system;
+                        };
+                        modules =
+                          [
+                            ({ pkgs, config, ... }: {
+
+                              imports = flatten [
+                                inputs.agenix.nixosModules.age
+                                inputs.kubenix.nixosModules
+                              ];
+
+                              nixpkgs.config = {
+                                allowUnfree = true;
+
+                                packageOverrides =
+                                  {
+                                    local = self.packages.${system}; # import local packages
+                                  } //
+                                  # import packages from inputs
+                                  lib.mapAttrs
+                                    (name: value: import value {
+                                      inherit system;
+                                      config = config.nixpkgs.config;
+                                    })
+                                    (with inputs; {
+                                      legacy = nixpkgs-legacy;
+                                      unstable = nixpkgs-unstable;
+                                      bleeding-edge = nixpkgs-bleeding-edge;
+                                    });
+                              };
+
+                              nix.envVars.TMPDIR = "/nix/build";
+                              systemd.tmpfiles.rules = [
+                                "d /nix/build 0777 root root"
+                              ];
+
+                              # Let 'nixos-version --json' know about the Git revision
+                              # of this flake.
+                              system.configurationRevision = lib.mkIf (self ? rev) self.rev;
+
+                              system.stateVersion = "21.11";
+                            })
+
+                            ({ ... }: {
+                              imports = self.nixosModules;
+
+                              config = {
+                                nzbr.flake = {
+                                  root = "${self}";
+                                  assets = "${self}/asset";
+                                  host = "${self}/host/${hostName}";
+                                };
+                              };
+                            })
+
+                            ({ ... }: {
+                              imports = [
+                                "${self}/host/${hostName}/default.nix"
+                              ] ++ extraModules;
+                            })
+                          ];
+                      });
+                    in
+                    (listToAttrs (map
+                      (hostName:
+                        lib.nameValuePair
+                          hostName
+                          (
+                            (
+                              mkDefaultSystem hostName
+                            ) // (
+                              mapAttrs'
+                                (n: v: nameValuePair' (removeSuffix ".nix" n) (mkSystem hostName [ "${self}/host/${hostName}/${n}" ]))
+                                (
+                                  filterAttrs
+                                    (n: v: (v == "regular") && (hasSuffix ".nix" n) && (n != "default.nix"))
+                                    (readDir "${self}/host/${hostName}")
+                                )
+                            ) # // (
+                            #   mapAttrs'
+                            #     (n: v: nameValuePair' n (mkSystem hostName [ v ]))
+                            #     inputs.nixos-generators.nixosModules
+                            # )
+                          )
+                      )
+                      (mapAttrsToList (name: type: name) (readDir "${self}/host"))
+                    ))
+                  )
+              )
+              flake-utils.lib.allSystems
+          );
+        in
         mapAttrs
-        (n: v:
-          inputs.self.packages.${v.config.nzbr.system}.nixosConfigurations.${n}
-          // (
-            mapAttrs
-            (n': v': inputs.self.packages.${(traceVal v').config.nzbr.system}.nixosConfigurations.${n}.${n'})
-            (filterAttrs (n': v': v' ? config.nzbr) v)
+          (n: v:
+            allSystems.${v.config.nzbr.system}.${n}
+            // (
+              mapAttrs
+                (n': v': allSystems.${v'.config.nzbr.system}.${n}.${n'})
+                (filterAttrs (n': v': v' ? config.nzbr) v)
+            )
           )
-        )
-        inputs.self.packages.x86_64-linux.nixosConfigurations;
+          allSystems.x86_64-linux;
     } //
     (flake-utils.lib.eachDefaultSystem
       (system:
@@ -140,100 +244,6 @@
               root = inputs.wsld;
               cargoBuildOptions = (default: default ++ [ "-p" "wsld" ]);
             };
-
-            nixosConfigurations =
-              let
-                mkDefaultSystem = hostName: mkSystem hostName [ ];
-                mkSystem = hostName: extraModules: (nixosSystem {
-                  inherit system;
-                  specialArgs = {
-                    inherit lib inputs system;
-                  };
-                  modules =
-                    [
-                      ({ pkgs, config, ... }: {
-
-                        imports = flatten [
-                          inputs.agenix.nixosModules.age
-                          inputs.kubenix.nixosModules
-                        ];
-
-                        nixpkgs.config = {
-                          allowUnfree = true;
-
-                          packageOverrides =
-                            {
-                              local = self.packages.${system}; # import local packages
-                            } //
-                            # import packages from inputs
-                            lib.mapAttrs
-                              (name: value: import value {
-                                inherit system;
-                                config = config.nixpkgs.config;
-                              })
-                              (with inputs; {
-                                legacy = nixpkgs-legacy;
-                                unstable = nixpkgs-unstable;
-                                bleeding-edge = nixpkgs-bleeding-edge;
-                              });
-                        };
-
-                        nix.envVars.TMPDIR = "/nix/build";
-                        systemd.tmpfiles.rules = [
-                          "d /nix/build 0777 root root"
-                        ];
-
-                        # Let 'nixos-version --json' know about the Git revision
-                        # of this flake.
-                        system.configurationRevision = lib.mkIf (self ? rev) self.rev;
-
-                        system.stateVersion = "21.11";
-                      })
-
-                      ({ ... }: {
-                        imports = self.nixosModules;
-
-                        config = {
-                          nzbr.flake = {
-                            root = "${self}";
-                            assets = "${self}/asset";
-                            host = "${self}/host/${hostName}";
-                          };
-                        };
-                      })
-
-                      ({ ... }: {
-                        imports = [
-                          "${self}/host/${hostName}/default.nix"
-                        ] ++ extraModules;
-                      })
-                    ];
-                });
-              in
-              (listToAttrs (map
-                (hostName:
-                  lib.nameValuePair
-                    hostName
-                    (
-                      (
-                        mkDefaultSystem hostName
-                      ) // (
-                        mapAttrs'
-                          (n: v: nameValuePair' (removeSuffix ".nix" n) (mkSystem hostName [ "${self}/host/${hostName}/${n}" ]))
-                          (
-                            filterAttrs
-                              (n: v: (v == "regular") && (hasSuffix ".nix" n) && (n != "default.nix"))
-                              (readDir "${self}/host/${hostName}")
-                          )
-                      ) # // (
-                      #   mapAttrs'
-                      #     (n: v: nameValuePair' n (mkSystem hostName [ v ]))
-                      #     inputs.nixos-generators.nixosModules
-                      # )
-                    )
-                )
-                (mapAttrsToList (name: type: name) (readDir "${self}/host"))
-              ));
           };
 
       }))

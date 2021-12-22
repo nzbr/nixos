@@ -33,7 +33,7 @@ with builtins; with lib; {
           (
             filterAttrs
               (n: v: (v.config.nzbr.service.buildServer.enable) && (elem config.networking.hostName v.config.nzbr.service.ssh.authorizedSystems))
-              inputs.self.packages.${system}.nixosConfigurations
+              inputs.self.nixosConfigurations
           )
       );
       nix.extraOptions = ''

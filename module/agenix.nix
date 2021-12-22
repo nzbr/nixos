@@ -49,8 +49,8 @@ in
         foreignAssets =
           listToAttrs (
             map
-              (host: nameValuePair' host inputs.self.packages.${system}.nixosConfigurations.${host}.config.nzbr.assets)
-              (attrNames inputs.self.packages.${system}.nixosConfigurations)
+              (host: nameValuePair' host inputs.self.nixosConfigurations.${host}.config.nzbr.assets)
+              (attrNames inputs.self.nixosConfigurations)
           );
       };
 
