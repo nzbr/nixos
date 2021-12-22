@@ -4,6 +4,7 @@
 with builtins; with lib; {
   options.nzbr.service.tailscale = with types; {
     enable = mkEnableOption "Tailscale";
+    exit = mkBoolOpt false;
   };
 
   config =
@@ -40,18 +41,19 @@ with builtins; with lib; {
         # have the job run this shell script
         script =
           let
-            tailscale = config.services.tailscale.package;
+            tailscale = "${config.services.tailscale.package}/bin/tailscale";
           in
           ''
             # wait for tailscaled to settle
             sleep 2
 
             # check if we are already authenticated to tailscale
-            status="$(${tailscale}/bin/tailscale status -json | ${pkgs.jq}/bin/jq -r .BackendState)"
+            status="$(${tailscale} status -json | ${pkgs.jq}/bin/jq -r .BackendState)"
             if ! [ $status = "Running" ]; then # if so, then do nothing
               # authenticate with tailscale
-              ${tailscale}/bin/tailscale up -authkey ''$(cat ${config.nzbr.assets."tskey"})
+              ${tailscale} up -authkey ''$(cat ${config.nzbr.assets."tskey"})
             fi
+            ${optionalString cfg.exit "${tailscale} up --advertise-exit-node"}
           '';
       };
 

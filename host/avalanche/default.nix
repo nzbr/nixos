@@ -35,7 +35,10 @@ in
         enable = true;
         maxJobs = 4;
       };
-      tailscale.enable = true;
+      tailscale = {
+        enable = true;
+        exit = true;
+      };
       # ceph.enable = true;
       gitlab-runner.enable = false;
       restic = {
