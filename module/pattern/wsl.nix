@@ -36,7 +36,7 @@ with builtins; with lib; {
 
             (pkgs.writeShellScriptBin "winpath" ''
               DIR="$PWD"
-              if [ -z ''${1:-} ]; then
+              if [ -n ''${1:-} ]; then
                 DIR="$(realpath $1)"
               fi
               # This is completely sane, idk what you mean
