@@ -1,4 +1,5 @@
 { pkgs }:
 pkgs.writeShellScriptBin "import" ''
-  exec ${pkgs.nixUnstable}/bin/nix shell /run/inputs/nixpkgs#''${1}
+  args=("$@")
+  exec ${pkgs.nixUnstable}/bin/nix shell ''${args[@]/#/\/run/inputs/nixpkgs#}
 ''
