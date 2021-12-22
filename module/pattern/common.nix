@@ -74,9 +74,6 @@ with builtins; with lib;
 
         local."import"
         local.comma
-
-        # Move to a docker module
-        docker-compose
       ];
 
       programs = {
@@ -128,11 +125,5 @@ with builtins; with lib;
 
       hardware.enableRedistributableFirmware = true;
       powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
-
-      virtualisation = {
-        docker.enable = true;
-        oci-containers.backend = "docker";
-      };
-      users.groups.docker.members = [ config.nzbr.user ];
     };
 }

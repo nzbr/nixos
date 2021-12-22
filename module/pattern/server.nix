@@ -4,5 +4,14 @@ with builtins; with lib; {
 
   config = mkIf config.nzbr.pattern.server.enable {
     nzbr.boot.remoteUnlock.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      docker-compose
+    ];
+
+    virtualisation = {
+      docker.enable = true;
+      oci-containers.backend = "docker";
+    };
   };
 }

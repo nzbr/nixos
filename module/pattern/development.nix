@@ -36,6 +36,7 @@ with builtins; with lib;
         clang
         cmake
         desktop-file-utils
+        docker-compose
         gcc
         git-crypt
         global
@@ -115,6 +116,14 @@ with builtins; with lib;
       services.udev.packages = [
         pkgs.android-udev-rules
       ];
+
+      virtualisation.podman = {
+        enable = true;
+        dockerCompat = ! config.virtualisation.docker.enable;
+        dockerSocket.enable = ! config.virtualisation.docker.enable;
+      };
+
+      users.groups.podman.members = [ config.nzbr.user ];
     }
   );
 }
