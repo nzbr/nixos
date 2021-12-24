@@ -1,13 +1,22 @@
 { config, lib, pkgs, inputs, ... }:
 with builtins; with lib; {
 
+  networking.hostName = "openauto";
+
   nzbr = {
-    system = "aarch64";
+    system = "aarch64-linux";
     patterns = [ "common" ];
 
     deployment = {
       targetHost = "10.0.91.113";
       substituteOnDestination = false;
+    };
+
+    installer.sdcard = {
+      enable = true;
+      aarch64 = {
+        enable = true;
+      };
     };
 
     agenix.enable = false;
@@ -35,6 +44,20 @@ with builtins; with lib; {
     ];
   };
 
+  users.users = {
+    "${config.nzbr.user}".passwordFile = mkForce null;
+    root.passwordFile = mkForce null;
+  };
+  services.getty.autologinUser = lib.mkForce config.nzbr.user;
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
+  security.sudo.wheelNeedsPassword = false;
+
   sound.enable = true;
 
   hardware = {
@@ -45,9 +68,11 @@ with builtins; with lib; {
   networking = {
     wireless.enable = true;
     firewall.enable = mkForce false;
+    interfaces.eth0.useDHCP = true;
   };
 
   environment.systemPackages = with pkgs; [
+    dhcpcd
     libraspberrypi
   ];
 

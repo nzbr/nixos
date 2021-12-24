@@ -125,7 +125,6 @@
                                     });
                               };
 
-                              nix.envVars.TMPDIR = "/nix/build";
                               systemd.tmpfiles.rules = [
                                 "d /nix/build 0777 root root"
                               ];
