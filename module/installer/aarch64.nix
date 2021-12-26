@@ -12,7 +12,7 @@ with builtins; with lib; {
     let
       cfg = config.nzbr.installer.sdcard.aarch64;
     in
-    {
+    mkIf cfg.enable {
       boot.loader.grub.enable = false;
       boot.loader.generic-extlinux-compatible.enable = true;
 

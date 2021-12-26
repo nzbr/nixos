@@ -117,7 +117,7 @@ with builtins; with lib; {
       cfg = config.nzbr.installer.sdcard;
       imgName = with config.system.nixos; lib.mkForce "nixos-${config.networking.hostName}-${release}-${codeName}-${pkgs.stdenv.hostPlatform.system}-${config.boot.kernelPackages.kernel.version}.img";
     in
-    {
+    mkIf cfg.enable {
       # TODO: Optimize store?
 
       fileSystems = {
