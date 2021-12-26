@@ -8,6 +8,7 @@
 , pango
 , gtk3
 , libappindicator-gtk3
+, ...
 }:
 
 buildGoModule rec {

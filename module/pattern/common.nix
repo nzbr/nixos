@@ -11,7 +11,7 @@ with builtins; with lib;
 
       nzbr = {
         agenix.enable = lib.mkDefault true;
-        source.enable = true;
+        channels.enable = true;
 
         cli = {
           dotfiles.enable = true;

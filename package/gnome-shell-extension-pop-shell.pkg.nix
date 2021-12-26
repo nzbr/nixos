@@ -1,6 +1,6 @@
 # https://github.com/NixOS/nixpkgs/issues/92769#issuecomment-673744092
 
-{ stdenv, lib, fetchFromGitHub, nodejs, nodePackages, glib }:
+{ stdenv, lib, fetchFromGitHub, nodejs, nodePackages, glib, ... }:
 
 stdenv.mkDerivation rec {
   pname = "gnome-shell-extension-pop-shell";

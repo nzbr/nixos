@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, inputs, ... }:
 pkgs.writeShellScriptBin "," ''
-  exec ${pkgs.nixUnstable}/bin/nix run /run/inputs/nixpkgs#"$@"
+  exec ${pkgs.nixUnstable}/bin/nix run ${inputs.nixpkgs}#"$@"
 ''

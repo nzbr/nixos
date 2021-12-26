@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchurl, writeText, python3, zip }:
+{ stdenv, lib, fetchurl, writeText, python3, zip, ... }:
 let
   shebang = writeText "python-shebang" ''
     #!${python3}/bin/python3

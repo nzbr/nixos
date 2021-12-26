@@ -1,6 +1,6 @@
 # http://stackoverflow.com/questions/52369247/ddg#53661717
 
-{ writeShellScriptBin, bash, curl, kubectl, jq }:
+{ writeShellScriptBin, bash, curl, kubectl, jq, ... }:
 writeShellScriptBin "kubectl-killnamespace" ''
   #!${bash}/bin/bash -eux
 

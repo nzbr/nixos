@@ -234,7 +234,7 @@
           scripts;
 
         packages =
-          loadPackages pkgs ".pkg.nix" ./package # import all packages from pkg directory
+          loadPackages pkgs { inherit inputs; } ".pkg.nix" ./package # import all packages from pkg directory
           // inputs.agenix.packages.${system} # import all packages from agenix flake
           // {
 

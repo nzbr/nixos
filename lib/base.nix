@@ -34,14 +34,14 @@ with builtins; with lib; {
   # loads those files as packages using callPackage from the specified nixpkgs instance.
   # Returns a list of derivations
   loadPackages =
-    channel: suffix: dir:
+    channel: specialArgs: suffix: dir:
     listToAttrs (
       map
         (
           pkg:
           nameValuePair'
             (removeSuffix suffix (baseNameOf pkg))
-            (channel.callPackage (import pkg) { })
+            (channel.callPackage (import pkg) specialArgs)
         )
         (
           findModules suffix dir

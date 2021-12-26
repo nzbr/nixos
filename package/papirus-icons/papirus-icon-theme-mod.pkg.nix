@@ -1,4 +1,4 @@
-{ stdenv }:
+{ stdenv, ... }:
 stdenv.mkDerivation rec {
   pname = "papirus-icon-theme-mod";
   version = "20210601";
