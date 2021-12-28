@@ -12,37 +12,52 @@ with builtins; with lib; {
       substituteOnDestination = false;
     };
 
+    channels.enable = mkForce false;
+
+    boot.raspberrypi = {
+      enable = true;
+      config.all = {
+        dtparam = [
+          "audio=off"
+          "spi=on"
+          "i2c_arm=on"
+        ];
+        dtoverlay = [
+          "rpi-backlight"
+          "rpi-display"
+          "disable-bt"
+          "vc4-fkms-v3d"
+          "rpi-ft5406"
+        ];
+        disable_splash = 1;
+        force_turbo = 1;
+        gpu_mem = 256;
+      };
+    };
+
     installer.sdcard = {
       enable = true;
-      aarch64 = {
-        enable = true;
-      };
     };
 
     agenix.enable = false;
   };
 
   boot = {
-    loader = {
-      grub.enable = false;
-      raspberryPi = {
-        enable = true;
-        version = 3;
-        firmwareConfig = ''
-          dtparam=audio=on
-        '';
-      };
-    };
-    initrd = {
-      kernelModules = [ "vc4" "bcm2835_dma" "i2c_bcm2835" ];
-    };
+    kernelPackages = pkgs.linuxKernel.rpiPackages.linux_rpi3;
     kernelModules = [
+      "vc4"
+      "bcm2835_dma"
+      "i2c_bcm2835"
       "bcm2835-v4l2"
     ];
     kernelParams = [
-      "console=ttyS1,115200n8"
+      "dwc_otg.lpm_enable=0"
+      "rootwait"
+      "console=ttyS1,115200"
     ];
   };
+
+  nixpkgs.config.platform = lib.systems.platforms.raspberrypi3;
 
   users.users = {
     "${config.nzbr.user}".passwordFile = mkForce null;
@@ -66,9 +81,8 @@ with builtins; with lib; {
   };
 
   networking = {
-    wireless.enable = true;
     firewall.enable = mkForce false;
-    interfaces.eth0.useDHCP = true;
+    networkmanager.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -76,5 +90,15 @@ with builtins; with lib; {
     libraspberrypi
   ];
 
-  virtualisation.docker.enable = mkForce false;
+  services.xserver = {
+    enable = true;
+    desktopManager.lxqt.enable = true;
+    displayManager = {
+      autoLogin = {
+        enable = true;
+        inherit (config.nzbr) user;
+      };
+      lightdm.enable = true;
+    };
+  };
 }

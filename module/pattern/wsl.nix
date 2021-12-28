@@ -21,6 +21,7 @@ with builtins; with lib; {
         # Pretend that there is a bootloader
         boot.loader.grub.enable = false;
         system.build.installBootLoader = pkgs.writeShellScript "fake-bootloader" "";
+        nzbr.boot.disableInitrd = true;
 
         # basic gui environment
         environment.noXlibs = lib.mkForce false;

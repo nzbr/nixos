@@ -38,9 +38,15 @@ with builtins; with lib; {
       '';
     };
 
+    rootPartitionLabel = mkOption {
+      type = str;
+      default = "NIXOS";
+      description = "Label of the root partition";
+    };
+
     rootPartitionUUID = mkOption {
-      type = nullOr str;
-      default = null;
+      type = str;
+      default = "44444444-4444-4444-8888-888888888888";
       example = "14e19a7b-0ae0-484d-9d54-43bd6fdc20c7";
       description = ''
         UUID for the filesystem on the main NixOS partition on the SD card.
@@ -73,6 +79,7 @@ with builtins; with lib; {
         root (/) partition on the SD image. Use this to
         populate the ./files/boot (/boot) directory.
       '';
+      default = "";
     };
 
     postBuildCommands = mkOption {
@@ -115,7 +122,7 @@ with builtins; with lib; {
   config =
     let
       cfg = config.nzbr.installer.sdcard;
-      imgName = with config.system.nixos; lib.mkForce "nixos-${config.networking.hostName}-${release}-${codeName}-${pkgs.stdenv.hostPlatform.system}-${config.boot.kernelPackages.kernel.version}.img";
+      imgName = with config.system.nixos; "nixos-${config.networking.hostName}-${release}-${codeName}-${pkgs.stdenv.hostPlatform.system}-${config.boot.kernelPackages.kernel.version}.img";
     in
     mkIf cfg.enable {
       # TODO: Optimize store?
@@ -124,10 +131,10 @@ with builtins; with lib; {
         "/boot/firmware" = {
           device = "/dev/disk/by-label/${cfg.firmwarePartitionName}";
           fsType = "vfat";
-          options = [ "nofail" ];
+          options = [ "ro" ];
         };
         "/" = {
-          device = "/dev/disk/by-label/NIXOS_SD";
+          device = "/dev/disk/by-label/${cfg.rootPartitionLabel}";
           fsType = "ext4";
         };
       };
@@ -140,7 +147,7 @@ with builtins; with lib; {
 
               buildCommand = ''
                 set -eux
-                mkdir -p $out/firmware
+                mkdir -p $out
                 cd $out
                 ${cfg.populateFirmwareCommands}
               '';
@@ -151,11 +158,10 @@ with builtins; with lib; {
       system.build.sdImage =
         let
           rootfsImage = pkgs.callPackage "${inputs.nixpkgs}/nixos/lib/make-ext4-fs.nix" ({
-            storePaths = config.system.build.toplevel ++ cfg.extraStorePaths;
+            storePaths = [ config.system.build.toplevel ] ++ cfg.extraStorePaths;
             compressImage = false;
             populateImageCommands = cfg.populateRootCommands;
-            volumeLabel = "NIXOS";
-          } // optionalAttrs (cfg.rootPartitionUUID != null) {
+            volumeLabel = cfg.rootPartitionLabel;
             uuid = cfg.rootPartitionUUID;
           });
         in
@@ -168,7 +174,7 @@ with builtins; with lib; {
            , util-linux
            , zstd
            }: stdenv.mkDerivation {
-            name = cfg.imageName;
+            name = imgName;
 
             nativeBuildInputs = [ dosfstools e2fsprogs mtools libfaketime util-linux zstd ];
 
@@ -176,7 +182,7 @@ with builtins; with lib; {
 
             buildCommand = ''
               mkdir -p $out/nix-support $out/sd-image
-              export img=$out/sd-image/${cfg.imageName}
+              export img=$out/sd-image/${imgName}
 
               echo "${pkgs.stdenv.buildPlatform.system}" > $out/nix-support/system
               if test -n "$compressImage"; then
@@ -215,7 +221,7 @@ with builtins; with lib; {
               faketime "1970-01-01 00:00:00" mkfs.vfat -i ${cfg.firmwarePartitionID} -n ${cfg.firmwarePartitionName} firmware_part.img
 
               # Copy the populated /boot/firmware into the SD image
-              (cd ${config.system.build.firmware}; mcopy -psvm -i ../firmware_part.img ./* ::)
+              (cd ${config.system.build.firmware}; mcopy -psvm -i $NIX_BUILD_TOP/firmware_part.img ./* ::)
               # Verify the FAT partition before copying it.
               fsck.vfat -vn firmware_part.img
               dd conv=notrunc if=firmware_part.img of=$img seek=$START count=$SECTORS
@@ -254,10 +260,6 @@ with builtins; with lib; {
           # Prevents this from running on later boots.
           rm -f /nix-path-registration
         fi
-      '';
-
-      system.activationScripts.writeFirmware = stringAfter [ ] ''
-        ${pkgs.rsync}/bin/rsync -avr --delete ${config.system.build.firmware}/firmware/. /boot/firmware
       '';
     };
 }
