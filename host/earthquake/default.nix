@@ -11,8 +11,6 @@ in
     patterns = [ "common" "server" "development" ];
     nodeIp = "100.71.200.40";
 
-    deployment.targetHost = "earthquake.nzbr.github.beta.tailscale.net";
-
     boot = {
       grub.enable = true;
       remoteUnlock = {

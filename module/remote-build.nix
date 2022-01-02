@@ -22,7 +22,7 @@ with builtins; with lib; {
               vcfg = v.config.nzbr.service.buildServer;
             in
             {
-              hostName = "${v.config.networking.hostName}.nzbr.github.beta.tailscale.net";
+              hostName = v.config.nzbr.hostName;
               sshUser = vcfg.user;
               sshKey = config.nzbr.assets."ssh/id_ed25519";
               systems = vcfg.systems;

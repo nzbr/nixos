@@ -14,7 +14,6 @@ in
     patterns = [ "common" "desktop" "laptop" "development" "hapra" "gaming" ];
     pattern.development.guiTools = true;
 
-    deployment.targetHost = "meteor.nzbr.github.beta.tailscale.net";
     deployment.substituteOnDestination = false;
 
     remoteNixBuild.enable = true;
