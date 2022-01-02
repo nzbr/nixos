@@ -16,6 +16,7 @@ with builtins; with lib; {
 
     user = "nixos";
     agenix.enable = false;
+    nopasswd.enable = true;
 
     desktop = {
       gnome.enable = true;
@@ -69,28 +70,9 @@ with builtins; with lib; {
     gnome.gnome-tweak-tool
   ];
 
-  ### GRAPHICAL BASE ###
-
-  # Whitelist wheel users to do anything
-  # This is useful for things like pkexec
-  #
-  # WARNING: this is dangerous for systems
-  # outside the installation-cd and shouldn't
-  # be used anywhere else.
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-      if (subject.isInGroup("wheel")) {
-        return polkit.Result.YES;
-      }
-    });
-  '';
-
   # KDE complains if power management is disabled (to be precise, if
   # there is no power management backend such as upower).
   powerManagement.enable = true;
-
-
-  ### CUSTOM ###
 
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
@@ -108,10 +90,7 @@ with builtins; with lib; {
   users.users.${config.nzbr.user} = {
     uid = 1000;
     extraGroups = [ "networkmanager" ];
-    passwordFile = mkForce null;
   };
-  users.users.root.passwordFile = mkForce null;
-  services.getty.autologinUser = lib.mkForce config.nzbr.user;
 
   services = {
     xserver = {

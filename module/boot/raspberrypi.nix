@@ -54,24 +54,19 @@ with builtins; with lib; {
       nzbr.boot.disableInitrd = true;
 
       nzbr.boot.raspberrypi.config = {
-        # pi3 = {
-        #   # kernel = "u-boot-rpi3.bin";
-        #   # arm_control = "0x200"; use ARMv8 mode
-        # };
-
-        # pi4 = {
-        #   kernel = "u-boot-rpi4.bin";
-        #   enable_gic = 1;
-        #   armstub = "armstub8-gic.bin";
-        #   disable_overscan = 1;
-        # };
-
         all = {
           arm_64bit = mkIf (config.nzbr.system == "aarch64-linux") 1;
           kernel = "nixos-kernel.img";
-          # ramfsfile = "initrd";
-          # ramfsaddr = "followkernel";
-          # enable_uart = 1;
+          disable_overscan = 1;
+          camera_auto_detect = 1;
+          display_auto_detect = 1;
+          dtoverlay = [
+            "vc4-kms-v3d"
+          ];
+        };
+
+        pi4 = {
+          arm_boost = 1;
         };
       };
 

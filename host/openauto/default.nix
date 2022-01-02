@@ -13,6 +13,7 @@ with builtins; with lib; {
     };
 
     channels.enable = mkForce false;
+    nopasswd.enable = true;
 
     boot.raspberrypi = {
       enable = true;
@@ -59,20 +60,6 @@ with builtins; with lib; {
 
   nixpkgs.config.platform = lib.systems.platforms.raspberrypi3;
 
-  users.users = {
-    "${config.nzbr.user}".passwordFile = mkForce null;
-    root.passwordFile = mkForce null;
-  };
-  services.getty.autologinUser = lib.mkForce config.nzbr.user;
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-      if (subject.isInGroup("wheel")) {
-        return polkit.Result.YES;
-      }
-    });
-  '';
-  security.sudo.wheelNeedsPassword = false;
-
   sound.enable = true;
 
   hardware = {
@@ -93,12 +80,6 @@ with builtins; with lib; {
   services.xserver = {
     enable = true;
     desktopManager.lxqt.enable = true;
-    displayManager = {
-      autoLogin = {
-        enable = true;
-        inherit (config.nzbr) user;
-      };
-      lightdm.enable = true;
-    };
+    displayManager.lightdm.enable = true;
   };
 }
