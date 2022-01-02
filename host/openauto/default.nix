@@ -44,6 +44,8 @@ with builtins; with lib; {
   };
 
   boot = {
+    binfmt.emulatedSystems = [ "armv7l-linux" "armv6l-linux" ]; # Enable comiling comptible arm architectures
+
     kernelPackages = pkgs.linuxKernel.rpiPackages.linux_rpi3;
     kernelModules = [
       "vc4"
