@@ -9,6 +9,7 @@
 - ci
 - auto-updates and reboot notification
 - servers as substituters
+- unbound
 
 - gitlab:
   - SAML
