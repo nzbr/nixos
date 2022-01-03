@@ -23,7 +23,7 @@ with builtins; with lib; {
           "spi=on"
           "i2c_arm=on"
         ];
-        dtoverlay = [
+        dtoverlay = mkForce [
           "rpi-backlight"
           "rpi-display"
           "disable-bt"

@@ -35,8 +35,13 @@ with builtins; with lib; {
   };
 
   boot.kernelPackages = pkgs.linuxKernel.rpiPackages.linux_rpi4;
-
   nixpkgs.config.platform = lib.systems.platforms.raspberrypi4;
+
+  fileSystems."/tmp" = {
+    device = "tmpfs";
+    fstype = "tmpfs";
+    options = [ "size=3G" ];
+  };
 
   networking.interfaces.eth0.useDHCP = true;
 
