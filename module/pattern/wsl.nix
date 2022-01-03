@@ -34,6 +34,7 @@ with builtins; with lib; {
           systemPackages = with pkgs; [
             chromium
             virt-manager
+            wslu
 
             (pkgs.writeShellScriptBin "winpath" ''
               DIR="$PWD"
@@ -100,6 +101,15 @@ with builtins; with lib; {
             device = "tmpfs";
             fsType = "tmpfs";
             options = [ "size=4G" ];
+          };
+          "/proc" = {
+            device = "proc";
+            fsType = "proc";
+          };
+          "/proc/sys/fs/binfmt_misc" = {
+            depends = [ "/proc" ];
+            device = "binfmt_misc";
+            fsType = "binfmt_misc";
           };
         } // lib.listToAttrs (
           map
