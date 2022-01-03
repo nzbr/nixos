@@ -39,7 +39,7 @@ with builtins; with lib; {
 
   fileSystems."/tmp" = {
     device = "tmpfs";
-    fstype = "tmpfs";
+    fsType = "tmpfs";
     options = [ "size=3G" ];
   };
 

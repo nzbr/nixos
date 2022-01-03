@@ -19,7 +19,14 @@ with builtins; with lib; {
         systems = mkDefault [ config.nzbr.system ];
       };
 
-      boot.binfmt.emulatedSystems = filter (x: x != config.nzbr.system) cfg.systems;
+      boot.binfmt.emulatedSystems =
+        let
+          current = config.nzbr.system;
+          arch = sys: lib.systems.elaborate { system = sys; };
+        in
+        filter
+          (x: !(arch current).isCompatible (arch x)) # Only enable architectures that are not natively supported anyway
+          cfg.systems;
 
       users = {
         users.${cfg.user} = {
