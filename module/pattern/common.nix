@@ -45,7 +45,7 @@ with builtins; with lib;
         autoOptimiseStore = true;
         gc = {
           automatic = true;
-          dates = "daily";
+          dates = "weekly";
           options = "--delete-older-than 30d";
         };
       };

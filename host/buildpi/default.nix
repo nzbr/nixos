@@ -34,6 +34,8 @@ with builtins; with lib; {
     };
   };
 
+  nix.gc.automatic = mkForce false; # Reduce writes to the sd card
+
   boot.kernelPackages = pkgs.linuxKernel.rpiPackages.linux_rpi4;
   nixpkgs.config.platform = lib.systems.platforms.raspberrypi4;
 
