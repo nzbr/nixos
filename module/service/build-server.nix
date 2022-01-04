@@ -28,6 +28,10 @@ with builtins; with lib; {
           (x: !(arch current).isCompatible (arch x)) # Only enable architectures that are not natively supported anyway
           cfg.systems;
 
+      nix.extraOptions = ''
+        extra-platforms = ${toString cfg.systems}
+      '';
+
       users = {
         users.${cfg.user} = {
           isSystemUser = true;
