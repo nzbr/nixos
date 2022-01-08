@@ -4,7 +4,6 @@ let
 in
 {
   networking = {
-    hostName = "avalanche";
     hostId = "24071395";
   };
 

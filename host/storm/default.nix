@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 {
   networking = {
-    hostName = "storm";
     hostId = "e23e7d0a";
   };
 

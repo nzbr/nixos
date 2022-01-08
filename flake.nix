@@ -39,7 +39,7 @@
 
     dotfiles = {
       url = "github:nzbr/dotfiles";
-      # TODO: submodules = true;
+      # TODO: submodules = true; (once that is supported)
       flake = false;
     };
     flake-compat = {
@@ -74,155 +74,108 @@
       baseLib = import ./lib/base.nix { lib = nixpkgs.lib; };
       lib = with nixpkgs.lib; foldl recursiveUpdate nixpkgs.lib ((map (x: import x { inherit lib; }) (baseLib.findModules ".nix" ./lib)) ++ [ inputs.kubenix.lib ]);
     in
-    {
+    with builtins; with lib; {
       inherit lib;
 
-      nixosModules = map
-        (file: import file)
-        (lib.findModules ".nix" "${self}/module");
+      nixosModules =
+      let
+        modulesPath = "${self}/module";
+      in
+      listToAttrs (
+        map
+          (file:
+            nameValuePair'
+              (removePrefix "${modulesPath}/" file)
+              (import file)
+          )
+          (lib.findModules ".nix" modulesPath)
+      );
 
-      nixosConfigurations = with builtins; with lib;
+      nixosConfigurations =
         let
-          allSystems = listToAttrs (
-            map
-              (system:
-                nameValuePair'
-                  system
+          allConfigs = system:
+            let
+              mkDefaultSystem = hostName: mkSystem hostName [ ];
+              mkSystem = hostName: extraModules: (nixosSystem {
+                inherit system;
+                specialArgs = {
+                  inherit lib inputs system hostName extraModules;
+                };
+                modules =
+                  [
+                    {
+                      imports = mapAttrsToList
+                        (name: type: "${self}/core/${name}")
+                        (readDir "${self}/core");
+
+                      nzbr.flake = {
+                        root = "${inputs.self}";
+                        assets = "${inputs.self}/asset";
+                        host = "${inputs.self}/host/${hostName}";
+                      };
+                    }
+                  ];
+              });
+            in
+            (listToAttrs (map
+              (hostName:
+                lib.nameValuePair
+                  hostName
                   (
-                    let
-                      mkDefaultSystem = hostName: mkSystem hostName [ ];
-                      mkSystem = hostName: extraModules: (nixosSystem {
-                        inherit system;
-                        specialArgs = {
-                          inherit lib inputs system;
-                        };
-                        modules =
-                          [
-                            ({ pkgs, config, ... }: {
-
-                              imports = flatten [
-                                inputs.agenix.nixosModules.age
-                                inputs.kubenix.nixosModules
-                              ];
-
-                              nixpkgs.config = {
-                                allowUnfree = true;
-
-                                packageOverrides =
-                                  {
-                                    local = self.packages.${system}; # import local packages
-                                  } //
-                                  # import packages from inputs
-                                  lib.mapAttrs
-                                    (name: value: import value {
-                                      inherit system;
-                                      config = config.nixpkgs.config;
-                                    })
-                                    (with inputs; {
-                                      legacy = nixpkgs-legacy;
-                                      unstable = nixpkgs-unstable;
-                                      bleeding-edge = nixpkgs-bleeding-edge;
-                                    });
-                              };
-
-                              nix = {
-                                binaryCaches = [
-                                  "https://thefloweringash-armv7.cachix.org"
-                                ];
-                                binaryCachePublicKeys = [
-                                  "thefloweringash-armv7.cachix.org-1:v+5yzBD2odFKeXbmC+OPWVqx4WVoIVO6UXgnSAWFtso="
-                                ];
-                              };
-
-                              systemd.tmpfiles.rules = [
-                                "d /nix/build 0777 root root"
-                              ];
-
-                              # Let 'nixos-version --json' know about the Git revision
-                              # of this flake.
-                              system.configurationRevision = lib.mkIf (self ? rev) self.rev;
-
-                              system.stateVersion = "21.11";
-                            })
-
-                            ({ ... }: {
-                              imports = self.nixosModules;
-
-                              config = {
-                                nzbr.flake = {
-                                  root = "${self}";
-                                  assets = "${self}/asset";
-                                  host = "${self}/host/${hostName}";
-                                };
-                              };
-                            })
-
-                            ({ ... }: {
-                              imports = [
-                                "${self}/host/${hostName}/default.nix"
-                              ] ++ extraModules;
-                            })
-                          ];
-                      });
-                    in
-                    (listToAttrs (map
-                      (hostName:
-                        lib.nameValuePair
-                          hostName
-                          (
-                            (
-                              mkDefaultSystem hostName
-                            ) // (
-                              mapAttrs'
-                                (n: v: nameValuePair' (removeSuffix ".nix" n) (mkSystem hostName [ "${self}/host/${hostName}/${n}" ]))
-                                (
-                                  filterAttrs
-                                    (n: v: (v == "regular") && (hasSuffix ".nix" n) && (n != "default.nix"))
-                                    (readDir "${self}/host/${hostName}")
-                                )
-                            ) # // (
-                            #   mapAttrs'
-                            #     (n: v: nameValuePair' n (mkSystem hostName [ v ]))
-                            #     inputs.nixos-generators.nixosModules
-                            # )
-                          )
-                      )
-                      (mapAttrsToList (name: type: name) (readDir "${self}/host"))
-                    ))
+                    (
+                      mkDefaultSystem hostName
+                    ) // (
+                      mapAttrs'
+                        (n: v: nameValuePair' (removeSuffix ".nix" n) (mkSystem hostName [ "${self}/host/${hostName}/${n}" ]))
+                        (
+                          filterAttrs
+                            (n: v: (v == "regular") && (hasSuffix ".nix" n) && (n != "default.nix"))
+                            (readDir "${self}/host/${hostName}")
+                        )
+                    ) # // (
+                    #   mapAttrs'
+                    #     (n: v: nameValuePair' n (mkSystem hostName [ v ]))
+                    #     inputs.nixos-generators.nixosModules
+                    # )
                   )
               )
-              flake-utils.lib.allSystems
-          );
+              (mapAttrsToList (name: type: name) (readDir "${self}/host"))
+            ));
         in
         mapAttrs
           (n: v:
-            allSystems.${v.config.nzbr.system}.${n}
+            (allConfigs v.config.nzbr.system).${n}
             // (
               mapAttrs
                 (n': v': allSystems.${v'.config.nzbr.system}.${n}.${n'})
                 (filterAttrs (n': v': v' ? config.nzbr) v)
             )
           )
-          allSystems.x86_64-linux;
+          (allConfigs "x86_64-linux");
     } //
-    (flake-utils.lib.eachDefaultSystem
+    (flake-utils.lib.eachSystem
+      lib.systems.supported.nzbr
       (system:
       let
-        pkgs = nixpkgs.legacyPackages."${system}";
-        naersk-lib = inputs.naersk.lib."${system}";
+        pkgs = (import "${inputs.nixpkgs}" { inherit system; });
+        naersk-lib = pkgs.callPackage "${inputs.naersk}" {};
         scripts = (import ./scripts.nix) { inherit lib self; pkgs = (pkgs // self.packages.${system}); };
       in
-      (with builtins; with nixpkgs; with lib; {
+      (with builtins; with nixpkgs; with lib; rec {
 
         devShell = pkgs.mkShell {
-          buildInputs = with pkgs; with self.packages.${system}; [
-            agenix
+          buildInputs =
+          let
+            ifAvailable = collection: package: (orElse collection system { ${package} = []; }).${package};
+          in
+          with pkgs; (flatten [
+            (ifAvailable inputs.agenix.packages "agenix")
             morph
             nixpkgs-fmt
             rage
-            inputs.kubenix.packages.${system}.helm-update
-            inputs.kubenix.packages.${system}.yaml2nix
-          ]
+            (ifAvailable inputs.kubenix.packages "helm-update")
+            (ifAvailable inputs.kubenix.packages "yaml2nix")
+          ])
           ++
           mapAttrsToList
             (name: drv: pkgs.writeShellScriptBin name "set -ex\nexec ${pkgs.nixUnstable}/bin/nix run .#${name} \"$@\"")
@@ -240,19 +193,22 @@
                 }
               )
           )
-          scripts;
+          scripts // packages;
 
         packages =
-          loadPackages pkgs { inherit inputs; } ".pkg.nix" ./package # import all packages from pkg directory
-          // inputs.agenix.packages.${system} # import all packages from agenix flake
-          // {
-
-            wsld = naersk-lib.buildPackage {
-              pname = "wsld";
-              root = inputs.wsld;
-              cargoBuildOptions = (default: default ++ [ "-p" "wsld" ]);
-            };
-          };
+          filterAttrs
+          (name: pkg: (elem system (orElse pkg.meta "platforms" [ system ])))
+          (
+            loadPackages pkgs { inherit inputs; } ".pkg.nix" ./package # import all packages from pkg directory
+            // {
+              # TODO: This should be it's own file
+              wsld = naersk-lib.buildPackage {
+                pname = "wsld";
+                root = inputs.wsld;
+                cargoBuildOptions = (default: default ++ [ "-p" "wsld" ]);
+              };
+            }
+          );
 
       }))
     );

@@ -3,7 +3,6 @@ let
   root = config.nzbr.flake.root;
 in
 {
-  networking.hostName = "earthquake";
   networking.hostId = "b93ad358";
 
   nzbr = {

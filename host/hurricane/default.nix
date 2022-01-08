@@ -1,7 +1,5 @@
 { config, lib, pkgs, modulesPath, ... }:
 {
-  networking.hostName = "hurricane";
-
   nzbr = {
     system = "x86_64-linux";
     patterns = [ "common" "wsl" "development" "hapra" ];

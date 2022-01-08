@@ -1,7 +1,5 @@
 { config, lib, pkgs, modulesPath, ... }:
 {
-  networking.hostName = "landslide";
-
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
   ];

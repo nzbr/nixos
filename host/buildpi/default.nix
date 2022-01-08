@@ -1,8 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 with builtins; with lib; {
 
-  networking.hostName = "buildpi";
-
   nzbr = {
     system = "aarch64-linux";
     patterns = [ "common" ];

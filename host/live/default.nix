@@ -3,8 +3,6 @@ let
   root = config.nzbr.flake.root;
 in
 with builtins; with lib; {
-  networking.hostName = "live";
-
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-base.nix"
     "${modulesPath}/installer/cd-dvd/channel.nix"

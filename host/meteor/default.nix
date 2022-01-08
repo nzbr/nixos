@@ -3,8 +3,6 @@ let
   host = config.nzbr.flake.host;
 in
 {
-  networking.hostName = "meteor";
-
   imports = [
     "${inputs.nixos-hardware}/lenovo/thinkpad/t420"
   ];
