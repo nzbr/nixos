@@ -158,7 +158,7 @@
       (system:
       let
         pkgs = (import "${inputs.nixpkgs}" { inherit system; });
-        naersk-lib = pkgs.callPackage "${inputs.naersk}" {};
+        naersk = pkgs.callPackage "${inputs.naersk}" {};
         scripts = (import ./scripts.nix) { inherit lib self; pkgs = (pkgs // self.packages.${system}); };
       in
       (with builtins; with nixpkgs; with lib; rec {
@@ -199,15 +199,7 @@
           filterAttrs
           (name: pkg: (elem system (orElse pkg.meta "platforms" [ system ])))
           (
-            loadPackages pkgs { inherit inputs; } ".pkg.nix" ./package # import all packages from pkg directory
-            // {
-              # TODO: This should be it's own file
-              wsld = naersk-lib.buildPackage {
-                pname = "wsld";
-                root = inputs.wsld;
-                cargoBuildOptions = (default: default ++ [ "-p" "wsld" ]);
-              };
-            }
+            loadPackages pkgs { inherit inputs naersk; } ".pkg.nix" ./package # import all packages from pkg directory
           );
 
       }))
