@@ -78,18 +78,18 @@
       inherit lib;
 
       nixosModules =
-      let
-        modulesPath = "${self}/module";
-      in
-      listToAttrs (
-        map
-          (file:
-            nameValuePair'
-              (removePrefix "${modulesPath}/" file)
-              (import file)
-          )
-          (lib.findModules ".nix" modulesPath)
-      );
+        let
+          modulesPath = "${self}/module";
+        in
+        listToAttrs (
+          map
+            (file:
+              nameValuePair'
+                (removePrefix "${modulesPath}/" file)
+                (import file)
+            )
+            (lib.findModules ".nix" modulesPath)
+        );
 
       nixosConfigurations =
         let
@@ -145,7 +145,7 @@
         mapAttrs
           (n: v:
             (allConfigs v.config.nzbr.system).${n}
-            // (
+              // (
               mapAttrs
                 (n': v': allSystems.${v'.config.nzbr.system}.${n}.${n'})
                 (filterAttrs (n': v': v' ? config.nzbr) v)
@@ -158,28 +158,28 @@
       (system:
       let
         pkgs = (import "${inputs.nixpkgs}" { inherit system; });
-        naersk = pkgs.callPackage "${inputs.naersk}" {};
+        naersk = pkgs.callPackage "${inputs.naersk}" { };
         scripts = (import ./scripts.nix) { inherit lib self; pkgs = (pkgs // self.packages.${system}); };
       in
       (with builtins; with nixpkgs; with lib; rec {
 
         devShell = pkgs.mkShell {
           buildInputs =
-          let
-            ifAvailable = collection: package: (orElse collection system { ${package} = []; }).${package};
-          in
-          with pkgs; (flatten [
-            (ifAvailable inputs.agenix.packages "agenix")
-            morph
-            nixpkgs-fmt
-            rage
-            (ifAvailable inputs.kubenix.packages "helm-update")
-            (ifAvailable inputs.kubenix.packages "yaml2nix")
-          ])
-          ++
-          mapAttrsToList
-            (name: drv: pkgs.writeShellScriptBin name "set -ex\nexec ${pkgs.nixUnstable}/bin/nix run .#${name} \"$@\"")
-            scripts;
+            let
+              ifAvailable = collection: package: (orElse collection system { ${package} = [ ]; }).${package};
+            in
+            with pkgs; (flatten [
+              (ifAvailable inputs.agenix.packages "agenix")
+              morph
+              nixpkgs-fmt
+              rage
+              (ifAvailable inputs.kubenix.packages "helm-update")
+              (ifAvailable inputs.kubenix.packages "yaml2nix")
+            ])
+            ++
+            mapAttrsToList
+              (name: drv: pkgs.writeShellScriptBin name "set -ex\nexec ${pkgs.nixUnstable}/bin/nix run .#${name} \"$@\"")
+              scripts;
         };
 
         apps = mapAttrs'
@@ -197,10 +197,10 @@
 
         packages =
           filterAttrs
-          (name: pkg: (elem system (orElse pkg.meta "platforms" [ system ])))
-          (
-            loadPackages pkgs { inherit inputs naersk; } ".pkg.nix" ./package # import all packages from pkg directory
-          );
+            (name: pkg: (elem system (orElse pkg.meta "platforms" [ system ])))
+            (
+              loadPackages pkgs { inherit inputs naersk; } ".pkg.nix" ./package # import all packages from pkg directory
+            );
 
       }))
     );
