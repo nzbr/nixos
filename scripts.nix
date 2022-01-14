@@ -37,7 +37,7 @@ rec {
       BUILD=''${BUILD:1}
 
       # Build
-      OUT="$(nix build --no-link --json -v $BUILD)"
+      OUT="$(nix build --no-link --json -vL $BUILD)"
 
       # Copy
       NUM=0
@@ -50,7 +50,7 @@ rec {
         fi
         USER=${config "targetUser"}
         HOST=${config "targetHost"}
-        ${pkgs.nixUnstable}/bin/nix copy $SUBSTITUTE --to ssh://''${USER}@''${HOST} "''${STOREPATH}" -v
+        ${pkgs.nixUnstable}/bin/nix copy $SUBSTITUTE --to ssh://''${USER}@''${HOST} "''${STOREPATH}" -vL
 
         # Activate
         ssh -t ''${USER}@''${HOST} -- ''${STOREPATH}/bin/switch-to-configuration $2
@@ -146,7 +146,7 @@ rec {
 
     ${checkflake}
 
-    ${pkgs.nixUnstable}/bin/nix build ".#nixosConfigurations.live''${subconfig}.config.system.build.isoImage" -v
+    ${pkgs.nixUnstable}/bin/nix build ".#nixosConfigurations.live''${subconfig}.config.system.build.isoImage" -vL
   '';
 
   toplevel = ''
@@ -155,7 +155,7 @@ rec {
 
     ${checkflake}
 
-    ${pkgs.nixUnstable}/bin/nix build ".#nixosConfigurations.''${1}.config.system.build.toplevel" -v
+    ${pkgs.nixUnstable}/bin/nix build ".#nixosConfigurations.''${1}.config.system.build.toplevel" -vL
   '';
 
   vm = ''
@@ -164,7 +164,7 @@ rec {
 
     ${checkflake}
 
-    ${pkgs.nixUnstable}/bin/nix build ".#nixosConfigurations.''${1}.config.system.build.vm" -v
+    ${pkgs.nixUnstable}/bin/nix build ".#nixosConfigurations.''${1}.config.system.build.vm" -vL
 
     mkdir -p /tmp/nixvm
     if [ -f /tmp/nixvm/hostname ]; then
