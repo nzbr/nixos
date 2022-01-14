@@ -13,5 +13,7 @@ with builtins; with lib; {
       docker.enable = true;
       oci-containers.backend = "docker";
     };
+
+    nix.gc.automatic = true;
   };
 }

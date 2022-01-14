@@ -37,19 +37,6 @@ with builtins; with lib;
         };
       };
 
-      nix = {
-        # Enable flake support
-        package = pkgs.nixFlakes;
-        extraOptions = "experimental-features = nix-command flakes";
-
-        autoOptimiseStore = true;
-        gc = {
-          automatic = true;
-          dates = "weekly";
-          options = "--delete-older-than 30d";
-        };
-      };
-
       environment.systemPackages = with pkgs; [
         bat
         exa
