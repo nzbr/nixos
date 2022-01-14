@@ -44,7 +44,7 @@ with builtins; with lib; {
         kernelParams = [
           "console=serial0,115200"
           "console=tty1"
-          "root=/dev/mmcblk0p2"
+          "root=PARTUUID=${removePrefix "0x" config.nzbr.installer.sdcard.firmwarePartitionID}-02"
           "rootfstype=ext4"
           "rootwait"
           "plymouth.ignore-serial-consoles"

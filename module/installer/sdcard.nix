@@ -157,12 +157,14 @@ with builtins; with lib; {
 
       system.build.sdImage =
         let
-          rootfsImage = pkgs.callPackage "${inputs.nixpkgs}/nixos/lib/make-ext4-fs.nix" ({
+          rootfsImage = (pkgs.callPackage "${inputs.nixpkgs}/nixos/lib/make-ext4-fs.nix" ({
             storePaths = [ config.system.build.toplevel ] ++ cfg.extraStorePaths;
             compressImage = false;
             populateImageCommands = cfg.populateRootCommands;
             volumeLabel = cfg.rootPartitionLabel;
             uuid = cfg.rootPartitionUUID;
+          })).overrideAttrs (attrs: {
+            requiredSystemFeatures = [ "big-storage" ];
           });
         in
         pkgs.callPackage
@@ -175,6 +177,8 @@ with builtins; with lib; {
            , zstd
            }: stdenv.mkDerivation {
             name = imgName;
+
+            requiredSystemFeatures = [ "big-storage" ];
 
             nativeBuildInputs = [ dosfstools e2fsprogs mtools libfaketime util-linux zstd ];
 
