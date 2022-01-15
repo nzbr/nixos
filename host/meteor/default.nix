@@ -22,7 +22,7 @@ in
     };
 
     service = {
-      fprintd.enable = true;
+      # fprintd.enable = true;
       printing.enable = true;
       syncthing.enable = true;
       tailscale.enable = true;
