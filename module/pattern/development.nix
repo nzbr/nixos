@@ -117,11 +117,7 @@ with builtins; with lib;
         pkgs.android-udev-rules
       ];
 
-      virtualisation.podman = {
-        enable = true;
-        dockerCompat = ! config.virtualisation.docker.enable;
-        dockerSocket.enable = ! config.virtualisation.docker.enable;
-      };
+      virtualisation.docker.enable = true;
 
       users.groups.podman.members = [ config.nzbr.user ];
     }
