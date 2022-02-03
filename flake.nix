@@ -18,6 +18,7 @@
     };
     nixos-wsl = {
       url = "github:nzbr/NixOS-WSL";
+      inputs.flake-compat.follows = "flake-compat";
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };

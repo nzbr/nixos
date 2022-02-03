@@ -188,6 +188,9 @@
     },
     "nixos-wsl": {
       "inputs": {
+        "flake-compat": [
+          "flake-compat"
+        ],
         "flake-utils": [
           "flake-utils"
         ],
@@ -196,11 +199,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1639452412,
-        "narHash": "sha256-fzYz80K/vYo0fgjLfcsCY2JtayLW8W0gWbey9Z/lU8I=",
+        "lastModified": 1643873932,
+        "narHash": "sha256-ok7Du5MoRms6Z9+wDVaJXA3DFUXF/otOkrOlcybSy+U=",
         "owner": "nzbr",
         "repo": "NixOS-WSL",
-        "rev": "a487bcf303bffb418edda23c9e5ec1d5dbf739c3",
+        "rev": "63f811a37ac7f35215485e95684274a45b02b952",
         "type": "github"
       },
       "original": {
