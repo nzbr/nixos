@@ -7,19 +7,7 @@ with builtins; with lib; {
       "${config.nzbr.user}".passwordFile = mkForce null;
       root.passwordFile = mkForce null;
     };
-    services.getty.autologinUser = lib.mkForce config.nzbr.user;
-    security.polkit.extraConfig = ''
-      polkit.addRule(function(action, subject) {
-        if (subject.isInGroup("wheel")) {
-          return polkit.Result.YES;
-        }
-      });
-    '';
-    security.sudo.wheelNeedsPassword = false;
 
-    services.xserver.displayManager.autoLogin = mkIf config.services.xserver.enable {
-      enable = true;
-      inherit (config.nzbr) user;
-    };
+    nzbr.autologin.enable = true;
   };
 }

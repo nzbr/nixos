@@ -10,11 +10,13 @@
 - auto-updates and reboot notification
 - servers as substituters
 - unbound
+- postgres backups
 
 - gitlab:
   - SAML
 
 - kubenix:
+  - other name (there is already another kubenix)
   - documentation
   - option to pre-render helm chart
   - option to only store specific charts in lockfile
@@ -34,7 +36,7 @@
 
 - earthquake:
   - smbpasswd activation script
-  - NZBGet
+  - ZFS scrub job and monitoring
 
 - wormhole:
   - ULAs
