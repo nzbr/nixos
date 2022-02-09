@@ -160,7 +160,37 @@
       let
         pkgs = (import "${inputs.nixpkgs}" { inherit system; });
         naersk = pkgs.callPackage "${inputs.naersk}" { };
-        scripts = (import ./scripts.nix) { inherit lib self; pkgs = (pkgs // self.packages.${system}); };
+        scripts = (
+          # legacy scripts.nix
+          mapAttrs (name: script: pkgs.writeShellScriptBin name script) ((import ./scripts.nix) { inherit lib self; pkgs = (pkgs // self.packages.${system}); })
+        ) // (
+          # collect from script directory
+          listToAttrs (
+            map
+            (file: rec {
+              name = unsafeDiscardStringContext (replaceStrings [ "/" ] [ "-" ] (removePrefix "${self}/script/" file)); # this is safe, actually
+              value = pkgs.substituteAll {
+                inherit name;
+                src = file;
+                dir = "bin";
+                isExecutable = true;
+
+                # packages that are available to the scripts
+                inherit (pkgs)
+                  bash
+                  gnused
+                  jq
+                  nixFlakes
+                  python3
+                  rage
+                  wireguard
+                  ;
+                nixpkgs = toString inputs.nixpkgs;
+              };
+            })
+            (findModules "" "${self}/script")
+          )
+        );
       in
       (with builtins; with nixpkgs; with lib; rec {
 
@@ -190,7 +220,7 @@
               (flake-utils.lib.mkApp
                 {
                   inherit name;
-                  drv = pkgs.writeShellScriptBin name value;
+                  drv = value;
                 }
               )
           )
