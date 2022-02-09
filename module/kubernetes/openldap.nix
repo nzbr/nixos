@@ -101,13 +101,14 @@ in
           namespace = "ldap";
         };
         spec = {
+          selector = { "app.kubernetes.io/name" = "openldap"; };
+          type = "ClusterIP";
           ports = [{
             name = "tcp-ldap";
             port = 389;
             targetPort = "tcp-ldap";
           }];
-          selector = { "app.kubernetes.io/name" = "openldap"; };
-          type = "ClusterIP";
+          clusterIP = "10.13.0.9";
         };
       }
 

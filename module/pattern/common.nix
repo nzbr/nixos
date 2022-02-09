@@ -24,7 +24,7 @@ with builtins; with lib;
             enable = true;
             authorizedSystems = [ "hurricane" "landslide" "meteor" ];
           };
-          vscode-server-fix.enable = true;
+          vscode-server-fix.enable = mkDefault true;
         };
 
         home.config = {
@@ -39,6 +39,7 @@ with builtins; with lib;
 
       environment.systemPackages = with pkgs; [
         bat
+        diskus
         exa
         file
         git

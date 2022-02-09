@@ -16,6 +16,11 @@ in
 
     remoteNixBuild.enable = true;
 
+    device = {
+      razerChroma.enable = true;
+      razerNari.enable = true;
+    };
+
     program = {
       latex.enable = true;
       mullvad.enable = true;
@@ -119,5 +124,16 @@ in
         exec systemctl start graphical.target
       fi
     '';
+  };
+
+  environment.systemPackages = with pkgs; [
+    unstable.wine64
+    wireguard
+    wireguard-tools
+  ];
+
+  virtualisation.virtualbox.host = {
+    enable = true;
+    enableExtensionPack = true;
   };
 }

@@ -11,6 +11,10 @@
 - servers as substituters
 - unbound
 - postgres backups
+- paperless
+
+- buildpi:
+  - ccache
 
 - gitlab:
   - SAML

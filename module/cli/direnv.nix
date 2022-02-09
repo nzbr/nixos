@@ -1,14 +1,15 @@
 { config, pkgs, lib, ... }:
 with builtins; with lib; {
-  options.nzbr.cli.lorri = with types; {
-    enable = mkEnableOption "Enables automatic usage of nix-shell environments with direnv and lorri";
+  options.nzbr.cli.direnv = with types; {
+    enable = mkEnableOption "Enables automatic usage of nix-shell environments with direnv and direnv";
   };
 
-  config = mkIf config.nzbr.cli.lorri.enable {
-    services.lorri.enable = true;
+  config = mkIf config.nzbr.cli.direnv.enable {
+    services.direnv.enable = true;
 
     environment.systemPackages = with pkgs; [
       direnv
+      nix-direnv
     ];
 
     programs.bash.interactiveShellInit = ''

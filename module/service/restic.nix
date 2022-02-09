@@ -126,7 +126,7 @@ with builtins; with lib; {
               cd /tmp/.snapshot
               restic backup --verbose ${lib.concatStringsSep " " (map (x: "./${x}") cfg.include)}
               restic unlock
-              restic forget -g host --host ${hostname} --keep-last ${toString cfg.keep.last} --keep-daily ${toString cfg.keep.daily} --keep-weekly ${toString cfg.keep.weekly} --keep-monthly ${toString cfg.keep.monthly}
+              restic forget --group-by host --host ${hostname} --keep-last ${toString cfg.keep.last} --keep-daily ${toString cfg.keep.daily} --keep-weekly ${toString cfg.keep.weekly} --keep-monthly ${toString cfg.keep.monthly}
             ''
             + (
               if cfg.healthcheck.backup != "" then ''
