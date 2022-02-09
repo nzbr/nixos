@@ -27,9 +27,10 @@
       url = "github:nix-community/naersk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
+    ragenix = {
+      url = "github:yaxitech/ragenix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.flake-utils.follows = "flake-utils";
     };
     kubenix = {
       url = "github:nzbr/kubenix";
@@ -200,7 +201,7 @@
               ifAvailable = collection: package: (orElse collection system { ${package} = [ ]; }).${package};
             in
             with pkgs; (flatten [
-              (ifAvailable inputs.agenix.packages "agenix")
+              (ifAvailable inputs.ragenix.packages "ragenix")
               morph
               nixpkgs-fmt
               rage
