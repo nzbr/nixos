@@ -15,7 +15,7 @@ with builtins; with lib;
 
         cli = {
           dotfiles.enable = true;
-          lorri.enable = true;
+          direnv.enable = true;
           sudo.enable = true;
         };
 

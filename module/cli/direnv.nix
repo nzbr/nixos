@@ -5,8 +5,6 @@ with builtins; with lib; {
   };
 
   config = mkIf config.nzbr.cli.direnv.enable {
-    services.direnv.enable = true;
-
     environment.systemPackages = with pkgs; [
       direnv
       nix-direnv
