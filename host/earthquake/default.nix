@@ -345,7 +345,7 @@ in
       server string = ${config.networking.hostName}
       netbios name = ${config.networking.hostName}
       security = user
-      hosts allow = 10.0.0.0/16 2a02:908::/32 localhost
+      hosts allow = 10.0.0.0/16 2a02:908::/32 10.64.0.0/10 localhost
       hosts deny = 0.0.0.0/0 ::/0
       guest account = nobody
       map to guest = bad user
