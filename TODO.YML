@@ -18,7 +18,7 @@
   - ccache
 
 - kubenix:
-  - other name (there is already another kubenix)
+  - other name (there is already another kubenix) -> nirgenx?
   - documentation
   - option to pre-render helm chart
   - option to only store specific charts in lockfile

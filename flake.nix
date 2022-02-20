@@ -165,13 +165,16 @@
                 dir = "bin";
                 isExecutable = true;
 
+                python3 = pkgs.python3.withPackages (pypi: with pypi; [
+                  pygraphviz
+                ]);
+
                 # packages that are available to the scripts
                 inherit (pkgs)
                   bash
                   gnused
                   jq
                   nixFlakes
-                  python3
                   rage
                   wireguard
                   ;
@@ -191,6 +194,7 @@
             in
             with pkgs; (flatten [
               (ifAvailable inputs.ragenix.packages "ragenix")
+              graphviz
               morph
               nixpkgs-fmt
               rage

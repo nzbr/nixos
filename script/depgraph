@@ -1,0 +1,74 @@
+#!@python3@/bin/python3
+# code: language=python tabSize=2
+
+import json
+from re import search
+import pygraphviz
+import subprocess
+import sys
+
+
+def decodeName(drvFile, drv):
+  if "env" in drv.keys() and isinstance(drv["env"], dict) and "name" in drv["env"].keys():
+    return drv["env"]["name"]
+  return drvFile.removeprefix("/nix/store/").removesuffix(".drv")
+
+
+if len(sys.argv) < 2:
+  print("Usage:\tdepgraph <derivation>")
+  print("Usage:\tdepgraph <derivation> <dependency>")
+
+drvInfo = json.loads(subprocess.check_output(["@nixFlakes@/bin/nix", "show-derivation", "-r", sys.argv[1]]))
+
+g = pygraphviz.AGraph(directed = True)
+
+# 2 args -> create dependency graph
+if len(sys.argv) == 2:
+  for (drvName, drv) in drvInfo.items():
+    name = decodeName(drvName, drv)
+    g.add_node(name)
+    for dep in drv["inputDrvs"].keys():
+      g.add_edge(name, decodeName(dep, drvInfo[dep]))
+
+  print(g)
+
+# 3 args -> print path to a dependency
+if len(sys.argv) == 3:
+  query = sys.argv[2]
+  startDrvInfo = json.loads(subprocess.check_output(["@nixFlakes@/bin/nix", "show-derivation", sys.argv[1]]))
+  rootDrv = [x for x in startDrvInfo.keys()][0]
+
+  searchQueue = [ ]
+  for drv in drvInfo.keys():
+    drvInfo[drv]["name"] = decodeName(drv, drvInfo[drv])
+    drvInfo[drv]["rdep"] = []
+    if query in drvInfo[drv]["name"]:
+      searchQueue += [ [drv] ]
+
+  for drv in drvInfo.keys():
+    for dep in drvInfo[drv]["inputDrvs"].keys():
+      drvInfo[dep]["rdep"] += [ drv ]
+
+  results = []
+  while len(searchQueue) > 0:
+    path = searchQueue.pop()
+    drv = path[0]
+
+    if drv == rootDrv:
+      results += [path]
+
+    for dep in drvInfo[drv]["rdep"]:
+      newpath = [ dep ] + path
+      if dep in path:
+        sys.stderr.write("Warn: cyclic dependency detected", newpath)
+        sys.stderr.flush()
+        continue
+      searchQueue += [ newpath ]
+
+  print(
+    "\n".join(
+      [" -> ".join(
+        [drvInfo[entry]["name"] for entry in path]
+      ) for path in results]
+    )
+  )
