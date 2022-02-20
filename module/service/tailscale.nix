@@ -51,9 +51,9 @@ with builtins; with lib; {
             status="$(${tailscale} status -json | ${pkgs.jq}/bin/jq -r .BackendState)"
             if ! [ $status = "Running" ]; then # if so, then do nothing
               # authenticate with tailscale
-              ${tailscale} up -authkey ''$(cat ${config.nzbr.assets."tskey"})
+              ${tailscale} up -authkey ''$(cat ${config.nzbr.assets."tskey"}) \
+              ${optionalString cfg.exit "--advertise-exit-node"}
             fi
-            ${optionalString cfg.exit "${tailscale} up --advertise-exit-node"}
           '';
       };
 

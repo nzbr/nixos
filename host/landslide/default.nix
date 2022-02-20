@@ -11,8 +11,6 @@
 
     boot.grub.enable = true;
 
-    network.k3s-firewall.enable = true;
-
     service = {
       syncthing.enable = true;
       printing.enable = true;

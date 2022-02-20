@@ -29,6 +29,8 @@ in
     #   };
     # };
 
+    network.k3s-firewall.enable = true;
+
     service = {
       buildServer = {
         enable = true;

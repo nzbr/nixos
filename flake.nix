@@ -134,25 +134,14 @@
                             (n: v: (v == "regular") && (hasSuffix ".nix" n) && (n != "default.nix"))
                             (readDir "${self}/host/${hostName}")
                         )
-                    ) # // (
-                    #   mapAttrs'
-                    #     (n: v: nameValuePair' n (mkSystem hostName [ v ]))
-                    #     inputs.nixos-generators.nixosModules
-                    # )
+                    )
                   )
               )
               (mapAttrsToList (name: type: name) (readDir "${self}/host"))
             ));
         in
         mapAttrs
-          (n: v:
-            (allConfigs v.config.nzbr.system).${n}
-              // (
-              mapAttrs
-                (n': v': allSystems.${v'.config.nzbr.system}.${n}.${n'})
-                (filterAttrs (n': v': v' ? config.nzbr) v)
-            )
-          )
+          (n: v: (allConfigs v.config.nzbr.system).${n})
           (allConfigs "x86_64-linux");
     } //
     (flake-utils.lib.eachSystem

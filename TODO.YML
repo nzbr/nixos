@@ -12,12 +12,10 @@
 - unbound
 - postgres backups
 - paperless
+- https://github.com/kamadorueda/alejandra
 
 - buildpi:
   - ccache
-
-- gitlab:
-  - SAML
 
 - kubenix:
   - other name (there is already another kubenix)

@@ -20,19 +20,8 @@ in
 
     container = {
       watchtower.enable = true;
-      gitaly = {
-        enable = true;
-        gitalySecretFile = config.nzbr.assets."k8s/gitlab/gitaly-secret";
-        gitlabShellSecretFile = config.nzbr.assets."k8s/gitlab/gitlab-shell-secret";
-      };
+      gitlab.enable = true;
     };
-
-    # network = {
-    #   wireguard = {
-    #     enable = true;
-    #     ip = "10.42.0.2";
-    #   };
-    # };
 
     network.k3s-firewall.enable = true;
 
@@ -40,7 +29,7 @@ in
       buildServer = {
         enable = true;
         maxJobs = 8;
-        systems = [ "x86_64-linux" "i686-linux" "aarch64-linux" "armv7l-linux" "armv6l-linux" ];
+        systems = [ "x86_64-linux" "i686-linux" ];
       };
       tailscale.enable = true;
       # ceph.enable = true;
@@ -77,7 +66,9 @@ in
               { name = "chia"; mountpoint = "/chia"; }
               { name = "kubernetes"; mountpoint = "/kubernetes"; }
               { name = "libvirt"; mountpoint = "/libvirt"; }
-              { name = "gitaly"; mountpoint = "/gitaly"; }
+              { name = "gitlab"; mountpoint = "/gitlab"; }
+              { name = "media"; mountpoint = "/media"; }
+              { name = "nzbr"; mountpoint = "/nzbr"; }
             ];
           }
         ];
@@ -88,10 +79,6 @@ in
       latex.enable = true;
     };
   };
-
-  age.secrets."k8s/gitlab/gitaly-secret".owner = "1000";
-  age.secrets."k8s/gitlab/gitlab-shell-secret".owner = "1000";
-
 
   boot = {
     loader = {
@@ -144,7 +131,7 @@ in
     "/tmp" = {
       device = "tmpfs";
       fsType = "tmpfs";
-      options = [ "size=4G" ];
+      options = [ "size=16G" ];
     };
 
     "/run/.cr_storage/1" = {
@@ -200,41 +187,20 @@ in
       device = "hoard/libvirt";
       fsType = "zfs";
     };
-    "/storage/gitaly" = {
-      device = "hoard/gitaly";
+    "/storage/gitlab" = {
+      device = "hoard/gitlab";
+      fsType = "zfs";
+    };
+    "/storage/media" = {
+      device = "hoard/media";
+      fsType = "zfs";
+    };
+    "/storage/nzbr" = {
+      device = "hoard/nzbr";
       fsType = "zfs";
     };
 
     # OLD #
-    "/old" = {
-      device = "/dev/mapper/cr_root";
-      fsType = "btrfs";
-      options = [ "subvol=@" "ssd" ];
-      neededForBoot = false;
-      encrypted = {
-        enable = true;
-        blkDev = "/dev/disk/by-uuid/13187d61-8666-4533-b853-fd32e20eed2c";
-        label = "cr_root";
-        keyFile = "/mnt-root/etc/lukskey";
-      };
-    };
-    "/old/nix/store" = {
-      device = "/dev/mapper/cr_root";
-      fsType = "btrfs";
-      options = [ "subvol=@/nix/store" "ssd" "noatime" ];
-      neededForBoot = false;
-    };
-    "/old/boot" = {
-      device = "/dev/disk/by-uuid/799C-AA37";
-      fsType = "vfat";
-      neededForBoot = false;
-      noCheck = true;
-    };
-    "/old/tmp" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      options = [ "size=4G" ];
-    };
     "/old/storage" =
       let label = "cr_storage";
       in
@@ -284,27 +250,9 @@ in
       "/var/lib/libvirt" = "/storage/libvirt";
     };
 
-  # boot.initrd = {
-  #   luks.devices = {
-  #     "cr_root" = {
-  #       # /old
-  #       device = "/dev/disk/by-uuid/13187d61-8666-4533-b853-fd32e20eed2c";
-  #       preLVM = true;
-  #     };
-  #   };
-  # };
-
   swapDevices = [
     {
       device = "/dev/disk/by-partuuid/36a4546f-0d97-4a1b-818a-9aa7bffa9df4";
-      randomEncryption = {
-        enable = true;
-      };
-    }
-
-    # OLD #
-    {
-      device = "/dev/disk/by-partuuid/64f798e8-2382-4d82-9591-5616d368c30e";
       randomEncryption = {
         enable = true;
       };
@@ -345,7 +293,7 @@ in
       server string = ${config.networking.hostName}
       netbios name = ${config.networking.hostName}
       security = user
-      hosts allow = 10.0.0.0/16 2a02:908::/32 10.64.0.0/10 localhost
+      hosts allow = 10.0.0.0/16 2a02:908::/32 100.64.0.0/10 localhost
       hosts deny = 0.0.0.0/0 ::/0
       guest account = nobody
       map to guest = bad user
