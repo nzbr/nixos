@@ -8,6 +8,7 @@ with builtins; with lib; {
   config = mkIf config.nzbr.boot.grub.enable {
     boot.loader.grub = {
       enable = true;
+      efiSupport = true;
       version = 2;
       device = lib.mkDefault "nodev";
       enableCryptodisk = true;
