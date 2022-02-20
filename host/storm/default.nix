@@ -19,12 +19,6 @@
       };
     };
 
-    # network = {
-    #   wireguard = {
-    #     enable = true;
-    #     ip = "10.42.0.1";
-    #   };
-    # };
     network.k3s-firewall.enable = true;
 
     service = {
