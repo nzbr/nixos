@@ -300,6 +300,16 @@ in
     '';
 
     shares = {
+      Backup = {
+        path = "/storage/backup";
+        browseable = "yes";
+        public = "no";
+        "read only" = "no";
+        "guest ok" = "no";
+        "create mask" = "0600";
+        "directory mask" = "0700";
+        "force user" = "nzbr";
+      };
       nzbr = {
         path = "/storage/nzbr";
         browseable = "yes";
@@ -332,6 +342,13 @@ in
     };
   };
 
+  services.nfs.server = {
+    enable = true;
+    exports = ''
+      /storage/media 10.0.0.2/32(rw)
+    '';
+  };
+
   systemd.tmpfiles.rules = [
     "d /tmp/smb 0770 nzbr users 1d"
   ];
@@ -341,11 +358,13 @@ in
     137
     138
     139 # NetBIOS
+    2049 # NFSv4
   ];
   networking.firewall.allowedUDPPorts = [
     137
     138
     139 # NetBIOS
+    2049 # NFSv4
   ];
 
   # Modprobe config for macOS VM
@@ -366,4 +385,5 @@ in
     enable = true;
     role = "agent";
   };
+
 }
