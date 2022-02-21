@@ -35,7 +35,7 @@ in
         exit = true;
       };
       # ceph.enable = true;
-      gitlab-runner.enable = false;
+      gitlab-runner.enable = true;
       restic = {
         enable = true;
         remote = "jotta-archive";
