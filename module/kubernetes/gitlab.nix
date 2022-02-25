@@ -48,6 +48,11 @@ with builtins; with lib;
               }
               {
                 protocol = "TCP";
+                name = "registry";
+                port = 20055;
+              }
+              {
+                protocol = "TCP";
                 name = "www";
                 port = 20080;
               }
@@ -71,6 +76,10 @@ with builtins; with lib;
                 port = 20080;
               }
               {
+                name = "registry";
+                port = 20055;
+              }
+              {
                 name = "ssh";
                 port = 20022;
               }
@@ -86,28 +95,47 @@ with builtins; with lib;
             name = "gitlab-web";
             annotations = {
               "kubernetes.io/ingress.class" = "nginx";
+              "nginx.ingress.kubernetes.io/proxy-body-size" = "20G";
+              "nginx.ingress.kubernetes.io/proxy-read-timeout" = "900";
             };
           };
           spec = {
-            rules = [{
-              host = "git.nzbr.de";
-              http = {
-                paths = [{
-                  backend.service = {
-                    name = "gitlab";
-                    port.name = "www";
-                  };
-                  path = "/";
-                  pathType = "Prefix";
-                }];
-              };
-            }];
+            rules = [
+              {
+                host = "git.nzbr.de";
+                http = {
+                  paths = [{
+                    backend.service = {
+                      name = "gitlab";
+                      port.name = "www";
+                    };
+                    path = "/";
+                    pathType = "Prefix";
+                  }];
+                };
+              }
+              {
+                host = "registry.nzbr.de";
+                http = {
+                  paths = [{
+                    backend.service = {
+                      name = "gitlab";
+                      port.name = "registry";
+                    };
+                    path = "/";
+                    pathType = "Prefix";
+                  }];
+                };
+              }
+            ];
             tls = [{
               hosts = tlsHosts;
               secretName = tlsSecretName;
             }];
           };
         }
+
+        (config.nzbr.assets."k8s/gitlab-agent.yaml")
 
       ];
     };
