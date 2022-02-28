@@ -1,0 +1,59 @@
+#!@bash@/bin/bash
+# code: language=bash tabSize=4
+
+if ! [ -f flake.nix ]; then
+  echo "No flake.nix found in the current directory"
+  exit 1
+fi
+
+if [ -z "${1:-}" ]; then
+  echo "No target specified"
+  exit 1
+fi
+if [ -z "${2:-}" ]; then
+  echo "No action specified"
+  exit 1
+fi
+
+set -euxo pipefail
+
+if [[ $1 == "--all" ]]; then
+  HOSTS=$(@nixFlakes@/bin/nix-instantiate --eval -E --json "let lib = (import @nixpkgs@ {}).lib; in lib.concatStringsSep \",\" (lib.mapAttrsToList (n: v: n) (lib.filterAttrs (n: v: v.config.nzbr ? deployment) (builtins.getFlake (toString ./.)).nixosConfigurations))" | @jq@/bin/jq -r .)
+else
+  HOSTS="$1"
+fi
+
+CONFIG=$(@nixFlakes@/bin/nix-instantiate --eval --strict -E --json "with builtins; mapAttrs (n: v: v.config.nzbr.deployment) (builtins.getFlake (toString ./.)).nixosConfigurations")
+
+IFS=$',' # Split on , instead of whitespace
+BUILD=""
+for host in $HOSTS; do
+  BUILD="$BUILD,.#nixosConfigurations.${host}.config.system.build.toplevel"
+done
+BUILD=${BUILD:1}
+
+# Build
+OUT="$(nix build --no-link --json -vL $BUILD)"
+
+# Copy
+NUM=0
+for host in $HOSTS; do
+  IFS=$' '
+  USER=$(echo "$CONFIG" | @jq@/bin/jq -r .${host}.targetUser)
+  HOST=$(echo "$CONFIG" | @jq@/bin/jq -r .${host}.targetHost)
+  if $(echo "$CONFIG" | @jq@/bin/jq -r .${host}.substituteOnDestination); then
+    SUBSTITUTE="-s"
+  else
+    SUBSTITUTE=""
+  fi
+  echo $OUT
+  STOREPATH=$(echo "$OUT" | @jq@/bin/jq -r ".[${NUM}].outputs.out")
+  IFS=$','
+
+  @nixFlakes@/bin/nix copy $SUBSTITUTE --to ssh://${USER}@${HOST} "${STOREPATH}" -vL
+
+  # Activate
+  ssh -t ${USER}@${HOST} -- ${STOREPATH}/bin/switch-to-configuration $2
+
+  NUM=$((NUM + 1))
+done
