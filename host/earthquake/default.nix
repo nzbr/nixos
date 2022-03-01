@@ -37,7 +37,10 @@ in
         enable = true;
         domain = "earthquake.nzbr.de";
       };
-      gitlab-runner.enable = true;
+      gitlab-runner = {
+        enable = true;
+        extraTags = [ "kube-deploy" ];
+      };
       restic = {
         enable = true;
         remote = "jotta-archive";

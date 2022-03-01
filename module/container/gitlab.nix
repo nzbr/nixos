@@ -20,6 +20,7 @@ with builtins; with lib; {
         ];
         ports = [
           "${config.nzbr.nodeIp}:20022:22"
+          "${config.nzbr.nodeIp}:20055:5005"
           "${config.nzbr.nodeIp}:20080:80"
         ];
         extraOptions = [
