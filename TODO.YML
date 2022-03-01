@@ -21,12 +21,9 @@
   - documentation
   - option to pre-render helm chart
   - option to only store specific charts in lockfile
-  - allow running deployments without deploying nixos
-  - don't re-run deployment if nothing has changed
 
 - theme:
   - profile picture
-  - custom start button
   - progress bars haben falsche Farbe
   - folder colors
   - accent color in gnome shell
