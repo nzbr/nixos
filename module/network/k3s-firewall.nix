@@ -13,6 +13,7 @@ with builtins; with lib; {
         80
         443
         2222
+        25565
       ];
 
       boot.kernel.sysctl = {

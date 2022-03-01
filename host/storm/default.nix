@@ -66,6 +66,7 @@
     helmPackage = pkgs.kubernetes-helm;
     kubectlPackage = pkgs.kubectl;
     deployment = {
+      amp.enable = true;
       cert-manager.enable = true;
       debug-shell.enable = true;
       gitlab.enable = true;

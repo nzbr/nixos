@@ -135,12 +135,12 @@ with builtins; with lib;
           };
         }
 
-        (config.nzbr.assets."k8s/gitlab-agent.yaml")
+        # (config.nzbr.assets."k8s/gitlab-agent.yaml")
 
       ];
     };
 
-    nzbr.nginx.tcp-services = {
+    nzbr.nginx.tcp-services = mkIf config.kubenix.deployment.gitlab.enable {
       "2222" = "${namespace}/gitlab:20022";
     };
 }

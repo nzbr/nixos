@@ -142,6 +142,7 @@ in
   };
 
   services.qemuGuest.enable = true;
+  nzbr.service.libvirtd.enable = true;
 
   networking = {
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
