@@ -13,7 +13,7 @@ let
   ];
 in
 {
-  kubenix.deployment.debug-shell.steps = [
+  nirgenx.deployment.debug-shell.steps = [
     {
       apiVersion = "apps/v1";
       kind = "DaemonSet";

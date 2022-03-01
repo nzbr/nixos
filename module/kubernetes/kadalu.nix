@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 with builtins; with lib;
 {
-  kubenix.deployment.kadalu = {
+  nirgenx.deployment.kadalu = {
     dependencies = [ ];
     steps = [
       {

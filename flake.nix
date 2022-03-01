@@ -32,8 +32,8 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
-    kubenix = {
-      url = "github:nzbr/kubenix";
+    nirgenx = {
+      url = "github:nzbr/nirgenx";
       inputs.flake-compat.follows = "flake-compat";
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -74,7 +74,7 @@
     }:
     let
       baseLib = import ./lib/base.nix { lib = nixpkgs.lib; };
-      lib = with nixpkgs.lib; foldl recursiveUpdate nixpkgs.lib ((map (x: import x { inherit lib; }) (baseLib.findModules ".nix" ./lib)) ++ [ inputs.kubenix.lib ]);
+      lib = with nixpkgs.lib; foldl recursiveUpdate nixpkgs.lib ((map (x: import x { inherit lib; }) (baseLib.findModules ".nix" ./lib)) ++ [ inputs.nirgenx.lib ]);
     in
     with builtins; with lib; {
       inherit lib;
@@ -198,8 +198,8 @@
               morph
               nixpkgs-fmt
               rage
-              (ifAvailable inputs.kubenix.packages "helm-update")
-              (ifAvailable inputs.kubenix.packages "yaml2nix")
+              (ifAvailable inputs.nirgenx.packages "helm-update")
+              (ifAvailable inputs.nirgenx.packages "yaml2nix")
             ])
             ++
             mapAttrsToList

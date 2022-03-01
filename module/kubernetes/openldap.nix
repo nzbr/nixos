@@ -4,7 +4,7 @@ let
   namespace = "ldap";
 in
 {
-  kubenix.deployment.openldap = {
+  nirgenx.deployment.openldap = {
     dependencies = [ "stash" "kadalu" ];
     steps = [
       (kube.createNamespace namespace)

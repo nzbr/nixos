@@ -11,7 +11,7 @@ with builtins; with lib; {
     namespace = "nginx";
   in
     {
-      kubenix.deployment.nginx = {
+      nirgenx.deployment.nginx = {
         dependencies = [ "cert-manager" ];
         steps = [
 

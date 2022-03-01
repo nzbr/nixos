@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 with builtins; with lib; {
-  kubenix.deployment.calico = {
+  nirgenx.deployment.calico = {
     steps = [
       "https://docs.projectcalico.org/manifests/tigera-operator.yaml"
       {

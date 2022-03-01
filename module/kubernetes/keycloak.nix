@@ -4,7 +4,7 @@ let
   namespace = "keycloak";
 in
 {
-  kubenix.deployment.keycloak = {
+  nirgenx.deployment.keycloak = {
     dependencies = [ "openldap" "nginx" ];
     steps = [
       (kube.createNamespace namespace)

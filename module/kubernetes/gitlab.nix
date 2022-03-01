@@ -6,7 +6,7 @@ with builtins; with lib;
       tlsSecretName = "gitlab-wildcard-cert";
     in
 {
-  kubenix.deployment.gitlab =
+  nirgenx.deployment.gitlab =
     {
       dependencies = [ "cert-manager" "nginx" ];
       steps = [
@@ -140,7 +140,7 @@ with builtins; with lib;
       ];
     };
 
-    nzbr.nginx.tcp-services = mkIf config.kubenix.deployment.gitlab.enable {
+    nzbr.nginx.tcp-services = mkIf config.nirgenx.deployment.gitlab.enable {
       "2222" = "${namespace}/gitlab:20022";
     };
 }

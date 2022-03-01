@@ -58,7 +58,7 @@
     };
   };
 
-  kubenix = {
+  nirgenx = {
     enable = true;
     kubeconfigPath = "/run/kubeconfig";
     waitForUnits = [ "network-online.target" "k3s.service" ];

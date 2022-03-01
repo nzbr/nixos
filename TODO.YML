@@ -17,11 +17,12 @@
 - buildpi:
   - ccache
 
-- kubenix:
-  - other name (there is already another kubenix) -> nirgenx?
+- nirgenx:
   - documentation
   - option to pre-render helm chart
   - option to only store specific charts in lockfile
+  - allow running deployments without deploying nixos
+  - don't re-run deployment if nothing has changed
 
 - theme:
   - profile picture

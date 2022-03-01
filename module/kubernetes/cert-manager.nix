@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 with builtins; with lib; {
-  kubenix.deployment.cert-manager = {
+  nirgenx.deployment.cert-manager = {
     steps = [
       (kube.installHelmChart "jetstack" "cert-manager" { installCRDs = true; })
       {

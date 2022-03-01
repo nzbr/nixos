@@ -1,6 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 with builtins; with lib; {
-  kubenix.deployment.vaultwarden =
+  nirgenx.deployment.vaultwarden =
     {
       dependencies = [ "nginx" "stash" "kadalu" ];
       steps = [

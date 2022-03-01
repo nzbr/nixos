@@ -89,32 +89,6 @@
         "type": "github"
       }
     },
-    "kubenix": {
-      "inputs": {
-        "flake-compat": [
-          "flake-compat"
-        ],
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1637747729,
-        "narHash": "sha256-gcEbUIZGRdJ72bZqubiCglZ9iXm88QHXlQHSJcQeCow=",
-        "owner": "nzbr",
-        "repo": "kubenix",
-        "rev": "c2903d9e6ce2055f7352511c8f41c5a3f109641b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nzbr",
-        "repo": "kubenix",
-        "type": "github"
-      }
-    },
     "naersk": {
       "inputs": {
         "nixpkgs": [
@@ -132,6 +106,32 @@
       "original": {
         "owner": "nix-community",
         "repo": "naersk",
+        "type": "github"
+      }
+    },
+    "nirgenx": {
+      "inputs": {
+        "flake-compat": [
+          "flake-compat"
+        ],
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1646161805,
+        "narHash": "sha256-tA1hRShT+D5y0WiUmpKsDx1e0MExAeHTlhe3wUCD19k=",
+        "owner": "nzbr",
+        "repo": "nirgenx",
+        "rev": "bf7feca16e95fe1cdf73ca9ea2d00b84dd9df3e2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nzbr",
+        "repo": "nirgenx",
         "type": "github"
       }
     },

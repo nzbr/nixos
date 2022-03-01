@@ -4,7 +4,7 @@ with builtins; with lib; {
     (mapAttrsToList (n: v: v) self.nixosModules)
     (mapAttrsToList (n: v: v) nixos-wsl.nixosModules)
     ragenix.nixosModules.age
-    kubenix.nixosModules
+    nirgenx.nixosModules.nirgenx
 
     "${self}/host/${hostName}"
     extraModules

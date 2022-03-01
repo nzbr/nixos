@@ -1,6 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 with builtins; with lib; {
-  kubenix.deployment.rook-ceph.steps = [
+  nirgenx.deployment.rook-ceph.steps = [
     "${inputs.rook}/cluster/examples/kubernetes/ceph/crds.yaml"
     "${inputs.rook}/cluster/examples/kubernetes/ceph/common.yaml"
     "${inputs.rook}/cluster/examples/kubernetes/ceph/operator.yaml"

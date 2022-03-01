@@ -4,7 +4,7 @@ let
   namespace = "amp";
 in
 {
-  kubenix.deployment.amp = {
+  nirgenx.deployment.amp = {
     dependencies = [ "nginx" ];
     steps = [
 
@@ -90,7 +90,7 @@ in
     ];
   };
 
-  nzbr.nginx.tcp-services = mkIf config.kubenix.deployment.amp.enable {
+  nzbr.nginx.tcp-services = mkIf config.nirgenx.deployment.amp.enable {
     "25565" = "${namespace}/amp:25565";
   };
 }

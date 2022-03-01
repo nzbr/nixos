@@ -1,6 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 with builtins; with lib; {
-  kubenix.deployment.redis = {
+  nirgenx.deployment.redis = {
     dependencies = [ "stash" "kadalu" ];
     steps = [
       (kube.installHelmChart "bitnami" "redis" config.nzbr.assets."k8s/redis-values.yaml")

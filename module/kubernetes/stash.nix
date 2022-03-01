@@ -35,7 +35,7 @@ with builtins; with lib; {
         '';
       };
 
-    kubenix.deployment.stash =
+    nirgenx.deployment.stash =
       let
         tokenPath = "/tmp/stash-token.json";
         valuesPath = "/run/stash-values.json";
