@@ -22,7 +22,7 @@ with builtins; with lib;
         service = {
           ssh = {
             enable = true;
-            authorizedSystems = [ "hurricane" "landslide" "meteor" ];
+            authorizedSystems = [ "hurricane" "landslide" "meteor" "pulsar" ];
           };
           vscode-server-fix.enable = mkDefault true;
         };

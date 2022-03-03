@@ -37,7 +37,7 @@ with builtins; with lib;
         unstable.vivaldi-ffmpeg-codecs
 
         vlc
-        spotify
+        # spotify
 
         discord
         unstable.element-desktop
