@@ -10,9 +10,14 @@
 - auto-updates and reboot notification
 - servers as substituters
 - unbound
-- postgres backups
+- postgres dumps
 - paperless
 - https://github.com/kamadorueda/alejandra
+- keycloak Quarkus migration
+- render dotfiles at build-time
+
+- gitlab:
+  - auto-gc docker layers
 
 - buildpi:
   - ccache
