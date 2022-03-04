@@ -30,11 +30,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1646260544,
-        "narHash": "sha256-lAJG+lWVuQeIRH4YvqIL2fIbQ611cQbn6O+AA8DYxmI=",
+        "lastModified": 1646360966,
+        "narHash": "sha256-fJ/WHSU45bMJRDqz9yA3B2lwXtW5DKooU+Pzn13GyZI=",
         "owner": "kamadorueda",
         "repo": "alejandra",
-        "rev": "2842bdc2392ea12196684314bc0b7eccd2c39277",
+        "rev": "511c3f6a88b6964e1496fb6f441f4ae5e58bd3ea",
         "type": "github"
       },
       "original": {
@@ -195,11 +195,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1645855197,
-        "narHash": "sha256-0FvBpX/9n69vg+XgcMow0RIRYbTHav1uCbL9Xt9HvcA=",
+        "lastModified": 1646398322,
+        "narHash": "sha256-p+WCAOoJLc4R6x60pLYYqAiq30PlDUYJMrXqQ3rkBCg=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "c3c66f6db4ac74a59eb83d83e40c10046ebc0b8c",
+        "rev": "a7bca8d0d8188ae9802ecc467150cf018e19b958",
         "type": "github"
       },
       "original": {
@@ -253,11 +253,11 @@
     },
     "nixpkgs-bleeding-edge": {
       "locked": {
-        "lastModified": 1646331602,
-        "narHash": "sha256-cRuytTfel52z947yKfJcZU7zbQBgM16qqTf+oJkVwtg=",
+        "lastModified": 1646420439,
+        "narHash": "sha256-/MQjJkopC3ELwLFH0hi4+a4ZGlKNggUItxMSunA86nc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ad267cc9cf3d5a6ae63940df31eb31382d6356e6",
+        "rev": "9e6fe83e8d88f078ecd5a8673966591acbe3cf89",
         "type": "github"
       },
       "original": {
