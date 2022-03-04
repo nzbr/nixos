@@ -67,6 +67,16 @@ with builtins; with lib; {
                       label = "devsaur";
                       devices = [ "earthquake" "hurricane" "hurricane-win" "landslide" "meteor" "earthquake-macos" "pulsar-win" ];
                     };
+                    logseq = {
+                      id = "logseq";
+                      label = "logseq";
+                      devices = [ "earthquake" "hurricane-win" "pulsar-win" ];
+                    };
+                    dokumente = {
+                      id = "dokumente";
+                      label = "Dokumente";
+                      devices = [ "earthquake" "pulsar-win" ];
+                    };
                     Uni = {
                       id = "uni";
                       label = "Uni";
