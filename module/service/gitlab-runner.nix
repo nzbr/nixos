@@ -2,6 +2,10 @@
 with builtins; with lib; {
   options.nzbr.service.gitlab-runner = with types; {
     enable = mkEnableOption "GitLab Runner";
+    extraTags = mkOption {
+      type = listOf str;
+      default = [];
+    };
   };
 
   config =
@@ -22,7 +26,7 @@ with builtins; with lib; {
               tagList = [ "nix" ];
               runUntagged = false;
               executor = "docker";
-              dockerImage = "nixos/nix";
+              dockerImage = "alpine";
               dockerVolumes = [
                 "/nix/store:/nix/store:ro"
                 "/nix/var/nix/db:/nix/var/nix/db:ro"
@@ -37,14 +41,15 @@ with builtins; with lib; {
                 mkdir -p -m 1777 /nix/var/nix/gcroots/per-user
                 mkdir -p -m 1777 /nix/var/nix/profiles/per-user
                 mkdir -p -m 0755 /nix/var/nix/profiles/per-user/root
-                mkdir -p -m 0700 "$HOME/.nix-defexpr"
 
                 . ${pkgs.nix}/etc/profile.d/nix.sh
 
                 ${pkgs.nix}/bin/nix-env -i ${concatStringsSep " " (with pkgs; [ nix cacert ])}
 
-                ${pkgs.nix}/bin/nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+                ${pkgs.nix}/bin/nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
                 ${pkgs.nix}/bin/nix-channel --update nixpkgs
+
+                ln -s $HOME/.nix-defexpr /.nix-defexpr
               '';
               environmentVariables = {
                 ENV = "/etc/profile";
@@ -52,11 +57,12 @@ with builtins; with lib; {
                 NIX_REMOTE = "daemon";
                 PATH = "/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/default/sbin:/bin:/sbin:/usr/bin:/usr/sbin";
                 NIX_SSL_CERT_FILE = "/nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt";
+                NIX_PATH = "/.nix-defexpr/channels";
               };
             };
             docker = {
               inherit registrationConfigFile;
-              tagList = [ "docker" "linux" ];
+              tagList = [ "docker" "linux" ] ++ cfg.extraTags;
               runUntagged = true;
               executor = "docker";
               dockerImage = "archlinux";
