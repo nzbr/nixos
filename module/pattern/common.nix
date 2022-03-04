@@ -47,6 +47,7 @@ with builtins; with lib;
         htop
         inetutils
         killall
+        neofetch
         pv
         rsync
         stow

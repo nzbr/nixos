@@ -18,6 +18,7 @@ with builtins; with lib; {
         wsl = {
           enable = true;
           inherit (cfg) automountPath;
+          automountOptions = "metadata,uid=1000,gid=100,case=dir";
           defaultUser = config.nzbr.user;
           startMenuLaunchers = true;
           docker.enable = true;
@@ -25,6 +26,8 @@ with builtins; with lib; {
 
         nzbr.pattern.common.enable = true;
         nzbr.desktop.gnome.enable = true;
+
+        nzbr.cli.git.enable = mkForce false; # Don't break window's git
 
         services.xserver.displayManager.gdm.enable = lib.mkForce false;
         services.xserver.displayManager.autoLogin.enable = lib.mkForce false;

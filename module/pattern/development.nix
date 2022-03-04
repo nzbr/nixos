@@ -105,6 +105,7 @@ with builtins; with lib;
               flutter = flutter.unwrapped;
               node12 = nodejs-12_x;
               node14 = nodejs-14_x;
+              inherit jdk11;
               inherit yarn;
             }
         )

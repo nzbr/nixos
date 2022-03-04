@@ -142,8 +142,8 @@ with builtins; with lib; {
               "idea-ultimate.desktop"
               "gitkraken.desktop"
               "timeular.desktop"
-              "discord.desktop"
-              "spotify.desktop"
+              # "discord.desktop"
+              # "spotify.desktop"
             ];
             welcome-dialog-last-shown-version = pkgs.gnome3.gnome-shell.version;
           };
