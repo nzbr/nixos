@@ -24,7 +24,7 @@ in
             metadata.labels.app = "keycloak";
             spec.containers = [{
               name = "keycloak";
-              image = "quay.io/keycloak/keycloak:latest";
+              image = "quay.io/keycloak/keycloak:legacy";
               imagePullPolicy = "Always";
               env = [
                 { name = "KEYCLOAK_USER"; value = "admin"; }
