@@ -3,16 +3,15 @@
     "agenix": {
       "inputs": {
         "nixpkgs": [
-          "ragenix",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1645566155,
-        "narHash": "sha256-tICzY8QaLLR9u1Hf05cEhgK3RxZ3slz1HXc4aduELnQ=",
+        "lastModified": 1646105662,
+        "narHash": "sha256-jdXCZbGZL0SWWi29GnAOFHUh/QvvP0IyaVLv1ZTDkBI=",
         "owner": "ryantm",
         "repo": "agenix",
-        "rev": "b4ab630f195cb15f833cb285de232b1a22d1ea0a",
+        "rev": "297cd58b418249240b9f1f155d52b1b17f292884",
         "type": "github"
       },
       "original": {
@@ -302,7 +301,9 @@
     },
     "ragenix": {
       "inputs": {
-        "agenix": "agenix",
+        "agenix": [
+          "agenix"
+        ],
         "flake-utils": [
           "flake-utils"
         ],
@@ -343,6 +344,7 @@
     },
     "root": {
       "inputs": {
+        "agenix": "agenix",
         "alejandra": "alejandra",
         "dotfiles": "dotfiles",
         "flake-compat": "flake-compat",
