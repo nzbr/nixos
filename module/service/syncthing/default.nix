@@ -72,8 +72,8 @@ with builtins; with lib; {
                       label = "logseq";
                       devices = [ "earthquake" "hurricane-win" "pulsar-win" ];
                     };
-                    dokumente = {
-                      id = "dokumente";
+                    Dokumente = {
+                      id = "Dokumente";
                       label = "Dokumente";
                       devices = [ "earthquake" "pulsar-win" ];
                     };
