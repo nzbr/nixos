@@ -43,6 +43,7 @@ with builtins; with lib; {
                 landslide.id = "Q67E6XX-AQTLKAS-2SPVS7T-OUUPVXZ-UX632XY-DN7H2AZ-Y3N2CFJ-5EGDVAB";
                 meteor.id = "7RPEIWJ-QQDVCWD-M46KH3U-237GDWG-ZL6EEF2-WPZVAF2-7L5JRX2-HHHKKAB";
 
+                comet.id = "S33W76X-E3KIOOT-GDAAKNY-LLXR2CA-KQUIBNA-TC7R7TL-SJASVY3-UCFBCQM";
                 earthquake-macos.id = "QCCLSA4-AFZQSHS-D4DQ2F6-VCPWNTQ-MOQSJY2-HUA5PSA-J3FTLTH-XXJAWAW";
                 hurricane-win.id = "ORTVEOF-CUZIQQI-HXPIVQW-FSS4B3F-JVSDTQV-GBB233Q-ESXFKKW-GWNPNQN";
                 pulsar-win.id = "RXTBIQ6-C6SQFBC-DO2MIUA-FL7RUW2-PN6ILZC-4QMIIZX-UYP5RB7-FC3H5QK";
@@ -70,7 +71,7 @@ with builtins; with lib; {
                     Dokumente = {
                       id = "Dokumente";
                       label = "Dokumente";
-                      devices = [ "earthquake" "pulsar-win" ];
+                      devices = [ "earthquake" "pulsar-win" "comet" ];
                     };
                     Uni = {
                       id = "uni";
