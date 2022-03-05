@@ -67,11 +67,6 @@ with builtins; with lib; {
                       label = "devsaur";
                       devices = [ "earthquake" "hurricane" "hurricane-win" "landslide" "meteor" "earthquake-macos" "pulsar-win" ];
                     };
-                    logseq = {
-                      id = "logseq";
-                      label = "logseq";
-                      devices = [ "earthquake" "hurricane-win" "pulsar-win" ];
-                    };
                     Dokumente = {
                       id = "Dokumente";
                       label = "Dokumente";
