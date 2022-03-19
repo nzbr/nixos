@@ -17,13 +17,9 @@ fi
 
 set -euxo pipefail
 
-if [[ $1 == "--all" ]]; then
-  HOSTS=$(@nixFlakes@/bin/nix-instantiate --eval -E --json "let lib = (import @nixpkgs@ {}).lib; in lib.concatStringsSep \",\" (lib.mapAttrsToList (n: v: n) (lib.filterAttrs (n: v: v.config.nzbr ? deployment) (builtins.getFlake (toString ./.)).nixosConfigurations))" | @jq@/bin/jq -r .)
-else
-  HOSTS="$1"
-fi
+HOSTS="$1"
 
-CONFIG=$(@nixFlakes@/bin/nix-instantiate --eval --strict -E --json "with builtins; mapAttrs (n: v: v.config.nzbr.deployment) (builtins.getFlake (toString ./.)).nixosConfigurations")
+CONFIG=$(@nixFlakes@/bin/nix-instantiate --eval --strict -E --json "let flake = builtins.getFlake (toString ./.); lib = flake.lib; in with builtins; with lib; mapAttrs (n: v: v.config.nzbr.deployment // (mapAttrs (n': v': v'.config.nzbr.deployment) (filterAttrs (n': v': v' ? config && v'.config ? nzbr && v'.config.nzbr ? deployment) v))) (filterAttrs (n: v: v.config ? nzbr && v.config.nzbr ? deployment) flake.nixosConfigurations)")
 
 IFS=$',' # Split on , instead of whitespace
 BUILD=""
