@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, ... }:
 with builtins; with lib;
 {
   options.nzbr.pattern.vmware.enable = mkEnableOption "VMWare Guest";
@@ -8,10 +8,13 @@ with builtins; with lib;
       cfg = config.nzbr.pattern.vmware;
     in
     mkIf cfg.enable {
+
+      nzbr.boot.grub.enable = true;
+
       boot = {
         loader = {
-          systemd-boot.enable = true;
-          efi.canTouchEfiVariables = true;
+          efi.canTouchEfiVariables = false;
+          grub.efiInstallAsRemovable = true;
         };
 
 
@@ -24,7 +27,10 @@ with builtins; with lib;
         extraModulePackages = [ ];
       };
 
+      networking.usePredictableInterfaceNames = true;
       networking.interfaces.ens33.useDHCP = true;
+
+      systemd.network.enable = false;
 
       virtualisation.vmware.guest.enable = true;
     };

@@ -1,8 +1,11 @@
 { config, lib, pkgs, ... }:
 {
   nzbr = {
-    deployment.targetHost = "192.168.88.133";
+    deployment.targetHost = "192.168.88.129";
     patterns = [ "desktop" "vmware" ];
+
+    agenix.enable = mkForce true;
+    nopasswd.enable = false;
   };
 
   fileSystems = {

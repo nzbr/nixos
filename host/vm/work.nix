@@ -1,7 +1,5 @@
 { config, lib, pkgs, modulesPath, ... }:
 with builtins; with lib; {
-  boot.loader.efi.canTouchEfiVariables = mkForce false;
-
   nzbr = {
     deployment.targetHost = "192.168.88.131";
     patterns = [ "desktop" "vmware" "development" ];
