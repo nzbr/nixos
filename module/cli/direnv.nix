@@ -5,17 +5,22 @@ with builtins; with lib; {
   };
 
   config = mkIf config.nzbr.cli.direnv.enable {
-    environment.systemPackages = with pkgs; [
-      direnv
-      nix-direnv
-    ];
+    nzbr.home.config = {
+      programs.direnv = {
+        enable = true;
+        nix-direnv = {
+          enable = true;
+          enableFlakes = true;
+        };
+      };
+    };
 
     programs.bash.interactiveShellInit = ''
-      eval "$(direnv hook bash)"
+      eval $(${pkgs.direnv}/bin/direnv hook bash)
     '';
 
     programs.zsh.interactiveShellInit = ''
-      eval "$(direnv hook zsh)"
+      eval $(${pkgs.direnv}/bin/direnv hook zsh)
     '';
   };
 }
