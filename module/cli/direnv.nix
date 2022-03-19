@@ -16,11 +16,11 @@ with builtins; with lib; {
     };
 
     programs.bash.interactiveShellInit = ''
-      eval $(${pkgs.direnv}/bin/direnv hook bash)
+      eval "$(${pkgs.direnv}/bin/direnv hook bash)"
     '';
 
     programs.zsh.interactiveShellInit = ''
-      eval $(${pkgs.direnv}/bin/direnv hook zsh)
+      eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
     '';
   };
 }
