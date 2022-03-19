@@ -1,17 +1,13 @@
 { config, lib, pkgs, modulesPath, ... }:
 with builtins; with lib; {
   nzbr = {
-    deployment.targetHost = "192.168.88.131";
+    deployment.targetHost = "192.168.110.128";
     patterns = [ "desktop" "vmware" "development" ];
     pattern.development.guiTools = true;
 
     agenix.enable = mkForce true;
     nopasswd.enable = false;
   };
-
-  environment.systemPackages = with pkgs; [
-    wireguard-tools
-  ];
 
   systemd.mounts = [
     {
@@ -22,6 +18,4 @@ with builtins; with lib; {
       wantedBy = [ "multi-user.target" ];
     }
   ];
-
-  networking.firewall.checkReversePath = false;
 }
