@@ -56,7 +56,7 @@ with builtins; with lib; {
                     Bilder = {
                       id = "bilder";
                       label = "Bilder";
-                      devices = [ "earthquake" "meteor" "pulsar-win" ];
+                      devices = [ "earthquake" "meteor" "pulsar-win" "comet" ];
                     };
                     Projekte = {
                       id = "projekte";
