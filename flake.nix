@@ -70,7 +70,7 @@
     };
     vscode-server = {
       flake = false;
-      url = "github:msteen/nixos-vscode-server";
+      url = "github:austinbutler/nixos-vscode-server/vscode-166";
     };
     wsld = {
       flake = false;
@@ -173,31 +173,31 @@
           # collect from script directory
           listToAttrs (
             map
-            (file: rec {
-              name = unsafeDiscardStringContext (replaceStrings [ "/" ] [ "-" ] (removePrefix "${self}/script/" file)); # this is safe, actually
-              value = pkgs.substituteAll {
-                inherit name;
-                src = file;
-                dir = "bin";
-                isExecutable = true;
+              (file: rec {
+                name = unsafeDiscardStringContext (replaceStrings [ "/" ] [ "-" ] (removePrefix "${self}/script/" file)); # this is safe, actually
+                value = pkgs.substituteAll {
+                  inherit name;
+                  src = file;
+                  dir = "bin";
+                  isExecutable = true;
 
-                python3 = pkgs.python3.withPackages (pypi: with pypi; [
-                  pygraphviz
-                ]);
+                  python3 = pkgs.python3.withPackages (pypi: with pypi; [
+                    pygraphviz
+                  ]);
 
-                # packages that are available to the scripts
-                inherit (pkgs)
-                  bash
-                  gnused
-                  jq
-                  nixFlakes
-                  rage
-                  wireguard
-                  ;
-                nixpkgs = toString inputs.nixpkgs;
-              };
-            })
-            (findModules "" "${self}/script")
+                  # packages that are available to the scripts
+                  inherit (pkgs)
+                    bash
+                    gnused
+                    jq
+                    nixFlakes
+                    rage
+                    wireguard
+                    ;
+                  nixpkgs = toString inputs.nixpkgs;
+                };
+              })
+              (findModules "" "${self}/script")
           )
         );
       in
@@ -216,7 +216,7 @@
               rage
               (ifAvailable inputs.nirgenx.packages "helm-update")
               (ifAvailable inputs.nirgenx.packages "yaml2nix")
-              (orElse inputs.alejandra.defaultPackage system [])
+              (orElse inputs.alejandra.defaultPackage system [ ])
             ])
             ++
             mapAttrsToList
