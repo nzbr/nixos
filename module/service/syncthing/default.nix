@@ -51,44 +51,8 @@ with builtins; with lib; {
               };
               folders =
                 lib.mapAttrs' (n: v: lib.nameValuePair n (v // { path = (baseDir + n); })) (# Set the path
-                  lib.filterAttrs (n: v: lib.any (it: it == host) v.devices) {
-                    # Only add folders that should be synced with the current host
-                    Bilder = {
-                      id = "bilder";
-                      label = "Bilder";
-                      devices = [ "earthquake" "meteor" "pulsar-win" "comet" ];
-                    };
-                    Projekte = {
-                      id = "projekte";
-                      label = "Projekte";
-                      devices = [ "earthquake" "hurricane-win" "landslide" "meteor" "pulsar-win" ];
-                    };
-                    devsaur = {
-                      id = "devsaur";
-                      label = "devsaur";
-                      devices = [ "earthquake" "hurricane" "hurricane-win" "landslide" "meteor" "earthquake-macos" "pulsar-win" ];
-                    };
-                    Dokumente = {
-                      id = "Dokumente";
-                      label = "Dokumente";
-                      devices = [ "earthquake" "pulsar-win" "comet" ];
-                    };
-                    Uni = {
-                      id = "uni";
-                      label = "Uni";
-                      devices = [ "earthquake" "hurricane" "meteor" "pulsar-win" ];
-                    };
-                    ".local/share/fonts/sync" = {
-                      id = "fonts";
-                      label = "Fonts";
-                      devices = [ "hurricane" "landslide" "meteor" ]; # TODO: earthquake
-                    };
-                    mp3 = {
-                      id = "mp3";
-                      label = "MP3";
-                      devices = [ "earhquake" "uli" ];
-                    };
-                  });
+                  # Only add folders that should be synced with the current host
+                  lib.filterAttrs (n: v: lib.any (it: it == host) v.devices) (import ./folders.conf));
             }
           );
         }
