@@ -22,29 +22,35 @@ in
           selector.matchLabels.app = "keycloak";
           template = {
             metadata.labels.app = "keycloak";
-            spec.containers = [{
-              name = "keycloak";
-              image = "quay.io/keycloak/keycloak:legacy";
-              imagePullPolicy = "Always";
-              env = [
-                { name = "KEYCLOAK_USER"; value = "admin"; }
-                { name = "KEYCLOAK_PASSWORD"; valueFrom.secretKeyRef = { key = "adminpassword"; name = "keycloak"; }; }
-                { name = "PROXY_ADDRESS_FORWARDING"; value = "true"; }
-                { name = "DB_VENDOR"; value = "postgres"; }
-                { name = "DB_ADDR"; value = "storm.nzbr.github.beta.tailscale.net"; }
-                { name = "DB_DATABASE"; value = "keycloak"; }
-                { name = "DB_USER"; value = "keycloak"; }
-                { name = "DB_PASSWORD"; valueFrom.secretKeyRef = { key = "postgrespassword"; name = "keycloak"; }; }
-              ];
-              ports = [
-                { name = "http"; containerPort = 8080; }
-                { name = "https"; containerPort = 8443; }
-              ];
-              readinessProbe.httpGet = {
-                path = "/auth/realms/master";
-                port = 8080;
-              };
-            }];
+            spec = {
+              containers = [{
+                name = "keycloak";
+                image = "quay.io/keycloak/keycloak:latest";
+                imagePullPolicy = "Always";
+                workingDir = "/opt/keycloak";
+                command = [ "/opt/keycloak/bin/kc.sh" "start" "--auto-build" ];
+                env = [
+                  { name = "KEYCLOAK_ADMIN"; value = "admin"; }
+                  { name = "KEYCLOAK_ADMIN_PASSWORD"; valueFrom.secretKeyRef = { key = "adminpassword"; name = "keycloak"; }; }
+                  { name = "PROXY_ADDRESS_FORWARDING"; value = "true"; }
+                  { name = "KC_PROXY"; value = "edge"; }
+                  { name = "KC_HTTP_RELATIVE_PATH"; value = "/auth"; }
+                  { name = "KC_DB"; value = "postgres"; }
+                  { name = "KC_DB_URL"; value = "jdbc:postgresql://storm.nzbr.github.beta.tailscale.net/keycloak"; }
+                  { name = "KC_DB_USER"; value = "keycloak"; }
+                  { name = "KC_DB_PASSWORD"; valueFrom.secretKeyRef = { key = "postgrespassword"; name = "keycloak"; }; }
+                  { name = "KC_HOSTNAME"; value = "sso.nzbr.de"; }
+                ];
+                ports = [
+                  { name = "http"; containerPort = 8080; }
+                  # { name = "https"; containerPort = 8443; }
+                ];
+                readinessProbe.httpGet = {
+                  path = "/auth/realms/master";
+                  port = 8080;
+                };
+              }];
+            };
           };
         };
       }
