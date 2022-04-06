@@ -28,6 +28,25 @@ p {
   color: white !important;
 }
 
+.alert-error {
+  background-color: #aa0000 !important;
+  border: none !important;
+}
+
+.pf-c-alert__title {
+  font-family: "More Perfect DOS VGA", monospace !important;
+  color: #ffff55 !important;
+}
+
+.pf-c-alert.pf-m-inline.pf-m-danger::before {
+  display: none;
+}
+
+.fa-exclamation-circle {
+  color: #ffff55 !important;
+  font-family: FontAwesome !important;
+}
+
 label {
   font-size: 12pt !important;
 }
