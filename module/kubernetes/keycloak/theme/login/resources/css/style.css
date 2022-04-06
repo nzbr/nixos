@@ -1,8 +1,9 @@
-.login-pf body {
+body {
   background-image: none !important;
   background-color: #0000aa !important;
 
   font-family: "More Perfect DOS VGA", monospace !important;
+  font-size: 12pt;
   font-smooth: never !important;
   -webkit-font-smoothing: none !important;
 
@@ -24,6 +25,10 @@ div.kc-logo-text {
   /* border-radius: 16px; */
 }
 
+.kc-page-title {
+  font-size: 12pt;
+}
+
 p {
   color: white !important;
 }
@@ -39,7 +44,13 @@ p {
 }
 
 .pf-c-alert.pf-m-inline.pf-m-danger::before {
-  display: none;
+  display: none !important;
+}
+
+#kc-info-wrapper {
+  color: white !important;
+  background-color: unset !important;
+  font-size: 12pt;
 }
 
 .fa-exclamation-circle {
@@ -58,7 +69,7 @@ input {
 
 input[type="text"],
 input[type="password"] {
-  font-size: 20pt !important;
+  font-size: 12pt !important;
   background-color: #0000aa !important;
   color: #aaaaaa !important;
   border: none !important;
@@ -72,7 +83,7 @@ input:focus {
 }
 
 input[type="submit"] {
-  font-size: 14pt !important;
+  font-size: 12pt !important;
   background-color: #00aa00 !important;
   color: black !important;
   box-shadow: 7px 9px black !important;
