@@ -1,0 +1,81 @@
+.login-pf body {
+  background-image: none !important;
+  background-color: #0000aa !important;
+
+  font-family: "More Perfect DOS VGA", monospace !important;
+  font-smooth: never !important;
+  -webkit-font-smoothing: none !important;
+
+  color: black !important;
+}
+
+div.kc-logo-text {
+  background-image: url(../img/keycloak-logotype.png) !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% !important;
+  image-rendering: pixelated !important;
+}
+
+.card-pf {
+  background-color: #aaaaaa !important;
+  border: 5px double white !important;
+  outline: 5px solid #aaaaaa !important;
+  box-shadow: 14px 18px black !important;
+  /* border-radius: 16px; */
+}
+
+p {
+  color: white !important;
+}
+
+label {
+  font-size: 12pt !important;
+}
+
+input {
+  font-family: inherit !important;
+  transition-duration: 250ms !important;
+}
+
+input[type="text"],
+input[type="password"] {
+  font-size: 20pt !important;
+  background-color: #0000aa !important;
+  color: #aaaaaa !important;
+  border: none !important;
+  /* border-bottom: 2px solid white !important; */
+}
+
+input:focus {
+  color: white !important;
+  /* border-color: lime !important; */
+  outline: none;
+}
+
+input[type="submit"] {
+  font-size: 14pt !important;
+  background-color: #00aa00 !important;
+  color: black !important;
+  box-shadow: 7px 9px black !important;
+  /* border: 1px solid #aaaaaa !important; */
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  background-color: lime !important;
+  color: black !important;
+}
+
+a[href],
+.checkbox>label {
+  color: black !important;
+  transition-duration: 250ms !important;
+}
+
+a[href]:hover,
+a[href]:focus,
+.checkbox>label:hover,
+.checkbox>label:focus {
+  color: white !important;
+  text-decoration: none !important;
+}
