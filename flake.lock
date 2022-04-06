@@ -144,11 +144,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1646170428,
-        "narHash": "sha256-y75096fVcsp2+z4EG6aCjyyryF3VmetUTT+KZZOslWI=",
+        "lastModified": 1649222537,
+        "narHash": "sha256-Dw+Yk7c85EqR+YBCLw5wT/xxmVngo4Amh82DmehZKhk=",
         "owner": "nzbr",
         "repo": "nirgenx",
-        "rev": "047ca2f0838a7fd0a7f89219b48d3c13dc478b65",
+        "rev": "50fffd2863d23d4a2776df4ccdf7d761fce75cf2",
         "type": "github"
       },
       "original": {
