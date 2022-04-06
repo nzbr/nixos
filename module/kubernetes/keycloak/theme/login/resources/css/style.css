@@ -22,7 +22,6 @@ div.kc-logo-text {
   border: 5px double white !important;
   outline: 5px solid #aaaaaa !important;
   box-shadow: 14px 18px black !important;
-  /* border-radius: 16px; */
 }
 
 .kc-page-title {
@@ -64,7 +63,6 @@ label {
 
 input {
   font-family: inherit !important;
-  transition-duration: 250ms !important;
 }
 
 input[type="text"],
@@ -73,12 +71,11 @@ input[type="password"] {
   background-color: #0000aa !important;
   color: #aaaaaa !important;
   border: none !important;
-  /* border-bottom: 2px solid white !important; */
+  transition-duration: 250ms !important;
 }
 
 input:focus {
   color: white !important;
-  /* border-color: lime !important; */
   outline: none;
 }
 
@@ -87,13 +84,24 @@ input[type="submit"] {
   background-color: #00aa00 !important;
   color: black !important;
   box-shadow: 7px 9px black !important;
-  /* border: 1px solid #aaaaaa !important; */
+  transition-duration: 10ms !important;
+  margin-right: 7px;
+  margin-bottom: 9px;
 }
 
 input[type="submit"]:hover,
 input[type="submit"]:focus {
   background-color: lime !important;
   color: black !important;
+}
+
+input[type=submit]:active {
+  border-left: 7px !important;
+  border-top: 9px !important;
+  border-style: solid !important;
+  border-color: #aaaaaa !important;
+  box-shadow: none !important;
+  margin: 0;
 }
 
 a[href],
