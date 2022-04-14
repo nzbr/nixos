@@ -70,7 +70,7 @@
     };
     vscode-server = {
       flake = false;
-      url = "github:austinbutler/nixos-vscode-server/vscode-166";
+      url = "github:msteen/nixos-vscode-server";
     };
     wsld = {
       flake = false;
