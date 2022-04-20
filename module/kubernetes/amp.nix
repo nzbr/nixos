@@ -42,7 +42,7 @@ in
         };
         subsets = [{
           addresses = [{
-            ip = inputs.self.nixosConfigurations.avalanche.config.nzbr.nodeIp;
+            ip = inputs.self.nixosConfigurations.earthquake.config.nzbr.nodeIp;
           }];
           ports = [
             {

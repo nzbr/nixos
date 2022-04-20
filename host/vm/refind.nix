@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
-{
+with builtins; with lib; {
   nzbr = {
     deployment.targetHost = "192.168.88.129";
     patterns = [ "desktop" "vmware" ];
