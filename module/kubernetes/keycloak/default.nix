@@ -21,7 +21,7 @@ in
           labels.app = "keycloak";
         };
         data = {
-          "theme.tar.xz" = readFile (pkgs.runCommand "keycloak-theme.tar.xz" {} ''
+          "theme.tar.xz" = readFile (pkgs.runCommand "keycloak-theme.tar.xz" { } ''
             ${pkgs.busybox}/bin/tar -C ${./theme} -cvJ . | ${pkgs.busybox}/bin/base64 > $out
           '');
         };
@@ -95,7 +95,7 @@ in
                 }
                 {
                   name = "theme";
-                  emptyDir = {};
+                  emptyDir = { };
                 }
               ];
             };

@@ -1,10 +1,10 @@
 { config, lib, pkgs, inputs, ... }:
 with builtins; with lib;
-    let
-      namespace = "gitlab";
-      tlsHosts = [ "*.nzbr.de" "*.pages.nzbr.de" ];
-      tlsSecretName = "gitlab-wildcard-cert";
-    in
+let
+  namespace = "gitlab";
+  tlsHosts = [ "*.nzbr.de" "*.pages.nzbr.de" ];
+  tlsSecretName = "gitlab-wildcard-cert";
+in
 {
   nirgenx.deployment.gitlab =
     {
@@ -140,7 +140,7 @@ with builtins; with lib;
       ];
     };
 
-    nzbr.nginx.tcp-services = mkIf config.nirgenx.deployment.gitlab.enable {
-      "2222" = "${namespace}/gitlab:20022";
-    };
+  nzbr.nginx.tcp-services = mkIf config.nirgenx.deployment.gitlab.enable {
+    "2222" = "${namespace}/gitlab:20022";
+  };
 }

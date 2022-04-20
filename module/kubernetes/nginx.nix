@@ -3,13 +3,13 @@ with builtins; with lib; {
   options.nzbr.nginx.tcp-services = mkOption {
     description = "TCP Services";
     type = with types; attrsOf str;
-    default = {};
+    default = { };
   };
 
   config =
-  let
-    namespace = "nginx";
-  in
+    let
+      namespace = "nginx";
+    in
     {
       nirgenx.deployment.nginx = {
         dependencies = [ "cert-manager" ];
@@ -64,5 +64,5 @@ with builtins; with lib; {
 
         ];
       };
-  };
+    };
 }
