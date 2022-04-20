@@ -124,7 +124,7 @@ with builtins; with lib; {
               touch /tmp/restic.lock
 
               cd /tmp/.snapshot
-              restic backup --verbose ${lib.concatStringsSep " " (map (x: "./${x}") cfg.include)}
+              restic backup --verbose=2 --exclude-caches ${lib.concatStringsSep " " (map (x: "./${x}") cfg.include)}
               restic unlock
               restic forget --group-by host --host ${hostname} --keep-last ${toString cfg.keep.last} --keep-daily ${toString cfg.keep.daily} --keep-weekly ${toString cfg.keep.weekly} --keep-monthly ${toString cfg.keep.monthly}
             ''
@@ -181,7 +181,7 @@ with builtins; with lib; {
               done
               touch /tmp/restic.lock
 
-              restic prune
+              restic prune --verbose=2
             '' + (
               if cfg.healthcheck.prune != "" then ''
                 curl -s ${cfg.healthcheck.prune}
