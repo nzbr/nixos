@@ -4,7 +4,7 @@ with builtins; with lib; {
     enable = mkEnableOption "GitLab Runner";
     extraTags = mkOption {
       type = listOf str;
-      default = [];
+      default = [ ];
     };
   };
 
