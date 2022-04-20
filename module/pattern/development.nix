@@ -38,6 +38,7 @@ with builtins; with lib;
         desktop-file-utils
         docker-compose
         gcc
+        gh
         git-crypt
         global
         gnumake
@@ -118,7 +119,7 @@ with builtins; with lib;
         pkgs.android-udev-rules
       ];
 
-      virtualisation.docker.enable = true;
+      virtualisation.docker.enable = mkDefault true;
 
       users.groups.podman.members = [ config.nzbr.user ];
     }
