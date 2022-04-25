@@ -25,10 +25,15 @@ with builtins; with lib; {
       dconf.settings = {
         "org/gnome/desktop/background" = {
           picture-uri = mkForce (builtins.fetchurl {
+            name = "background";
+
             # Use a free image from unsplash
-            # 482eb40256a904860fbad4c983f65f37ad7439b4d41202eead244e62e271c2a7 https://unsplash.com/photos/IWenq-4JHqo/download\?force\=true
-            url = "https://unsplash.com/photos/2HqpqSqy0zg/download\?force\=true";
-            sha256 = "29e19663b210b1e952a2dd8bef3c1226edcc10ec3b635b1e3f1751ba96349b81";
+
+            # url = "https://unsplash.com/photos/2HqpqSqy0zg/download\?force\=true";
+            url = "https://images.unsplash.com/photo-1516715094483-75da7dee9758?ixlib=rb-1.2.1&q=80&fm=png&cs=tinysrgb";
+            sha256 = "1w8b7gjhl20icpw4q6i31c54g3wicy0gxgpbjyz5aqph1qvzhwax";
+
+            # Alternative: 482eb40256a904860fbad4c983f65f37ad7439b4d41202eead244e62e271c2a7 https://unsplash.com/photos/IWenq-4JHqo/download\?force\=true
           });
         };
 
