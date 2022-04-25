@@ -21,7 +21,10 @@ with builtins; with lib; {
           automountOptions = "metadata,uid=1000,gid=100,case=dir";
           defaultUser = config.nzbr.user;
           startMenuLaunchers = true;
-          docker.enable = true;
+          # docker.enable = mkDefault true;
+          docker-native.enable = mkDefault true;
+
+          # interop.register = mkDefault false;
         };
 
         nzbr.pattern.common.enable = true;
@@ -55,8 +58,6 @@ with builtins; with lib; {
             XDG_CURRENT_DESKTOP = "gnome";
           };
         };
-
-        virtualisation.docker.enable = mkForce false;
 
         system.activationScripts = {
           wsl-cleanup.text = ''
