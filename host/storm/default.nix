@@ -73,6 +73,7 @@
       hedgedoc.enable = true;
       kadalu.enable = true;
       keycloak.enable = true;
+      matrix.enable = true;
       nextcloud.enable = true;
       nginx.enable = true;
       openldap.enable = true;
@@ -188,6 +189,7 @@
         "keycloak"
         "kubernetes"
         "nextcloud"
+        "synapse"
         "vaultwarden"
       ];
     in

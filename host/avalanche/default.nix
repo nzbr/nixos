@@ -64,6 +64,7 @@ in
           }
         ];
       };
+      synapse.enable = true;
     };
   };
 

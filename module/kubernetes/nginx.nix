@@ -64,5 +64,9 @@ with builtins; with lib; {
 
         ];
       };
+
+      nzbr.nginx.tcp-services = {
+        "8448" = "${namespace}/nginx-ingress-nginx-controller:443";
+      };
     };
 }
