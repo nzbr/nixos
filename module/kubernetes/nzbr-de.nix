@@ -19,19 +19,24 @@ with builtins; with lib;
           };
         };
         spec = {
-          rules = [{
-            host = "nzbr.de";
-            http = {
-              paths = [{
-                backend.service = {
-                  name = "nginx-ingress-nginx-controller";
-                  port.number = 80;
-                };
-                path = "/";
-                pathType = "Prefix";
-              }];
-            };
-          }];
+          rules = map
+            (host: {
+              inherit host;
+              http = {
+                paths = [{
+                  backend.service = {
+                    name = "nginx-ingress-nginx-controller";
+                    port.number = 80;
+                  };
+                  path = "/";
+                  pathType = "Prefix";
+                }];
+              };
+            })
+            [
+              "nzbr.de"
+              "go.nzbr.de"
+            ];
         };
       }
 
