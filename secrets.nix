@@ -4,7 +4,7 @@ let
   lib = flake.lib;
 
   # The SSH private (user) keys on these hosts will be able to decrypt all secrets
-  globalKeyHosts = [ "hurricane" "meteor" "landslide" ];
+  globalKeyHosts = [ "hurricane" "meteor" "landslide" "pulsar" ];
 in
 with builtins; with lib;
 (
