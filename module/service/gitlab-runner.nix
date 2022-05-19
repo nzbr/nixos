@@ -13,16 +13,15 @@ with builtins; with lib; {
       cfg = config.nzbr.service.gitlab-runner;
     in
     mkIf cfg.enable {
+      systemd.services.gitlab-runner.restartIfChanged = true;
+
       services.gitlab-runner = {
         enable = true;
         concurrent = 3;
         services =
-          let
-            registrationConfigFile = config.nzbr.assets."gitlab-runner-registration.env";
-          in
           {
             nixos = {
-              inherit registrationConfigFile;
+              registrationConfigFile = config.nzbr.assets."git.nzbr.de-runner-registration.env";
               tagList = [ "nix" ];
               runUntagged = false;
               executor = "docker";
@@ -61,8 +60,16 @@ with builtins; with lib; {
               };
             };
             docker = {
-              inherit registrationConfigFile;
+              registrationConfigFile = config.nzbr.assets."git.nzbr.de-runner-registration.env";
               tagList = [ "docker" "linux" ] ++ cfg.extraTags;
+              runUntagged = true;
+              executor = "docker";
+              dockerImage = "archlinux";
+            };
+
+            gitlab-com = {
+              registrationConfigFile = config.nzbr.assets."gitlab.com-runner-registration.env";
+              tagList = [ "docker" "linux" "nzbr" ];
               runUntagged = true;
               executor = "docker";
               dockerImage = "archlinux";
