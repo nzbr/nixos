@@ -218,6 +218,12 @@
           services;
       initialScript = config.nzbr.assets."postgres-setup.sql";
     };
+  services.postgresqlBackup = {
+    enable = true;
+    location = "/storage/postgres/backup";
+    compression = "none";
+    databases = config.services.postgresql.ensureDatabases;
+  };
   systemd.tmpfiles.rules = [
     "d /storage/postgres 0755 postgres users"
   ];
