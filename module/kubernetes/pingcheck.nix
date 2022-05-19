@@ -39,18 +39,21 @@ in
                   schedule = "*/10 * * * *";
                   successfulJobsHistoryLimit = 1;
                   failedJobsHistoryLimit = 1;
-                  jobTemplate.spec.template.spec = {
-                    nodeName = host;
-                    restartPolicy = "Never";
-                    containers = [{
-                      name = "pingcheck";
-                      image = "registry.gitlab.com/nzbr/pingcheck-container:main";
-                      imagePullPolicy = "Always";
-                      env = [
-                        { name = "TARGET"; value = "${target}.nzbr.github.beta.tailscale.net"; }
-                        { name = "WEBHOOK"; value = "https://hc-ping.com/${hook-id}"; }
-                      ];
-                    }];
+                  jobTemplate.spec = {
+                    backoffLimit = 1;
+                    template.spec = {
+                      nodeName = host;
+                      restartPolicy = "Never";
+                      containers = [{
+                        name = "pingcheck";
+                        image = "registry.gitlab.com/nzbr/pingcheck-container:main";
+                        imagePullPolicy = "IfNotPresent";
+                        env = [
+                          { name = "TARGET"; value = "${target}.nzbr.github.beta.tailscale.net"; }
+                          { name = "WEBHOOK"; value = "https://hc-ping.com/${hook-id}"; }
+                        ];
+                      }];
+                    };
                   };
                 };
               })
