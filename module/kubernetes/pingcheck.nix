@@ -37,7 +37,7 @@ in
                 };
                 spec = {
                   schedule = "*/10 * * * *";
-                  successfulJobsHistoryLimit = 1;
+                  successfulJobsHistoryLimit = 0;
                   failedJobsHistoryLimit = 1;
                   jobTemplate.spec = {
                     backoffLimit = 1;
