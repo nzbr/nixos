@@ -51,16 +51,36 @@ with builtins; with lib; {
                   hsts-preload = true;
                   ssl-redirect = true;
                   access-log-path = "/dev/null";
+                  custom-http-errors = "400,401,403,404,405,408,409,410,411,412,413,414,415,418,429,500,501,502,503,504";
                 };
                 extraArgs = {
                   default-ssl-certificate = "${namespace}/wildcard-nzbr-de";
                 };
               };
+              defaultBackend = {
+                enabled = true;
+                name = "custom-default-backend";
+                image = {
+                  repository = "ghcr.io/nzbr/nzbr/bluescreen-errorpages";
+                  tag = "latest";
+                  pullPolicy = "Always";
+                  readOnlyRootFilesystem = false;
+                };
+                port = "8080";
+                # extraVolumes = [
+                #   { name = "tmp"; emptyDir = {}; }
+                #   { name = "cache"; emptyDir = {}; }
+                #   { name = "run"; emptyDir = {}; }
+                # ];
+                # extraVolumeMounts = [
+                #   { name = "tmp"; mountPath = "/tmp"; }
+                #   { name = "cache"; mountPath = "/var/cache"; }
+                #   { name = "run"; mountPath = "/var/run"; }
+                # ];
+              };
               tcp = config.nzbr.nginx.tcp-services;
             };
           }
-
-          # TODO: Delete Certificate default/wildcard-nzbr-de
 
         ];
       };
