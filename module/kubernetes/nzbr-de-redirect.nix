@@ -14,7 +14,7 @@ with builtins; with lib;
           annotations = {
             "kubernetes.io/ingress.class" = "nginx";
             "nginx.ingress.kubernetes.io/configuration-snippet" = ''
-              return 307 https://chaos.social/@nzbr;
+              return 307 https://nzbr.link;
             '';
           };
         };
