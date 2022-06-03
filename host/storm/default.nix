@@ -29,7 +29,10 @@
       };
       tailscale.enable = true;
       # ceph.enable = true;
-      gitlab-runner.enable = true;
+      gitlab-runner = {
+        enable = true;
+        extraTags = [ "kube-deploy" ];
+      };
       restic = {
         enable = true;
         remote = "jotta-archive";

@@ -20,23 +20,19 @@ with builtins; with lib; {
         mkdir -p -m 1777 /nix/var/nix/gcroots/per-user
         mkdir -p -m 1777 /nix/var/nix/profiles/per-user
         mkdir -p -m 0755 /nix/var/nix/profiles/per-user/root
-
+        mkdir -p -m 0700 "$HOME/.nix-defexpr"
         . ${pkgs.nix}/etc/profile.d/nix.sh
-        export PATH="$PATH:/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/default/sbin"
-
-        ${pkgs.nix}/bin/nix-env -i ${concatStringsSep " " (with pkgs; [ nix cacert ])}
-
-        ${pkgs.nix}/bin/nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+        ${pkgs.nix}/bin/nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs
         ${pkgs.nix}/bin/nix-channel --update nixpkgs
-
-        ln -s $HOME/.nix-defexpr /.nix-defexpr
+        ${pkgs.nix}/bin/nix-env -i ${concatStringsSep " " (with pkgs; [ nix cacert git openssh ])}
       '';
       nix-env = {
         ENV = "/etc/profile";
         USER = "root";
         NIX_REMOTE = "daemon";
         NIX_SSL_CERT_FILE = "/nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt";
-        NIX_PATH = "/.nix-defexpr/channels";
+        NIX_PATH = "/root/.nix-defexpr/channels";
+        PATH = "/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/default/sbin:/bin:/sbin:/usr/bin:/usr/sbin";
       };
       nix-volumes = [
         "/nix/store:/nix/store:ro"
@@ -49,12 +45,15 @@ with builtins; with lib; {
 
       services.gitlab-runner = {
         enable = true;
-        concurrent = 3;
+        concurrent = 5;
         services =
           {
-            nixos = {
+            nix = {
               registrationConfigFile = config.nzbr.assets."git.nzbr.de-runner-registration.env";
-              tagList = [ "docker" "linux" "nix" ] ++ cfg.extraTags;
+              registrationFlags = [
+                "--name ${config.networking.hostName}-nix"
+              ];
+              tagList = [ "nix" ];
               runUntagged = false;
               executor = "docker";
               dockerImage = "archlinux";
@@ -66,6 +65,9 @@ with builtins; with lib; {
 
             docker = {
               registrationConfigFile = config.nzbr.assets."git.nzbr.de-runner-registration.env";
+              registrationFlags = [
+                "--name ${config.networking.hostName}"
+              ];
               tagList = [ "docker" "linux" ] ++ cfg.extraTags;
               runUntagged = true;
               executor = "docker";
@@ -75,6 +77,9 @@ with builtins; with lib; {
 
             gitlab-com = {
               registrationConfigFile = config.nzbr.assets."gitlab.com-runner-registration.env";
+              registrationFlags = [
+                "--name ${config.networking.hostName}"
+              ];
               tagList = [ "docker" "linux" ];
               runUntagged = true;
               executor = "docker";
@@ -82,17 +87,16 @@ with builtins; with lib; {
               dockerPrivileged = true;
             };
 
-            # devsaur = {
-            #   registrationConfigFile = config.nzbr.assets."devsaur-runner-registration.env";
-            #   registrationFlags = [
-            #     "--name nzbr-${config.networking.hostName}"
-            #   ];
-            #   tagList = [ "docker" "linux" "nzbr" ];
-            #   runUntagged = true;
-            #   executor = "docker";
-            #   dockerImage = "archlinux";
-            #   dockerPrivileged = true;
-            # };
+            devsaur = {
+              registrationConfigFile = config.nzbr.assets."devsaur-runner-registration.env";
+              registrationFlags = [
+                "--name nzbr-${config.networking.hostName}"
+              ];
+              tagList = [ "docker" "linux" "nzbr" ];
+              runUntagged = true;
+              executor = "docker";
+              dockerImage = "archlinux";
+            };
           };
       };
     };
