@@ -7,7 +7,7 @@ in
 
   nzbr = {
     system = "x86_64-linux";
-    patterns = [ "common" "server" "development" ];
+    patterns = [ "common" "server" ];
     nodeIp = "100.71.200.40";
 
     boot = {
