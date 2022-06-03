@@ -104,7 +104,6 @@ with builtins; with lib;
             (name: pkg: "ln -vsnf ${pkg} /run/sdk/${name}")
             {
               flutter = flutter.unwrapped;
-              node12 = nodejs-12_x;
               node14 = nodejs-14_x;
               inherit jdk11;
               inherit yarn;
