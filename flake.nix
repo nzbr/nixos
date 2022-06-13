@@ -2,10 +2,8 @@
   description = "my very own special snowflake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
-    nixpkgs-legacy.url = "github:NixOS/nixpkgs/nixos-21.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-bleeding-edge.url = "github:NixOS/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -13,7 +11,7 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
-      url = "github:nix-community/home-manager/release-21.11";
+      url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl = {
@@ -39,7 +37,7 @@
     ragenix = {
       url = "github:yaxitech/ragenix";
       inputs.agenix.follows = "agenix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
       inputs.rust-overlay.follows = "rust-overlay";
     };
@@ -161,7 +159,7 @@
           (allConfigs "x86_64-linux");
     } //
     (flake-utils.lib.eachSystem
-      lib.systems.supported.nzbr
+      lib.systems.flakeExposed
       (system:
       let
         pkgs = (import "${inputs.nixpkgs}" { inherit system; });

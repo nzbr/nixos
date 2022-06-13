@@ -26,7 +26,7 @@ with builtins; with lib; {
     environment.systemPackages = with pkgs; [
       gnome.dconf-editor
       # gnome.gnome-boxes
-      gnome.gnome-tweak-tool
+      gnome.gnome-tweaks
       gnome.seahorse
 
       local.gnome-shell-extension-pop-shell
@@ -44,24 +44,24 @@ with builtins; with lib; {
     programs.gnupg.agent.pinentryFlavor = "gnome3";
 
     programs.dconf.enable = true;
-    services.dbus.packages = with pkgs; [ gnome.dconf ];
+    services.dbus.packages = with pkgs; [ dconf ];
 
     services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
 
     nixpkgs.overlays = [
       (self: super: {
         gnome = super.gnome.overrideScope' (self': super': {
-          gnome-terminal = super'.gnome-terminal.overrideAttrs (oldAttrs: rec {
-            patches =
-              let
-                repo = builtins.fetchGit {
-                  url = "https://aur.archlinux.org/gnome-terminal-transparency.git";
-                  rev = "7dd7cd2471e42af8130cda7905b2b2c2a334ac4b";
-                };
-                transparencyPatch = repo + "/transparency.patch";
-              in
-              [ transparencyPatch ];
-          });
+          # gnome-terminal = super'.gnome-terminal.overrideAttrs (oldAttrs: rec {
+          #   patches =
+          #     let
+          #       repo = builtins.fetchGit {
+          #         url = "https://aur.archlinux.org/gnome-terminal-transparency.git";
+          #         rev = "7dd7cd2471e42af8130cda7905b2b2c2a334ac4b";
+          #       };
+          #       transparencyPatch = repo + "/transparency.patch";
+          #     in
+          #     [ transparencyPatch ];
+          # });
         });
       })
     ];

@@ -20,7 +20,7 @@ with builtins; with lib; {
         enable = true;
         openFirewall = true;
         passwordAuthentication = false;
-        challengeResponseAuthentication = false;
+        kbdInteractiveAuthentication = false;
         permitRootLogin = "yes";
         forwardX11 = true;
         hostKeys = [

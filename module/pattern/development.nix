@@ -37,6 +37,7 @@ with builtins; with lib;
         cmake
         desktop-file-utils
         docker-compose
+        dotnet-sdk
         gcc
         gh
         git-crypt
@@ -51,7 +52,6 @@ with builtins; with lib;
         pkg-config
         python3
         unstable.flutter
-        unstable.dotnet-sdk_5
       ] ++ (
         if config.nzbr.pattern.development.guiTools then
           [
@@ -103,7 +103,7 @@ with builtins; with lib;
           mapAttrsToList
             (name: pkg: "ln -vsnf ${pkg} /run/sdk/${name}")
             {
-              flutter = flutter.unwrapped;
+              flutter = unstable.flutter.unwrapped;
               node14 = nodejs-14_x;
               inherit jdk11;
               inherit yarn;
