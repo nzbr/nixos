@@ -24,9 +24,9 @@ with builtins; with lib; {
       nixpkgs.overlays = [
         (self: super: {
           gnome = super.gnome.overrideScope' (self': super': {
-            gnome-shell = super'.gnome-shell.overrideAttrs (oldAttrs: rec {
-              patches = with builtins; oldAttrs.patches ++ ([ (toFile "gnome-shell.patch" (replaceStrings [ "ACCENTCOLOR" ] [ cfg.accentColor ] (readFile ./gnome-shell.patch))) ]);
-            });
+            # gnome-shell = super'.gnome-shell.overrideAttrs (oldAttrs: rec {
+            #   patches = with builtins; oldAttrs.patches ++ ([ (toFile "gnome-shell.patch" (replaceStrings [ "ACCENTCOLOR" ] [ cfg.accentColor ] (readFile ./gnome-shell.patch))) ]);
+            # });
           });
         })
       ];

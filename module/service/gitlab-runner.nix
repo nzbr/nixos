@@ -45,7 +45,7 @@ with builtins; with lib; {
 
       services.gitlab-runner = {
         enable = true;
-        concurrent = 5;
+        concurrent = 3;
         services =
           {
             nix = {
@@ -87,16 +87,17 @@ with builtins; with lib; {
               dockerPrivileged = true;
             };
 
-            # devsaur = {
-            #   registrationConfigFile = config.nzbr.assets."devsaur-runner-registration.env";
-            #   registrationFlags = [
-            #     "--name nzbr-${config.networking.hostName}"
-            #   ];
-            #   tagList = [ "docker" "linux" "nzbr" ];
-            #   runUntagged = true;
-            #   executor = "docker";
-            #   dockerImage = "archlinux";
-            # };
+            devsaur = {
+              registrationConfigFile = config.nzbr.assets."devsaur-runner-registration.env";
+              registrationFlags = [
+                "--name nzbr-${config.networking.hostName}"
+              ];
+              tagList = [ "docker" "linux" "nzbr" ];
+              runUntagged = true;
+              executor = "docker";
+              dockerImage = "archlinux";
+              dockerDisableCache = true;
+            };
           };
       };
     };

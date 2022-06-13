@@ -24,7 +24,7 @@ buildGoModule rec {
 
   vendorSha256 = "1E/txWecZdJVY9i/BaHsI0GGKdPydyBXVCeqVtdQei4=";
 
-  runVend = true;
+  proxyVendor = true;
 
   nativeBuildInputs = [ pkg-config ];
   buildInputs = [

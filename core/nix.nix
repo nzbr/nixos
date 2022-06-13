@@ -53,9 +53,7 @@ in
           config = config.nixpkgs.config;
         })
         (with inputs; {
-          legacy = nixpkgs-legacy;
           unstable = nixpkgs-unstable;
-          bleeding-edge = nixpkgs-bleeding-edge;
         });
   };
 

@@ -1,6 +1,6 @@
 { ... }:
 {
-  systems.supported.nzbr = [
+  systems.flakeExposed = [
     "i686-linux"
     "x86_64-linux"
     "armv6l-linux"
