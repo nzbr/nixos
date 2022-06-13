@@ -39,6 +39,7 @@ with builtins; with lib;
 
       environment.systemPackages = with pkgs; [
         bat
+        btop
         diskus
         exa
         file
