@@ -86,7 +86,7 @@ with builtins; with lib;
       networking = {
         networkmanager = {
           enable = true;
-          packages = with pkgs; [
+          plugins = with pkgs; [
             networkmanager-openvpn
             networkmanager-openconnect
           ];

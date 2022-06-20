@@ -132,7 +132,7 @@ with builtins; with lib; {
     networkmanager = {
       enable = true;
       wifi.backend = "iwd";
-      packages = with pkgs; [
+      plugins = with pkgs; [
         networkmanager-openvpn
         networkmanager-openconnect
       ];
