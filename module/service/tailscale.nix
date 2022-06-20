@@ -15,7 +15,6 @@ with builtins; with lib; {
 
       services.tailscale = {
         enable = true;
-        package = pkgs.unstable.tailscale;
       };
 
       environment.systemPackages = [
@@ -58,6 +57,7 @@ with builtins; with lib; {
       };
 
       networking.firewall = {
+        checkReversePath = "loose";
         trustedInterfaces = [ "tailscale0" ];
         allowedUDPPorts = [ config.services.tailscale.port ];
       };
