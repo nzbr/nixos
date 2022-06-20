@@ -190,8 +190,8 @@
                     jq
                     nixFlakes
                     rage
-                    wireguard
                     ;
+                  wireguard = pkgs.wireguard-tools;
                   nixpkgs = toString inputs.nixpkgs;
                 };
               })
