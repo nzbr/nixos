@@ -65,16 +65,16 @@ with builtins; with lib; {
               rmdir $x || true
             done
           '';
-        };
-
-        home-manager.users.root.home.file.".wsld.toml".text = ''
-          [x11]
-          display = 1
-        '';
-        systemd.services."wsld" = {
-          path = [ pkgs.local.wsld ];
-          script = "wsld";
-          wantedBy = [ "multi-user.target" ];
+          setupHome =
+            let
+              home = config.users.users.${config.nzbr.user}.home;
+            in
+            stringAfter [ ] ''
+              rmdir ${home} || true
+              ln -sfT /drv/c/Users/nzbr ${home}
+            '';
+          copy-dotfiles.deps = mkForce [ "etc" "setupHome" ];
+          channels.deps = [ "setupHome" ];
         };
 
         fileSystems = {
@@ -86,11 +86,6 @@ with builtins; with lib; {
           "/proc" = {
             device = "proc";
             fsType = "proc";
-          };
-          "/proc/sys/fs/binfmt_misc" = {
-            depends = [ "/proc" ];
-            device = "binfmt_misc";
-            fsType = "binfmt_misc";
           };
         } // lib.listToAttrs (
           map
@@ -113,6 +108,15 @@ with builtins; with lib; {
         ];
 
         nzbr.home.users = [ config.nzbr.user ];
+
+        # X410 support on :1
+        systemd.services.x410 = {
+          wantedBy = [ "multi-user.target" ];
+          script = ''
+            ${pkgs.socat}/bin/socat -b65536 UNIX-LISTEN:/tmp/.X11-unix/X1,fork,mode=777 VSOCK-CONNECT:2:6000
+          '';
+        };
+        environment.variables.DISPLAY = ":1";
 
       }
     );
