@@ -18,7 +18,7 @@ with builtins; with lib; {
         wsl = {
           enable = true;
           inherit (cfg) automountPath;
-          automountOptions = "metadata,uid=1000,gid=100,case=dir";
+          automountOptions = "metadata,uid=1000,gid=100";
           defaultUser = config.nzbr.user;
           startMenuLaunchers = true;
           # docker.enable = mkDefault true;
