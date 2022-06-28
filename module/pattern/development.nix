@@ -57,16 +57,15 @@ with builtins; with lib;
         if config.nzbr.pattern.development.guiTools then
           [
             jetbrains.idea-ultimate
-
-            lens
-            unstable.gitkraken
-            unstable.insomnia
-            (mkIf (! config.nzbr.pattern.wsl.enable) vscode)
-
-            unstable.timeular
-
+            gitkraken
+            remmina
+          ] ++ (if config.nzbr.pattern.wsl.enable then [ ] else [
+            vscode
+            timeular
             scrcpy
-          ]
+            lens
+            insomnia
+          ])
         else [ ]
       );
 
