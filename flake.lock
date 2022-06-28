@@ -20,29 +20,6 @@
         "type": "github"
       }
     },
-    "alejandra": {
-      "inputs": {
-        "flakeCompat": [
-          "flake-compat"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1655146010,
-        "narHash": "sha256-4zaLfBwxqWtT9gEFzb3XhH/CoG0Vhtnhr/Lvsj9BoK4=",
-        "owner": "kamadorueda",
-        "repo": "alejandra",
-        "rev": "2d540ec84bdf233fed1ccd8575620823a5d0cafb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "kamadorueda",
-        "repo": "alejandra",
-        "type": "github"
-      }
-    },
     "dotfiles": {
       "flake": false,
       "locked": {
@@ -224,15 +201,15 @@
       "locked": {
         "lastModified": 1655723343,
         "narHash": "sha256-J95qdF7m30dEioJZE8fsmaOusqIp57SMJyG4U/ZKfJk=",
-        "owner": "nix-community",
-        "repo": "NixOS-WSL",
+        "ref": "main",
         "rev": "e178b6df72d79324a8446cd175d9d091223585ae",
-        "type": "github"
+        "revCount": 100,
+        "type": "git",
+        "url": "file:///drv/c/Users/nzbr/Projekte/NixOS-WSL"
       },
       "original": {
-        "owner": "nix-community",
-        "repo": "NixOS-WSL",
-        "type": "github"
+        "type": "git",
+        "url": "file:///drv/c/Users/nzbr/Projekte/NixOS-WSL"
       }
     },
     "nixpkgs": {
@@ -312,10 +289,35 @@
         "type": "github"
       }
     },
+    "rnix-lsp": {
+      "inputs": {
+        "naersk": [
+          "naersk"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": [
+          "flake-utils"
+        ]
+      },
+      "locked": {
+        "lastModified": 1655204811,
+        "narHash": "sha256-XtEycAZBlYVuu78cWI0SCvsGWipXglxcUknLlcF7BiM=",
+        "owner": "nix-community",
+        "repo": "rnix-lsp",
+        "rev": "2e49c1f31d6ad46d3f2adbfc1863a896835e4dd0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "rnix-lsp",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "alejandra": "alejandra",
         "dotfiles": "dotfiles",
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
@@ -329,6 +331,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "ragenix": "ragenix",
         "razer-nari": "razer-nari",
+        "rnix-lsp": "rnix-lsp",
         "rust-overlay": "rust-overlay",
         "vscode-server": "vscode-server",
         "wsld": "wsld"

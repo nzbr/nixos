@@ -47,10 +47,11 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    alejandra = {
-      url = "github:kamadorueda/alejandra";
+    rnix-lsp = {
+      url = "github:nix-community/rnix-lsp";
+      inputs.naersk.follows = "naersk";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flakeCompat.follows = "flake-compat";
+      inputs.utils.follows = "flake-utils";
     };
 
     dotfiles = {
@@ -214,7 +215,6 @@
               rage
               (ifAvailable inputs.nirgenx.packages "helm-update")
               (ifAvailable inputs.nirgenx.packages "yaml2nix")
-              (orElse inputs.alejandra.defaultPackage system [ ])
             ])
             ++
             mapAttrsToList

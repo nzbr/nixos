@@ -51,6 +51,7 @@ with builtins; with lib;
         ninja
         pkg-config
         python3
+        rnix-lsp.rnix-lsp
         unstable.flutter
       ] ++ (
         if config.nzbr.pattern.development.guiTools then
