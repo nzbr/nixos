@@ -38,6 +38,7 @@ with builtins; with lib; {
                 "--flannel-iface=tailscale0"
                 "--resolv-conf=${resolvconf}"
                 "--snapshotter=fuse-overlayfs" # irrelevant for docker
+                "--kubelet-arg=cgroup-driver=systemd"
               ] ++ (if isServer then [
                 "--cluster-init"
                 "--datastore-endpoint=postgres://kubernetes:$(cat ${config.nzbr.assets."k3s-db.password"})@${cfg.dbHost}:5432/kubernetes?sslmode=disable"
