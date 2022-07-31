@@ -389,4 +389,10 @@ in
     role = "agent";
   };
 
+  nzbr.everythingIndex = [
+    { path = "/storage/backup"; schedule = "*-*-* 04:00:00"; }
+    { path = "/storage/media"; schedule = "*-*-* 0/3:00:00"; }
+    { path = "/storage/nzbr"; schedule = "*-*-* *:0/30:00"; }
+  ];
+
 }
