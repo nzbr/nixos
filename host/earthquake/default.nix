@@ -99,6 +99,7 @@ in
         "xhci_pci"
         "ehci_pci"
         "ahci"
+        "mpt3sas"
         "nvme"
         "usbhid"
         "usb_storage"
@@ -204,34 +205,34 @@ in
     };
 
     # OLD #
-    "/old/storage" =
-      let label = "cr_storage";
-      in
-      {
-        device = "/dev/mapper/${label}";
-        fsType = "btrfs";
-        neededForBoot = false;
-        encrypted = {
-          enable = true;
-          blkDev = "/dev/disk/by-uuid/38627a12-ce2f-43ac-9cfd-24fc20e00e26";
-          label = label;
-          keyFile = "/mnt-root/etc/lukskey";
-        };
-      };
-    "/old/storage/Backup" =
-      let label = "cr_backup";
-      in
-      {
-        device = "/dev/mapper/${label}";
-        fsType = "btrfs";
-        neededForBoot = false;
-        encrypted = {
-          enable = true;
-          blkDev = "/dev/disk/by-uuid/bdb010d6-48a2-4d59-b935-821dced8d912";
-          label = label;
-          keyFile = "/mnt-root/etc/lukskey";
-        };
-      };
+    # "/old/storage" =
+    #   let label = "cr_storage";
+    #   in
+    #   {
+    #     device = "/dev/mapper/${label}";
+    #     fsType = "btrfs";
+    #     neededForBoot = false;
+    #     encrypted = {
+    #       enable = true;
+    #       blkDev = "/dev/disk/by-uuid/38627a12-ce2f-43ac-9cfd-24fc20e00e26";
+    #       label = label;
+    #       keyFile = "/mnt-root/etc/lukskey";
+    #     };
+    #   };
+    # "/old/storage/Backup" =
+    #   let label = "cr_backup";
+    #   in
+    #   {
+    #     device = "/dev/mapper/${label}";
+    #     fsType = "btrfs";
+    #     neededForBoot = false;
+    #     encrypted = {
+    #       enable = true;
+    #       blkDev = "/dev/disk/by-uuid/bdb010d6-48a2-4d59-b935-821dced8d912";
+    #       label = label;
+    #       keyFile = "/mnt-root/etc/lukskey";
+    #     };
+    #   };
   }
   //
   lib.mapAttrs'
