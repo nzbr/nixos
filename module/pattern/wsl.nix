@@ -11,8 +11,11 @@ with builtins; with lib; {
     in
     mkIf cfg.enable (
       let
-        automountPath = cfg.automountPath;
-        syschdemd = import "${inputs.nixos-wsl}/syschdemd.nix" { inherit lib pkgs config automountPath; defaultUser = config.nzbr.user; };
+        homeOverlay = {
+          ".vscode-server" = true;
+          ".yarnrc" = false;
+          ".nix-defexpr" = true;
+        };
       in
       {
         wsl = {
@@ -21,16 +24,20 @@ with builtins; with lib; {
           automountOptions = "metadata,uid=1000,gid=100";
           defaultUser = config.nzbr.user;
           startMenuLaunchers = true;
-          # docker.enable = mkDefault true;
           docker-native.enable = mkDefault true;
 
           # interop.register = mkDefault false;
+
+          wslConf = {
+            automount.mountFsTab = mkForce false; # TODO: should be part of NixOS-WSL
+            network.generateResolvConf = false;
+          };
         };
 
         nzbr.pattern.common.enable = true;
         nzbr.desktop.gnome.enable = true;
 
-        nzbr.cli.git.enable = mkForce false; # Don't break window's git
+        nzbr.cli.git.enable = mkForce false; # Don't break windows git
 
         services.xserver.displayManager.gdm.enable = lib.mkForce false;
         services.xserver.displayManager.autoLogin.enable = lib.mkForce false;
@@ -56,6 +63,14 @@ with builtins; with lib; {
             # Theme config
             # QT_QPA_PLATFORMTHEME = "gtk2"; # already set somewhere else?
             XDG_CURRENT_DESKTOP = "gnome";
+          };
+
+          etc = {
+            "resolv.conf".text = ''
+              search nzbr.github.beta.tailscale.net nzbr.de
+              nameserver 100.100.100.100
+              nameserver 1.1.1.1
+            '';
           };
         };
 
