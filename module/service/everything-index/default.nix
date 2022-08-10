@@ -2,20 +2,20 @@
 with builtins; with lib; {
 
   options.nzbr.everythingIndex = with types; mkOption {
-    default = { };
+    default = [ ];
     description = "Directories to regularly create an everthing index for";
-    type = listOf (submodule ({ config', ... }: {
+    type = listOf (submodule ({ config, ... }: {
       options = {
         name = mkOption {
           type = str;
-          default = baseNameOf config'.path;
+          default = baseNameOf config.path;
         };
         path = mkOption {
           description = "Path to the directory to create the index for";
           type = str;
         };
         schedule = mkOption {
-          description = "Schedule for the indexing (in crontab format)";
+          description = "Schedule for the indexing (in systemd format)";
           type = str;
         };
       };
@@ -35,14 +35,14 @@ with builtins; with lib; {
               {
                 script =
                   let
-                    index = pkgs.substitueAll {
+                    index = pkgs.substituteAll {
                       name = "everything-index";
                       src = ./index.ps1;
                       isExecutable = true;
                       inherit (pkgs) powershell;
                     };
                   in
-                  "${index} ${entry.path}";
+                  "${pkgs.powershell}/bin/pwsh ${index} ${entry.path}";
               }
           )
           (cfg);
