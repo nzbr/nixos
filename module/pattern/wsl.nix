@@ -48,15 +48,6 @@ with builtins; with lib; {
             chromium
             virt-manager
             wslu
-
-            (pkgs.writeShellScriptBin "winpath" ''
-              DIR="$PWD"
-              if [ -n ''${1:-} ]; then
-                DIR="$(realpath $1)"
-              fi
-              # This is completely sane, idk what you mean
-              echo $DIR | sed -E "s|(.*)|//WSL\$/''${WSL_DISTRO_NAME}\1|;s|//WSL\\\$/''${WSL_DISTRO_NAME}/drv/(.)|\\U\\1:|;s|/|\\\\|g"
-            '')
           ];
 
           variables = {
