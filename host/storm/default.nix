@@ -82,6 +82,7 @@
       nginx.enable = true;
       openldap.enable = true;
       pingcheck.enable = true;
+      plex.enable = true;
       redis.enable = true;
       stash.enable = true;
       vaultwarden.enable = true;
