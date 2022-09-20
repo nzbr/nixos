@@ -24,7 +24,6 @@ with builtins; with lib;
             enable = true;
             authorizedSystems = [ "hurricane" "landslide" "meteor" "pulsar" ];
           };
-          vscode-server-fix.enable = mkDefault true;
         };
 
         home.config = {
@@ -75,6 +74,8 @@ with builtins; with lib;
           startAgent = true;
         };
       };
+
+      services.vscode-server.enable = mkDefault true;
 
       i18n = {
         defaultLocale = "de_DE.UTF-8";

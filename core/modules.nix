@@ -5,6 +5,7 @@ with builtins; with lib; {
     (mapAttrsToList (n: v: v) nixos-wsl.nixosModules)
     ragenix.nixosModules.age
     nirgenx.nixosModules.nirgenx
+    vscode-server.nixosModules.default
 
     "${self}/host/${hostName}"
     extraModules

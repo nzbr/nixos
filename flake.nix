@@ -53,6 +53,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "flake-utils";
     };
+    vscode-server = {
+      url = "github:msteen/nixos-vscode-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     dotfiles = {
       url = "github:nzbr/dotfiles";
@@ -66,10 +70,6 @@
     razer-nari = {
       flake = false;
       url = "github:imustafin/razer-nari-pulseaudio-profile";
-    };
-    vscode-server = {
-      flake = false;
-      url = "github:msteen/nixos-vscode-server";
     };
     wsld = {
       flake = false;
