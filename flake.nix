@@ -75,6 +75,10 @@
       flake = false;
       url = "github:nbdd0121/wsld";
     };
+    cert-manager-desec = {
+      flake = false;
+      url = "github:kmorning/cert-manager-webhook-desec";
+    };
     # ceph-csi = {
     #   flake = false;
     #   url = "github:ceph/ceph-csi/release-v3.4";
