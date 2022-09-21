@@ -194,6 +194,8 @@
                     gnused
                     jq
                     nixFlakes
+                    openssh
+                    powershell
                     rage
                     ;
                   wireguard = pkgs.wireguard-tools;

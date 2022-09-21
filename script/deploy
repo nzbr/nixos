@@ -1,55 +1,66 @@
-#!@bash@/bin/bash
-# code: language=bash tabSize=4
+#!@powershell@/bin/pwsh
+# code: language=powershell tabSize=4
 
-if ! [ -f flake.nix ]; then
-  echo "No flake.nix found in the current directory"
+if (!(Get-Item -Path "./flake.nix" -ErrorAction SilentlyContinue)) {
+  Write-Error "No flake.nix found in the current directory"
   exit 1
-fi
+}
 
-if [ -z "${1:-}" ]; then
-  echo "No target specified"
+# TODO: Use argparse
+if ($args.Length -lt 1) {
+  Write-Error "No target specified"
   exit 1
-fi
-if [ -z "${2:-}" ]; then
-  echo "No action specified"
+}
+
+if ($args.Length -lt 2) {
+  Write-Error "No action specified"
   exit 1
-fi
+}
 
-set -euxo pipefail
+$hosts = $args[0].Split(",") | Sort-Object
 
-HOSTS="$1"
+$config = (&"@nixFlakes@/bin/nix-instantiate" --eval --strict -E --json @"
+  let
+    flake = builtins.getFlake (toString ./.);
+    lib = flake.lib;
+  in
+  with builtins; with lib;
+  mapAttrs
+    (n: v:
+      v.config.nzbr.deployment
+      //
+      (mapAttrs
+        (n': v': v'.config.nzbr.deployment)
+        (filterAttrs
+          (n': v': v' ? config && v'.config ? nzbr && v'.config.nzbr ? deployment)
+          v
+        )
+      )
+    )
+    (filterAttrs (n: v: v.config ? nzbr && v.config.nzbr ? deployment) flake.nixosConfigurations)
+"@ | ConvertFrom-Json)
 
-CONFIG=$(@nixFlakes@/bin/nix-instantiate --eval --strict -E --json "let flake = builtins.getFlake (toString ./.); lib = flake.lib; in with builtins; with lib; mapAttrs (n: v: v.config.nzbr.deployment // (mapAttrs (n': v': v'.config.nzbr.deployment) (filterAttrs (n': v': v' ? config && v'.config ? nzbr && v'.config.nzbr ? deployment) v))) (filterAttrs (n: v: v.config ? nzbr && v.config.nzbr ? deployment) flake.nixosConfigurations)")
+$to_build = ($hosts | % { ".#nixosConfigurations.$_.config.system.build.toplevel" })
+$results = (&"@nixFlakes@/bin/nix" (@("build", "--no-link", "--json", "-vL") + $to_build)) | ConvertFrom-Json
 
-IFS=$',' # Split on , instead of whitespace
-BUILD=""
-for host in $HOSTS; do
-  BUILD="$BUILD,.#nixosConfigurations.${host}.config.system.build.toplevel"
-done
-BUILD=${BUILD:1}
+for ($i = 0; $i -lt $hosts.Length; $i++) {
+    $user = $config.($hosts[$i]).targetUser
+    $targetHost = $config.($hosts[$i]).targetHost
+    $substitute = if ($config.($hosts[$i]).substituteOnDestination) {"-s"} else {""}
 
-# Build
-OUT="$(nix build --no-link --json -vL $BUILD)"
+    $storePath = ($results[$i]).outputs.out
 
-# Copy
-NUM=0
-for host in $HOSTS; do
-  IFS=$' '
-  USER=$(echo "$CONFIG" | @jq@/bin/jq -r .${host}.targetUser)
-  HOST=$(echo "$CONFIG" | @jq@/bin/jq -r .${host}.targetHost)
-  if $(echo "$CONFIG" | @jq@/bin/jq -r .${host}.substituteOnDestination); then
-    SUBSTITUTE="-s"
-  else
-    SUBSTITUTE=""
-  fi
-  echo $OUT
-  STOREPATH=$(echo "$OUT" | @jq@/bin/jq -r ".[${NUM}].outputs.out")
-  IFS=$','
+    # Copy
+    & "@nixFlakes@/bin/nix" copy -vL $substitute --to ssh://${user}@${targetHost} $storePath
+    if (!$?) {
+        Write-Error "Failed to copy configuration to $targetHost"
+        exit 1
+    }
 
-  @nixFlakes@/bin/nix copy $SUBSTITUTE --to ssh://${USER}@${HOST} "${STOREPATH}" -vL
-
-  # Activate
-  ssh -t ${USER}@${HOST} -- ${STOREPATH}/bin/switch-to-configuration $2
-
-  NUM=$((NUM + 1))
-done
+    # Activate
+    & "@openssh@/bin/ssh" -t ${user}@${targetHost} -- ${storePath}/bin/switch-to-configuration $args[1]
+    if (!$?) {
+        Write-Error "Failed to activate configuration on $targetHost"
+        exit 1
+    }
+}
