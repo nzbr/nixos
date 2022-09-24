@@ -20,6 +20,11 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    base = {
+      url = "github:nix-basement/nix-basement";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     naersk = {
       # rust package builder
       url = "github:nix-community/naersk";
