@@ -82,6 +82,9 @@ with builtins; with lib; {
         "rbd" # CEPH (RADOS block device)
       ];
 
-      virtualisation.docker.autoPrune.enable = true;
+      virtualisation.docker = {
+        autoPrune.enable = true;
+        daemon.settings."exec-opts" = [ "native.cgroupdriver=systemd" ];
+      };
     };
 }
