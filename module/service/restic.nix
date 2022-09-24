@@ -94,16 +94,22 @@ with builtins; with lib; {
                         (pool:
                           [
                             "zfs destroy -r ${pool.name}@${cfg.snapshotName} || true"
-                            "zfs snapshot -r ${pool.name}@${cfg.snapshotName}"
+                            "zfs snapshot ${pool.name}@${cfg.snapshotName}"
+                          ]
+                          ++
+                          (map
+                            (subvol: "zfs snapshot ${pool.name}/${subvol.name}@${cfg.snapshotName}")
+                            pool.subvols
+                          )
+                          ++
+                          [
                             "mkdir -p /tmp/.snapshot/${pool.name}"
                             "mount -t zfs ${pool.name}@${cfg.snapshotName} /tmp/.snapshot/${pool.name}"
-                          ] ++ (
+                          ]
+                          ++
+                          (
                             builtins.map
-                              (subvol:
-                                [
-                                  "mount -t zfs ${pool.name}/${subvol.name}@${cfg.snapshotName} /tmp/.snapshot/${pool.name}/${subvol.mountpoint}"
-                                ]
-                              )
+                              (subvol: "mount -t zfs ${pool.name}/${subvol.name}@${cfg.snapshotName} /tmp/.snapshot/${pool.name}/${subvol.mountpoint}")
                               pool.subvols
                           )
                         )
