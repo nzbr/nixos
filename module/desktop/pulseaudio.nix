@@ -7,6 +7,5 @@ with builtins; with lib; {
   config = mkIf config.nzbr.desktop.pulseaudio.enable {
     sound.enable = true;
     hardware.pulseaudio.enable = true;
-    hardware.pulseaudio.extraModules = [ pkgs.pulseaudio-modules-bt ];
   };
 }
