@@ -41,7 +41,12 @@ $config = (&"@nixFlakes@/bin/nix-instantiate" --eval --strict -E --json @"
 "@ | ConvertFrom-Json)
 
 $to_build = ($hosts | % { ".#nixosConfigurations.$_.config.system.build.toplevel" })
-$results = (&"@nixFlakes@/bin/nix" (@("build", "--no-link", "--json", "-vL") + $to_build)) | ConvertFrom-Json
+$result_json = (&"@nixFlakes@/bin/nix" (@("build", "--no-link", "--json", "-vL") + $to_build))
+if (!$?) {
+  Write-Error "nix build failed"
+  exit 1
+}
+$results = $result_json | ConvertFrom-Json
 
 for ($i = 0; $i -lt $hosts.Length; $i++) {
     $user = $config.($hosts[$i]).targetUser
