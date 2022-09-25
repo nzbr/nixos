@@ -22,6 +22,7 @@ with builtins; with lib; {
           "${config.nzbr.nodeIp}:20022:22"
           "${config.nzbr.nodeIp}:20055:5005"
           "${config.nzbr.nodeIp}:20080:80"
+          "${config.nzbr.nodeIp}:20090:8099"
         ];
         extraOptions = [
           "--dns=${cfg.dnsIP}"

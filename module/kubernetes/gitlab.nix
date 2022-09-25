@@ -56,6 +56,11 @@ in
                 name = "www";
                 port = 20080;
               }
+              {
+                protocol = "TCP";
+                name = "pages";
+                port = 20090;
+              }
             ];
           };
         }
@@ -82,6 +87,11 @@ in
               {
                 name = "ssh";
                 port = 20022;
+              }
+              {
+                protocol = "TCP";
+                name = "pages";
+                port = 20090;
               }
             ];
           }];
@@ -113,6 +123,28 @@ in
                     pathType = "Prefix";
                   }];
                 };
+              }
+              {
+                host = "pages.nzbr.de";
+                http.paths = [{
+                  backend.service = {
+                    name = "gitlab";
+                    port.name = "pages";
+                  };
+                  path = "/";
+                  pathType = "Prefix";
+                }];
+              }
+              {
+                host = "*.pages.nzbr.de";
+                http.paths = [{
+                  backend.service = {
+                    name = "gitlab";
+                    port.name = "pages";
+                  };
+                  path = "/";
+                  pathType = "Prefix";
+                }];
               }
               {
                 host = "registry.nzbr.de";
