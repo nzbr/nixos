@@ -17,7 +17,8 @@ if ($args.Length -lt 2) {
   exit 1
 }
 
-$hosts = $args[0].Split(",") | Sort-Object
+$hosts = $args[0].Split(",")
+[array]::Sort($hosts)
 
 $config = (&"@nixFlakes@/bin/nix-instantiate" --eval --strict -E --json @"
   let
