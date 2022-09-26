@@ -50,10 +50,13 @@ if (!$?) {
 }
 $results = $result_json | ConvertFrom-Json
 
-for ($i = 0; $i -lt $hosts.Length; $i++) {
-    $user = $config.($hosts[$i]).targetUser
-    $targetHost = $config.($hosts[$i]).targetHost
-    $substitute = if ($config.($hosts[$i]).substituteOnDestination) {"-s"} else {""}
+foreach ($i in 0..($hosts.Length - 1)) {
+    $hostconfig = $config
+    ($hosts[$i]).Split(".") | % { $hostconfig = $hostconfig.$_ }
+
+    $user = $hostconfig.targetUser
+    $targetHost = $hostconfig.targetHost
+    $substitute = if ($hostconfig.substituteOnDestination) {"-s"} else {""}
 
     $storePath = ($results[$i]).outputs.out
 
