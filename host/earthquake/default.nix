@@ -76,6 +76,9 @@ in
           }
         ];
       };
+      urbackup = {
+        enable = true;
+      };
     };
 
     program = {
