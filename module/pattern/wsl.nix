@@ -12,9 +12,11 @@ with builtins; with lib; {
     mkIf cfg.enable (
       let
         homeOverlay = {
+          ".cache" = true;
+          ".nix-defexpr" = true;
+          ".npm" = true;
           ".vscode-server" = true;
           ".yarnrc" = false;
-          ".nix-defexpr" = true;
         };
       in
       {
@@ -99,6 +101,12 @@ with builtins; with lib; {
               ("/drv/" + distro)
               { label = distro; fsType = "ext4"; options = [ "defaults" "noauto" ]; }
             ) [ "Arch" "Ubuntu" ]
+        ) // (mapAttrs'
+          (path: dir: lib.nameValuePair
+            "/home/nzbr/${path}"
+            { device = "/home/.nzbr/${path}"; options = [ "bind" ]; }
+          )
+          homeOverlay
         );
 
         # networking.dhcpcd.enable = false;
