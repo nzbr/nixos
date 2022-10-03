@@ -132,6 +132,107 @@ with builtins; with lib; {
         };
         environment.variables.DISPLAY = ":1";
 
+        environment.windowsPackages = with pkgs; [
+          file
+          nix
+        ];
+
+        system.build.winBin =
+          pkgs.runCommand "windows-path" { } (concatStringsSep "\n"
+            (
+              [ "mkdir -p $out" ]
+              ++
+              (flatten
+                (map
+                  (drv:
+                    map
+                      (exe:
+                        let
+                          bin = pkgs.pkgsCross.mingwW64.callPackage
+                            (
+                              { stdenv, rustc, writeText, windows, ... }: stdenv.mkDerivation {
+                                name = "${exe}.exe";
+
+                                nativeBuildInputs = [ rustc ];
+                                buildInputs = [ windows.mingw_w64_pthreads ];
+
+                                src = writeText "${exe}.rs" ''
+                                  use std::process::Command;
+
+                                  fn main() {
+                                    std::process::exit(
+                                      real_main()
+                                    );
+                                  }
+
+                                  fn wslpath(path: String) -> String {
+                                    if path.contains("/")
+                                    || path.contains("*")
+                                    || path.contains("?")
+                                    || path.contains("|")
+                                    || path.contains("<")
+                                    || path.contains(">")
+                                    || (!path.contains("\\"))
+                                    {
+                                      return path;
+                                    }
+
+                                    let mut path = path.replace("\\", "/");
+
+                                    if path.len() >= 3 && &path[1..3] == ":/" {
+                                      let drive = &path[0..1].to_lowercase();
+                                      path = (&path[3..]).to_string();
+                                      path = format!("${config.wsl.automountPath}/{}/{}", drive, path);
+                                    }
+
+                                    return path;
+                                  }
+
+                                  fn real_main() -> i32 {
+                                    let mut process = Command::new("wsl.exe");
+
+                                    process.arg("${drv}/bin/${exe}");
+
+                                    for arg in std::env::args().skip(1).map(wslpath) {
+                                      process.arg(arg);
+                                    }
+
+                                    let status = process
+                                      .status()
+                                      .expect("Failed to run ${drv}/bin/${exe}");
+
+                                    match status.code() {
+                                      Some(code) => return code,
+                                      None       => return -1
+                                    }
+                                  }
+                                '';
+
+                                buildCommand = ''
+                                  rustc --target="x86_64-pc-windows-gnu" -C linker=$CC $src -o $out
+                                '';
+                              }
+                            )
+                            { };
+                        in
+                        "cp ${bin} $out/${exe}.exe"
+                      )
+                      (
+                        if (readDir drv) ? "bin"
+                        then (attrNames (readDir "${drv}/bin"))
+                        else [ ]
+                      )
+                  )
+                  config.environment.windowsPackages
+                )
+              )
+            )
+          );
+
+        system.activationScripts.windows-path = stringAfter [ ] ''
+          mkdir -p ${config.wsl.automountPath}/.wsl-wrappers;
+          ${pkgs.rsync}/bin/rsync -avr --delete ${config.system.build.winBin}/. ${config.wsl.automountPath}/c/.wsl-wrappers/;
+        '';
       }
     );
 }
