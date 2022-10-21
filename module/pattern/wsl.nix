@@ -60,7 +60,7 @@ with builtins; with lib; {
 
           etc = {
             "resolv.conf".text = ''
-              search nzbr.github.beta.tailscale.net nzbr.de
+              search tail9865f.ts.net nzbr.de
               nameserver 100.100.100.100
               nameserver 1.1.1.1
             '';

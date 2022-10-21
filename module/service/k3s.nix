@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, modulesPath, inputs, ... }:
 with builtins; with lib; {
   options.services.k3s = {
     dbHost = mkStrOpt "127.0.0.1";
@@ -17,7 +17,7 @@ with builtins; with lib; {
 
       services.k3s = {
         docker = true;
-        serverAddr = mkDefault "storm.nzbr.github.beta.tailscale.net";
+        serverAddr = mkDefault inputs.self.nixosConfigurations.storm.config.nzbr.nodeIp;
         tokenFile = mkDefault config.nzbr.assets."k3s-token";
       };
 

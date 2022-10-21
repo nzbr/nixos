@@ -40,7 +40,7 @@ in
                 { name = "Instance__AdminEmail"; value = "bird" + "@" + "nzbr.de"; }
                 { name = "Instance__PublishReplies"; value = "true"; }
                 { name = "Db__Type"; value = "postgres"; }
-                { name = "Db__Host"; value = "storm.nzbr.github.beta.tailscale.net"; }
+                { name = "Db__Host"; value = inputs.self.nixosConfigurations.storm.config.nzbr.nodeIp; }
                 { name = "Db__Name"; value = "birdsite"; }
                 { name = "Db__User"; value = "birdsite"; }
                 { name = "Db__Password"; valueFrom = fromSecret "dbpass"; }

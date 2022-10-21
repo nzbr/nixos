@@ -10,6 +10,7 @@ in
     patterns = [ "common" "server" ];
     nodeIp = "100.71.200.40";
 
+    deployment.targetHost = "earthquake.tail9865f.ts.net";
     boot = {
       grub.enable = true;
       remoteUnlock = {

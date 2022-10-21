@@ -49,7 +49,7 @@ in
                         image = "registry.gitlab.com/nzbr/pingcheck-container:main";
                         imagePullPolicy = "IfNotPresent";
                         env = [
-                          { name = "TARGET"; value = "${target}.nzbr.github.beta.tailscale.net"; }
+                          { name = "TARGET"; value = "${target}.tail9865f.ts.net"; }
                           { name = "WEBHOOK"; value = "https://hc-ping.com/${hook-id}"; }
                         ];
                       }];

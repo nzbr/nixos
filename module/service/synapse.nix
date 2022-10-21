@@ -26,7 +26,7 @@ with builtins; with lib; {
             name = "psycopg2";
             user = "synapse";
             args = {
-              host = "storm.nzbr.github.beta.tailscale.net";
+              host = "storm.tail9865f.ts.net";
             };
           };
           trusted_key_servers = [

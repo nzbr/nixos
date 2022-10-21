@@ -34,7 +34,7 @@ with builtins; with lib; {
               overrideFolders = true;
               devices = {
                 earthquake = {
-                  addresses = [ "quic://earthquake.nzbr.de:22000" "quic://earthquake.nzbr.github.beta.tailscale.net:22000" ];
+                  addresses = [ "quic://10.0.1.2:22000" "quic://earthquake.nzbr.de" "quic://100.71.200.40:22000" "dynamic" ];
                   id = "JDXIQUR-4FUQQK6-CZFNZTA-NCWBFEU-HCZFDW5-E7X2KKX-BIQWZZZ-2B42XQF";
                   introducer = true;
                 };
