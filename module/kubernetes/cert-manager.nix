@@ -6,7 +6,13 @@ in
 {
   nirgenx.deployment.cert-manager = {
     steps = [
-      (kube.installHelmChart "jetstack" namespace { installCRDs = true; })
+      (kube.installHelmChart "jetstack" namespace {
+        installCRDs = true;
+        extraArgs = [
+          "--dns01-recursive-nameservers-only"
+          "--dns01-recursive-nameservers=8.8.8.8:53,8.8.4.4:53"
+        ];
+      })
       {
         apiVersion = "v1";
         kind = "Namespace";
