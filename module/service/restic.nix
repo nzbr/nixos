@@ -82,6 +82,10 @@ with builtins; with lib; {
             };
             serviceConfig = {
               KillMode = "process";
+              TimeoutStartSec = "infinity";
+              TimeoutStopSec = "infinity";
+              Restart = "on-failure";
+              # RestartSec = "30min";
             };
             preStart =
               lib.concatStringsSep "\n"
@@ -109,7 +113,7 @@ with builtins; with lib; {
                           ++
                           (
                             builtins.map
-                              (subvol: "mount -t zfs ${pool.name}/${subvol.name}@${cfg.snapshotName} /tmp/.snapshot/${pool.name}/${subvol.mountpoint}")
+                              (subvol: "mount -t zfs ${pool.name}/${subvol.name}@${cfg.snapshotName} /tmp/.snapshot/${pool.name}/${removePrefix "/" subvol.mountpoint}")
                               pool.subvols
                           )
                         )
@@ -154,12 +158,12 @@ with builtins; with lib; {
                             builtins.map
                               (subvol:
                                 [
-                                  "umount /tmp/.snapshot/${pool.name}/${subvol.mountpoint}"
+                                  "umount /tmp/.snapshot/${pool.name}/${removePrefix "/" subvol.mountpoint} || true"
                                 ]
                               )
                               (lib.reverseList pool.subvols)
                           ) ++ [
-                            "umount /tmp/.snapshot/${pool.name}"
+                            "umount /tmp/.snapshot/${pool.name} || true"
                             "rmdir /tmp/.snapshot/${pool.name}"
                             "zfs destroy -r ${pool.name}@${cfg.snapshotName}"
                           ]
