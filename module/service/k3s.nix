@@ -22,13 +22,13 @@ with builtins; with lib; {
       };
 
       systemd.services.k3s = {
+        after = [
+          "network.service"
+          "firewall.service"
+          "docker.service"
+          "tailscaled.service"
+        ];
         serviceConfig = {
-          after = [
-            "network.service"
-            "firewall.service"
-            "docker.service"
-            "tailscaled.service"
-          ];
           ExecStart = mkForce (
             let
               options = concatStringsSep " " ([
