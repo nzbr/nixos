@@ -1,8 +1,14 @@
 { config, lib, inputs, pkgs, modulesPath, ... }:
 with builtins; with lib; {
-  options.nzbr.pattern.wsl = with types; {
-    enable = mkEnableOption "Windows Subsystem for Linux guest";
-    automountPath = mkStrOpt "/drv";
+  options = with types; {
+    nzbr.pattern.wsl = {
+      enable = mkEnableOption "Windows Subsystem for Linux guest";
+    };
+
+    environment.windowsPackages = mkOption {
+      type = listOf package;
+      default = [ ];
+    };
   };
 
   config =
@@ -15,15 +21,15 @@ with builtins; with lib; {
           ".cache" = true;
           ".nix-defexpr" = true;
           ".npm" = true;
+          ".pulumi" = true;
           ".vscode-server" = true;
           ".yarnrc" = false;
         };
+        automountPath = "/drv/";
       in
       {
         wsl = {
           enable = true;
-          inherit (cfg) automountPath;
-          automountOptions = "metadata,uid=1000,gid=100";
           defaultUser = config.nzbr.user;
           startMenuLaunchers = true;
           docker-native.enable = mkDefault true;
@@ -31,7 +37,7 @@ with builtins; with lib; {
           # interop.register = mkDefault false;
 
           wslConf = {
-            automount.mountFsTab = mkForce false; # TODO: should be part of NixOS-WSL
+            automount.root = automountPath;
             network.generateResolvConf = false;
           };
         };
@@ -44,6 +50,8 @@ with builtins; with lib; {
         services.xserver.displayManager.gdm.enable = lib.mkForce false;
         services.xserver.displayManager.autoLogin.enable = lib.mkForce false;
         networking.networkmanager.enable = lib.mkForce false;
+
+        virtualisation.docker.enable = mkOverride 900 false;
 
         environment = {
           systemPackages = with pkgs; [
@@ -74,12 +82,14 @@ with builtins; with lib; {
             done
           '';
           setupHome =
-            let
-              home = config.users.users.${config.nzbr.user}.home;
-            in
             stringAfter [ ] ''
-              rmdir ${home} || true
-              ln -sfT /drv/c/Users/nzbr ${home}
+              rmdir /home/nzbr || true
+              # mkdir -p /home/nzbr && chown nzbr:users /home/nzbr
+              # umount /home/nzbr || true
+              # mkdir -p /home/.nzbr && chown nzbr:users /home/.nzbr
+              # mount -o bind ${automountPath}c/Users/nzbr /home/nzbr
+              ln -sfT /drv/c/Users/nzbr /home/nzbr
+              ${concatStringsSep "\n" (mapAttrsToList (name: dir: "${if dir then "mkdir -p" else "touch"} /home/.nzbr/${name} && chown nzbr:users /home/.nzbr/${name}") homeOverlay)}
             '';
           copy-dotfiles.deps = mkForce [ "etc" "setupHome" ];
           channels.deps = [ "setupHome" ];
@@ -182,7 +192,7 @@ with builtins; with lib; {
                                     if path.len() >= 3 && &path[1..3] == ":/" {
                                       let drive = &path[0..1].to_lowercase();
                                       path = (&path[3..]).to_string();
-                                      path = format!("${config.wsl.automountPath}/{}/{}", drive, path);
+                                      path = format!("${config.wsl.wslConf.automount.root}{}/{}", drive, path);
                                     }
 
                                     return path;
@@ -230,8 +240,8 @@ with builtins; with lib; {
           );
 
         system.activationScripts.windows-path = stringAfter [ ] ''
-          mkdir -p ${config.wsl.automountPath}/.wsl-wrappers;
-          ${pkgs.rsync}/bin/rsync -avr --delete ${config.system.build.winBin}/. ${config.wsl.automountPath}/c/.wsl-wrappers/;
+          mkdir -p ${config.wsl.wslConf.automount.root}.wsl-wrappers;
+          ${pkgs.rsync}/bin/rsync -avr --delete ${config.system.build.winBin}/. ${config.wsl.wslConf.automount.root}c/.wsl-wrappers/;
         '';
       }
     );
