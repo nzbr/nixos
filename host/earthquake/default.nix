@@ -1,4 +1,5 @@
 { config, lib, pkgs, modulesPath, ... }:
+with builtins; with lib;
 let
   root = config.nzbr.flake.root;
 in
@@ -11,6 +12,7 @@ in
     nodeIp = "100.71.200.40";
 
     deployment.targetHost = "earthquake.tail9865f.ts.net";
+
     boot = {
       grub.enable = true;
       remoteUnlock = {
@@ -32,7 +34,10 @@ in
         maxJobs = 8;
         systems = [ "x86_64-linux" "i686-linux" ];
       };
-      tailscale.enable = true;
+      tailscale = {
+        enable = true;
+        exit = true;
+      };
       # ceph.enable = true;
       ddns = {
         enable = true;
@@ -374,6 +379,7 @@ in
     139 # NetBIOS
     2049 # NFSv4
   ];
+  networking.firewall.allowedUDPPortRanges = [{ from = 40000; to = 65535; }];
 
   # Modprobe config for macOS VM
   boot.extraModprobeConfig = ''
@@ -400,4 +406,16 @@ in
     { path = "/storage/nzbr"; schedule = "*-*-* *:0/30:00"; }
   ];
 
+  nixpkgs.overlays = [
+    (self: super: {
+      plex = super.unstable.plex;
+    })
+  ];
+  services.plex = {
+    enable = true;
+    openFirewall = true;
+    dataDir = "/storage/media/.plex";
+    user = "nzbr";
+    group = "media";
+  };
 }
