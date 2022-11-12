@@ -80,6 +80,9 @@ in
               { name = "nzbr"; mountpoint = "/nzbr"; }
             ];
           }
+          {
+            name = "zbackup";
+          }
         ];
       };
       urbackup = {
@@ -132,136 +135,128 @@ in
     mode = "0400";
   };
 
-  fileSystems = {
-    "/" = {
-      device = "zroot";
-      fsType = "zfs";
-    };
-    "/boot" = {
-      device = "/dev/disk/by-uuid/C669-E056";
-      fsType = "vfat";
-    };
-    "/tmp" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      options = [ "size=16G" ];
-    };
-
-    "/run/.cr_storage/1" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      options = [ "ro" "size=0" ];
-      encrypted = {
-        enable = true;
-        blkDev = "/dev/disk/by-uuid/7e8de2a9-5cd0-4475-8a99-9d436604e639";
-        label = "cr_storage_1";
-        keyFile = "/mnt-root/etc/lukskey";
-      };
-    };
-    "/run/.cr_storage/2" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      options = [ "ro" "size=0" ];
-      encrypted = {
-        enable = true;
-        blkDev = "/dev/disk/by-uuid/b3c32804-ab03-45cf-8e74-1e6f59969d5a";
-        label = "cr_storage_2";
-        keyFile = "/mnt-root/etc/lukskey";
-      };
-    };
-    "/run/.cr_storage/3" = {
-      device = "tmpfs";
-      fsType = "tmpfs";
-      options = [ "ro" "size=0" ];
-      encrypted = {
-        enable = true;
-        blkDev = "/dev/disk/by-uuid/b6bba72c-ceb4-4116-89bb-8a9197059600";
-        label = "cr_storage_3";
-        keyFile = "/mnt-root/etc/lukskey";
-      };
-    };
-    "/storage" = {
-      device = "hoard";
-      fsType = "zfs";
-    };
-    "/storage/backup" = {
-      device = "hoard/backup";
-      fsType = "zfs";
-    };
-    "/storage/chia" = {
-      device = "hoard/chia";
-      fsType = "zfs";
-    };
-    "/storage/kubernetes" = {
-      device = "hoard/kubernetes";
-      fsType = "zfs";
-    };
-    "/storage/libvirt" = {
-      device = "hoard/libvirt";
-      fsType = "zfs";
-    };
-    "/storage/gitlab" = {
-      device = "hoard/gitlab";
-      fsType = "zfs";
-    };
-    "/storage/media" = {
-      device = "hoard/media";
-      fsType = "zfs";
-    };
-    "/storage/nzbr" = {
-      device = "hoard/nzbr";
-      fsType = "zfs";
-    };
-
-    # OLD #
-    # "/old/storage" =
-    #   let label = "cr_storage";
-    #   in
-    #   {
-    #     device = "/dev/mapper/${label}";
-    #     fsType = "btrfs";
-    #     neededForBoot = false;
-    #     encrypted = {
-    #       enable = true;
-    #       blkDev = "/dev/disk/by-uuid/38627a12-ce2f-43ac-9cfd-24fc20e00e26";
-    #       label = label;
-    #       keyFile = "/mnt-root/etc/lukskey";
-    #     };
-    #   };
-    # "/old/storage/Backup" =
-    #   let label = "cr_backup";
-    #   in
-    #   {
-    #     device = "/dev/mapper/${label}";
-    #     fsType = "btrfs";
-    #     neededForBoot = false;
-    #     encrypted = {
-    #       enable = true;
-    #       blkDev = "/dev/disk/by-uuid/bdb010d6-48a2-4d59-b935-821dced8d912";
-    #       label = label;
-    #       keyFile = "/mnt-root/etc/lukskey";
-    #     };
-    #   };
-  }
-  //
-  lib.mapAttrs'
-    (to: from:
-      {
-        name = to;
-        value = {
-          device = from;
-          options = [ "bind" ];
+  fileSystems =
+    let
+      zfsOnLuks = name: uuid: {
+        device = "tmpfs";
+        fsType = "tmpfs";
+        options = [ "ro" "size=0" ];
+        encrypted = {
+          enable = true;
+          blkDev = "/dev/disk/by-uuid/${uuid}";
+          label = name;
+          keyFile = "/mnt-root/etc/lukskey";
         };
-      }
-    )
+      };
+    in
     {
-      "/var/lib/rancher/k3s/storage" = "/storage/kubernetes/local-path";
-      "/var/lib/longhorn" = "/storage/kubernetes/longhorn";
-      "/var/lib/etcd" = "/storage/kubernetes/etcd";
-      "/var/lib/rook" = "/storage/kubernetes/rook";
-      "/var/lib/ceph" = "/storage/ceph";
-      "/var/lib/libvirt" = "/storage/libvirt";
-    };
+      "/" = {
+        device = "zroot";
+        fsType = "zfs";
+      };
+      "/boot" = {
+        device = "/dev/disk/by-uuid/C669-E056";
+        fsType = "vfat";
+      };
+      "/tmp" = {
+        device = "tmpfs";
+        fsType = "tmpfs";
+        options = [ "size=16G" ];
+      };
+
+      "/run/.luks/cr_storage_1" = zfsOnLuks "cr_storage_1" "7e8de2a9-5cd0-4475-8a99-9d436604e639";
+      "/run/.luks/cr_storage_2" = zfsOnLuks "cr_storage_2" "b3c32804-ab03-45cf-8e74-1e6f59969d5a";
+      "/run/.luks/cr_storage_3" = zfsOnLuks "cr_storage_3" "b6bba72c-ceb4-4116-89bb-8a9197059600";
+      "/storage" = {
+        device = "hoard";
+        fsType = "zfs";
+      };
+      "/storage/backup" = {
+        device = "hoard/backup";
+        fsType = "zfs";
+      };
+      "/storage/chia" = {
+        device = "hoard/chia";
+        fsType = "zfs";
+      };
+      "/storage/kubernetes" = {
+        device = "hoard/kubernetes";
+        fsType = "zfs";
+      };
+      "/storage/libvirt" = {
+        device = "hoard/libvirt";
+        fsType = "zfs";
+      };
+      "/storage/gitlab" = {
+        device = "hoard/gitlab";
+        fsType = "zfs";
+      };
+      "/storage/media" = {
+        device = "hoard/media";
+        fsType = "zfs";
+      };
+      "/storage/nzbr" = {
+        device = "hoard/nzbr";
+        fsType = "zfs";
+      };
+
+      "/run/.luks/cr_backup_1" = zfsOnLuks "cr_backup_1" "0ed778f5-9c5c-4fae-8321-c136da60decf";
+      "/run/.luks/cr_backup_2" = zfsOnLuks "cr_backup_2" "7af144dc-3fa9-420f-b578-dfeee0a8132e";
+      "/run/.luks/cr_backup_3" = zfsOnLuks "cr_backup_3" "c9768c47-8b68-41ea-b46f-4443b96eae7f";
+      "/backup" = {
+        device = "zbackup";
+        fsType = "zfs";
+      };
+
+      # OLD #
+      # "/old/storage" =
+      #   let label = "cr_storage";
+      #   in
+      #   {
+      #     device = "/dev/mapper/${label}";
+      #     fsType = "btrfs";
+      #     neededForBoot = false;
+      #     encrypted = {
+      #       enable = true;
+      #       blkDev = "/dev/disk/by-uuid/38627a12-ce2f-43ac-9cfd-24fc20e00e26";
+      #       label = label;
+      #       keyFile = "/mnt-root/etc/lukskey";
+      #     };
+      #   };
+      # "/old/storage/Backup" =
+      #   let label = "cr_backup";
+      #   in
+      #   {
+      #     device = "/dev/mapper/${label}";
+      #     fsType = "btrfs";
+      #     neededForBoot = false;
+      #     encrypted = {
+      #       enable = true;
+      #       blkDev = "/dev/disk/by-uuid/bdb010d6-48a2-4d59-b935-821dced8d912";
+      #       label = label;
+      #       keyFile = "/mnt-root/etc/lukskey";
+      #     };
+      #   };
+    }
+    //
+    lib.mapAttrs'
+      (to: from:
+        {
+          name = to;
+          value = {
+            device = from;
+            options = [ "bind" ];
+          };
+        }
+      )
+      {
+        "/var/lib/rancher/k3s/storage" = "/storage/kubernetes/local-path";
+        "/var/lib/longhorn" = "/storage/kubernetes/longhorn";
+        "/var/lib/etcd" = "/storage/kubernetes/etcd";
+        "/var/lib/rook" = "/storage/kubernetes/rook";
+        "/var/lib/ceph" = "/storage/ceph";
+        "/var/lib/libvirt" = "/storage/libvirt";
+      };
 
   swapDevices = [
     {
