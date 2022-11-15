@@ -78,6 +78,7 @@
       kadalu.enable = true;
       keycloak.enable = true;
       matrix.enable = true;
+      n8n.enable = true;
       nextcloud.enable = true;
       nginx.enable = true;
       openldap.enable = true;
@@ -189,7 +190,6 @@
   services.postgresql =
     let
       services = [
-        "birdsite"
         "bitwarden"
         "gitlab"
         "hedgedoc"

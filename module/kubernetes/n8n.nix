@@ -1,0 +1,109 @@
+{ config, pkgs, lib, inputs, ... }:
+with builtins; with lib;
+let
+  namespace = "n8n";
+in
+{
+  nirgenx.deployment.n8n = {
+    dependencies = [ "nginx" ];
+    steps = [
+
+      (kube.createNamespace namespace)
+
+      (rec {
+        apiVersion = "apps/v1";
+        kind = "Deployment";
+        metadata = {
+          inherit namespace;
+          name = "n8n";
+          labels = {
+            app = "n8n";
+            component = "deployment";
+          };
+        };
+        spec = {
+          replicas = 1;
+          selector.matchLabels = metadata.labels;
+          template = {
+            metadata.labels = metadata.labels;
+            spec.containers = [{
+              name = "n8n";
+              image = "n8nio/n8n:latest";
+              imagePullPolicy = "Always";
+              ports = [{
+                name = "http";
+                containerPort = 5678;
+              }];
+              envFrom = [
+                { configMapRef.name = "n8n-configmap"; }
+                { secretRef.name = "n8n-secrets"; }
+              ];
+              livenessProbe.httpGet = {
+                path = "/health";
+                portName = "http";
+              };
+              readinessProbe.httpGet = {
+                path = "/health";
+                portName = "http";
+              };
+            }];
+          };
+        };
+      })
+
+      {
+        apiVersion = "v1";
+        kind = "Service";
+        metadata = {
+          inherit namespace;
+          name = "n8n";
+          labels = {
+            app = "n8n";
+            component = "service";
+          };
+        };
+        spec = {
+          type = "ClusterIP";
+          ports = [{
+            name = "http";
+            port = 80;
+            targetPort = "http";
+          }];
+          selector = {
+            app = "n8n";
+            component = "deployment";
+          };
+        };
+      }
+
+      {
+        apiVersion = "v1";
+        kind = "ConfigMap";
+        metadata = {
+          inherit namespace;
+          name = "n8n-configmap";
+          labels = {
+            app = "n8n";
+            component = "configmap";
+          };
+        };
+        data = {
+          NODE_ENV = "production";
+          GENERIC_TIMEZONE = "Europe/Berlin";
+
+          N8N_EDITOR_BASE_URL = "https://n8n.nzbr.de";
+
+          DB_TYPE = "postgresdb";
+          DB_POSTGRESDB_HOST = "storm";
+          DB_POSTGRESDB_DATABASE = "n8n";
+          DB_POSTGRESDB_PORT = "5432";
+          DB_POSTGRESDB_USER = "n8n";
+        };
+      }
+
+      config.nzbr.assets."k8s/n8n-secret.yaml"
+
+
+    ];
+  };
+}
