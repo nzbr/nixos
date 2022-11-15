@@ -195,6 +195,7 @@
         "hedgedoc"
         "keycloak"
         "kubernetes"
+        "n8n"
         "nextcloud"
         "synapse"
         "vaultwarden"

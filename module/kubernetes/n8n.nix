@@ -26,7 +26,7 @@ in
           selector.matchLabels = metadata.labels;
           template = {
             metadata.labels = metadata.labels;
-            spec.containers = [{
+            spec.containers = [rec {
               name = "n8n";
               image = "n8nio/n8n:latest";
               imagePullPolicy = "Always";
@@ -39,13 +39,10 @@ in
                 { secretRef.name = "n8n-secrets"; }
               ];
               livenessProbe.httpGet = {
-                path = "/health";
-                portName = "http";
+                path = "/healthz";
+                port = "http";
               };
-              readinessProbe.httpGet = {
-                path = "/health";
-                portName = "http";
-              };
+              readinessProbe.httpGet = livenessProbe.httpGet;
             }];
           };
         };
@@ -90,8 +87,7 @@ in
         data = {
           NODE_ENV = "production";
           GENERIC_TIMEZONE = "Europe/Berlin";
-
-          N8N_EDITOR_BASE_URL = "https://n8n.nzbr.de";
+          N8N_PORT = "5678";
 
           DB_TYPE = "postgresdb";
           DB_POSTGRESDB_HOST = "storm";
@@ -102,7 +98,6 @@ in
       }
 
       config.nzbr.assets."k8s/n8n-secret.yaml"
-
 
     ];
   };
