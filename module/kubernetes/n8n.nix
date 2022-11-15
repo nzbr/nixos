@@ -50,6 +50,32 @@ in
 
       {
         apiVersion = "v1";
+        kind = "ConfigMap";
+        metadata = {
+          inherit namespace;
+          name = "n8n-configmap";
+          labels = {
+            app = "n8n";
+            component = "configmap";
+          };
+        };
+        data = {
+          NODE_ENV = "production";
+          GENERIC_TIMEZONE = "Europe/Berlin";
+          N8N_PORT = "5678";
+
+          DB_TYPE = "postgresdb";
+          DB_POSTGRESDB_HOST = "storm";
+          DB_POSTGRESDB_DATABASE = "n8n";
+          DB_POSTGRESDB_PORT = "5432";
+          DB_POSTGRESDB_USER = "n8n";
+        };
+      }
+
+      config.nzbr.assets."k8s/n8n-secret.yaml"
+
+      {
+        apiVersion = "v1";
         kind = "Service";
         metadata = {
           inherit namespace;
@@ -74,30 +100,27 @@ in
       }
 
       {
-        apiVersion = "v1";
-        kind = "ConfigMap";
+        apiVersion = "networking.k8s.io/v1";
+        kind = "Ingress";
         metadata = {
           inherit namespace;
-          name = "n8n-configmap";
-          labels = {
-            app = "n8n";
-            component = "configmap";
-          };
+          name = "n8n";
+          annotations."kubernetes.io/ingress.class" = "nginx";
         };
-        data = {
-          NODE_ENV = "production";
-          GENERIC_TIMEZONE = "Europe/Berlin";
-          N8N_PORT = "5678";
-
-          DB_TYPE = "postgresdb";
-          DB_POSTGRESDB_HOST = "storm";
-          DB_POSTGRESDB_DATABASE = "n8n";
-          DB_POSTGRESDB_PORT = "5432";
-          DB_POSTGRESDB_USER = "n8n";
+        spec = {
+          rules = [{
+            host = "n8n.nzbr.de";
+            http.paths = [{
+              backend.service = {
+                name = "n8n";
+                port.name = "http";
+              };
+              path = "/";
+              pathType = "Prefix";
+            }];
+          }];
         };
       }
-
-      config.nzbr.assets."k8s/n8n-secret.yaml"
 
     ];
   };
