@@ -62,6 +62,10 @@
       url = "github:msteen/nixos-vscode-server";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    xyno-experiments = {
+      url = "github:thexyno/x";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     dotfiles = {
       url = "github:nzbr/dotfiles";

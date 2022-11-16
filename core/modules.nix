@@ -6,6 +6,7 @@ with builtins; with lib; {
     ragenix.nixosModules.age
     nirgenx.nixosModules.nirgenx
     vscode-server.nixosModules.default
+    xyno-experiments.nixosModule
 
     "${self}/host/${hostName}"
     extraModules

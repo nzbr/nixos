@@ -172,4 +172,10 @@ in
     enable = true;
     role = "agent";
   };
+
+  services.mailmover = {
+    enable = true;
+    schedule = "*-*-* *:*:1";
+    configFile = config.nzbr.assets."mailmover-config.dhall";
+  };
 }
