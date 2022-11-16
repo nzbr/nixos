@@ -63,6 +63,7 @@ in
           NODE_ENV = "production";
           GENERIC_TIMEZONE = "Europe/Berlin";
           N8N_PORT = "5678";
+          WEBHOOK_URL = "https://n8n.nzbr.de";
 
           DB_TYPE = "postgresdb";
           DB_POSTGRESDB_HOST = "storm";
