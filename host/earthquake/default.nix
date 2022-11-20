@@ -309,7 +309,7 @@ in
 
     shares = {
       Backup = {
-        path = "/storage/backup";
+        path = "/backup";
         browseable = "yes";
         public = "no";
         "read only" = "no";
@@ -334,8 +334,8 @@ in
         public = "no";
         "read only" = "no";
         "guest ok" = "no";
-        "create mask" = "0640";
-        "directory mask" = "0750";
+        "create mask" = "0644";
+        "directory mask" = "0755";
         "force group" = "media";
       };
       tmp = {
