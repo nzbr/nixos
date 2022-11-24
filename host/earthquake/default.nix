@@ -326,6 +326,7 @@ in
         "create mask" = "0600";
         "directory mask" = "0700";
         "force user" = "nzbr";
+        "acl allow execute always" = "yes";
       };
       Media = {
         path = "/storage/media";
@@ -336,14 +337,15 @@ in
         "create mask" = "0644";
         "directory mask" = "0755";
         "force group" = "media";
+        "acl allow execute always" = "yes";
       };
       tmp = {
         path = "/tmp/smb";
         browseable = "yes";
         public = "no";
         "read only" = "no";
-        "create mask" = "0660";
-        "directory mask" = "0770";
+        "create mask" = "0666";
+        "directory mask" = "0777";
         "force group" = "users";
       };
     };
