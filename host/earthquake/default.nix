@@ -171,10 +171,10 @@ in
         device = "hoard";
         fsType = "zfs";
       };
-      "/storage/backup" = {
-        device = "hoard/backup";
-        fsType = "zfs";
-      };
+      # "/storage/backup" = {
+      #   device = "hoard/backup";
+      #   fsType = "zfs";
+      # };
       "/storage/chia" = {
         device = "hoard/chia";
         fsType = "zfs";
@@ -200,9 +200,8 @@ in
         fsType = "zfs";
       };
 
-      "/run/.luks/cr_backup_1" = zfsOnLuks "cr_backup_1" "0ed778f5-9c5c-4fae-8321-c136da60decf";
-      "/run/.luks/cr_backup_2" = zfsOnLuks "cr_backup_2" "7af144dc-3fa9-420f-b578-dfeee0a8132e";
-      "/run/.luks/cr_backup_3" = zfsOnLuks "cr_backup_3" "c9768c47-8b68-41ea-b46f-4443b96eae7f";
+      "/run/.luks/cr_backup_1" = zfsOnLuks "cr_backup_1" "942c4a41-edcc-4a60-8528-42db7a782c44";
+      "/run/.luks/cr_backup_2" = zfsOnLuks "cr_backup_2" "c1261cce-9627-42c0-91a2-c36a534d76a6";
       "/backup" = {
         device = "zbackup";
         fsType = "zfs";
@@ -396,7 +395,7 @@ in
   };
 
   nzbr.everythingIndex = [
-    { path = "/storage/backup"; schedule = "*-*-* 04:00:00"; }
+    { path = "/backup"; schedule = "*-*-* 04:00:00"; }
     { path = "/storage/media"; schedule = "*-*-* 0/3:00:00"; }
     { path = "/storage/nzbr"; schedule = "*-*-* *:0/30:00"; }
   ];
