@@ -59,6 +59,8 @@ in
           "zroot/var/lib/libvirt"
 
           "hoard"
+
+          "zbackup"
         ];
         healthcheck = {
           backup = "https://hc-ping.com/f904595a-cd31-4261-b714-21b14be2cdc2";
@@ -71,7 +73,6 @@ in
           {
             name = "hoard";
             subvols = [
-              { name = "backup"; mountpoint = "/backup"; }
               { name = "chia"; mountpoint = "/chia"; }
               { name = "kubernetes"; mountpoint = "/kubernetes"; }
               { name = "libvirt"; mountpoint = "/libvirt"; }
