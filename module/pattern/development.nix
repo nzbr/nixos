@@ -50,7 +50,12 @@ with builtins; with lib;
         kubernetes-helm
         ninja
         pkg-config
-        python3
+        powershell
+        (python3.withPackages (pypi: with pypi; [
+          autopep8
+          black
+          ipykernel
+        ]))
         unstable.flutter
 
         # Language servers
