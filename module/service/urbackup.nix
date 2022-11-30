@@ -10,6 +10,20 @@ with builtins; with lib; {
     config = mkOption {
       type = attrsOf (oneOf [ str int bool ]);
     };
+    backupfolder = mkOption {
+      type = str;
+      default = "/mnt/BACKUP/urbackup";
+    };
+    dataset = {
+      images = mkOption {
+        type = nullOr str;
+        default = null;
+      };
+      files = mkOption {
+        type = nullOr str;
+        default = null;
+      };
+    };
   };
 
   config =
@@ -58,6 +72,12 @@ with builtins; with lib; {
         options = [ "bind" ];
       };
 
+      environment.etc = {
+        "urbackup/backupfolder".text = cfg.backupfolder;
+        "urbackup/dataset".text = mkIf (cfg.dataset.images != null) cfg.dataset.images;
+        "urbackup/dataset_files".text = mkIf (cfg.dataset.files != null) cfg.dataset.files;
+      };
+
       systemd.services.urbackup-server =
         let
           configFile = pkgs.writeText "urbackup.conf" (
@@ -103,8 +123,11 @@ with builtins; with lib; {
             DAEMON_TMPDIR = "/tmp";
             SQLITE_TMPDIR = "";
             BROADCAST_INTERFACES = "";
-            USER = "urbackup";
+            USER = "root";
           };
+
+      networking.firewall.allowedTCPPorts = [ 55414 ];
+      networking.firewall.allowedUDPPorts = [ 35623 ];
 
     };
 

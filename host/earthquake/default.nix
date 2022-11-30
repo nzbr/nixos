@@ -88,6 +88,11 @@ in
       };
       urbackup = {
         enable = true;
+        backupfolder = "/backup/UrBackup";
+        dataset = {
+          images = "zbackup/urbackup/images";
+          files = "zbackup/urbackup/files";
+        };
       };
     };
 
