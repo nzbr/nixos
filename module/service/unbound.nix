@@ -2,6 +2,17 @@
 with builtins; with lib; {
   options.nzbr.service.unbound = {
     enable = mkEnableOption "Unbound DNS Resolver";
+    address = mkOption {
+      description = "Address to bind to";
+      default = "127.0.0.1";
+      type = types.str;
+    };
+    port = mkOption
+      {
+        default = 53;
+        description = "Port to listen on";
+        type = types.int;
+      };
   };
 
   config =
@@ -15,7 +26,8 @@ with builtins; with lib; {
         settings = {
           server = {
             verbosity = "0";
-            port = "5353";
+            interface = cfg.address;
+            port = (toString cfg.port);
 
             do-ip4 = "yes";
             do-ip6 = "yes";
@@ -61,5 +73,6 @@ with builtins; with lib; {
       '';
 
       networking.resolvconf.useLocalResolver = false;
+      networking.firewall.allowedUDPPorts = [ cfg.port ];
     };
 }
