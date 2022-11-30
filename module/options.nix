@@ -3,7 +3,7 @@ with builtins; with lib; {
   options.nzbr = with types; {
     system = strOption;
     user = mkStrOpt "nzbr";
-    hostName = mkStrOpt "${config.networking.hostName}.tail9865f.ts.net";
+    hostName = mkStrOpt "${config.networking.hostName}.dragon-augmented.ts.net";
     nodeIp = mkOption {
       type = str;
       description = "internal IP that is accessible from other hosts (mainly for k3s) - tailscale IP in my case";

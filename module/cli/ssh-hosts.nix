@@ -16,7 +16,7 @@ in
                 "${hostname}.nzbr.de"
                 "${hostname}4.nzbr.de"
                 "${hostname}6.nzbr.de"
-                "${hostname}.tail9865f.ts.net"
+                "${hostname}.dragon-augmented.ts.net"
               ]);
               publicKeyFile = "${root}/host-key/${hostname}/ssh_host_ed25519_key.pub";
             }

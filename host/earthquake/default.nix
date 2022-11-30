@@ -11,7 +11,7 @@ in
     patterns = [ "common" "server" ];
     nodeIp = "100.71.200.40";
 
-    deployment.targetHost = "earthquake.tail9865f.ts.net";
+    deployment.targetHost = "earthquake.dragon-augmented.ts.net";
 
     boot = {
       grub.enable = true;
