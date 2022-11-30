@@ -33,6 +33,7 @@ with builtins; with lib; {
           defaultUser = config.nzbr.user;
           startMenuLaunchers = true;
           docker-native.enable = mkDefault true;
+          docker-native.addToDockerGroup = true;
 
           # interop.register = mkDefault false;
 
