@@ -3,7 +3,7 @@ with builtins; with lib; {
   imports = with inputs; flatten [
     (mapAttrsToList (n: v: v) self.nixosModules)
     (mapAttrsToList (n: v: v) nixos-wsl.nixosModules)
-    ragenix.nixosModules.age
+    agenix.nixosModules.age
     nirgenx.nixosModules.nirgenx
     vscode-server.nixosModules.default
     xyno-experiments.nixosModule

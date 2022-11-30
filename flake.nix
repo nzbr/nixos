@@ -39,13 +39,6 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ragenix = {
-      url = "github:yaxitech/ragenix";
-      inputs.agenix.follows = "agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.rust-overlay.follows = "rust-overlay";
-    };
     nirgenx = {
       url = "github:nzbr/nirgenx";
       inputs.flake-compat.follows = "flake-compat";
@@ -223,7 +216,7 @@
               ifAvailable = collection: package: (orElse collection system { ${package} = [ ]; }).${package};
             in
             with pkgs; (flatten [
-              (ifAvailable inputs.ragenix.packages "ragenix")
+              (ifAvailable inputs.agenix.packages "agenix")
               graphviz
               morph
               nixpkgs-fmt

@@ -71,6 +71,6 @@ rec {
       touch "$NOEXT"
       enrage "$NOEXT"
     fi
-    ${pkgs.ragenix}/bin/agenix -e "$FILE"
+    ${pkgs.agenix}/bin/agenix -e "$FILE"
   '';
 }
