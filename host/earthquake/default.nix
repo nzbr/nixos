@@ -177,10 +177,6 @@ in
         device = "hoard";
         fsType = "zfs";
       };
-      # "/storage/backup" = {
-      #   device = "hoard/backup";
-      #   fsType = "zfs";
-      # };
       "/storage/chia" = {
         device = "hoard/chia";
         fsType = "zfs";
@@ -208,40 +204,6 @@ in
 
       "/run/.luks/cr_backup_1" = zfsOnLuks "cr_backup_1" "942c4a41-edcc-4a60-8528-42db7a782c44";
       "/run/.luks/cr_backup_2" = zfsOnLuks "cr_backup_2" "c1261cce-9627-42c0-91a2-c36a534d76a6";
-      "/backup" = {
-        device = "zbackup";
-        fsType = "zfs";
-      };
-
-      # OLD #
-      # "/old/storage" =
-      #   let label = "cr_storage";
-      #   in
-      #   {
-      #     device = "/dev/mapper/${label}";
-      #     fsType = "btrfs";
-      #     neededForBoot = false;
-      #     encrypted = {
-      #       enable = true;
-      #       blkDev = "/dev/disk/by-uuid/38627a12-ce2f-43ac-9cfd-24fc20e00e26";
-      #       label = label;
-      #       keyFile = "/mnt-root/etc/lukskey";
-      #     };
-      #   };
-      # "/old/storage/Backup" =
-      #   let label = "cr_backup";
-      #   in
-      #   {
-      #     device = "/dev/mapper/${label}";
-      #     fsType = "btrfs";
-      #     neededForBoot = false;
-      #     encrypted = {
-      #       enable = true;
-      #       blkDev = "/dev/disk/by-uuid/bdb010d6-48a2-4d59-b935-821dced8d912";
-      #       label = label;
-      #       keyFile = "/mnt-root/etc/lukskey";
-      #     };
-      #   };
     }
     //
     lib.mapAttrs'
@@ -271,6 +233,8 @@ in
       };
     }
   ];
+
+  boot.zfs.extraPools = [ "zbackup" ];
 
   services.zfs = {
     autoScrub.enable = true;
