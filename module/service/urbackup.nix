@@ -42,6 +42,7 @@ with builtins; with lib; {
 
       environment.systemPackages = with pkgs; [
         cfg.package
+        libguestfs
       ];
 
       security.wrappers =
@@ -75,7 +76,7 @@ with builtins; with lib; {
       environment.etc = {
         "urbackup/backupfolder".text = cfg.backupfolder;
         "urbackup/dataset".text = mkIf (cfg.dataset.images != null) cfg.dataset.images;
-        "urbackup/dataset_files".text = mkIf (cfg.dataset.files != null) cfg.dataset.files;
+        "urbackup/dataset_file".text = mkIf (cfg.dataset.files != null) cfg.dataset.files;
       };
 
       systemd.services.urbackup-server =
