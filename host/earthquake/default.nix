@@ -83,6 +83,7 @@ in
           }
           {
             name = "zbackup";
+            recursive = true;
           }
         ];
       };
@@ -90,8 +91,8 @@ in
         enable = true;
         backupfolder = "/backup/UrBackup";
         dataset = {
-          images = "zbackup/urbackup/images";
-          files = "zbackup/urbackup/files";
+          images = "zbackup/UrBackup/images";
+          files = "zbackup/UrBackup/files";
         };
       };
     };
