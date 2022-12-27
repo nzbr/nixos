@@ -25,7 +25,7 @@ with builtins; with lib; {
           arch = sys: lib.systems.elaborate { system = sys; };
         in
         filter
-          (x: !(arch current).isCompatible (arch x)) # Only enable architectures that are not natively supported anyway
+          (x: !(arch current).canExecute (arch x)) # Only enable architectures that are not natively supported anyway
           cfg.systems;
 
       nix.extraOptions = ''

@@ -84,6 +84,4 @@ in
   # Let 'nixos-version --json' know about the Git revision
   # of this flake.
   system.configurationRevision = lib.mkIf (inputs.self ? rev) inputs.self.rev;
-
-  system.stateVersion = "21.11";
 }

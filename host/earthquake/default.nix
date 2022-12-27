@@ -385,4 +385,7 @@ in
     user = "nzbr";
     group = "media";
   };
+
+  system.stateVersion = "21.11";
+  nzbr.home.config.home.stateVersion = "22.05";
 }

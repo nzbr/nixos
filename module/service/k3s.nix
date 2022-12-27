@@ -16,7 +16,7 @@ with builtins; with lib; {
     mkIf cfg.enable {
 
       services.k3s = {
-        docker = true;
+        # docker = true;
         serverAddr = mkDefault inputs.self.nixosConfigurations.storm.config.nzbr.nodeIp;
         tokenFile = mkDefault config.nzbr.assets."k3s-token";
       };

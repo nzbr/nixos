@@ -240,4 +240,7 @@
     enable = true;
     role = "server";
   };
+
+  system.stateVersion = "21.11";
+  nzbr.home.config.home.stateVersion = "22.05";
 }

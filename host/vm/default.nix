@@ -36,4 +36,6 @@ with builtins; with lib; {
     iwd.enable = mkForce false;
   };
 
+  system.stateVersion = "21.11";
+  nzbr.home.config.home.stateVersion = "22.05";
 }

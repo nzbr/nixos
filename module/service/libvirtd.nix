@@ -20,6 +20,8 @@ with builtins; with lib; {
         };
       };
 
+      security.polkit.enable = true;
+
       # TPM Emulator for Windows 11 VMs (does not work, TPM is not detected)
       # systemd.services.libvirtd.path = with pkgs; [
       #   swtpm

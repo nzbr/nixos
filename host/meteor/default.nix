@@ -9,7 +9,7 @@ in
 
   nzbr = {
     system = "x86_64-linux";
-    patterns = [ "common" "desktop" "laptop" "development" "hapra" "gaming" ];
+    patterns = [ "common" "desktop" "laptop" "development" "hapra" ];
     pattern.development.guiTools = true;
 
     deployment.substituteOnDestination = false;
