@@ -45,6 +45,10 @@ with builtins; with lib; {
           name = mkOption {
             type = str;
           };
+          recursive = mkOption {
+            default = false;
+            type = bool;
+          };
           subvols = mkOption {
             default = [ ];
             type = listOf (submodule {
@@ -74,7 +78,15 @@ with builtins; with lib; {
       systemd = {
         services = {
           restic-backup = {
-            path = with pkgs; [ curl rclone restic utillinux zfs ];
+            path = with pkgs; [
+              curl
+              gawk
+              gnused
+              rclone
+              restic
+              utillinux
+              zfs
+            ];
             environment = {
               HOME = "/root";
               RESTIC_PASSWORD_FILE = config.nzbr.assets."resticpass";
@@ -96,17 +108,11 @@ with builtins; with lib; {
                     (
                       builtins.map
                         (pool:
+                          assert pool.recursive -> pool.subvols == [ ];
                           [
+                            "umount -R /tmp/.snapshot/${pool.name} || true"
                             "zfs destroy -r ${pool.name}@${cfg.snapshotName} || true"
-                            "zfs snapshot ${pool.name}@${cfg.snapshotName}"
-                          ]
-                          ++
-                          (map
-                            (subvol: "zfs snapshot ${pool.name}/${subvol.name}@${cfg.snapshotName}")
-                            pool.subvols
-                          )
-                          ++
-                          [
+                            "zfs snapshot -r ${pool.name}@${cfg.snapshotName}"
                             "mkdir -p /tmp/.snapshot/${pool.name}"
                             "mount -t zfs ${pool.name}@${cfg.snapshotName} /tmp/.snapshot/${pool.name}"
                           ]
@@ -116,6 +122,12 @@ with builtins; with lib; {
                               (subvol: "mount -t zfs ${pool.name}/${subvol.name}@${cfg.snapshotName} /tmp/.snapshot/${pool.name}/${removePrefix "/" subvol.mountpoint}")
                               pool.subvols
                           )
+                          ++
+                          (optional pool.recursive ''
+                            for subvol in $(zfs list -rHo name,mountpoint ${pool.name} | sed 's|${pool.name}/||' | awk 'NR!=1&&$2!="-"{print $1;}'); do
+                              mount -t zfs "${pool.name}/''${subvol}@${cfg.snapshotName}" "/tmp/.snapshot/${pool.name}/$subvol"
+                            done
+                          '')
                         )
                         cfg.pools
                     )
@@ -154,16 +166,8 @@ with builtins; with lib; {
                     (
                       builtins.map
                         (pool:
-                          (
-                            builtins.map
-                              (subvol:
-                                [
-                                  "umount /tmp/.snapshot/${pool.name}/${removePrefix "/" subvol.mountpoint} || true"
-                                ]
-                              )
-                              (lib.reverseList pool.subvols)
-                          ) ++ [
-                            "umount /tmp/.snapshot/${pool.name} || true"
+                          [
+                            "umount -R /tmp/.snapshot/${pool.name} || true"
                             "rmdir /tmp/.snapshot/${pool.name}"
                             "zfs destroy -r ${pool.name}@${cfg.snapshotName}"
                           ]
