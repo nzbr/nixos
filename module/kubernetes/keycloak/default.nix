@@ -133,6 +133,9 @@ in
               location ~ ^/auth/(?<suffix>.*) {
                 return 301 /$suffix;
               }
+              location = / {
+                return 301 /realms/master/account;
+              }
             '';
           };
           name = "keycloak";
