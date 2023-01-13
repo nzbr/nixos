@@ -31,7 +31,7 @@
       # ceph.enable = true;
       gitlab-runner = {
         enable = true;
-        extraTags = [ "kube-deploy" ];
+        extraTags = [ ];
       };
       restic = {
         enable = true;
