@@ -192,7 +192,6 @@
         "bitwarden"
         "hedgedoc"
         "keycloak"
-        "kubernetes"
         "n8n"
         "synapse"
         "vaultwarden"
@@ -236,6 +235,7 @@
   services.k3s = {
     enable = true;
     role = "server";
+    dbEndpoint = "sqlite:///storage/kubernetes/kine.db";
   };
 
   system.stateVersion = "21.11";
