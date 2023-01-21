@@ -186,17 +186,14 @@
     };
   };
 
-  # TODO: Dump backups
   services.postgresql =
     let
       services = [
         "bitwarden"
-        "gitlab"
         "hedgedoc"
         "keycloak"
         "kubernetes"
         "n8n"
-        "nextcloud"
         "synapse"
         "vaultwarden"
       ];
