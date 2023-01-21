@@ -322,13 +322,6 @@ in
     };
   };
 
-  services.nfs.server = {
-    enable = true;
-    exports = ''
-      /storage/media 10.0.0.2/32(rw)
-    '';
-  };
-
   systemd.tmpfiles.rules = [
     "d /tmp/smb 0770 nzbr users 1d"
   ];
