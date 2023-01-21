@@ -324,6 +324,7 @@ in
 
   systemd.tmpfiles.rules = [
     "d /tmp/smb 0770 nzbr users 1d"
+    "d /storage/postgres 0755 postgres users"
   ];
 
   networking.firewall.allowedTCPPorts = [
@@ -378,6 +379,43 @@ in
     user = "nzbr";
     group = "media";
   };
+
+  services.postgresql =
+    let
+      services = [
+        "gitlab"
+        "nextcloud"
+      ];
+    in
+    {
+      enable = true;
+      package = pkgs.postgresql_14;
+      dataDir = "/storage/postgres/${config.services.postgresql.package.psqlSchema}";
+      enableTCPIP = true;
+      authentication = ''
+        host all all 10.42.0.0/24 md5
+        host all all 10.12.0.0/16 md5
+        host all all 100.64.0.0/10 md5
+      '';
+      ensureDatabases = services;
+      ensureUsers =
+        map
+          (name: {
+            inherit name;
+            ensurePermissions = {
+              "DATABASE ${name}" = "ALL PRIVILEGES";
+            };
+          })
+          services;
+      initialScript = config.nzbr.assets."postgres-setup.sql";
+    };
+  services.postgresqlBackup = {
+    enable = true;
+    location = "/storage/postgres/backup";
+    compression = "none";
+    databases = config.services.postgresql.ensureDatabases;
+  };
+  age.secrets."postgres-setup.sql".owner = "postgres";
 
   system.stateVersion = "21.11";
   nzbr.home.config.home.stateVersion = "22.05";
