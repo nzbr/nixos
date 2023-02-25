@@ -25,7 +25,7 @@ with builtins; with lib; {
           ".vscode-server" = true;
           ".yarnrc" = false;
         };
-        automountPath = "/drv/";
+        automountPath = "/drv";
       in
       {
         wsl = {
@@ -241,8 +241,8 @@ with builtins; with lib; {
           );
 
         system.activationScripts.windows-path = stringAfter [ ] ''
-          mkdir -p ${config.wsl.wslConf.automount.root}.wsl-wrappers;
-          ${pkgs.rsync}/bin/rsync -avr --delete ${config.system.build.winBin}/. ${config.wsl.wslConf.automount.root}c/.wsl-wrappers/;
+          mkdir -p ${config.wsl.wslConf.automount.root}/.wsl-wrappers;
+          ${pkgs.rsync}/bin/rsync -avr --delete ${config.system.build.winBin}/. ${config.wsl.wslConf.automount.root}/c/.wsl-wrappers/;
         '';
       }
     );
