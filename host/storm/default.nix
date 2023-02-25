@@ -72,7 +72,7 @@
       amp.enable = true;
       # birdsite.enable = true;
       cert-manager.enable = true;
-      debug-shell.enable = true;
+      # debug-shell.enable = true;
       gitlab.enable = true;
       hedgedoc.enable = true;
       kadalu.enable = true;
