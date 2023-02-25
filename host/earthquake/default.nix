@@ -395,7 +395,7 @@ in
       authentication = ''
         host all all 10.42.0.0/24 md5
         host all all 10.12.0.0/16 md5
-        host all all 172.17.0.1/16 md5
+        host all all 172.17.0.0/16 md5
         host all all 100.64.0.0/10 md5
       '';
       ensureDatabases = services;
@@ -417,6 +417,8 @@ in
     databases = config.services.postgresql.ensureDatabases;
   };
   age.secrets."postgres-setup.sql".owner = "postgres";
+
+  networking.firewall.trustedInterfaces = [ "docker0" ];
 
   system.stateVersion = "21.11";
   nzbr.home.config.home.stateVersion = "22.05";
