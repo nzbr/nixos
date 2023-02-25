@@ -75,8 +75,6 @@ with builtins; with lib;
         };
       };
 
-      services.vscode-server.enable = mkDefault true;
-
       i18n = {
         defaultLocale = "de_DE.UTF-8";
         supportedLocales = lib.mkDefault [

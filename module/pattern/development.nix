@@ -99,6 +99,8 @@ with builtins; with lib;
           CHROME_EXECUTABLE = "${pkgs.chromium}/bin/chromium";
         };
 
+      nzbr.nix-ld.enable = true;
+
       nzbr.cli.git = {
         enable = true;
         userInfo = true;

@@ -54,10 +54,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "flake-utils";
     };
-    vscode-server = {
-      url = "github:msteen/nixos-vscode-server";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     xyno-experiments = {
       url = "github:thexyno/x";
       inputs.nixpkgs.follows = "nixpkgs";
