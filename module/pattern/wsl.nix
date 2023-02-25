@@ -17,14 +17,6 @@ with builtins; with lib; {
     in
     mkIf cfg.enable (
       let
-        homeOverlay = {
-          ".cache" = true;
-          ".nix-defexpr" = true;
-          ".npm" = true;
-          ".pulumi" = true;
-          ".vscode-server" = true;
-          ".yarnrc" = false;
-        };
         automountPath = "/drv";
       in
       {
@@ -82,18 +74,6 @@ with builtins; with lib; {
               rmdir $x || true
             done
           '';
-          setupHome =
-            stringAfter [ ] ''
-              rmdir /home/nzbr || true
-              # mkdir -p /home/nzbr && chown nzbr:users /home/nzbr
-              # umount /home/nzbr || true
-              # mkdir -p /home/.nzbr && chown nzbr:users /home/.nzbr
-              # mount -o bind ${automountPath}c/Users/nzbr /home/nzbr
-              ln -sfT /drv/c/Users/nzbr /home/nzbr
-              ${concatStringsSep "\n" (mapAttrsToList (name: dir: "${if dir then "mkdir -p" else "touch"} /home/.nzbr/${name} && chown nzbr:users /home/.nzbr/${name}") homeOverlay)}
-            '';
-          copy-dotfiles.deps = mkForce [ "etc" "setupHome" ];
-          channels.deps = [ "setupHome" ];
         };
 
         fileSystems = {
@@ -112,12 +92,6 @@ with builtins; with lib; {
               ("/drv/" + distro)
               { label = distro; fsType = "ext4"; options = [ "defaults" "noauto" ]; }
             ) [ "Arch" "Ubuntu" ]
-        ) // (mapAttrs'
-          (path: dir: lib.nameValuePair
-            "/home/nzbr/${path}"
-            { device = "/home/.nzbr/${path}"; options = [ "bind" ]; }
-          )
-          homeOverlay
         );
 
         # networking.dhcpcd.enable = false;
