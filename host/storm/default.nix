@@ -235,7 +235,7 @@
   services.k3s = {
     enable = true;
     role = "server";
-    dbEndpoint = "sqlite:///storage/kubernetes/kine.db";
+    dbEndpoint = "sqlite:///storage/kubernetes/kine.db?_journal=wal";
   };
 
   system.stateVersion = "21.11";

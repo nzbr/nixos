@@ -2,6 +2,7 @@
 with builtins; with lib; {
   options.services.k3s = {
     dbHost = mkStrOpt "127.0.0.1";
+    dbEndpoint = mkStrOpt "";
     dns = mkStrOpt "100.100.100.100";
   };
 
@@ -41,7 +42,7 @@ with builtins; with lib; {
                 "--kubelet-arg=cgroup-driver=systemd"
               ] ++ (if isServer then [
                 "--cluster-init"
-                "--datastore-endpoint=postgres://kubernetes:$(cat ${config.nzbr.assets."k3s-db.password"})@${cfg.dbHost}:5432/kubernetes?sslmode=disable"
+                "--datastore-endpoint=${cfg.dbEndpoint}"
                 "--disable=traefik"
                 "--cluster-cidr=10.12.0.0/16"
                 "--service-cidr=10.13.0.0/16"
