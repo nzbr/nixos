@@ -120,6 +120,7 @@ with builtins; with lib; {
         environment.windowsPackages = with pkgs; [
           file
           nix
+          nixpkgs-fmt
         ];
 
         system.build.winBin =
@@ -135,66 +136,19 @@ with builtins; with lib; {
                         let
                           bin = pkgs.pkgsCross.mingwW64.callPackage
                             (
-                              { stdenv, rustc, writeText, windows, ... }: stdenv.mkDerivation {
+                              { stdenv, writeText, substituteAll, ... }: stdenv.mkDerivation {
                                 name = "${exe}.exe";
 
-                                nativeBuildInputs = [ rustc ];
-                                buildInputs = [ windows.mingw_w64_pthreads ];
+                                src = substituteAll {
+                                  name = "${exe}.cpp";
+                                  src = ./winBin.cpp;
 
-                                src = writeText "${exe}.rs" ''
-                                  use std::process::Command;
-
-                                  fn main() {
-                                    std::process::exit(
-                                      real_main()
-                                    );
-                                  }
-
-                                  fn wslpath(path: String) -> String {
-                                    if path.contains("/")
-                                    || path.contains("*")
-                                    || path.contains("?")
-                                    || path.contains("|")
-                                    || path.contains("<")
-                                    || path.contains(">")
-                                    || (!path.contains("\\"))
-                                    {
-                                      return path;
-                                    }
-
-                                    let mut path = path.replace("\\", "/");
-
-                                    if path.len() >= 3 && &path[1..3] == ":/" {
-                                      let drive = &path[0..1].to_lowercase();
-                                      path = (&path[3..]).to_string();
-                                      path = format!("${config.wsl.wslConf.automount.root}{}/{}", drive, path);
-                                    }
-
-                                    return path;
-                                  }
-
-                                  fn real_main() -> i32 {
-                                    let mut process = Command::new("wsl.exe");
-
-                                    process.arg("${drv}/bin/${exe}");
-
-                                    for arg in std::env::args().skip(1).map(wslpath) {
-                                      process.arg(arg);
-                                    }
-
-                                    let status = process
-                                      .status()
-                                      .expect("Failed to run ${drv}/bin/${exe}");
-
-                                    match status.code() {
-                                      Some(code) => return code,
-                                      None       => return -1
-                                    }
-                                  }
-                                '';
+                                  inherit drv exe;
+                                  automountRoot = config.wsl.wslConf.automount.root;
+                                };
 
                                 buildCommand = ''
-                                  rustc --target="x86_64-pc-windows-gnu" -C linker=$CC $src -o $out
+                                  $CXX -o $out $src
                                 '';
                               }
                             )
