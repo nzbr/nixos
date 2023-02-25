@@ -40,6 +40,7 @@ with builtins; with lib; {
                 "--resolv-conf=${resolvconf}"
                 "--snapshotter=fuse-overlayfs" # irrelevant for docker
                 "--kubelet-arg=cgroup-driver=systemd"
+                "--kubelet-arg=runtime-request-timeout=5m0s"
               ] ++ (if isServer then [
                 "--cluster-init"
                 "--datastore-endpoint=${cfg.dbEndpoint}"
