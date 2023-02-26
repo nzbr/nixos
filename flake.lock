@@ -351,17 +351,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1675152572,
-        "narHash": "sha256-sFIpEwZImiPQraZB+9+fGYpeLKg8NRy4e0jgJrZvT1U=",
-        "ref": "refs/heads/distro-launcher",
-        "rev": "6ba933746e0d25ea57d66dbae0eceebc875cadc0",
-        "revCount": 231,
-        "type": "git",
-        "url": "file:///home/nzbr/Projekte/NixOS-WSL"
+        "lastModified": 1676381420,
+        "narHash": "sha256-aDRnfGrk/xi7zkuterN78p8/wdM5Iy6vz74uqd/JFWw=",
+        "owner": "nix-community",
+        "repo": "NixOS-WSL",
+        "rev": "4640199aeafcbb63cfbe8318bdf06f4402134f66",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/nzbr/Projekte/NixOS-WSL"
+        "owner": "nix-community",
+        "repo": "NixOS-WSL",
+        "type": "github"
       }
     },
     "nixpkgs": {
