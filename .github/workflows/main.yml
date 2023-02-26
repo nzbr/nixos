@@ -1,0 +1,103 @@
+name: 'CI'
+
+on:
+  push: {}
+  pull_request: {}
+  workflow_call: {}
+  workflow_dispatch: {}
+
+jobs:
+  prepare:
+    name: Prepare 🚀
+    runs-on: ubuntu-latest
+    outputs:
+      checks: ${{ steps.checks.outputs.checks }}
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Install nix ❄️
+      uses: cachix/install-nix-action@v18
+      with:
+        extra_nix_config: 'access-tokens = github.com=${{ github.token }}'
+
+    - name: Find checks
+      id: checks
+      run: |
+        nix-instantiate --json --eval --strict -E 'with builtins; attrNames (getFlake (toString ./.)).checks.${currentSystem}' | perl -pe 's|(.*)|checks=\1|' >>$GITHUB_OUTPUT
+
+  checks:
+    name: Flake Check 📋
+    needs:
+      - prepare
+    strategy:
+      fail-fast: false
+      matrix:
+        check: ${{ fromJSON(needs.prepare.outputs.checks) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install nix ❄️
+        uses: cachix/install-nix-action@v18
+        with:
+          extra_nix_config: 'access-tokens = github.com=${{ github.token }}'
+
+      - name: Run check 📋
+        run: |
+          nix build -L --impure --expr "with builtins; (getFlake (toString ./.)).checks.\${currentSystem}.${{ matrix.check }}"
+
+  hosts:
+    name: Build Host Configs 🖥️
+    strategy:
+      fail-fast: false
+      matrix:
+        system:
+          - storm
+          - earthquake
+          - avalanche
+          - pulsar
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install nix ❄️
+        uses: cachix/install-nix-action@v18
+        with:
+          extra_nix_config: 'access-tokens = github.com=${{ github.token }}'
+
+      - name: Build 🛠️
+        run: |
+          nix build -L .#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel
+
+  iso:
+    name: Build Live ISO 💿
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install nix ❄️
+        uses: cachix/install-nix-action@v18
+        with:
+          extra_nix_config: 'access-tokens = github.com=${{ github.token }}'
+
+      - name: Build 🛠️
+        run: |
+          nix build -L .#nixosConfigurations.live.config.system.build.isoImage
+
+      - name: Upload ISO 📤
+        uses: actions/upload-artifact@v3
+        with:
+          name: iso
+          path: result/iso/*.iso

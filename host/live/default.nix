@@ -22,6 +22,8 @@ with builtins; with lib; {
     };
 
     home.config = {
+      home.stateVersion = with lib; substring 0 5 version;
+
       dconf.settings = {
         "org/gnome/desktop/background" = {
           picture-uri = mkForce (builtins.fetchurl {
@@ -70,7 +72,7 @@ with builtins; with lib; {
     vlc
     xsel
     lm_sensors
-    gnome.gnome-tweak-tool
+    gnome.gnome-tweaks
   ];
 
   # KDE complains if power management is disabled (to be precise, if
