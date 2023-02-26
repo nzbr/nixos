@@ -43,6 +43,8 @@ with builtins; with lib; {
     mkIf cfg.enable {
       systemd.services.gitlab-runner.restartIfChanged = true;
 
+      virtualisation.docker.enable = true;
+
       services.gitlab-runner = {
         enable = true;
         concurrent = 3;

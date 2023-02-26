@@ -26,14 +26,14 @@ with builtins; with lib; {
         after = [
           "network.service"
           "firewall.service"
-          "docker.service"
+          # "docker.service"
           "tailscaled.service"
         ];
         serviceConfig = {
           ExecStart = mkForce (
             let
               options = concatStringsSep " " ([
-                "--docker"
+                # "--docker"
                 "--node-ip=${config.nzbr.nodeIp}"
                 "--node-external-ip=${config.nzbr.nodeIp}"
                 "--flannel-iface=tailscale0"
