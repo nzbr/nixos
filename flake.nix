@@ -228,6 +228,13 @@
               scripts;
         };
 
+        checks = {
+          nixpkgs-fmt = pkgs.runCommand "check-nixpkgs-fmt" { nativeBuildInputs = [ pkgs.nixpkgs-fmt ]; } ''
+            nixpkgs-fmt --check ${./.}
+            touch $out
+          '';
+        };
+
         apps = mapAttrs'
           (name: value:
             nameValuePair'

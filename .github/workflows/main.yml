@@ -21,7 +21,10 @@ jobs:
       - name: Install nix ❄️
         uses: cachix/install-nix-action@v18
         with:
-          extra_nix_config: 'access-tokens = github.com=${{ github.token }}'
+          extra_nix_config: |
+            access-tokens = github.com=${{ github.token }}
+            trusted-public-keys = nzbr-nix-cache.s3.eu-central-1.wasabisys.com:3BzCCe4Frvvwamd5wibtMAcEKwbVs4y2xKUR2vQ8gIo= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+            substituters = https://nzbr-nix-cache.s3.eu-central-1.wasabisys.com https://cache.nixos.org/
 
       - name: Find checks
         id: checks
@@ -46,7 +49,10 @@ jobs:
       - name: Install nix ❄️
         uses: cachix/install-nix-action@v18
         with:
-          extra_nix_config: 'access-tokens = github.com=${{ github.token }}'
+          extra_nix_config: |
+            access-tokens = github.com=${{ github.token }}
+            trusted-public-keys = nzbr-nix-cache.s3.eu-central-1.wasabisys.com:3BzCCe4Frvvwamd5wibtMAcEKwbVs4y2xKUR2vQ8gIo= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+            substituters = https://nzbr-nix-cache.s3.eu-central-1.wasabisys.com https://cache.nixos.org/
 
       - name: Run check 📋
         run: |
@@ -72,11 +78,30 @@ jobs:
       - name: Install nix ❄️
         uses: cachix/install-nix-action@v18
         with:
-          extra_nix_config: 'access-tokens = github.com=${{ github.token }}'
+          extra_nix_config: |
+            access-tokens = github.com=${{ github.token }}
+            trusted-public-keys = nzbr-nix-cache.s3.eu-central-1.wasabisys.com:3BzCCe4Frvvwamd5wibtMAcEKwbVs4y2xKUR2vQ8gIo= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+            substituters = https://nzbr-nix-cache.s3.eu-central-1.wasabisys.com https://cache.nixos.org/
 
       - name: Build 🛠️
         run: |
           nix build -L .#nixosConfigurations.${{ matrix.system }}.config.system.build.toplevel
+
+      - name: Decrypt secrets 🔓
+        env:
+          SECRET_DECRYPTION_KEY: '${{ secrets.SECRET_DECRYPTION_KEY }}'
+        run: |
+          echo "$SECRET_DECRYPTION_KEY" | base64 -d > .github/secret-decryption-key
+          nix run nixpkgs#rage -- -d -i .github/secret-decryption-key -o .github/cache-priv-key.pem .github/cache-priv-key.pem.age
+          mkdir -p $HOME/.aws
+          nix run nixpkgs#rage -- -d -i .github/secret-decryption-key -o $HOME/.aws/credentials .github/s3-credentials.age
+
+      - name: Sign ✒️
+        run: |
+          nix store sign --key-file .github/cache-priv-key.pem --recursive result
+
+      - name: Copy to cache 🚚
+        run: nix copy --to "${{ vars.S3_URL }}" result
 
   iso:
     name: Build Live ISO 💿
@@ -90,7 +115,10 @@ jobs:
       - name: Install nix ❄️
         uses: cachix/install-nix-action@v18
         with:
-          extra_nix_config: 'access-tokens = github.com=${{ github.token }}'
+          extra_nix_config: |
+            access-tokens = github.com=${{ github.token }}
+            trusted-public-keys = nzbr-nix-cache.s3.eu-central-1.wasabisys.com:3BzCCe4Frvvwamd5wibtMAcEKwbVs4y2xKUR2vQ8gIo= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+            substituters = https://nzbr-nix-cache.s3.eu-central-1.wasabisys.com https://cache.nixos.org/
 
       - name: Build 🛠️
         run: |
@@ -99,5 +127,5 @@ jobs:
       - name: Upload ISO 📤
         uses: actions/upload-artifact@v3
         with:
-          name: iso
+          name: live-iso
           path: result/iso/*.iso
