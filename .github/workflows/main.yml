@@ -102,8 +102,16 @@ jobs:
         run: |
           nix store sign --key-file .github/cache-priv-key.pem --all
 
+      - name: Install S3 Module 🪣
+        shell: pwsh
+        run: Install-Module -Name AWSPowerShell -Force -SkipPublisherCheck
+
       - name: Copy to cache 🚚
-        run: nix copy --to "${{ vars.S3_URL }}" ./result
+        env:
+          GCROOT_SUFFIX: -${{ matrix.system }}
+        run: |
+          nix run .#s3-create-gcroot -- $(readlink ./result)
+          nix copy --to "${{ vars.S3_URL }}" ./result
 
   iso:
     name: Build Live ISO 💿
@@ -131,3 +139,62 @@ jobs:
         with:
           name: live-iso
           path: result/iso/*.iso
+
+      - name: Decrypt secrets 🔓
+        env:
+          SECRET_DECRYPTION_KEY: '${{ secrets.SECRET_DECRYPTION_KEY }}'
+        run: |
+          echo "$SECRET_DECRYPTION_KEY" | base64 -d > .github/secret-decryption-key
+          nix run nixpkgs#rage -- -d -i .github/secret-decryption-key -o .github/cache-priv-key.pem .github/cache-priv-key.pem.age
+          mkdir -p $HOME/.aws
+          nix run nixpkgs#rage -- -d -i .github/secret-decryption-key -o $HOME/.aws/credentials .github/s3-credentials.age
+
+      - name: Sign derivations ✒️
+        run: |
+          nix store sign --key-file .github/cache-priv-key.pem --all
+
+      - name: Install S3 Module 🪣
+        shell: pwsh
+        run: Install-Module -Name AWSPowerShell -Force -SkipPublisherCheck
+
+      - name: Copy to cache 🚚
+        env:
+          GCROOT_SUFFIX: -live-iso
+        run: |
+          nix run .#s3-create-gcroot -- $(readlink ./result)
+          nix copy --to "${{ vars.S3_URL }}" ./result
+
+  gc:
+    name: Collect Garbage ♻️
+    needs:
+      - hosts
+      - iso
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install nix ❄️
+        uses: cachix/install-nix-action@v19
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ github.token }}
+            trusted-public-keys = nzbr-nix-cache.s3.eu-central-1.wasabisys.com:3BzCCe4Frvvwamd5wibtMAcEKwbVs4y2xKUR2vQ8gIo= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+            substituters = https://nzbr-nix-cache.s3.eu-central-1.wasabisys.com https://cache.nixos.org/
+
+      - name: Decrypt secrets 🔓
+        env:
+          SECRET_DECRYPTION_KEY: '${{ secrets.SECRET_DECRYPTION_KEY }}'
+        run: |
+          echo "$SECRET_DECRYPTION_KEY" | base64 -d > .github/secret-decryption-key
+          mkdir -p $HOME/.aws
+          nix run nixpkgs#rage -- -d -i .github/secret-decryption-key -o $HOME/.aws/credentials .github/s3-credentials.age
+
+      - name: Install S3 Module 🪣
+        shell: pwsh
+        run: Install-Module -Name AWSPowerShell -Force -SkipPublisherCheck
+
+      - name: Run GC ♻️
+        run: nix run .#s3-collect-garbage

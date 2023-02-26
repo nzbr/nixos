@@ -1,0 +1,76 @@
+#!@powershell@/bin/pwsh
+# code: language=powershell tabSize=2
+
+Import-Module AWSPowerShell -ErrorAction Stop
+
+$s3_profile = 'nix-cache'
+$endpoint = 'https://s3.eu-central-1.wasabisys.com'
+$region = 'eu-central-1'
+$bucket = 'nzbr-nix-cache'
+$gcrootsDir = 'gcroots'
+
+function Get-S3ObjectContent {
+  param(
+    [string]$Key
+  )
+
+  $tempfile = New-TemporaryFile
+  Read-S3Object -BucketName $bucket -Region $region -ProfileName $s3_profile -EndpointUrl $endpoint -Key $Key -File $tempfile.FullName | Out-Null
+  $content = Get-Content $tempfile.FullName
+  Remove-Item $tempfile.FullName | Out-Null
+
+  return $content
+}
+
+$nars = New-Object System.Collections.Generic.HashSet[string]
+$narinfos = New-Object System.Collections.Generic.HashSet[string]
+$queue = New-Object System.Collections.Generic.Queue[string]
+
+@(
+  Get-S3Object -BucketName $bucket -Region $region -ProfileName $s3_profile -EndpointUrl $endpoint -Prefix $gcrootsDir
+  | ? { $_.Size -gt 0 }
+  | % { Get-S3ObjectContent $_.Key }
+  | % { $_ }
+) | ? {
+  try {
+    Get-S3ObjectMetadata -BucketName $bucket -Region $region -ProfileName $s3_profile -EndpointUrl $endpoint -Key "${_}.narinfo"
+    return $true
+  }
+  catch {
+    Write-Error $_
+    return $false
+  }
+} | % {
+  if (! $narinfos.Contains("${_}.narinfo")) {
+    $narinfos.Add("${_}.narinfo")
+    $queue.Enqueue($_)
+  }
+} | Out-Null
+
+$i = 0
+while ($queue.Count -gt 0) {
+  $i++
+  Write-Progress -Activity "Resolving GC roots" -Status "$($queue.Count)/$i/$($i + $queue.Count)" -PercentComplete ($i / ($i + $queue.Count) * 100)
+
+  $hash = $queue.Dequeue()
+
+  $narinfo = Get-S3ObjectContent "${hash}.narinfo"
+  $narinfo | ? { $_ -match '^URL: (.*)$' } | % { $nars.Add($Matches[1]) } | Out-Null
+
+  @(
+    $narinfo
+    | ? { $_ -match '^References: (.*)$' }
+    | % { $Matches[1] -split ' ' | ? { $_ -match '^([a-z0-9]+)-.*' } | % { $Matches[1] } }
+    | % { $_ }
+  ) | ? { ! $narinfos.Contains("${_}.narinfo") } | % {
+    $narinfos.Add("${_}.narinfo")
+    $queue.Enqueue($_)
+  } | Out-Null
+}
+
+$toDelete = @(Get-S3Object -BucketName $bucket -Region $region -ProfileName $s3_profile -EndpointUrl $endpoint | % { $_.Key } | ? { $_ -match '^(nar/[a-z0-9]+\.nar.*|[a-z0-9]+\.narinfo)$' } | ? { ! ($nars.Contains($_) -or $narinfos.Contains($_)) })
+
+for ($i = 0; $i -lt $toDelete.Count; $i++) {
+  Write-Progress -Activity "Deleting objects" -Status "$($i + 1)/$($toDelete.Count)" -PercentComplete ($i / $toDelete.Count * 100)
+  Remove-S3Object -BucketName $bucket -Region $region -ProfileName $s3_profile -EndpointUrl $endpoint -Key $($toDelete[$i]) -Force | Out-Null
+}
