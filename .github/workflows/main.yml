@@ -12,21 +12,21 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       checks: ${{ steps.checks.outputs.checks }}
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-    - name: Install nix ❄️
-      uses: cachix/install-nix-action@v18
-      with:
-        extra_nix_config: 'access-tokens = github.com=${{ github.token }}'
+      - name: Install nix ❄️
+        uses: cachix/install-nix-action@v18
+        with:
+          extra_nix_config: 'access-tokens = github.com=${{ github.token }}'
 
-    - name: Find checks
-      id: checks
-      run: |
-        nix-instantiate --json --eval --strict -E 'with builtins; attrNames (getFlake (toString ./.)).checks.${currentSystem}' | perl -pe 's|(.*)|checks=\1|' >>$GITHUB_OUTPUT
+      - name: Find checks
+        id: checks
+        run: |
+          nix-instantiate --json --eval --strict -E 'with builtins; attrNames (getFlake (toString ./.)).checks.${currentSystem}' | perl -pe 's|(.*)|checks=\1|' >>$GITHUB_OUTPUT
 
   checks:
     name: Flake Check 📋
