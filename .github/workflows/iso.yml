@@ -1,0 +1,42 @@
+name: 'ISO'
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 18 * * 5'
+
+jobs:
+  build:
+    name: Build 🛠️
+    uses: ./.github/workflows/main.yml
+  iso:
+    name: Build Live ISO 💿
+    needs:
+      - hosts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install nix ❄️
+        uses: cachix/install-nix-action@v19
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ github.token }}
+            trusted-public-keys = nzbr-nix-cache.s3.eu-central-1.wasabisys.com:3BzCCe4Frvvwamd5wibtMAcEKwbVs4y2xKUR2vQ8gIo= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+            substituters = https://nzbr-nix-cache.s3.eu-central-1.wasabisys.com https://cache.nixos.org/
+
+      - name: Build 🛠️
+        run: |
+          nix build -L .#nixosConfigurations.live.config.system.build.isoImage
+
+      - name: Upload ISO 📤
+        uses: actions/upload-artifact@v3
+        with:
+          name: live-iso
+          path: result/iso/*.iso
