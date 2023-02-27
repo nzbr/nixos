@@ -68,7 +68,16 @@ while ($queue.Count -gt 0) {
   } | Out-Null
 }
 
-$toDelete = @(Get-S3Object -BucketName $bucket -Region $region -ProfileName $s3_profile -EndpointUrl $endpoint | % { $_.Key } | ? { $_ -match '^(nar/[a-z0-9]+\.nar.*|[a-z0-9]+\.narinfo)$' } | ? { ! ($nars.Contains($_) -or $narinfos.Contains($_)) })
+Write-Host "::notice ::Found $($narinfos.Count) referenced derivations ($(($nars.Count + $narinfos.Count)) objects)"
+
+$allItems = @(Get-S3Object -BucketName $bucket -Region $region -ProfileName $s3_profile -EndpointUrl $endpoint | % { $_.Key })
+$relevantItems = @($allItems | ? { $_ -match '^(nar/[a-z0-9]+\.nar.*|[a-z0-9]+\.narinfo)$' })
+
+Write-Host "::notice ::Bucket contains $($relevantItems.Count) NARs and NAR infos ($($allItems.Count) total)"
+
+$toDelete = @($relevantItems | ? { ! ($nars.Contains($_) -or $narinfos.Contains($_)) })
+
+Write-Host "::notice ::Deleting $($toDelete.Length) objects"
 
 for ($i = 0; $i -lt $toDelete.Count; $i++) {
   Write-Progress -Activity "Deleting objects" -Status "$($i + 1)/$($toDelete.Count)" -PercentComplete ($i / $toDelete.Count * 100)
