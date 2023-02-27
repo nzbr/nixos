@@ -32,7 +32,6 @@ jobs:
         uses: ./.github/actions/nix-build
         with:
           expression: .#nixosConfigurations.live.config.system.build.isoImage
-          cache: false
 
       - name: Upload ISO 📤
         uses: actions/upload-artifact@v3

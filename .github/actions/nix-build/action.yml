@@ -23,4 +23,5 @@ runs:
 
     - name: Build ${{ inputs.expression }} 🛠️
       shell: bash
-      run: nix build -L "${{ inputs.expression }}"
+      run: |
+        nix build -L "${{ inputs.expression }}" |& sed -uE 's/^(trace: +)?warning:(\s+|$)/::warning::/;s/^(trace: +)?error:(\s+|$)/::error::/;s/^trace:(\s+|$)/::notice::trace: /'
