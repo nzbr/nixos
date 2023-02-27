@@ -148,7 +148,8 @@ with builtins; with lib; {
                                 };
 
                                 buildCommand = ''
-                                  $CXX -o $out $src
+                                  cp $src ${exe}.cpp
+                                  $CXX -o $out ${exe}.cpp
                                 '';
                               }
                             )
