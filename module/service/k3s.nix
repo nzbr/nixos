@@ -13,11 +13,11 @@ with builtins; with lib; {
       resolvconf = pkgs.writeText "resolv.conf" ''
         nameserver ${cfg.dns}
       '';
+      kubeconfigPath = "/run/kubeconfig";
     in
     mkIf cfg.enable {
 
       services.k3s = {
-        # docker = true;
         serverAddr = mkDefault inputs.self.nixosConfigurations.storm.config.nzbr.nodeIp;
         tokenFile = mkDefault config.nzbr.assets."k3s-token";
       };
@@ -26,19 +26,16 @@ with builtins; with lib; {
         after = [
           "network.service"
           "firewall.service"
-          # "docker.service"
           "tailscaled.service"
         ];
         serviceConfig = {
           ExecStart = mkForce (
             let
               options = concatStringsSep " " ([
-                # "--docker"
                 "--node-ip=${config.nzbr.nodeIp}"
                 "--node-external-ip=${config.nzbr.nodeIp}"
                 "--flannel-iface=tailscale0"
                 "--resolv-conf=${resolvconf}"
-                "--snapshotter=fuse-overlayfs" # irrelevant for docker
                 "--kubelet-arg=cgroup-driver=systemd"
                 "--kubelet-arg=runtime-request-timeout=5m0s"
               ] ++ (if isServer then [
@@ -52,15 +49,14 @@ with builtins; with lib; {
                 "--advertise-address=${config.nzbr.nodeIp}"
                 "--flannel-backend=vxlan"
                 "--disable-network-policy"
-                "--write-kubeconfig /run/kubeconfig"
+                "--write-kubeconfig ${kubeconfigPath}"
               ] else [
                 " --server https://${cfg.serverAddr}:6443"
               ]));
             in
             "${pkgs.busybox}/bin/sh -c '"
-            + "export PATH=$PATH:${pkgs.fuse-overlayfs}/bin:${pkgs.fuse3}/bin" # PATH is set with ENVIRONMENT= and not Path=, so it can't be easily overwritten, irrelevant for docker
-            + "&& export K3S_TOKEN=$(cat ${cfg.tokenFile})"
-            + "&& exec ${cfg.package}/bin/k3s ${cfg.role} ${options}"
+            + "export K3S_TOKEN=$(cat ${cfg.tokenFile}) && "
+            + "exec ${cfg.package}/bin/k3s ${cfg.role} ${options}"
             + "'"
           );
         };
@@ -75,18 +71,10 @@ with builtins; with lib; {
       ];
 
       environment.variables = {
-        KUBECONFIG = "/run/kubeconfig";
+        KUBECONFIG = mkIf isServer kubeconfigPath;
       };
 
       networking.firewall.trustedInterfaces = [ "tunl0" "flannel.1" "cni0" ];
 
-      boot.kernelModules = [
-        "rbd" # CEPH (RADOS block device)
-      ];
-
-      virtualisation.docker = {
-        autoPrune.enable = true;
-        daemon.settings."exec-opts" = [ "native.cgroupdriver=systemd" ];
-      };
     };
 }
