@@ -1,0 +1,17 @@
+name: Weekly Rebuild 📆
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: '0 18 * * 5'
+
+jobs:
+  build:
+    uses: ./.github/workflows/run_build_default_hosts.yml
+    secrets: inherit
+
+  gc:
+    needs:
+      - build
+    uses: ./.github/workflows/run_gc.yml
+    secrets: inherit

@@ -1,0 +1,18 @@
+name: Push To Main 🐲
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  checks:
+    uses: ./.github/workflows/run_checks.yml
+
+  build:
+    uses: ./.github/workflows/run_build_default_hosts.yml
+    secrets: inherit
+
+  iso:
+    uses: ./.github/workflows/on_iso.yml
+    secrets: inherit

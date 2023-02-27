@@ -1,0 +1,6 @@
+runs:
+  using: 'composite'
+  steps:
+    - name: Install S3 Module 🪣
+      shell: pwsh
+      run: Install-Module -Name AWSPowerShell -Force -SkipPublisherCheck

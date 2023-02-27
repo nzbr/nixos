@@ -1,0 +1,12 @@
+name: Pull Request 📨
+
+on:
+  pull_request: {}
+
+jobs:
+  checks:
+    uses: ./.github/workflows/run_checks.yml
+
+  build:
+    uses: ./.github/workflows/run_build_default_hosts.yml
+    secrets: inherit

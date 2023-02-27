@@ -1,0 +1,29 @@
+name: Run Garbage Collector ♻️
+
+on:
+  workflow_call: {}
+  workflow_dispatch: {}
+
+jobs:
+  gc:
+    name: Collect Garbage ♻️
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install nix ❄️
+        uses: ./.github/actions/install-nix
+
+      - name: Decrypt secrets 🔓
+        uses: ./.github/actions/decrypt-secrets
+        with:
+          secret-key: ${{ secrets.SECRET_DECRYPTION_KEY }}
+
+      - name: Install S3 Module 🪣
+        uses: ./.github/actions/setup-powershell
+
+      - name: Run GC ♻️
+        run: nix run .#s3-collect-garbage

@@ -1,0 +1,34 @@
+name: Build Default Hosts 🛠️
+
+on:
+  workflow_call: {}
+
+jobs:
+  build:
+    name: Build Host Config 🛠️
+    strategy:
+      fail-fast: false
+      matrix:
+        host:
+          - avalanche
+          - earthquake
+          - storm
+          - pulsar
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Build toplevel ❄️
+        uses: ./.github/actions/nix-build
+        with:
+          expression: .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
+
+      - name: Push to cache 🚚
+        uses: ./.github/actions/push-to-cache
+        with:
+          cache-tag: ${{ matrix.host }}
+          secret-key: ${{ secrets.SECRET_DECRYPTION_KEY }}
+          derivation: ./result

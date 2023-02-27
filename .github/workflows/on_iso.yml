@@ -1,0 +1,41 @@
+name: Build Live ISO 💿
+
+on:
+  workflow_call: {}
+  workflow_dispatch: {}
+  schedule:
+    - cron: '0 8 15 */3 *'
+
+jobs:
+  iso:
+    name: Build ISO 💿
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Build toplevel ❄️
+        uses: ./.github/actions/nix-build
+        with:
+          expression: .#nixosConfigurations.live.config.system.build.toplevel
+
+      - name: Push to cache 🚚
+        uses: ./.github/actions/push-to-cache
+        with:
+          cache-tag: live-iso
+          secret-key: ${{ secrets.SECRET_DECRYPTION_KEY }}
+          derivation: ./result
+
+      - name: Build ISO 💿
+        uses: ./.github/actions/nix-build
+        with:
+          expression: .#nixosConfigurations.live.config.system.build.isoImage
+          cache: false
+
+      - name: Upload ISO 📤
+        uses: actions/upload-artifact@v3
+        with:
+          name: live-iso
+          path: result/iso/*.iso

@@ -1,0 +1,17 @@
+inputs:
+  secret-key:
+    description: 'Secret decryption key'
+    type: string
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Decrypt secrets 🔓
+      env:
+        SECRET_DECRYPTION_KEY: '${{ inputs.secret-key }}'
+      shell: bash
+      run: |
+        echo "$SECRET_DECRYPTION_KEY" | base64 -d > .github/secret-decryption-key
+        nix run nixpkgs#rage -- -d -i .github/secret-decryption-key -o $HOME/cache-priv-key.pem .github/cache-priv-key.pem.age
+        mkdir -p $HOME/.aws
+        nix run nixpkgs#rage -- -d -i .github/secret-decryption-key -o $HOME/.aws/credentials .github/s3-credentials.age

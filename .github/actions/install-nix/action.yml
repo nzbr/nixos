@@ -1,0 +1,9 @@
+runs:
+  using: 'composite'
+  steps:
+    - uses: cachix/install-nix-action@v18
+      with:
+        extra_nix_config: |
+          access-tokens = github.com=${{ github.token }}
+          trusted-public-keys = nzbr-nix-cache.s3.eu-central-1.wasabisys.com:3BzCCe4Frvvwamd5wibtMAcEKwbVs4y2xKUR2vQ8gIo= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+          substituters = https://nzbr-nix-cache.s3.eu-central-1.wasabisys.com https://cache.nixos.org/

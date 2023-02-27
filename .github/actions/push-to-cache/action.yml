@@ -1,0 +1,37 @@
+inputs:
+  secret-key:
+    description: 'Secret decryption key'
+    type: string
+    required: true
+  derivation:
+    description: 'Store path to push to cache'
+    type: string
+    required: true
+  cache-tag:
+    description: 'Tag to use for the cache'
+    type: string
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Decrypt secrets 🔓
+      uses: ./.github/actions/decrypt-secrets
+      with:
+        secret-key: ${{ inputs.secret-key }}
+
+    - name: Sign derivations ✒️
+      shell: bash
+      run: nix store sign --key-file $HOME/cache-priv-key.pem --recursive "${{ inputs.derivation }}"
+
+    - name: Install S3 Module 🪣
+      uses: ./.github/actions/setup-powershell
+
+    - name: Create GC Root ♻️
+      env:
+        GCROOT_SUFFIX: -${{ inputs.cache-tag }}
+      shell: bash
+      run: nix run .#s3-create-gcroot -- $(nix path-info "${{ inputs.derivation }}" | head -n1)
+
+    - name: Copy to cache 🚚
+      shell: bash
+      run: nix copy --to "s3://nzbr-nix-cache?region=eu-central-1&endpoint=s3.eu-central-1.wasabisys.com&profile=nix-cache" "${{ inputs.derivation }}"
