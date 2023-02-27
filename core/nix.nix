@@ -66,9 +66,11 @@ in
 
     binaryCaches = [
       # "https://thefloweringash-armv7.cachix.org"
+      "https://nzbr-nix-cache.s3.eu-central-1.wasabisys.com"
     ];
     binaryCachePublicKeys = [
       # "thefloweringash-armv7.cachix.org-1:v+5yzBD2odFKeXbmC+OPWVqx4WVoIVO6UXgnSAWFtso="
+      "nzbr-nix-cache.s3.eu-central-1.wasabisys.com:3BzCCe4Frvvwamd5wibtMAcEKwbVs4y2xKUR2vQ8gIo="
     ];
 
     autoOptimiseStore = true;
