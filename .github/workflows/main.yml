@@ -106,12 +106,13 @@ jobs:
         shell: pwsh
         run: Install-Module -Name AWSPowerShell -Force -SkipPublisherCheck
 
-      - name: Copy to cache 🚚
+      - name: Create GC Root ♻️
         env:
           GCROOT_SUFFIX: -${{ matrix.system }}
-        run: |
-          nix run .#s3-create-gcroot -- $(readlink ./result)
-          nix copy --to "${{ vars.S3_URL }}" ./result
+        run: nix run .#s3-create-gcroot -- $(readlink ./result)
+
+      - name: Copy to cache 🚚
+        run: nix copy --to "${{ vars.S3_URL }}" ./result
 
   iso:
     name: Build Live ISO 💿
@@ -157,12 +158,13 @@ jobs:
         shell: pwsh
         run: Install-Module -Name AWSPowerShell -Force -SkipPublisherCheck
 
-      - name: Copy to cache 🚚
+      - name: Create GC Root ♻️
         env:
           GCROOT_SUFFIX: -live-iso
-        run: |
-          nix run .#s3-create-gcroot -- $(readlink ./result)
-          nix copy --to "${{ vars.S3_URL }}" ./result
+        run: nix run .#s3-create-gcroot -- $(readlink ./result)
+
+      - name: Copy to cache 🚚
+        run: nix copy --to "${{ vars.S3_URL }}" ./result
 
   gc:
     name: Collect Garbage ♻️
