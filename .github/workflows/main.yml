@@ -148,7 +148,6 @@ jobs:
     name: Collect Garbage ♻️
     needs:
       - hosts
-      - iso
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
