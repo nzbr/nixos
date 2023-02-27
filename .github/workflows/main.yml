@@ -70,6 +70,7 @@ jobs:
           - earthquake
           - avalanche
           - pulsar
+          - live
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -116,6 +117,8 @@ jobs:
 
   iso:
     name: Build Live ISO 💿
+    needs:
+      - hosts
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -140,31 +143,6 @@ jobs:
         with:
           name: live-iso
           path: result/iso/*.iso
-
-      - name: Decrypt secrets 🔓
-        env:
-          SECRET_DECRYPTION_KEY: '${{ secrets.SECRET_DECRYPTION_KEY }}'
-        run: |
-          echo "$SECRET_DECRYPTION_KEY" | base64 -d > .github/secret-decryption-key
-          nix run nixpkgs#rage -- -d -i .github/secret-decryption-key -o .github/cache-priv-key.pem .github/cache-priv-key.pem.age
-          mkdir -p $HOME/.aws
-          nix run nixpkgs#rage -- -d -i .github/secret-decryption-key -o $HOME/.aws/credentials .github/s3-credentials.age
-
-      - name: Sign derivations ✒️
-        run: |
-          nix store sign --key-file .github/cache-priv-key.pem --all
-
-      - name: Install S3 Module 🪣
-        shell: pwsh
-        run: Install-Module -Name AWSPowerShell -Force -SkipPublisherCheck
-
-      - name: Create GC Root ♻️
-        env:
-          GCROOT_SUFFIX: -live-iso
-        run: nix run .#s3-create-gcroot -- $(readlink ./result)
-
-      - name: Copy to cache 🚚
-        run: nix copy --to "${{ vars.S3_URL }}" ./result
 
   gc:
     name: Collect Garbage ♻️
