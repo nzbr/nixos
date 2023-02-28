@@ -96,7 +96,7 @@ with builtins; with lib; {
               KillMode = "process";
               TimeoutStartSec = "infinity";
               TimeoutStopSec = "infinity";
-              Restart = "on-failure";
+              # Restart = "on-failure";
               # RestartSec = "30min";
             };
             preStart =
