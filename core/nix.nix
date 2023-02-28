@@ -64,16 +64,18 @@ in
       experimental-features = nix-command flakes
     '';
 
-    binaryCaches = [
-      # "https://thefloweringash-armv7.cachix.org"
-      "https://nzbr-nix-cache.s3.eu-central-1.wasabisys.com"
-    ];
-    binaryCachePublicKeys = [
-      # "thefloweringash-armv7.cachix.org-1:v+5yzBD2odFKeXbmC+OPWVqx4WVoIVO6UXgnSAWFtso="
-      "nzbr-nix-cache.s3.eu-central-1.wasabisys.com:3BzCCe4Frvvwamd5wibtMAcEKwbVs4y2xKUR2vQ8gIo="
-    ];
+    settings = {
+      substituters = [
+        # "https://thefloweringash-armv7.cachix.org"
+        "https://nzbr-nix-cache.s3.eu-central-1.wasabisys.com"
+      ];
+      trusted-public-keys = [
+        # "thefloweringash-armv7.cachix.org-1:v+5yzBD2odFKeXbmC+OPWVqx4WVoIVO6UXgnSAWFtso="
+        "nzbr-nix-cache.s3.eu-central-1.wasabisys.com:3BzCCe4Frvvwamd5wibtMAcEKwbVs4y2xKUR2vQ8gIo="
+      ];
+      auto-optimise-store = true;
+    };
 
-    autoOptimiseStore = true;
     gc = {
       automatic = mkDefault false;
       dates = "weekly";
