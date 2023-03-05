@@ -131,7 +131,7 @@ with builtins; with lib;
 
       virtualisation.docker.enable = mkDefault true;
 
-      users.groups.podman.members = [ config.nzbr.user ];
+      programs.ssh.forwardX11 = true;
     }
   );
 }

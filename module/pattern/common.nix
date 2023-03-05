@@ -68,11 +68,8 @@ with builtins; with lib;
 
       programs = {
         zsh.enable = true;
+        ssh.startAgent = true;
         mosh.enable = true;
-        ssh = {
-          setXAuthLocation = lib.mkForce true;
-          startAgent = true;
-        };
       };
 
       i18n = {
