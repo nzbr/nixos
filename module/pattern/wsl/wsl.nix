@@ -27,6 +27,8 @@ with builtins; with lib; {
           docker-native.enable = mkDefault true;
           docker-native.addToDockerGroup = true;
 
+          # nativeSystemd = true;
+
           # interop.register = mkDefault false;
 
           wslConf = {
@@ -101,10 +103,6 @@ with builtins; with lib; {
             uid = 1000;
           };
         };
-
-        i18n.supportedLocales = [
-          "en_US.UTF-8/UTF-8"
-        ];
 
         nzbr.home.users = [ config.nzbr.user ];
 
