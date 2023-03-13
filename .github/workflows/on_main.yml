@@ -7,7 +7,9 @@ on:
 
 jobs:
   checks:
-    uses: ./.github/workflows/run_checks.yml
+    uses: nzbr/actions/.github/workflows/run_checks.yml@main
+    secrets:
+      SECRET_DECRYPTION_KEY: ${{ secrets.SECRET_DECRYPTION_KEY }}
 
   build:
     uses: ./.github/workflows/run_build_default_hosts.yml

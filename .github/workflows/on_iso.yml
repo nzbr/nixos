@@ -17,19 +17,15 @@ jobs:
           fetch-depth: 0
 
       - name: Build toplevel ❄️
-        uses: ./.github/actions/nix-build
+        uses: nzbr/actions/nix-build@main
         with:
           expression: .#nixosConfigurations.live.config.system.build.toplevel
-
-      - name: Push to cache 🚚
-        uses: ./.github/actions/push-to-cache
-        with:
+          cache: true
           cache-tag: live-iso
           secret-key: ${{ secrets.SECRET_DECRYPTION_KEY }}
-          derivation: ./result
 
       - name: Build ISO 💿
-        uses: ./.github/actions/nix-build
+        uses: nzbr/actions/nix-build@main
         with:
           expression: .#nixosConfigurations.live.config.system.build.isoImage
 

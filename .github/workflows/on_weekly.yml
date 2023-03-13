@@ -9,9 +9,3 @@ jobs:
   build:
     uses: ./.github/workflows/run_build_default_hosts.yml
     secrets: inherit
-
-  gc:
-    needs:
-      - build
-    uses: ./.github/workflows/run_gc.yml
-    secrets: inherit

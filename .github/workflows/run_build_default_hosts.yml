@@ -22,13 +22,9 @@ jobs:
           fetch-depth: 0
 
       - name: Build toplevel ❄️
-        uses: ./.github/actions/nix-build
+        uses: nzbr/actions/nix-build@main
         with:
           expression: .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
-
-      - name: Push to cache 🚚
-        uses: ./.github/actions/push-to-cache
-        with:
+          cache: true
           cache-tag: ${{ matrix.host }}
           secret-key: ${{ secrets.SECRET_DECRYPTION_KEY }}
-          derivation: ./result
