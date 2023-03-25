@@ -11,6 +11,8 @@ with builtins; with lib; {
     program = {
       latex.enable = true;
     };
+
+    service.syncthing.enable = true;
   };
 
   wsl = {
