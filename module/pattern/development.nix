@@ -38,6 +38,7 @@ with builtins; with lib;
         desktop-file-utils
         docker-compose
         dotnet-sdk
+        entr
         gcc
         gh
         git-crypt
