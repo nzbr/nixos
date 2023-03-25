@@ -473,6 +473,7 @@
         "razer-nari": "razer-nari",
         "rnix-lsp": "rnix-lsp",
         "rust-overlay": "rust-overlay",
+        "syncthing-key-generator": "syncthing-key-generator",
         "wsld": "wsld",
         "xyno-experiments": "xyno-experiments"
       }
@@ -497,6 +498,22 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "syncthing-key-generator": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1439692684,
+        "narHash": "sha256-mEupKSSbdC7OUHa7s2zscwiIxHGMZXbN978Pk4/KY8g=",
+        "owner": "mtreece",
+        "repo": "syncthing-key-generator",
+        "rev": "0571c94ba14235754860a5ad2fe7a9b7842ef661",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mtreece",
+        "repo": "syncthing-key-generator",
         "type": "github"
       }
     },

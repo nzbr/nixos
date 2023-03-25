@@ -83,6 +83,10 @@
     #   flake = false;
     #   url = "github:ceph/ceph-csi/release-v3.4";
     # };
+    syncthing-key-generator = {
+      flake = false;
+      url = "github:mtreece/syncthing-key-generator";
+    };
   };
 
   outputs =
