@@ -76,15 +76,9 @@ with builtins; with lib; {
                 {
                   earthquake = {
                     addresses = [ "quic://10.0.1.2:22000" "quic://earthquake.nzbr.de" "quic://100.71.200.40:22000" "dynamic" ];
-                    # id = "JDXIQUR-4FUQQK6-CZFNZTA-NCWBFEU-HCZFDW5-E7X2KKX-BIQWZZZ-2B42XQF";
                     introducer = true;
                   };
 
-                  # hurricane.id = "RNHGREZ-WXBCXDW-KLJYXSB-I5RIE2P-FZIPGRV-44SFZAS-OPVLV4B-TRL4LA2";
-                  # landslide.id = "Q67E6XX-AQTLKAS-2SPVS7T-OUUPVXZ-UX632XY-DN7H2AZ-Y3N2CFJ-5EGDVAB";
-                  # meteor.id = "7RPEIWJ-QQDVCWD-M46KH3U-237GDWG-ZL6EEF2-WPZVAF2-7L5JRX2-HHHKKAB";
-
-                  # comet.id = "S33W76X-E3KIOOT-GDAAKNY-LLXR2CA-KQUIBNA-TC7R7TL-SJASVY3-UCFBCQM";
                   earthquake-macos.id = "QCCLSA4-AFZQSHS-D4DQ2F6-VCPWNTQ-MOQSJY2-HUA5PSA-J3FTLTH-XXJAWAW";
                   hurricane-win.id = "ORTVEOF-CUZIQQI-HXPIVQW-FSS4B3F-JVSDTQV-GBB233Q-ESXFKKW-GWNPNQN";
                   magnetar.id = "KGUM5PX-JMVXHTL-LOUH3NP-LTA5JGV-TBS2MFY-4V2K2JL-PJHNEHV-DRCDIAJ";
