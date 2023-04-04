@@ -63,7 +63,7 @@ with builtins; with lib; {
 
           etc = {
             "resolv.conf".text = ''
-              search dragon-augmented.ts.net nzbr.de
+              search dragon-augmented.ts.net
               nameserver 100.100.100.100
               nameserver 1.1.1.1
             '';
