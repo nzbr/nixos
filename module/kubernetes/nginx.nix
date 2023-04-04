@@ -51,7 +51,7 @@ with builtins; with lib; {
                   hsts-preload = true;
                   ssl-redirect = true;
                   access-log-path = "/dev/null";
-                  custom-http-errors = "400,401,403,404,405,408,409,410,411,412,413,414,415,418,429,500,501,502,503,504";
+                  custom-http-errors = "404,410,414,418,502,503,504";
                 };
                 extraArgs = {
                   default-ssl-certificate = "${namespace}/wildcard-nzbr-de";
