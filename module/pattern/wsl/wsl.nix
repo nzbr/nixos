@@ -50,9 +50,11 @@ with builtins; with lib; {
 
         environment = {
           systemPackages = with pkgs; [
-            chromium
+            firefox
             virt-manager
             wslu
+            wsl-open
+            xdg-utils
           ];
 
           variables = {
