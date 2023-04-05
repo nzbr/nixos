@@ -59,6 +59,9 @@ with builtins; with lib; {
             # Theme config
             # QT_QPA_PLATFORMTHEME = "gtk2"; # already set somewhere else?
             XDG_CURRENT_DESKTOP = "gnome";
+
+            QT_QPA_PLATFORM="wayland;xcb";
+            SDL_VIDEODRIVER="wayland";
           };
 
           etc = {
