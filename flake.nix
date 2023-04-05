@@ -173,6 +173,9 @@
       let
         pkgs = (import "${inputs.nixpkgs}" { inherit system; });
         naersk = pkgs.callPackage "${inputs.naersk}" { };
+        python3 = pkgs.python3.withPackages (pypi: with pypi; [
+          pygraphviz
+        ]);
         scripts = (
           # legacy scripts.nix
           mapAttrs (name: script: pkgs.writeShellScriptBin name script) ((import ./scripts.nix) { inherit lib self; pkgs = (pkgs // self.packages.${system}); })
@@ -188,9 +191,7 @@
                   dir = "bin";
                   isExecutable = true;
 
-                  python3 = pkgs.python3.withPackages (pypi: with pypi; [
-                    pygraphviz
-                  ]);
+                  inherit python3;
 
                   # packages that are available to the scripts
                   inherit (pkgs)
@@ -225,6 +226,7 @@
               rage
               (ifAvailable inputs.nirgenx.packages "helm-update")
               (ifAvailable inputs.nirgenx.packages "yaml2nix")
+              python3
             ])
             ++
             mapAttrsToList
