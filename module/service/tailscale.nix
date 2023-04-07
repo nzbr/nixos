@@ -41,6 +41,9 @@ with builtins; with lib; {
         script =
           let
             tailscale = "${config.services.tailscale.package}/bin/tailscale";
+            options = concatStringsSep " " (flatten [
+              (optional cfg.exit "--advertise-exit-node")
+            ]);
           in
           ''
             # wait for tailscaled to settle
@@ -48,10 +51,12 @@ with builtins; with lib; {
 
             # check if we are already authenticated to tailscale
             status="$(${tailscale} status -json | ${pkgs.jq}/bin/jq -r .BackendState)"
-            if ! [ $status = "Running" ]; then # if so, then do nothing
+            if ! [ $status = "Running" ]; then
               # authenticate with tailscale
-              ${tailscale} up -authkey ''$(cat ${config.nzbr.assets."tskey"}) \
-              ${optionalString cfg.exit "--advertise-exit-node"}
+              ${tailscale} up -authkey ''$(cat ${config.nzbr.assets."tskey"}) ${options}
+            else
+              # reconfigure but don't authenticate
+              ${tailscale} up ${options}
             fi
           '';
       };
