@@ -555,16 +555,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1667192681,
-        "narHash": "sha256-YOgbJWP/dxPhVBbz6+tMauRgmZLZmCGGnyw5PBSp8Uc=",
-        "owner": "thexyno",
-        "repo": "x",
-        "rev": "d3f3d2d6245d04da44d1fd0ffc768b0bd3215beb",
+        "lastModified": 1680862329,
+        "narHash": "sha256-ItGaOeb0wt8ESKTJxPkFVbV8cyR/0RhSFVltelLQ9b4=",
+        "owner": "nzbr",
+        "repo": "xyno-x",
+        "rev": "2b2e1a919fa8a04e7e8818337825b14d39db639f",
         "type": "github"
       },
       "original": {
-        "owner": "thexyno",
-        "repo": "x",
+        "owner": "nzbr",
+        "repo": "xyno-x",
         "type": "github"
       }
     }
