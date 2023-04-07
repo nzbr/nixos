@@ -16,11 +16,11 @@
 stdenv.mkDerivation
 rec {
   pname = "urbackup2-server";
-  version = "2.5.26";
+  version = "2.5.30";
 
   src = fetchurl {
     url = "https://www.urbackup.org/downloads/Server/${version}/urbackup-server-${version}.tar.gz";
-    sha512 = "cec0f4de3bf8e6258dbdc37dd6e8e0e299981b18f0545c4116127d2d5b93e9a24886fbcb3fd6ba6adf2d323ea14b4bada9493afe1ebfa85a425c5208a21e95c7";
+    sha512 = "E6IbVwj/9VIbYQ/aS8kzsJ1d13gKibjM4gJCO5ASc2Avu/KcqT6En2uyqG5gS7hsC0VPBmdtOZwjYNsFJvdClw==";
   };
 
   buildInputs = [ cryptopp curl fuse sqlite zlib ];

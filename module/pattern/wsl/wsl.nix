@@ -24,8 +24,8 @@ with builtins; with lib; {
           enable = true;
           defaultUser = config.nzbr.user;
           startMenuLaunchers = true;
-          docker-native.enable = mkDefault true;
-          docker-native.addToDockerGroup = true;
+          # docker-native.enable = mkDefault true;
+          # docker-native.addToDockerGroup = true;
 
           # nativeSystemd = true;
 
@@ -62,8 +62,8 @@ with builtins; with lib; {
             # QT_QPA_PLATFORMTHEME = "gtk2"; # already set somewhere else?
             XDG_CURRENT_DESKTOP = "gnome";
 
-            QT_QPA_PLATFORM="wayland;xcb";
-            SDL_VIDEODRIVER="wayland";
+            QT_QPA_PLATFORM = "wayland;xcb";
+            SDL_VIDEODRIVER = "wayland";
           };
 
           etc = {
@@ -125,6 +125,9 @@ with builtins; with lib; {
           nix
           nixpkgs-fmt
         ];
+
+        services.udev.enable = lib.mkDefault false;
+        hardware.firmware = mkOverride 60 [ ];
 
         system.build.winBin =
           pkgs.runCommand "windows-path" { } (concatStringsSep "\n"
