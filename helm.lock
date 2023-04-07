@@ -1,15 +1,29 @@
 {
   "appscode": {
     "accounts-ui": {
+      "v2023.03.23": {
+        "digest": "f896ec84207027fbba6c36071cab0548861f087bc9aadc25000bd92cd69ce9ca",
+        "url": "https://charts.appscode.com/stable/accounts-ui/accounts-ui-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "822dbbfa7e4b336e2562580d60deda643f964b13281a4d0bfcabe12660b2555a",
         "url": "https://charts.appscode.com/stable/accounts-ui/accounts-ui-v2022.06.14.tgz"
       }
     },
     "ace": {
+      "v2023.03.23": {
+        "digest": "dc2a6b3518e06c24b2e8b6c52315dbd6cbb2b009d94de352c79b4002e45e9489",
+        "url": "https://charts.appscode.com/stable/ace/ace-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "add58eaaf4ade4ae31774c4fbf8f3d4220a588176468281980eaab640c045488",
         "url": "https://charts.appscode.com/stable/ace/ace-v2022.06.14.tgz"
+      }
+    },
+    "appcatalog": {
+      "v2023.03.23": {
+        "digest": "a7c2c6112490cafed82cda45c46feac1ecfb3c417c79e2f016ec74800e33829d",
+        "url": "https://charts.appscode.com/stable/appcatalog/appcatalog-v2023.03.23.tgz"
       }
     },
     "application-crds": {
@@ -19,8 +33,12 @@
       }
     },
     "auditor": {
+      "v2023.03.23": {
+        "digest": "881ec2e23d92b70cde7bba4f2e2af5d3d59e77d737d14008157cf91968824359",
+        "url": "https://charts.appscode.com/stable/auditor/auditor-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
-        "digest": "bf936eaccd7317f21706d2ad6d1872aecb8bc993ab844427bfb7df44bee95349",
+        "digest": "3f7d919ada9ccab844c317fddf9d16852d4dd78e6395fba4de74c618c7b48f35",
         "url": "https://charts.appscode.com/stable/auditor/auditor-v2022.06.14.tgz"
       },
       "v2022.04.04": {
@@ -33,6 +51,10 @@
       }
     },
     "billing": {
+      "v2023.03.23": {
+        "digest": "f76cee6017357eeb2a71be723b7b98e169cff4f4b20af8df5d6da5881f9f2e79",
+        "url": "https://charts.appscode.com/stable/billing/billing-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "c60e4eb1c165edd1cc7d907a9120015df87c6bf23f3af881ca4af52bf68630b8",
         "url": "https://charts.appscode.com/stable/billing/billing-v2022.06.14.tgz"
@@ -56,6 +78,12 @@
         "url": "https://charts.appscode.com/stable/bytebuilders-crds/bytebuilders-crds-v0.1.0.tgz"
       }
     },
+    "capi-ui-presets": {
+      "v2023.03.23": {
+        "digest": "a728372f09f237b039d9c200bd1d5f4c4b23b8dd174c7397b82c94feddd28e3f",
+        "url": "https://charts.appscode.com/stable/capi-ui-presets/capi-ui-presets-v2023.03.23.tgz"
+      }
+    },
     "cert-manager-crds": {
       "1.9.1": {
         "digest": "34a5fcc4100d382036b17cc0aa60790fabeecfb2db137439fef214687ab3f9bb",
@@ -67,8 +95,12 @@
       }
     },
     "cert-manager-csi-driver-cacerts": {
+      "v2023.03.23": {
+        "digest": "b2ec177286154ae819272bf65b6fa4592e1c8ff755e946716dca0718097afa57",
+        "url": "https://charts.appscode.com/stable/cert-manager-csi-driver-cacerts/cert-manager-csi-driver-cacerts-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
-        "digest": "40f2d22dff23102b9cbe71386f7d19a825ed62547b2701f27d0355f2d2c249cc",
+        "digest": "5da523d5b2b5010cae7bad73157238fed1737390bdcbb362dc8cd4523d59692f",
         "url": "https://charts.appscode.com/stable/cert-manager-csi-driver-cacerts/cert-manager-csi-driver-cacerts-v2022.06.14.tgz"
       },
       "v2022.04.04": {
@@ -80,9 +112,19 @@
         "url": "https://charts.appscode.com/stable/cert-manager-csi-driver-cacerts/cert-manager-csi-driver-cacerts-v2021.10.29.tgz"
       }
     },
+    "cert-manager-webhook-ace": {
+      "v2023.03.23": {
+        "digest": "560ee17c6dc270c8ccd3064ebdc0e356bbb8d72cccef3491de4b6f2e4e3b54e4",
+        "url": "https://charts.appscode.com/stable/cert-manager-webhook-ace/cert-manager-webhook-ace-v2023.03.23.tgz"
+      }
+    },
     "cluster-connector": {
+      "v2023.03.23": {
+        "digest": "6dc21e1c457969bd2a3e338175fe8c66dee2539d9cd4d98be24d905b401dc261",
+        "url": "https://charts.appscode.com/stable/cluster-connector/cluster-connector-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
-        "digest": "5d046e7fe9f2a8cf00a5ca16b1a8e95f5763ca910f60f3ee23d09880284b3373",
+        "digest": "b9f8e2b08293c597beb9a512e5bf54d792568acf0bb4596a326d885e13ec545e",
         "url": "https://charts.appscode.com/stable/cluster-connector/cluster-connector-v2022.06.14.tgz"
       },
       "v2022.04.04": {
@@ -95,6 +137,10 @@
       }
     },
     "cluster-ui": {
+      "v2023.03.23": {
+        "digest": "15e500d0efd66aafe0154f79eec39bde986196dd7cb57aae8f8f854f50d25d57",
+        "url": "https://charts.appscode.com/stable/cluster-ui/cluster-ui-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "b7bdb67f855a44da9469dc276dc5eaac1fb288efd5b840e4ee814a4c5ef4f263",
         "url": "https://charts.appscode.com/stable/cluster-ui/cluster-ui-v2022.06.14.tgz"
@@ -125,20 +171,32 @@
       }
     },
     "deploy-ui": {
+      "v2023.03.23": {
+        "digest": "c7bb24c6913dc689695ea862c54f649f246afe518c61ac2d94f90783093b57f6",
+        "url": "https://charts.appscode.com/stable/deploy-ui/deploy-ui-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "0e39f52f5370f85a4af213cf751a445156eef3db5e48ab20f76427e3219778fe",
         "url": "https://charts.appscode.com/stable/deploy-ui/deploy-ui-v2022.06.14.tgz"
       }
     },
     "dns-proxy": {
+      "v2023.03.23": {
+        "digest": "97ca758c76c406aca966056b2175980b875fd4e85fa5107a03be4d0dd384526a",
+        "url": "https://charts.appscode.com/stable/dns-proxy/dns-proxy-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "3019e74339fa3e1c474eb67e76e586c3b6df729447ecb9801830183dc052b15c",
         "url": "https://charts.appscode.com/stable/dns-proxy/dns-proxy-v2022.06.14.tgz"
       }
     },
     "external-dns-operator": {
+      "v2023.03.23": {
+        "digest": "568f801b404a1071ed447cd14f3e3a4ed93d03ee61718b091559ce7e63c98768",
+        "url": "https://charts.appscode.com/stable/external-dns-operator/external-dns-operator-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
-        "digest": "c7f1adcd284d09152e952f585a48927a1d04d84cdfa5a7a3f6b0276ee4a1a398",
+        "digest": "a759b3c42b79458343c2a13e4c9ee9e14fa12896d1f36e5b90e73d8e01fc8daf",
         "url": "https://charts.appscode.com/stable/external-dns-operator/external-dns-operator-v2022.06.14.tgz"
       }
     },
@@ -171,6 +229,10 @@
       }
     },
     "grafana": {
+      "v2023.03.23": {
+        "digest": "d718d78c90fddd82b32ce7932431a353c092f46bdf4d129fc8132b8dff486329",
+        "url": "https://charts.appscode.com/stable/grafana/grafana-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "b747f4dbc01df4f5f9e8538bacce73e9df6c2d85fd281caee0215b889399d4fa",
         "url": "https://charts.appscode.com/stable/grafana/grafana-v2022.06.14.tgz"
@@ -192,6 +254,16 @@
       "v2021.11.16": {
         "digest": "15e5c16a43cb4609431894b0bb5ae3efa454b0d789037a8b93dbe2aef84b287d",
         "url": "https://charts.appscode.com/stable/grafana-operator/grafana-operator-v2021.11.16.tgz"
+      },
+      "v0.0.2": {
+        "digest": "cfe9a28542898b8c4679eb4d6546e045d4351a0d9230635f340d18040dd565b6",
+        "url": "https://charts.appscode.com/stable/grafana-operator/grafana-operator-v0.0.2.tgz"
+      }
+    },
+    "grafana-opscenter": {
+      "v2023.03.23": {
+        "digest": "9f2dcd4590cd49d6e170f47d7d57730b6197f194ed1c67630f62a7f3cc4dd985",
+        "url": "https://charts.appscode.com/stable/grafana-opscenter/grafana-opscenter-v2023.03.23.tgz"
       }
     },
     "grafana-ui-server": {
@@ -210,6 +282,10 @@
       "v2021.11.16": {
         "digest": "0eeac79006e50bb4cac3332459212fbb9cef252ea2e0713a4aa9854f38281242",
         "url": "https://charts.appscode.com/stable/grafana-ui-server/grafana-ui-server-v2021.11.16.tgz"
+      },
+      "v0.0.2": {
+        "digest": "3a239758152cd28a0b25d487cad932d9f9e56065b55b6e700f3d8d156ebc9f42",
+        "url": "https://charts.appscode.com/stable/grafana-ui-server/grafana-ui-server-v0.0.2.tgz"
       }
     },
     "identity-server": {
@@ -228,7 +304,29 @@
         "url": "https://charts.appscode.com/stable/kmodules-crds/kmodules-crds-v0.1.0.tgz"
       }
     },
+    "kube-auth-manager": {
+      "v2023.03.23": {
+        "digest": "1e2c5c3c74375fb35773a04e55f90f06874b70ab2a703c9efddc5040e47015d8",
+        "url": "https://charts.appscode.com/stable/kube-auth-manager/kube-auth-manager-v2023.03.23.tgz"
+      }
+    },
+    "kube-auth-proxy": {
+      "v2023.03.23": {
+        "digest": "dc8962b35a3f4961389f12e6e8ce88b92c3425aa43a11e7c847ec3e071272bc0",
+        "url": "https://charts.appscode.com/stable/kube-auth-proxy/kube-auth-proxy-v2023.03.23.tgz"
+      }
+    },
+    "kube-bind-server": {
+      "v2023.03.23": {
+        "digest": "743f0e0dea094f03460ed3c61211094f47691843849d6f6ee7b7deebf5acee12",
+        "url": "https://charts.appscode.com/stable/kube-bind-server/kube-bind-server-v2023.03.23.tgz"
+      }
+    },
     "kube-grafana-dashboards": {
+      "v2023.03.23": {
+        "digest": "ce6e8f2736def0bbb7d4d90f428c5ee3482883ff67bdb17a9e62d48bf0d81999",
+        "url": "https://charts.appscode.com/stable/kube-grafana-dashboards/kube-grafana-dashboards-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "94edb1c3e5f090ce1aada9f68c447edf61b0425232013a4e00416f0b651476cb",
         "url": "https://charts.appscode.com/stable/kube-grafana-dashboards/kube-grafana-dashboards-v2022.06.14.tgz"
@@ -243,8 +341,12 @@
       }
     },
     "kube-ui-server": {
+      "v2023.03.23": {
+        "digest": "3f1b4be3e11ce7e71714879d25e89f8995c73e62735cf85da74050aa32f58e67",
+        "url": "https://charts.appscode.com/stable/kube-ui-server/kube-ui-server-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
-        "digest": "df858cff50efb62b2a99293aadf5f4f04f44a233085cda1c6db908fe9c80f614",
+        "digest": "27bfee0dbe730369861b7abfe459981aefbbfe813230d3198f591c2326c456c1",
         "url": "https://charts.appscode.com/stable/kube-ui-server/kube-ui-server-v2022.06.14.tgz"
       },
       "v2022.04.04": {
@@ -373,6 +475,10 @@
       }
     },
     "kubedb": {
+      "v2023.02.28": {
+        "digest": "9aed48a1a0ae7c2c976567bd2880468eafbc1ec1eea5197e30cf6291bcc85b8f",
+        "url": "https://charts.appscode.com/stable/kubedb/kubedb-v2023.02.28.tgz"
+      },
       "v2023.01.31": {
         "digest": "5b3687c16f3004e5ecb313065a3d22032d3c32d9eeac23eada99987e62233138",
         "url": "https://charts.appscode.com/stable/kubedb/kubedb-v2023.01.31.tgz"
@@ -579,6 +685,10 @@
       }
     },
     "kubedb-autoscaler": {
+      "v0.17.0": {
+        "digest": "9351a62baef663ffdfe2b9446da503f3c0f79218b44281a4eefd1d0f06593a43",
+        "url": "https://charts.appscode.com/stable/kubedb-autoscaler/kubedb-autoscaler-v0.17.0.tgz"
+      },
       "v0.16.0": {
         "digest": "d7977ad6a71cfe45ace6acb515b17b30a10ac15804d69c034ea0a84c347f988b",
         "url": "https://charts.appscode.com/stable/kubedb-autoscaler/kubedb-autoscaler-v0.16.0.tgz"
@@ -697,6 +807,10 @@
       }
     },
     "kubedb-catalog": {
+      "v2023.02.28": {
+        "digest": "384a95c709f8e52d5258f1f10d4a7192d3f18c7d3c61c94ea09ef4ed578cecab",
+        "url": "https://charts.appscode.com/stable/kubedb-catalog/kubedb-catalog-v2023.02.28.tgz"
+      },
       "v2023.01.31": {
         "digest": "20f46c7e733cb7be5f655d7f56ff1a97ea3c4a33aebee5c7b897a816b2e5fb7a",
         "url": "https://charts.appscode.com/stable/kubedb-catalog/kubedb-catalog-v2023.01.31.tgz"
@@ -937,6 +1051,10 @@
       }
     },
     "kubedb-crds": {
+      "v2023.02.28": {
+        "digest": "9cc75ce85cdece6526a56b39dded8154f5f244bb78160e1e3f81bcc3a6b5e6eb",
+        "url": "https://charts.appscode.com/stable/kubedb-crds/kubedb-crds-v2023.02.28.tgz"
+      },
       "v2023.01.31": {
         "digest": "6ea6ad107286e6ff18c3d34dd33296230efc76a8b2e1617cdb73f360809b11c5",
         "url": "https://charts.appscode.com/stable/kubedb-crds/kubedb-crds-v2023.01.31.tgz"
@@ -1043,6 +1161,10 @@
       }
     },
     "kubedb-dashboard": {
+      "v0.8.0": {
+        "digest": "6f86107629d65c0fd3976976fc4138c9f01ee3729896903c58fc5c3132c28520",
+        "url": "https://charts.appscode.com/stable/kubedb-dashboard/kubedb-dashboard-v0.8.0.tgz"
+      },
       "v0.7.0": {
         "digest": "38a9abe26c5c5e319cff6489f4cf30afd131def80ee2a5bcacca98ca9d817a64",
         "url": "https://charts.appscode.com/stable/kubedb-dashboard/kubedb-dashboard-v0.7.0.tgz"
@@ -1191,6 +1313,10 @@
       }
     },
     "kubedb-grafana-dashboards": {
+      "v2023.02.28": {
+        "digest": "bdd973c1bb4c067804f92a50a174cfcb6f3d12dc42402907c19ac229ba8b8184",
+        "url": "https://charts.appscode.com/stable/kubedb-grafana-dashboards/kubedb-grafana-dashboards-v2023.02.28.tgz"
+      },
       "v2023.01.31": {
         "digest": "bcafe2b6423358f180cb81d2d87e273707049d06aa973f9a3517698d9df897a0",
         "url": "https://charts.appscode.com/stable/kubedb-grafana-dashboards/kubedb-grafana-dashboards-v2023.01.31.tgz"
@@ -1245,6 +1371,10 @@
       }
     },
     "kubedb-metrics": {
+      "v2023.02.28": {
+        "digest": "1d2c78469d7efbbcb8d98a061f0764b5de00b3e651076829091b0621f12b5f11",
+        "url": "https://charts.appscode.com/stable/kubedb-metrics/kubedb-metrics-v2023.02.28.tgz"
+      },
       "v2023.01.31": {
         "digest": "6f4c2da70404f1cd6f4a1ec3cbb3aeef859102a8cf9eef9e23f98a7ca3d85108",
         "url": "https://charts.appscode.com/stable/kubedb-metrics/kubedb-metrics-v2023.01.31.tgz"
@@ -1326,7 +1456,17 @@
         "url": "https://charts.appscode.com/stable/kubedb-metrics/kubedb-metrics-v2021.08.23.tgz"
       }
     },
+    "kubedb-one": {
+      "v2023.02.28": {
+        "digest": "637b038f0346e7e1f6acfa062bb75e5c3c8dfec3a4d4c84673daa2994553a58f",
+        "url": "https://charts.appscode.com/stable/kubedb-one/kubedb-one-v2023.02.28.tgz"
+      }
+    },
     "kubedb-ops-manager": {
+      "v0.19.0": {
+        "digest": "60580410a0813036738701d5455b6f71d8f9294b37f7815d314f3cb86d4b7a56",
+        "url": "https://charts.appscode.com/stable/kubedb-ops-manager/kubedb-ops-manager-v0.19.0.tgz"
+      },
       "v0.18.0": {
         "digest": "e38cf8f3975bea8dbf3b6226c4f3f996a26c367ebeaff5c5920cdc69a32bea6a",
         "url": "https://charts.appscode.com/stable/kubedb-ops-manager/kubedb-ops-manager-v0.18.0.tgz"
@@ -1381,6 +1521,10 @@
       }
     },
     "kubedb-opscenter": {
+      "v2023.02.28": {
+        "digest": "68129c7ae0f6d53efb6deb27e6c956d356b532499b15d458425d75b8a90fae26",
+        "url": "https://charts.appscode.com/stable/kubedb-opscenter/kubedb-opscenter-v2023.02.28.tgz"
+      },
       "v2023.01.31": {
         "digest": "9d7a5d89e1b70386598a0fbc4ff5eb98e477c76e9302335ae1f3f05ceac1085d",
         "url": "https://charts.appscode.com/stable/kubedb-opscenter/kubedb-opscenter-v2023.01.31.tgz"
@@ -1447,6 +1591,10 @@
       }
     },
     "kubedb-provisioner": {
+      "v0.32.0": {
+        "digest": "44bc3c82015e2647d3edd665caeaa2d6d2e157bfa41c0a7c9eb2ed461be636a8",
+        "url": "https://charts.appscode.com/stable/kubedb-provisioner/kubedb-provisioner-v0.32.0.tgz"
+      },
       "v0.31.0": {
         "digest": "794b26fbf6eac6bbc88632b5ff62bb7903813ad08ade621f10ac699205f544ee",
         "url": "https://charts.appscode.com/stable/kubedb-provisioner/kubedb-provisioner-v0.31.0.tgz"
@@ -1501,6 +1649,10 @@
       }
     },
     "kubedb-schema-manager": {
+      "v0.8.0": {
+        "digest": "ecfb954a744963131e654e157eafbbd29e6af8020201a23afa13223789fc7e4b",
+        "url": "https://charts.appscode.com/stable/kubedb-schema-manager/kubedb-schema-manager-v0.8.0.tgz"
+      },
       "v0.7.0": {
         "digest": "7e3d71d744d409b3ac8f050b1c20b89c803d076442d80e3601558e7d0aff2889",
         "url": "https://charts.appscode.com/stable/kubedb-schema-manager/kubedb-schema-manager-v0.7.0.tgz"
@@ -1555,6 +1707,10 @@
       }
     },
     "kubedb-ui": {
+      "v2023.03.23": {
+        "digest": "1fab8b180f1eac5b9bad8c10b311fc857de804eb61200f6ebfe500b2f2bf35ce",
+        "url": "https://charts.appscode.com/stable/kubedb-ui/kubedb-ui-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "d81a0e465b317843c518968f961623e81443422030f4557ca3560937b2d2d2d6",
         "url": "https://charts.appscode.com/stable/kubedb-ui/kubedb-ui-v2022.06.14.tgz"
@@ -1572,6 +1728,10 @@
       "v2021.11.24": {
         "digest": "200fbe10892edd32481eece91b6ddad19732352c2c918f8507ca4d38fc19354a",
         "url": "https://charts.appscode.com/stable/kubedb-ui-server/kubedb-ui-server-v2021.11.24.tgz"
+      },
+      "v0.8.0": {
+        "digest": "e9e16defeb88022854d382a19a69b7fa2d02eaab24b20f5e4327b73ead744aa5",
+        "url": "https://charts.appscode.com/stable/kubedb-ui-server/kubedb-ui-server-v0.8.0.tgz"
       },
       "v0.7.0": {
         "digest": "bb709e467b527a2e57f2ec003e0aacfef53cb73416181cf11e5a1ce29b3d2d82",
@@ -1627,6 +1787,10 @@
       }
     },
     "kubedb-webhook-server": {
+      "v0.8.0": {
+        "digest": "26a929093d84bc4c8d39a5196082a193b5be2aefbb65c61d388004c149b8f498",
+        "url": "https://charts.appscode.com/stable/kubedb-webhook-server/kubedb-webhook-server-v0.8.0.tgz"
+      },
       "v0.7.0": {
         "digest": "f9e041e09adacde6667448adf688890f4ff08834aef21f2ebf696611ddff878a",
         "url": "https://charts.appscode.com/stable/kubedb-webhook-server/kubedb-webhook-server-v0.7.0.tgz"
@@ -17643,6 +17807,10 @@
       }
     },
     "kubevault": {
+      "v2023.03.03": {
+        "digest": "11c35cf6e9fa5400e557dec67a75bfecb98df3775507d4903be40ea41bb2677b",
+        "url": "https://charts.appscode.com/stable/kubevault/kubevault-v2023.03.03.tgz"
+      },
       "v2022.12.28": {
         "digest": "bae3e33d5a680830693378a19e86a65df6619894d7a619b4f4a8a8da15993517",
         "url": "https://charts.appscode.com/stable/kubevault/kubevault-v2022.12.28.tgz"
@@ -17697,6 +17865,10 @@
       }
     },
     "kubevault-catalog": {
+      "v2023.03.03": {
+        "digest": "5714d1af7ccad604f6995265e6f0eb9fa23614abd528a0ce6ac14aa84ad9e19f",
+        "url": "https://charts.appscode.com/stable/kubevault-catalog/kubevault-catalog-v2023.03.03.tgz"
+      },
       "v2022.12.28": {
         "digest": "72e228257dd6f699b739f767ce45deb77f2e05e68973c7a3da99d432beefc382",
         "url": "https://charts.appscode.com/stable/kubevault-catalog/kubevault-catalog-v2022.12.28.tgz"
@@ -17751,6 +17923,10 @@
       }
     },
     "kubevault-crds": {
+      "v2023.03.03": {
+        "digest": "86870d9e0a001c3dffb59dce3165ecfad204b8045a4b6cfc5ddfaec09cee6317",
+        "url": "https://charts.appscode.com/stable/kubevault-crds/kubevault-crds-v2023.03.03.tgz"
+      },
       "v2022.12.28": {
         "digest": "2af158329f24ecbd4b48164acb4118dfacda49314a3f3c4cc231b26e203e29dd",
         "url": "https://charts.appscode.com/stable/kubevault-crds/kubevault-crds-v2022.12.28.tgz"
@@ -17808,7 +17984,17 @@
         "url": "https://charts.appscode.com/stable/kubevault-crds/kubevault-crds-v0.4.0-beta.0.tgz"
       }
     },
+    "kubevault-grafana-dashboards": {
+      "v2023.03.03": {
+        "digest": "2b60bd3896e79d787642f569e020f1a50fa10813f037f92e6e50f81d1f25df54",
+        "url": "https://charts.appscode.com/stable/kubevault-grafana-dashboards/kubevault-grafana-dashboards-v2023.03.03.tgz"
+      }
+    },
     "kubevault-metrics": {
+      "v2023.03.03": {
+        "digest": "4786de0052d27c8c30c11e972c612c07ee8e7bd8e791edff0b3ab91a4e7cb378",
+        "url": "https://charts.appscode.com/stable/kubevault-metrics/kubevault-metrics-v2023.03.03.tgz"
+      },
       "v2022.12.28": {
         "digest": "80a8ca01ae31ea71becb57f45bc50e7c2488f562d627f5f034e25a3d26f5c801",
         "url": "https://charts.appscode.com/stable/kubevault-metrics/kubevault-metrics-v2022.12.28.tgz"
@@ -17851,6 +18037,10 @@
       }
     },
     "kubevault-operator": {
+      "v0.14.0": {
+        "digest": "22288e32f7667ded3c9d2de696f41fb2fa1a68d882c1a1c540b7a886c12105d2",
+        "url": "https://charts.appscode.com/stable/kubevault-operator/kubevault-operator-v0.14.0.tgz"
+      },
       "v0.13.0": {
         "digest": "95043dade8f0782e6ae295d30d2545a0f6cd07ce0e0495ea545b124bf69056e0",
         "url": "https://charts.appscode.com/stable/kubevault-operator/kubevault-operator-v0.13.0.tgz"
@@ -17904,7 +18094,17 @@
         "url": "https://charts.appscode.com/stable/kubevault-operator/kubevault-operator-v0.4.0-rc.0.tgz"
       }
     },
+    "kubevault-opscenter": {
+      "v2023.03.03": {
+        "digest": "ee2f93d8e3081337fb81c29e77a382c89844901d163e16205c4adeb56f434935",
+        "url": "https://charts.appscode.com/stable/kubevault-opscenter/kubevault-opscenter-v2023.03.03.tgz"
+      }
+    },
     "kubevault-webhook-server": {
+      "v0.14.0": {
+        "digest": "1ccbaee8ab0795a769544df15f264fb0eb0c1b6623656b0c22a556fef1acee32",
+        "url": "https://charts.appscode.com/stable/kubevault-webhook-server/kubevault-webhook-server-v0.14.0.tgz"
+      },
       "v0.13.0": {
         "digest": "3f5d5f57d59c24b42fcbf4f568c7e44ad99f11976cb08d635b213f0da815752d",
         "url": "https://charts.appscode.com/stable/kubevault-webhook-server/kubevault-webhook-server-v0.13.0.tgz"
@@ -17935,21 +18135,45 @@
       }
     },
     "license-proxyserver": {
+      "v2023.03.23": {
+        "digest": "b59d04c7f5f4e384b55421282e32e315e9f3b079ad0d056b8c9346c4542c52a6",
+        "url": "https://charts.appscode.com/stable/license-proxyserver/license-proxyserver-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "91f9fe87725f06f007d1c4e326c88481a680089f13d18a5d0d1948e85021482a",
         "url": "https://charts.appscode.com/stable/license-proxyserver/license-proxyserver-v2022.06.14.tgz"
       }
     },
     "marketplace-ui": {
+      "v2023.03.23": {
+        "digest": "3b4d9718aa26542c2a9c908330645e5a524781f60303054ebbfac50e5395d31b",
+        "url": "https://charts.appscode.com/stable/marketplace-ui/marketplace-ui-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "0c7e5aa204dcadd0446d83c82988121d9c15b3c66302bd9803a96e79ab20ca08",
         "url": "https://charts.appscode.com/stable/marketplace-ui/marketplace-ui-v2022.06.14.tgz"
       }
     },
     "minio": {
+      "v2023.03.23": {
+        "digest": "030d34c519c9efb0cf708ead364769bd7acb7af4e70173ad36dcfae585b4585a",
+        "url": "https://charts.appscode.com/stable/minio/minio-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "5a1a881748604dc9d04e1fcf49d02128cf9f943b50ce2289cca5c3b0ce8c5a90",
         "url": "https://charts.appscode.com/stable/minio/minio-v2022.06.14.tgz"
+      }
+    },
+    "monitoring-config": {
+      "v2023.03.23": {
+        "digest": "ec5a5e1b834119df7aafb471e7958740a25d6388a1ebdb4149bdf2f23c654107",
+        "url": "https://charts.appscode.com/stable/monitoring-config/monitoring-config-v2023.03.23.tgz"
+      }
+    },
+    "monitoring-ui-presets": {
+      "v2023.03.23": {
+        "digest": "ea21a80f5923246c3ae92a88c891a7b072ca668a82a8e1a0c5a710607be9a6f5",
+        "url": "https://charts.appscode.com/stable/monitoring-ui-presets/monitoring-ui-presets-v2023.03.23.tgz"
       }
     },
     "opscenter-config": {
@@ -17996,9 +18220,19 @@
         "url": "https://charts.appscode.com/stable/opscenter-core/opscenter-core-v2022.03.07.tgz"
       }
     },
+    "opscenter-features": {
+      "v2023.03.23": {
+        "digest": "81852490e65b1caabd07acbef5c5d03e9672ce0033f3dfb1bf8bbed3431d87f2",
+        "url": "https://charts.appscode.com/stable/opscenter-features/opscenter-features-v2023.03.23.tgz"
+      }
+    },
     "panopticon": {
+      "v2023.03.23": {
+        "digest": "c1c5c660bc04e78e5e9d0fc213b9dcc76ce1f08d3769990dddd9ca4c033b9cd5",
+        "url": "https://charts.appscode.com/stable/panopticon/panopticon-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
-        "digest": "cdd9d1de597929a2d5ab0cd95966f22488780dda3d4891981aee322b0c0933c6",
+        "digest": "fe8575b540e37fa298ff7a107586483625e7e775ecb3a18e2a5c59eef72c436c",
         "url": "https://charts.appscode.com/stable/panopticon/panopticon-v2022.06.14.tgz"
       },
       "v2022.04.25": {
@@ -18023,15 +18257,29 @@
       }
     },
     "platform-api": {
+      "v2023.03.23": {
+        "digest": "e527d77c1089db8f1733421c45a628408a8cc5a19e33b89b4a6e675bd9a61bc2",
+        "url": "https://charts.appscode.com/stable/platform-api/platform-api-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "21a33606345c099e4eeb9beaa3aff59888866aaea0f80075333514389150ee3e",
         "url": "https://charts.appscode.com/stable/platform-api/platform-api-v2022.06.14.tgz"
       }
     },
     "platform-ui": {
+      "v2023.03.23": {
+        "digest": "a9ddb28f415f089241e41bdb67c4b061d02bbc537f271caed56a74969cad1097",
+        "url": "https://charts.appscode.com/stable/platform-ui/platform-ui-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "5a8c3ca1c708c2f00a968c4b6b43c64e91bd4de51bf364bd9e6445a8dbec4ed1",
         "url": "https://charts.appscode.com/stable/platform-ui/platform-ui-v2022.06.14.tgz"
+      }
+    },
+    "policy-grafana-dashboards": {
+      "v2023.03.23": {
+        "digest": "8299b827dd675225fa91679183fae75165fec01b0d383776f2ff01a33fe57f8e",
+        "url": "https://charts.appscode.com/stable/policy-grafana-dashboards/policy-grafana-dashboards-v2023.03.23.tgz"
       }
     },
     "prepare-kubernetes-cluster": {
@@ -18041,6 +18289,10 @@
       }
     },
     "prom-proxy": {
+      "v2023.03.23": {
+        "digest": "c27814d9373ffe8c000f2795c7b2095c2bbfe888c871b83b008d1f504c101bed",
+        "url": "https://charts.appscode.com/stable/prom-proxy/prom-proxy-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "c3f0d19de9fa91dd51e9ccc03c9473bdce932767ecbd37116f035d9fbc1537af",
         "url": "https://charts.appscode.com/stable/prom-proxy/prom-proxy-v2022.06.14.tgz"
@@ -18057,8 +18309,12 @@
       }
     },
     "scanner": {
+      "v2023.03.23": {
+        "digest": "2472984769aff472c56eaf6eb03211a8c0df917d7e3903615421e35f5169adee",
+        "url": "https://charts.appscode.com/stable/scanner/scanner-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
-        "digest": "59b53b54c4f6e49ac199ec2070a3eeacccf5bddaa98ff8a7612b13c6a3a898a1",
+        "digest": "bb392c184a6f09db74a55e6e8732b5c2e9a8360bdcdf9eb8d3c8deef9997c76f",
         "url": "https://charts.appscode.com/stable/scanner/scanner-v2022.06.14.tgz"
       }
     },
@@ -18101,6 +18357,10 @@
       }
     },
     "secrets-store-reader": {
+      "v2023.03.03": {
+        "digest": "40059db5bbc7547f53e907e4b4b5afb1f529f122c9842a01c91b2d24d22588a7",
+        "url": "https://charts.appscode.com/stable/secrets-store-reader/secrets-store-reader-v2023.03.03.tgz"
+      },
       "v2022.12.28": {
         "digest": "3c16de218a594a13c17669c63163fd4de0763d55f2cc3122e343ac6a4aee99a0",
         "url": "https://charts.appscode.com/stable/secrets-store-reader/secrets-store-reader-v2022.12.28.tgz"
@@ -18149,18 +18409,38 @@
       }
     },
     "sidekick": {
+      "v2023.03.23": {
+        "digest": "c3d53e58bf5e0ad570db73f214fa1aed40074f37fa9eda07c3082cb07249c8a0",
+        "url": "https://charts.appscode.com/stable/sidekick/sidekick-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
-        "digest": "4937448dec346cc110fb8aa8e15e3a2c9c277a215b4c9861e294a3c261b4e3da",
+        "digest": "96dc97f7bbb62675730522220b6a182ee2036954b7f63abde247b47028e6e73f",
         "url": "https://charts.appscode.com/stable/sidekick/sidekick-v2022.06.14.tgz"
       }
     },
     "smtprelay": {
+      "v2023.03.23": {
+        "digest": "e9ea22c844d66b6c3f7f6564f162f5eb4e8c1e6b9c612e48623d736c57cebca4",
+        "url": "https://charts.appscode.com/stable/smtprelay/smtprelay-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "c7ca8a33205364a92bc99a3f57410eb710a8191a38e9a933e9a04ac2dccbc683",
         "url": "https://charts.appscode.com/stable/smtprelay/smtprelay-v2022.06.14.tgz"
       }
     },
     "stash": {
+      "v2023.03.20": {
+        "digest": "35cf87ca54bf3b32b3b5895cdf26cbc3f88ee47b12b51171486bef8f1c5150de",
+        "url": "https://charts.appscode.com/stable/stash/stash-v2023.03.20.tgz"
+      },
+      "v2023.03.13": {
+        "digest": "551bffadffa1bb6db5880e935172fd778e99ac8a6a5e60c58f30bee279184185",
+        "url": "https://charts.appscode.com/stable/stash/stash-v2023.03.13.tgz"
+      },
+      "v2023.02.28": {
+        "digest": "81183844ec4f2031bdd0ee845c79ba1ae0c4bfb3182d7eb1aaf67ca859ea4c67",
+        "url": "https://charts.appscode.com/stable/stash/stash-v2023.02.28.tgz"
+      },
       "v2023.01.05": {
         "digest": "ea118f5c619cc81711e4854c69eba2ee3ab5b9ca1ffb4eaf34815c703f88f8a7",
         "url": "https://charts.appscode.com/stable/stash/stash-v2023.01.05.tgz"
@@ -18375,6 +18655,18 @@
       }
     },
     "stash-catalog": {
+      "v2023.03.20": {
+        "digest": "79b66fc44e195d62e3929110e39f9822d458233531995987591b7d38152490d1",
+        "url": "https://charts.appscode.com/stable/stash-catalog/stash-catalog-v2023.03.20.tgz"
+      },
+      "v2023.03.13": {
+        "digest": "1335d912470eaf1fe623ec1c4b849cf81fd7731bece2ceb2aba1c752dc44cd07",
+        "url": "https://charts.appscode.com/stable/stash-catalog/stash-catalog-v2023.03.13.tgz"
+      },
+      "v2023.02.28": {
+        "digest": "eec8bffd536980f802d922d9f863c6bfb8f9d0bcdeddfd3ac35bebfebeb401aa",
+        "url": "https://charts.appscode.com/stable/stash-catalog/stash-catalog-v2023.02.28.tgz"
+      },
       "v2023.01.05": {
         "digest": "a8241731d7af358a0a4fa788d86410bd9b00a2605e3845ae1275d953b2501646",
         "url": "https://charts.appscode.com/stable/stash-catalog/stash-catalog-v2023.01.05.tgz"
@@ -18457,6 +18749,18 @@
       }
     },
     "stash-community": {
+      "v0.28.0": {
+        "digest": "7f0210996c56e2b04518be197381dcf32e4b0b41eab94d94d9bab65db913d5d5",
+        "url": "https://charts.appscode.com/stable/stash-community/stash-community-v0.28.0.tgz"
+      },
+      "v0.27.0": {
+        "digest": "00716710dbd3d75b99b2f7cb805593972c403512ed9a380171500392a3ba37f0",
+        "url": "https://charts.appscode.com/stable/stash-community/stash-community-v0.27.0.tgz"
+      },
+      "v0.26.0": {
+        "digest": "cebcc29abd066f815aceb7411a662d12076d0ced7b457808aa409f2f9e978a66",
+        "url": "https://charts.appscode.com/stable/stash-community/stash-community-v0.26.0.tgz"
+      },
       "v0.25.0": {
         "digest": "9169273f836d5d2a12a560e8e5d582ab52694863d87ac85ad0cd0c739a4a298d",
         "url": "https://charts.appscode.com/stable/stash-community/stash-community-v0.25.0.tgz"
@@ -18543,6 +18847,18 @@
       }
     },
     "stash-crds": {
+      "v2023.03.20": {
+        "digest": "1b0917df017e6c606286daaa0ab19e4da43cf5e2497636b009732a91899b2f8c",
+        "url": "https://charts.appscode.com/stable/stash-crds/stash-crds-v2023.03.20.tgz"
+      },
+      "v2023.03.13": {
+        "digest": "3e3aea62ac8f70214dad364ed7c25a120f09ee67d786e1940a2626d54e7c80d5",
+        "url": "https://charts.appscode.com/stable/stash-crds/stash-crds-v2023.03.13.tgz"
+      },
+      "v2023.02.28": {
+        "digest": "28493fdfb5ab76e912854295977cb83356ad0128cd1898d23b281e129aab9e09",
+        "url": "https://charts.appscode.com/stable/stash-crds/stash-crds-v2023.02.28.tgz"
+      },
       "v2023.01.05": {
         "digest": "01dff7cf502565b21e472fb593b22039823e42d6497ffe54ed785dd501d8bcdb",
         "url": "https://charts.appscode.com/stable/stash-crds/stash-crds-v2023.01.05.tgz"
@@ -18955,6 +19271,18 @@
       }
     },
     "stash-enterprise": {
+      "v0.28.0": {
+        "digest": "657c09252f9a9682ea07ea10d75e2a9933fc9cdbdf0609f2796c6b4717845723",
+        "url": "https://charts.appscode.com/stable/stash-enterprise/stash-enterprise-v0.28.0.tgz"
+      },
+      "v0.27.0": {
+        "digest": "f8027a3f06b840347162ac47343b791bc472461757be11f7cb82b9dcaadcfd5b",
+        "url": "https://charts.appscode.com/stable/stash-enterprise/stash-enterprise-v0.27.0.tgz"
+      },
+      "v0.26.0": {
+        "digest": "b6aac40f11cc7d21aa0fc2220a3027831e19822c22ab0f46a8225271c8783be9",
+        "url": "https://charts.appscode.com/stable/stash-enterprise/stash-enterprise-v0.26.0.tgz"
+      },
       "v0.25.0": {
         "digest": "0c90cb26d826a01ed022193ed5c2cb3b0f878a123daead30778f5f1ac5162966",
         "url": "https://charts.appscode.com/stable/stash-enterprise/stash-enterprise-v0.25.0.tgz"
@@ -19089,6 +19417,18 @@
       }
     },
     "stash-grafana-dashboards": {
+      "v2023.03.20": {
+        "digest": "0b616104f8c86abef47514b066e4ddf22ec500805e3cde7e8467e3f8a0c3818d",
+        "url": "https://charts.appscode.com/stable/stash-grafana-dashboards/stash-grafana-dashboards-v2023.03.20.tgz"
+      },
+      "v2023.03.13": {
+        "digest": "af23937d657b61ae204c3d4d6b629abb3536ee3b352ad339f58e3682b8d29af3",
+        "url": "https://charts.appscode.com/stable/stash-grafana-dashboards/stash-grafana-dashboards-v2023.03.13.tgz"
+      },
+      "v2023.02.28": {
+        "digest": "aeba1e8d569be0c84b8aca8cc36f1c4854989b687ee8d49ba3d3018a6cc2b479",
+        "url": "https://charts.appscode.com/stable/stash-grafana-dashboards/stash-grafana-dashboards-v2023.02.28.tgz"
+      },
       "v2023.01.05": {
         "digest": "0c9eab7379e95beb149f42211c8bede8532d522a62f8d929303b8686503c8d54",
         "url": "https://charts.appscode.com/stable/stash-grafana-dashboards/stash-grafana-dashboards-v2023.01.05.tgz"
@@ -19141,6 +19481,18 @@
       }
     },
     "stash-metrics": {
+      "v2023.03.20": {
+        "digest": "0c4484c551cdde1b1d64fcc06f1dcd5c7ab7597b9ec438cb5c453b7cd4d32944",
+        "url": "https://charts.appscode.com/stable/stash-metrics/stash-metrics-v2023.03.20.tgz"
+      },
+      "v2023.03.13": {
+        "digest": "83820e1793d70574bd0eb540888e3fbc8e708599f1be7fc9b0f93c6c88073750",
+        "url": "https://charts.appscode.com/stable/stash-metrics/stash-metrics-v2023.03.13.tgz"
+      },
+      "v2023.02.28": {
+        "digest": "0f90a8a765ba30e32f7daa1ad4baad07c293d98404b9a5d6f265c7c81e7e82e8",
+        "url": "https://charts.appscode.com/stable/stash-metrics/stash-metrics-v2023.02.28.tgz"
+      },
       "v2023.01.05": {
         "digest": "00912119c6a148cf3ff82f2ec9dca73ff88ec0bfaae775a6e64bc92f3b1468c7",
         "url": "https://charts.appscode.com/stable/stash-metrics/stash-metrics-v2023.01.05.tgz"
@@ -19747,6 +20099,18 @@
       }
     },
     "stash-opscenter": {
+      "v2023.03.20": {
+        "digest": "4a1d031f66300d346c5f52371b05f791b50fe44caf939c33571b5bd4daddc2ca",
+        "url": "https://charts.appscode.com/stable/stash-opscenter/stash-opscenter-v2023.03.20.tgz"
+      },
+      "v2023.03.13": {
+        "digest": "b9d3ed3cb59311d98c1e6bf28ff67cabc30d8a25bf059a495b4d6b9c764fe9a7",
+        "url": "https://charts.appscode.com/stable/stash-opscenter/stash-opscenter-v2023.03.13.tgz"
+      },
+      "v2023.02.28": {
+        "digest": "b515d58c41cc67a5bdc67ad3726375b217f20864969b9865190e65c0f36e576f",
+        "url": "https://charts.appscode.com/stable/stash-opscenter/stash-opscenter-v2023.02.28.tgz"
+      },
       "v2023.01.05": {
         "digest": "67b0a9781026d71df80f6a535904ef98da98de40971d5f97979aa464c20666b0",
         "url": "https://charts.appscode.com/stable/stash-opscenter/stash-opscenter-v2023.01.05.tgz"
@@ -19929,6 +20293,18 @@
       }
     },
     "stash-ui-server": {
+      "v0.10.0": {
+        "digest": "4663a436a4445b7b86e4648f1237aba4d080c3f0340b47879e30a9c5c0a20969",
+        "url": "https://charts.appscode.com/stable/stash-ui-server/stash-ui-server-v0.10.0.tgz"
+      },
+      "v0.9.0": {
+        "digest": "35430ca40d185cc487aa0a9e7830ed1bad9d36ab1171af74b44ab80d9d310229",
+        "url": "https://charts.appscode.com/stable/stash-ui-server/stash-ui-server-v0.9.0.tgz"
+      },
+      "v0.8.0": {
+        "digest": "ee16d31aa404c891535a26557791c3b80faad943569a1473c3ac7f4a589f6fd1",
+        "url": "https://charts.appscode.com/stable/stash-ui-server/stash-ui-server-v0.8.0.tgz"
+      },
       "v0.7.0": {
         "digest": "2d995526be32293d9c2bf8064fe08f37d81481db1ad7e3facf1a0a0b9118834e",
         "url": "https://charts.appscode.com/stable/stash-ui-server/stash-ui-server-v0.7.0.tgz"
@@ -19959,8 +20335,12 @@
       }
     },
     "supervisor": {
+      "v2023.03.23": {
+        "digest": "c385fa7c5ab219838b0f704fa06f52180a888b1df4bfa0b2a60fe829e14d5816",
+        "url": "https://charts.appscode.com/stable/supervisor/supervisor-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
-        "digest": "44288892b8ee082739a31f451806ff6f913c279d33a2ee8697c15b807f057f41",
+        "digest": "34bd76f64c9d5463e080c05c63b6c98ef504b74b4c89c95903e24acf5a7a6d7a",
         "url": "https://charts.appscode.com/stable/supervisor/supervisor-v2022.06.14.tgz"
       },
       "v2022.04.14": {
@@ -20031,12 +20411,20 @@
       }
     },
     "trickster": {
+      "v2023.03.23": {
+        "digest": "4634813b21c94ad62e2614378af853ef4f2fbe8d2a3ad3c5a72add8b4e0d7aa3",
+        "url": "https://charts.appscode.com/stable/trickster/trickster-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "219d8757a86bf40ee12e45d06b0e6e99b68fb550d3270992863d4c3190c137e2",
         "url": "https://charts.appscode.com/stable/trickster/trickster-v2022.06.14.tgz"
       }
     },
     "ui-presets": {
+      "v2023.03.23": {
+        "digest": "e6831434434d5cc3658f5b93ddac50fec477f5f819ff19de19bb7caddb598d11",
+        "url": "https://charts.appscode.com/stable/ui-presets/ui-presets-v2023.03.23.tgz"
+      },
       "v2022.06.14": {
         "digest": "b288c3bed0ef1d6a047e753da9984431c3461d0ddc275f350a023e2ae6af339c",
         "url": "https://charts.appscode.com/stable/ui-presets/ui-presets-v2022.06.14.tgz"
@@ -20341,6 +20729,26 @@
   },
   "bitnami": {
     "airflow": {
+      "14.0.17": {
+        "digest": "68110767706e09648fa3d1a9ec03ae938b9d7ede3b1fba3c2830d0bc9094b586",
+        "url": "https://charts.bitnami.com/bitnami/airflow-14.0.17.tgz"
+      },
+      "14.0.16": {
+        "digest": "e14cb200d62de6b626aaccb2646c2753bdfa6360853cc10d068b4a79e3ac5f12",
+        "url": "https://charts.bitnami.com/bitnami/airflow-14.0.16.tgz"
+      },
+      "14.0.15": {
+        "digest": "a2ec13c6a07145716607943fab5d3c91e3b4120da37d6e9677d1c47f5f42785e",
+        "url": "https://charts.bitnami.com/bitnami/airflow-14.0.15.tgz"
+      },
+      "14.0.14": {
+        "digest": "728bfe55c427051525f2f36ea218136aee148af75efce9797d924962baf639c4",
+        "url": "https://charts.bitnami.com/bitnami/airflow-14.0.14.tgz"
+      },
+      "14.0.13": {
+        "digest": "b44b50889ccd21cd14427c0a3977666e32a38f4b14c2193ff378cf7522376eb8",
+        "url": "https://charts.bitnami.com/bitnami/airflow-14.0.13.tgz"
+      },
       "14.0.12": {
         "digest": "d7570de28e9f3c90ac31a7476de15a5a8a65e5618d24c417ddb1c45ed3e1fe8b",
         "url": "https://charts.bitnami.com/bitnami/airflow-14.0.12.tgz"
@@ -20503,6 +20911,34 @@
       }
     },
     "apache": {
+      "9.2.23": {
+        "digest": "2b370078e857292287255497fc0fc6a593a05f96752d8acd9dfeeb6425de1dda",
+        "url": "https://charts.bitnami.com/bitnami/apache-9.2.23.tgz"
+      },
+      "9.2.22": {
+        "digest": "826b56fb377e6ebbb9e59787aae4823f25d16afd7fb2a3f8ead763f6d281865e",
+        "url": "https://charts.bitnami.com/bitnami/apache-9.2.22.tgz"
+      },
+      "9.2.21": {
+        "digest": "ebf677b0c802616e41a6d0608be7f63c554dbf0a7dfad28f3405ed34b5f7992b",
+        "url": "https://charts.bitnami.com/bitnami/apache-9.2.21.tgz"
+      },
+      "9.2.20": {
+        "digest": "8753b7e67c435c27c7994b6a6b8f5ea30a28e341bfad93cbdcd27107c1fd2a50",
+        "url": "https://charts.bitnami.com/bitnami/apache-9.2.20.tgz"
+      },
+      "9.2.19": {
+        "digest": "dd406151bc701a379cdecf8f3cba03bbd1fde549b3d266c3d9a0a034291b45cc",
+        "url": "https://charts.bitnami.com/bitnami/apache-9.2.19.tgz"
+      },
+      "9.2.18": {
+        "digest": "ee61e9e9e910cb9f48c2a57e734302cdf4667b9d21c44063b40fafecd23bf371",
+        "url": "https://charts.bitnami.com/bitnami/apache-9.2.18.tgz"
+      },
+      "9.2.17": {
+        "digest": "1ebf061e4ce83ef9ce7aff7e1aa4806a49b894e630dac470961955982adb88c8",
+        "url": "https://charts.bitnami.com/bitnami/apache-9.2.17.tgz"
+      },
       "9.2.16": {
         "digest": "3a485b30760588754ea7e4403f1a0b673074986924f8e1e2b86137670b531d2b",
         "url": "https://charts.bitnami.com/bitnami/apache-9.2.16.tgz"
@@ -20617,6 +21053,42 @@
       }
     },
     "appsmith": {
+      "0.1.22": {
+        "digest": "488d4a5dbe2a0b9da57cb070246117392f2c731b4cbea71894588fbcc9c82d66",
+        "url": "https://charts.bitnami.com/bitnami/appsmith-0.1.22.tgz"
+      },
+      "0.1.21": {
+        "digest": "52f03ca7831bc69db08d2613184ccebfad0e7ac4b37b16782eebdfba8034655f",
+        "url": "https://charts.bitnami.com/bitnami/appsmith-0.1.21.tgz"
+      },
+      "0.1.20": {
+        "digest": "13b94453188b078ca24ea14c2fb42ae117dd153a35d744a8feb0ce79482fce3d",
+        "url": "https://charts.bitnami.com/bitnami/appsmith-0.1.20.tgz"
+      },
+      "0.1.19": {
+        "digest": "cfe7b664a91918e6f6264d95c52c52f05fdc1c5815013927b8b116a1f97b6add",
+        "url": "https://charts.bitnami.com/bitnami/appsmith-0.1.19.tgz"
+      },
+      "0.1.18": {
+        "digest": "a54aac356637b4d1a2210eb7e39719005bafc6e8b5bf7e6d71b41198e1c44659",
+        "url": "https://charts.bitnami.com/bitnami/appsmith-0.1.18.tgz"
+      },
+      "0.1.17": {
+        "digest": "1115694f18964742547a08460e1a45097f6d8c9451ba7586cd56a47d4cac835e",
+        "url": "https://charts.bitnami.com/bitnami/appsmith-0.1.17.tgz"
+      },
+      "0.1.16": {
+        "digest": "f68a7b29f322d210749192d29daf8c605c3e9fc43866d66be3f5957e0bc04b24",
+        "url": "https://charts.bitnami.com/bitnami/appsmith-0.1.16.tgz"
+      },
+      "0.1.15": {
+        "digest": "f0e661f5838830d53e53da26dde6b47a21962e090631c79371a6b3348dfb13a6",
+        "url": "https://charts.bitnami.com/bitnami/appsmith-0.1.15.tgz"
+      },
+      "0.1.14": {
+        "digest": "0b293b9b23c1c69bd3582ba78bcb36b02ab93f0a40f758fddcf814e569c1cf93",
+        "url": "https://charts.bitnami.com/bitnami/appsmith-0.1.14.tgz"
+      },
       "0.1.13": {
         "digest": "64679371673e891815539bc48314690949ee84c53d65ab2baee8f3baa28f955d",
         "url": "https://charts.bitnami.com/bitnami/appsmith-0.1.13.tgz"
@@ -20667,6 +21139,54 @@
       }
     },
     "argo-cd": {
+      "4.5.5": {
+        "digest": "b6a078b8da65ba4e2e07340bd191f4b9673b5214676aa6db7adb4aa9b0db8ba1",
+        "url": "https://charts.bitnami.com/bitnami/argo-cd-4.5.5.tgz"
+      },
+      "4.5.4": {
+        "digest": "45dfab0bddb02c3e87ae99e879d44b123dccd22af2fcaebed9ffb201df5dfd3d",
+        "url": "https://charts.bitnami.com/bitnami/argo-cd-4.5.4.tgz"
+      },
+      "4.5.3": {
+        "digest": "eb1c14c32542369693e64e1fe22516ff8dffcf5f29a126ecf6d24ed2db1c32fb",
+        "url": "https://charts.bitnami.com/bitnami/argo-cd-4.5.3.tgz"
+      },
+      "4.5.2": {
+        "digest": "ef2936ef0d493da0d9bf530cb04fc4e05bad750476fbcb9617c5e23a0bc04235",
+        "url": "https://charts.bitnami.com/bitnami/argo-cd-4.5.2.tgz"
+      },
+      "4.5.1": {
+        "digest": "cfedb1567d5d996ca78c3f541891b641b616876700d0ebc681ac3fdd9919bbd8",
+        "url": "https://charts.bitnami.com/bitnami/argo-cd-4.5.1.tgz"
+      },
+      "4.5.0": {
+        "digest": "e1c22c88bd3cd6a7bd42099949187b20bfda0ea93b032c909e810827639ba0d2",
+        "url": "https://charts.bitnami.com/bitnami/argo-cd-4.5.0.tgz"
+      },
+      "4.4.16": {
+        "digest": "cf876e1ab212b5563c4aaad370ffbc103d9df661765a8778cb62e801bcb1119a",
+        "url": "https://charts.bitnami.com/bitnami/argo-cd-4.4.16.tgz"
+      },
+      "4.4.15": {
+        "digest": "687a0c37cd7d2cf5a1bced860a5c903420e70802e57439961a93750568376c4b",
+        "url": "https://charts.bitnami.com/bitnami/argo-cd-4.4.15.tgz"
+      },
+      "4.4.14": {
+        "digest": "b5cd461508d84214ec0b7f07e49f25d8386b43eb2cdb54ac6ad0e83969b90bb9",
+        "url": "https://charts.bitnami.com/bitnami/argo-cd-4.4.14.tgz"
+      },
+      "4.4.13": {
+        "digest": "6c65ac24a81a943e676485a513391f4ee7b183ceadeb480b01addfe41704759d",
+        "url": "https://charts.bitnami.com/bitnami/argo-cd-4.4.13.tgz"
+      },
+      "4.4.12": {
+        "digest": "654b63aac91019f53594000bffc69740d43aecb843eeeaca41d262d42793aa04",
+        "url": "https://charts.bitnami.com/bitnami/argo-cd-4.4.12.tgz"
+      },
+      "4.4.11": {
+        "digest": "4085aae26a2b59365398981b275ceb845cca75ae0ceb5bb9b6bc9cb5e222a991",
+        "url": "https://charts.bitnami.com/bitnami/argo-cd-4.4.11.tgz"
+      },
       "4.4.10": {
         "digest": "b263d777236af7aed66b09364a945ed4b391aca3559d7acdc31ca2cd6619b9fc",
         "url": "https://charts.bitnami.com/bitnami/argo-cd-4.4.10.tgz"
@@ -20841,6 +21361,22 @@
       }
     },
     "argo-workflows": {
+      "5.1.13": {
+        "digest": "faa7c8ff3ab0990f4daf38a828859befcb256a602341bebb2fecf00b8da76107",
+        "url": "https://charts.bitnami.com/bitnami/argo-workflows-5.1.13.tgz"
+      },
+      "5.1.12": {
+        "digest": "782239b2151da574db5a64a128bee3bdf02fdd45a7b93d477c7c4ec96ba4bef6",
+        "url": "https://charts.bitnami.com/bitnami/argo-workflows-5.1.12.tgz"
+      },
+      "5.1.11": {
+        "digest": "39f3ff9583721ee3c28704af24e2aefce6b25685d7e0c2df4fc631c62a0f24b8",
+        "url": "https://charts.bitnami.com/bitnami/argo-workflows-5.1.11.tgz"
+      },
+      "5.1.10": {
+        "digest": "e1eed42c20f56dcc7e8f94c3931c85887b5a4528b8b466abac4c38dc9a664743",
+        "url": "https://charts.bitnami.com/bitnami/argo-workflows-5.1.10.tgz"
+      },
       "5.1.9": {
         "digest": "80febf39e711f3ec6335113fa97c45bfd3675cb01b04a067add314436e2557c9",
         "url": "https://charts.bitnami.com/bitnami/argo-workflows-5.1.9.tgz"
@@ -20995,6 +21531,22 @@
       }
     },
     "aspnet-core": {
+      "4.0.10": {
+        "digest": "660c8b498e8264c1e549984724d2a79ae251aeea400bdd1f54a051a9ecd9ca14",
+        "url": "https://charts.bitnami.com/bitnami/aspnet-core-4.0.10.tgz"
+      },
+      "4.0.9": {
+        "digest": "e4ed1c245cea70ea786c85c385f4ab9a996b7cc4566a7bc7b90cd1e70eb47276",
+        "url": "https://charts.bitnami.com/bitnami/aspnet-core-4.0.9.tgz"
+      },
+      "4.0.8": {
+        "digest": "8a2fca257b2faa476a49436f5133d2498cd5e3d8c04672eaa7048a17360f1fbf",
+        "url": "https://charts.bitnami.com/bitnami/aspnet-core-4.0.8.tgz"
+      },
+      "4.0.7": {
+        "digest": "3cc72c10160dc3c9eba14e20853ab8b1028e5268e6c2b48cc12ca61accdf99a8",
+        "url": "https://charts.bitnami.com/bitnami/aspnet-core-4.0.7.tgz"
+      },
       "4.0.6": {
         "digest": "691a3b82c31e5d9b64ff4d866b642c8312094f71e2e0eb17a98901739dad0d5b",
         "url": "https://charts.bitnami.com/bitnami/aspnet-core-4.0.6.tgz"
@@ -21133,6 +21685,30 @@
       }
     },
     "cassandra": {
+      "10.1.3": {
+        "digest": "c233cfa90af3da7e486b820c433e188cf3703fd9998bdea281b29b45c70eb89d",
+        "url": "https://charts.bitnami.com/bitnami/cassandra-10.1.3.tgz"
+      },
+      "10.1.2": {
+        "digest": "ebf78beefd093c12f02b08034440e58e678e5a2cc0626fc827faa14270a39362",
+        "url": "https://charts.bitnami.com/bitnami/cassandra-10.1.2.tgz"
+      },
+      "10.1.1": {
+        "digest": "7d04a98977637d6fe31a015fc551db877c40bce158d99b5892da144e5511b576",
+        "url": "https://charts.bitnami.com/bitnami/cassandra-10.1.1.tgz"
+      },
+      "10.1.0": {
+        "digest": "3b2e66ffbf00560ca8185e5b4e66c82209cf2f9a614fbf0d598ec4f4b6d13ec5",
+        "url": "https://charts.bitnami.com/bitnami/cassandra-10.1.0.tgz"
+      },
+      "10.0.5": {
+        "digest": "98388e1189853930cab729b36c9968e7649a9c5071cc4241abaf798cd4ef218f",
+        "url": "https://charts.bitnami.com/bitnami/cassandra-10.0.5.tgz"
+      },
+      "10.0.4": {
+        "digest": "43bec53bec503894898b6496221fa98eb68a7cdbe49a458ab2444ff82f304f3a",
+        "url": "https://charts.bitnami.com/bitnami/cassandra-10.0.4.tgz"
+      },
       "10.0.3": {
         "digest": "1d37aa93c3be3281b90631e425fadd1e1edb8fb976afd7cb6cc6719c958a0d36",
         "url": "https://charts.bitnami.com/bitnami/cassandra-10.0.3.tgz"
@@ -21263,6 +21839,22 @@
       }
     },
     "cert-manager": {
+      "0.9.5": {
+        "digest": "1082996ad0313514d675247dfa8318dedb839b2f4a151496315566c97b2c980c",
+        "url": "https://charts.bitnami.com/bitnami/cert-manager-0.9.5.tgz"
+      },
+      "0.9.4": {
+        "digest": "b09dac40f5cb749ba2ba418a74a5379aab760f296a38fe54be4469411e255810",
+        "url": "https://charts.bitnami.com/bitnami/cert-manager-0.9.4.tgz"
+      },
+      "0.9.3": {
+        "digest": "2b8de5d7edfbe3e73dbf5e7da30ede0861538136f4e7443ff7033dc6cae66345",
+        "url": "https://charts.bitnami.com/bitnami/cert-manager-0.9.3.tgz"
+      },
+      "0.9.2": {
+        "digest": "f71366dc13562ec9bdb9ef3bf317b8f19307f5a849fd9d760d21daaaab77ac3f",
+        "url": "https://charts.bitnami.com/bitnami/cert-manager-0.9.2.tgz"
+      },
       "0.9.1": {
         "digest": "4d6848f21e4d520d366db71609b2d6014c5863089a96bf2bdee3ae48179d1d23",
         "url": "https://charts.bitnami.com/bitnami/cert-manager-0.9.1.tgz"
@@ -21389,6 +21981,46 @@
       }
     },
     "clickhouse": {
+      "3.1.5": {
+        "digest": "9f5da8a54ba098f369829ff96ae8f517e977b095a99262b509578dea018b42f9",
+        "url": "https://charts.bitnami.com/bitnami/clickhouse-3.1.5.tgz"
+      },
+      "3.1.4": {
+        "digest": "68bca8d4a3e74668f4a9ed1e30a954c55736061cd409c4778493bd75ddeb7408",
+        "url": "https://charts.bitnami.com/bitnami/clickhouse-3.1.4.tgz"
+      },
+      "3.1.3": {
+        "digest": "039ed3a73b5df4ab6635a2244668e9f2c43e5e062c64fcdab71c774d0e8f31ac",
+        "url": "https://charts.bitnami.com/bitnami/clickhouse-3.1.3.tgz"
+      },
+      "3.1.2": {
+        "digest": "46b731f4130bc5d575b647eca9db59d94e85959a3b0f032f832eff5ff8b5797c",
+        "url": "https://charts.bitnami.com/bitnami/clickhouse-3.1.2.tgz"
+      },
+      "3.1.1": {
+        "digest": "87df3e3e54fb15bdbf73640a5ea25dc2b23aa224945c8ce6daae1decb9fbca88",
+        "url": "https://charts.bitnami.com/bitnami/clickhouse-3.1.1.tgz"
+      },
+      "3.1.0": {
+        "digest": "9dda90fcb788c51e04afc9177616296f80087736df039ed55b22c9320ebca544",
+        "url": "https://charts.bitnami.com/bitnami/clickhouse-3.1.0.tgz"
+      },
+      "3.0.7": {
+        "digest": "99ff271e44b7ad5ee856061e31ad3937783656131f69f542809abb777494b7b6",
+        "url": "https://charts.bitnami.com/bitnami/clickhouse-3.0.7.tgz"
+      },
+      "3.0.6": {
+        "digest": "3fe5ca84856241b185bb186877addb716ae24942d06c89277bd8a9201bce01e2",
+        "url": "https://charts.bitnami.com/bitnami/clickhouse-3.0.6.tgz"
+      },
+      "3.0.5": {
+        "digest": "863acf1c1ae4467e6246080874105d2b54e4c75776d2a40890be0318ba9c7790",
+        "url": "https://charts.bitnami.com/bitnami/clickhouse-3.0.5.tgz"
+      },
+      "3.0.4": {
+        "digest": "2a92d21d7665b11c0d11c9d8fb2d522ccc9fe1473031e0a5800ae3f23f44e163",
+        "url": "https://charts.bitnami.com/bitnami/clickhouse-3.0.4.tgz"
+      },
       "3.0.3": {
         "digest": "06a967689c61e7b9bb2e6f4f28e241e89c27ec4b8d70f576ddcd9a1402bb79a8",
         "url": "https://charts.bitnami.com/bitnami/clickhouse-3.0.3.tgz"
@@ -21499,6 +22131,10 @@
       }
     },
     "common": {
+      "2.2.4": {
+        "digest": "sha256:91e4aedf71c0ff91867da09a1ce2290d883eac1548f7a73f271bacbca336550d",
+        "url": "https://charts.bitnami.com/bitnami/common-2.2.4.tgz"
+      },
       "2.2.3": {
         "digest": "sha256:8cebf07c52fe0feb9ca659f87fc7952362cabdb1d76402d7806a7315a24e84cd",
         "url": "https://charts.bitnami.com/bitnami/common-2.2.3.tgz"
@@ -21613,6 +22249,18 @@
       }
     },
     "concourse": {
+      "2.0.7": {
+        "digest": "7ff8c64a7a843146c1dd73b7ab5d653ef6f579d1c55f263612098523191518c2",
+        "url": "https://charts.bitnami.com/bitnami/concourse-2.0.7.tgz"
+      },
+      "2.0.6": {
+        "digest": "875e944f567c73c9f5552195d53f77de776a00b292b21cf3a63d23f2102c6b6c",
+        "url": "https://charts.bitnami.com/bitnami/concourse-2.0.6.tgz"
+      },
+      "2.0.5": {
+        "digest": "3d92b26c153e5e7328eea8072a2dff43ee26b4e64806897b8960736e79590380",
+        "url": "https://charts.bitnami.com/bitnami/concourse-2.0.5.tgz"
+      },
       "2.0.4": {
         "digest": "006e54cf1ba71ad7aa359815d9948ffaca8de7dbaf3f61a191ce32a99ec94e67",
         "url": "https://charts.bitnami.com/bitnami/concourse-2.0.4.tgz"
@@ -21703,6 +22351,26 @@
       }
     },
     "consul": {
+      "10.10.2": {
+        "digest": "1e02958fd06b41c68fdd7eed99ba05bae7632eda1deb34a4f0b32c5faba12d5e",
+        "url": "https://charts.bitnami.com/bitnami/consul-10.10.2.tgz"
+      },
+      "10.10.1": {
+        "digest": "8b272e627bea84469b136a3eef9cc3711e13d4643ce4cbf669eb828c54d0bfec",
+        "url": "https://charts.bitnami.com/bitnami/consul-10.10.1.tgz"
+      },
+      "10.10.0": {
+        "digest": "d7775dc7ebc2b83536686da42960864b6d5591d88cd42eba0e67415e0161ae72",
+        "url": "https://charts.bitnami.com/bitnami/consul-10.10.0.tgz"
+      },
+      "10.9.14": {
+        "digest": "697d4f27c08d7cc710f261ee2fe35771282c3b9d7db4b6e5c372ac66215e14d8",
+        "url": "https://charts.bitnami.com/bitnami/consul-10.9.14.tgz"
+      },
+      "10.9.13": {
+        "digest": "e706ad04d5c4edd375cb9e19c0b2eb27970b8b91ee2cb444d00801839bd419a6",
+        "url": "https://charts.bitnami.com/bitnami/consul-10.9.13.tgz"
+      },
       "10.9.12": {
         "digest": "567a9ff44437b12b9cb54f20350466bed9fe5b5a0622faba2e40a7efbf1af623",
         "url": "https://charts.bitnami.com/bitnami/consul-10.9.12.tgz"
@@ -21849,6 +22517,34 @@
       }
     },
     "contour": {
+      "11.1.2": {
+        "digest": "06589b69525268f1fdd864b5e16b086e92975a72cd0276fcb48adb964d34d111",
+        "url": "https://charts.bitnami.com/bitnami/contour-11.1.2.tgz"
+      },
+      "11.1.1": {
+        "digest": "c426eeb8c5200773ca8a38bfab16e8b42101a2146d66fc515dcbf3695a93ae73",
+        "url": "https://charts.bitnami.com/bitnami/contour-11.1.1.tgz"
+      },
+      "11.1.0": {
+        "digest": "a6d62a17d649508f68a78436b21b2136ba2dc1d8e8411b5f956e5b9638ff02cf",
+        "url": "https://charts.bitnami.com/bitnami/contour-11.1.0.tgz"
+      },
+      "11.0.4": {
+        "digest": "4db470611fcc8adb4e2f1eabe0aa56b6fc12aab6dcc40e7ff7b9f66c5a027046",
+        "url": "https://charts.bitnami.com/bitnami/contour-11.0.4.tgz"
+      },
+      "11.0.3": {
+        "digest": "8f01309600bf853eb49efcf4cd4f3c4020af08ac535f8f1bfedfa09d0db3ee51",
+        "url": "https://charts.bitnami.com/bitnami/contour-11.0.3.tgz"
+      },
+      "11.0.2": {
+        "digest": "ae6b0d9c565df95b41338d92f82db2537ebbedc7dcf6efada732e6ccdc3955aa",
+        "url": "https://charts.bitnami.com/bitnami/contour-11.0.2.tgz"
+      },
+      "11.0.1": {
+        "digest": "5ff08f10d1f5ee5d546bf985769164ab4c483008ef059558e762ea89b231218c",
+        "url": "https://charts.bitnami.com/bitnami/contour-11.0.1.tgz"
+      },
       "11.0.0": {
         "digest": "9ac3de2c3c8c8ff44b432da55aea336167c98194516efcce8352088d77a3a87e",
         "url": "https://charts.bitnami.com/bitnami/contour-11.0.0.tgz"
@@ -21991,6 +22687,18 @@
       }
     },
     "contour-operator": {
+      "4.0.3": {
+        "digest": "6dd2256158133db4dad0900481ecf7e0225941961b0fcd8b2bf6abf771a2aae7",
+        "url": "https://charts.bitnami.com/bitnami/contour-operator-4.0.3.tgz"
+      },
+      "4.0.2": {
+        "digest": "c24cb8c3a14746f56ab11ec7c7317c15138cb6a3623c797fc43d884fb2250767",
+        "url": "https://charts.bitnami.com/bitnami/contour-operator-4.0.2.tgz"
+      },
+      "4.0.1": {
+        "digest": "47be52a0b405aca88066622b448d1ba9b52b7340548ff4cbc54ae01fc4b8ff18",
+        "url": "https://charts.bitnami.com/bitnami/contour-operator-4.0.1.tgz"
+      },
       "4.0.0": {
         "digest": "4d10777b04fed9c9df14c70e78d4292399552e9229513c2f4f1c5ab4d1671683",
         "url": "https://charts.bitnami.com/bitnami/contour-operator-4.0.0.tgz"
@@ -22063,6 +22771,14 @@
       }
     },
     "discourse": {
+      "10.0.5": {
+        "digest": "0c9d4a50e36e01784aff07941dfcb315785fcc86aa3157c6d386d80322cd639e",
+        "url": "https://charts.bitnami.com/bitnami/discourse-10.0.5.tgz"
+      },
+      "10.0.3": {
+        "digest": "e5b757a5d3cc34614ef84f78b521ed8402c828ede1d63a415d3cbafad4c9e7b9",
+        "url": "https://charts.bitnami.com/bitnami/discourse-10.0.3.tgz"
+      },
       "10.0.2": {
         "digest": "f8bd742712e98528634d0aa4eee09aa97928e7df3a9a1f4c7fcbb4cc687b0d16",
         "url": "https://charts.bitnami.com/bitnami/discourse-10.0.2.tgz"
@@ -22233,6 +22949,14 @@
       }
     },
     "dokuwiki": {
+      "13.1.19": {
+        "digest": "10698dd9ce9d4124087d49a5cd8cbc35717bb8647144a1725be1fcb730bf9b97",
+        "url": "https://charts.bitnami.com/bitnami/dokuwiki-13.1.19.tgz"
+      },
+      "13.1.18": {
+        "digest": "38896b46635fdf8fa364eb47283eb2dea23b04bfd5ccd59d6a653b029e2286ed",
+        "url": "https://charts.bitnami.com/bitnami/dokuwiki-13.1.18.tgz"
+      },
       "13.1.17": {
         "digest": "de55503e4674b4f6b869d8461dfda722be644daae8ea980f96a2f59584abc31c",
         "url": "https://charts.bitnami.com/bitnami/dokuwiki-13.1.17.tgz"
@@ -22343,6 +23067,34 @@
       }
     },
     "drupal": {
+      "13.0.13": {
+        "digest": "48874f9ef8c61bd2fa945dd9d512455e005152b24a11890ab7c4337b707286f5",
+        "url": "https://charts.bitnami.com/bitnami/drupal-13.0.13.tgz"
+      },
+      "13.0.12": {
+        "digest": "216249e599989d5c3a3fc6130cb79b6c1d042042419ccbe2af73f92071e390a4",
+        "url": "https://charts.bitnami.com/bitnami/drupal-13.0.12.tgz"
+      },
+      "13.0.11": {
+        "digest": "36c03d9750ac06f8ee6d8f53852754d4d5cb67c049358b5664180c6c19a7bff2",
+        "url": "https://charts.bitnami.com/bitnami/drupal-13.0.11.tgz"
+      },
+      "13.0.10": {
+        "digest": "a0fbae5037fccafcb6e44c85eb6ef728d9ba7c8ff099d953d426ffef625ebd4d",
+        "url": "https://charts.bitnami.com/bitnami/drupal-13.0.10.tgz"
+      },
+      "13.0.9": {
+        "digest": "39e588b9fa0e6af961ae2eab0f0daaae6b0a90bdfd0e874c27d62aedbf9f714f",
+        "url": "https://charts.bitnami.com/bitnami/drupal-13.0.9.tgz"
+      },
+      "13.0.8": {
+        "digest": "8fbefa7b6482c3ea838134eb5fc8d916ec7ca570a768cf5e8b55a1ce2e4c35f4",
+        "url": "https://charts.bitnami.com/bitnami/drupal-13.0.8.tgz"
+      },
+      "13.0.7": {
+        "digest": "b3850e488ea9beb5fd208d2c841b2c4c22379c349e57681dd5778acbc0880bd8",
+        "url": "https://charts.bitnami.com/bitnami/drupal-13.0.7.tgz"
+      },
       "13.0.6": {
         "digest": "65091c27e891d740193abb27f39302d3683ece518f62b7d67833cdeece2a8cec",
         "url": "https://charts.bitnami.com/bitnami/drupal-13.0.6.tgz"
@@ -22509,6 +23261,14 @@
       }
     },
     "ejbca": {
+      "6.3.16": {
+        "digest": "607616b41c8168692c3f65f5c144adc363fb01a52250682992914bc0b966b114",
+        "url": "https://charts.bitnami.com/bitnami/ejbca-6.3.16.tgz"
+      },
+      "6.3.15": {
+        "digest": "cff757e63fb44b49a69dc548c38e3d9a1f6dcfadc99b8bf55a6e44f1a416fbe2",
+        "url": "https://charts.bitnami.com/bitnami/ejbca-6.3.15.tgz"
+      },
       "6.3.14": {
         "digest": "ad4ced15b4375802c8e9d2993d42a8fe30c721eea16e03298cb48b000441f01f",
         "url": "https://charts.bitnami.com/bitnami/ejbca-6.3.14.tgz"
@@ -22595,6 +23355,22 @@
       }
     },
     "elasticsearch": {
+      "19.6.0": {
+        "digest": "a6e959559f9605cf5f11cfc6b94a5a8c3c613d78900c6ed8982370936a297137",
+        "url": "https://charts.bitnami.com/bitnami/elasticsearch-19.6.0.tgz"
+      },
+      "19.5.15": {
+        "digest": "457f127a18501e1746f477023a92c588a6de0b15e74834f2a6b09e3e7efcdcb1",
+        "url": "https://charts.bitnami.com/bitnami/elasticsearch-19.5.15.tgz"
+      },
+      "19.5.14": {
+        "digest": "a8c125e6a23250e0f9b230ebd494ac257506477d8aebd0f26c0b489c523481ac",
+        "url": "https://charts.bitnami.com/bitnami/elasticsearch-19.5.14.tgz"
+      },
+      "19.5.13": {
+        "digest": "87a409e6b6f19cedb7bccdf837ed8fb8357a8f2f7dd8f0ad25a7aea09d23535e",
+        "url": "https://charts.bitnami.com/bitnami/elasticsearch-19.5.13.tgz"
+      },
       "19.5.12": {
         "digest": "df05a9b2f7fa67820bda25e1a2fe3111a0bbd79eee3e343d6c8d8f861ef1e41f",
         "url": "https://charts.bitnami.com/bitnami/elasticsearch-19.5.12.tgz"
@@ -22793,6 +23569,22 @@
       }
     },
     "etcd": {
+      "8.8.1": {
+        "digest": "03c274eec0e1979d2184cb4dd5e7b8b1c4ae6d71d4c9059424c04e35ae00ff9c",
+        "url": "https://charts.bitnami.com/bitnami/etcd-8.8.1.tgz"
+      },
+      "8.8.0": {
+        "digest": "03d9dcff620ff6a5bef6804a9e83039cd7059adca253e6476bbc245b2498e991",
+        "url": "https://charts.bitnami.com/bitnami/etcd-8.8.0.tgz"
+      },
+      "8.7.7": {
+        "digest": "c43f4c0ba132f1b76fe0a90b70d9fadd5b32ef2411675d7ca993c6a909a87064",
+        "url": "https://charts.bitnami.com/bitnami/etcd-8.7.7.tgz"
+      },
+      "8.7.6": {
+        "digest": "8850d352a5957e67e843d600b35390a63a5fe59f247d82440834c731c2a9e053",
+        "url": "https://charts.bitnami.com/bitnami/etcd-8.7.6.tgz"
+      },
       "8.7.5": {
         "digest": "0661291c9e78ef6499ba7aafd834afd5a0f5beacc12a873a8780bfdf7a3ad31e",
         "url": "https://charts.bitnami.com/bitnami/etcd-8.7.5.tgz"
@@ -22943,6 +23735,42 @@
       }
     },
     "external-dns": {
+      "6.17.0": {
+        "digest": "fb6e5f79aacae3cc6579701ba5090095c5e6bdcabddbc5421e98d0781048dd0b",
+        "url": "https://charts.bitnami.com/bitnami/external-dns-6.17.0.tgz"
+      },
+      "6.16.0": {
+        "digest": "f6076d6a57a8be90f0cc30460f613d23f37a594db367dc1f0c9617fceab2ac07",
+        "url": "https://charts.bitnami.com/bitnami/external-dns-6.16.0.tgz"
+      },
+      "6.15.1": {
+        "digest": "795cbb63bee1d2a1b6b681e893a880c28b2b8072e717072c17c9d07e3633340c",
+        "url": "https://charts.bitnami.com/bitnami/external-dns-6.15.1.tgz"
+      },
+      "6.15.0": {
+        "digest": "37519c0c8895b4e2a5571aa96a9d3095e77b3bce61c905f52dc9a5ecad47b89d",
+        "url": "https://charts.bitnami.com/bitnami/external-dns-6.15.0.tgz"
+      },
+      "6.14.5": {
+        "digest": "6096b1e945428537f665a6a1f7fa6f0b3186efaebf4bdcb72e44925c2e3897f7",
+        "url": "https://charts.bitnami.com/bitnami/external-dns-6.14.5.tgz"
+      },
+      "6.14.4": {
+        "digest": "879e7b8130772cc94a8112d64b662fa2615e03f80d65522bdbd47a57e1bf1c68",
+        "url": "https://charts.bitnami.com/bitnami/external-dns-6.14.4.tgz"
+      },
+      "6.14.3": {
+        "digest": "da1fe387ef5b3aba3504845739f504190ff973f7e955f21a706b26426b7ce2bc",
+        "url": "https://charts.bitnami.com/bitnami/external-dns-6.14.3.tgz"
+      },
+      "6.14.2": {
+        "digest": "e81894a39a9c5daeecd9ac74b2bd4827b92e72a0b40135fa59461e6be5906499",
+        "url": "https://charts.bitnami.com/bitnami/external-dns-6.14.2.tgz"
+      },
+      "6.14.1": {
+        "digest": "134f249ccb96223403396ebac97ffac04b42a5ae6bfa8e085b6d45c977f190e7",
+        "url": "https://charts.bitnami.com/bitnami/external-dns-6.14.1.tgz"
+      },
       "6.14.0": {
         "digest": "9702d71e5d63987f01e0d619af5eaa42bdb9ade4b48c8ccbbd9dfe99e8581d63",
         "url": "https://charts.bitnami.com/bitnami/external-dns-6.14.0.tgz"
@@ -23085,6 +23913,30 @@
       }
     },
     "fluentd": {
+      "5.6.3": {
+        "digest": "9d84a750b24597c01de6c729b260930ecbe4e41e049a7e372343ad5164c84c56",
+        "url": "https://charts.bitnami.com/bitnami/fluentd-5.6.3.tgz"
+      },
+      "5.6.2": {
+        "digest": "97e7a5df92d0d98f4e345b7da87e22c94d6ef06ae80d861a0bef9975e136e032",
+        "url": "https://charts.bitnami.com/bitnami/fluentd-5.6.2.tgz"
+      },
+      "5.6.1": {
+        "digest": "5e19d58ba21acbcb6dfd5ba1b0c1329df8beacb671efd862594ef7a0c626ff01",
+        "url": "https://charts.bitnami.com/bitnami/fluentd-5.6.1.tgz"
+      },
+      "5.6.0": {
+        "digest": "72fff105774be0be5dd56db0a9ce628e32799daef74876ef01d6ac75f0caf3a1",
+        "url": "https://charts.bitnami.com/bitnami/fluentd-5.6.0.tgz"
+      },
+      "5.5.17": {
+        "digest": "fac021ba035333b53ff1835d68d7641d83e1ab9daa7ed71ea6dfc32c81fec36f",
+        "url": "https://charts.bitnami.com/bitnami/fluentd-5.5.17.tgz"
+      },
+      "5.5.16": {
+        "digest": "22d36659b89958a3a66fb1917e2f4f55b196baa729fad3fb2e110f3783039b49",
+        "url": "https://charts.bitnami.com/bitnami/fluentd-5.5.16.tgz"
+      },
       "5.5.15": {
         "digest": "144bf8c406a2ccfbff8513e60ceb02d06d71d8f5190888447f0d5c03d06c6763",
         "url": "https://charts.bitnami.com/bitnami/fluentd-5.5.15.tgz"
@@ -23226,6 +24078,20 @@
         "url": "https://charts.bitnami.com/bitnami/fluentd-5.1.7.tgz"
       }
     },
+    "flux": {
+      "0.1.2": {
+        "digest": "4bdcea5721edd57da17384dfe4c29a124111027b2f76bb87e7746eb0d2d9aeef",
+        "url": "https://charts.bitnami.com/bitnami/flux-0.1.2.tgz"
+      },
+      "0.1.1": {
+        "digest": "4e51e193a8729b5be9f95cfdd4c31de7785bc19dc40f5761b0291ffd8fe30d3d",
+        "url": "https://charts.bitnami.com/bitnami/flux-0.1.1.tgz"
+      },
+      "0.1.0": {
+        "digest": "455e485357c79343bcc2055193f90c708f3db064ab0906e663581fd54dfcb05d",
+        "url": "https://charts.bitnami.com/bitnami/flux-0.1.0.tgz"
+      }
+    },
     "geode": {
       "1.1.8": {
         "digest": "b7d66fc7b1c32b8aa522fa14e1d365722c32b1d22cf8a5f01ed9b6e7329f32bd",
@@ -23301,6 +24167,26 @@
       }
     },
     "ghost": {
+      "19.1.79": {
+        "digest": "613224f7aa277ff306b131d2116b9a8d774c9263dcc5f0b64bbde1d2cca15137",
+        "url": "https://charts.bitnami.com/bitnami/ghost-19.1.79.tgz"
+      },
+      "19.1.78": {
+        "digest": "e6d60099752aff3e2e3fbf299e28a0ac7b193259f589bcf4a7bc77cb669ef19f",
+        "url": "https://charts.bitnami.com/bitnami/ghost-19.1.78.tgz"
+      },
+      "19.1.77": {
+        "digest": "8e31686197717257098f8a98638faa71e8a52f1644e4d56f3ab93dc8e0408142",
+        "url": "https://charts.bitnami.com/bitnami/ghost-19.1.77.tgz"
+      },
+      "19.1.76": {
+        "digest": "f6b103a0c66ab320e0167b67e474032cd9a867c7aceb25eb965a90eb55e56f47",
+        "url": "https://charts.bitnami.com/bitnami/ghost-19.1.76.tgz"
+      },
+      "19.1.75": {
+        "digest": "69d601603595b2d38074e5d3b27989a668c558200217e5455645a3f16a9558f7",
+        "url": "https://charts.bitnami.com/bitnami/ghost-19.1.75.tgz"
+      },
       "19.1.74": {
         "digest": "c69ab393c46f3eb6f6d297553c98e3fc9a1f5e89d483c95bcfce7b9218a4b1b3",
         "url": "https://charts.bitnami.com/bitnami/ghost-19.1.74.tgz"
@@ -23659,6 +24545,30 @@
       }
     },
     "gitea": {
+      "0.1.18": {
+        "digest": "b2c6f4281e52ff13a8752d71e731ed1aa25c1ed34b3ed5efa39d5dba309dab8d",
+        "url": "https://charts.bitnami.com/bitnami/gitea-0.1.18.tgz"
+      },
+      "0.1.17": {
+        "digest": "aa5794bc83474ecd8a157136e4e89258d2c7708afa0b9342df07aea0c058ce63",
+        "url": "https://charts.bitnami.com/bitnami/gitea-0.1.17.tgz"
+      },
+      "0.1.16": {
+        "digest": "baa2071a37900a9c68baca92108bd5d809d3c882cf9bc1ec604e2422f009902a",
+        "url": "https://charts.bitnami.com/bitnami/gitea-0.1.16.tgz"
+      },
+      "0.1.15": {
+        "digest": "07896bba3da3f0729d676820e82752b3b718f02ed618f1bb706a506c919a5274",
+        "url": "https://charts.bitnami.com/bitnami/gitea-0.1.15.tgz"
+      },
+      "0.1.14": {
+        "digest": "60a0a1214b1dbabf8179f45e6ef74199e63731b6ccc82d5f98c05bdcce37ec22",
+        "url": "https://charts.bitnami.com/bitnami/gitea-0.1.14.tgz"
+      },
+      "0.1.13": {
+        "digest": "7d7f64d78538dfc5d1ad19037846561d99341018e60acb126f4b2a77dedf2c73",
+        "url": "https://charts.bitnami.com/bitnami/gitea-0.1.13.tgz"
+      },
       "0.1.12": {
         "digest": "9b6e2b99b3afc0ade39aea0ce100b121e56be20d965bb69e0ec46ab0a7a97e1d",
         "url": "https://charts.bitnami.com/bitnami/gitea-0.1.12.tgz"
@@ -23709,6 +24619,30 @@
       }
     },
     "grafana": {
+      "8.2.33": {
+        "digest": "9662d4ce6ba6053c0b41942cebd8da9cbd15d64e17aace8e8c9afff05a1bd7d2",
+        "url": "https://charts.bitnami.com/bitnami/grafana-8.2.33.tgz"
+      },
+      "8.2.32": {
+        "digest": "c70ede6e9912b73f82f3ecefa6314485f394f4fe1e38946024d434244b3735e6",
+        "url": "https://charts.bitnami.com/bitnami/grafana-8.2.32.tgz"
+      },
+      "8.2.31": {
+        "digest": "af88ede9b87403762ee0ab689b0aed2c280f0a56c0bbef2e3e34fa2b75e901a9",
+        "url": "https://charts.bitnami.com/bitnami/grafana-8.2.31.tgz"
+      },
+      "8.2.30": {
+        "digest": "f2a26b8dba98f8183f0adff0ac9e876edc2913824da44599d5fadc0cc9bd4c16",
+        "url": "https://charts.bitnami.com/bitnami/grafana-8.2.30.tgz"
+      },
+      "8.2.29": {
+        "digest": "5f2299dd353f1b3ecdadd5bff37c26fe57a80b1d70b5f248637e04b87722b956",
+        "url": "https://charts.bitnami.com/bitnami/grafana-8.2.29.tgz"
+      },
+      "8.2.28": {
+        "digest": "54537354e15cac671ae00d4f7d503f557dd13940830ffca53f71838128f17c96",
+        "url": "https://charts.bitnami.com/bitnami/grafana-8.2.28.tgz"
+      },
       "8.2.27": {
         "digest": "340c650e5c2237b3efc509d2f070e3e775de4cac52dfd2765b566755c6d96e55",
         "url": "https://charts.bitnami.com/bitnami/grafana-8.2.27.tgz"
@@ -23907,6 +24841,26 @@
       }
     },
     "grafana-loki": {
+      "2.6.2": {
+        "digest": "65e079c4e5b4e9cdec1bcf82b87bf9c2eb9253cce8eaea3f6643bc4ec3a90898",
+        "url": "https://charts.bitnami.com/bitnami/grafana-loki-2.6.2.tgz"
+      },
+      "2.6.1": {
+        "digest": "e14833f847cdeac294dd4262058e70f13c32da69c4d4b05a0aa687bc0993c9bd",
+        "url": "https://charts.bitnami.com/bitnami/grafana-loki-2.6.1.tgz"
+      },
+      "2.6.0": {
+        "digest": "f7a2729c2f4b1bc9c0b72dbcedcebeb1d8d6e4ec8b253b3579bf437eb2d7c1a2",
+        "url": "https://charts.bitnami.com/bitnami/grafana-loki-2.6.0.tgz"
+      },
+      "2.5.10": {
+        "digest": "7444f4fe9832823950b6e49a7ba9932c6dea24b5f9946f105b0ca5ea060c5cd7",
+        "url": "https://charts.bitnami.com/bitnami/grafana-loki-2.5.10.tgz"
+      },
+      "2.5.9": {
+        "digest": "409e9df7f7d4348f7ce14af062fd21eae09d6623cca5954628dd0ebd4b97386e",
+        "url": "https://charts.bitnami.com/bitnami/grafana-loki-2.5.9.tgz"
+      },
       "2.5.8": {
         "digest": "f87840d326304992d79cbe643936156856f2ab8b17d66929acd44b807c8e1d3c",
         "url": "https://charts.bitnami.com/bitnami/grafana-loki-2.5.8.tgz"
@@ -24069,6 +25023,30 @@
       }
     },
     "grafana-mimir": {
+      "0.2.3": {
+        "digest": "0db24a950ff7b9d4240f8ca7cc88f471c7a5a397328159c3f7f58848d163b578",
+        "url": "https://charts.bitnami.com/bitnami/grafana-mimir-0.2.3.tgz"
+      },
+      "0.2.2": {
+        "digest": "d6b1b38fac219a587f969eb3a5c3ca0411b8df3f47a4e2f320e529fa40de3552",
+        "url": "https://charts.bitnami.com/bitnami/grafana-mimir-0.2.2.tgz"
+      },
+      "0.2.1": {
+        "digest": "e7d1c958d56e5cf01b50e59737fcc9db8f0208f1ef923ac8d9aaea7043e0442b",
+        "url": "https://charts.bitnami.com/bitnami/grafana-mimir-0.2.1.tgz"
+      },
+      "0.2.0": {
+        "digest": "f654cd4f01f9d439d421f70668a6b22c5cce964ef994d5318c56274346e3143d",
+        "url": "https://charts.bitnami.com/bitnami/grafana-mimir-0.2.0.tgz"
+      },
+      "0.1.3": {
+        "digest": "e84ee178ffe566278b391d9b463fa81795406bae2f7d34b1c629d03209708b5b",
+        "url": "https://charts.bitnami.com/bitnami/grafana-mimir-0.1.3.tgz"
+      },
+      "0.1.2": {
+        "digest": "ae631f1d483537069a790ed7761f75af7bee4040fd53513e912c6150502674d6",
+        "url": "https://charts.bitnami.com/bitnami/grafana-mimir-0.1.2.tgz"
+      },
       "0.1.1": {
         "digest": "bbe4f72db2ff82fabf544a3b7cab54dcfdf482eeba973fc8691b942e56707c65",
         "url": "https://charts.bitnami.com/bitnami/grafana-mimir-0.1.1.tgz"
@@ -24079,6 +25057,26 @@
       }
     },
     "grafana-operator": {
+      "2.7.25": {
+        "digest": "ed8ef8cf38ac230d5601a1ef7dc29f78be7ec7737a80587a45338dd53e6d82dd",
+        "url": "https://charts.bitnami.com/bitnami/grafana-operator-2.7.25.tgz"
+      },
+      "2.7.24": {
+        "digest": "b2825d991f0d97d8c9d7d28ee70724431ebff93bb5e629e6eb60a93066c4d7a1",
+        "url": "https://charts.bitnami.com/bitnami/grafana-operator-2.7.24.tgz"
+      },
+      "2.7.23": {
+        "digest": "e2e9d1ae192a30f585b3dcc11007a5e2c00f8667cad8e3e112874b79661db891",
+        "url": "https://charts.bitnami.com/bitnami/grafana-operator-2.7.23.tgz"
+      },
+      "2.7.22": {
+        "digest": "ab6996cb9dffd941af723aa0c5afac1bdd0a59970e02c8b4e80a18d56cefaea5",
+        "url": "https://charts.bitnami.com/bitnami/grafana-operator-2.7.22.tgz"
+      },
+      "2.7.21": {
+        "digest": "0ff05803fb3e3a89abf770241c1eb53fbc122a729afff7c4cf935f62a4c56f5d",
+        "url": "https://charts.bitnami.com/bitnami/grafana-operator-2.7.21.tgz"
+      },
       "2.7.20": {
         "digest": "948d5d9b8061cabf84179746121341c7e2f4c11a25da1cf3e077dfc903fafc5f",
         "url": "https://charts.bitnami.com/bitnami/grafana-operator-2.7.20.tgz"
@@ -24209,6 +25207,26 @@
       }
     },
     "grafana-tempo": {
+      "2.1.2": {
+        "digest": "67b9c36b7fd49e356d839381abb1c85e8c86753bdb79be602afc432811bc0b5e",
+        "url": "https://charts.bitnami.com/bitnami/grafana-tempo-2.1.2.tgz"
+      },
+      "2.1.1": {
+        "digest": "e424839d3a1e72ed8c77149f4a134a02799c18c75f2fa2a2f569ebee59c2e130",
+        "url": "https://charts.bitnami.com/bitnami/grafana-tempo-2.1.1.tgz"
+      },
+      "2.1.0": {
+        "digest": "8ab2b99934efced163d8b66a2c2c9373926ae862f7732c162673f61fbe1882e6",
+        "url": "https://charts.bitnami.com/bitnami/grafana-tempo-2.1.0.tgz"
+      },
+      "2.0.3": {
+        "digest": "a9049787234c36c24b290582a04ddba37b6d0f34d838082f5e834c6d2b7739c5",
+        "url": "https://charts.bitnami.com/bitnami/grafana-tempo-2.0.3.tgz"
+      },
+      "2.0.2": {
+        "digest": "e2d45106e7a6dd0d3ceed183880ede6ab657bd8ff1537c73a06055c0086aa906",
+        "url": "https://charts.bitnami.com/bitnami/grafana-tempo-2.0.2.tgz"
+      },
       "2.0.1": {
         "digest": "3b0ae62e791e2273d02e56236d96cc4c40284f59750da892d47ba30a5c1a76de",
         "url": "https://charts.bitnami.com/bitnami/grafana-tempo-2.0.1.tgz"
@@ -24303,6 +25321,30 @@
       }
     },
     "haproxy": {
+      "0.6.16": {
+        "digest": "7fc590e8370d8e50a752b73b706736f769f62e5a37233e0f5f5b49d3a052f868",
+        "url": "https://charts.bitnami.com/bitnami/haproxy-0.6.16.tgz"
+      },
+      "0.6.15": {
+        "digest": "4cdf79de1226ea65e5a5d818b3a606591f8d1525003e926631e7edc680299874",
+        "url": "https://charts.bitnami.com/bitnami/haproxy-0.6.15.tgz"
+      },
+      "0.6.14": {
+        "digest": "b9312455662e7e4a662ff7ae4ee4def7e96dd6e06b4ca187bc476fff0307cd91",
+        "url": "https://charts.bitnami.com/bitnami/haproxy-0.6.14.tgz"
+      },
+      "0.6.13": {
+        "digest": "1d9edce4e5c6a1ce9cb4de195855afb3d6a333f555b9c4ef084b618a9f953f2c",
+        "url": "https://charts.bitnami.com/bitnami/haproxy-0.6.13.tgz"
+      },
+      "0.6.12": {
+        "digest": "b231bd1bcc2c589e70884763d63f766fb99063635409383a7b146e8de349fa60",
+        "url": "https://charts.bitnami.com/bitnami/haproxy-0.6.12.tgz"
+      },
+      "0.6.11": {
+        "digest": "1c7798b584d17c9f2055d9a6227498bee676530ea287fbb3942d16ce14b361e6",
+        "url": "https://charts.bitnami.com/bitnami/haproxy-0.6.11.tgz"
+      },
       "0.6.10": {
         "digest": "cbdf0832c7f853dfc7e6d3cc0ee7cee38a0c0454fdd00ba8e5f0ea9f264c26d7",
         "url": "https://charts.bitnami.com/bitnami/haproxy-0.6.10.tgz"
@@ -24515,6 +25557,42 @@
       }
     },
     "harbor": {
+      "16.4.10": {
+        "digest": "5347ca7fe54a049c4969effa38b7f60ee6bc79651acd974a2a296df6448c795e",
+        "url": "https://charts.bitnami.com/bitnami/harbor-16.4.10.tgz"
+      },
+      "16.4.9": {
+        "digest": "86f06f42679196c7c0fe68d76fd4ce5903351d457db9eb29f7ae950a271e190a",
+        "url": "https://charts.bitnami.com/bitnami/harbor-16.4.9.tgz"
+      },
+      "16.4.8": {
+        "digest": "cbde631e10a932a8812e7a09ec4073c1637eaa26473fb98a8f82a36b9acd142b",
+        "url": "https://charts.bitnami.com/bitnami/harbor-16.4.8.tgz"
+      },
+      "16.4.7": {
+        "digest": "90bbfc5876ace4a21ab25a5df7390fa8ff59fadb5921dea3b3c727f40ab88f79",
+        "url": "https://charts.bitnami.com/bitnami/harbor-16.4.7.tgz"
+      },
+      "16.4.6": {
+        "digest": "0f461440ecba98a5a959fa7f2e13608180fe2f34df1f682e25fe2163227e0328",
+        "url": "https://charts.bitnami.com/bitnami/harbor-16.4.6.tgz"
+      },
+      "16.4.5": {
+        "digest": "7faff24ccaf14795874ff26c4a8a7a1d0347c89838f939403a8598ba193e4925",
+        "url": "https://charts.bitnami.com/bitnami/harbor-16.4.5.tgz"
+      },
+      "16.4.4": {
+        "digest": "e41e7ba8aa8728813a51640aab1adc38c23d3710d7e6fd634a81e47c61e12289",
+        "url": "https://charts.bitnami.com/bitnami/harbor-16.4.4.tgz"
+      },
+      "16.4.3": {
+        "digest": "fc211bc29c0362b12a2db266fe2a8ae24369ccc68ebe0e70b2a9aaaac1dff19c",
+        "url": "https://charts.bitnami.com/bitnami/harbor-16.4.3.tgz"
+      },
+      "16.4.2": {
+        "digest": "4d054c99d9539db06eeb7de9ecd462a001e34f221f27bdd7e27206bbf1aa9577",
+        "url": "https://charts.bitnami.com/bitnami/harbor-16.4.2.tgz"
+      },
       "16.4.1": {
         "digest": "219c894430f5487f9f1a47a6f770a00a939d55a4635d9091451f38fa831377b1",
         "url": "https://charts.bitnami.com/bitnami/harbor-16.4.1.tgz"
@@ -24685,6 +25763,22 @@
       }
     },
     "influxdb": {
+      "5.4.20": {
+        "digest": "e8cf33e11a5064fa8db1ee1af486b75161b78a113d4767384caab305e8a975da",
+        "url": "https://charts.bitnami.com/bitnami/influxdb-5.4.20.tgz"
+      },
+      "5.4.19": {
+        "digest": "650ceaafc755cf6828c17e719693ab2c1461503aa36421b32d19b4bcd30446ce",
+        "url": "https://charts.bitnami.com/bitnami/influxdb-5.4.19.tgz"
+      },
+      "5.4.18": {
+        "digest": "ae23f4352ef8e22e537ef6715e4674fcc743de06c0b4edc628bda53aebf11572",
+        "url": "https://charts.bitnami.com/bitnami/influxdb-5.4.18.tgz"
+      },
+      "5.4.17": {
+        "digest": "f2b53b56c8d1a69a5ae4e34ae1480eadb0a3e32e2c37084a921a7991bb9d71da",
+        "url": "https://charts.bitnami.com/bitnami/influxdb-5.4.17.tgz"
+      },
       "5.4.16": {
         "digest": "9b70c05aa17c2f381ce4d5eb859ed2e9173e5e50f3c02af3af15d78eb94c7793",
         "url": "https://charts.bitnami.com/bitnami/influxdb-5.4.16.tgz"
@@ -24799,6 +25893,18 @@
       }
     },
     "jaeger": {
+      "1.0.6": {
+        "digest": "9aff43c5533c5069e67f5b25aaf6189df5f9a87d8dd726dbf97921a6a567da6f",
+        "url": "https://charts.bitnami.com/bitnami/jaeger-1.0.6.tgz"
+      },
+      "1.0.5": {
+        "digest": "f56d43ac50cc888b39354a12cb408c70084e7e04a95894003c0d94cf31124b3c",
+        "url": "https://charts.bitnami.com/bitnami/jaeger-1.0.5.tgz"
+      },
+      "1.0.4": {
+        "digest": "7e676f28e5fc906d87d3311c1410851ac10d545e952510aff0a5933283dff53e",
+        "url": "https://charts.bitnami.com/bitnami/jaeger-1.0.4.tgz"
+      },
       "1.0.3": {
         "digest": "85c0a5ba4694ce1ea84af5b6f963904c78079bb659f328207c39f6ca4f97b907",
         "url": "https://charts.bitnami.com/bitnami/jaeger-1.0.3.tgz"
@@ -24833,6 +25939,14 @@
       }
     },
     "jasperreports": {
+      "14.3.13": {
+        "digest": "2fa1f6faf6478008a199591a8bd564d24383b41840f270039fb53a178a8be299",
+        "url": "https://charts.bitnami.com/bitnami/jasperreports-14.3.13.tgz"
+      },
+      "14.3.11": {
+        "digest": "4a047198e677a57e2e1e819939684be3bd6e78126faaafbe73b3c17e9d74c7bb",
+        "url": "https://charts.bitnami.com/bitnami/jasperreports-14.3.11.tgz"
+      },
       "14.3.10": {
         "digest": "d274501e02446d70f1438930fec390a7c59d1933a985fbbb05a095f28ac43116",
         "url": "https://charts.bitnami.com/bitnami/jasperreports-14.3.10.tgz"
@@ -24939,6 +26053,30 @@
       }
     },
     "jenkins": {
+      "12.0.4": {
+        "digest": "d7145f83cd8d26d620e32e46f4abf8b9aba9dc7839e6fc6b873bd8d65ed06c4e",
+        "url": "https://charts.bitnami.com/bitnami/jenkins-12.0.4.tgz"
+      },
+      "12.0.3": {
+        "digest": "0850a8a6d3c6b690185515bdff321d451a152353ad4d4150bbfc28c01e0ecf0b",
+        "url": "https://charts.bitnami.com/bitnami/jenkins-12.0.3.tgz"
+      },
+      "12.0.2": {
+        "digest": "fc8cf0e8e1e0b3da4127714ffdb2e27ce7f306ffcbd37b4543a7104f5d1bab55",
+        "url": "https://charts.bitnami.com/bitnami/jenkins-12.0.2.tgz"
+      },
+      "12.0.1": {
+        "digest": "0678d764bc50b99f34adf099338f8df170f53a7ed4bc6c350843d077a1df08e5",
+        "url": "https://charts.bitnami.com/bitnami/jenkins-12.0.1.tgz"
+      },
+      "12.0.0": {
+        "digest": "5ca878a53b952f18ed4b469299f21024782f8a72268257127aa15b27b46f10de",
+        "url": "https://charts.bitnami.com/bitnami/jenkins-12.0.0.tgz"
+      },
+      "11.0.17": {
+        "digest": "d0e0aa8938c433a0c7f83e31406fda0b7fbb000c57d0f41b4a12643737afefef",
+        "url": "https://charts.bitnami.com/bitnami/jenkins-11.0.17.tgz"
+      },
       "11.0.16": {
         "digest": "f022297236fdaecdcd7ac9e97aa4e9d8565ee437c398858dc8bb4411c8aa1c65",
         "url": "https://charts.bitnami.com/bitnami/jenkins-11.0.16.tgz"
@@ -25045,6 +26183,22 @@
       }
     },
     "joomla": {
+      "13.3.19": {
+        "digest": "26556cec4cf4067013f13d7ff21692000bc68b60f29d540a5a26d3f48f15d352",
+        "url": "https://charts.bitnami.com/bitnami/joomla-13.3.19.tgz"
+      },
+      "13.3.18": {
+        "digest": "c9f00ce45dd123e30af139fc825f27fe3b8d0f06f29ca828f107ac83154a9deb",
+        "url": "https://charts.bitnami.com/bitnami/joomla-13.3.18.tgz"
+      },
+      "13.3.17": {
+        "digest": "adba33f5a1eb35d22c2143359e6ed49da6b5074baa6c7d3b3b30fd3f3b66c19d",
+        "url": "https://charts.bitnami.com/bitnami/joomla-13.3.17.tgz"
+      },
+      "13.3.16": {
+        "digest": "5b5836508dbdde201f850b4287f7f0175fa8c338978cd326af9ec99a558b660b",
+        "url": "https://charts.bitnami.com/bitnami/joomla-13.3.16.tgz"
+      },
       "13.3.15": {
         "digest": "4ecc5226f435a1f45b9eebde303ef30ae3f5ead5461c3bbe54b5dc38ecdecbfe",
         "url": "https://charts.bitnami.com/bitnami/joomla-13.3.15.tgz"
@@ -25151,6 +26305,18 @@
       }
     },
     "jupyterhub": {
+      "3.0.13": {
+        "digest": "982882cbcb61a72af635f399803953869fba4beaad3c0046dabd1e9ce0fde9de",
+        "url": "https://charts.bitnami.com/bitnami/jupyterhub-3.0.13.tgz"
+      },
+      "3.0.12": {
+        "digest": "fa9ba9b3a879d34138347e40678ae7363bf01ee7354c8e04347855a9dcb9e894",
+        "url": "https://charts.bitnami.com/bitnami/jupyterhub-3.0.12.tgz"
+      },
+      "3.0.11": {
+        "digest": "d89027dac8ddd3e128f69a317ddfb9bd6d804ad69b0510a4b70a8e648ae8373a",
+        "url": "https://charts.bitnami.com/bitnami/jupyterhub-3.0.11.tgz"
+      },
       "3.0.10": {
         "digest": "d493d2d53d4b18ef6f85f75bbc0e5d411906ee13cb177fe96e249cd64ddac282",
         "url": "https://charts.bitnami.com/bitnami/jupyterhub-3.0.10.tgz"
@@ -25281,6 +26447,46 @@
       }
     },
     "kafka": {
+      "21.4.4": {
+        "digest": "162cc14e2493ecf1062c089397f1503c35a0d5d1c0718a64bc7d93c1e512ce3d",
+        "url": "https://charts.bitnami.com/bitnami/kafka-21.4.4.tgz"
+      },
+      "21.4.3": {
+        "digest": "4c03d04cd0a7b2bf2520838de183cf96ce612b62c3006e1fe3c169504a2b6430",
+        "url": "https://charts.bitnami.com/bitnami/kafka-21.4.3.tgz"
+      },
+      "21.4.2": {
+        "digest": "5d716df79f29738a7570c17b08003f6b126c34664ead89334d049c07d243dec4",
+        "url": "https://charts.bitnami.com/bitnami/kafka-21.4.2.tgz"
+      },
+      "21.4.1": {
+        "digest": "2affd2880eb90d138146f91b4a45a5567eea6879f2b6c83e7a102b1528f37b41",
+        "url": "https://charts.bitnami.com/bitnami/kafka-21.4.1.tgz"
+      },
+      "21.4.0": {
+        "digest": "ddb27056a05993e708e10d48934252a68f28bfc99651342b5ef1c4799808cce0",
+        "url": "https://charts.bitnami.com/bitnami/kafka-21.4.0.tgz"
+      },
+      "21.3.1": {
+        "digest": "3a9fd4d2d78bd63413457f021d2112b9ee2556b4c29bde2ae31406e7def18c0e",
+        "url": "https://charts.bitnami.com/bitnami/kafka-21.3.1.tgz"
+      },
+      "21.3.0": {
+        "digest": "b95207263b82cbd3e0976c0617c68b16cb88d428fae92de30b8d445d07621295",
+        "url": "https://charts.bitnami.com/bitnami/kafka-21.3.0.tgz"
+      },
+      "21.2.0": {
+        "digest": "d58f09b65bc86b70b237df3fbf6e33a7eeee89e607b505ad436d00dda7618d76",
+        "url": "https://charts.bitnami.com/bitnami/kafka-21.2.0.tgz"
+      },
+      "21.1.1": {
+        "digest": "03853043815e05564ce0ab16e10a573eb2e772aa293e118fe8b66e7f9bccad75",
+        "url": "https://charts.bitnami.com/bitnami/kafka-21.1.1.tgz"
+      },
+      "21.1.0": {
+        "digest": "7d117089ff7de0a213b2f37462e8ac8985969d956d4aebd90519f9d51a86b71c",
+        "url": "https://charts.bitnami.com/bitnami/kafka-21.1.0.tgz"
+      },
       "21.0.1": {
         "digest": "1d31365df2c6f2eab781c198c2e43f4dd5f435f846bb821fe788dded4a989767",
         "url": "https://charts.bitnami.com/bitnami/kafka-21.0.1.tgz"
@@ -25455,6 +26661,34 @@
       }
     },
     "keycloak": {
+      "14.0.0": {
+        "digest": "6669b1023ad1d7357017acd24734d4e8f76130212cec4c6fdab445ec0a5e9599",
+        "url": "https://charts.bitnami.com/bitnami/keycloak-14.0.0.tgz"
+      },
+      "13.4.1": {
+        "digest": "2e5b55b6bd6788630387687e7e17af29360214d0ef8ed600a6b7f82806413a73",
+        "url": "https://charts.bitnami.com/bitnami/keycloak-13.4.1.tgz"
+      },
+      "13.4.0": {
+        "digest": "742d72cc0ed26df55e846d307d85db6540fcafb72f3797cd59994840aa6818e5",
+        "url": "https://charts.bitnami.com/bitnami/keycloak-13.4.0.tgz"
+      },
+      "13.3.0": {
+        "digest": "66c4194177e573aa78b20daf1a1c2ca0820d239b08d6bcc312ea02a0753e5a1e",
+        "url": "https://charts.bitnami.com/bitnami/keycloak-13.3.0.tgz"
+      },
+      "13.2.0": {
+        "digest": "a029c8a7067c630d2c9f75e637f966827a662c56d488b42a733f1726a0a247e7",
+        "url": "https://charts.bitnami.com/bitnami/keycloak-13.2.0.tgz"
+      },
+      "13.1.3": {
+        "digest": "f074d73a68dcfe46f410d08baf5909063a0994e7670eb98abb4307464a24f404",
+        "url": "https://charts.bitnami.com/bitnami/keycloak-13.1.3.tgz"
+      },
+      "13.1.2": {
+        "digest": "ebe30e79defda110374e8468241829b445e020b8cab80d527f101411d3f7d259",
+        "url": "https://charts.bitnami.com/bitnami/keycloak-13.1.2.tgz"
+      },
       "13.1.1": {
         "digest": "653a36882215fd20caf2672954aa3b1b1db83a943d82c129fdf1c9d28096b2fd",
         "url": "https://charts.bitnami.com/bitnami/keycloak-13.1.1.tgz"
@@ -25729,6 +26963,18 @@
       }
     },
     "kiam": {
+      "1.1.14": {
+        "digest": "777bfadd82ca1e0294f79557369f06e61fc86d942caebebbd2ec5c344507e662",
+        "url": "https://charts.bitnami.com/bitnami/kiam-1.1.14.tgz"
+      },
+      "1.1.13": {
+        "digest": "0234f2f2c3609966c8570e21d1624b47b6bf7b3879eef112615f48431e570e87",
+        "url": "https://charts.bitnami.com/bitnami/kiam-1.1.13.tgz"
+      },
+      "1.1.12": {
+        "digest": "0e91718f239fab686e82cb73e579f61205e3d19560462392da9918b60335d5d9",
+        "url": "https://charts.bitnami.com/bitnami/kiam-1.1.12.tgz"
+      },
       "1.1.11": {
         "digest": "709f8e3873bef9087daf99c196f7587b92e216edc058ada52d7ad088a397cb0a",
         "url": "https://charts.bitnami.com/bitnami/kiam-1.1.11.tgz"
@@ -25807,6 +27053,18 @@
       }
     },
     "kibana": {
+      "10.2.18": {
+        "digest": "f2a1a62af91374d45f2d5e4f5e02b9389af566ec13e8ff935dc9e67b7f210c5f",
+        "url": "https://charts.bitnami.com/bitnami/kibana-10.2.18.tgz"
+      },
+      "10.2.17": {
+        "digest": "aa6c684e97ecd609a065ded1e8c7d769d78e6c23d1283aca5278d69316250dcd",
+        "url": "https://charts.bitnami.com/bitnami/kibana-10.2.17.tgz"
+      },
+      "10.2.16": {
+        "digest": "70fd976537ed64faef69e4c0231be0f8b8a93e52a09d56653e1fa13db303e6d1",
+        "url": "https://charts.bitnami.com/bitnami/kibana-10.2.16.tgz"
+      },
       "10.2.15": {
         "digest": "c5ff3ab9c24838565d6d1b196350fcb62ccd48170c01322ee1495129f6bfcdea",
         "url": "https://charts.bitnami.com/bitnami/kibana-10.2.15.tgz"
@@ -25913,6 +27171,26 @@
       }
     },
     "kong": {
+      "9.1.8": {
+        "digest": "ce17493f3c01f2f078ccf787c418815aaf1f7ef0f1d52965cd70932254cbccfe",
+        "url": "https://charts.bitnami.com/bitnami/kong-9.1.8.tgz"
+      },
+      "9.1.7": {
+        "digest": "e1606977e302f2fb59eb31da4a05af1878a69ac9e46df6be29b7ee4c1b3c69b4",
+        "url": "https://charts.bitnami.com/bitnami/kong-9.1.7.tgz"
+      },
+      "9.1.6": {
+        "digest": "89ea62d46687e19c76d416ea6ed7447836c63aa234a26a03ec1f3ea6b8cc039a",
+        "url": "https://charts.bitnami.com/bitnami/kong-9.1.6.tgz"
+      },
+      "9.1.5": {
+        "digest": "9aac18afe12e0beaed1838b13249646a2de4a98ec8ac8a1846e4881238ad1345",
+        "url": "https://charts.bitnami.com/bitnami/kong-9.1.5.tgz"
+      },
+      "9.1.4": {
+        "digest": "60bc57c5cb995837b1200a97d21fd26a963268c5c1758e0e122cd7b8f7da2e80",
+        "url": "https://charts.bitnami.com/bitnami/kong-9.1.4.tgz"
+      },
       "9.1.3": {
         "digest": "ff93f0e616bdaa3e365a01a7abbaaebed102c27751aa1209ff24a49161b2aa09",
         "url": "https://charts.bitnami.com/bitnami/kong-9.1.3.tgz"
@@ -26279,6 +27557,34 @@
       }
     },
     "kube-prometheus": {
+      "8.4.3": {
+        "digest": "36209f03468982efaeb412c219575a0093eaeb5f1435f371f01a05cde295e99f",
+        "url": "https://charts.bitnami.com/bitnami/kube-prometheus-8.4.3.tgz"
+      },
+      "8.4.2": {
+        "digest": "4e5c5df5d8149e37bb771813755de1c62f01754d7b17ec8137653f675d4d6e67",
+        "url": "https://charts.bitnami.com/bitnami/kube-prometheus-8.4.2.tgz"
+      },
+      "8.4.1": {
+        "digest": "8c7852a0fb236aa551399ba455c4282d9ef94e7c9b86f97817586e54e271a2dc",
+        "url": "https://charts.bitnami.com/bitnami/kube-prometheus-8.4.1.tgz"
+      },
+      "8.4.0": {
+        "digest": "9f41186de3c1262d979db87b5a443419c3caf37d415fff6a177be45470e13a24",
+        "url": "https://charts.bitnami.com/bitnami/kube-prometheus-8.4.0.tgz"
+      },
+      "8.3.12": {
+        "digest": "670d218181543b904cd63d2ed06a278967113a2d6abcd8a57c45ef9eea93d828",
+        "url": "https://charts.bitnami.com/bitnami/kube-prometheus-8.3.12.tgz"
+      },
+      "8.3.11": {
+        "digest": "3593e5265f2181e203c48097a9acc96c6523d01c341893bcb5e20850d047e591",
+        "url": "https://charts.bitnami.com/bitnami/kube-prometheus-8.3.11.tgz"
+      },
+      "8.3.10": {
+        "digest": "52286da2880c1b5b1a3f720084b8acc3522b77b015ed1684b96706dbc48fa4b6",
+        "url": "https://charts.bitnami.com/bitnami/kube-prometheus-8.3.10.tgz"
+      },
       "8.3.9": {
         "digest": "1371ca7aec72a6c680767ba7ae541217ead8ab7cacfc62c6eb974feab1b8c7ec",
         "url": "https://charts.bitnami.com/bitnami/kube-prometheus-8.3.9.tgz"
@@ -26429,6 +27735,18 @@
       }
     },
     "kube-state-metrics": {
+      "3.3.5": {
+        "digest": "c5dda3bbaadc98eb722ac07cb52b2742c2125f09906be1975560cfae11ffa582",
+        "url": "https://charts.bitnami.com/bitnami/kube-state-metrics-3.3.5.tgz"
+      },
+      "3.3.4": {
+        "digest": "2f66c272ddf7eb3ab07260031e420818c2452eea02d9fc644cba21be9eb09e9a",
+        "url": "https://charts.bitnami.com/bitnami/kube-state-metrics-3.3.4.tgz"
+      },
+      "3.3.3": {
+        "digest": "a9bf2c81429b1a7d862bcc102eef3672ffad594f2055a89477094d1f0c2b1128",
+        "url": "https://charts.bitnami.com/bitnami/kube-state-metrics-3.3.3.tgz"
+      },
       "3.3.2": {
         "digest": "09341555b724e5e9811e037d8ec489338a43020b8d346212135ff4b3ba2bbcf3",
         "url": "https://charts.bitnami.com/bitnami/kube-state-metrics-3.3.2.tgz"
@@ -26527,6 +27845,22 @@
       }
     },
     "kubeapps": {
+      "12.2.9": {
+        "digest": "5f7a68534325293338146ed7682d30398fdcbaa7ce316bcada511a92ea99db20",
+        "url": "https://charts.bitnami.com/bitnami/kubeapps-12.2.9.tgz"
+      },
+      "12.2.8": {
+        "digest": "31494da9713cdaef586a0df5970096b79f624dbdc1e77e18ba29c4e341a109f1",
+        "url": "https://charts.bitnami.com/bitnami/kubeapps-12.2.8.tgz"
+      },
+      "12.2.7": {
+        "digest": "8a3b3f2ee1427812c535e5a7827462a8d732070cf04757e16fba193152d2fd44",
+        "url": "https://charts.bitnami.com/bitnami/kubeapps-12.2.7.tgz"
+      },
+      "12.2.6": {
+        "digest": "ee0a5795e2163f26119cb98db31d840b30b4e0b106137d627ea121f9f73ee1de",
+        "url": "https://charts.bitnami.com/bitnami/kubeapps-12.2.6.tgz"
+      },
       "12.2.5": {
         "digest": "2daf8416b01600ffa326067ca014a82085277ab0f6b5faf8915f76924c4f5b87",
         "url": "https://charts.bitnami.com/bitnami/kubeapps-12.2.5.tgz"
@@ -26677,6 +28011,22 @@
       }
     },
     "kubernetes-event-exporter": {
+      "2.2.6": {
+        "digest": "ab7c863bdf4752befa395a2a708c9bb154ad7d56f1ec9eacd6ebde64eef1833f",
+        "url": "https://charts.bitnami.com/bitnami/kubernetes-event-exporter-2.2.6.tgz"
+      },
+      "2.2.5": {
+        "digest": "8bed97295a1658425d0ba66eac6be925cdb06d3e129078cf78905e0f3458e293",
+        "url": "https://charts.bitnami.com/bitnami/kubernetes-event-exporter-2.2.5.tgz"
+      },
+      "2.2.4": {
+        "digest": "8e6fc39ea4302a3f955daadff2f3e5089c2dd6b974caa563585221205c900eac",
+        "url": "https://charts.bitnami.com/bitnami/kubernetes-event-exporter-2.2.4.tgz"
+      },
+      "2.2.3": {
+        "digest": "58d5680c67d65cee23417e02d098803361fbcf15a83e288bd17c4bac4455bb70",
+        "url": "https://charts.bitnami.com/bitnami/kubernetes-event-exporter-2.2.3.tgz"
+      },
       "2.2.2": {
         "digest": "3427a75952f984171347b3bba5497380909f81d79b62984851acaef2d6d27327",
         "url": "https://charts.bitnami.com/bitnami/kubernetes-event-exporter-2.2.2.tgz"
@@ -26775,6 +28125,22 @@
       }
     },
     "logstash": {
+      "5.2.2": {
+        "digest": "6cd39439c35e343a78227efacc079dbd22203fde46649d95cf37035c28a0615e",
+        "url": "https://charts.bitnami.com/bitnami/logstash-5.2.2.tgz"
+      },
+      "5.2.1": {
+        "digest": "ec196462d6ad0214d8c42df3f6b69cc6ac58590c763db6fea5296713c747ae9e",
+        "url": "https://charts.bitnami.com/bitnami/logstash-5.2.1.tgz"
+      },
+      "5.2.0": {
+        "digest": "6bbb622a7f351baad60c002df1e6260d0f48798996aec55023a0599b8e7ee785",
+        "url": "https://charts.bitnami.com/bitnami/logstash-5.2.0.tgz"
+      },
+      "5.1.15": {
+        "digest": "a63d18eaee3379461b96e5ddeffbb85b5211f5d3fc3e9e26296d78f3893aca63",
+        "url": "https://charts.bitnami.com/bitnami/logstash-5.1.15.tgz"
+      },
       "5.1.14": {
         "digest": "e5afef72160a5474a29e57bbc60b75d5aa1ebb710d44fde13af9f4a0449d95b8",
         "url": "https://charts.bitnami.com/bitnami/logstash-5.1.14.tgz"
@@ -26885,6 +28251,22 @@
       }
     },
     "magento": {
+      "21.1.18": {
+        "digest": "c19c4ca2ef5f0bdfa47ffffe9df236c5711229f36fffcc393f3cb85d8003e27d",
+        "url": "https://charts.bitnami.com/bitnami/magento-21.1.18.tgz"
+      },
+      "21.1.17": {
+        "digest": "3d322015b9a9e12507c6269b3616475526bd910dabc3ff64964ccdac25e3c571",
+        "url": "https://charts.bitnami.com/bitnami/magento-21.1.17.tgz"
+      },
+      "21.1.16": {
+        "digest": "6b3775a2596d41b048a650f53e62bfe72a303992fb58791ef478b48bcb27c040",
+        "url": "https://charts.bitnami.com/bitnami/magento-21.1.16.tgz"
+      },
+      "21.1.15": {
+        "digest": "64fbad5a2683bbab98533b2acbbb20501843b25041aa3fcde86c86236dd9987a",
+        "url": "https://charts.bitnami.com/bitnami/magento-21.1.15.tgz"
+      },
       "21.1.14": {
         "digest": "fdc63fecec0787c9c85074ab25e1eb43e5a3f3c9b6c46ecfc16249360a1b48af",
         "url": "https://charts.bitnami.com/bitnami/magento-21.1.14.tgz"
@@ -27015,6 +28397,30 @@
       }
     },
     "mariadb": {
+      "11.5.6": {
+        "digest": "4077d3bb85fa74334a3e423a04067e926139dbb6fab586b7d2d0eea7373b4f5a",
+        "url": "https://charts.bitnami.com/bitnami/mariadb-11.5.6.tgz"
+      },
+      "11.5.5": {
+        "digest": "82671c93c4ed5e5ebaab3b9772f98bba5e30213ec7dc99025442dfb1ef2b20ae",
+        "url": "https://charts.bitnami.com/bitnami/mariadb-11.5.5.tgz"
+      },
+      "11.5.4": {
+        "digest": "ac15b75870d76c175b16a688a17ef5d2cfb0545cd8a4892d87974221b9ebe098",
+        "url": "https://charts.bitnami.com/bitnami/mariadb-11.5.4.tgz"
+      },
+      "11.5.3": {
+        "digest": "40cd93285012baa0ac72160ab2c145414e54cce1888deb0cfda5c4abfc9f6483",
+        "url": "https://charts.bitnami.com/bitnami/mariadb-11.5.3.tgz"
+      },
+      "11.5.2": {
+        "digest": "dd8b8a4171188e9820c77ed07db924faee93eefa5482c28debfa28972730c95c",
+        "url": "https://charts.bitnami.com/bitnami/mariadb-11.5.2.tgz"
+      },
+      "11.5.1": {
+        "digest": "21fb454ce72cb96ed3115fc8cc4ac6336192dba98a66ebbb0961af2a647ccf70",
+        "url": "https://charts.bitnami.com/bitnami/mariadb-11.5.1.tgz"
+      },
       "11.5.0": {
         "digest": "eaa5876ed8c5081f8f826139d502ed4c12c73d8c4ee2d8eccbaa2694ffc78cf9",
         "url": "https://charts.bitnami.com/bitnami/mariadb-11.5.0.tgz"
@@ -27145,6 +28551,26 @@
       }
     },
     "mariadb-galera": {
+      "7.5.5": {
+        "digest": "19249748e9ed35072262c505ba40704d33be97345b7f075dc4af1873ec1afe57",
+        "url": "https://charts.bitnami.com/bitnami/mariadb-galera-7.5.5.tgz"
+      },
+      "7.5.4": {
+        "digest": "1f2f407ad02c0604b37a2853edd93b467628296222702117d336201900ea2685",
+        "url": "https://charts.bitnami.com/bitnami/mariadb-galera-7.5.4.tgz"
+      },
+      "7.5.3": {
+        "digest": "4fcaf2faf319f4cbbd8a039f61fd993edb2c789a409b93a9cfaac3f62ff4ab1a",
+        "url": "https://charts.bitnami.com/bitnami/mariadb-galera-7.5.3.tgz"
+      },
+      "7.5.2": {
+        "digest": "6b06c901ed1f5c11e259e7f23e8243b0e3ed6930e736b1644417b325a203de08",
+        "url": "https://charts.bitnami.com/bitnami/mariadb-galera-7.5.2.tgz"
+      },
+      "7.5.1": {
+        "digest": "8ba423d11738852637bab509222024eb3365bb936ddbcea62d835f8f828fc167",
+        "url": "https://charts.bitnami.com/bitnami/mariadb-galera-7.5.1.tgz"
+      },
       "7.5.0": {
         "digest": "77ac7a0eaeecf05ecb39bbbc3af55e6eaff9ad7020d1692b3d207c989638dc06",
         "url": "https://charts.bitnami.com/bitnami/mariadb-galera-7.5.0.tgz"
@@ -27259,6 +28685,42 @@
       }
     },
     "mastodon": {
+      "1.2.0": {
+        "digest": "1fbf4bdaa3ca97b13e06c3b4c335627be980744aeff87675b95e7085f58f07f1",
+        "url": "https://charts.bitnami.com/bitnami/mastodon-1.2.0.tgz"
+      },
+      "1.1.8": {
+        "digest": "fe04fb5efacc64a28294176a586f6bb828968c5ee9233606e8d33b8a35f0ecda",
+        "url": "https://charts.bitnami.com/bitnami/mastodon-1.1.8.tgz"
+      },
+      "1.1.7": {
+        "digest": "e393e74092281a2c432330e9af68873771b1b721091212096bb534cd07050cfd",
+        "url": "https://charts.bitnami.com/bitnami/mastodon-1.1.7.tgz"
+      },
+      "1.1.6": {
+        "digest": "3f6070739c7e14258ac41556d90bf1f46fdae36ed3684d0fa572b2f9522adca4",
+        "url": "https://charts.bitnami.com/bitnami/mastodon-1.1.6.tgz"
+      },
+      "1.1.5": {
+        "digest": "d804a94c82db17ebc1dbb6694fef7447d43d3797569f3507467a4b603fd84583",
+        "url": "https://charts.bitnami.com/bitnami/mastodon-1.1.5.tgz"
+      },
+      "1.1.4": {
+        "digest": "c6eb9e04ec18fb9aadff4019b82819da809b1984d347df01293215202086875b",
+        "url": "https://charts.bitnami.com/bitnami/mastodon-1.1.4.tgz"
+      },
+      "1.1.3": {
+        "digest": "6f345ea0b5d95c752a0e8cc74288e8062e189ecdb3b714f4964496cc3f26fec4",
+        "url": "https://charts.bitnami.com/bitnami/mastodon-1.1.3.tgz"
+      },
+      "1.1.2": {
+        "digest": "02d835c91ff9708e30e962c342fb93c3245aa1a70ede54d0326a23b23b5d61bc",
+        "url": "https://charts.bitnami.com/bitnami/mastodon-1.1.2.tgz"
+      },
+      "1.1.1": {
+        "digest": "db1e62be567be5c7f68705c79f0288345718f772b84eaf8c7567a8c60e835deb",
+        "url": "https://charts.bitnami.com/bitnami/mastodon-1.1.1.tgz"
+      },
       "1.1.0": {
         "digest": "ad29a5a8493bd8c9e68d6319dc09c3dd015c2d9d2bc9e147e58bd8efc9534425",
         "url": "https://charts.bitnami.com/bitnami/mastodon-1.1.0.tgz"
@@ -27297,6 +28759,22 @@
       }
     },
     "matomo": {
+      "0.2.29": {
+        "digest": "78e955d8be57e893459036778e09b0c48fd6db3d75864aa2fff9e4d853e41e13",
+        "url": "https://charts.bitnami.com/bitnami/matomo-0.2.29.tgz"
+      },
+      "0.2.28": {
+        "digest": "dea5a71c4679a55172ab4aaabe894fa70390a5a3cf3e3581e0f306e290066a22",
+        "url": "https://charts.bitnami.com/bitnami/matomo-0.2.28.tgz"
+      },
+      "0.2.27": {
+        "digest": "163e4c89fee0bef55e14b1309cb0986d117539e605b31c234c2834fc5378476d",
+        "url": "https://charts.bitnami.com/bitnami/matomo-0.2.27.tgz"
+      },
+      "0.2.26": {
+        "digest": "1c1c9e334e082bd2de74839d4b51eaa4dbe7ecea67735cd7986abc747e4ef1c6",
+        "url": "https://charts.bitnami.com/bitnami/matomo-0.2.26.tgz"
+      },
       "0.2.25": {
         "digest": "7423a26db918fdfbe2441392f085dba86534be3457c4a80cec31c6a2fecf54a7",
         "url": "https://charts.bitnami.com/bitnami/matomo-0.2.25.tgz"
@@ -27415,6 +28893,18 @@
       }
     },
     "mediawiki": {
+      "14.3.18": {
+        "digest": "d42030cea2e66628f9afdccb4ac9611910566a318f3fe6ab352f3b1645a4e4db",
+        "url": "https://charts.bitnami.com/bitnami/mediawiki-14.3.18.tgz"
+      },
+      "14.3.17": {
+        "digest": "9aa33f9b5ee2b57e6fd62685f6fedd074b39f04ceca2307c5cbff7ed88494130",
+        "url": "https://charts.bitnami.com/bitnami/mediawiki-14.3.17.tgz"
+      },
+      "14.3.16": {
+        "digest": "23ebeef3a0145ba716e1bc156146e5181506cf6f82eaafe7a4e74dd6911816eb",
+        "url": "https://charts.bitnami.com/bitnami/mediawiki-14.3.16.tgz"
+      },
       "14.3.15": {
         "digest": "6bf1de5bff109fb0c16fb9b32ca17f3a5448a6ee70b6613fdd64df9a1c643269",
         "url": "https://charts.bitnami.com/bitnami/mediawiki-14.3.15.tgz"
@@ -27505,6 +28995,34 @@
       }
     },
     "memcached": {
+      "6.3.14": {
+        "digest": "9b15c2fe9de28a27c790b5b4d8ff42bafab489a29eb4a89a74603db2928abfdb",
+        "url": "https://charts.bitnami.com/bitnami/memcached-6.3.14.tgz"
+      },
+      "6.3.13": {
+        "digest": "36dd5280cbecc3df8c910c08d0cf3486a42beb92df3418ac456888f2d17d4aa4",
+        "url": "https://charts.bitnami.com/bitnami/memcached-6.3.13.tgz"
+      },
+      "6.3.12": {
+        "digest": "23d08d44c51237b356e80814b96ee9f43b4dc9c1fff9cda343175a64c3cfb539",
+        "url": "https://charts.bitnami.com/bitnami/memcached-6.3.12.tgz"
+      },
+      "6.3.11": {
+        "digest": "1b5652d48d0f7322148714ae1f5db9f3ba34da5ca9593ba9c5484949d614d88c",
+        "url": "https://charts.bitnami.com/bitnami/memcached-6.3.11.tgz"
+      },
+      "6.3.10": {
+        "digest": "5fb32813e808507a0cd96c317bf19aa3a7728ea1567dabbe10eb0d6c9967013d",
+        "url": "https://charts.bitnami.com/bitnami/memcached-6.3.10.tgz"
+      },
+      "6.3.9": {
+        "digest": "efa304316d88d137643faf9a7146d4cefc7344dca5db6757399e9f3fef8ae201",
+        "url": "https://charts.bitnami.com/bitnami/memcached-6.3.9.tgz"
+      },
+      "6.3.8": {
+        "digest": "10b0486cba9f181d90de847d81e0916f79499bc8ce88fe65bfe6c1dc5ac2bd48",
+        "url": "https://charts.bitnami.com/bitnami/memcached-6.3.8.tgz"
+      },
       "6.3.7": {
         "digest": "cfc3e1c2fbccf8096c415ae5878e127247f915a0745734d3cf5650e66b27a66a",
         "url": "https://charts.bitnami.com/bitnami/memcached-6.3.7.tgz"
@@ -27611,6 +29129,38 @@
       }
     },
     "metallb": {
+      "4.2.0": {
+        "digest": "79fcdb275f690cb0280821be15d3f3856fa6dbe09fc66e71be491e6ce08c8843",
+        "url": "https://charts.bitnami.com/bitnami/metallb-4.2.0.tgz"
+      },
+      "4.1.23": {
+        "digest": "f7c321a5b584c5a16b555b2745d1c71834444b881e8e00011d89a46d2dd4faf5",
+        "url": "https://charts.bitnami.com/bitnami/metallb-4.1.23.tgz"
+      },
+      "4.1.22": {
+        "digest": "edd1679d0516c2133df624ef32e525ff253b136c2376e13ecc74f027a141ee38",
+        "url": "https://charts.bitnami.com/bitnami/metallb-4.1.22.tgz"
+      },
+      "4.1.21": {
+        "digest": "4cb387e747c0efcd544ba0dc1e9d0854f7b9d2048e08ba0954ff283b55648f2b",
+        "url": "https://charts.bitnami.com/bitnami/metallb-4.1.21.tgz"
+      },
+      "4.1.20": {
+        "digest": "6c38699692c6d0d80fc070fde1f45a92524b04981f81e96fdaf75e499273ac89",
+        "url": "https://charts.bitnami.com/bitnami/metallb-4.1.20.tgz"
+      },
+      "4.1.19": {
+        "digest": "5058d1eae70ae39cc7903d7b16f5e718840060f20601d9b39c10df505d4f889b",
+        "url": "https://charts.bitnami.com/bitnami/metallb-4.1.19.tgz"
+      },
+      "4.1.18": {
+        "digest": "49a9584516974b44d5ef84544ae6827450d394c806042b0e29022bf0069f7b4e",
+        "url": "https://charts.bitnami.com/bitnami/metallb-4.1.18.tgz"
+      },
+      "4.1.17": {
+        "digest": "178cebf505d3c111ebce2ee483efe64f2fa53e1b06772e047951542b5e3d4112",
+        "url": "https://charts.bitnami.com/bitnami/metallb-4.1.17.tgz"
+      },
       "4.1.16": {
         "digest": "3750395ea072825b1d487af451d1f49406169acda08ec67581b9ba7035eb6b09",
         "url": "https://charts.bitnami.com/bitnami/metallb-4.1.16.tgz"
@@ -27713,6 +29263,22 @@
       }
     },
     "metrics-server": {
+      "6.2.15": {
+        "digest": "6fa512e62c5cdb36a62827f1ba110e1664e630b04801ffae84ce6ad5981eb9de",
+        "url": "https://charts.bitnami.com/bitnami/metrics-server-6.2.15.tgz"
+      },
+      "6.2.14": {
+        "digest": "dfc82e948d25b393776e7bbb99fd00c331fba2f1928bed60602f87253d1542a6",
+        "url": "https://charts.bitnami.com/bitnami/metrics-server-6.2.14.tgz"
+      },
+      "6.2.13": {
+        "digest": "d21f53f7f2102bbe0e3fffd02752c6891045094f4c929b30512c20eb96eee65f",
+        "url": "https://charts.bitnami.com/bitnami/metrics-server-6.2.13.tgz"
+      },
+      "6.2.12": {
+        "digest": "024d0bee6870f19ae1e44c01df036b0f544b62f3f00ecc2733dbf3fb307467e7",
+        "url": "https://charts.bitnami.com/bitnami/metrics-server-6.2.12.tgz"
+      },
       "6.2.11": {
         "digest": "e517ef6d3eb0c5d0bf4cff011bf179e45d318b55bbab96e7912a60bc351f55ca",
         "url": "https://charts.bitnami.com/bitnami/metrics-server-6.2.11.tgz"
@@ -27811,6 +29377,50 @@
       }
     },
     "minio": {
+      "12.2.4": {
+        "digest": "faed8f580eca005ca8e6e7c591dc056fd74914fb74f88847971547d0e74efef5",
+        "url": "https://charts.bitnami.com/bitnami/minio-12.2.4.tgz"
+      },
+      "12.2.3": {
+        "digest": "b476a2944f6d657286c910c944f54938ef7e7ba3e3d912abc24312c061ad1ff1",
+        "url": "https://charts.bitnami.com/bitnami/minio-12.2.3.tgz"
+      },
+      "12.2.2": {
+        "digest": "58df26358058a16f507f4dc41842cbfdc4019ac154528a974d86d3e3aab404f7",
+        "url": "https://charts.bitnami.com/bitnami/minio-12.2.2.tgz"
+      },
+      "12.2.1": {
+        "digest": "721f7232decdb1042eda2b174d99a80bf4f01dca3541c18d4812861964a335d3",
+        "url": "https://charts.bitnami.com/bitnami/minio-12.2.1.tgz"
+      },
+      "12.2.0": {
+        "digest": "7a249f2faf2d37ae9c5d8b150e8b7467afe45afca32cb302d6ff3101c763737d",
+        "url": "https://charts.bitnami.com/bitnami/minio-12.2.0.tgz"
+      },
+      "12.1.14": {
+        "digest": "afe859831339de25e042985ad2cf17a7cd5d5b1441c11dc0d273515a5fa0bbc5",
+        "url": "https://charts.bitnami.com/bitnami/minio-12.1.14.tgz"
+      },
+      "12.1.13": {
+        "digest": "9d615335b07577e0410f7868b2a819eb87bbba6fee0bf61c96fc5d88c5b4c1ef",
+        "url": "https://charts.bitnami.com/bitnami/minio-12.1.13.tgz"
+      },
+      "12.1.12": {
+        "digest": "0565d675f75be46b818bdda3ab241db21a92e554d34e61f3d56e1abf0529d4ec",
+        "url": "https://charts.bitnami.com/bitnami/minio-12.1.12.tgz"
+      },
+      "12.1.11": {
+        "digest": "48be04c6a3f15a5236ba9915023eb409cb4a18d06cebc9d5df7b7bcb90863e88",
+        "url": "https://charts.bitnami.com/bitnami/minio-12.1.11.tgz"
+      },
+      "12.1.10": {
+        "digest": "96050303c8cf3ef19865ccebec94249e323b38011eb08b4ff9e78f38a9e20054",
+        "url": "https://charts.bitnami.com/bitnami/minio-12.1.10.tgz"
+      },
+      "12.1.9": {
+        "digest": "498e0d5714137990ee36d5c4430e88019fdc61ba58f6a7ddb697fcd92ca50b50",
+        "url": "https://charts.bitnami.com/bitnami/minio-12.1.9.tgz"
+      },
       "12.1.8": {
         "digest": "9afcb6d3268e83c9eedf9a443b8fdee70fe22a59616138e406349a5474d10538",
         "url": "https://charts.bitnami.com/bitnami/minio-12.1.8.tgz"
@@ -28105,6 +29715,34 @@
       }
     },
     "mongodb": {
+      "13.9.4": {
+        "digest": "72cad96eeef97b7ae63feaa5ee57244f793cacb5dc867af4fdcbcf65bb67501c",
+        "url": "https://charts.bitnami.com/bitnami/mongodb-13.9.4.tgz"
+      },
+      "13.9.3": {
+        "digest": "471053d6674386b2e141168b17a5023b029dfdb039718256eb4bb8bf2590f495",
+        "url": "https://charts.bitnami.com/bitnami/mongodb-13.9.3.tgz"
+      },
+      "13.9.2": {
+        "digest": "69d00642b0dee65d8d4166477815d2c8e3d740e35fec1d6c535ac7ea97e58c64",
+        "url": "https://charts.bitnami.com/bitnami/mongodb-13.9.2.tgz"
+      },
+      "13.9.1": {
+        "digest": "b4bcee130cd4717e053f11af193355b7d8d2ebd0b9fab10bbfc6d3a0a7c50cd0",
+        "url": "https://charts.bitnami.com/bitnami/mongodb-13.9.1.tgz"
+      },
+      "13.9.0": {
+        "digest": "534e5b1e6194346d7348b2abe3e9b58cda1927a8f3e97d2bdd8f68d4df2c41f1",
+        "url": "https://charts.bitnami.com/bitnami/mongodb-13.9.0.tgz"
+      },
+      "13.8.3": {
+        "digest": "d229c7628d1a84f01bda7d3b809c2892e620b4c6723ad32e0071f1dd2048847d",
+        "url": "https://charts.bitnami.com/bitnami/mongodb-13.8.3.tgz"
+      },
+      "13.8.2": {
+        "digest": "d213a60eb70714890a40b2cb08408f28d177d93501a3ab615d845a0d9c3d70eb",
+        "url": "https://charts.bitnami.com/bitnami/mongodb-13.8.2.tgz"
+      },
       "13.8.1": {
         "digest": "e607831bc96462a9b45c8d5f4c98b7e523e77cc852e108cbdafe5b27350202bb",
         "url": "https://charts.bitnami.com/bitnami/mongodb-13.8.1.tgz"
@@ -28287,6 +29925,26 @@
       }
     },
     "mongodb-sharded": {
+      "6.3.3": {
+        "digest": "91ea91990a64484464082cb87346cc87c77f123fa40a304eeb168c9559e5c532",
+        "url": "https://charts.bitnami.com/bitnami/mongodb-sharded-6.3.3.tgz"
+      },
+      "6.3.2": {
+        "digest": "2657a9058764caade1ea0150b92e44d4237d688d39eda9c088401393b39563d2",
+        "url": "https://charts.bitnami.com/bitnami/mongodb-sharded-6.3.2.tgz"
+      },
+      "6.3.1": {
+        "digest": "0fcb69a1d1e141b50491aeb880cef84141f69d9cda6e9ad51cf9c158e150b6ff",
+        "url": "https://charts.bitnami.com/bitnami/mongodb-sharded-6.3.1.tgz"
+      },
+      "6.3.0": {
+        "digest": "1da5cfacf068d6b78392c5f2f69ba07911a3212f7b70620451cbaa3078841e14",
+        "url": "https://charts.bitnami.com/bitnami/mongodb-sharded-6.3.0.tgz"
+      },
+      "6.2.5": {
+        "digest": "4f7fdb7995edbc0fdc55bb392c3e7d74ff4b0be8c02091b2c91deb5549c178b5",
+        "url": "https://charts.bitnami.com/bitnami/mongodb-sharded-6.2.5.tgz"
+      },
       "6.2.4": {
         "digest": "9fc3b1bc8e4cfb65fff0e86c740eb53a5004eeb8bd067cbe40f0afc3a479277c",
         "url": "https://charts.bitnami.com/bitnami/mongodb-sharded-6.2.4.tgz"
@@ -28445,6 +30103,30 @@
       }
     },
     "moodle": {
+      "14.3.14": {
+        "digest": "247cf2375f42af911e7cd7f6a728e513f8a39d06bf2311eb7d5bd811dbc58129",
+        "url": "https://charts.bitnami.com/bitnami/moodle-14.3.14.tgz"
+      },
+      "14.3.13": {
+        "digest": "4d0545be078826dbfd6ff73d96b7535d8ff7189bb012254bb956e94b650592d1",
+        "url": "https://charts.bitnami.com/bitnami/moodle-14.3.13.tgz"
+      },
+      "14.3.12": {
+        "digest": "b1b12b9ec7baf4573be7da870a0eda3cbe9e3af299322c9a04bee5ee57bce2c5",
+        "url": "https://charts.bitnami.com/bitnami/moodle-14.3.12.tgz"
+      },
+      "14.3.11": {
+        "digest": "88f95a3ea5f086030dafd0dfe33c175a1ab0394b61aeed96eec7976c179d5b66",
+        "url": "https://charts.bitnami.com/bitnami/moodle-14.3.11.tgz"
+      },
+      "14.3.10": {
+        "digest": "2635bf41bb70e43401f3bc6fe32cba6f0d73bd79b6870580d7efa4f7174bffec",
+        "url": "https://charts.bitnami.com/bitnami/moodle-14.3.10.tgz"
+      },
+      "14.3.9": {
+        "digest": "013d063dc72e18ab1a191f1de63d89a35706d78e3a21044bf84fee2a7a2fea91",
+        "url": "https://charts.bitnami.com/bitnami/moodle-14.3.9.tgz"
+      },
       "14.3.8": {
         "digest": "273a98de1859ea756b32adb62bb420c104e149b103b14f7447c02171c8b45271",
         "url": "https://charts.bitnami.com/bitnami/moodle-14.3.8.tgz"
@@ -28550,7 +30232,45 @@
         "url": "https://charts.bitnami.com/bitnami/moodle-14.1.7.tgz"
       }
     },
+    "multus-cni": {
+      "0.1.3": {
+        "digest": "750577bb23b68522c088936865928745e95ed052f677d68d3880034a83cb40e3",
+        "url": "https://charts.bitnami.com/bitnami/multus-cni-0.1.3.tgz"
+      },
+      "0.1.2": {
+        "digest": "d095b4431e2bde568983606d88e4300fb622e08d07b07658731169953529b633",
+        "url": "https://charts.bitnami.com/bitnami/multus-cni-0.1.2.tgz"
+      },
+      "0.1.1": {
+        "digest": "cc98a2f88d4d9e38f14b9851c651f1a2b105cc7d4d616670b321e88e9c49bae4",
+        "url": "https://charts.bitnami.com/bitnami/multus-cni-0.1.1.tgz"
+      },
+      "0.1.0": {
+        "digest": "d9955d8a47b659a4c832ed05d5e90bee360004ab21edc1009ce61bacfaac9e1e",
+        "url": "https://charts.bitnami.com/bitnami/multus-cni-0.1.0.tgz"
+      }
+    },
     "mxnet": {
+      "3.1.15": {
+        "digest": "237dace7650257114986c6d7d4a6f9128b01dd47cc369b53982bbbb3b4469404",
+        "url": "https://charts.bitnami.com/bitnami/mxnet-3.1.15.tgz"
+      },
+      "3.1.14": {
+        "digest": "faca16e6d46e903147d7e55130d789228c060982b59ab8b0a01c398d3b681daa",
+        "url": "https://charts.bitnami.com/bitnami/mxnet-3.1.14.tgz"
+      },
+      "3.1.13": {
+        "digest": "662b8a5884e2e84e104575a198017189016b72b791e5d60307012410c506e546",
+        "url": "https://charts.bitnami.com/bitnami/mxnet-3.1.13.tgz"
+      },
+      "3.1.12": {
+        "digest": "887598735d623aa3d0ec89b3304c4f67aa5ac2e8200b77d80508a429a341f5f9",
+        "url": "https://charts.bitnami.com/bitnami/mxnet-3.1.12.tgz"
+      },
+      "3.1.11": {
+        "digest": "48101e18b3b03077e1acc6f0ff3363a5e222c5642751dd66713192c6c9507a7a",
+        "url": "https://charts.bitnami.com/bitnami/mxnet-3.1.11.tgz"
+      },
       "3.1.10": {
         "digest": "7582c616110b2b7597c734607e08bd75d6aec489b5d0705803166e7f11a062c3",
         "url": "https://charts.bitnami.com/bitnami/mxnet-3.1.10.tgz"
@@ -28661,6 +30381,26 @@
       }
     },
     "mysql": {
+      "9.7.1": {
+        "digest": "281da70d371d089bd15d97ea962030604f39280ddcfb2a355127ea2a2429b7bf",
+        "url": "https://charts.bitnami.com/bitnami/mysql-9.7.1.tgz"
+      },
+      "9.7.0": {
+        "digest": "27f3da176cc707d3f3e6322e44ba209c07fecd1514b43dc170f80769bed17585",
+        "url": "https://charts.bitnami.com/bitnami/mysql-9.7.0.tgz"
+      },
+      "9.6.0": {
+        "digest": "a79b68720f5554d35936e24ced739430e0b6a1837394a963a2ac89c20d08b956",
+        "url": "https://charts.bitnami.com/bitnami/mysql-9.6.0.tgz"
+      },
+      "9.5.2": {
+        "digest": "ff4209243f8635a0d632679fba80fe88bb6131cec639e833ff604baba6d982e7",
+        "url": "https://charts.bitnami.com/bitnami/mysql-9.5.2.tgz"
+      },
+      "9.5.1": {
+        "digest": "2cd779a11f76d5a64b5f910564471711fa0919ffd6622d80210ecbe7a6b20e04",
+        "url": "https://charts.bitnami.com/bitnami/mysql-9.5.1.tgz"
+      },
       "9.5.0": {
         "digest": "f473934b9df7990f867671e785a10c3369ac0155c69c9baafac6dd6b49b621e6",
         "url": "https://charts.bitnami.com/bitnami/mysql-9.5.0.tgz"
@@ -28775,6 +30515,26 @@
       }
     },
     "nats": {
+      "7.6.1": {
+        "digest": "685b1521085c95993418825175e57fd941a10fa86e3701b9623a542532a4c0d8",
+        "url": "https://charts.bitnami.com/bitnami/nats-7.6.1.tgz"
+      },
+      "7.6.0": {
+        "digest": "ccd291b1bcd7a0519ce402c777ca06c041c2f4de7245a9c56924ff6498facbc5",
+        "url": "https://charts.bitnami.com/bitnami/nats-7.6.0.tgz"
+      },
+      "7.5.13": {
+        "digest": "73aadbac96702b04ba42fa6fe3c620bae7bcc4f0591a36f82b186326a5671142",
+        "url": "https://charts.bitnami.com/bitnami/nats-7.5.13.tgz"
+      },
+      "7.5.12": {
+        "digest": "d956645333b35d80bf285020da8777dd43b01b794de16e4510cfcbdb97a21c3a",
+        "url": "https://charts.bitnami.com/bitnami/nats-7.5.12.tgz"
+      },
+      "7.5.11": {
+        "digest": "31fea6a89aab344ae678c90416682706ca28ea1bdb21cf36e28d8e423e12de23",
+        "url": "https://charts.bitnami.com/bitnami/nats-7.5.11.tgz"
+      },
       "7.5.10": {
         "digest": "86276c385ae7467eb192d363f749d578759b8ac25cc16da953cdc57084916ec5",
         "url": "https://charts.bitnami.com/bitnami/nats-7.5.10.tgz"
@@ -28905,6 +30665,30 @@
       }
     },
     "nginx": {
+      "13.2.33": {
+        "digest": "07e6d5bce8a5708be7cd7c53b7a12d0c0c4cff6fa42f1facc424a7422fd20775",
+        "url": "https://charts.bitnami.com/bitnami/nginx-13.2.33.tgz"
+      },
+      "13.2.32": {
+        "digest": "c4896cba2a678a2373e63bab617740bb90439204f9d06c3627a28d51131b79fb",
+        "url": "https://charts.bitnami.com/bitnami/nginx-13.2.32.tgz"
+      },
+      "13.2.31": {
+        "digest": "42c94cd7d3d089e15951043e0f1e8fec3c3c82051ebb9453fdf9470630bcf6a4",
+        "url": "https://charts.bitnami.com/bitnami/nginx-13.2.31.tgz"
+      },
+      "13.2.30": {
+        "digest": "9b2c763b9bf3eaf61c6f85174bd19efa8f7ed383d2adf67bce4895ad3bcbada3",
+        "url": "https://charts.bitnami.com/bitnami/nginx-13.2.30.tgz"
+      },
+      "13.2.29": {
+        "digest": "f5f043331b20bca1f795a290bd9ab206bd7eaf91d262cc193cfe3c1daa8604c1",
+        "url": "https://charts.bitnami.com/bitnami/nginx-13.2.29.tgz"
+      },
+      "13.2.28": {
+        "digest": "4480f5b30f4da692d0863d88aac32bb800f20af32582c750fd166e6ceec9b5c1",
+        "url": "https://charts.bitnami.com/bitnami/nginx-13.2.28.tgz"
+      },
       "13.2.27": {
         "digest": "e2cd12ed5dc588862973575cf8cd019726634af495811f776f5dfeae48696587",
         "url": "https://charts.bitnami.com/bitnami/nginx-13.2.27.tgz"
@@ -29079,6 +30863,26 @@
       }
     },
     "nginx-ingress-controller": {
+      "9.5.1": {
+        "digest": "4c3180c56f0903419e17139a6c87638029f0551be2e7f981092939ec45b5da92",
+        "url": "https://charts.bitnami.com/bitnami/nginx-ingress-controller-9.5.1.tgz"
+      },
+      "9.4.1": {
+        "digest": "194bc5101563197f965863dc53430b90842fbf3d4fa9cbd4ea73a3c7e2f01631",
+        "url": "https://charts.bitnami.com/bitnami/nginx-ingress-controller-9.4.1.tgz"
+      },
+      "9.4.0": {
+        "digest": "3f7af50aba3cde3ca0d2c9a42a24cfce7e022484294df1432a3b653fc69f0158",
+        "url": "https://charts.bitnami.com/bitnami/nginx-ingress-controller-9.4.0.tgz"
+      },
+      "9.3.33": {
+        "digest": "07f16f36a88c484bb08fa2f569cc5cfff0ac42fcaffa90fba7cf8f33adc9b603",
+        "url": "https://charts.bitnami.com/bitnami/nginx-ingress-controller-9.3.33.tgz"
+      },
+      "9.3.32": {
+        "digest": "d0b49f5a9dbe151d483a8f6aa42550983dcc9072e598cd06f6ed031705a87f10",
+        "url": "https://charts.bitnami.com/bitnami/nginx-ingress-controller-9.3.32.tgz"
+      },
       "9.3.31": {
         "digest": "d42fe573a248a62571518fb85092464caeb63e007e77568bec4c2e2bf57fb11b",
         "url": "https://charts.bitnami.com/bitnami/nginx-ingress-controller-9.3.31.tgz"
@@ -29485,6 +31289,18 @@
       }
     },
     "node-exporter": {
+      "3.3.4": {
+        "digest": "b6d90c0b2830eba001ad00791c8495cb527171e5e9eacfd50b6139e05107f0dd",
+        "url": "https://charts.bitnami.com/bitnami/node-exporter-3.3.4.tgz"
+      },
+      "3.3.3": {
+        "digest": "98266ebc1d297580a1484a33bfd04d4606e2cdfe0a78dc4660f456d12dbc002d",
+        "url": "https://charts.bitnami.com/bitnami/node-exporter-3.3.3.tgz"
+      },
+      "3.3.2": {
+        "digest": "8ebf836c19f437e4897c878e034cd63b5beda5a508a41f8e923875d6d8b28474",
+        "url": "https://charts.bitnami.com/bitnami/node-exporter-3.3.2.tgz"
+      },
       "3.3.1": {
         "digest": "059b7e11449869abdc5fe127021e8075bcf4115dbfdc14b2b17f910df90c9bb0",
         "url": "https://charts.bitnami.com/bitnami/node-exporter-3.3.1.tgz"
@@ -29579,6 +31395,18 @@
       }
     },
     "oauth2-proxy": {
+      "3.4.10": {
+        "digest": "0441c03b9eedab36d6edbcef9e0315fb7eaba15ae3fefc1dd73b81193eaa990d",
+        "url": "https://charts.bitnami.com/bitnami/oauth2-proxy-3.4.10.tgz"
+      },
+      "3.4.9": {
+        "digest": "0b77ee0012a82e9e2e4138ab2aa6a14e7f69fa9fc03eecee81deb97f4abd8344",
+        "url": "https://charts.bitnami.com/bitnami/oauth2-proxy-3.4.9.tgz"
+      },
+      "3.4.8": {
+        "digest": "37899b7f61433928ed5d332de423d3f99d596d0f52402cf084209a17bd05ea63",
+        "url": "https://charts.bitnami.com/bitnami/oauth2-proxy-3.4.8.tgz"
+      },
       "3.4.7": {
         "digest": "7f696389871ed3a719d75615a4a3161b92eb809434e831805e2b9d33a750af74",
         "url": "https://charts.bitnami.com/bitnami/oauth2-proxy-3.4.7.tgz"
@@ -29689,6 +31517,22 @@
       }
     },
     "odoo": {
+      "23.0.11": {
+        "digest": "ef6afb8d06afe7dcb1d505a340d8d1ebe151aed120dec3239159b0561fb70a2b",
+        "url": "https://charts.bitnami.com/bitnami/odoo-23.0.11.tgz"
+      },
+      "23.0.10": {
+        "digest": "b141e917ace5424961d40effcdf4cf2d3980b5e8b6c3988514aaf16cd9cee1ae",
+        "url": "https://charts.bitnami.com/bitnami/odoo-23.0.10.tgz"
+      },
+      "23.0.9": {
+        "digest": "5be872cd4beba533a0d54fdbfb4b83061d790c2e08b1ad0e6e3dc739a7db6eb2",
+        "url": "https://charts.bitnami.com/bitnami/odoo-23.0.9.tgz"
+      },
+      "23.0.8": {
+        "digest": "d7c2ef12d492f57ba28af943a834e32e2e86320a6dd7d5d76959eb88ec7c2fbc",
+        "url": "https://charts.bitnami.com/bitnami/odoo-23.0.8.tgz"
+      },
       "23.0.7": {
         "digest": "852f79dd38404e1339b7a953204275a44de2091e2db6fd5b4324280076b71a2f",
         "url": "https://charts.bitnami.com/bitnami/odoo-23.0.7.tgz"
@@ -29803,6 +31647,14 @@
       }
     },
     "opencart": {
+      "13.0.11": {
+        "digest": "619e6a8cc36f63f1b80898f99d6ea49d9907d930db0878ff6f2688bb87164e96",
+        "url": "https://charts.bitnami.com/bitnami/opencart-13.0.11.tgz"
+      },
+      "13.0.10": {
+        "digest": "2bd19e65d85b3bd2e0828dc486cc2dec9cce103d3f16b5d8f0b3de34141ee85f",
+        "url": "https://charts.bitnami.com/bitnami/opencart-13.0.10.tgz"
+      },
       "13.0.8": {
         "digest": "5c4f3b78e397e9b419c3e9600e0c6dbad9b3d75928962018eed668842a68c628",
         "url": "https://charts.bitnami.com/bitnami/opencart-13.0.8.tgz"
@@ -29893,6 +31745,14 @@
       }
     },
     "osclass": {
+      "14.2.15": {
+        "digest": "6dc79a82996fef67a4b820a1439e7099b08d059916ab9d687777cf74d92d30b7",
+        "url": "https://charts.bitnami.com/bitnami/osclass-14.2.15.tgz"
+      },
+      "14.2.14": {
+        "digest": "76591cc277f45658e8fbf036ef0d9d497de417824e6e7e2fa634b01cb3978e4e",
+        "url": "https://charts.bitnami.com/bitnami/osclass-14.2.14.tgz"
+      },
       "14.2.13": {
         "digest": "3061ccb45b36ce5653ea4ca022bec6ec9fcd434c21236dfdb314cb6f7e58e1cc",
         "url": "https://charts.bitnami.com/bitnami/osclass-14.2.13.tgz"
@@ -30065,6 +31925,18 @@
       }
     },
     "parse": {
+      "20.0.5": {
+        "digest": "6a1d16b2857717008ead8a2390087b1a62df54ded8a25ce1456190dc040dda47",
+        "url": "https://charts.bitnami.com/bitnami/parse-20.0.5.tgz"
+      },
+      "20.0.4": {
+        "digest": "8bec7b998559cf67f5a3d6b9b2c0b2c819fc23019da4df6ded2a5ab571a6a442",
+        "url": "https://charts.bitnami.com/bitnami/parse-20.0.4.tgz"
+      },
+      "20.0.3": {
+        "digest": "e7b37d409191142766b2a0e96930fd1617f759305c0a9ed7c9f35401ce97b11c",
+        "url": "https://charts.bitnami.com/bitnami/parse-20.0.3.tgz"
+      },
       "20.0.2": {
         "digest": "70152b5dc79ab78bf5ab9bb1a902260b9a4acfb152dfe24305fd1bfebf80af5a",
         "url": "https://charts.bitnami.com/bitnami/parse-20.0.2.tgz"
@@ -30167,6 +32039,14 @@
       }
     },
     "phpbb": {
+      "12.3.14": {
+        "digest": "65d21b9fc5bf97c5df37db5fd229cae10a8851695fa2c36bc2f5f45af6613b66",
+        "url": "https://charts.bitnami.com/bitnami/phpbb-12.3.14.tgz"
+      },
+      "12.3.13": {
+        "digest": "7e009c74184091e2690de92f18caa99d9f24d246ac79ae1c41d38cc7564de268",
+        "url": "https://charts.bitnami.com/bitnami/phpbb-12.3.13.tgz"
+      },
       "12.3.11": {
         "digest": "9f705c451f41fd4e0b2ad07bc064513667a3fc523ac2d5e790fd66ad1616484d",
         "url": "https://charts.bitnami.com/bitnami/phpbb-12.3.11.tgz"
@@ -30253,6 +32133,18 @@
       }
     },
     "phpmyadmin": {
+      "10.4.6": {
+        "digest": "c934b98c429609d35419e96ea823a87ea40eff95af2f16867f2a27bf4bb6218a",
+        "url": "https://charts.bitnami.com/bitnami/phpmyadmin-10.4.6.tgz"
+      },
+      "10.4.5": {
+        "digest": "a272dedcf9ff514a306b366279a202b43e9fc3b1df402448161bb379dcc1d9de",
+        "url": "https://charts.bitnami.com/bitnami/phpmyadmin-10.4.5.tgz"
+      },
+      "10.4.4": {
+        "digest": "a6c3cdf30d07f56beef2a9fec043f1bae65c1156fdce3342a77b8df58c6253d5",
+        "url": "https://charts.bitnami.com/bitnami/phpmyadmin-10.4.4.tgz"
+      },
       "10.4.3": {
         "digest": "d6c6cc9f80b155ad9d5bf8bb6f3034efccbea4172ca3cc582dd08417581d3c19",
         "url": "https://charts.bitnami.com/bitnami/phpmyadmin-10.4.3.tgz"
@@ -30359,6 +32251,18 @@
       }
     },
     "pinniped": {
+      "1.0.9": {
+        "digest": "a83c803fe636c7bcb5a4a57642f6f55553af1eb22b26581c8a295767d9d75a00",
+        "url": "https://charts.bitnami.com/bitnami/pinniped-1.0.9.tgz"
+      },
+      "1.0.8": {
+        "digest": "616750d747e33d1fb45e1bff8ce3f83b27bbe86badf685138a1275a709ec2b52",
+        "url": "https://charts.bitnami.com/bitnami/pinniped-1.0.8.tgz"
+      },
+      "1.0.7": {
+        "digest": "9895f76a8758f5a39bf2cdfb13bf744abdce2a778c0607ebf0fe63e3e3d1f715",
+        "url": "https://charts.bitnami.com/bitnami/pinniped-1.0.7.tgz"
+      },
       "1.0.6": {
         "digest": "4ebc03af42b83a43831c110ec8d6abbded9ba914fc8684032d8f209d9e053c4e",
         "url": "https://charts.bitnami.com/bitnami/pinniped-1.0.6.tgz"
@@ -30465,6 +32369,30 @@
       }
     },
     "postgresql": {
+      "12.2.7": {
+        "digest": "ed202d9b5b88fe63cccd98fe9535d4661f675b3efc69279045e4502c7c7be286",
+        "url": "https://charts.bitnami.com/bitnami/postgresql-12.2.7.tgz"
+      },
+      "12.2.6": {
+        "digest": "f237c657366420a940a783960bba91d55ea882631c24a3886d990db250b31938",
+        "url": "https://charts.bitnami.com/bitnami/postgresql-12.2.6.tgz"
+      },
+      "12.2.5": {
+        "digest": "d53189ec150b75fdc79e7c3df754e6640c8d0f6d804f2f2f9f10bc411424b830",
+        "url": "https://charts.bitnami.com/bitnami/postgresql-12.2.5.tgz"
+      },
+      "12.2.4": {
+        "digest": "e361f36f6a3c665fd248088e1125456b3148f492966f5166110d7794b146091c",
+        "url": "https://charts.bitnami.com/bitnami/postgresql-12.2.4.tgz"
+      },
+      "12.2.3": {
+        "digest": "1932cf92fe2702b120f12276aff47e56d6c3bff1e283a0d013b9e8d3f653495a",
+        "url": "https://charts.bitnami.com/bitnami/postgresql-12.2.3.tgz"
+      },
+      "12.2.2": {
+        "digest": "4ab053cd716af128b97f44c53cb4087f781b8a380667c25d996e2558d5bb3b70",
+        "url": "https://charts.bitnami.com/bitnami/postgresql-12.2.2.tgz"
+      },
       "12.2.1": {
         "digest": "edaf02748ca75d9365a19c356d3ea1bc028acc7fbec430d73cdb1e6150161058",
         "url": "https://charts.bitnami.com/bitnami/postgresql-12.2.1.tgz"
@@ -30735,6 +32663,26 @@
       }
     },
     "postgresql-ha": {
+      "11.2.1": {
+        "digest": "1a0b9495661e6f223646c3550c376e250629297dd250eda56aa0719bab65b307",
+        "url": "https://charts.bitnami.com/bitnami/postgresql-ha-11.2.1.tgz"
+      },
+      "11.2.0": {
+        "digest": "db9025e39cefc8d67b43c19ca2a551e85ec639f8d5253d3160c24a4c6e06db29",
+        "url": "https://charts.bitnami.com/bitnami/postgresql-ha-11.2.0.tgz"
+      },
+      "11.1.6": {
+        "digest": "609eae1f7e6cca7e031245c6ef8b86b1b3331768d3403dfb10c162eb5caf0c32",
+        "url": "https://charts.bitnami.com/bitnami/postgresql-ha-11.1.6.tgz"
+      },
+      "11.1.5": {
+        "digest": "1f3bf31b8f975cbf3904b15883d980cc7aeae725d00694a0ca85a5ecad1f3e08",
+        "url": "https://charts.bitnami.com/bitnami/postgresql-ha-11.1.5.tgz"
+      },
+      "11.1.4": {
+        "digest": "8e9de5dfebee7ed86ac1b15b72eebbdd35d966915baa9d605848428c26e761fd",
+        "url": "https://charts.bitnami.com/bitnami/postgresql-ha-11.1.4.tgz"
+      },
       "11.1.3": {
         "digest": "45ca48dc164894d1336d8ec92c1ec5b9f17890467e846f75727668c9c449ec59",
         "url": "https://charts.bitnami.com/bitnami/postgresql-ha-11.1.3.tgz"
@@ -30933,6 +32881,18 @@
       }
     },
     "prestashop": {
+      "16.0.7": {
+        "digest": "15cb18a9ac2ffb7bb92a3ffed5da6a9ea58198e3d0f23d88125f4859c0e84924",
+        "url": "https://charts.bitnami.com/bitnami/prestashop-16.0.7.tgz"
+      },
+      "16.0.6": {
+        "digest": "65358cb537e0f361bb80f251d2fd2ff83084a9ece6a665628cc07ae5373b2a46",
+        "url": "https://charts.bitnami.com/bitnami/prestashop-16.0.6.tgz"
+      },
+      "16.0.5": {
+        "digest": "9066e8db401adedafd186ce35dc7d8d62a9c012a22d659e7781e42bd3aaf5d71",
+        "url": "https://charts.bitnami.com/bitnami/prestashop-16.0.5.tgz"
+      },
       "16.0.4": {
         "digest": "42be8afbc13376418ae53fe20a4d6e3de161bb111394dec6694a87837e6eedc4",
         "url": "https://charts.bitnami.com/bitnami/prestashop-16.0.4.tgz"
@@ -31019,6 +32979,22 @@
       }
     },
     "pytorch": {
+      "3.0.0": {
+        "digest": "56d7a6e7b1722b0614c5f76f8e070a04ce5a0f09b8ff588e4c278f1a1d14d01a",
+        "url": "https://charts.bitnami.com/bitnami/pytorch-3.0.0.tgz"
+      },
+      "2.6.1": {
+        "digest": "51183857aaee32303d2ef515312fb1915d5ea71ec04ad0328d13c843f77960f5",
+        "url": "https://charts.bitnami.com/bitnami/pytorch-2.6.1.tgz"
+      },
+      "2.6.0": {
+        "digest": "817e282ba3d76a56063418f651fef77ebabb0a0ab69ec87fc9835f0f9e066d77",
+        "url": "https://charts.bitnami.com/bitnami/pytorch-2.6.0.tgz"
+      },
+      "2.5.15": {
+        "digest": "466cbe01ee7d8cf776625d150647a02a68b53ed5c29da917cd12872e48227c81",
+        "url": "https://charts.bitnami.com/bitnami/pytorch-2.5.15.tgz"
+      },
       "2.5.14": {
         "digest": "89e80a0da00a86db0fda4100b5c7109eba8b43f6d86b67363dd6d70cf0895095",
         "url": "https://charts.bitnami.com/bitnami/pytorch-2.5.14.tgz"
@@ -31121,6 +33097,46 @@
       }
     },
     "rabbitmq": {
+      "11.13.0": {
+        "digest": "deeaf3ff6446e88ca52e625be94baee237b3a946d67dbdf2e9675e5f8b62cec8",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-11.13.0.tgz"
+      },
+      "11.12.3": {
+        "digest": "130507cca2c028daf6788a9056289534d30ec4c27590ca67e292e16388a64948",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-11.12.3.tgz"
+      },
+      "11.12.2": {
+        "digest": "967c477c6bcd28fe9634140d57f9f21cf3c8dccba7b5973baeebb0e51ea26524",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-11.12.2.tgz"
+      },
+      "11.12.1": {
+        "digest": "b56db8cac37382853109bd6d1ddee19d5bbfb72b41e7fc8bd15fd6707af093d5",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-11.12.1.tgz"
+      },
+      "11.12.0": {
+        "digest": "8a74be2eec7eda128db4e0b175b3e729e033b31572001e6b2d64eb8dd708a8ad",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-11.12.0.tgz"
+      },
+      "11.11.1": {
+        "digest": "72e22055977bdf46a84ec5a546973d80ea586a1eda63b4cf7a7d53038789af0f",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-11.11.1.tgz"
+      },
+      "11.11.0": {
+        "digest": "fc24cacbed091701f6a7c16c2744d39875a3eaa7458b0bc520281da498a1232e",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-11.11.0.tgz"
+      },
+      "11.10.3": {
+        "digest": "2fb59db36bfacd636454418a2e4e87239bf6bc4a10ca372c770661df1f607df0",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-11.10.3.tgz"
+      },
+      "11.10.2": {
+        "digest": "9f29b58082537f7f0c32457aa2b7a434ff6a9b7d71acdfbf80d2398646b8d35a",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-11.10.2.tgz"
+      },
+      "11.10.1": {
+        "digest": "d74e613a4f568d28f19e59f12f64885a0e4a33cb9c00fa4271b813f99e88af0d",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-11.10.1.tgz"
+      },
       "11.10.0": {
         "digest": "46801e9c76bdee839bed64391510abbf342ab2dbeceba80b48feca4e76cd98ac",
         "url": "https://charts.bitnami.com/bitnami/rabbitmq-11.10.0.tgz"
@@ -31355,6 +33371,30 @@
       }
     },
     "rabbitmq-cluster-operator": {
+      "3.2.10": {
+        "digest": "e73fced0d5936fda16a5a3b98804fde3d39162f4b6147c83e5897c85382796c2",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-cluster-operator-3.2.10.tgz"
+      },
+      "3.2.9": {
+        "digest": "b555dd9e51b9452d70dcfb75ad8ef38739dc96301ecc51ff497c0487803e45eb",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-cluster-operator-3.2.9.tgz"
+      },
+      "3.2.8": {
+        "digest": "797f2b277474eefea8a973daf680b45071a4a3b11dcfcabdcbfe608e33b85999",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-cluster-operator-3.2.8.tgz"
+      },
+      "3.2.7": {
+        "digest": "83fd36b74a5e21a2bcded0c06a8d9707285a15402bbf0586eb048a1b676951d8",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-cluster-operator-3.2.7.tgz"
+      },
+      "3.2.6": {
+        "digest": "2f9ae9cf59f41e2a3bc9f0191acd0c393388bb07a2d0df5feab24ae255301df5",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-cluster-operator-3.2.6.tgz"
+      },
+      "3.2.5": {
+        "digest": "e1609fb0d46e2aa234ab672a8191b0f096d6d7f90e0b7520c020dbb46c69c825",
+        "url": "https://charts.bitnami.com/bitnami/rabbitmq-cluster-operator-3.2.5.tgz"
+      },
       "3.2.4": {
         "digest": "fccfc0180154a17aebdc2cbf9ca791cb434267f47a175527f6ec888664f9261f",
         "url": "https://charts.bitnami.com/bitnami/rabbitmq-cluster-operator-3.2.4.tgz"
@@ -31461,6 +33501,50 @@
       }
     },
     "redis": {
+      "17.9.3": {
+        "digest": "89f78d58150ee397ffdc7813aa8d064ac03c6bcaed4384b752954c9be7150eec",
+        "url": "https://charts.bitnami.com/bitnami/redis-17.9.3.tgz"
+      },
+      "17.9.2": {
+        "digest": "a9bd34951627cb5a0d89986ca7a6966c38e22fbd9ff9836570c1e54ca1ba12a4",
+        "url": "https://charts.bitnami.com/bitnami/redis-17.9.2.tgz"
+      },
+      "17.9.1": {
+        "digest": "a86be98cc59f98c57e6f5700e1a4d7b6e0186edf56b3c7b62c8dd2d7e9bc3b8f",
+        "url": "https://charts.bitnami.com/bitnami/redis-17.9.1.tgz"
+      },
+      "17.9.0": {
+        "digest": "148959516a14baecd29c17d3b17b1374b6f7d0606f058859fef4d7c3b33c2ff5",
+        "url": "https://charts.bitnami.com/bitnami/redis-17.9.0.tgz"
+      },
+      "17.8.7": {
+        "digest": "3908d892239ec1428d0851001e4997a0a3e26024439ba37b3700d92045864841",
+        "url": "https://charts.bitnami.com/bitnami/redis-17.8.7.tgz"
+      },
+      "17.8.6": {
+        "digest": "b7d326b862410ae7cb63e2e4903b134608b727630b9327ef4e8cbbf80c660bea",
+        "url": "https://charts.bitnami.com/bitnami/redis-17.8.6.tgz"
+      },
+      "17.8.5": {
+        "digest": "7ebdcfa5a759a5406acde7cfc54d0e83b4fbe0290c988f97380c461ba451cb91",
+        "url": "https://charts.bitnami.com/bitnami/redis-17.8.5.tgz"
+      },
+      "17.8.4": {
+        "digest": "64d0fd2bb25b172c38cd5222003c72a044a23c6cc5cacc3c4b6e76bf1970bfff",
+        "url": "https://charts.bitnami.com/bitnami/redis-17.8.4.tgz"
+      },
+      "17.8.3": {
+        "digest": "c4706cb934b0a8b36d36a48a10f89f586cdfccda4513e40307a209abe8ab3b76",
+        "url": "https://charts.bitnami.com/bitnami/redis-17.8.3.tgz"
+      },
+      "17.8.2": {
+        "digest": "9d05b4d6ed3beb9c7cb53ca2b34fd6a77c89b79af03cf686e9ff8249583b530a",
+        "url": "https://charts.bitnami.com/bitnami/redis-17.8.2.tgz"
+      },
+      "17.8.1": {
+        "digest": "dccc3befc51219f2a6c92630661492556f9f49fa267067beb5e9d70922849a31",
+        "url": "https://charts.bitnami.com/bitnami/redis-17.8.1.tgz"
+      },
       "17.8.0": {
         "digest": "21a00e48954b2d7ede5ae5634f2735a177e82c0d61621e72505580923c146420",
         "url": "https://charts.bitnami.com/bitnami/redis-17.8.0.tgz"
@@ -31707,6 +33791,42 @@
       }
     },
     "redis-cluster": {
+      "8.4.3": {
+        "digest": "ce71649f9e4e13d7a4c8ce31512c493a5aabaf3c3c359766fec6973299c15bf9",
+        "url": "https://charts.bitnami.com/bitnami/redis-cluster-8.4.3.tgz"
+      },
+      "8.4.2": {
+        "digest": "0ebb21985c87345a289d803facdb5135e48981b9b25352ba5351248b27e61c93",
+        "url": "https://charts.bitnami.com/bitnami/redis-cluster-8.4.2.tgz"
+      },
+      "8.4.1": {
+        "digest": "43c87d09e1f9981cc70fd55812737e020db0e6e0c7e9c5898b8e23ff6f2a032a",
+        "url": "https://charts.bitnami.com/bitnami/redis-cluster-8.4.1.tgz"
+      },
+      "8.4.0": {
+        "digest": "e195e58036a44acf99c3bb51f9bbba98e4a507178a0f9e8b11a6dd0e982c459c",
+        "url": "https://charts.bitnami.com/bitnami/redis-cluster-8.4.0.tgz"
+      },
+      "8.3.13": {
+        "digest": "06dc1493d04ed8ffa6c1dab9734ac010c07da7a74c8f6f0a42753174fec5b517",
+        "url": "https://charts.bitnami.com/bitnami/redis-cluster-8.3.13.tgz"
+      },
+      "8.3.12": {
+        "digest": "733b4aebb3505784bc39a8a3b406ce4dfaf2f995700beed7d99814eeb74cbd78",
+        "url": "https://charts.bitnami.com/bitnami/redis-cluster-8.3.12.tgz"
+      },
+      "8.3.11": {
+        "digest": "5c96b511c425e0c47f96f20aa4b6db0647af8071bea682830251688582c20f10",
+        "url": "https://charts.bitnami.com/bitnami/redis-cluster-8.3.11.tgz"
+      },
+      "8.3.10": {
+        "digest": "0f889524fd87fc0f31c3c91cc5e7132e718de5579c189c44e3718d90aa69df6b",
+        "url": "https://charts.bitnami.com/bitnami/redis-cluster-8.3.10.tgz"
+      },
+      "8.3.9": {
+        "digest": "a0efa90d880d12ecf17129b90e249c945403e9379348ecd8c617ca79bce7b67b",
+        "url": "https://charts.bitnami.com/bitnami/redis-cluster-8.3.9.tgz"
+      },
       "8.3.8": {
         "digest": "516d5494ed974273adc75e6833d75b9f7119e4ac37380043c5ab0bab0e7c8b92",
         "url": "https://charts.bitnami.com/bitnami/redis-cluster-8.3.8.tgz"
@@ -31817,6 +33937,26 @@
       }
     },
     "redmine": {
+      "21.1.1": {
+        "digest": "4287e093f3c2c4474aab772e5a551cc1ee5ff5a1a5f8f3734892efe9f79f06c2",
+        "url": "https://charts.bitnami.com/bitnami/redmine-21.1.1.tgz"
+      },
+      "21.1.0": {
+        "digest": "0ba81b828b8cc1edcdfca6e9dcf8f4a6b4453d6a81ce303c7c94c9a9e9467634",
+        "url": "https://charts.bitnami.com/bitnami/redmine-21.1.0.tgz"
+      },
+      "21.0.10": {
+        "digest": "7d85555f20160e636f169f6cd2eb1bbce19ceb38d4ff4f0ae1a6d80948559be3",
+        "url": "https://charts.bitnami.com/bitnami/redmine-21.0.10.tgz"
+      },
+      "21.0.9": {
+        "digest": "2c5c55c3f62f28f8c7dd8fa118e90c2de21301951dd124ec7e46e58ba9aac96d",
+        "url": "https://charts.bitnami.com/bitnami/redmine-21.0.9.tgz"
+      },
+      "21.0.8": {
+        "digest": "1823dff35c6630b5afa68fb66307413d07625ad0eae3ae061c666eefabe01e61",
+        "url": "https://charts.bitnami.com/bitnami/redmine-21.0.8.tgz"
+      },
       "21.0.7": {
         "digest": "6455a0e42426e9a583b0d0763129211855fc2ed711d5820a53fa6fad8d7e4e52",
         "url": "https://charts.bitnami.com/bitnami/redmine-21.0.7.tgz"
@@ -31947,6 +34087,22 @@
       }
     },
     "schema-registry": {
+      "9.0.1": {
+        "digest": "767c1cd2d1016cae97c0d0ff045a109a82fa0eebf73cce04c8534145f7e33565",
+        "url": "https://charts.bitnami.com/bitnami/schema-registry-9.0.1.tgz"
+      },
+      "9.0.0": {
+        "digest": "f571c1c6077c8e5837843143eca7f390591cd916224bc8911054ee30f97ff73a",
+        "url": "https://charts.bitnami.com/bitnami/schema-registry-9.0.0.tgz"
+      },
+      "8.1.0": {
+        "digest": "18bf0c131a87458e312d78d5fca75a2980b96210e62c771fbb3467c6fc23de60",
+        "url": "https://charts.bitnami.com/bitnami/schema-registry-8.1.0.tgz"
+      },
+      "8.0.8": {
+        "digest": "90b71cbecb8df4f570df2d59dbda9824e89dc32ab2502ab81a3f2c3fed238b6b",
+        "url": "https://charts.bitnami.com/bitnami/schema-registry-8.0.8.tgz"
+      },
       "8.0.7": {
         "digest": "b929c378f885ab56ea0c0000983017f0a8f0cd264305ac5fa7b809e78aee62b5",
         "url": "https://charts.bitnami.com/bitnami/schema-registry-8.0.7.tgz"
@@ -32057,6 +34213,22 @@
       }
     },
     "sealed-secrets": {
+      "1.2.11": {
+        "digest": "360f14781251f2e2b5ad5640c22f0bf31d5373b6db03d79e4d46ff72d97d9375",
+        "url": "https://charts.bitnami.com/bitnami/sealed-secrets-1.2.11.tgz"
+      },
+      "1.2.10": {
+        "digest": "96cab942a7589b8b95ee1b5b84f8318953a0e4c49c7a16c2b7c823ca38ba9bb4",
+        "url": "https://charts.bitnami.com/bitnami/sealed-secrets-1.2.10.tgz"
+      },
+      "1.2.9": {
+        "digest": "a2b44a5a0b2bbaecace975c1add52b6f2c6c1745c52bf8f7e0c571472d203c97",
+        "url": "https://charts.bitnami.com/bitnami/sealed-secrets-1.2.9.tgz"
+      },
+      "1.2.8": {
+        "digest": "8b67fa787aaa0e9b0f552237b35b56bf86e408ca0955843cd39f9eb241aece1e",
+        "url": "https://charts.bitnami.com/bitnami/sealed-secrets-1.2.8.tgz"
+      },
       "1.2.7": {
         "digest": "282e8976f30bd551538ce3c78cf1d48e31d3805f1d55cb1435c67fe0fcad4d44",
         "url": "https://charts.bitnami.com/bitnami/sealed-secrets-1.2.7.tgz"
@@ -32175,6 +34347,14 @@
       }
     },
     "solr": {
+      "7.2.1": {
+        "digest": "131fc3b4c41c85ea39fbf2b18d3daad70bbc51431094848ce5a4f41df77baa2d",
+        "url": "https://charts.bitnami.com/bitnami/solr-7.2.1.tgz"
+      },
+      "7.2.0": {
+        "digest": "2ce00a58a7ab80ff3086954a4d6d4a5a39c1a4b6524ecaebaf379eeb45eb0579",
+        "url": "https://charts.bitnami.com/bitnami/solr-7.2.0.tgz"
+      },
       "7.1.4": {
         "digest": "d94d0fea027216d954fa2f33173101dc2daed9f6d98ef9f2464a7b771d89e0a1",
         "url": "https://charts.bitnami.com/bitnami/solr-7.1.4.tgz"
@@ -32301,6 +34481,22 @@
       }
     },
     "sonarqube": {
+      "2.1.6": {
+        "digest": "a75b684214e9b0799c344316779063d7886c3e158a469fc0d3270a9886f9e7be",
+        "url": "https://charts.bitnami.com/bitnami/sonarqube-2.1.6.tgz"
+      },
+      "2.1.5": {
+        "digest": "b72e7508e7a7e4417dd925d7f7c46c3832f56b83627dcade96432822a46a94e7",
+        "url": "https://charts.bitnami.com/bitnami/sonarqube-2.1.5.tgz"
+      },
+      "2.1.4": {
+        "digest": "c1aaddf38e3f9b76968fcc957cf61bcef7f6a6788907e92cc78d2d9d9c68ae72",
+        "url": "https://charts.bitnami.com/bitnami/sonarqube-2.1.4.tgz"
+      },
+      "2.1.3": {
+        "digest": "11634dacca91a2ecc7ce320725985c83c65d7b52420f17a12ceb26ac87fa44a4",
+        "url": "https://charts.bitnami.com/bitnami/sonarqube-2.1.3.tgz"
+      },
       "2.1.2": {
         "digest": "3dfa4c52df818c8e5f6861230f7ecd411357de5ecf64c9dd13a1e7a59f1afe22",
         "url": "https://charts.bitnami.com/bitnami/sonarqube-2.1.2.tgz"
@@ -32423,6 +34619,22 @@
       }
     },
     "spark": {
+      "6.4.2": {
+        "digest": "c1473382fb42a2bc0489c4b8e6372b6d4df95eef3c960600c1751b7e5dac26f3",
+        "url": "https://charts.bitnami.com/bitnami/spark-6.4.2.tgz"
+      },
+      "6.4.1": {
+        "digest": "7a8a09d0a247a7c0b0c1f8d2bbfcfbfc3af65aa0337845888f92fbbd6d61e21b",
+        "url": "https://charts.bitnami.com/bitnami/spark-6.4.1.tgz"
+      },
+      "6.4.0": {
+        "digest": "9f0968c0a8f9b540093e4191a360cbd5f3436a46b827c81e56ba415fc233b477",
+        "url": "https://charts.bitnami.com/bitnami/spark-6.4.0.tgz"
+      },
+      "6.3.18": {
+        "digest": "d233353d587456e5f68db261840de7a4f61b8af8abd42ee72cf440798d6dd455",
+        "url": "https://charts.bitnami.com/bitnami/spark-6.3.18.tgz"
+      },
       "6.3.17": {
         "digest": "9ba93901dccd43ec8e8fe78413aedc0cd4f652ae8521fc62190462e6c99be196",
         "url": "https://charts.bitnami.com/bitnami/spark-6.3.17.tgz"
@@ -32545,6 +34757,26 @@
       }
     },
     "spring-cloud-dataflow": {
+      "16.0.2": {
+        "digest": "7e3beb9af8db10cc913842620109b608bb03496a8b7c87297210a288c3e08d99",
+        "url": "https://charts.bitnami.com/bitnami/spring-cloud-dataflow-16.0.2.tgz"
+      },
+      "16.0.1": {
+        "digest": "4184632b91619be95b28db43d068d24c39c6ad292e1a576a95471b12f1386d2f",
+        "url": "https://charts.bitnami.com/bitnami/spring-cloud-dataflow-16.0.1.tgz"
+      },
+      "16.0.0": {
+        "digest": "337f876697f051d2bafb1f50647b8ae4d54dd925f37ad452afe85c0722c5ea16",
+        "url": "https://charts.bitnami.com/bitnami/spring-cloud-dataflow-16.0.0.tgz"
+      },
+      "15.0.6": {
+        "digest": "bf84cb3489201eb2d5dd138b61e1362d6b9dbceef7458d9c0a927ca34fd1cca2",
+        "url": "https://charts.bitnami.com/bitnami/spring-cloud-dataflow-15.0.6.tgz"
+      },
+      "15.0.5": {
+        "digest": "4f94a8fe3eb117363a8f8b4b7b8e405cbce7f41bce82c08b7bac35dfbcfc6306",
+        "url": "https://charts.bitnami.com/bitnami/spring-cloud-dataflow-15.0.5.tgz"
+      },
       "15.0.4": {
         "digest": "8da228aed4f2966a6a73cfdff7b5bc3a987a517c4d2f663599c68690d4887909",
         "url": "https://charts.bitnami.com/bitnami/spring-cloud-dataflow-15.0.4.tgz"
@@ -32659,6 +34891,18 @@
       }
     },
     "suitecrm": {
+      "11.2.13": {
+        "digest": "e794c6535b23813bb48bd48cc1f8786e3bbeb00e40d75d62d1a9ac10c5528bc2",
+        "url": "https://charts.bitnami.com/bitnami/suitecrm-11.2.13.tgz"
+      },
+      "11.2.12": {
+        "digest": "bbd3d992779865d917a47e5f6f6bd0faa8fe920467fa43d53db0fac2b4794a28",
+        "url": "https://charts.bitnami.com/bitnami/suitecrm-11.2.12.tgz"
+      },
+      "11.2.11": {
+        "digest": "d0c722cd25012c7de8f7bbb967ef0664098599693ce095065f27b73b29c318a8",
+        "url": "https://charts.bitnami.com/bitnami/suitecrm-11.2.11.tgz"
+      },
       "11.2.10": {
         "digest": "e0cb494001793c60832a6e409c2d7b6e40d464029670b16899f70ccde1d8f361",
         "url": "https://charts.bitnami.com/bitnami/suitecrm-11.2.10.tgz"
@@ -32749,6 +34993,22 @@
       }
     },
     "supabase": {
+      "0.1.5": {
+        "digest": "819a459629c1de15b5387578b9b8754115e741c67c38821924423402516d126e",
+        "url": "https://charts.bitnami.com/bitnami/supabase-0.1.5.tgz"
+      },
+      "0.1.4": {
+        "digest": "9692e44e654d9a6ba5959ad9f768ca36fe6dabb64cedbf6334cae32c024f8e07",
+        "url": "https://charts.bitnami.com/bitnami/supabase-0.1.4.tgz"
+      },
+      "0.1.3": {
+        "digest": "0849d4557556349347088950ea98d6e89b3b9192ecf4fdd9490270afb4c4370b",
+        "url": "https://charts.bitnami.com/bitnami/supabase-0.1.3.tgz"
+      },
+      "0.1.2": {
+        "digest": "4d217c4c6a1613d341ec5dfeff3eaff8243f7f647d2f1c6f67dfa61241f71eb1",
+        "url": "https://charts.bitnami.com/bitnami/supabase-0.1.2.tgz"
+      },
       "0.1.1": {
         "digest": "603e82caa3bf1e410e260745c00e91dbe0c04c0a91ba8ee22f123c09571aab29",
         "url": "https://charts.bitnami.com/bitnami/supabase-0.1.1.tgz"
@@ -32759,6 +35019,22 @@
       }
     },
     "tensorflow-resnet": {
+      "3.6.16": {
+        "digest": "62df5d68879c12bb60b546be87c3fb59ae4fccafbf6056951ce0b67eb7197226",
+        "url": "https://charts.bitnami.com/bitnami/tensorflow-resnet-3.6.16.tgz"
+      },
+      "3.6.15": {
+        "digest": "1f5918a3e8bbe43b239d6030fb0ce25203d2cb5f844e4ea1d6bf5a2e55d6fc12",
+        "url": "https://charts.bitnami.com/bitnami/tensorflow-resnet-3.6.15.tgz"
+      },
+      "3.6.14": {
+        "digest": "e040021f684264fc3c87e471e4e305f545eea2ac945047a1fb5992e4a3e8b764",
+        "url": "https://charts.bitnami.com/bitnami/tensorflow-resnet-3.6.14.tgz"
+      },
+      "3.6.13": {
+        "digest": "a17de409d05d8698e57efdc51e57248a2f03b5afd6985d52b6d4ba988b0fddc8",
+        "url": "https://charts.bitnami.com/bitnami/tensorflow-resnet-3.6.13.tgz"
+      },
       "3.6.12": {
         "digest": "259c458980c1825a5eba68f42108d35e096b376e84bba81384247b3d9496b25d",
         "url": "https://charts.bitnami.com/bitnami/tensorflow-resnet-3.6.12.tgz"
@@ -32857,6 +35133,46 @@
       }
     },
     "thanos": {
+      "12.4.2": {
+        "digest": "038dbbd2ca2e1a83d0b1512654160d5b2885081ed7690e6559236d8f79e388f4",
+        "url": "https://charts.bitnami.com/bitnami/thanos-12.4.2.tgz"
+      },
+      "12.4.1": {
+        "digest": "054ccbc218e883ab8b3c87c6aecdd573d2dbc6dc9b4ab64b26125032e571c082",
+        "url": "https://charts.bitnami.com/bitnami/thanos-12.4.1.tgz"
+      },
+      "12.4.0": {
+        "digest": "d8e7ec175533836accccbc7cc33ab06ab916d314aaac378b94f1979290003704",
+        "url": "https://charts.bitnami.com/bitnami/thanos-12.4.0.tgz"
+      },
+      "12.3.2": {
+        "digest": "513287fcd8f50716ddb603c14f46c6213e24556f77c62eb6e14f678427c67a62",
+        "url": "https://charts.bitnami.com/bitnami/thanos-12.3.2.tgz"
+      },
+      "12.3.1": {
+        "digest": "9da30f552fdcf8e8550e9f41c22805a09a5bf790f2356ea3d69c3681651db2a2",
+        "url": "https://charts.bitnami.com/bitnami/thanos-12.3.1.tgz"
+      },
+      "12.3.0": {
+        "digest": "01e7decf443bf6bc9724f3327f51ecb88e6e49402bc10cc9410bc961dcb0a44d",
+        "url": "https://charts.bitnami.com/bitnami/thanos-12.3.0.tgz"
+      },
+      "12.2.1": {
+        "digest": "c9cc753050f2d893ba283738037651e785edfbd0646be955ee9a85ac5dd4077f",
+        "url": "https://charts.bitnami.com/bitnami/thanos-12.2.1.tgz"
+      },
+      "12.2.0": {
+        "digest": "4ee320ba0f6f0a9895de43514a2a4082cade80e7cf3375c45ef5471489172c1a",
+        "url": "https://charts.bitnami.com/bitnami/thanos-12.2.0.tgz"
+      },
+      "12.1.2": {
+        "digest": "030b425686071b6f71fc702005bbd9c3c26df9d2fc87139b28bd17ffae54759c",
+        "url": "https://charts.bitnami.com/bitnami/thanos-12.1.2.tgz"
+      },
+      "12.1.1": {
+        "digest": "f329a85e554fd8e69b04b6e739d2c2c937032eb41f14c683ae694c529be7cc0c",
+        "url": "https://charts.bitnami.com/bitnami/thanos-12.1.1.tgz"
+      },
       "12.1.0": {
         "digest": "abc329d4b56b715fe00ef46c039401ec510620e948e98299f572c424d75c17ac",
         "url": "https://charts.bitnami.com/bitnami/thanos-12.1.0.tgz"
@@ -33043,6 +35359,34 @@
       }
     },
     "tomcat": {
+      "10.6.2": {
+        "digest": "ce852b0da0cb593b11901a31661fb419b2709e76b223e643d60918bae2bc4e91",
+        "url": "https://charts.bitnami.com/bitnami/tomcat-10.6.2.tgz"
+      },
+      "10.6.1": {
+        "digest": "d2f3fc0952255aff8f9661b53603a9e01a59c3c13fcf3a740c70eff4384c5b8e",
+        "url": "https://charts.bitnami.com/bitnami/tomcat-10.6.1.tgz"
+      },
+      "10.6.0": {
+        "digest": "2fabcb7f3523c3ad14cc36dafa3f34bdbecd6e959de449fb64513fc75a4d57b5",
+        "url": "https://charts.bitnami.com/bitnami/tomcat-10.6.0.tgz"
+      },
+      "10.5.20": {
+        "digest": "ba0ac84ab9ad74435c76c8bec7a41432b04bdeab4dbc444b486b90c6b7cd0467",
+        "url": "https://charts.bitnami.com/bitnami/tomcat-10.5.20.tgz"
+      },
+      "10.5.19": {
+        "digest": "9b96d9c2a1bf869f7c5e2953e72c346f55837cb0bbd22c1b00d6553ed19c68a8",
+        "url": "https://charts.bitnami.com/bitnami/tomcat-10.5.19.tgz"
+      },
+      "10.5.18": {
+        "digest": "e4b3852a2710f3e375bf6c47e0402d1d396ac3407d00233e9eb69eb725419818",
+        "url": "https://charts.bitnami.com/bitnami/tomcat-10.5.18.tgz"
+      },
+      "10.5.17": {
+        "digest": "f7fe35003e15528b95d37f528962a2fa97ee2b9e87527755414f07c54c0ac631",
+        "url": "https://charts.bitnami.com/bitnami/tomcat-10.5.17.tgz"
+      },
       "10.5.16": {
         "digest": "9875bef3a3bf40fc89f77cb6a609b750f45385deb94844ed56a2170d04e1adc0",
         "url": "https://charts.bitnami.com/bitnami/tomcat-10.5.16.tgz"
@@ -33205,6 +35549,18 @@
       }
     },
     "wavefront": {
+      "4.2.14": {
+        "digest": "25e380ac7819144fd2ec1b1a47379e77a3bd1ae5b98a4d6b895619df90416f41",
+        "url": "https://charts.bitnami.com/bitnami/wavefront-4.2.14.tgz"
+      },
+      "4.2.13": {
+        "digest": "d5138089b60bada3ce34e560ae1508ba9c6a32178af743694b392b01d4534f10",
+        "url": "https://charts.bitnami.com/bitnami/wavefront-4.2.13.tgz"
+      },
+      "4.2.12": {
+        "digest": "f658d9a9bc2ddc1bbbd29312506a50c9076332d8cdd3bb8745767c066b589b48",
+        "url": "https://charts.bitnami.com/bitnami/wavefront-4.2.12.tgz"
+      },
       "4.2.11": {
         "digest": "c989a957cab0df3a45efc96252140e92844e49f39fefeb63c09df706cfed8ce2",
         "url": "https://charts.bitnami.com/bitnami/wavefront-4.2.11.tgz"
@@ -33321,6 +35677,22 @@
       }
     },
     "wavefront-hpa-adapter": {
+      "1.3.14": {
+        "digest": "0167a5ef4086b664062926407b7e0d6a44370bcf8d466a71a1fe344227843847",
+        "url": "https://charts.bitnami.com/bitnami/wavefront-hpa-adapter-1.3.14.tgz"
+      },
+      "1.3.13": {
+        "digest": "2218d6033e28cb53d53bccd226b19b5b8937a501fcb1e77eeab4780bf646d43b",
+        "url": "https://charts.bitnami.com/bitnami/wavefront-hpa-adapter-1.3.13.tgz"
+      },
+      "1.3.12": {
+        "digest": "03afb73bff798530ff64f755c65ddbd77676c2d081118c6329585a1953ad31f0",
+        "url": "https://charts.bitnami.com/bitnami/wavefront-hpa-adapter-1.3.12.tgz"
+      },
+      "1.3.11": {
+        "digest": "9c79849e7fa007fd8dd6c559b57bb88c59670dbb4a4c71f5076ebde728b2f867",
+        "url": "https://charts.bitnami.com/bitnami/wavefront-hpa-adapter-1.3.11.tgz"
+      },
       "1.3.10": {
         "digest": "28cb45092a9c65c4e8284b91e542b3b51c0dc187f9f640400d05f4b59b634fed",
         "url": "https://charts.bitnami.com/bitnami/wavefront-hpa-adapter-1.3.10.tgz"
@@ -33395,6 +35767,22 @@
       }
     },
     "wavefront-prometheus-storage-adapter": {
+      "2.1.14": {
+        "digest": "03367232b3cf0e66c654230bb701a47dd41b38a67443083db43a988d8c7b0c4f",
+        "url": "https://charts.bitnami.com/bitnami/wavefront-prometheus-storage-adapter-2.1.14.tgz"
+      },
+      "2.1.13": {
+        "digest": "23e6df8a2b1ddba715e1752d305406ac5be5ea1e2a02c4d512f0ef724d73749c",
+        "url": "https://charts.bitnami.com/bitnami/wavefront-prometheus-storage-adapter-2.1.13.tgz"
+      },
+      "2.1.12": {
+        "digest": "ba48d197c15a426a2d546421c6e0800e202f61caf10aa069df9429fccc4c758b",
+        "url": "https://charts.bitnami.com/bitnami/wavefront-prometheus-storage-adapter-2.1.12.tgz"
+      },
+      "2.1.11": {
+        "digest": "29ca27b00fdc8d422a8c717caea0581da5464bd8948e65c67dcf3cf8c48bfb16",
+        "url": "https://charts.bitnami.com/bitnami/wavefront-prometheus-storage-adapter-2.1.11.tgz"
+      },
       "2.1.10": {
         "digest": "60d8ca4862bfe40db552bb9e3e1eb4f31e70b6bfb238cf7d57e622bd99a72ebf",
         "url": "https://charts.bitnami.com/bitnami/wavefront-prometheus-storage-adapter-2.1.10.tgz"
@@ -33480,7 +35868,29 @@
         "url": "https://charts.bitnami.com/bitnami/wavefront-prometheus-storage-adapter-2.0.1.tgz"
       }
     },
+    "whereabouts": {
+      "0.1.5": {
+        "digest": "72326e2467e3bf50d82aba89fc53bf17c6f0404f9c639d8a384eeb448400400c",
+        "url": "https://charts.bitnami.com/bitnami/whereabouts-0.1.5.tgz"
+      },
+      "0.1.4": {
+        "digest": "5e326b2ca5d1dae44f88e26df356a80133b138f0761c2c417f4e1ba34f8622ed",
+        "url": "https://charts.bitnami.com/bitnami/whereabouts-0.1.4.tgz"
+      },
+      "0.1.3": {
+        "digest": "29ed1bdb8076489ea4b4ff18508b702836ea26f243f498411366fb05e3391cde",
+        "url": "https://charts.bitnami.com/bitnami/whereabouts-0.1.3.tgz"
+      }
+    },
     "wildfly": {
+      "14.2.3": {
+        "digest": "d104f0ea7b921d9f176e90dd93d7cabb4cfffe6a1b9e467f8d79cf292d7b3d32",
+        "url": "https://charts.bitnami.com/bitnami/wildfly-14.2.3.tgz"
+      },
+      "14.2.1": {
+        "digest": "387879ad602de6383ada9fe263b48002cb3c7432feb1d1603cfa570c82411866",
+        "url": "https://charts.bitnami.com/bitnami/wildfly-14.2.1.tgz"
+      },
       "14.2.0": {
         "digest": "506b05f236fcd12b2382ab4504c5b0ba86a9a84329bebad04d71d9e3fe79f989",
         "url": "https://charts.bitnami.com/bitnami/wildfly-14.2.0.tgz"
@@ -33611,6 +36021,70 @@
       }
     },
     "wordpress": {
+      "15.3.0": {
+        "digest": "2ea1e654c7c383846791f70a5a704e7eb30af5c8672cb2f4233659da14339272",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.3.0.tgz"
+      },
+      "15.2.61": {
+        "digest": "08b477a737c22b7637c8941ac1122acfc94846d4d89cc1c75b462ac612d33487",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.61.tgz"
+      },
+      "15.2.60": {
+        "digest": "3b194cb1fd4802e1107065b33c920c6cb7e51805d75a8ae726399f815b59d0f5",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.60.tgz"
+      },
+      "15.2.59": {
+        "digest": "5b429a31952831345cdf744b9f961817d9b2f37935b48e04d85af42a5b8eadb0",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.59.tgz"
+      },
+      "15.2.58": {
+        "digest": "841bed6eb863af79ffa58b557acaf1b45a3e77a49ebacdb16c589ee3ad242466",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.58.tgz"
+      },
+      "15.2.57": {
+        "digest": "fb73226b57061e1c247e93672506c6c5274cf5c07f50b143cac5bba527cd04a9",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.57.tgz"
+      },
+      "15.2.56": {
+        "digest": "1db37a6310b7b554b886c38887304c2ee45b0d2dfc21d577f62e31e4060858db",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.56.tgz"
+      },
+      "15.2.55": {
+        "digest": "6b4a77c4751530b0b57c175bb59d32ff2bbff7214a521bcab1592960fdcc4838",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.55.tgz"
+      },
+      "15.2.54": {
+        "digest": "0d7b8783e9e1d3d95ebf568e93546c155f6e2c000a4a0966eae346be14309e93",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.54.tgz"
+      },
+      "15.2.53": {
+        "digest": "9478c17f5bb9f31e698e2c222711d1c81c176b1273ec82d3c3dc8fd8452299f9",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.53.tgz"
+      },
+      "15.2.52": {
+        "digest": "cf9930ff09d30cb802e714052364d870afda0765d539a11aa53c3fa439abc123",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.52.tgz"
+      },
+      "15.2.51": {
+        "digest": "50121e5531516429448ce52bc731dbe38fd4a87d16dc0cc696256f3ebff70431",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.51.tgz"
+      },
+      "15.2.50": {
+        "digest": "0f4457ac6c6c56749d2626ab76918f5480f8b400e09d33be4ac1488e897c713c",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.50.tgz"
+      },
+      "15.2.49": {
+        "digest": "2e4a76c143e0446dec4433013a1711a00b408d74439078088365e0268e386bc6",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.49.tgz"
+      },
+      "15.2.48": {
+        "digest": "5bfe96e17962f523d2073d7bb95e1a864c103c4ef6ac6b55297c55d7cf600eba",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.48.tgz"
+      },
+      "15.2.47": {
+        "digest": "dcea2c5759c754c7810dbb88edfe779caa19fb4f09baefa611d629f6f396744b",
+        "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.47.tgz"
+      },
       "15.2.46": {
         "digest": "cb854f9e3c9a46c5e8d4c34aab0442bbf4c0108b168469b03998485b5c3400e7",
         "url": "https://charts.bitnami.com/bitnami/wordpress-15.2.46.tgz"
@@ -34143,6 +36617,18 @@
       }
     },
     "zookeeper": {
+      "11.1.6": {
+        "digest": "4e7d95775aeb081158147f18bcc3034e4331edf3cd9eb250dffd436e24b77842",
+        "url": "https://charts.bitnami.com/bitnami/zookeeper-11.1.6.tgz"
+      },
+      "11.1.5": {
+        "digest": "d5a202ba29b199eb1f0841754a5078f2505b2e5cc59f5753c653327a34ecbe23",
+        "url": "https://charts.bitnami.com/bitnami/zookeeper-11.1.5.tgz"
+      },
+      "11.1.4": {
+        "digest": "ce13d0a43e1d51087fe94a6b2d78d9fedfa61194c90b8f5c83d73b92f103f75f",
+        "url": "https://charts.bitnami.com/bitnami/zookeeper-11.1.4.tgz"
+      },
       "11.1.3": {
         "digest": "d9318b51892f35242b82a0bf7cb494067f9cf6b6d4135d596ec35915a4d3aadd",
         "url": "https://charts.bitnami.com/bitnami/zookeeper-11.1.3.tgz"
@@ -34399,6 +36885,30 @@
       }
     },
     "gitlab": {
+      "6.10.2": {
+        "digest": "ecdc37cc54f77bd662abc710c6f60cfafd61257e74dc1f19a9b12f08e9ae7239",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-6.10.2.tgz"
+      },
+      "6.10.1": {
+        "digest": "d6e24618f9dc65b6c4d8772e339dda01dd05aadec775e2043ec20b956af37f9f",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-6.10.1.tgz"
+      },
+      "6.10.0": {
+        "digest": "bc4caf977b88c51d1d3bb9bd04236103aea20cc0872d3a29fdbbcf19526648f1",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-6.10.0.tgz"
+      },
+      "6.9.4": {
+        "digest": "0f18be28a7d6111860f2acace96b0ff4555f65317c8c8c04c96fc51466dba386",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-6.9.4.tgz"
+      },
+      "6.9.3": {
+        "digest": "1d1446d8d92a561792af379ac021d3d35d01adaac5674b29201557ab72eb1ab7",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-6.9.3.tgz"
+      },
+      "6.9.2": {
+        "digest": "af96dcb5247869f6d164f3b794529694cd2f807ce83e7681b8021477cc5ae05c",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-6.9.2.tgz"
+      },
       "6.9.1": {
         "digest": "9ccd0125aea787aa6a0592917ec9813362bb41dbf1f6c12e6887406b5961673c",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-6.9.1.tgz"
@@ -34406,6 +36916,14 @@
       "6.9.0": {
         "digest": "3752fc47cf8938148b0023f4ffabac20f9c696dad47865006923ce98e038a968",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-6.9.0.tgz"
+      },
+      "6.8.5": {
+        "digest": "2a40f77378f6f160ece29025e485bc7479f845c332465cbb5e8d0cb2f959ee4a",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-6.8.5.tgz"
+      },
+      "6.8.4": {
+        "digest": "f2057d464e0fe8240c4ad29b5c66f2263db886a932b4636ed1c67c8cea84f4de",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-6.8.4.tgz"
       },
       "6.8.3": {
         "digest": "52902d3afa4eb686c9f3dbffa772b1c7e27d62ad063e5e0a5b05a08ddc84e990",
@@ -34422,6 +36940,10 @@
       "6.8.0": {
         "digest": "1d64d76971325fd357f9e8b3877cd754b93b47699dc961b70c529299ef5a9067",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-6.8.0.tgz"
+      },
+      "6.7.8": {
+        "digest": "e2b2cfcca66da7298db78bf0647c9aa5925f58e5c5beecf7ae2696dbbdff65f6",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-6.7.8.tgz"
       },
       "6.7.7": {
         "digest": "3ef4c1b66c38372ce6776f6c4fe3e691b60daea3f638a207ad420b311383be01",
@@ -36249,6 +38771,10 @@
       }
     },
     "gitlab-agent": {
+      "1.12.0": {
+        "digest": "7a91f8bf2a9f9f53b8a8374e050af01038ddaeac7065190031a46a07386b87b5",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-agent-1.12.0.tgz"
+      },
       "1.11.0": {
         "digest": "86be3490eaeec693b79fe53b32871256c4a8534440c548063890aa5e41cc2065",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-agent-1.11.0.tgz"
@@ -36341,6 +38867,14 @@
       }
     },
     "gitlab-runner": {
+      "0.51.1": {
+        "digest": "3cc875d669b8a0b84a6bc2da6e1bb6455331911b06a2f1957fe2be4dbbc95335",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-runner-0.51.1.tgz"
+      },
+      "0.51.0": {
+        "digest": "fe43832440c5dedc43d7f2763bf19a14ac3eef6d409a52005d7b80070831ff33",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-runner-0.51.0.tgz"
+      },
       "0.50.1": {
         "digest": "17aa2ebf2277caa4f6384af348b9f39793b4cfed2f5507e5b64967da30656d4c",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-runner-0.50.1.tgz"
@@ -37082,6 +39616,16 @@
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-runner-0.1.13.tgz"
       }
     },
+    "gitlab-zoekt": {
+      "0.2.0": {
+        "digest": "c8bbbd0c3bde84257688ab97b8ce58d063aede9629f0801400a39bf0676414c7",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-zoekt-0.2.0.tgz"
+      },
+      "0.1.0": {
+        "digest": "7014aa8dfa55798c7cda687614d8f8e4121a30804a3f00c096ceeaa3eeb4ccd4",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-zoekt-0.1.0.tgz"
+      }
+    },
     "knative": {
       "0.10.0": {
         "digest": "12655009ff7fd591a16a3589005f1063d9eec1cc5ecf27e1f48d859e62486b10",
@@ -37131,6 +39675,10 @@
   },
   "ingress-nginx": {
     "ingress-nginx": {
+      "4.6.0": {
+        "digest": "60aa4aa33c6867bf961f9e715bf7246d57fc3ca3bfa2ea433c1768eb1670d963",
+        "url": "https://github.com/kubernetes/ingress-nginx/releases/download/helm-chart-4.6.0/ingress-nginx-4.6.0.tgz"
+      },
       "4.5.2": {
         "digest": "7f4c140d9fbaa368fe0cbfcd7a1c257a22cf5aaf5ec5219992e68432366ebe29",
         "url": "https://github.com/kubernetes/ingress-nginx/releases/download/helm-chart-4.5.2/ingress-nginx-4.5.2.tgz"
@@ -37579,6 +40127,10 @@
   },
   "jetstack": {
     "cert-manager": {
+      "v1.12.0-alpha.1": {
+        "digest": "52fd9d72caa09be775cd82e5eb057eaef1629624925277bc752fc86a3805a5d5",
+        "url": "charts/cert-manager-v1.12.0-alpha.1.tgz"
+      },
       "v1.12.0-alpha.0": {
         "digest": "e65768088e81dc6a3451b18dec2647ffcc61b349b3e1c9b88dd9b8f310a13c10",
         "url": "charts/cert-manager-v1.12.0-alpha.0.tgz"
@@ -38101,6 +40653,10 @@
       }
     },
     "cert-manager-approver-policy": {
+      "v0.6.3": {
+        "digest": "1939a83b7a5e04a0e9bf872da633824b1303b2470a4646a29908deffa31d129d",
+        "url": "charts/cert-manager-approver-policy-v0.6.3.tgz"
+      },
       "v0.6.2": {
         "digest": "93339fd522c304c81f82e70771887241aa8506861d5612a2a1d097a62086d7c2",
         "url": "charts/cert-manager-approver-policy-v0.6.2.tgz"
@@ -38229,6 +40785,14 @@
       }
     },
     "cert-manager-istio-csr": {
+      "v0.6.0": {
+        "digest": "fc0c1ec6b63ae0cad35724047c18ea80c8083152be7fa9fb3a97d3b4ae711675",
+        "url": "charts/cert-manager-istio-csr-v0.6.0.tgz"
+      },
+      "v0.6.0-alpha.0": {
+        "digest": "985f231c01e839f5d175996fe41925382c19d028512646a11974b61ab0ea1e66",
+        "url": "charts/cert-manager-istio-csr-v0.6.0-alpha.0.tgz"
+      },
       "v0.5.0": {
         "digest": "e2e84ea5823b7bacd4faa2dfce798145431b931233bc58b9d2a76e56194da204",
         "url": "charts/cert-manager-istio-csr-v0.5.0.tgz"
@@ -59531,6 +62095,22 @@
   },
   "nextcloud": {
     "nextcloud": {
+      "3.5.5": {
+        "digest": "20f98da1fc50a40fbad8668450e66bd42f5b654fa200767a768384a32c4d8731",
+        "url": "https://github.com/nextcloud/helm/releases/download/nextcloud-3.5.5/nextcloud-3.5.5.tgz"
+      },
+      "3.5.4": {
+        "digest": "6319094c1b2b798ae0a1eb741f255fa24cdc93c61314241f2f9f12353519468f",
+        "url": "https://github.com/nextcloud/helm/releases/download/nextcloud-3.5.4/nextcloud-3.5.4.tgz"
+      },
+      "3.5.3": {
+        "digest": "cc0a083ee57a48c899c32c7b28604a0e377aba8f606e2432235c97afd3d9f345",
+        "url": "https://github.com/nextcloud/helm/releases/download/nextcloud-3.5.3/nextcloud-3.5.3.tgz"
+      },
+      "3.5.2": {
+        "digest": "76f5e5f2d3b46a41e18f9f73c0eccdb3b7d2e94a163a7694cb5f36d048cfcff6",
+        "url": "https://github.com/nextcloud/helm/releases/download/nextcloud-3.5.2/nextcloud-3.5.2.tgz"
+      },
       "3.5.1": {
         "digest": "41b5d11d50bc36e36606a022e359a817d18289a7dc94ba7762ddd1d072b618c6",
         "url": "https://github.com/nextcloud/helm/releases/download/nextcloud-3.5.1/nextcloud-3.5.1.tgz"
