@@ -170,27 +170,38 @@ in
 
       "/run/.luks/cr_backup_1" = zfsOnLuks "cr_backup_1" "942c4a41-edcc-4a60-8528-42db7a782c44";
       "/run/.luks/cr_backup_2" = zfsOnLuks "cr_backup_2" "c1261cce-9627-42c0-91a2-c36a534d76a6";
-    }
-    //
-    lib.mapAttrs'
-      (to: from:
-        {
-          name = to;
-          value = {
-            device = from;
-            options = [ "bind" ];
-          };
-        }
-      )
-      {
-        "/var/lib/rancher/k3s/storage" = "/storage/kubernetes/local-path";
-        "/var/lib/longhorn" = "/storage/kubernetes/longhorn";
-        "/var/lib/etcd" = "/storage/kubernetes/etcd";
-        "/var/lib/rook" = "/storage/kubernetes/rook";
-        "/var/lib/ceph" = "/storage/ceph";
-        "/var/lib/libvirt" = "/storage/libvirt";
-        "/var/lib/machines" = "/storage/machines";
+    };
+
+  systemd.mounts = lib.mapAttrsToList
+    (to: attrs:
+      rec {
+        what = attrs.from;
+        where = to;
+        type = "none";
+        options = "bind";
+
+        after = [ "zfs.target" ];
+        wants = after;
+
+        wantedBy = (attrs.wantedBy or [ ]) ++ [ "local-fs.target" ];
+        before = wantedBy;
+      }
+    )
+    {
+      "/var/lib/rancher/k3s/storage" = {
+        from = "/storage/kubernetes/local-path";
+        wantedBy = [ "k3s.service" ];
       };
+      "/var/lib/libvirt" = {
+        from = "/storage/libvirt";
+        wantedBy = [ "libvirtd.service" ];
+      };
+      "/var/lib/machines" = {
+        from = "/storage/machines";
+      };
+    };
+
+  boot.zfs.extraPools = [ "hoard" "zbackup" ];
 
   swapDevices = [
     {
@@ -200,8 +211,6 @@ in
       };
     }
   ];
-
-  boot.zfs.extraPools = [ "zbackup" ];
 
   services.zfs = {
     autoScrub.enable = true;
