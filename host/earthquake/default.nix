@@ -72,14 +72,7 @@ in
           }
           {
             name = "hoard";
-            subvols = [
-              { name = "chia"; mountpoint = "/chia"; }
-              { name = "kubernetes"; mountpoint = "/kubernetes"; }
-              { name = "libvirt"; mountpoint = "/libvirt"; }
-              { name = "gitlab"; mountpoint = "/gitlab"; }
-              { name = "media"; mountpoint = "/media"; }
-              { name = "nzbr"; mountpoint = "/nzbr"; }
-            ];
+            recursive = true;
           }
           {
             name = "zbackup";
@@ -174,34 +167,6 @@ in
       "/run/.luks/cr_storage_1" = zfsOnLuks "cr_storage_1" "7e8de2a9-5cd0-4475-8a99-9d436604e639";
       "/run/.luks/cr_storage_2" = zfsOnLuks "cr_storage_2" "b3c32804-ab03-45cf-8e74-1e6f59969d5a";
       "/run/.luks/cr_storage_3" = zfsOnLuks "cr_storage_3" "b6bba72c-ceb4-4116-89bb-8a9197059600";
-      "/storage" = {
-        device = "hoard";
-        fsType = "zfs";
-      };
-      "/storage/chia" = {
-        device = "hoard/chia";
-        fsType = "zfs";
-      };
-      "/storage/kubernetes" = {
-        device = "hoard/kubernetes";
-        fsType = "zfs";
-      };
-      "/storage/libvirt" = {
-        device = "hoard/libvirt";
-        fsType = "zfs";
-      };
-      "/storage/gitlab" = {
-        device = "hoard/gitlab";
-        fsType = "zfs";
-      };
-      "/storage/media" = {
-        device = "hoard/media";
-        fsType = "zfs";
-      };
-      "/storage/nzbr" = {
-        device = "hoard/nzbr";
-        fsType = "zfs";
-      };
 
       "/run/.luks/cr_backup_1" = zfsOnLuks "cr_backup_1" "942c4a41-edcc-4a60-8528-42db7a782c44";
       "/run/.luks/cr_backup_2" = zfsOnLuks "cr_backup_2" "c1261cce-9627-42c0-91a2-c36a534d76a6";
@@ -224,6 +189,7 @@ in
         "/var/lib/rook" = "/storage/kubernetes/rook";
         "/var/lib/ceph" = "/storage/ceph";
         "/var/lib/libvirt" = "/storage/libvirt";
+        "/var/lib/machines" = "/storage/machines";
       };
 
   swapDevices = [
