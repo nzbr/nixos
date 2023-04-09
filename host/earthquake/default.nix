@@ -37,6 +37,7 @@ in
       tailscale = {
         enable = true;
         exit = true;
+        cert = true;
       };
       # ceph.enable = true;
       ddns = {
