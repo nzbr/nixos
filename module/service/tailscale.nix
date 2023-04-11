@@ -78,10 +78,15 @@ with builtins; with lib; {
               mkdir -p /run/tailscale
 
               DOMAIN=$(${tailscale} status --json | ${pkgs.jq}/bin/jq -r '.Self.DNSName' | ${pkgs.gnused}/bin/sed 's/\.$//')
+              CERT_DIR=/var/lib/tailscale/certs
 
-              ${tailscale} cert --cert-file /run/tailscale/.tailscale.crt --key-file /run/tailscale/.tailscale.key $DOMAIN
-              mv -f /run/tailscale/.tailscale.crt /run/tailscale/tailscale.crt
-              mv -f /run/tailscale/.tailscale.key /run/tailscale/tailscale.key
+              ${tailscale} cert --cert-file $CERT_DIR/.tailscale.crt --key-file $CERT_DIR/.tailscale.key $DOMAIN
+              mv -f $CERT_DIR/.tailscale.crt $CERT_DIR/tailscale.crt
+              mv -f $CERT_DIR/.tailscale.key $CERT_DIR/tailscale.key
+
+              chown -R root:tailscale $CERT_DIR $CERT_DIR/..
+              chmod -R 640 $CERT_DIR
+              chmod g+rx $CERT_DIR $CERT_DIR/..
             '';
           };
 
@@ -100,6 +105,8 @@ with builtins; with lib; {
           wantedBy = [ "multi-user.target" ];
         };
       };
+
+      users.groups.tailscale = { };
 
       networking.firewall = {
         checkReversePath = "loose";
