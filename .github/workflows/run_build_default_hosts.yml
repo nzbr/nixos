@@ -12,8 +12,9 @@ jobs:
         host:
           - avalanche
           - earthquake
-          - storm
+          - permafrost
           - pulsar
+          - storm
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
