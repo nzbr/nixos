@@ -10,5 +10,7 @@ with builtins; with lib; {
     };
 
     nix.gc.automatic = true;
+
+    powerManagement.cpuFreqGovernor = "conservative";
   };
 }
