@@ -76,6 +76,15 @@ in
       auto-optimise-store = true;
     };
 
+    registry.nixpkgs = {
+      from = {
+        id = "nixpkgs";
+        type = "indirect";
+      };
+      exact = true;
+      flake = inputs.nixpkgs;
+    };
+
     gc = {
       automatic = mkDefault false;
       dates = "weekly";
