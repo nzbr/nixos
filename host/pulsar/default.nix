@@ -15,6 +15,8 @@ with builtins; with lib; {
     service.syncthing.enable = true;
   };
 
+  services.syncthing.guiAddress = "127.0.0.1:8385";
+
   wsl = {
     docker-desktop.enable = false;
     docker-native.enable = true;
