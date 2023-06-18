@@ -6,6 +6,7 @@ in
 {
   options.nzbr.boot.remoteUnlock = with types; {
     enable = mkEnableOption "SSH Remote unlock";
+    tailscale = mkEnableOption "Tailscale support";
     luks = mkOption {
       default = true;
       type = bool;
@@ -18,10 +19,10 @@ in
 
   config = mkIf cfg.enable {
     boot.initrd = {
-      secrets = mkIf config.nzbr.service.tailscale.enable {
+      secrets = mkIf cfg.tailscale {
         "/var/lib/tailscale/tailscaled.state" = "/var/lib/tailscale/tailscaled.state";
       };
-      kernelModules = mkIf config.nzbr.service.tailscale.enable [ "tun" "nf_tables" "nft_compat" ];
+      kernelModules = mkIf cfg.tailscale [ "tun" "nf_tables" "nft_compat" ];
       extraFiles = {
         "/etc/ssl/certs/ca-certificates.crt".source = pkgs.runCommand "ca-bundle.crt" { } "cp ${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt $out";
       };
