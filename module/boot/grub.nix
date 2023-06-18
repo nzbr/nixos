@@ -9,7 +9,6 @@ with builtins; with lib; {
     boot.loader.grub = {
       enable = true;
       efiSupport = true;
-      version = 2;
       device = lib.mkDefault "nodev";
       enableCryptodisk = true;
       extraConfig = ''
