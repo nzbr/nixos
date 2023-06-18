@@ -130,8 +130,6 @@ with builtins; with lib;
       ];
 
       virtualisation.docker.enable = mkDefault true;
-
-      programs.ssh.forwardX11 = true;
     }
   );
 }
