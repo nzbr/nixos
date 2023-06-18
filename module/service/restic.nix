@@ -89,7 +89,7 @@ with builtins; with lib; {
             ];
             environment = {
               HOME = "/root";
-              RESTIC_PASSWORD_FILE = config.nzbr.assets."resticpass";
+              RESTIC_PASSWORD_FILE = config.nzbr.assets."backup.password";
               RESTIC_REPOSITORY = "rclone:${backupDir}";
             };
             serviceConfig = {
@@ -181,7 +181,7 @@ with builtins; with lib; {
             path = with pkgs; [ curl rclone restic utillinux zfs ];
             environment = {
               HOME = "/root";
-              RESTIC_PASSWORD_FILE = config.nzbr.assets."resticpass";
+              RESTIC_PASSWORD_FILE = config.nzbr.assets."backup.password";
               RESTIC_REPOSITORY = "rclone:${backupDir}";
             };
             serviceConfig = {
