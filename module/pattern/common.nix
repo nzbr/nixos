@@ -83,8 +83,6 @@ with builtins; with lib;
 
       time.timeZone = "Europe/Berlin";
 
-      networking.useDHCP = false; # Is deprecated and has to be set to false
-
       networking.firewall = {
         enable = true;
         allowPing = true;
