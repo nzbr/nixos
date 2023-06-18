@@ -19,10 +19,12 @@ with builtins; with lib; {
       services.openssh = {
         enable = true;
         openFirewall = true;
-        passwordAuthentication = false;
-        kbdInteractiveAuthentication = false;
-        permitRootLogin = "yes";
-        forwardX11 = true;
+        settings = {
+          PasswordAuthentication = false;
+          KbdInteractiveAuthentication = false;
+          PermitRootLogin = "yes";
+          X11Forwarding = true;
+        };
         hostKeys = [
           {
             type = "ed25519";

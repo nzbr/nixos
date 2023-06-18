@@ -28,9 +28,12 @@ with builtins; with lib; {
           (x: !(arch current).canExecute (arch x)) # Only enable architectures that are not natively supported anyway
           cfg.systems;
 
-      nix.extraOptions = ''
-        extra-platforms = ${toString cfg.systems}
-      '';
+      nix = {
+        settings.trusted-users = [ cfg.user ];
+        extraOptions = ''
+          extra-platforms = ${toString cfg.systems}
+        '';
+      };
 
       users = {
         users.${cfg.user} = {
@@ -42,6 +45,5 @@ with builtins; with lib; {
         groups.${cfg.user} = { };
       };
 
-      nix.trustedUsers = [ cfg.user ];
     };
 }

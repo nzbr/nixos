@@ -47,7 +47,7 @@ with builtins; with lib; {
 
       services.gitlab-runner = {
         enable = true;
-        concurrent = 3;
+        settings.concurrent = 3;
         services =
           {
             nix = {

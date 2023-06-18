@@ -44,7 +44,15 @@ with builtins; with lib; {
 
         services.xserver.displayManager.gdm.enable = lib.mkForce false;
         services.xserver.displayManager.autoLogin.enable = lib.mkForce false;
-        networking.networkmanager.enable = lib.mkForce false;
+
+        networking = {
+          networkmanager.enable = lib.mkForce false;
+          nameservers = [
+            "100.100.100.100"
+            "8.8.8.8"
+          ];
+          search = [ "dragon-augmented.ts.net" ];
+        };
 
         virtualisation.docker.enable = mkOverride 900 false;
 
@@ -64,14 +72,6 @@ with builtins; with lib; {
 
             QT_QPA_PLATFORM = "wayland;xcb";
             SDL_VIDEODRIVER = "wayland";
-          };
-
-          etc = {
-            "resolv.conf".text = ''
-              search dragon-augmented.ts.net
-              nameserver 100.100.100.100
-              nameserver 1.1.1.1
-            '';
           };
         };
 
@@ -100,8 +100,6 @@ with builtins; with lib; {
               { label = distro; fsType = "ext4"; options = [ "defaults" "noauto" ]; }
             ) [ "Arch" "Ubuntu" ]
         );
-
-        # networking.dhcpcd.enable = false;
 
         users.users = {
           ${config.nzbr.user} = {
