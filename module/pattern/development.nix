@@ -100,7 +100,7 @@ with builtins; with lib;
           CHROME_EXECUTABLE = "${pkgs.chromium}/bin/chromium";
         };
 
-      nzbr.nix-ld.enable = true;
+      programs.nix-ld.enable = true;
 
       nzbr.cli.git = {
         enable = true;
@@ -116,7 +116,6 @@ with builtins; with lib;
             (name: pkg: "ln -vsnf ${pkg} /run/sdk/${name}")
             {
               flutter = unstable.flutter.unwrapped;
-              node14 = nodejs-14_x;
               inherit jdk11;
               inherit yarn;
             }
