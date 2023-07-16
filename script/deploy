@@ -2,19 +2,19 @@
 # code: language=powershell tabSize=4
 
 if (!(Get-Item -Path "./flake.nix" -ErrorAction SilentlyContinue)) {
-  Write-Error "No flake.nix found in the current directory"
-  exit 1
+    Write-Error "No flake.nix found in the current directory"
+    exit 1
 }
 
 # TODO: Use argparse
 if ($args.Length -lt 1) {
-  Write-Error "No target specified"
-  exit 1
+    Write-Error "No target specified"
+    exit 1
 }
 
 if ($args.Length -lt 2) {
-  Write-Error "No action specified"
-  exit 1
+    Write-Error "No action specified"
+    exit 1
 }
 
 $hosts = $args[0].Split(",")
@@ -45,8 +45,8 @@ $to_build = ($hosts | % { ".#nixosConfigurations.$_.config.system.build.toplevel
 Write-Host "Building $to_build"
 $result_json = (&"@nixFlakes@/bin/nix" (@("build", "--no-link", "--json", "-vL") + $to_build))
 if (!$?) {
-  Write-Error "nix build failed"
-  exit 1
+    Write-Error "nix build failed"
+    exit 1
 }
 $results = $result_json | ConvertFrom-Json
 
@@ -56,7 +56,7 @@ foreach ($i in 0..($hosts.Length - 1)) {
 
     $user = $hostconfig.targetUser
     $targetHost = $hostconfig.targetHost
-    $substitute = if ($hostconfig.substituteOnDestination) {"-s"} else {""}
+    $substitute = if ($hostconfig.substituteOnDestination) { "-s" } else { "" }
 
     $storePath = ($results[$i]).outputs.out
 
@@ -67,8 +67,18 @@ foreach ($i in 0..($hosts.Length - 1)) {
         exit 1
     }
 
+    # Set profile
+    $action = $args[1]
+    if ($action -eq "switch" -or $action -eq "boot") {
+        & "@openssh@/bin/ssh" -t ${user}@${targetHost} -- "${storePath}/sw/bin/nix-env -p /nix/var/nix/profiles/system --set $storePath"
+        if (!$?) {
+            Write-Error "Failed to set profile on $targetHost"
+            exit 1
+        }
+    }
+
     # Activate
-    & "@openssh@/bin/ssh" -t ${user}@${targetHost} -- ${storePath}/bin/switch-to-configuration $args[1]
+    & "@openssh@/bin/ssh" -t ${user}@${targetHost} -- ${storePath}/bin/switch-to-configuration $action
     if (!$?) {
         Write-Error "Failed to activate configuration on $targetHost"
         exit 1
