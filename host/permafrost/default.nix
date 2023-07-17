@@ -61,6 +61,11 @@ in
     supportedFilesystems = [ "zfs" ];
   };
 
+  environment.etc."lukskey" = {
+    source = config.nzbr.assets."lukskey";
+    mode = "0400";
+  };
+
   fileSystems =
     let
       zfsOnLuks = name: uuid: {
@@ -90,17 +95,17 @@ in
         options = [ "size=16G" ];
       };
 
-      # "/run/.luks/cr_storage_1" = zfsOnLuks "cr_storage_1" "7e8de2a9-5cd0-4475-8a99-9d436604e639";
-      # "/run/.luks/cr_storage_2" = zfsOnLuks "cr_storage_2" "b3c32804-ab03-45cf-8e74-1e6f59969d5a";
-      # "/run/.luks/cr_storage_3" = zfsOnLuks "cr_storage_3" "b6bba72c-ceb4-4116-89bb-8a9197059600";
-
-      # "/run/.luks/cr_backup_1" = zfsOnLuks "cr_backup_1" "942c4a41-edcc-4a60-8528-42db7a782c44";
-      # "/run/.luks/cr_backup_2" = zfsOnLuks "cr_backup_2" "c1261cce-9627-42c0-91a2-c36a534d76a6";
+      "/run/.luks/cr_backup_1" = zfsOnLuks "cr_backup_1" "dccfeafa-2221-4566-a280-7c3e89ca8b75";
+      "/run/.luks/cr_backup_2" = zfsOnLuks "cr_backup_2" "723a5e4d-b2d8-4369-ab25-c8b40d21a6aa";
+      "/run/.luks/cr_backup_3" = zfsOnLuks "cr_backup_3" "251b2027-7540-456f-bf47-81daecf5c142";
+      "/run/.luks/cr_backup_4" = zfsOnLuks "cr_backup_4" "d6f7f7b3-ddde-4250-beea-cf95800e4567";
+      "/run/.luks/cr_backup_5" = zfsOnLuks "cr_backup_5" "96a41325-288c-4fae-bcc5-a9fe75c410e9";
+      "/run/.luks/cr_backup_6" = zfsOnLuks "cr_backup_6" "f79f11cf-dc0d-4ff1-ae15-fa96f4d07783";
     };
 
   boot.initrd.luks.devices."cr_root".device = "/dev/disk/by-uuid/f15e5ea7-4012-4b93-99dc-31f0891268fc";
 
-  # boot.zfs.extraPools = [ "hoard" "zbackup" ];
+  boot.zfs.extraPools = [ "zbackup" ];
 
   swapDevices = [
     {
