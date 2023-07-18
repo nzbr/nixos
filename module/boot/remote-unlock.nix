@@ -81,7 +81,7 @@ in
             # Setup network
             ${ipconfig}
 
-            ${optionalString (config.nzbr.service.tailscale.enable) ''
+            ${optionalString (cfg.tailscale) ''
               export PATH="$PATH":${pkgs.iptables}/bin
               # Start tailscaled
               ${config.services.tailscale.package}/bin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock --port=${toString config.services.tailscale.port} &
