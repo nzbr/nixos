@@ -16,6 +16,7 @@
     };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL";
+      # url = "/home/nzbr/Projekte/NixOS-WSL";
       inputs.flake-compat.follows = "flake-compat";
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,6 +56,10 @@
     };
     xyno-experiments = {
       url = "github:thexyno/x";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    disko = {
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
