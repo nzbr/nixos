@@ -14,14 +14,14 @@ in
   nzbr = {
     system = "x86_64-linux";
     patterns = [ "common" "server" ];
-    # nodeIp = "";
+    nodeIp = "100.97.97.107";
 
     deployment.targetHost = "firestorm.nzbr.de";
 
     boot = {
       remoteUnlock = {
         enable = true;
-        # tailscale = true;
+        tailscale = true;
         luks = false;
         zfs = [ "zroot" ];
       };
@@ -35,10 +35,10 @@ in
         maxJobs = 6;
         systems = [ "x86_64-linux" "i686-linux" ];
       };
-      # tailscale = {
-      #   enable = true;
-      #   exit = true;
-      # };
+      tailscale = {
+        enable = true;
+        exit = true;
+      };
       # gitlab-runner = {
       #   enable = true;
       #   extraTags = [ "kube-deploy" ];
@@ -74,33 +74,19 @@ in
     extraModulePackages = [ ];
   };
 
-  # fileSystems = {
-  # }
-  # //
-  # lib.mapAttrs'
-  #   (to: from:
-  #     {
-  #       name = to;
-  #       value = {
-  #         device = from;
-  #         options = [ "bind" ];
-  #       };
-  #     }
-  #   )
-  #   {
-  #     "/var/lib/rancher/k3s/storage" = "/storage/kubernetes/local-path";
-  #     "/var/lib/longhorn" = "/storage/kubernetes/longhorn";
-  #     "/var/lib/rook" = "/storage/kubernetes/rook";
-  #     "/var/lib/etcd" = "/storage/kubernetes/etcd";
-  #     "/var/lib/ceph" = "/storage/ceph";
-  #   };
-
-  # swapDevices = [
-  #   {
-  #     device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi0-0-0-0-part3";
-  #     randomEncryption.enable = true;
-  #   }
-  # ];
+  fileSystems = lib.mapAttrs'
+    (to: from:
+      {
+        name = to;
+        value = {
+          device = from;
+          options = [ "bind" ];
+        };
+      }
+    )
+    {
+      "/var/lib/rancher/k3s/storage" = "/storage/kubernetes/local-path";
+    };
 
   services.zfs = {
     autoScrub.enable = true;
