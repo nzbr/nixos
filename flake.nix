@@ -202,9 +202,11 @@
                   inherit (pkgs)
                     bash
                     gnused
+                    findutils
                     jq
                     nixFlakes
                     openssh
+                    parallel
                     powershell
                     rage
                     ;

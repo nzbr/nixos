@@ -1,0 +1,35 @@
+#!@bash@/bin/bash
+# code: language=bash tabSize=4
+
+set -euxo pipefail
+
+function rekey {
+    nixInstantiate=@nixFlakes@/bin/nix-instantiate
+    sedBin=@gnused@/bin/sed
+    ageBin=@rage@/bin/rage
+    agefile=$(realpath --relative-to=$PWD "$1")
+    tmpfile="$(mktemp)"
+
+    echo "Re-encrypting $agefile"
+
+    # Decrypt
+    ${ageBin} -i "${KEY}" -o "$tmpfile" -d "$agefile"
+
+    # Encrypt
+    KEYS=$(echo $SECRETS_NIX | @jq@/bin/jq -r ".\"${agefile}\".publicKeys | . []")
+    RECIPIENTS=()
+    while IFS= read -r key; do
+        RECIPIENTS+=(--recipient "$key")
+    done <<<"$KEYS"
+    ${ageBin} "${RECIPIENTS[@]}" -o "${agefile}" <"${tmpfile}"
+
+    rm "$tmpfile"
+}
+
+export SHELL=@bash@/bin/bash
+export KEY=${KEY:-~/.ssh/id_ed25519}
+export RULES=${RULES:-./secrets.nix}
+export SECRETS_NIX="$(nix eval --json -f $RULES)"
+export -f rekey
+
+@findutils@/bin/find "$1" -name '*.age' -print0 | @parallel@/bin/parallel --null rekey
