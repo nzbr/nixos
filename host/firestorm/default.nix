@@ -113,11 +113,11 @@ in
     };
   };
 
-  # services.mailmover = {
-  #   enable = true;
-  #   schedule = "*-*-* *:*:1";
-  #   configFile = config.nzbr.assets."mailmover-config.dhall";
-  # };
+  services.mailmover = {
+    enable = true;
+    schedule = "*-*-* *:*:1";
+    configFile = config.nzbr.assets."mailmover-config.dhall";
+  };
 
   system.stateVersion = "23.05";
   nzbr.home.config.home.stateVersion = "23.05";

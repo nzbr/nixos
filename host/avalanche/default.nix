@@ -173,12 +173,6 @@ in
     role = "agent";
   };
 
-  services.mailmover = {
-    enable = true;
-    schedule = "*-*-* *:*:1";
-    configFile = config.nzbr.assets."mailmover-config.dhall";
-  };
-
   system.stateVersion = "21.11";
   nzbr.home.config.home.stateVersion = "22.05";
 }
