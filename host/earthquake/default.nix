@@ -16,6 +16,8 @@ in
     boot = {
       grub.enable = true;
       remoteUnlock = {
+        enable = true;
+        tailscale = true;
         luks = false;
         zfs = [ "zroot" ];
       };
@@ -48,38 +50,32 @@ in
         enable = true;
         extraTags = [ "kube-deploy" ];
       };
-      restic = {
+      borgbackup = {
         enable = true;
-        remote = "jotta-archive";
-        include = [
-          "zroot/etc"
-          "zroot/home"
-          "zroot/root"
-          "zroot/srv"
-          "zroot/var/lib/rancher/k3s"
-          "zroot/var/lib/libvirt"
-
-          "hoard"
-
-          "zbackup"
-        ];
-        healthcheck = {
-          backup = "https://hc-ping.com/f904595a-cd31-4261-b714-21b14be2cdc2";
-          prune = "https://hc-ping.com/d9588269-0518-4804-8a8a-512c117954ab";
-        };
-        pools = [
+        # rcloneRemote = "jotta-archive";
+        repoUrl = "ssh://permafrost-backup/backup/${config.networking.hostName}";
+        zfs.pools = [
           {
             name = "zroot";
+            mountpoint = "/";
+            recursive = true;
           }
           {
             name = "hoard";
+            mountpoint = "/storage";
             recursive = true;
           }
-          {
-            name = "zbackup";
-            recursive = true;
-          }
+          # {
+          #   name = "zbackup";
+          #   mountpoint = "/backup";
+          #   recursive = true;
+          # }
         ];
+        paths = [
+          "/dev/zvol/hoard/*@${config.nzbr.service.borgbackup.zfs.snapshotName}"
+          "/dev/zvol/hoard/libvirt/*@${config.nzbr.service.borgbackup.zfs.snapshotName}"
+        ];
+        healthcheckUrl = "https://hc-ping.com/f904595a-cd31-4261-b714-21b14be2cdc2";
       };
       urbackup = {
         enable = true;

@@ -44,6 +44,25 @@ in
       #   extraTags = [ "kube-deploy" ];
       # };
       synapse.enable = true;
+      borgbackup = {
+        enable = true;
+        repoUrl = "ssh://permafrost-backup/backup/${config.networking.hostName}";
+        zfs.pools = [
+          {
+            name = "zroot";
+            mountpoint = null;
+            subvols = [
+              { name = "root"; mountpoint = "/"; }
+              { name = "nix-store"; mountpoint = "/nix/store"; }
+              { name = "kubernetes"; mountpoint = "/storage/kubernetes"; }
+            ];
+          }
+        ];
+        paths = [
+          "/dev/zvol/zroot/*@${config.nzbr.service.borgbackup.zfs.snapshotName}"
+        ];
+        healthcheckUrl = "https://hc-ping.com/f92f3bfb-a133-4e99-8248-b8acc91a39dd";
+      };
     };
   };
 

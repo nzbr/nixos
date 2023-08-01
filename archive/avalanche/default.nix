@@ -171,8 +171,8 @@ in
   # services.ceph.osd.daemons = [ "1" ];
 
   # services.k3s = {
-    # enable = true;
-    # role = "agent";
+  # enable = true;
+  # role = "agent";
   # };
 
   system.stateVersion = "21.11";

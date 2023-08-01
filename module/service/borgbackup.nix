@@ -1,8 +1,11 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, modulesPath, options, ... }:
 with builtins; with lib; {
   options.nzbr.service.borgbackup = with types; {
     enable = mkEnableOption "Borg Backups";
-    remote = mkOption {
+    rcloneRemote = mkOption {
+      type = str;
+    };
+    repoUrl = mkOption {
       type = str;
     };
     paths = mkOption {
@@ -23,7 +26,7 @@ with builtins; with lib; {
               type = str;
             };
             mountpoint = mkOption {
-              type = str;
+              type = nullOr str;
             };
             recursive = mkOption {
               default = false;
@@ -46,9 +49,9 @@ with builtins; with lib; {
         });
       };
     };
-    # healthcheckUrl = mkOption {
-    #   type = str;
-    # };
+    healthcheckUrl = mkOption {
+      type = str;
+    };
   };
 
 
@@ -57,10 +60,12 @@ with builtins; with lib; {
       hostname = config.networking.hostName;
 
       cfg = config.nzbr.service.borgbackup;
+      opt = options.nzbr.service.borgbackup;
       backupDir = "borg/${hostname}";
       runDir = "/run/borg";
       cachePath = "${runDir}/rclone-cache";
       mountPath = "${runDir}/rclone-mount";
+      repoPath = cfg.repoUrl or "${mountPath}/${backupDir}";
       snapshotPath = "${runDir}/snapshot";
       specialFilesList = "${runDir}/special-files";
     in
@@ -76,26 +81,28 @@ with builtins; with lib; {
         '')
       ];
 
-      fileSystems.${mountPath} = {
-        device = "${cfg.remote}:";
-        fsType = "rclone";
-        options = [
-          "user"
-          "noauto"
-          "_netdev"
-          "rw"
-          "allow_other"
-          "args2env"
-          "vfs-cache-mode=writes"
-          "vfs-cache-max-size=1G"
-          "config=/root/.config/rclone/rclone.conf"
-          "cache-dir=${cachePath}"
-          "log-file=${runDir}/rclone.log"
-          "x-systemd.automount"
-          "x-systemd.mount-timeout=5"
-          "x-systemd.idle-timeout=30"
-        ];
-      };
+      fileSystems.${mountPath} =
+        assert (opt.rcloneRemote.isDefined) != (opt.repoUrl.isDefined);
+        mkIf opt.rcloneRemote.isDefined {
+          device = "${cfg.rcloneRemote}:";
+          fsType = "rclone";
+          options = [
+            "user"
+            "noauto"
+            "_netdev"
+            "rw"
+            "allow_other"
+            "args2env"
+            "vfs-cache-mode=writes"
+            "vfs-cache-max-size=1G"
+            "config=/root/.config/rclone/rclone.conf"
+            "cache-dir=${cachePath}"
+            "log-file=${runDir}/rclone.log"
+            "x-systemd.automount"
+            "x-systemd.mount-timeout=5"
+            "x-systemd.idle-timeout=30"
+          ];
+        };
 
       environment.systemPackages = with pkgs; [
         borgmatic
@@ -109,7 +116,7 @@ with builtins; with lib; {
           exclude_caches = true;
           read_special = true;
           repositories = [
-            "${mountPath}/${backupDir}"
+            repoPath
           ];
           source_directories = flatten [
             cfg.paths
@@ -122,7 +129,7 @@ with builtins; with lib; {
 
         storage = {
           encryption_passcommand = "cat ${config.nzbr.assets."backup.password"}";
-          compression = "auto,zstd,19";
+          compression = "auto,zstd,9";
           checkpoint_interval = 300;
           lock_wait = 300;
         };
@@ -151,7 +158,7 @@ with builtins; with lib; {
             }
             {
               name = "extract";
-              frequency = "1 month";
+              frequency = "3 month";
             }
           ];
         };
@@ -169,20 +176,33 @@ with builtins; with lib; {
                 (pool:
                   assert pool.recursive -> pool.subvols == [ ];
                   let
-                    mountpoint = "${snapshotPath}/${removePrefix "/" pool.mountpoint}";
+                    mountpoint =
+                      if pool.mountpoint == null
+                      then "${snapshotPath}/"
+                      else "${snapshotPath}/${removePrefix "/" pool.mountpoint}";
                   in
                   ''
                     zfs destroy -r ${pool.name}@${cfg.zfs.snapshotName} || true
                     zfs snapshot -r ${pool.name}@${cfg.zfs.snapshotName}
                     mkdir -p ${mountpoint}
-                    mount -t zfs ${pool.name}@${cfg.zfs.snapshotName} ${mountpoint}
+                    ${optionalString (pool.mountpoint != null) ''
+                      mount -t zfs ${pool.name}@${cfg.zfs.snapshotName} ${mountpoint}
+                    ''}
                     ${concatStringsSep "\n" (map
-                      (subvol: "mount -t zfs ${pool.name}/${subvol.name}@${cfg.zfs.snapshotName} ${mountpoint}/${removePrefix "/" subvol.mountpoint}")
+                      (subvol: "mount --mkdir -t zfs ${pool.name}/${subvol.name}@${cfg.zfs.snapshotName} ${mountpoint}/${removePrefix "/" subvol.mountpoint}")
                       pool.subvols
                     )}
                     ${optionalString pool.recursive ''
+                      mountRoot="$(zfs list -Ho mountpoint ${pool.name})"
                       for subvol in $(zfs list -rHo name,mountpoint ${pool.name} | sed 's|${pool.name}/||' | awk 'NR!=1&&$2!="-"{print $1;}'); do
-                        mount -t zfs "${pool.name}/''${subvol}@${cfg.zfs.snapshotName}" "${mountpoint}/$subvol"
+                        subMount="$(zfs list -Ho mountpoint ${pool.name}/''${subvol})"
+                        if [[ "$subMount" != "none" && "$subMount" != "-" ]]; then
+                          if [[ "$mountRoot" == "legacy" ]]; then
+                            mount --mkdir -t zfs "${pool.name}/''${subvol}@${cfg.zfs.snapshotName}" "${mountpoint}/$subvol"
+                          else
+                            mount --mkdir -t zfs "${pool.name}/''${subvol}@${cfg.zfs.snapshotName}" "${mountpoint}''${subMount#$mountRoot}"
+                          fi
+                        fi
                       done
                     ''}
                   ''
@@ -191,6 +211,7 @@ with builtins; with lib; {
               )}
             '')
             (pkgs.writeShellScript "borg-pre-backup_find-special" ''
+              set -euxo pipefail
               find ${snapshotPath} -xtype b,c,p,s -fprint ${specialFilesList}
               echo "Excluding $(wc -l ${specialFilesList} | ${pkgs.gawk}/bin/awk '{print $1;}') special files"
             '')
@@ -206,9 +227,23 @@ with builtins; with lib; {
               )}
             '')
           ];
-          # healthchecks.ping_url = cfg.healthcheckUrl;
+          healthchecks.ping_url = cfg.healthcheckUrl;
         };
       };
+
+      systemd = {
+        services.borgmatic = {
+          path = with pkgs; [ borgmatic "/run/wrappers" gawk zfs ];
+          script = "borgmatic --files --stats";
+        };
+
+        timers.borgmatic = {
+          wantedBy = [ "timers.target" ];
+          partOf = [ "borgmatic.service" ];
+          timerConfig.OnCalendar = "*-*-* 05:00:00";
+        };
+      };
+
     }
   );
 }

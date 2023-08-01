@@ -52,6 +52,7 @@ with builtins; {
         keyformat = "passphrase";
         keylocation = "prompt";
         acltype = "posixacl";
+        snapdev = "visible";
       };
       datasets = {
         root = {

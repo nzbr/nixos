@@ -133,6 +133,25 @@ in
     '';
   };
 
+  users.users = mapListToAttrs
+    (host: {
+      name = host;
+      value = {
+        isNormalUser = true;
+        shell = pkgs.bashInteractive;
+        home = "/backup/${host}";
+        openssh.authorizedKeys.keyFiles = [ config.nzbr.foreignAssets.${host}."ssh/permafrost.pub" ];
+      };
+    })
+    (filter
+      (host: config.nzbr.foreignAssets.${host} ? "ssh/permafrost.pub")
+      (builtins.attrNames config.nzbr.foreignAssets)
+    );
+
+  environment.systemPackages = with pkgs; [
+    borgbackup
+  ];
+
   system.stateVersion = "23.05";
   nzbr.home.config.home.stateVersion = "23.05";
 }
