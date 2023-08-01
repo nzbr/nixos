@@ -70,7 +70,7 @@ in
                   { name = "KC_PROXY"; value = "edge"; }
                   # { name = "KC_HTTP_RELATIVE_PATH"; value = "/auth"; }
                   { name = "KC_DB"; value = "postgres"; }
-                  { name = "KC_DB_URL"; value = "jdbc:postgresql://${inputs.self.nixosConfigurations.storm.config.nzbr.nodeIp}/keycloak"; }
+                  { name = "KC_DB_URL"; value = "jdbc:postgresql://${inputs.self.nixosConfigurations.firestorm.config.nzbr.nodeIp}/keycloak"; }
                   { name = "KC_DB_USER"; value = "keycloak"; }
                   { name = "KC_DB_PASSWORD"; valueFrom.secretKeyRef = { key = "postgrespassword"; name = "keycloak"; }; }
                   { name = "KC_HOSTNAME"; value = "sso.nzbr.de"; }

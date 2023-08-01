@@ -43,7 +43,7 @@ in
       #   enable = true;
       #   extraTags = [ "kube-deploy" ];
       # };
-      # synapse.enable = true;
+      synapse.enable = true;
     };
   };
 
@@ -112,6 +112,82 @@ in
       };
     };
   };
+
+  services.k3s = {
+    enable = true;
+    role = "server";
+    dbEndpoint = "sqlite:///storage/kubernetes/kine.db?_journal=wal";
+  };
+  nirgenx = {
+    enable = true;
+    kubeconfigPath = "/run/kubeconfig";
+    waitForUnits = [ "network-online.target" "k3s.service" ];
+    helmNixPath = config.nzbr.flake.root;
+    helmPackage = pkgs.kubernetes-helm;
+    kubectlPackage = pkgs.kubectl;
+    deployment = {
+      amp.enable = true;
+      cert-manager.enable = true;
+      # debug-shell.enable = true;
+      gitlab.enable = true;
+      hedgedoc.enable = true;
+      kadalu.enable = true;
+      keycloak.enable = true;
+      matrix.enable = true;
+      # n8n.enable = true;
+      nextcloud.enable = true;
+      nginx.enable = true;
+      openldap.enable = true;
+      # pingcheck.enable = true;
+      plex.enable = true;
+      # stash.enable = true;
+      vaultwarden.enable = true;
+    };
+  };
+
+  services.postgresql =
+    let
+      services = [
+        "bitwarden"
+        "hedgedoc"
+        "keycloak"
+        "n8n"
+        "synapse"
+        "vaultwarden"
+      ];
+    in
+    {
+      enable = true;
+      package = pkgs.postgresql_13;
+      dataDir = "/storage/postgres/${config.services.postgresql.package.psqlSchema}";
+      enableTCPIP = true;
+      authentication = ''
+        host all all 10.42.0.0/24 md5
+        host all all 10.12.0.0/16 md5
+        host all all 100.64.0.0/10 md5
+      '';
+      ensureDatabases = services;
+      ensureUsers =
+        map
+          (name: {
+            inherit name;
+            ensurePermissions = {
+              "DATABASE ${name}" = "ALL PRIVILEGES";
+            };
+          })
+          services;
+      initialScript = config.nzbr.assets."postgres-setup.sql";
+    };
+  services.postgresqlBackup = {
+    enable = true;
+    location = "/storage/postgres/backup";
+    compression = "none";
+    databases = config.services.postgresql.ensureDatabases;
+  };
+  systemd.tmpfiles.rules = [
+    "d /storage/postgres 0755 postgres users"
+  ];
+  age.secrets."postgres-setup.sql".owner = "postgres";
 
   services.mailmover = {
     enable = true;

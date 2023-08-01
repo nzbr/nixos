@@ -66,7 +66,7 @@ in
           WEBHOOK_URL = "https://n8n.nzbr.de";
 
           DB_TYPE = "postgresdb";
-          DB_POSTGRESDB_HOST = "storm";
+          DB_POSTGRESDB_HOST = "firestorm";
           DB_POSTGRESDB_DATABASE = "n8n";
           DB_POSTGRESDB_PORT = "5432";
           DB_POSTGRESDB_USER = "n8n";

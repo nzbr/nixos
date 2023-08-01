@@ -216,6 +216,44 @@ in
           };
         };
       }
+
+      # # stash restore
+      # {
+      #   apiVersion = "stash.appscode.com/v1beta1";
+      #   kind = "RestoreSession";
+      #   metadata = {
+      #     inherit namespace;
+      #     name = "ldap-restore";
+      #   };
+      #   spec = {
+      #     repository.name = "wasabi-repo";
+      #     target = rec {
+      #       ref = {
+      #         apiVersion = "apps/v1";
+      #         kind = "Deployment";
+      #         name = "openldap";
+      #       };
+      #       volumeMounts = [
+      #         {
+      #           mountPath = "/var/lib/ldap";
+      #           name = "vol";
+      #           subPath = "database";
+      #         }
+      #         {
+      #           mountPath = "/etc/ldap/slapd.d";
+      #           name = "vol";
+      #           subPath = "config";
+      #         }
+      #       ];
+      #       rules = [{ snapshots = ["3f774e74" "3ddebce9"]; }];
+      #     };
+      #     runtimeSettings.container.securityContext = {
+      #       runAsUser = 0;
+      #       runAsGroup = 0;
+      #     };
+      #   };
+      # }
+
     ];
   };
 }

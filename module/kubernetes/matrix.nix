@@ -38,7 +38,7 @@ in
         };
         subsets = [{
           addresses = [{
-            ip = inputs.self.nixosConfigurations.avalanche.config.nzbr.nodeIp;
+            ip = inputs.self.nixosConfigurations.firestorm.config.nzbr.nodeIp;
           }];
           ports = [
             {

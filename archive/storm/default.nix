@@ -1,22 +1,21 @@
-{ config, lib, pkgs, modulesPath, ... }:
-let
-  root = config.nzbr.flake.root;
-in
+{ config, lib, pkgs, ... }:
 {
   networking = {
-    hostId = "24071395";
+    hostId = "e23e7d0a";
   };
 
   nzbr = {
     system = "x86_64-linux";
     patterns = [ "common" "server" ];
-    nodeIp = "100.86.174.117";
+    nodeIp = "100.87.184.78";
 
-    deployment.targetHost = "avalanche.nzbr.de";
+    deployment.targetHost = "storm.nzbr.de";
 
     boot = {
       grub.enable = true;
       remoteUnlock = {
+        enable = true;
+        tailscale = true;
         luks = false;
         zfs = [ "zroot" ];
       };
@@ -30,14 +29,11 @@ in
         maxJobs = 4;
         systems = [ "x86_64-linux" "i686-linux" ];
       };
-      tailscale = {
-        enable = true;
-        exit = true;
-      };
+      tailscale.enable = true;
       # ceph.enable = true;
       gitlab-runner = {
         enable = true;
-        extraTags = [ "kube-deploy" ];
+        extraTags = [ ];
       };
       restic = {
         enable = true;
@@ -51,8 +47,8 @@ in
           "zroot/var/lib/rancher/k3s"
         ];
         healthcheck = {
-          backup = "https://hc-ping.com/a4db4963-0a73-4aeb-8207-f884341ba04d";
-          prune = "https://hc-ping.com/be3cdc9a-3eb4-4f85-b8ad-c51dc361f9e7";
+          backup = "https://hc-ping.com/6d9994af-6806-4cf1-91ee-3a217176df7f";
+          prune = "https://hc-ping.com/433ab5bb-9267-4dda-b5a9-5fa8573f5ed8";
         };
         pools = [
           {
@@ -64,13 +60,39 @@ in
           }
         ];
       };
-      synapse.enable = true;
     };
   };
 
+  # nirgenx = {
+  #   enable = true;
+  #   kubeconfigPath = "/run/kubeconfig";
+  #   waitForUnits = [ "network-online.target" "k3s.service" ];
+  #   helmNixPath = config.nzbr.flake.root;
+  #   helmPackage = pkgs.kubernetes-helm;
+  #   kubectlPackage = pkgs.kubectl;
+  #   deployment = {
+  #     amp.enable = true;
+  #     # birdsite.enable = true;
+  #     cert-manager.enable = true;
+  #     # debug-shell.enable = true;
+  #     gitlab.enable = true;
+  #     hedgedoc.enable = true;
+  #     kadalu.enable = true;
+  #     keycloak.enable = true;
+  #     matrix.enable = true;
+  #     n8n.enable = true;
+  #     nextcloud.enable = true;
+  #     nginx.enable = true;
+  #     openldap.enable = true;
+  #     pingcheck.enable = true;
+  #     plex.enable = true;
+  #     stash.enable = true;
+  #     vaultwarden.enable = true;
+  #   };
+  # };
+
   boot = {
     loader.grub.device = "/dev/sda";
-    loader.grub.configurationLimit = 1;
 
     initrd = {
       availableKernelModules = [
@@ -97,7 +119,7 @@ in
       fsType = "zfs";
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/F3BE-8A41";
+      device = "/dev/disk/by-uuid/86B8-C470";
       fsType = "vfat";
     };
     "/tmp" = {
@@ -146,7 +168,6 @@ in
   };
 
   services.qemuGuest.enable = true;
-  nzbr.service.libvirtd.enable = true;
 
   networking = {
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
@@ -154,7 +175,7 @@ in
       useDHCP = true;
       ipv6 = {
         addresses = [{
-          address = "2a03:4000:53:7a::";
+          address = "2a03:4000:45:510::";
           prefixLength = 64;
         }];
         routes = [{
@@ -166,12 +187,57 @@ in
     };
   };
 
-  services.ceph.osd.daemons = [ "1" ];
+  # services.postgresql =
+  #   let
+  #     services = [
+  #       "bitwarden"
+  #       "hedgedoc"
+  #       "keycloak"
+  #       "n8n"
+  #       "synapse"
+  #       "vaultwarden"
+  #     ];
+  #   in
+  #   {
+  #     enable = true;
+  #     package = pkgs.postgresql_13;
+  #     dataDir = "/storage/postgres/${config.services.postgresql.package.psqlSchema}";
+  #     enableTCPIP = true;
+  #     authentication = ''
+  #       host all all 10.42.0.0/24 md5
+  #       host all all 10.12.0.0/16 md5
+  #       host all all 100.64.0.0/10 md5
+  #     '';
+  #     ensureDatabases = services;
+  #     ensureUsers =
+  #       map
+  #         (name: {
+  #           inherit name;
+  #           ensurePermissions = {
+  #             "DATABASE ${name}" = "ALL PRIVILEGES";
+  #           };
+  #         })
+  #         services;
+  #     initialScript = config.nzbr.assets."postgres-setup.sql";
+  #   };
+  # services.postgresqlBackup = {
+  #   enable = true;
+  #   location = "/storage/postgres/backup";
+  #   compression = "none";
+  #   databases = config.services.postgresql.ensureDatabases;
+  # };
+  # systemd.tmpfiles.rules = [
+  #   "d /storage/postgres 0755 postgres users"
+  # ];
+  # age.secrets."postgres-setup.sql".owner = "postgres";
 
-  services.k3s = {
-    enable = true;
-    role = "agent";
-  };
+  # services.ceph.osd.daemons = [ "0" ];
+
+  # services.k3s = {
+  #   enable = true;
+  #   role = "server";
+  #   dbEndpoint = "sqlite:///storage/kubernetes/kine.db?_journal=wal";
+  # };
 
   system.stateVersion = "21.11";
   nzbr.home.config.home.stateVersion = "22.05";

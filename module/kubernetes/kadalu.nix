@@ -4,12 +4,30 @@ with builtins; with lib;
   nirgenx.deployment.kadalu = {
     dependencies = [ ];
     steps = [
+
       {
         script = ''
           ${pkgs.local.kubectl-kadalu}/bin/kubectl-kadalu install --script-mode
-          ${pkgs.local.kubectl-kadalu}/bin/kubectl-kadalu storage-add pool --script-mode --type=Replica3 --device storm:/dev/zvol/zroot/kadalu --device avalanche:/dev/zvol/zroot/kadalu --device earthquake:/dev/zvol/hoard/kadalu
         '';
       }
+
+      {
+        apiVersion = "kadalu-operator.storage/v1alpha1";
+        kind = "KadaluStorage";
+        metadata = {
+          name = "pool";
+        };
+        spec = {
+          type = "Replica1";
+          storage = [
+            {
+              node = "firestorm";
+              device = "/dev/zvol/zroot/kadalu";
+            }
+          ];
+        };
+      }
+
     ];
   };
 }

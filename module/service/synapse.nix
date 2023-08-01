@@ -26,7 +26,7 @@ with builtins; with lib; {
             name = "psycopg2";
             user = "synapse";
             args = {
-              host = "storm.dragon-augmented.ts.net";
+              host = "firestorm.dragon-augmented.ts.net";
             };
           };
           trusted_key_servers = [

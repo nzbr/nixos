@@ -1,5 +1,9 @@
 { config, lib, pkgs, inputs, ... }:
-with builtins; with lib; {
+with builtins; with lib;
+let
+  namespace = "vaultwarden";
+in
+{
   nirgenx.deployment.vaultwarden =
     {
       dependencies = [ "nginx" "stash" "kadalu" ];
@@ -7,12 +11,12 @@ with builtins; with lib; {
         (kube.installHelmChart "k8s-at-home" "vaultwarden" config.nzbr.assets."k8s/vaultwarden-values.yaml")
 
         # stash backup
-        (config.setupStashRepo "vaultwarden")
+        (config.setupStashRepo namespace)
         {
           apiVersion = "stash.appscode.com/v1beta1";
           kind = "BackupConfiguration";
           metadata = {
-            namespace = "vaultwarden";
+            inherit namespace;
             name = "vaultwarden-backup";
           };
           spec = {
@@ -46,6 +50,38 @@ with builtins; with lib; {
             };
           };
         }
+
+        # # stash restore
+        # {
+        #   apiVersion = "stash.appscode.com/v1beta1";
+        #   kind = "RestoreSession";
+        #   metadata = {
+        #     inherit namespace;
+        #     name = "vaultwarden-restore";
+        #   };
+        #   spec = {
+        #     repository.name = "wasabi-repo";
+        #     target = rec {
+        #       ref = {
+        #         apiVersion = "apps/v1";
+        #         kind = "Deployment";
+        #         name = "vaultwarden";
+        #       };
+        #       volumeMounts = [
+        #         {
+        #           mountPath = "/config";
+        #           name = "config";
+        #           subPath = "database";
+        #         }
+        #       ];
+        #     };
+        #     runtimeSettings.container.securityContext = {
+        #       runAsUser = 0;
+        #       runAsGroup = 0;
+        #     };
+        #   };
+        # }
+
       ];
     };
 }

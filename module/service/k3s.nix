@@ -18,7 +18,7 @@ with builtins; with lib; {
     mkIf cfg.enable {
 
       services.k3s = {
-        serverAddr = mkDefault inputs.self.nixosConfigurations.storm.config.nzbr.nodeIp;
+        serverAddr = mkDefault inputs.self.nixosConfigurations.firestorm.config.nzbr.nodeIp;
         tokenFile = mkDefault config.nzbr.assets."k3s-token";
       };
 
