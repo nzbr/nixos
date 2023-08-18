@@ -10,11 +10,10 @@ jobs:
       fail-fast: false
       matrix:
         host:
-          - avalanche
           - earthquake
+          - firestorm
           - permafrost
           - pulsar
-          - storm
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
