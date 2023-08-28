@@ -8,4 +8,13 @@
   nix: {
     enabled: true,
   },
+  regexManagers: [
+    {
+      fileMatch: ["^.*\\.nix$"],
+      matchStrings: [
+        'image *= *"(?<depName>[^"]+):(?<currentValue>[^"]+)(@(?<currentDigest>sha256:[a-f0-9]+))?";',
+      ],
+      datasourceTemplate: "docker",
+    },
+  ],
 }
