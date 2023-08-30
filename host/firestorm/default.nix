@@ -158,6 +158,7 @@ in
       nginx.enable = true;
       openldap.enable = true;
       # pingcheck.enable = true;
+      plausible.enable = true;
       plex.enable = true;
       # stash.enable = true;
       vaultwarden.enable = true;
@@ -171,6 +172,7 @@ in
         "hedgedoc"
         "keycloak"
         "n8n"
+        "plausible"
         "synapse"
         "vaultwarden"
       ];
