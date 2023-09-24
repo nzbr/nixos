@@ -57,6 +57,8 @@ in
           name = "matrix";
           annotations = {
             "kubernetes.io/ingress.class" = "nginx";
+            "nginx.ingress.kubernetes.io/proxy-body-size" = "200M";
+            "nginx.ingress.kubernetes.io/proxy-read-timeout" = "300";
           };
         };
         spec = {
