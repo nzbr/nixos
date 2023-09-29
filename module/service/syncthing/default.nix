@@ -79,7 +79,7 @@ with builtins; with lib; {
                       introducer = true;
                     };
 
-                    earthquake-macos.id = "QCCLSA4-AFZQSHS-D4DQ2F6-VCPWNTQ-MOQSJY2-HUA5PSA-J3FTLTH-XXJAWAW";
+                    macos-vm.id = "24K2KDG-I5SD2KE-L3BR5C2-3EM4MTF-ITUVGLX-5OJCBXJ-AQDHMEZ-MX47KQW";
                     hurricane-win.id = "ORTVEOF-CUZIQQI-HXPIVQW-FSS4B3F-JVSDTQV-GBB233Q-ESXFKKW-GWNPNQN";
                     magnetar.id = "KGUM5PX-JMVXHTL-LOUH3NP-LTA5JGV-TBS2MFY-4V2K2JL-PJHNEHV-DRCDIAJ";
                     pulsar-win.id = "RXTBIQ6-C6SQFBC-DO2MIUA-FL7RUW2-PN6ILZC-4QMIIZX-UYP5RB7-FC3H5QK";
