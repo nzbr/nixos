@@ -58,6 +58,7 @@ with builtins; with lib; {
 
           QT_QPA_PLATFORM = "wayland;xcb";
           SDL_VIDEODRIVER = "wayland";
+          NIXOS_OZONE_WL = "1"; # chromium
         };
       };
 

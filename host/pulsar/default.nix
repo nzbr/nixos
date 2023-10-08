@@ -13,6 +13,7 @@ with builtins; with lib; {
     };
 
     service.syncthing.enable = true;
+    service.libvirtd.enable = true;
   };
 
   services.syncthing.guiAddress = "127.0.0.1:8385";
@@ -29,6 +30,8 @@ with builtins; with lib; {
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" "armv7l-linux" "armv6l-linux" ];
   wsl.interop.register = true;
+
+  users.groups.kvm.members = [ "nzbr" ];
 
   system.stateVersion = "22.05";
   nzbr.home.config.home.stateVersion = "22.05";
