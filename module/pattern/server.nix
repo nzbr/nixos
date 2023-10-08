@@ -9,6 +9,9 @@ with builtins; with lib; {
       oci-containers.backend = "docker";
     };
 
+    services.eternal-terminal.enable = true;
+    networking.firewall.allowedTCPPorts = [ config.services.eternal-terminal.port ];
+
     nix.gc.automatic = true;
 
     powerManagement.cpuFreqGovernor = "conservative";

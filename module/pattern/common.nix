@@ -41,6 +41,7 @@ with builtins; with lib;
         btop
         diskus
         exa
+        eternal-terminal
         file
         git
         gnupg
