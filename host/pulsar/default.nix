@@ -33,6 +33,15 @@ with builtins; with lib; {
 
   users.groups.kvm.members = [ "nzbr" ];
 
+  environment.systemPackages = config.environment.windowsPackages;
+  environment.windowsPackages = with pkgs; [
+    eternal-terminal
+    mosh
+    qemu
+    rnix-lsp.rnix-lsp
+    nil
+  ];
+
   system.stateVersion = "22.05";
   nzbr.home.config.home.stateVersion = "22.05";
 }
