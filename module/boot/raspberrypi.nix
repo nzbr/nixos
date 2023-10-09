@@ -5,7 +5,15 @@ with builtins; with lib; {
   options.nzbr.boot.raspberrypi = with types; {
     enable = mkEnableOption "raspberrypi bootloader/firmware builder";
     config = mkOption {
-      type = attrsOf (attrsOf anything);
+      type = lazyAttrsOf (
+        lazyAttrsOf (
+          oneOf [
+            int
+            str
+            (listOf (oneOf [ int str ]))
+          ]
+        )
+      );
     };
     extraFirmwareCommands = mkStrOpt "";
   };
@@ -22,9 +30,9 @@ with builtins; with lib; {
             concatStringsSep " " config.boot.kernelParams
           );
         in
+        # ${import "${inputs.nixpkgs}/nixos/modules/system/boot/loader/raspberrypi/raspberrypi-builder.nix" {inherit pkgs configTxt;}} -d "$PWD" -c ${default}
         default:
         ''
-          # ${import "${inputs.nixpkgs}/nixos/modules/system/boot/loader/raspberrypi/raspberrypi-builder.nix" {inherit pkgs configTxt;}} -d "$PWD" -c ${default}
           cp -r ${pkgs.raspberrypifw}/share/raspberrypi/boot/. "$PWD"
           cp ${configTxt} "$PWD"/config.txt
           cp ${cmdlineTxt} "$PWD"/cmdline.txt
@@ -34,6 +42,41 @@ with builtins; with lib; {
         '';
     in
     mkIf cfg.enable {
+
+      nzbr = {
+        boot = {
+          disableInitrd = true;
+
+          raspberrypi.config = {
+            all = {
+              arm_64bit = mkIf (config.nzbr.system == "aarch64-linux") 1;
+              kernel = "nixos-kernel.img";
+              disable_overscan = 1;
+              camera_auto_detect = 1;
+              display_auto_detect = 1;
+              dtoverlay = [
+                "vc4-kms-v3d"
+              ];
+            };
+
+            pi4 = {
+              arm_boost = 1;
+            };
+          };
+        };
+
+        installer.sdcard = {
+          enable = true;
+          firmwareSize = 512;
+          populateFirmwareCommands = firmwareCommands config.system.build.toplevel;
+          populateRootCommands = ''
+            mkdir -p ./files/sbin
+            ln -s ${config.system.build.toplevel}/init ./files/sbin/init
+          '';
+        };
+      };
+
+      nixpkgs.config.platform = mkDefault lib.systems.platforms.raspberrypi4;
 
       boot = {
         loader = {
@@ -49,34 +92,11 @@ with builtins; with lib; {
           "rootwait"
           "plymouth.ignore-serial-consoles"
         ];
-      };
-
-      nzbr.boot.disableInitrd = true;
-
-      nzbr.boot.raspberrypi.config = {
-        all = {
-          arm_64bit = mkIf (config.nzbr.system == "aarch64-linux") 1;
-          kernel = "nixos-kernel.img";
-          disable_overscan = 1;
-          camera_auto_detect = 1;
-          display_auto_detect = 1;
-          dtoverlay = [
-            "vc4-kms-v3d"
-          ];
-        };
-
-        pi4 = {
-          arm_boost = 1;
-        };
-      };
-
-      nzbr.installer.sdcard = {
-        firmwareSize = 512;
-        populateFirmwareCommands = firmwareCommands config.system.build.toplevel;
-        populateRootCommands = ''
-          mkdir -p ./files/sbin
-          ln -s ${config.system.build.toplevel}/init ./files/sbin/init
-        '';
+        kernelPackages = mkDefault pkgs.linuxKernel.rpiPackages.linux_rpi4;
+        kernelPatches = [
+          kernelPatches.tuntap
+          kernelPatches.logo
+        ];
       };
 
       system.boot.loader.id = "raspberrypi-nzbr";
@@ -107,5 +127,13 @@ with builtins; with lib; {
           rsync --info=progress2 -lr --delete "$PWD"/ /boot/firmware
           mount -o remount,ro /boot/firmware
         '';
+
+      nix.gc.automatic = false; # Reduce writes to the sd card
+      networking.interfaces.eth0.useDHCP = mkDefault true;
+
+      environment.systemPackages = with pkgs; [
+        libraspberrypi
+      ];
+
     };
 }

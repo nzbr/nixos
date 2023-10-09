@@ -27,7 +27,7 @@
       buildServer = {
         enable = true;
         maxJobs = 4;
-        systems = [ "x86_64-linux" "i686-linux" ];
+        systems = [ "x86_64-linux" ];
       };
       tailscale.enable = true;
       # ceph.enable = true;

@@ -2,6 +2,11 @@
 with builtins; with lib; {
   options.nzbr.remoteNixBuild = with types; {
     enable = mkEnableOption "Nix Remote Build Client";
+    foreignOnly = mkOption {
+      description = "Only enable remote builds for foreign architectures";
+      type = types.bool;
+      default = true;
+    };
     extraBuildMachines = mkOption {
       description = "Additional entries for nix.buildMachines";
       type = options.nix.buildMachines.type;
@@ -16,24 +21,31 @@ with builtins; with lib; {
     mkIf cfg.enable {
       nix.distributedBuilds = true;
       nix.buildMachines = cfg.extraBuildMachines ++ (
-        mapAttrsToList
-          (n: v:
-            let
-              vcfg = v.config.nzbr.service.buildServer;
-            in
-            {
-              hostName = v.config.nzbr.hostName;
-              sshUser = vcfg.user;
-              sshKey = config.nzbr.assets."ssh/id_ed25519";
-              systems = vcfg.systems;
-              maxJobs = vcfg.maxJobs;
-              supportedFeatures = v.config.nix.systemFeatures;
-            }
-          )
+        filter
+          (entry: entry.systems != [ ])
           (
-            filterAttrs
-              (n: v: (v.config.nzbr.service.buildServer.enable) && (elem config.networking.hostName v.config.nzbr.service.ssh.authorizedSystems))
-              inputs.self.nixosConfigurations
+            mapAttrsToList
+              (n: v:
+                let
+                  vcfg = v.config.nzbr.service.buildServer;
+                in
+                {
+                  hostName = v.config.nzbr.hostName;
+                  sshUser = vcfg.user;
+                  sshKey = config.nzbr.assets."ssh/id_ed25519";
+                  systems =
+                    if cfg.foreignOnly
+                    then (filter (s: s != config.nixpkgs.system) vcfg.systems)
+                    else vcfg.systems;
+                  maxJobs = vcfg.maxJobs;
+                  supportedFeatures = v.config.nix.settings.system-features;
+                }
+              )
+              (
+                filterAttrs
+                  (n: v: (v.config.nzbr.service.buildServer.enable) && (elem config.networking.hostName v.config.nzbr.service.ssh.authorizedSystems))
+                  inputs.self.nixosConfigurations
+              )
           )
       );
       nix.extraOptions = ''
