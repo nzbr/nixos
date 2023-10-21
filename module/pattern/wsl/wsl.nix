@@ -40,8 +40,6 @@ with builtins; with lib; {
 
       networking.networkmanager.enable = lib.mkForce false;
 
-      virtualisation.docker.enable = mkOverride 900 false;
-
       environment = {
         systemPackages = with pkgs; [
           firefox
