@@ -1,4 +1,10 @@
 { config, lib, pkgs, inputs, system, ... }:
+let
+  crossPkgs = import inputs.nixpkgs {
+    localSystem = "x86_64-linux";
+    crossSystem = config.nzbr.system;
+  };
+in
 with builtins; with lib; {
 
   nzbr = {
@@ -47,6 +53,7 @@ with builtins; with lib; {
   };
 
   boot = {
+    kernelPackages = crossPkgs.linuxKernel.rpiPackages.linux_rpi4; # Cross compile the kernel so it doesn't take forever
     kernelModules = [
       "hid_roccat"
       "hid_roccat_common"
