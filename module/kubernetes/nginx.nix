@@ -47,6 +47,7 @@ with builtins; with lib; {
             inherit namespace;
             values = {
               controller = {
+                allowSnippetAnnotations = true;
                 config = {
                   hsts-preload = true;
                   ssl-redirect = true;
