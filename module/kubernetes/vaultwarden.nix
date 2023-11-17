@@ -8,7 +8,196 @@ in
     {
       dependencies = [ "nginx" "stash" "kadalu" ];
       steps = [
-        (kube.installHelmChart "k8s-at-home" "vaultwarden" config.nzbr.assets."k8s/vaultwarden-values.yaml")
+
+        (config.nzbr.assets."k8s/vaultwarden-secret.yaml")
+
+        {
+          apiVersion = "v1";
+          kind = "PersistentVolumeClaim";
+          metadata = {
+            inherit namespace;
+            name = "vaultwarden-config";
+            labels = {
+              "app.kubernetes.io/instance" = "vaultwarden";
+              "app.kubernetes.io/managed-by" = "Helm";
+              "app.kubernetes.io/name" = "vaultwarden";
+            };
+          };
+          spec = {
+            accessModes = [ "ReadWriteOnce" ];
+            resources = { requests = { storage = "1Gi"; }; };
+            storageClassName = "kadalu.pool";
+          };
+        }
+
+        {
+          apiVersion = "apps/v1";
+          kind = "Deployment";
+          metadata = {
+            inherit namespace;
+            name = "vaultwarden";
+            labels = {
+              "app.kubernetes.io/instance" = "vaultwarden";
+              "app.kubernetes.io/managed-by" = "Helm";
+              "app.kubernetes.io/name" = "vaultwarden";
+            };
+          };
+          spec = {
+            replicas = 1;
+            revisionHistoryLimit = 3;
+            selector = {
+              matchLabels = {
+                "app.kubernetes.io/instance" = "vaultwarden";
+                "app.kubernetes.io/name" = "vaultwarden";
+              };
+            };
+            strategy = { type = "Recreate"; };
+            template = {
+              metadata = {
+                labels = {
+                  "app.kubernetes.io/instance" = "vaultwarden";
+                  "app.kubernetes.io/name" = "vaultwarden";
+                };
+              };
+              spec = {
+                automountServiceAccountToken = true;
+                containers = [{
+                  env = [
+                    {
+                      name = "DATA_FOLDER";
+                      value = "config";
+                    }
+                    {
+                      name = "SIGNUPS_ALLOWED";
+                      value = "false";
+                    }
+                    {
+                      name = "SIGNUPS_VERIFY";
+                      value = "true";
+                    }
+                  ];
+                  envFrom = [{ secretRef.name = "vaultwarden-secret"; }];
+                  image = "vaultwarden/server:1.25.2";
+                  imagePullPolicy = "IfNotPresent";
+                  livenessProbe = {
+                    failureThreshold = 3;
+                    initialDelaySeconds = 0;
+                    periodSeconds = 10;
+                    tcpSocket = { port = 80; };
+                    timeoutSeconds = 1;
+                  };
+                  name = "vaultwarden";
+                  ports = [
+                    {
+                      containerPort = 80;
+                      name = "http";
+                      protocol = "TCP";
+                    }
+                    {
+                      containerPort = 3012;
+                      name = "websocket";
+                      protocol = "TCP";
+                    }
+                  ];
+                  readinessProbe = {
+                    failureThreshold = 3;
+                    initialDelaySeconds = 0;
+                    periodSeconds = 10;
+                    tcpSocket = { port = 80; };
+                    timeoutSeconds = 1;
+                  };
+                  startupProbe = {
+                    failureThreshold = 30;
+                    initialDelaySeconds = 0;
+                    periodSeconds = 5;
+                    tcpSocket = { port = 80; };
+                    timeoutSeconds = 1;
+                  };
+                  volumeMounts = [{
+                    mountPath = "/config";
+                    name = "config";
+                  }];
+                }];
+                dnsPolicy = "ClusterFirst";
+                enableServiceLinks = true;
+                serviceAccountName = "default";
+                volumes = [{
+                  name = "config";
+                  persistentVolumeClaim = { claimName = "vaultwarden-config"; };
+                }];
+              };
+            };
+          };
+        }
+
+        {
+          apiVersion = "v1";
+          kind = "Service";
+          metadata = {
+            inherit namespace;
+            name = "vaultwarden";
+            labels = {
+              "app.kubernetes.io/instance" = "vaultwarden";
+              "app.kubernetes.io/managed-by" = "Helm";
+              "app.kubernetes.io/name" = "vaultwarden";
+            };
+          };
+          spec = {
+            ports = [
+              {
+                name = "http";
+                port = 80;
+                protocol = "TCP";
+                targetPort = "http";
+              }
+              {
+                name = "websocket";
+                port = 3012;
+                protocol = "TCP";
+                targetPort = "websocket";
+              }
+            ];
+            selector = {
+              "app.kubernetes.io/instance" = "vaultwarden";
+              "app.kubernetes.io/name" = "vaultwarden";
+            };
+            type = "ClusterIP";
+          };
+        }
+
+        {
+          apiVersion = "networking.k8s.io/v1";
+          kind = "Ingress";
+          metadata = {
+            inherit namespace;
+            name = "vaultwarden";
+            annotations = { "cert-manager.io/cluster-issuer" = "letsencrypt-prod"; };
+            labels = {
+              "app.kubernetes.io/instance" = "vaultwarden";
+              "app.kubernetes.io/managed-by" = "Helm";
+              "app.kubernetes.io/name" = "vaultwarden";
+            };
+          };
+          spec = {
+            ingressClassName = "nginx";
+            rules = [{
+              host = "vault.nzbr.de";
+              http = {
+                paths = [{
+                  backend = {
+                    service = {
+                      name = "vaultwarden";
+                      port = { number = 80; };
+                    };
+                  };
+                  path = "/";
+                  pathType = "Prefix";
+                }];
+              };
+            }];
+            tls = [{ hosts = [ "vault.nzbr.de" ]; }];
+          };
+        }
 
         # stash backup
         (config.setupStashRepo namespace)
