@@ -77,7 +77,7 @@ in
                     }
                   ];
                   envFrom = [{ secretRef.name = "vaultwarden-secret"; }];
-                  image = "vaultwarden/server:1.25.2";
+                  image = "vaultwarden/server:1.30.0-alpine";
                   imagePullPolicy = "IfNotPresent";
                   livenessProbe = {
                     failureThreshold = 3;
@@ -91,11 +91,6 @@ in
                     {
                       containerPort = 80;
                       name = "http";
-                      protocol = "TCP";
-                    }
-                    {
-                      containerPort = 3012;
-                      name = "websocket";
                       protocol = "TCP";
                     }
                   ];
@@ -149,12 +144,6 @@ in
                 port = 80;
                 protocol = "TCP";
                 targetPort = "http";
-              }
-              {
-                name = "websocket";
-                port = 3012;
-                protocol = "TCP";
-                targetPort = "websocket";
               }
             ];
             selector = {
