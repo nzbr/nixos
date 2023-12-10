@@ -40,7 +40,7 @@ with builtins; with lib;
         bat
         btop
         diskus
-        exa
+        eza
         eternal-terminal
         file
         git
@@ -97,11 +97,11 @@ with builtins; with lib;
         defaultUserShell = pkgs.zsh;
         mutableUsers = false;
         users.root = {
-          passwordFile = config.nzbr.assets."root.password";
+          hashedPasswordFile = config.nzbr.assets."root.password";
         };
         users.${config.nzbr.user} = {
           isNormalUser = true;
-          passwordFile = config.nzbr.assets."nzbr.password";
+          hashedPasswordFile = config.nzbr.assets."nzbr.password";
           extraGroups = [ "wheel" "plugdev" ];
         };
       };

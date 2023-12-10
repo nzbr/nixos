@@ -4,8 +4,8 @@ with builtins; with lib; {
 
   config = mkIf config.nzbr.nopasswd.enable {
     users.users = {
-      "${config.nzbr.user}".passwordFile = mkForce null;
-      root.passwordFile = mkForce null;
+      "${config.nzbr.user}".hashedPasswordFile = mkForce null;
+      root.hashedPasswordFile = mkForce null;
     };
 
     nzbr.autologin.enable = true;
