@@ -43,7 +43,7 @@ $config = (&"@nixFlakes@/bin/nix-instantiate" --eval --strict -E --json @"
 
 $to_build = ($hosts | % { ".#nixosConfigurations.$_.config.system.build.toplevel" })
 Write-Host "Building $to_build"
-$result_json = (&"@nixFlakes@/bin/nix" (@("build", "--no-link", "--json", "-vL") + $to_build))
+$result_json = (&"@nom@/bin/nom" (@("build", "--no-link", "--json") + $to_build))
 if (!$?) {
     Write-Error "nix build failed"
     exit 1

@@ -216,6 +216,7 @@
                     rage
                     ;
                   wireguard = pkgs.wireguard-tools;
+                  nom = pkgs.nix-output-monitor;
                   nixpkgs = toString inputs.nixpkgs;
                 };
               })
