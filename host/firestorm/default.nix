@@ -33,16 +33,15 @@ in
       buildServer = {
         enable = true;
         maxJobs = 6;
-        systems = [ "x86_64-linux" "i686-linux" ];
+        systems = [ "x86_64-linux" ];
       };
       tailscale = {
         enable = true;
         exit = true;
       };
-      # gitlab-runner = {
-      #   enable = true;
-      #   extraTags = [ "kube-deploy" ];
-      # };
+      gitlab-runner = {
+        enable = true;
+      };
       synapse.enable = true;
       borgbackup = {
         enable = true;
