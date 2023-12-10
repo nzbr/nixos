@@ -33,7 +33,7 @@ with builtins; with lib; {
       tailscale.enable = true;
       buildServer = {
         enable = true;
-        maxJobs = 4;
+        maxJobs = 1;
         systems = [ "aarch64-linux" ];
       };
     };
@@ -50,7 +50,39 @@ with builtins; with lib; {
   nix.settings = {
     min-free = 17179869184;
     max-free = 34359738368;
+    cores = 3; # Use only 3 cores for building to not interfere with OctoPrint
   };
+
+  services = {
+    octoprint = {
+      enable = true;
+      plugins = super:
+      with super;
+      let
+        psucontrol_homeassistant = buildPlugin rec {
+          pname = "psucontrol_homeassistant";
+          version = "1.0.5";
+
+          src = pkgs.fetchFromGitHub {
+            owner = "edekeijzer";
+            repo = "OctoPrint-PSUControl-HomeAssistant";
+            rev = version;
+            sha256 = "sha256-gphn2PSBjNC2Cji7vbAT3Tx+HrXktFrD81iCqNMcPeE=";
+          };
+
+          propagatedBuildInputs = [
+            python-periphery
+          ];
+        };
+      in
+      [
+        psucontrol
+        psucontrol_homeassistant
+        themeify
+      ];
+    };
+  };
+  users.groups.video.members = [ "octoprint" ]; # RPis are cursed and OctoPrint needs to be in the video group to use vcgencmd TODO: The udev rules for this are missing
 
   boot = {
     kernelPackages = crossPkgs.linuxKernel.rpiPackages.linux_rpi4; # Cross compile the kernel so it doesn't take forever
