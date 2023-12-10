@@ -38,8 +38,6 @@ with builtins; with lib; {
     eternal-terminal
     mosh
     qemu
-    rnix-lsp.rnix-lsp
-    nil
   ];
 
   system.stateVersion = "22.05";
