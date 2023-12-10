@@ -55,6 +55,7 @@ with builtins; with lib;
         tmux
         vim
         wget
+        starship
 
         cabextract
         p7zip
@@ -69,6 +70,7 @@ with builtins; with lib;
 
       programs = {
         zsh.enable = true;
+        starship.enable = true;
         ssh.startAgent = true;
         mosh.enable = true;
       };
