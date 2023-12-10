@@ -45,7 +45,8 @@ in
       hostPkgs
       // {
         local = inputs.self.packages.${system}; # import local packages
-        rnix-lsp = inputs.rnix-lsp.packages.${system};
+        nix-ld-rs = inputs.nix-ld-rs.packages.${system};
+        nixd = inputs.nixd.packages.${system};
       } //
       # import packages from inputs
       lib.mapAttrs

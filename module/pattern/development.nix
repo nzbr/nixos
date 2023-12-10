@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ options, config, lib, pkgs, modulesPath, ... }:
 with builtins; with lib;
 {
   options.nzbr.pattern.development = {
@@ -50,6 +50,7 @@ with builtins; with lib;
         kubectl
         kubernetes-helm
         ninja
+        nix-output-monitor
         pkg-config
         powershell
         (python3.withPackages (pypi: with pypi; [
@@ -60,8 +61,8 @@ with builtins; with lib;
         unstable.flutter
 
         # Language servers
-        rnix-lsp.rnix-lsp
         unstable.nil
+        nixd.nixd
 
       ] ++ (
         if config.nzbr.pattern.development.guiTools then
@@ -100,7 +101,16 @@ with builtins; with lib;
           CHROME_EXECUTABLE = "${pkgs.chromium}/bin/chromium";
         };
 
-      programs.nix-ld.enable = true;
+      programs.nix-ld = {
+        enable = true;
+        package = pkgs.nix-ld-rs.nix-ld-rs;
+        libraries = options.programs.nix-ld.libraries.default ++  [
+          (pkgs.runCommand "ld.so" {} ''
+            mkdir -p $out/lib
+            ln -s "$(cat '${pkgs.stdenv.cc}/nix-support/dynamic-linker')" $out/lib/ld.so
+          '')
+        ];
+      };
 
       nzbr.cli.git = {
         enable = true;
