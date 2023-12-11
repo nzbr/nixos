@@ -34,7 +34,7 @@ in
       buildServer = {
         enable = true;
         maxJobs = 8;
-        systems = [ "x86_64-linux" "i686-linux" ];
+        systems = [ "x86_64-linux" ];
       };
       tailscale = {
         enable = true;
