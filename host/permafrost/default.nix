@@ -13,7 +13,6 @@ in
     deployment.targetHost = "permafrost.dragon-augmented.ts.net";
 
     boot = {
-      grub.enable = true;
       remoteUnlock = {
         enable = true;
         tailscale = true;
@@ -33,10 +32,7 @@ in
       efi = {
         efiSysMountPoint = "/boot";
       };
-      grub = {
-        efiSupport = true;
-        copyKernels = true;
-      };
+      systemd-boot.enable = true;
     };
 
     initrd = {
@@ -88,6 +84,7 @@ in
       "/boot" = {
         device = "/dev/disk/by-uuid/D6F4-5103";
         fsType = "vfat";
+        options = [ "fmask=0077" "dmask=0077" ];
       };
       "/tmp" = {
         device = "tmpfs";
