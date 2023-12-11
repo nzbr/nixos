@@ -112,20 +112,18 @@ with builtins; with lib; {
 
       environment.etc."borgmatic/config.yaml".text = generators.toJSON { } {
 
-        location = {
-          exclude_caches = true;
-          read_special = true;
-          repositories = [
-            repoPath
-          ];
-          source_directories = flatten [
-            cfg.paths
-            snapshotPath
-          ];
-          exclude_from = [
-            specialFilesList
-          ];
-        };
+        exclude_caches = true;
+        read_special = true;
+        repositories = [
+          repoPath
+        ];
+        source_directories = flatten [
+          cfg.paths
+          snapshotPath
+        ];
+        exclude_from = [
+          specialFilesList
+        ];
 
         storage = {
           encryption_passcommand = "cat ${config.nzbr.assets."backup.password"}";
