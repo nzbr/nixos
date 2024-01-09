@@ -92,14 +92,14 @@ with builtins; with lib; {
 
       nzbr.home.users = [ config.nzbr.user ];
 
-      # X410 support on :1
-      systemd.services.x410 = {
-        wantedBy = [ "multi-user.target" ];
-        script = ''
-          ${pkgs.socat}/bin/socat -b65536 UNIX-LISTEN:/tmp/.X11-unix/X1,fork,mode=777 VSOCK-CONNECT:2:6000
-        '';
-      };
-      environment.variables.DISPLAY = ":1";
+      # # X410 support on :1
+      # systemd.services.x410 = {
+      #   wantedBy = [ "multi-user.target" ];
+      #   script = ''
+      #     ${pkgs.socat}/bin/socat -b65536 UNIX-LISTEN:/tmp/.X11-unix/X1,fork,mode=777 VSOCK-CONNECT:2:6000
+      #   '';
+      # };
+      # environment.variables.DISPLAY = ":1";
 
       environment.windowsPackages = with pkgs; [
         file
