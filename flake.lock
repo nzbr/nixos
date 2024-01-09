@@ -180,11 +180,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1669812809,
-        "narHash": "sha256-Tul4+EmY6pBr25/bXtOI4EPrahacXO1GJm8negYG1Bk=",
+        "lastModified": 1704825829,
+        "narHash": "sha256-4y+rzPMloQqKFaLXamX1Vm7FcNKLIDRu0hSymPo1dd4=",
         "owner": "nzbr",
         "repo": "dotfiles",
-        "rev": "717bc6fa357081bb76c5585910941c55645c33cf",
+        "rev": "44f312ff61dc2b04b83aa48dc91f46ec821998f9",
         "type": "github"
       },
       "original": {
