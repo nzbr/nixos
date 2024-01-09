@@ -30,7 +30,7 @@ jobs:
           expression: .#nixosConfigurations.live.config.system.build.isoImage
 
       - name: Upload ISO 📤
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: live-iso
           path: result/iso/*.iso
