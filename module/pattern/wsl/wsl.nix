@@ -33,8 +33,6 @@ with builtins; with lib; {
       nzbr.pattern.common.enable = true;
       nzbr.desktop.gnome.enable = true;
 
-      nzbr.cli.git.enable = mkForce false; # Don't break windows git
-
       services.xserver.displayManager.gdm.enable = lib.mkForce false;
       services.xserver.displayManager.autoLogin.enable = lib.mkForce false;
 
