@@ -41,7 +41,7 @@ with builtins; with lib; {
 
         "org/gnome/shell" = {
           favorite-apps = mkForce [
-            "vivaldi-stable.desktop"
+            "firefox.desktop"
             "org.gnome.Nautilus.desktop"
             "org.gnome.Terminal.desktop"
             "org.gnome.DiskUtility.desktop"
@@ -67,8 +67,7 @@ with builtins; with lib; {
     testdisk-qt
 
     # Desktop packages
-    unstable.vivaldi
-    unstable.vivaldi-ffmpeg-codecs
+    firefox
     vlc
     xsel
     lm_sensors

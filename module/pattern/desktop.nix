@@ -32,9 +32,7 @@ with builtins; with lib;
       };
 
       environment.systemPackages = with pkgs; [
-        unstable.vivaldi
-        unstable.vivaldi-widevine
-        unstable.vivaldi-ffmpeg-codecs
+        firefox
 
         vlc
         # spotify

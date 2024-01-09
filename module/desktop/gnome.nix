@@ -135,7 +135,7 @@ with builtins; with lib; {
               # "trayIconsReloaded@selfmade.pl"
             ];
             favorite-apps = [
-              "vivaldi-stable.desktop"
+              "firefox.desktop"
               "org.gnome.Nautilus.desktop"
               "org.gnome.Terminal.desktop"
               "code.desktop"
