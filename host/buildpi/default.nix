@@ -57,29 +57,29 @@ with builtins; with lib; {
     octoprint = {
       enable = true;
       plugins = super:
-      with super;
-      let
-        psucontrol_homeassistant = buildPlugin rec {
-          pname = "psucontrol_homeassistant";
-          version = "1.0.5";
+        with super;
+        let
+          psucontrol_homeassistant = buildPlugin rec {
+            pname = "psucontrol_homeassistant";
+            version = "1.0.5";
 
-          src = pkgs.fetchFromGitHub {
-            owner = "edekeijzer";
-            repo = "OctoPrint-PSUControl-HomeAssistant";
-            rev = version;
-            sha256 = "sha256-gphn2PSBjNC2Cji7vbAT3Tx+HrXktFrD81iCqNMcPeE=";
+            src = pkgs.fetchFromGitHub {
+              owner = "edekeijzer";
+              repo = "OctoPrint-PSUControl-HomeAssistant";
+              rev = version;
+              sha256 = "sha256-gphn2PSBjNC2Cji7vbAT3Tx+HrXktFrD81iCqNMcPeE=";
+            };
+
+            propagatedBuildInputs = [
+              python-periphery
+            ];
           };
-
-          propagatedBuildInputs = [
-            python-periphery
-          ];
-        };
-      in
-      [
-        psucontrol
-        psucontrol_homeassistant
-        themeify
-      ];
+        in
+        [
+          psucontrol
+          psucontrol_homeassistant
+          themeify
+        ];
     };
   };
   users.groups.video.members = [ "octoprint" ]; # RPis are cursed and OctoPrint needs to be in the video group to use vcgencmd TODO: The udev rules for this are missing

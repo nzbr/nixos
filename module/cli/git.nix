@@ -30,20 +30,20 @@ in
               userName = "nzbr";
               userEmail = "mail" + "@" + "nzbr.de";
               extraConfig =
-              let
-                hasSSH = root != null
+                let
+                  hasSSH = root != null
                     && (hasAttr "ssh" (readDir "${root}/host/${config.networking.hostName}"))
                     && (hasAttr "id_ed25519.age" (readDir "${root}/host/${config.networking.hostName}/ssh"))
                     && (hasAttr "id_ed25519.pub" (readDir "${root}/host/${config.networking.hostName}/ssh"));
-              in
-              {
-                gpg.format = mkIf hasSSH "ssh";
-                gpg.ssh.allowedSignersFile = mkIf hasSSH (toString (pkgs.writeText "allowed_signers" ''
-                  ${config.nzbr.home.config.programs.git.userEmail} ${readFile "${root}/host/${config.networking.hostName}/ssh/id_ed25519.pub"}"
-                ''));
-                user.signingKey = "~/.ssh/id_ed25519.pub";
-                commit.gpgSign = hasSSH;
-              };
+                in
+                {
+                  gpg.format = mkIf hasSSH "ssh";
+                  gpg.ssh.allowedSignersFile = mkIf hasSSH (toString (pkgs.writeText "allowed_signers" ''
+                    ${config.nzbr.home.config.programs.git.userEmail} ${readFile "${root}/host/${config.networking.hostName}/ssh/id_ed25519.pub"}"
+                  ''));
+                  user.signingKey = "~/.ssh/id_ed25519.pub";
+                  commit.gpgSign = hasSSH;
+                };
             }
             else { }
           );
