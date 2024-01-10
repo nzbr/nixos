@@ -7,6 +7,7 @@ with builtins; with lib; {
 
     virtualisation = {
       oci-containers.backend = "docker";
+      docker.autoPrune.enable = true;
     };
 
     services.eternal-terminal.enable = true;
