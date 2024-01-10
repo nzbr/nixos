@@ -70,7 +70,6 @@ with builtins; with lib;
 
       programs = {
         zsh.enable = true;
-        starship.enable = true;
         ssh.startAgent = true;
         mosh.enable = true;
       };
