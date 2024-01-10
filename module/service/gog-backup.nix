@@ -67,7 +67,7 @@ with builtins; with lib; {
               --include-hidden-products \
               --download \
               --save-serials \
-              # --save-logo # doesn't exist in release version (yet)
+              --save-logo \
           '';
         };
 

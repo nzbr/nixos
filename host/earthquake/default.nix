@@ -84,6 +84,14 @@ in
           files = "zbackup/UrBackup/files";
         };
       };
+      gogBackup = {
+        enable = true;
+        destination = "/storage/media/ROM/PC/GOG";
+        platform = "all";
+        language = "de+en";
+        exclude = "patches";
+        schedule = "monthly";
+      };
     };
 
     program = {
