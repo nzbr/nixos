@@ -90,8 +90,6 @@ with builtins; with lib; {
         };
       };
 
-      nzbr.home.users = [ config.nzbr.user ];
-
       # # X410 support on :1
       # systemd.services.x410 = {
       #   wantedBy = [ "multi-user.target" ];
