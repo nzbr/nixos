@@ -35,6 +35,11 @@ in
         maxJobs = 6;
         systems = [ "x86_64-linux" ];
       };
+      mullvad-bridge = {
+        enable = true;
+        enabledRegions = [ "de-fra" "nl" "us" ];
+        tailscale = true;
+      };
       tailscale = {
         enable = true;
         exit = true;
@@ -130,6 +135,13 @@ in
       };
     };
   };
+
+  security.pam.loginLimits = [{
+    domain = "*";
+    type = "soft";
+    item = "nofile";
+    value = "8192";
+  }];
 
   services.k3s = {
     enable = true;

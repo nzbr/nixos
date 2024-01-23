@@ -6,6 +6,7 @@ with builtins; with lib; {
     enable = mkEnableOption "Tailscale";
     exit = mkBoolOpt false;
     cert = mkEnableOption "Tailscale TLS certificate";
+    authkey = mkStrOpt config.nzbr.assets."tskey";
   };
 
   config =
@@ -23,10 +24,6 @@ with builtins; with lib; {
         config.services.tailscale.package
       ];
 
-      nzbr.home.autostart = mkIf config.nzbr.pattern.desktop.enable [
-        "${pkgs.local.tailscale-ui}/bin/tailscale-ui"
-      ];
-
       systemd = {
 
         services = {
@@ -36,7 +33,7 @@ with builtins; with lib; {
 
             # make sure tailscale is running before trying to connect to tailscale
             after = [ "network-pre.target" "tailscale.service" ];
-            requires = [ "tailscale.service" ];
+            requires = [ "tailscaled.service" ];
             wants = after;
             wantedBy = [ "tailscale.target" ];
 
@@ -58,7 +55,7 @@ with builtins; with lib; {
                 status="$(${tailscale} status -json | ${pkgs.jq}/bin/jq -r .BackendState)"
                 if ! [ $status = "Running" ]; then
                   # authenticate with tailscale
-                  ${tailscale} up -authkey ''$(cat ${config.nzbr.assets."tskey"}) ${options}
+                  ${tailscale} up -authkey ''$(cat ${cfg.authkey}) ${options}
                 else
                   # reconfigure but don't authenticate
                   ${tailscale} up ${options}
