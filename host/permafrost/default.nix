@@ -147,7 +147,28 @@ in
 
   environment.systemPackages = with pkgs; [
     borgbackup
+    rclone
   ];
+
+  # TODO: Add monitoring for this
+  systemd = {
+    services.upload = {
+      description = "Upload backups to remote";
+      after = [ "network.target" ];
+      environment = {
+        HOME = "/root";
+      };
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.rclone}/bin/rclone sync -vv /backup jotta-archive:permafrost";
+      };
+    };
+    timers.upload = {
+      wantedBy = [ "timers.target" ];
+      partOf = [ "upload.service" ];
+      timerConfig.OnCalendar = "*-*-* 02:00:00";
+    };
+  };
 
   system.stateVersion = "23.05";
   nzbr.home.config.home.stateVersion = "23.05";
