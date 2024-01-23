@@ -61,7 +61,7 @@ foreach ($i in 0..($hosts.Length - 1)) {
     $storePath = ($results[$i]).outputs.out
 
     # Copy
-    & "@nixFlakes@/bin/nix" copy -vL $substitute --to ssh://${user}@${targetHost} $storePath
+    & "@nixFlakes@/bin/nix" copy --log-format internal-json -v $substitute --to ssh://${user}@${targetHost} $storePath 2>&1 | & "@nom@/bin/nom" --json
     if (!$?) {
         Write-Error "Failed to copy configuration to $targetHost"
         exit 1
