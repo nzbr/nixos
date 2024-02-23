@@ -33,7 +33,7 @@ with builtins; with lib; {
 
             # url = "https://unsplash.com/photos/2HqpqSqy0zg/download\?force\=true";
             url = "https://images.unsplash.com/photo-1516715094483-75da7dee9758?ixlib=rb-1.2.1&q=80&fm=png&cs=tinysrgb";
-            sha256 = "1w8b7gjhl20icpw4q6i31c54g3wicy0gxgpbjyz5aqph1qvzhwax";
+            sha256 = "1hwzawfrg44razpw763ld86qj7m2ask69q508j75v1cfikhiiw1i";
 
             # Alternative: 482eb40256a904860fbad4c983f65f37ad7439b4d41202eead244e62e271c2a7 https://unsplash.com/photos/IWenq-4JHqo/download\?force\=true
           });
