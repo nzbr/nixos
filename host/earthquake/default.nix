@@ -388,6 +388,10 @@ in
           services;
       initialScript = config.nzbr.assets."postgres-setup.sql";
     };
+  systemd.services.postgresql.serviceConfig = { # hopefully prevent postgres from breaking on every reboot
+    TimeoutStartSec = "infinity";
+    TimeoutSec = mkForce 600;
+  };
   services.postgresqlBackup = {
     enable = true;
     location = "/storage/postgres/backup";
