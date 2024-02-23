@@ -52,7 +52,7 @@ with builtins; with lib;
         lm_sensors
       ];
 
-      fonts.fonts = with pkgs; [
+      fonts.packages = with pkgs; [
         (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
         roboto
         roboto-slab
