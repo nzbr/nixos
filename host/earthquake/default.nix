@@ -388,7 +388,9 @@ in
           services;
       initialScript = config.nzbr.assets."postgres-setup.sql";
     };
-  systemd.services.postgresql.serviceConfig = { # hopefully prevent postgres from breaking on every reboot
+
+  # hopefully prevent postgres from breaking on every reboot
+  systemd.services.postgresql.serviceConfig = {
     TimeoutStartSec = "infinity";
     TimeoutSec = mkForce 600;
   };
