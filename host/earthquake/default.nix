@@ -233,9 +233,10 @@ in
   services.syncthing.dataDir = "/storage/nzbr";
   services.syncthing.folders.mp3.path = lib.mkForce "/storage/media/MP3";
 
-  users.groups."media".members = [
-    "nzbr"
-  ];
+  users.groups."media" = {
+    gid = 999;
+    members = [ "nzbr" ];
+  };
 
   services.samba = {
     enable = true;
