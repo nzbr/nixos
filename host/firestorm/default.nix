@@ -182,6 +182,7 @@ in
         "bitwarden"
         "hedgedoc"
         "keycloak"
+        "matrixslidingsync"
         "n8n"
         "plausible"
         "synapse"
