@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, options, ... }:
+{ config, lib, pkgs, options, ... }:
 with builtins; with lib; {
   options.nzbr.service.borgbackup = with types; {
     enable = mkEnableOption "Borg Backups";
@@ -57,15 +57,12 @@ with builtins; with lib; {
 
   config = mkIf config.nzbr.service.borgbackup.enable (
     let
-      hostname = config.networking.hostName;
-
       cfg = config.nzbr.service.borgbackup;
       opt = options.nzbr.service.borgbackup;
-      backupDir = "borg/${hostname}";
       runDir = "/run/borg";
       cachePath = "${runDir}/rclone-cache";
       mountPath = "${runDir}/rclone-mount";
-      repoPath = cfg.repoUrl or "${mountPath}/${backupDir}";
+      repoPath = cfg.repoUrl or "${mountPath}/borg/${config.networking.hostName}";
       snapshotPath = "${runDir}/snapshot";
       specialFilesList = "${runDir}/special-files";
     in
@@ -114,23 +111,23 @@ with builtins; with lib; {
 
         exclude_caches = true;
         read_special = true;
+        encryption_passcommand = "cat ${config.nzbr.assets."backup.password"}";
+        compression = "auto,zstd,9";
+        checkpoint_interval = 300;
+        lock_wait = 300;
+
         repositories = [
-          repoPath
+          { label = "repository"; path = repoPath; }
         ];
+
         source_directories = flatten [
           cfg.paths
           snapshotPath
         ];
+
         exclude_from = [
           specialFilesList
         ];
-
-        storage = {
-          encryption_passcommand = "cat ${config.nzbr.assets."backup.password"}";
-          compression = "auto,zstd,9";
-          checkpoint_interval = 300;
-          lock_wait = 300;
-        };
 
         retention = {
           keep_daily = 7;
