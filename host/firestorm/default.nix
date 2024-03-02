@@ -157,6 +157,7 @@ in
     kubectlPackage = pkgs.kubectl;
     deployment = {
       amp.enable = true;
+      argocd.enable = true;
       cert-manager.enable = true;
       # debug-shell.enable = true;
       gitlab.enable = true;
