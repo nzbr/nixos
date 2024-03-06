@@ -185,6 +185,7 @@ in
         "keycloak"
         "matrixslidingsync"
         "n8n"
+        "outline"
         "plausible"
         "synapse"
         "vaultwarden"
