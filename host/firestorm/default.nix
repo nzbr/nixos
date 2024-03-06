@@ -177,6 +177,36 @@ in
     };
   };
 
+  environment.systemPackages = [
+    (pkgs.writeShellScriptBin "generate-kubeconfig" ''
+      # based on https://stackoverflow.com/questions/47770676/how-to-create-a-kubectl-config-file-for-serviceaccount
+      SERVER=https://k8s.nzbr.de
+      NAME=admin-token
+
+      TOKEN=$(${pkgs.kubectl}/bin/kubectl get secret $NAME -o jsonpath='{.data.token}' | ${pkgs.coreutils}/bin/base64 --decode)
+
+      cat <<EOF
+      apiVersion: v1
+      kind: Config
+      clusters:
+        - name: ${config.networking.hostName}
+          cluster:
+            server: $SERVER
+      contexts:
+        - name: ${config.networking.hostName}
+          context:
+            cluster: ${config.networking.hostName}
+            user: default-user
+            namespace: default
+      current-context: ${config.networking.hostName}
+      users:
+        - name: default-user
+          user:
+            token: $TOKEN
+      EOF
+    '')
+  ];
+
   services.postgresql =
     let
       services = [
