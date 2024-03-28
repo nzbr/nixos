@@ -402,6 +402,15 @@ in
   };
   age.secrets."postgres-setup.sql".owner = "postgres";
 
+  services.audiobookshelf = {
+    enable = true;
+    package = pkgs.unstable.audiobookshelf;
+    group = "media";
+    host = config.nzbr.nodeIp;
+    openFirewall = false;
+    port = 8000;
+  };
+
   networking.firewall.trustedInterfaces = [ "docker0" ];
 
   system.stateVersion = "21.11";
