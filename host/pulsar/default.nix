@@ -18,6 +18,8 @@ with builtins; with lib; {
 
   services.syncthing.guiAddress = "127.0.0.1:8385";
 
+  services.flatpak.enable = true;
+
   fileSystems."/tmp".options = mkForce [ "size=16G" ];
 
   nix.distributedBuilds = true;
