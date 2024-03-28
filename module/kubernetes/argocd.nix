@@ -9,9 +9,10 @@ in
 
       (kube.createNamespace namespace)
 
-      (pkgs.runCommand "argocd.json" {
-        nativeBuildInputs = [ pkgs.yq ];
-      } ''
+      (pkgs.runCommand "argocd.json"
+        {
+          nativeBuildInputs = [ pkgs.yq ];
+        } ''
         yq -y '.metadata.namespace="${namespace}"' ${inputs.argocd}/manifests/install.yaml > $out
       '')
 
@@ -71,7 +72,7 @@ in
         };
         spec = {
           clusterResourceWhitelist = [
-            {group = "*"; kind = "*";}
+            { group = "*"; kind = "*"; }
           ];
           destinations = [
             { namespace = "*"; server = "*"; }
