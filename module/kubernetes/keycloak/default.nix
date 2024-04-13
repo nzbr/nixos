@@ -62,7 +62,7 @@ in
                 image = "quay.io/keycloak/keycloak:latest";
                 imagePullPolicy = "Always";
                 workingDir = "/opt/keycloak";
-                command = [ "/opt/keycloak/bin/kc.sh" "start" "--auto-build" ];
+                command = [ "/opt/keycloak/bin/kc.sh" "start" ];
                 env = [
                   { name = "KEYCLOAK_ADMIN"; value = "admin"; }
                   { name = "KEYCLOAK_ADMIN_PASSWORD"; valueFrom.secretKeyRef = { key = "adminpassword"; name = "keycloak"; }; }
