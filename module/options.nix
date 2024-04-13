@@ -9,6 +9,11 @@ with builtins; with lib; {
       description = "internal IP that is accessible from other hosts (mainly for k3s) - tailscale IP in my case";
       example = "100.x.y.z";
     };
+    nodeIp6 = mkOption {
+      type = str;
+      description = "internal IPv6 that is accessible from other hosts (mainly for k3s) - tailscale IP in my case";
+      example = "fd7a:115c:a1e0:.../96";
+    };
 
     flake = {
       root = strOptOrNull;

@@ -10,6 +10,7 @@ in
     system = "x86_64-linux";
     patterns = [ "common" "server" ];
     nodeIp = "100.71.200.40";
+    nodeIp6 = "fd7a:115c:a1e0:ab12:4843:cd96:6247:c828";
 
     deployment.targetHost = "earthquake.dragon-augmented.ts.net";
 

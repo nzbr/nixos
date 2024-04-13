@@ -32,8 +32,8 @@ with builtins; with lib; {
           ExecStart = mkForce (
             let
               options = concatStringsSep " " ([
-                "--node-ip=${config.nzbr.nodeIp}"
-                "--node-external-ip=${config.nzbr.nodeIp}"
+                "--node-ip=${config.nzbr.nodeIp},${config.nzbr.nodeIp6}"
+                "--node-external-ip=${config.nzbr.nodeIp},${config.nzbr.nodeIp6}"
                 "--flannel-iface=tailscale0"
                 "--resolv-conf=${resolvconf}"
                 "--snapshotter=fuse-overlayfs"
@@ -43,8 +43,8 @@ with builtins; with lib; {
                 "--cluster-init"
                 "--datastore-endpoint=${cfg.dbEndpoint}"
                 "--disable=traefik"
-                "--cluster-cidr=10.12.0.0/16"
-                "--service-cidr=10.13.0.0/16"
+                "--cluster-cidr=10.12.0.0/16,2001:b0a7:12::/56"
+                "--service-cidr=10.13.0.0/16,2001:b0a7:13::/112"
                 "--cluster-dns=10.13.0.10"
                 "--cluster-domain=kube"
                 "--advertise-address=${config.nzbr.nodeIp}"
@@ -63,6 +63,8 @@ with builtins; with lib; {
           );
         };
       };
+
+      systemd.services.tailscaled.serviceConfig.Environment=[ "TS_DEBUG_MTU=1420" ];
 
       environment.systemPackages = with pkgs; [
         cfg.package
