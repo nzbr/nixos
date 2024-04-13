@@ -2,6 +2,7 @@
 with builtins; with lib; {
   options.nzbr.service.syncthing = with types; {
     enable = mkEnableOption "syncthing";
+    scanInterval = mkIntOpt 3600;
   };
 
   config =
@@ -89,7 +90,7 @@ with builtins; with lib; {
                     }
                   );
                 folders =
-                  lib.mapAttrs' (n: v: lib.nameValuePair n (v // { path = (baseDir + n); })) (# Set the path
+                  lib.mapAttrs' (n: v: lib.nameValuePair n (v // { path = (baseDir + n); rescanIntervalS = cfg.scanInterval; })) (# Set the path
                     # Only add folders that should be synced with the current host
                     lib.filterAttrs (n: v: lib.any (it: it == host) v.devices) (import ./folders.conf));
               };
