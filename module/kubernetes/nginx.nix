@@ -56,6 +56,10 @@ with builtins; with lib; {
                   # access-log-path = "/dev/stdout";
                   custom-http-errors = "404,410,414,418,502,503,504";
                 };
+                service = {
+                  ipFamilyPolicy = "RequireDualStack";
+                  loadBalancerSourceRanges = [ "0.0.0.0/0" "::/0" ];
+                };
                 extraArgs = {
                   default-ssl-certificate = "${namespace}/wildcard-nzbr-de";
                 };
