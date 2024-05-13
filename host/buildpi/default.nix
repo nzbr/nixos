@@ -51,6 +51,7 @@ with builtins; with lib; {
     min-free = 17179869184;
     max-free = 34359738368;
     cores = 3; # Use only 3 cores for building to not interfere with OctoPrint
+    system-features = [ "nixos-test" "benchmark" "kvm" "gccarch-armv8-a" ]; # disable big-parallel
   };
 
   services = {
