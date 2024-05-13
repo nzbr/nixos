@@ -47,6 +47,7 @@ with builtins; with lib; {
             inherit namespace;
             values = {
               controller = {
+                kind = "DaemonSet";
                 allowSnippetAnnotations = true;
                 config = {
                   hsts-preload = true;
@@ -58,7 +59,9 @@ with builtins; with lib; {
                 };
                 service = {
                   ipFamilyPolicy = "RequireDualStack";
+                  ipFamilies = [ "IPv4" "IPv6" ];
                   loadBalancerSourceRanges = [ "0.0.0.0/0" "::/0" ];
+                  externalTrafficPolicy = "Local";
                 };
                 extraArgs = {
                   default-ssl-certificate = "${namespace}/wildcard-nzbr-de";
