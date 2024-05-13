@@ -108,6 +108,42 @@ in
         };
       }
 
+      {
+        apiVersion = "networking.k8s.io/v1";
+        kind = "Ingress";
+        metadata = {
+          inherit namespace;
+          name = "argocd";
+          annotations = {
+            "kubernetes.io/ingress.class" = "nginx";
+            "nginx.ingress.kubernetes.io/backend-protocol" = "HTTPS";
+          };
+        };
+        spec = {
+          rules = [
+            {
+              host = "argocd.nzbr.de";
+              http = {
+                paths = [
+                  {
+                    path = "/";
+                    pathType = "Prefix";
+                    backend = {
+                      service = {
+                        name = "argocd-server";
+                        port = {
+                          number = 443;
+                        };
+                      };
+                    };
+                  }
+                ];
+              };
+            }
+          ];
+        };
+      }
+
     ];
   };
 }
