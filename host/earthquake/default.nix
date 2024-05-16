@@ -65,11 +65,6 @@ in
             mountpoint = "/storage";
             recursive = true;
           }
-          # {
-          #   name = "zbackup";
-          #   mountpoint = "/backup";
-          #   recursive = true;
-          # }
         ];
         paths = [
           "/dev/zvol/hoard/*@${config.nzbr.service.borgbackup.zfs.snapshotName}"
@@ -77,14 +72,14 @@ in
         ];
         healthcheckUrl = "https://hc-ping.com/f904595a-cd31-4261-b714-21b14be2cdc2";
       };
-      urbackup = {
-        enable = true;
-        backupfolder = "/backup/UrBackup";
-        dataset = {
-          images = "zbackup/UrBackup/images";
-          files = "zbackup/UrBackup/files";
-        };
-      };
+      # urbackup = {
+      #   enable = true;
+      #   backupfolder = "/backup/UrBackup";
+      #   dataset = {
+      #     images = "zbackup/UrBackup/images";
+      #     files = "zbackup/UrBackup/files";
+      #   };
+      # };
       gogBackup = {
         enable = true;
         destination = "/storage/media/ROM/PC/GOG";
@@ -255,7 +250,7 @@ in
 
     shares = {
       Backup = {
-        path = "/backup";
+        path = "/storage/backup";
         browseable = "yes";
         public = "no";
         "read only" = "no";
@@ -342,7 +337,7 @@ in
   };
 
   nzbr.everythingIndex = [
-    { path = "/backup"; schedule = "*-*-* 04:00:00"; }
+    { path = "/storage/backup"; schedule = "*-*-* 04:00:00"; }
     { path = "/storage/media"; schedule = "*-*-* 0/3:00:00"; }
     { path = "/storage/nzbr"; schedule = "*-*-* *:0/30:00"; }
   ];
