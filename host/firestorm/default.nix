@@ -45,9 +45,9 @@ in
         enable = true;
         exit = true;
       };
-      gitlab-runner = {
-        enable = true;
-      };
+      # gitlab-runner = {
+      #   enable = true;
+      # };
       synapse.enable = true;
       borgbackup = {
         enable = true;

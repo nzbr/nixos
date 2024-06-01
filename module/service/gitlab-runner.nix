@@ -51,7 +51,7 @@ with builtins; with lib; {
         services =
           {
             nix = {
-              registrationConfigFile = config.nzbr.assets."git.nzbr.de-runner-registration.env";
+              registrationConfigFile = config.nzbr.assets."git.nzbr.de-runner-registration-docker.env";
               registrationFlags = [
                 "--name ${config.networking.hostName}-nix"
               ];
@@ -66,7 +66,7 @@ with builtins; with lib; {
             };
 
             docker = {
-              registrationConfigFile = config.nzbr.assets."git.nzbr.de-runner-registration.env";
+              registrationConfigFile = config.nzbr.assets."git.nzbr.de-runner-registration-nix.env";
               registrationFlags = [
                 "--name ${config.networking.hostName}"
               ];
@@ -77,17 +77,17 @@ with builtins; with lib; {
               dockerPrivileged = true;
             };
 
-            gitlab-com = {
-              registrationConfigFile = config.nzbr.assets."gitlab.com-runner-registration.env";
-              registrationFlags = [
-                "--name ${config.networking.hostName}"
-              ];
-              tagList = [ "docker" "linux" ];
-              runUntagged = true;
-              executor = "docker";
-              dockerImage = "archlinux";
-              dockerPrivileged = true;
-            };
+            # gitlab-com = {
+            #   registrationConfigFile = config.nzbr.assets."gitlab.com-runner-registration.env";
+            #   registrationFlags = [
+            #     "--name ${config.networking.hostName}"
+            #   ];
+            #   tagList = [ "docker" "linux" ];
+            #   runUntagged = true;
+            #   executor = "docker";
+            #   dockerImage = "archlinux";
+            #   dockerPrivileged = true;
+            # };
 
             # devsaur = {
             #   registrationConfigFile = config.nzbr.assets."devsaur-runner-registration.env";
