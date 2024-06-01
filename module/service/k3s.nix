@@ -20,6 +20,7 @@ with builtins; with lib; {
       services.k3s = {
         serverAddr = mkDefault inputs.self.nixosConfigurations.firestorm.config.nzbr.nodeIp;
         tokenFile = mkDefault config.nzbr.assets."k3s-token";
+        package = mkDefault pkgs.unstable.k3s;
       };
 
       systemd.services.k3s = {
