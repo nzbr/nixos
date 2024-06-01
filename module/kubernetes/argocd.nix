@@ -17,22 +17,6 @@ in
       '')
 
       {
-        apiVersion = "v1";
-        kind = "ConfigMap";
-        metadata = {
-          inherit namespace;
-          name = "argocd-cmd-params-cm";
-          labels = {
-            "app.kubernetes.io/name" = "argocd-cmd-params-cm";
-            "app.kubernetes.io/part-of" = "argocd";
-          };
-        };
-        data = {
-          "reposerver.enable.git.submodule" = "false";
-        };
-      }
-
-      {
         apiVersion = "rbac.authorization.k8s.io/v1";
         kind = "ClusterRoleBinding";
         metadata = {
@@ -89,6 +73,9 @@ in
         metadata = {
           inherit namespace;
           name = "infrastructure";
+          annotations = {
+            "notifications.argoproj.io/subscribe.on-status-change.github" = "";
+          };
         };
         spec = {
           project = "default";
