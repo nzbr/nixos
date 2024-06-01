@@ -96,8 +96,12 @@ in
       "/run/.luks/cr_backup_2" = zfsOnLuks "cr_backup_2" "723a5e4d-b2d8-4369-ab25-c8b40d21a6aa";
       "/run/.luks/cr_backup_3" = zfsOnLuks "cr_backup_3" "251b2027-7540-456f-bf47-81daecf5c142";
       "/run/.luks/cr_backup_4" = zfsOnLuks "cr_backup_4" "d6f7f7b3-ddde-4250-beea-cf95800e4567";
-      "/run/.luks/cr_backup_5" = zfsOnLuks "cr_backup_5" "96a41325-288c-4fae-bcc5-a9fe75c410e9";
+      # "/run/.luks/cr_backup_5" = zfsOnLuks "cr_backup_5" "96a41325-288c-4fae-bcc5-a9fe75c410e9"; # ata-ST2000DL003-9VT166_6YD12XG2
       "/run/.luks/cr_backup_6" = zfsOnLuks "cr_backup_6" "f79f11cf-dc0d-4ff1-ae15-fa96f4d07783";
+
+      # The new 4TB ones
+      "/run/.luks/cr_backup_7" = zfsOnLuks "cr_backup_7" "942c4a41-edcc-4a60-8528-42db7a782c44";
+      # "/run/.luks/cr_backup_8" = zfsOnLuks "cr_backup_8" "c1261cce-9627-42c0-91a2-c36a534d76a6";
     };
 
   boot.initrd.luks.devices."cr_root".device = "/dev/disk/by-uuid/f15e5ea7-4012-4b93-99dc-31f0891268fc";
