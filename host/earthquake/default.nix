@@ -211,6 +211,7 @@ in
     autoScrub.enable = true;
     trim.enable = true;
   };
+  environment.etc."zfs/zed.d/zed.rc".source = mkForce config.nzbr.assets."zed.rc";
 
   networking = {
     nameservers = [ "1.1.1.1" "1.0.0.1" ];

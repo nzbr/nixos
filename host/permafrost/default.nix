@@ -117,6 +117,7 @@ in
     autoScrub.enable = true;
     trim.enable = true;
   };
+  environment.etc."zfs/zed.d/zed.rc".source = mkForce config.nzbr.assets."zed.rc";
 
   networking = {
     useDHCP = true;
