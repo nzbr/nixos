@@ -2,8 +2,8 @@
   description = "my very own special snowflake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-    nixpkgs-23-05.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-2305.url = "github:NixOS/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-generators = {
@@ -12,7 +12,7 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl = {
@@ -23,7 +23,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     base = {
-      url = "github:nix-basement/nix-basement";
+      url = "github:nix-basement/nix-basement/24.05";
       # url = "/home/nzbr/devsaur/nixos-base";
       # url = "/storage/nzbr/devsaur/nixos-base";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,7 +51,7 @@
     };
     xyno-experiments = {
       url = "github:thexyno/x";
-      inputs.nixpkgs.follows = "nixpkgs-23-05";
+      inputs.nixpkgs.follows = "nixpkgs-2305";
     };
     disko = {
       url = "github:nix-community/disko";
@@ -214,7 +214,7 @@
                     gnused
                     findutils
                     jq
-                    nixFlakes
+                    nix
                     openssh
                     parallel
                     powershell
@@ -248,7 +248,7 @@
             ])
             ++
             mapAttrsToList
-              (name: drv: pkgs.writeShellScriptBin name "set -ex\nexec ${pkgs.nixUnstable}/bin/nix run .#${name} \"$@\"")
+              (name: drv: pkgs.writeShellScriptBin name "set -ex\nexec ${pkgs.nix}/bin/nix run .#${name} \"$@\"")
               scripts;
         };
 

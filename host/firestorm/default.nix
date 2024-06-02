@@ -2,6 +2,7 @@
 let
   root = config.nzbr.flake.root;
 in
+with lib;
 {
   imports = [
     ./disk-configuration.nix
@@ -239,9 +240,7 @@ in
         map
           (name: {
             inherit name;
-            ensurePermissions = {
-              "DATABASE ${name}" = "ALL PRIVILEGES";
-            };
+            ensureDBOwnership = true;
           })
           services;
       initialScript = config.nzbr.assets."postgres-setup.sql";

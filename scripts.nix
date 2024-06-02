@@ -14,7 +14,7 @@ rec {
 
     ${checkflake}
 
-    ${pkgs.nixUnstable}/bin/nix flake update --commit-lock-file
+    ${pkgs.nix}/bin/nix flake update --commit-lock-file
   '';
 
   mkiso = ''
@@ -28,7 +28,7 @@ rec {
 
     ${checkflake}
 
-    ${pkgs.nixUnstable}/bin/nix build ".#nixosConfigurations.live''${subconfig}.config.system.build.isoImage" -vL
+    ${pkgs.nix}/bin/nix build ".#nixosConfigurations.live''${subconfig}.config.system.build.isoImage" -vL
   '';
 
   toplevel = ''
@@ -37,7 +37,7 @@ rec {
 
     ${checkflake}
 
-    ${pkgs.nixUnstable}/bin/nix build ".#nixosConfigurations.''${1}.config.system.build.toplevel" -vL
+    ${pkgs.nix}/bin/nix build ".#nixosConfigurations.''${1}.config.system.build.toplevel" -vL
   '';
 
   vm = ''
@@ -46,7 +46,7 @@ rec {
 
     ${checkflake}
 
-    ${pkgs.nixUnstable}/bin/nix build ".#nixosConfigurations.''${1}.config.system.build.vm" -vL
+    ${pkgs.nix}/bin/nix build ".#nixosConfigurations.''${1}.config.system.build.vm" -vL
 
     mkdir -p /tmp/nixvm
     if [ -f /tmp/nixvm/hostname ]; then
