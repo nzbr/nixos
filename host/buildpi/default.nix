@@ -1,10 +1,4 @@
 { config, lib, pkgs, inputs, system, ... }:
-let
-  crossPkgs = import inputs.nixpkgs {
-    localSystem = "x86_64-linux";
-    crossSystem = config.nzbr.system;
-  };
-in
 with builtins; with lib; {
 
   nzbr = {
@@ -86,7 +80,7 @@ with builtins; with lib; {
   users.groups.video.members = [ "octoprint" ]; # RPis are cursed and OctoPrint needs to be in the video group to use vcgencmd TODO: The udev rules for this are missing
 
   boot = {
-    kernelPackages = crossPkgs.linuxKernel.rpiPackages.linux_rpi4; # Cross compile the kernel so it doesn't take forever
+    kernelPackages = pkgs.linuxKernel.rpiPackages.linux_rpi4; # Cross compile the kernel so it doesn't take forever
     kernelModules = [
       "hid_roccat"
       "hid_roccat_common"

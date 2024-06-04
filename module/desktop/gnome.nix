@@ -41,8 +41,6 @@ with builtins; with lib; {
         config.nzbr.home.config.dconf.settings."org/gnome/shell".enabled-extensions
     );
 
-    programs.gnupg.agent.pinentryFlavor = "gnome3";
-
     programs.dconf.enable = true;
     services.dbus.packages = with pkgs; [ dconf ];
 

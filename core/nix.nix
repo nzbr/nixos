@@ -1,49 +1,10 @@
 { inputs, config, pkgs, lib, system, ... }:
 with builtins; with lib;
-let
-  hostPkgs =
-    if hasAttr "package" (readDir config.nzbr.flake.host)
-    then
-      (
-        # This abomination allows to have packages from foreign architectures that are specific to a system (armv7l-linux on an aarch64-linux system)
-        let
-          dir = "${config.nzbr.flake.host}/package";
-          pkgsBySystem = sys: (
-            let
-              nixpkgs =
-                if sys == "armv7l-linux" # Needed to use the armv7 binary-cache
-                then inputs.nixpkgs-unstable
-                else inputs.nixpkgs;
-            in
-            import "${nixpkgs}" { system = sys; }
-          );
-        in
-        mapAttrs'
-          (name: type:
-            let
-              specialArgs = { inherit inputs config lib; };
-              specialArgs' = { inherit inputs config lib; } // hostPkgs;
-              drv = (import "${inputs.nixpkgs}" { inherit system; }).callPackage "${dir}/${name}" specialArgs;
-            in
-            nameValuePair'
-              (drv.name)
-              (
-                if elem system (orElse drv.meta "platforms" [ system ])
-                then (pkgsBySystem system).callPackage "${dir}/${name}" specialArgs'
-                else (pkgsBySystem (head drv.meta.platforms)).callPackage "${dir}/${name}" specialArgs'
-              )
-          )
-          (readDir dir)
-      )
-    else { };
-in
 {
   nixpkgs.config = {
     allowUnfree = true;
 
-    packageOverrides =
-      hostPkgs
-      // {
+    packageOverrides = {
         local = inputs.self.packages.${system}; # import local packages
         nix-ld-rs = inputs.nix-ld-rs.packages.${system};
         nixd = inputs.nixd.packages.${system};
