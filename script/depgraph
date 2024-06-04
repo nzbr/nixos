@@ -18,7 +18,7 @@ if len(sys.argv) < 2:
   print("Usage:\tdepgraph <derivation>")
   print("Usage:\tdepgraph <derivation> <dependency>")
 
-drvInfo = json.loads(subprocess.check_output(["@nixFlakes@/bin/nix", "show-derivation", "-r", sys.argv[1]]))
+drvInfo = json.loads(subprocess.check_output(["@nix@/bin/nix", "show-derivation", "-r", sys.argv[1]]))
 
 g = pygraphviz.AGraph(directed = True)
 
@@ -35,7 +35,7 @@ if len(sys.argv) == 2:
 # 3 args -> print path to a dependency
 if len(sys.argv) == 3:
   query = sys.argv[2]
-  startDrvInfo = json.loads(subprocess.check_output(["@nixFlakes@/bin/nix", "show-derivation", sys.argv[1]]))
+  startDrvInfo = json.loads(subprocess.check_output(["@nix@/bin/nix", "show-derivation", sys.argv[1]]))
   rootDrv = [x for x in startDrvInfo.keys()][0]
 
   searchQueue = [ ]

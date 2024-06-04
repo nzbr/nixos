@@ -20,7 +20,7 @@ if ($args.Length -lt 2) {
 $hosts = $args[0].Split(",")
 [array]::Sort($hosts)
 
-$config = (&"@nixFlakes@/bin/nix-instantiate" --eval --strict -E --json @"
+$config = (&"@nix@/bin/nix-instantiate" --eval --strict -E --json @"
   let
     flake = builtins.getFlake (toString ./.);
     lib = flake.lib;
@@ -61,7 +61,7 @@ foreach ($i in 0..($hosts.Length - 1)) {
     $storePath = ($results[$i]).outputs.out
 
     # Copy
-    & "@nixFlakes@/bin/nix" copy --log-format internal-json -v $substitute --to ssh://${user}@${targetHost} $storePath 2>&1 | & "@nom@/bin/nom" --json
+    & "@nix@/bin/nix" copy --log-format internal-json -v $substitute --to ssh://${user}@${targetHost} $storePath 2>&1 | & "@nom@/bin/nom" --json
     if (!$?) {
         Write-Error "Failed to copy configuration to $targetHost"
         exit 1

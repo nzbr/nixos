@@ -4,7 +4,7 @@
 set -euxo pipefail
 
 function rekey {
-    nixInstantiate=@nixFlakes@/bin/nix-instantiate
+    nixInstantiate=@nix@/bin/nix-instantiate
     sedBin=@gnused@/bin/sed
     ageBin=@rage@/bin/rage
     agefile=$(realpath --relative-to=$PWD "$1")
