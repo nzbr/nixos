@@ -6,7 +6,36 @@ with builtins; with lib; {
     patterns = [ "common" "wsl" "development" ];
     # pattern.development.guiTools = true;
 
-    remoteNixBuild.enable = true;
+    remoteNixBuild = {
+      enable = true;
+      extraBuildMachines = [
+        # {
+        #   hostName = "hurricane-wsl";
+        #   systems = [ "x86_64-linux" ];
+        #   sshUser = "root";
+        #   sshKey = config.nzbr.assets."ssh/id_ed25519";
+        #   maxJobs = 8;
+        #   supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+        # }
+        {
+          hostName = "nebula";
+          systems = [ "aarch64-darwin" "x86_64-darwin" ];
+          sshUser = "nzbr";
+          sshKey = config.nzbr.assets."ssh/id_ed25519";
+          maxJobs = 8;
+          supportedFeatures = [ "benchmark" "big-parallel" ];
+        }
+        {
+          hostName = "nebula-lima";
+          systems = [ "aarch64-linux" ];
+          sshUser = "nzbr";
+          sshKey = config.nzbr.assets."ssh/id_ed25519";
+          maxJobs = 8;
+          speedFactor = 100;
+          supportedFeatures = [ "benchmark" "big-parallel" ];
+        }
+      ];
+    };
 
     program = {
       latex.enable = true;
@@ -32,6 +61,7 @@ with builtins; with lib; {
 
   # boot.binfmt.emulatedSystems = [ "aarch64-linux" "armv7l-linux" "armv6l-linux" ];
   wsl.interop.register = true;
+  wsl.usbip.enable = true;
 
   users.groups.kvm.members = [ "nzbr" ];
 
