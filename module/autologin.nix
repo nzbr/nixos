@@ -13,7 +13,7 @@ with builtins; with lib; {
     '';
     security.sudo.wheelNeedsPassword = false;
 
-    services.xserver.displayManager.autoLogin = mkIf config.services.xserver.enable {
+    services.displayManager.autoLogin = mkIf config.services.xserver.enable {
       enable = true;
       inherit (config.nzbr) user;
     };

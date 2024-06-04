@@ -34,7 +34,7 @@ with builtins; with lib; {
       nzbr.desktop.gnome.enable = true;
 
       services.xserver.displayManager.gdm.enable = lib.mkForce false;
-      services.xserver.displayManager.autoLogin.enable = lib.mkForce false;
+      services.displayManager.autoLogin.enable = lib.mkForce false;
 
       networking.networkmanager.enable = lib.mkForce false;
 

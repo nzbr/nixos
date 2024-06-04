@@ -16,11 +16,11 @@ with builtins; with lib; {
           enable = true;
           wayland = lib.mkDefault true;
         };
-        autoLogin = {
-          enable = true;
-          user = config.nzbr.user;
-        };
       };
+    };
+    services.displayManager.autoLogin = {
+      enable = true;
+      user = config.nzbr.user;
     };
 
     environment.systemPackages = with pkgs; [
@@ -48,7 +48,7 @@ with builtins; with lib; {
 
     nixpkgs.overlays = [
       (self: super: {
-        gnome = super.gnome.overrideScope' (self': super': {
+        gnome = super.gnome.overrideScope (self': super': {
           # gnome-terminal = super'.gnome-terminal.overrideAttrs (oldAttrs: rec {
           #   patches =
           #     let

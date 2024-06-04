@@ -323,7 +323,7 @@ in
   nzbr.service.syncthing.enable = true;
   nzbr.service.syncthing.scanInterval = 24 * 3600;
   services.syncthing.dataDir = "/storage/nzbr";
-  services.syncthing.folders.mp3.path = lib.mkForce "/storage/media/MP3";
+  services.syncthing.settings.folders.mp3.path = lib.mkForce "/storage/media/MP3";
 
   nzbr.program.java.enable = true;
 
