@@ -65,7 +65,7 @@ with builtins; with lib; {
         };
       };
 
-      systemd.services.tailscaled.serviceConfig.Environment=[ "TS_DEBUG_MTU=1420" ];
+      systemd.services.tailscaled.serviceConfig.Environment = [ "TS_DEBUG_MTU=1420" ];
 
       environment.systemPackages = with pkgs; [
         cfg.package

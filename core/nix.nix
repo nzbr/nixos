@@ -5,19 +5,19 @@ with builtins; with lib;
     allowUnfree = true;
 
     packageOverrides = {
-        local = inputs.self.packages.${system}; # import local packages
-        nix-ld-rs = inputs.nix-ld-rs.packages.${system};
-        nixd = inputs.nixd.packages.${system};
-      } //
-      # import packages from inputs
-      lib.mapAttrs
-        (name: value: import value {
-          inherit system;
-          config = config.nixpkgs.config;
-        })
-        (with inputs; {
-          unstable = nixpkgs-unstable;
-        });
+      local = inputs.self.packages.${system}; # import local packages
+      nix-ld-rs = inputs.nix-ld-rs.packages.${system};
+      nixd = inputs.nixd.packages.${system};
+    } //
+    # import packages from inputs
+    lib.mapAttrs
+      (name: value: import value {
+        inherit system;
+        config = config.nixpkgs.config;
+      })
+      (with inputs; {
+        unstable = nixpkgs-unstable;
+      });
   };
 
   nix = {

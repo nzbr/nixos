@@ -158,22 +158,22 @@ in
   # TODO: Add monitoring for this
   systemd = {
     services.upload =
-    let
-      hc-id = "1766fc92-dd2b-46b0-afe8-a692118e8ab0";
-    in
-    {
-      description = "Upload backups to remote";
-      after = [ "network.target" ];
-      environment = {
-        HOME = "/root";
+      let
+        hc-id = "1766fc92-dd2b-46b0-afe8-a692118e8ab0";
+      in
+      {
+        description = "Upload backups to remote";
+        after = [ "network.target" ];
+        environment = {
+          HOME = "/root";
+        };
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStartPre = "${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}/start";
+          ExecStart = "${pkgs.rclone}/bin/rclone sync -vv /backup jotta-archive:permafrost";
+          ExecStartPost = "${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}";
+        };
       };
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStartPre = "${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}/start";
-        ExecStart = "${pkgs.rclone}/bin/rclone sync -vv /backup jotta-archive:permafrost";
-        ExecStartPost = "${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}";
-      };
-    };
     timers.upload = {
       wantedBy = [ "timers.target" ];
       partOf = [ "upload.service" ];

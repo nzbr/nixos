@@ -30,7 +30,8 @@ with builtins; with lib; {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
 
-    initrd.availableKernelModules = [ # Per default it wants to bundle things like AHCI, which are missing from the RPi kernel
+    initrd.availableKernelModules = [
+      # Per default it wants to bundle things like AHCI, which are missing from the RPi kernel
       "usb_storage"
       "usbhid"
       "hid_roccat"
