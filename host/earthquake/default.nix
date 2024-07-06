@@ -52,7 +52,6 @@ in
       };
       borgbackup = {
         enable = true;
-        # rcloneRemote = "jotta-archive";
         repoUrl = "ssh://permafrost-backup/backup/${config.networking.hostName}";
         zfs.pools = [
           {
@@ -183,10 +182,6 @@ in
       }
     )
     {
-      "/var/lib/rancher/k3s/storage" = {
-        from = "/storage/kubernetes/local-path";
-        wantedBy = [ "k3s.service" ];
-      };
       "/var/lib/libvirt" = {
         from = "/storage/libvirt";
         wantedBy = [ "libvirtd.service" ];
@@ -363,7 +358,6 @@ in
     {
       enable = true;
       package = pkgs.postgresql_14;
-      dataDir = "/storage/postgres/${config.services.postgresql.package.psqlSchema}";
       enableTCPIP = true;
       authentication = ''
         host all all 10.42.0.0/24 md5
@@ -389,7 +383,7 @@ in
   };
   services.postgresqlBackup = {
     enable = true;
-    location = "/storage/postgres/backup";
+    location = "/storage/backup/pg-backup";
     compression = "none";
     databases = config.services.postgresql.ensureDatabases;
   };
