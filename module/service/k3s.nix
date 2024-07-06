@@ -50,6 +50,7 @@ with builtins; with lib; {
                 "--cluster-domain=kube"
                 "--advertise-address=${config.nzbr.nodeIp}"
                 "--flannel-backend=vxlan"
+                "--flannel-ipv6-masq"
                 "--disable-network-policy"
                 "--write-kubeconfig ${kubeconfigPath}"
               ] else [
