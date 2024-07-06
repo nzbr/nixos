@@ -37,7 +37,7 @@ with builtins; with lib; {
                 "--node-external-ip=${config.nzbr.nodeIp},${config.nzbr.nodeIp6}"
                 "--flannel-iface=tailscale0"
                 "--resolv-conf=${resolvconf}"
-                "--snapshotter=fuse-overlayfs"
+                # "--snapshotter=fuse-overlayfs"
                 "--kubelet-arg=cgroup-driver=systemd"
                 "--kubelet-arg=runtime-request-timeout=5m0s"
               ] ++ (if isServer then [
@@ -58,9 +58,9 @@ with builtins; with lib; {
               ]));
             in
             "${pkgs.busybox}/bin/sh -c '"
-            + "export PATH=$PATH:${pkgs.fuse-overlayfs}/bin:${pkgs.fuse3}/bin" # PATH is set with ENVIRONMENT= and not Path=, so it can't be easily overwritten, irrelevant for docker
-            + "&& export K3S_TOKEN=$(cat ${cfg.tokenFile})"
-            + "&& exec ${cfg.package}/bin/k3s ${cfg.role} ${options}"
+            # + "export PATH=$PATH:${pkgs.fuse-overlayfs}/bin:${pkgs.fuse3}/bin && " # PATH is set with ENVIRONMENT= and not Path=, so it can't be easily overwritten, irrelevant for docker
+            + "export K3S_TOKEN=$(cat ${cfg.tokenFile}) && "
+            + "exec ${cfg.package}/bin/k3s ${cfg.role} ${options}"
             + "'"
           );
         };
