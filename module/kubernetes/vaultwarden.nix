@@ -77,7 +77,7 @@ in
                     }
                   ];
                   envFrom = [{ secretRef.name = "vaultwarden-secret"; }];
-                  image = "vaultwarden/server:1.30.5-alpine";
+                  image = "vaultwarden/server:1.31.0-alpine";
                   imagePullPolicy = "IfNotPresent";
                   livenessProbe = {
                     failureThreshold = 3;
