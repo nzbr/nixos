@@ -159,7 +159,7 @@ with lib;
     helmPackage = pkgs.kubernetes-helm;
     kubectlPackage = pkgs.kubectl;
     deployment = {
-      amp.enable = true;
+      # amp.enable = true;
       audiobookshelf.enable = true;
       argocd.enable = true;
       cert-manager.enable = true;
@@ -260,6 +260,83 @@ with lib;
     enable = true;
     schedule = "*-*-* *:*:1";
     configFile = config.nzbr.assets."mailmover-config.dhall";
+  };
+
+  networking.bridges.nspawn0.interfaces = [ ];
+  networking.interfaces.nspawn0.ipv4.addresses = [{ address = "10.16.0.1"; prefixLength = 16; }];
+  networking.interfaces.nspawn0.ipv6.addresses = [{ address = "fd00:10:16::1"; prefixLength = 64; }];
+  networking.nat = {
+    enable = true;
+    enableIPv6 = true;
+    internalInterfaces = [ "nspawn0" ];
+  };
+  services.kea.dhcp4 = {
+    enable = true;
+    settings = {
+      interfaces-config = {
+        interfaces = [
+          "nspawn0"
+        ];
+      };
+      option-data = [
+        { name = "domain-name"; data = "nspawn.local"; }
+        { name = "domain-name-servers"; data = "100.100.100.100, 8.8.8.8"; }
+        { name = "routers"; data = "10.16.0.1"; }
+      ];
+      subnet4 = [
+        {
+          pools = [
+            {
+              pool = "10.16.0.2 - 10.16.254.254";
+            }
+          ];
+          subnet = "10.16.0.0/16";
+        }
+      ];
+      valid-lifetime = 2592000; # 30 days
+    };
+  };
+  services.radvd = {
+    enable = true;
+    config = ''
+      interface nspawn0 {
+        AdvSendAdvert on;
+        AdvManagedFlag on;
+        AdvOtherConfigFlag on;
+        prefix fd00:10:16::/64 {
+          AdvOnLink on;
+          AdvAutonomous on;
+          AdvRouterAddr on;
+        };
+      };
+    '';
+  };
+
+  systemd.services.nspawn-amp = {
+    description = "AMP Container";
+    restartIfChanged = true;
+    wantedBy = [ "machines.target" ];
+    wants = [ "network.target" ];
+    after = [ "network.target" ];
+    path = [ config.systemd.package ];
+    serviceConfig = {
+      Type = "notify";
+      Slice = "machine.slice";
+      Delegate = true;
+      KillMode = "mixed";
+      KillSignal = "TERM";
+      ExecStart = concatStringsSep " " [
+        "systemd-nspawn"
+        "--keep-unit"
+        "--notify-ready=yes"
+        "-M amp"
+        "--boot"
+        "--hostname amp"
+        "--network-bridge=nspawn0"
+        "--system-call-filter=\"add_key keyctl bpf\"" # Magic incantation to make docker work inside the container
+        "-D /var/lib/machines/amp"
+      ];
+    };
   };
 
   system.stateVersion = "23.05";
