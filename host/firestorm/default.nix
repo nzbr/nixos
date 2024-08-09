@@ -266,6 +266,12 @@ with lib;
   virtualisation.docker.autoPrune.enable = true;
   networking.firewall.trustedInterfaces = [ "docker0" ];
 
+  # firewall rules for any-sync
+  networking.firewall.allowedTCPPorts = [ 1011 1012 1013 1014 1015 1016 ];
+  networking.firewall.allowedUDPPorts = [ 1011 1012 1013 1014 1015 1016 ];
+
+  # nspawn containers
+
   networking.bridges.nspawn0.interfaces = [ ];
   networking.interfaces.nspawn0.ipv4.addresses = [{ address = "10.16.0.1"; prefixLength = 16; }];
   networking.interfaces.nspawn0.ipv6.addresses = [{ address = "fd00:10:16::1"; prefixLength = 64; }];
