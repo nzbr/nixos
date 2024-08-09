@@ -262,6 +262,10 @@ with lib;
     configFile = config.nzbr.assets."mailmover-config.dhall";
   };
 
+  virtualisation.docker.enable = true;
+  virtualisation.docker.autoPrune.enable = true;
+  networking.firewall.trustedInterfaces = [ "docker0" ];
+
   networking.bridges.nspawn0.interfaces = [ ];
   networking.interfaces.nspawn0.ipv4.addresses = [{ address = "10.16.0.1"; prefixLength = 16; }];
   networking.interfaces.nspawn0.ipv6.addresses = [{ address = "fd00:10:16::1"; prefixLength = 64; }];
