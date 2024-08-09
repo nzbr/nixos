@@ -18,7 +18,7 @@ with lib;
     nodeIp = "100.97.97.107";
     nodeIp6 = "fd7a:115c:a1e0:ab12:4843:cd96:6261:616b";
 
-    deployment.targetHost = "firestorm.nzbr.de";
+    deployment.targetHost = "firestorm.nzbr.net";
 
     boot = {
       remoteUnlock = {
