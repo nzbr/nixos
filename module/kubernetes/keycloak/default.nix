@@ -67,8 +67,8 @@ in
                   { name = "KEYCLOAK_ADMIN"; value = "admin"; }
                   { name = "KEYCLOAK_ADMIN_PASSWORD"; valueFrom.secretKeyRef = { key = "adminpassword"; name = "keycloak"; }; }
                   { name = "PROXY_ADDRESS_FORWARDING"; value = "true"; }
-                  { name = "KC_PROXY"; value = "edge"; }
-                  # { name = "KC_HTTP_RELATIVE_PATH"; value = "/auth"; }
+                  { name = "KC_PROXY_HEADERS"; value = "xforwarded"; }
+                  { name = "KC_HTTP_ENABLED"; value = "true"; }
                   { name = "KC_DB"; value = "postgres"; }
                   { name = "KC_DB_URL"; value = "jdbc:postgresql://${inputs.self.nixosConfigurations.firestorm.config.nzbr.nodeIp}/keycloak"; }
                   { name = "KC_DB_USER"; value = "keycloak"; }
