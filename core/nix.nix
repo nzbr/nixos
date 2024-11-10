@@ -6,7 +6,6 @@ with builtins; with lib;
 
     packageOverrides = {
       local = inputs.self.packages.${system}; # import local packages
-      nix-ld-rs = inputs.nix-ld-rs.packages.${system};
       nixd = inputs.nixd.packages.${system};
     } //
     # import packages from inputs

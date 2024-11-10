@@ -40,7 +40,6 @@
     };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
-      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nirgenx = {
@@ -56,12 +55,6 @@
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-ld-rs = {
-      url = "github:nix-community/nix-ld-rs";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.flake-compat.follows = "flake-compat";
     };
     nixd = {
       url = "github:nix-community/nixd";

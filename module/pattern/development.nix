@@ -63,7 +63,7 @@ with builtins; with lib;
 
       programs.nix-ld = {
         enable = true;
-        package = pkgs.nix-ld-rs.nix-ld-rs;
+        package = pkgs.nix-ld-rs;
       };
 
       nzbr.cli.git = {
