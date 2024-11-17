@@ -70,6 +70,9 @@ in
           "/dev/zvol/hoard/libvirt/*@${config.nzbr.service.borgbackup.zfs.snapshotName}"
         ];
         healthcheckUrl = "https://hc-ping.com/f904595a-cd31-4261-b714-21b14be2cdc2";
+        excludeFromSnapshot = [
+          "/storage/media"
+        ];
       };
       # urbackup = {
       #   enable = true;
@@ -399,6 +402,29 @@ in
   };
 
   networking.firewall.trustedInterfaces = [ "docker0" ];
+
+  systemd.services.backup-media =
+    let
+      hc-id = "e7634aae-01b2-48a6-84cd-d99c76d24a29";
+    in
+    {
+      description = "Backup media";
+      after = [ "network.target" ];
+      environment = {
+        HOME = "/root";
+      };
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStartPre = "${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}/start";
+        ExecStart = "${pkgs.rclone}/bin/rclone sync -vv /storage/media media-encrypted:earthquake-media";
+        ExecStartPost = "${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}";
+      };
+    };
+  systemd.timers.backup-media = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "backup-media.service" ];
+    timerConfig.OnCalendar = "*-*-* 02:00:00";
+  };
 
   system.stateVersion = "21.11";
   nzbr.home.config.home.stateVersion = "22.05";

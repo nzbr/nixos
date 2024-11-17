@@ -12,6 +12,11 @@ with builtins; with lib; {
       type = listOf str;
       default = [ ];
     };
+    excludeFromSnapshot = mkOption {
+      description = "List of paths to exclude from the backup, gets prepended with the snapshot mount path";
+      type = listOf str;
+      default = [ ];
+    };
     zfs = {
       snapshotName = mkOption {
         type = str;
@@ -51,6 +56,10 @@ with builtins; with lib; {
     };
     healthcheckUrl = mkOption {
       type = str;
+    };
+    extraConfig = mkOption {
+      default = { };
+      type = attrsOf anything;
     };
   };
 
@@ -107,124 +116,123 @@ with builtins; with lib; {
         rclone
       ];
 
-      environment.etc."borgmatic/config.yaml".text = generators.toJSON { } {
+      environment.etc."borgmatic/config.yaml".text = generators.toJSON { } (
+        recursiveUpdate
+          {
+            exclude_caches = true;
+            read_special = true;
+            encryption_passcommand = "cat ${config.nzbr.assets."backup.password"}";
+            compression = "auto,zstd,9";
+            checkpoint_interval = 300;
+            lock_wait = 300;
 
-        exclude_caches = true;
-        read_special = true;
-        encryption_passcommand = "cat ${config.nzbr.assets."backup.password"}";
-        compression = "auto,zstd,9";
-        checkpoint_interval = 300;
-        lock_wait = 300;
+            repositories = [
+              { label = "repository"; path = repoPath; }
+            ];
 
-        repositories = [
-          { label = "repository"; path = repoPath; }
-        ];
+            source_directories = flatten [
+              cfg.paths
+              snapshotPath
+            ];
 
-        source_directories = flatten [
-          cfg.paths
-          snapshotPath
-        ];
+            exclude_from = [
+              specialFilesList
+            ];
 
-        exclude_from = [
-          specialFilesList
-        ];
+            exclude_patterns = map (path: assert hasPrefix "/" path; "${snapshotPath}${path}") cfg.excludeFromSnapshot;
 
-        retention = {
-          keep_daily = 7;
-          keep_monthly = 12;
-          keep_weekly = 4;
-          keep_yearly = 5;
-        };
+            keep_daily = 7;
+            keep_monthly = 12;
+            keep_weekly = 4;
+            keep_yearly = 5;
 
-        consistency = {
-          check_last = 7;
-          checks = [
-            {
-              name = "repository";
-              frequency = "1 week";
-            }
-            {
-              name = "archives";
-              frequency = "1 week";
-            }
-            {
-              name = "data";
-              frequency = "1 month";
-            }
-            {
-              name = "extract";
-              frequency = "3 month";
-            }
-          ];
-        };
+            check_last = 7;
+            checks = [
+              {
+                name = "repository";
+                frequency = "1 week";
+              }
+              {
+                name = "archives";
+                frequency = "1 week";
+              }
+              {
+                name = "data";
+                frequency = "1 month";
+              }
+              {
+                name = "extract";
+                frequency = "3 month";
+              }
+            ];
 
-        hooks = {
-          before_backup = [
-            (pkgs.writeShellScript "borg-pre-backup_snapshot" ''
-              set -euxo pipefail
+            before_backup = [
+              (pkgs.writeShellScript "borg-pre-backup_snapshot" ''
+                set -euxo pipefail
 
-              umount -R ${snapshotPath} || true
-              mount --mkdir -t tmpfs tmpfs ${snapshotPath}
+                umount -R ${snapshotPath} || true
+                mount --mkdir -t tmpfs tmpfs ${snapshotPath}
 
-              ${concatStringsSep "\n" (
-                map
-                (pool:
-                  assert pool.recursive -> pool.subvols == [ ];
-                  let
-                    mountpoint =
-                      if pool.mountpoint == null
-                      then "${snapshotPath}/"
-                      else "${snapshotPath}/${removePrefix "/" pool.mountpoint}";
-                  in
-                  ''
-                    zfs destroy -r ${pool.name}@${cfg.zfs.snapshotName} || true
-                    zfs snapshot -r ${pool.name}@${cfg.zfs.snapshotName}
-                    mkdir -p ${mountpoint}
-                    ${optionalString (pool.mountpoint != null) ''
-                      mount -t zfs ${pool.name}@${cfg.zfs.snapshotName} ${mountpoint}
-                    ''}
-                    ${concatStringsSep "\n" (map
-                      (subvol: "mount --mkdir -t zfs ${pool.name}/${subvol.name}@${cfg.zfs.snapshotName} ${mountpoint}/${removePrefix "/" subvol.mountpoint}")
-                      pool.subvols
-                    )}
-                    ${optionalString pool.recursive ''
-                      mountRoot="$(zfs list -Ho mountpoint ${pool.name})"
-                      for subvol in $(zfs list -rHo name,mountpoint ${pool.name} | sed 's|${pool.name}/||' | awk 'NR!=1&&$2!="-"{print $1;}'); do
-                        subMount="$(zfs list -Ho mountpoint ${pool.name}/''${subvol})"
-                        if [[ "$subMount" != "none" && "$subMount" != "-" ]]; then
-                          if [[ "$mountRoot" == "legacy" ]]; then
-                            mount --mkdir -t zfs "${pool.name}/''${subvol}@${cfg.zfs.snapshotName}" "${mountpoint}/$subvol"
-                          else
-                            mount --mkdir -t zfs "${pool.name}/''${subvol}@${cfg.zfs.snapshotName}" "${mountpoint}''${subMount#$mountRoot}"
+                ${concatStringsSep "\n" (
+                  map
+                  (pool:
+                    assert pool.recursive -> pool.subvols == [ ];
+                    let
+                      mountpoint =
+                        if pool.mountpoint == null
+                        then "${snapshotPath}/"
+                        else "${snapshotPath}/${removePrefix "/" pool.mountpoint}";
+                    in
+                    ''
+                      zfs destroy -r ${pool.name}@${cfg.zfs.snapshotName} || true
+                      zfs snapshot -r ${pool.name}@${cfg.zfs.snapshotName}
+                      mkdir -p ${mountpoint}
+                      ${optionalString (pool.mountpoint != null) ''
+                        mount -t zfs ${pool.name}@${cfg.zfs.snapshotName} ${mountpoint}
+                      ''}
+                      ${concatStringsSep "\n" (map
+                        (subvol: "mount --mkdir -t zfs ${pool.name}/${subvol.name}@${cfg.zfs.snapshotName} ${mountpoint}/${removePrefix "/" subvol.mountpoint}")
+                        pool.subvols
+                      )}
+                      ${optionalString pool.recursive ''
+                        mountRoot="$(zfs list -Ho mountpoint ${pool.name})"
+                        for subvol in $(zfs list -rHo name,mountpoint ${pool.name} | sed 's|${pool.name}/||' | awk 'NR!=1&&$2!="-"{print $1;}'); do
+                          subMount="$(zfs list -Ho mountpoint ${pool.name}/''${subvol})"
+                          if [[ "$subMount" != "none" && "$subMount" != "-" ]]; then
+                            if [[ "$mountRoot" == "legacy" ]]; then
+                              mount --mkdir -t zfs "${pool.name}/''${subvol}@${cfg.zfs.snapshotName}" "${mountpoint}/$subvol"
+                            else
+                              mount --mkdir -t zfs "${pool.name}/''${subvol}@${cfg.zfs.snapshotName}" "${mountpoint}''${subMount#$mountRoot}"
+                            fi
                           fi
-                        fi
-                      done
-                    ''}
-                  ''
-                )
-                cfg.zfs.pools
-              )}
-            '')
-            (pkgs.writeShellScript "borg-pre-backup_find-special" ''
-              set -euxo pipefail
-              find ${snapshotPath} -xtype b,c,p,s -fprint ${specialFilesList}
-              echo "Excluding $(wc -l ${specialFilesList} | ${pkgs.gawk}/bin/awk '{print $1;}') special files"
-            '')
-          ];
-          after_backup = [
-            (pkgs.writeShellScript "borg-post-backup" ''
-              set -euxo pipefail
-              umount -R ${snapshotPath}
+                        done
+                      ''}
+                    ''
+                  )
+                  cfg.zfs.pools
+                )}
+              '')
+              (pkgs.writeShellScript "borg-pre-backup_find-special" ''
+                set -euxo pipefail
+                find ${snapshotPath} -xtype b,c,p,s -fprint ${specialFilesList}
+                echo "Excluding $(wc -l ${specialFilesList} | ${pkgs.gawk}/bin/awk '{print $1;}') special files"
+              '')
+            ];
+            after_backup = [
+              (pkgs.writeShellScript "borg-post-backup" ''
+                set -euxo pipefail
+                umount -R ${snapshotPath}
 
-              ${concatStringsSep "\n" (map
-                (pool: "zfs destroy -r ${pool.name}@${cfg.zfs.snapshotName}")
-                (reverseList cfg.zfs.pools)
-              )}
-            '')
-          ];
-          healthchecks.ping_url = cfg.healthcheckUrl;
-        };
-      };
+                ${concatStringsSep "\n" (map
+                  (pool: "zfs destroy -r ${pool.name}@${cfg.zfs.snapshotName}")
+                  (reverseList cfg.zfs.pools)
+                )}
+              '')
+            ];
+            healthchecks.ping_url = cfg.healthcheckUrl;
+          }
+          cfg.extraConfig
+      );
 
       systemd = {
         services.borgmatic = {
