@@ -149,7 +149,8 @@ with lib;
   services.k3s = {
     enable = true;
     role = "server";
-    dbEndpoint = "sqlite:///storage/kubernetes/kine.db?_journal=wal";
+    # dbEndpoint = "sqlite:///storage/kubernetes/kine.db?_journal=wal";
+    dbEndpoint = "mysql://";
   };
   nirgenx = {
     enable = true;
@@ -243,18 +244,79 @@ with lib;
             ensureDBOwnership = true;
           })
           services;
-      initialScript = config.nzbr.assets."postgres-setup.sql";
     };
+  systemd.services.postgres-init = rec {
+    requires = [ "postgresql.service" ];
+    after = requires;
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      User = config.systemd.services.postgresql.serviceConfig.User;
+      Group = config.systemd.services.postgresql.serviceConfig.Group;
+      ExecStart = "${config.services.postgresql.package}/bin/psql -f ${config.nzbr.assets."postgres-setup.sql"}";
+    };
+  };
+  age.secrets."postgres-setup.sql".owner = "postgres";
   services.postgresqlBackup = {
     enable = true;
     location = "/storage/postgres/backup";
     compression = "none";
     databases = config.services.postgresql.ensureDatabases;
   };
+
+  services.mysql =
+    let
+      services = [];
+    in
+    {
+      enable = true;
+      package = pkgs.mariadb;
+      dataDir = "/storage/mysql/data";
+      ensureDatabases = services ++ [
+        "kubernetes"
+      ];
+      ensureUsers = (map
+        (name: {
+          inherit name;
+          ensurePermissions = {
+            "${name}.*" = "ALL PRIVILEGES";
+          };
+        })
+        services
+        ) ++ [
+          {
+            name = "mysql";
+            ensurePermissions = {
+              "*.*" = "ALL PRIVILEGES";
+            };
+          }
+        ];
+      settings.mysqld = {
+        "character_set_server" = "utf8mb4";
+        "collation_server" = "utf8mb4_general_ci";
+      };
+    };
+  systemd.services.mysql-init = rec {
+    requires = [ "mysql.service" ];
+    after = requires;
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.bash}/bin/bash -c '${config.services.mysql.package}/bin/mysql -u root --batch < ${config.nzbr.assets."mysql-setup.sql"}'";
+    };
+  };
+  age.secrets."mysql-setup.sql".owner = "mysql";
+  services.mysqlBackup = {
+    enable = true;
+    location = "/storage/mysql/backup";
+    singleTransaction = true;
+    databases = config.services.mysql.ensureDatabases;
+  };
+
   systemd.tmpfiles.rules = [
-    "d /storage/postgres 0755 postgres users"
+    "d /storage/postgres 0755 postgres postgres"
+    "d /storage/mysql/data 0755 mysql mysql"
   ];
-  age.secrets."postgres-setup.sql".owner = "postgres";
 
   services.mailmover = {
     enable = true;
