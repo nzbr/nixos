@@ -38,7 +38,7 @@ with lib;
         systems = [ "x86_64-linux" ];
       };
       mullvad-bridge = {
-        enable = true;
+        # enable = true;
         enabledRegions = [ "de-fra" "nl" "us" ];
         tailscale = true;
       };
