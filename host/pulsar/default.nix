@@ -69,7 +69,7 @@ with builtins; with lib; {
   environment.windowsPackages = with pkgs; [
     eternal-terminal
     mosh
-    qemu
+    # qemu
   ];
 
   system.stateVersion = "22.05";
