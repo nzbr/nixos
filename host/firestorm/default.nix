@@ -411,25 +411,6 @@ with lib;
     };
   };
 
-  virtualisation.oci-containers.containers.fachprojekt-runner = {
-    autoStart = true;
-    image = "gitea/act_runner:latest";
-    volumes = [
-      "/var/lib/fachprojekt-runner:/data"
-      "${config.nzbr.assets."fachprojekt-runner-token"}:/token"
-      "/var/run/docker.sock:/var/run/docker.sock"
-    ];
-    environment = {
-      GITEA_INSTANCE_URL = "https://git.cs.tu-dortmund.de";
-      GITEA_RUNNER_REGISTRATION_TOKEN_FILE = "/token";
-      GITEA_RUNNER_NAME = "firestorm";
-      GITEA_RUNNER_LABELS = "ubuntu-latest:docker://gitea/runner-images:ubuntu-latest";
-    };
-    extraOptions = [
-      "--label=com.centurylinklabs.watchtower.enable=true"
-    ];
-  };
-
   system.stateVersion = "23.05";
   nzbr.home.config.home.stateVersion = "23.05";
 }
