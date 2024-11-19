@@ -124,9 +124,9 @@ in
       kernelModules = [ ];
       supportedFilesystems = [ "zfs" ];
     };
-    kernelModules = [ "dm-snapshot" "kvm-intel" ];
+    kernelModules = [ "dm-snapshot" "kvm-intel" "nvidia" ];
     supportedFilesystems = [ "zfs" ];
-    extraModulePackages = [ ];
+    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
   };
 
   environment.etc."lukskey" = {
@@ -203,6 +203,17 @@ in
         enable = true;
       };
     }
+  ];
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+  };
+  environment.systemPackages = with pkgs; [
+    config.hardware.nvidia.package
+    cudatoolkit
+    nvtop
   ];
 
   services.zfs = {
