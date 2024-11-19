@@ -99,6 +99,7 @@ with builtins; with lib;
           hashedPasswordFile = config.nzbr.assets."root.password";
         };
         users.${config.nzbr.user} = {
+          uid = 1000;
           isNormalUser = true;
           hashedPasswordFile = config.nzbr.assets."nzbr.password";
           extraGroups = [ "wheel" "plugdev" ];
