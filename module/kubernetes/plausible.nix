@@ -100,7 +100,7 @@ in
               }];
               containers = [{
                 name = "clickhouse";
-                image = "clickhouse/clickhouse-server:24.10.1.2812-alpine";
+                image = "clickhouse/clickhouse-server:24.11.2.101-alpine";
                 ports = [{
                   name = "http";
                   containerPort = 8123;
