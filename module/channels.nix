@@ -18,7 +18,9 @@ with builtins; with lib; {
     {
       system.activationScripts.channels.text = ''
         echo linking channels
+        mkdir -p /nix/var/nix/profiles/per-user/root
         ln -nsf ${channelsDrv} /nix/var/nix/profiles/per-user/root/channels
+        mkdir -p /nix/var/nix/profiles/per-user/${config.nzbr.user}
         ln -nsf ${channelsDrv} /nix/var/nix/profiles/per-user/${config.nzbr.user}/channels
       '';
     }
