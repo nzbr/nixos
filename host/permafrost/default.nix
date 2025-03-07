@@ -133,7 +133,9 @@ in
     '';
   };
 
-  users.users = mapListToAttrs
+  users.users =
+  (
+    mapListToAttrs
     (host: {
       name = host;
       value = {
@@ -146,14 +148,61 @@ in
     (filter
       (host: config.nzbr.foreignAssets.${host} ? "ssh/permafrost.pub")
       (builtins.attrNames config.nzbr.foreignAssets)
-    );
+    )
+  ) // {
+    pulsar = {
+      isNormalUser = true;
+      shell = pkgs.bashInteractive;
+      home = "/backup/pulsar";
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     borgbackup
     rclone
   ];
 
-  # TODO: Add monitoring for this
+  services.samba = {
+    enable = true;
+    enableNmbd = true;
+    enableWinbindd = true;
+    nsswins = true;
+
+    extraConfig = ''
+      workgroup = WORKGROUP
+      server string = ${config.networking.hostName}
+      netbios name = ${config.networking.hostName}
+      security = user
+      hosts allow = 10.0.0.0/16 fd87:7593::/32 100.64.0.0/10 localhost
+      hosts deny = 0.0.0.0/0 ::/0
+      guest account = nobody
+      map to guest = bad user
+    '';
+
+    shares = {
+      homes = {
+        "browseable" = "no";
+        "public" = "no";
+        "read only" = "no";
+        "create mode" = "0750";
+        "acl allow execute always" = "yes";
+        "map acl inherit" = "yes";
+        "inherit acls" = "yes";
+      };
+    };
+  };
+
+  networking.firewall.allowedTCPPorts = [
+    445 # SMB
+    137 # NetBIOS
+    139
+  ];
+  networking.firewall.allowedUDPPorts = [
+    137 # NetBIOS
+    138
+  ];
+
+  # TODO: Upload from zfs snapshot
   systemd = {
     services.upload =
       let
