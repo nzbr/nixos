@@ -164,9 +164,9 @@ in
         options = [ "size=16G" ];
       };
 
-      "/run/.luks/cr_storage_1" = zfsOnLuks "cr_storage_1" "7e8de2a9-5cd0-4475-8a99-9d436604e639";
-      "/run/.luks/cr_storage_2" = zfsOnLuks "cr_storage_2" "b3c32804-ab03-45cf-8e74-1e6f59969d5a";
-      "/run/.luks/cr_storage_3" = zfsOnLuks "cr_storage_3" "b6bba72c-ceb4-4116-89bb-8a9197059600";
+      "/run/.luks/cr_storage_1" = zfsOnLuks "cr_storage_1" "8f10e1ac-53df-452b-8036-dc957d346194";
+      "/run/.luks/cr_storage_2" = zfsOnLuks "cr_storage_2" "b61c0648-cccd-41fd-9e1b-5f2331d3a71e";
+      "/run/.luks/cr_storage_3" = zfsOnLuks "cr_storage_3" "dd8c521a-9539-480b-bfe6-49a0fe045016";
     };
 
   systemd.mounts = lib.mapAttrsToList
