@@ -74,6 +74,7 @@ with builtins; with lib; {
         kubernetes-helm
         local.kubectl-kadalu
         local.kubectl-killnamespace
+        k9s
       ];
 
       environment.variables = {
