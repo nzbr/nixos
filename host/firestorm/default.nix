@@ -266,7 +266,7 @@ with lib;
 
   services.mysql =
     let
-      services = [];
+      services = [ ];
     in
     {
       enable = true;
@@ -283,14 +283,14 @@ with lib;
           };
         })
         services
-        ) ++ [
-          {
-            name = "mysql";
-            ensurePermissions = {
-              "*.*" = "ALL PRIVILEGES";
-            };
-          }
-        ];
+      ) ++ [
+        {
+          name = "mysql";
+          ensurePermissions = {
+            "*.*" = "ALL PRIVILEGES";
+          };
+        }
+      ];
       settings.mysqld = {
         "character_set_server" = "utf8mb4";
         "collation_server" = "utf8mb4_general_ci";

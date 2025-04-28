@@ -134,28 +134,28 @@ in
   };
 
   users.users =
-  (
-    mapListToAttrs
-    (host: {
-      name = host;
-      value = {
+    (
+      mapListToAttrs
+        (host: {
+          name = host;
+          value = {
+            isNormalUser = true;
+            shell = pkgs.bashInteractive;
+            home = "/backup/${host}";
+            openssh.authorizedKeys.keyFiles = [ config.nzbr.foreignAssets.${host}."ssh/permafrost.pub" ];
+          };
+        })
+        (filter
+          (host: config.nzbr.foreignAssets.${host} ? "ssh/permafrost.pub")
+          (builtins.attrNames config.nzbr.foreignAssets)
+        )
+    ) // {
+      pulsar = {
         isNormalUser = true;
         shell = pkgs.bashInteractive;
-        home = "/backup/${host}";
-        openssh.authorizedKeys.keyFiles = [ config.nzbr.foreignAssets.${host}."ssh/permafrost.pub" ];
+        home = "/backup/pulsar";
       };
-    })
-    (filter
-      (host: config.nzbr.foreignAssets.${host} ? "ssh/permafrost.pub")
-      (builtins.attrNames config.nzbr.foreignAssets)
-    )
-  ) // {
-    pulsar = {
-      isNormalUser = true;
-      shell = pkgs.bashInteractive;
-      home = "/backup/pulsar";
     };
-  };
 
   environment.systemPackages = with pkgs; [
     borgbackup
