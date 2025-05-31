@@ -206,14 +206,12 @@ in
   ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-  };
+  hardware.nvidia.open = false;
+  hardware.opengl.enable = true;
   environment.systemPackages = with pkgs; [
     config.hardware.nvidia.package
     cudatoolkit
-    nvtop
+    (nvtopPackages.nvidia.override (args: { intel = true; }))
   ];
 
   services.zfs = {
