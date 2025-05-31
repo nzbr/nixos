@@ -59,7 +59,7 @@ with builtins; with lib; {
     "nzbr"
   ];
 
-  # boot.binfmt.emulatedSystems = [ "aarch64-linux" "armv7l-linux" "armv6l-linux" ];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" "armv7l-linux" "armv6l-linux" ];
   wsl.interop.register = true;
   wsl.usbip.enable = true;
 
