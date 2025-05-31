@@ -58,6 +58,7 @@ with builtins; with lib; {
             User = cfg.user;
           };
           script = ''
+            echo -e 'Downloading GOG Library\n';
             ${pkgs.lgogdownloader}/bin/lgogdownloader \
               --directory ${cfg.destination} \
               --platform ${cfg.platform} \
@@ -65,9 +66,22 @@ with builtins; with lib; {
               --include ${cfg.include} \
               ${optionalString (cfg.exclude != null) "--exclude ${cfg.exclude}"} \
               --include-hidden-products \
-              --download \
               --save-serials \
               --save-logo \
+              --download
+
+            echo -e '\nCleaning up old versions\n';
+            ${pkgs.lgogdownloader}/bin/lgogdownloader \
+              --directory ${cfg.destination} \
+              --platform ${cfg.platform} \
+              --language ${cfg.language} \
+              --include ${cfg.include} \
+              ${optionalString (cfg.exclude != null) "--exclude ${cfg.exclude}"} \
+              --include-hidden-products \
+              --save-serials \
+              --save-logo \
+              --check-orphans \
+              --delete-orphans
           '';
         };
 
