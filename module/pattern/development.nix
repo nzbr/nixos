@@ -15,11 +15,13 @@ with builtins; with lib;
         gnumake
         nix-output-monitor
         powershell
-        (python3.withPackages (pypi: with pypi; [
-          autopep8
-          black
-          ipykernel
-        ]))
+        # (python3.withPackages (pypi: with pypi; [
+        #   autopep8
+        #   black
+        #   ipykernel
+        # ]))
+        conda
+        mamba
 
         # Language servers
         unstable.nil
