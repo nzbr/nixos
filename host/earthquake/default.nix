@@ -242,16 +242,16 @@ in
     enableWinbindd = true;
     nsswins = true;
 
-    extraConfig = ''
-      workgroup = WORKGROUP
-      server string = ${config.networking.hostName}
-      netbios name = ${config.networking.hostName}
-      security = user
-      hosts allow = 10.0.0.0/16 2a02:908::/32 100.64.0.0/10 localhost
-      hosts deny = 0.0.0.0/0 ::/0
-      guest account = nobody
-      map to guest = bad user
-    '';
+    settings.global = {
+      "workgroup" = "WORKGROUP";
+      "server string" = config.networking.hostName;
+      "netbios name" = config.networking.hostName;
+      "security" = "user";
+      "hosts allow" = [ "10.0.0.0/16" "2a02:908::/32" "100.64.0.0/10" "localhost" ];
+      "hosts deny" = [ "0.0.0.0/0" "::/0" ];
+      "guest account" = "nobody";
+      "map to guest" = "bad user";
+    };
 
     shares = {
       Backup = {
@@ -263,6 +263,8 @@ in
         "create mask" = "0600";
         "directory mask" = "0700";
         "force user" = "nzbr";
+        "map acl inherit" = "yes";
+        "inherit acls" = "yes";
       };
       nzbr = {
         path = "/storage/nzbr";
@@ -274,6 +276,8 @@ in
         "directory mask" = "0700";
         "force user" = "nzbr";
         "acl allow execute always" = "yes";
+        "map acl inherit" = "yes";
+        "inherit acls" = "yes";
       };
       Media = {
         path = "/storage/media";
@@ -285,6 +289,8 @@ in
         "directory mask" = "0755";
         "force group" = "media";
         "acl allow execute always" = "yes";
+        "map acl inherit" = "yes";
+        "inherit acls" = "yes";
       };
       tmp = {
         path = "/tmp/smb";
@@ -294,6 +300,9 @@ in
         "create mask" = "0666";
         "directory mask" = "0777";
         "force group" = "users";
+        "acl allow execute always" = "yes";
+        "map acl inherit" = "yes";
+        "inherit acls" = "yes";
       };
     };
   };
