@@ -300,6 +300,13 @@ in
     };
   };
 
+  services.nfs.server = {
+    enable = true;
+    exports = ''
+      /storage/media/ROM fd87:7593:4cee:0:695:bec:37c4:9734/64 (ro)
+    '';
+  };
+
   systemd.tmpfiles.rules = [
     "d /tmp/smb 0770 nzbr users 1d"
     "d /storage/postgres 0755 postgres users"
