@@ -168,16 +168,16 @@ in
     enableWinbindd = true;
     nsswins = true;
 
-    extraConfig = ''
-      workgroup = WORKGROUP
-      server string = ${config.networking.hostName}
-      netbios name = ${config.networking.hostName}
-      security = user
-      hosts allow = 10.0.0.0/16 fd87:7593::/32 100.64.0.0/10 localhost
-      hosts deny = 0.0.0.0/0 ::/0
-      guest account = nobody
-      map to guest = bad user
-    '';
+    settings.global = {
+      "workgroup" = "WORKGROUP";
+      "server string" = config.networking.hostName;
+      "netbios name" = config.networking.hostName;
+      "security" = "user";
+      "hosts allow" = [ "10.0.0.0/16" "fd87:7593::/32" "100.64.0.0/10" "localhost" ];
+      "hosts deny" = [ "0.0.0.0/0" "::/0" ];
+      "guest account" = "nobody";
+      "map to guest" = "bad user";
+    };
 
     shares = {
       homes = {
