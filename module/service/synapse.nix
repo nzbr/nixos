@@ -72,15 +72,6 @@ with builtins; with lib; {
             suppress_key_server_warning = true;
           }))
         ];
-        sliding-sync = {
-          enable = true;
-          createDatabase = false;
-          environmentFile = config.nzbr.assets."matrix-sliding-sync.env";
-          settings = {
-            SYNCV3_SERVER = "https://matrix.nzbr.de";
-            SYNCV3_BINDADDR = ":8009";
-          };
-        };
       };
 
     };

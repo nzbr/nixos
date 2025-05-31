@@ -31,25 +31,6 @@ in
 
       {
         apiVersion = "v1";
-        kind = "Service";
-        metadata = {
-          inherit namespace;
-          name = "matrix-sliding-sync";
-        };
-        spec = {
-          type = "ClusterIP";
-          ports = [
-            {
-              protocol = "TCP";
-              name = "sliding-sync";
-              port = 8009;
-            }
-          ];
-        };
-      }
-
-      {
-        apiVersion = "v1";
         kind = "Endpoints";
         metadata = {
           inherit namespace;
@@ -63,26 +44,6 @@ in
             {
               name = "matrix";
               port = 28448;
-            }
-          ];
-        }];
-      }
-
-      {
-        apiVersion = "v1";
-        kind = "Endpoints";
-        metadata = {
-          inherit namespace;
-          name = "matrix-sliding-sync";
-        };
-        subsets = [{
-          addresses = [{
-            ip = inputs.self.nixosConfigurations.firestorm.config.nzbr.nodeIp;
-          }];
-          ports = [
-            {
-              name = "sliding-sync";
-              port = 8009;
             }
           ];
         }];
@@ -148,43 +109,6 @@ in
         kind = "Ingress";
         metadata = {
           inherit namespace;
-          name = "matrix-sliding-sync";
-          annotations = {
-            "kubernetes.io/ingress.class" = "nginx";
-            "nginx.ingress.kubernetes.io/proxy-body-size" = "200M";
-            "nginx.ingress.kubernetes.io/proxy-read-timeout" = "300";
-            "nginx.ingress.kubernetes.io/custom-headers" = "${namespace}/matrix-headers";
-          };
-        };
-        spec = {
-          rules = [
-            {
-              host = "matrix.nzbr.de";
-              http = {
-                paths = map
-                  (path: {
-                    backend.service = {
-                      name = "matrix-sliding-sync";
-                      port.name = "sliding-sync";
-                    };
-                    inherit path;
-                    pathType = "Prefix";
-                  })
-                  [
-                    "/client"
-                    "/_matrix/client/unstable/org.matrix.msc3575/sync"
-                  ];
-              };
-            }
-          ];
-        };
-      }
-
-      {
-        apiVersion = "networking.k8s.io/v1";
-        kind = "Ingress";
-        metadata = {
-          inherit namespace;
           name = "matrix-well-known";
           annotations = {
             "kubernetes.io/ingress.class" = "nginx";
@@ -193,7 +117,7 @@ in
             "nginx.ingress.kubernetes.io/custom-headers" = "${namespace}/matrix-headers";
             "nginx.ingress.kubernetes.io/configuration-snippet" = ''
               default_type application/json;
-              return 200 '{ "m.homeserver": { "base_url": "https://matrix.nzbr.de" }, "org.matrix.msc3575.proxy": { "url": "https://matrix.nzbr.de" } }';
+              return 200 '{ "m.homeserver": { "base_url": "https://matrix.nzbr.de" } }';
             '';
           };
         };
@@ -202,20 +126,16 @@ in
             (host:
               {
                 inherit host;
-                http = {
-                  paths = map
-                    (path: {
-                      backend.service = {
-                        name = "matrix-sliding-sync";
-                        port.name = "sliding-sync";
-                      };
-                      inherit path;
-                      pathType = "Prefix";
-                    })
-                    [
-                      "/.well-known/matrix/client"
-                    ];
-                };
+                http.paths = [
+                  {
+                    backend.service = {
+                      name = "matrix";
+                      port.name = "matrix";
+                    };
+                    pathType = "ImplementationSpecific";
+                    path = "/.well-known/matrix/client";
+                  }
+                ];
               }
             )
             [
@@ -224,7 +144,6 @@ in
             ];
         };
       }
-
 
     ];
   };
