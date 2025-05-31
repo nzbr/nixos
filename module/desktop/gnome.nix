@@ -24,10 +24,10 @@ with builtins; with lib; {
     };
 
     environment.systemPackages = with pkgs; [
-      gnome.dconf-editor
+      dconf-editor
       # gnome.gnome-boxes
-      gnome.gnome-tweaks
-      gnome.seahorse
+      gnome-tweaks
+      seahorse
 
       local.gnome-shell-extension-pop-shell
     ] ++ (
@@ -44,7 +44,7 @@ with builtins; with lib; {
     programs.dconf.enable = true;
     services.dbus.packages = with pkgs; [ dconf ];
 
-    services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
+    services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 
     nixpkgs.overlays = [
       (self: super: {
@@ -143,7 +143,7 @@ with builtins; with lib; {
               # "discord.desktop"
               # "spotify.desktop"
             ];
-            welcome-dialog-last-shown-version = pkgs.gnome3.gnome-shell.version;
+            welcome-dialog-last-shown-version = pkgs.gnome-shell.version;
           };
           "org/gnome/shell/extensions/arcmenu" = {
             arc-menu-icon = 7;
