@@ -89,6 +89,19 @@ in
       }
 
       {
+        apiVersion = "v1";
+        kind = "ConfigMap";
+        metadata = {
+          inherit namespace;
+          name = "matrix-headers";
+        };
+        data = {
+          # Traffic to the server is routed through earthquake's private IP in the home network
+          "access-control-allow-private-network" = "true";
+        };
+      }
+
+      {
         apiVersion = "networking.k8s.io/v1";
         kind = "Ingress";
         metadata = {
@@ -98,6 +111,7 @@ in
             "kubernetes.io/ingress.class" = "nginx";
             "nginx.ingress.kubernetes.io/proxy-body-size" = "200M";
             "nginx.ingress.kubernetes.io/proxy-read-timeout" = "300";
+            "nginx.ingress.kubernetes.io/custom-headers" = "${namespace}/matrix-headers";
           };
         };
         spec = {
@@ -139,6 +153,7 @@ in
             "kubernetes.io/ingress.class" = "nginx";
             "nginx.ingress.kubernetes.io/proxy-body-size" = "200M";
             "nginx.ingress.kubernetes.io/proxy-read-timeout" = "300";
+            "nginx.ingress.kubernetes.io/custom-headers" = "${namespace}/matrix-headers";
           };
         };
         spec = {
@@ -175,6 +190,7 @@ in
             "kubernetes.io/ingress.class" = "nginx";
             "nginx.ingress.kubernetes.io/proxy-body-size" = "200M";
             "nginx.ingress.kubernetes.io/proxy-read-timeout" = "300";
+            "nginx.ingress.kubernetes.io/custom-headers" = "${namespace}/matrix-headers";
             "nginx.ingress.kubernetes.io/configuration-snippet" = ''
               default_type application/json;
               return 200 '{ "m.homeserver": { "base_url": "https://matrix.nzbr.de" }, "org.matrix.msc3575.proxy": { "url": "https://matrix.nzbr.de" } }';

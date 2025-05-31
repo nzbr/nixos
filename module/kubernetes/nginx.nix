@@ -56,6 +56,8 @@ with builtins; with lib; {
                   access-log-path = "/dev/null";
                   # access-log-path = "/dev/stdout";
                   custom-http-errors = "404,410,414,418,502,503,504";
+                  global-allowed-response-headers = "access-control-allow-private-network";
+                  annotations-risk-level = "Critical"; # Required for server-snippet annotation
                 };
                 service = {
                   ipFamilyPolicy = "RequireDualStack";
