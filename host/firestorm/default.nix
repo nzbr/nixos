@@ -97,6 +97,8 @@ with lib;
     kernelModules = [ ];
     supportedFilesystems = [ "zfs" ];
     extraModulePackages = [ ];
+
+    kernel.sysctl."fs.inotify.max_user_watches" = "500000";
   };
 
   fileSystems = lib.mapAttrs'
