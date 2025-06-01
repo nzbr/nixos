@@ -435,6 +435,7 @@ in
     {
       description = "Backup media";
       after = [ "network.target" ];
+      restartIfChanged = false;
       environment = {
         HOME = "/root";
       };
