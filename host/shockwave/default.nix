@@ -16,7 +16,7 @@ let
   };
 
   playSound = name: pkgs.writeShellScript "play-${name}.sh" ''
-    ${config.hardware.pulseaudio.package}/bin/paplay --volume 32768 "${winsounds}/${if lib.hasInfix "." name then name else "${name}.WAV"}"
+    ${config.services.pulseaudio.package}/bin/paplay --volume 32768 "${winsounds}/${if lib.hasInfix "." name then name else "${name}.WAV"}"
   '';
 in
 
@@ -89,7 +89,7 @@ with builtins; with lib; {
     device = "/swapfile";
   }];
 
-  sound.enable = true;
+  # sound.enable = true;
 
   hardware = {
     # deviceTree = {
@@ -109,20 +109,21 @@ with builtins; with lib; {
         };
       };
     };
-    pulseaudio = {
+  };
+
+  services.pulseaudio = {
+    enable = true;
+    systemWide = true;
+    package = pkgs.pulseaudio.override {
+      x11Support = false;
+      jackaudioSupport = false;
+      bluetoothSupport = true;
+      advancedBluetoothCodecs = true;
+    };
+    zeroconf.publish.enable = true;
+    tcp = {
       enable = true;
-      systemWide = true;
-      package = pkgs.pulseaudio.override {
-        x11Support = false;
-        jackaudioSupport = false;
-        bluetoothSupport = true;
-        advancedBluetoothCodecs = true;
-      };
-      zeroconf.publish.enable = true;
-      tcp = {
-        enable = true;
-        anonymousClients.allowAll = true;
-      };
+      anonymousClients.allowAll = true;
     };
   };
 

@@ -23,7 +23,6 @@ with builtins; with lib;
 
         desktop = {
           gnome.enable = true;
-          pulseaudio.enable = true;
         };
 
         network = {
@@ -66,6 +65,7 @@ with builtins; with lib;
           libinput.enable = true;
           layout = "eu";
         };
+        pulseaudio.enable = true;
 
         teamviewer.enable = true;
         flatpak.enable = true;

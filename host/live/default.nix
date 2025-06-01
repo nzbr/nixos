@@ -18,7 +18,6 @@ with builtins; with lib; {
 
     desktop = {
       gnome.enable = true;
-      pulseaudio.enable = true;
     };
 
     home.config = {
@@ -117,6 +116,7 @@ with builtins; with lib; {
       };
     };
 
+    pulseaudio.enable = true;
     flatpak.enable = true;
     thermald.enable = true;
     power-profiles-daemon.enable = false;

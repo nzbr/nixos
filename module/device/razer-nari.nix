@@ -16,7 +16,7 @@ with builtins; with lib; {
     mkIf cfg.enable {
       services.udev.extraRules = builtins.readFile "${inputs.razer-nari}/91-pulseaudio-razer-nari.rules";
 
-      hardware.pulseaudio = {
+      services.pulseaudio = {
         package = pkgs.pulseaudioRazerNari;
       };
 
