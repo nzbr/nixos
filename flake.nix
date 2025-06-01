@@ -230,6 +230,7 @@
               ifAvailable = collection: package: (orElse collection system { ${package} = [ ]; }).${package};
             in
             with pkgs; (flatten [
+              nix
               (ifAvailable inputs.agenix.packages "agenix")
               graphviz
               morph
