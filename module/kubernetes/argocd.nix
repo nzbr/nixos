@@ -9,12 +9,12 @@ in
 
       (kube.createNamespace namespace)
 
-      (pkgs.runCommand "argocd.json"
-        {
-          nativeBuildInputs = [ pkgs.yq ];
-        } ''
-        yq -y '.metadata.namespace="${namespace}"' ${inputs.argocd}/manifests/install.yaml > $out
-      '')
+      # (pkgs.runCommand "argocd.json"
+      #   {
+      #     nativeBuildInputs = [ pkgs.yq ];
+      #   } ''
+      #   yq -y '.metadata.namespace="${namespace}"' ${inputs.argocd}/manifests/install.yaml > $out
+      # '')
 
       {
         apiVersion = "rbac.authorization.k8s.io/v1";
