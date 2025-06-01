@@ -17,23 +17,6 @@ with builtins; with lib; {
         #   maxJobs = 8;
         #   supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
         # }
-        {
-          hostName = "nebula";
-          systems = [ "aarch64-darwin" "x86_64-darwin" ];
-          sshUser = "nzbr";
-          sshKey = config.nzbr.assets."ssh/id_ed25519";
-          maxJobs = 8;
-          supportedFeatures = [ "benchmark" "big-parallel" ];
-        }
-        {
-          hostName = "nebula-lima";
-          systems = [ "aarch64-linux" ];
-          sshUser = "nzbr";
-          sshKey = config.nzbr.assets."ssh/id_ed25519";
-          maxJobs = 8;
-          speedFactor = 100;
-          supportedFeatures = [ "benchmark" "big-parallel" ];
-        }
       ];
     };
 
