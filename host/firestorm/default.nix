@@ -292,6 +292,12 @@ with lib;
             "*.*" = "ALL PRIVILEGES";
           };
         }
+        {
+          name = "admin";
+          ensurePermissions = {
+            "*.*" = "ALL PRIVILEGES";
+          };
+        }
       ];
       settings.mysqld = {
         "character_set_server" = "utf8mb4";
