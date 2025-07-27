@@ -6,4 +6,5 @@
   jetstack = "https://charts.jetstack.io";
   nextcloud = "https://nextcloud.github.io/helm";
   nicholaswilde = "https://nicholaswilde.github.io/helm-charts";
+  cert-manager-webhook-powerdns = "https://zachomedia.github.io/cert-manager-webhook-pdns";
 }

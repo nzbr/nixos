@@ -23,19 +23,28 @@ in
           };
         };
       }
+      # {
+      #   script =
+      #     let
+      #       repo = "${inputs.cert-manager-desec}";
+      #       chart = pkgs.runCommand "cert-manager-desec" { } ''
+      #         mkdir -p "$out"
+      #         cp -r ${repo}/deploy/desec-webhook/. "$out";
+      #         chmod -R u+rw "$out"
+      #         find "$out" -type f -exec sed -i 's|cert-manager\.io/v1alpha3|cert-manager\.io/v1|' {} \;
+      #       '';
+      #       values = { };
+      #     in
+      #     "${pkgs.kubernetes-helm}/bin/helm upgrade -i -n '${namespace}' --create-namespace -f '${pkgs.writeText "values.yaml" (toJSON values)}' 'cert-manager-desec' '${chart}'";
+      # }
       {
-        script =
-          let
-            repo = "${inputs.cert-manager-desec}";
-            chart = pkgs.runCommand "cert-manager-desec" { } ''
-              mkdir -p "$out"
-              cp -r ${repo}/deploy/desec-webhook/. "$out";
-              chmod -R u+rw "$out"
-              find "$out" -type f -exec sed -i 's|cert-manager\.io/v1alpha3|cert-manager\.io/v1|' {} \;
-            '';
-            values = { };
-          in
-          "${pkgs.kubernetes-helm}/bin/helm upgrade -i -n '${namespace}' --create-namespace -f '${pkgs.writeText "values.yaml" (toJSON values)}' 'cert-manager-desec' '${chart}'";
+        chart = {
+          repository = "cert-manager-webhook-powerdns";
+          name = "cert-manager-webhook-pdns";
+        };
+        inherit namespace;
+        name = "cert-manager-webhook-pdns";
+        values = { };
       }
       (config.nzbr.assets."k8s/cert-manager-letsencrypt-config.yaml")
     ];
