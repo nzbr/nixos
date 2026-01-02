@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL";
+      url = "github:nix-community/NixOS-WSL/usbip-fix";
       # url = "/home/nzbr/Projekte/NixOS-WSL";
       inputs.flake-compat.follows = "flake-compat";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -59,7 +59,6 @@
       url = "github:nix-community/nixd";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-
 
     argocd = {
       url = "github:argoproj/argo-cd/stable";
@@ -156,15 +155,16 @@
                   (
                     (
                       mkDefaultSystem hostName
-                    ) // (
-                      mapAttrs'
-                        (n: v: nameValuePair' (removeSuffix ".nix" n) (mkSystem hostName [ "${self}/host/${hostName}/${n}" ]))
-                        (
-                          filterAttrs
-                            (n: v: (v == "regular") && (hasSuffix ".nix" n) && (n != "default.nix"))
-                            (readDir "${self}/host/${hostName}")
-                        )
                     )
+                    # // (
+                    #   mapAttrs'
+                    #     (n: v: nameValuePair' (removeSuffix ".nix" n) (mkSystem hostName [ "${self}/host/${hostName}/${n}" ]))
+                    #     (
+                    #       filterAttrs
+                    #         (n: v: (v == "regular") && (hasSuffix ".nix" n) && (n != "default.nix"))
+                    #         (readDir "${self}/host/${hostName}")
+                    #     )
+                    # )
                   )
               )
               (mapAttrsToList (name: type: name) (readDir "${self}/host"))
