@@ -35,7 +35,7 @@ with builtins; with lib; {
               {
                 script =
                   let
-                    index = pkgs.substituteAll {
+                    index = pkgs.replaceVars {
                       name = "everything-index";
                       src = ./index.ps1;
                       isExecutable = true;

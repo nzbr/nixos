@@ -2,7 +2,7 @@
   description = "my very own special snowflake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-2305.url = "github:NixOS/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -12,11 +12,11 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL/usbip-fix";
+      url = "github:nix-community/NixOS-WSL/release-25.11";
       # url = "/home/nzbr/Projekte/NixOS-WSL";
       inputs.flake-compat.follows = "flake-compat";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -192,29 +192,31 @@
             map
               (file: rec {
                 name = unsafeDiscardStringContext (replaceStrings [ "/" ] [ "-" ] (removePrefix "${self}/script/" file)); # this is safe, actually
-                value = pkgs.substituteAll {
+                value = pkgs.replaceVarsWith {
                   inherit name;
                   src = file;
                   dir = "bin";
                   isExecutable = true;
 
-                  inherit python3;
+                  replacements = {
+                    inherit python3;
 
-                  # packages that are available to the scripts
-                  inherit (pkgs)
-                    bash
-                    gnused
-                    findutils
-                    jq
-                    nix
-                    openssh
-                    parallel
-                    powershell
-                    rage
-                    ;
-                  wireguard = pkgs.wireguard-tools;
-                  nom = pkgs.nix-output-monitor;
-                  nixpkgs = toString inputs.nixpkgs;
+                    # packages that are available to the scripts
+                    inherit (pkgs)
+                      bash
+                      gnused
+                      findutils
+                      jq
+                      nix
+                      openssh
+                      parallel
+                      powershell
+                      rage
+                      ;
+                    wireguard = pkgs.wireguard-tools;
+                    nom = pkgs.nix-output-monitor;
+                    nixpkgs = toString inputs.nixpkgs;
+                  };
                 };
               })
               (findModules "" "${self}/script")

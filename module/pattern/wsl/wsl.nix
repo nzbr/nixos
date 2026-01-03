@@ -55,6 +55,7 @@ with builtins; with lib; {
           QT_QPA_PLATFORM = "wayland;xcb";
           SDL_VIDEODRIVER = "wayland";
           NIXOS_OZONE_WL = "1"; # chromium
+          OZONE_PLATFORM = "wayland"; # electron
         };
       };
 
@@ -121,15 +122,17 @@ with builtins; with lib; {
                       let
                         bin = pkgs.pkgsCross.mingwW64.callPackage
                           (
-                            { stdenv, writeText, substituteAll, ... }: stdenv.mkDerivation {
+                            { stdenv, writeText, replaceVarsWith, ... }: stdenv.mkDerivation {
                               name = "${exe}.exe";
 
-                              src = substituteAll {
+                              src = replaceVarsWith {
                                 name = "${exe}.cpp";
                                 src = ./winBin.cpp;
 
-                                inherit drv exe;
-                                automountRoot = config.wsl.wslConf.automount.root;
+                                replacements = {
+                                  inherit drv exe;
+                                  automountRoot = config.wsl.wslConf.automount.root;
+                                };
                               };
 
                               buildCommand = ''

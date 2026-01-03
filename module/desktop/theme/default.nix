@@ -14,10 +14,10 @@ with builtins; with lib; {
     in
     mkIf cfg.enable {
       environment.systemPackages = with pkgs; [
-        local.papirus-icon-theme-mod
+        # local.papirus-icon-theme-mod
 
         (pop-gtk-theme.overrideAttrs (oldAttrs: rec {
-          patches = [ (pkgs.substituteAll { name = "pop-gtk.patch"; src = ./pop-gtk.patch; inherit (cfg) accentColor; }) ];
+          patches = [ (pkgs.replaceVarsWith { name = "pop-gtk.patch"; src = ./pop-gtk.patch; replacements = { inherit (cfg) accentColor; }; }) ];
         }))
       ];
 
