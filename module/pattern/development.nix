@@ -63,10 +63,7 @@ with builtins; with lib;
           CHROME_EXECUTABLE = "${pkgs.chromium}/bin/chromium";
         };
 
-      programs.nix-ld = {
-        enable = true;
-        package = pkgs.nix-ld-rs;
-      };
+      programs.nix-ld.enable = true;
 
       nzbr.cli.git = {
         enable = true;
