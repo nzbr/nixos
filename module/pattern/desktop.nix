@@ -52,7 +52,7 @@ with builtins; with lib;
       ];
 
       fonts.packages = with pkgs; [
-        (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+        nerd-fonts.jetbrains-mono
         roboto
         roboto-slab
         roboto-mono
