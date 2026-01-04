@@ -116,7 +116,6 @@ with builtins; with lib; {
       };
     };
 
-    pulseaudio.enable = true;
     flatpak.enable = true;
     thermald.enable = true;
     power-profiles-daemon.enable = false;

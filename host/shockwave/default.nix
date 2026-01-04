@@ -111,8 +111,9 @@ with builtins; with lib; {
     };
   };
 
+  services.pipewire.enable = mkDefault false;
   services.pulseaudio = {
-    enable = true;
+    enable = !config.services.pipewire.enable;
     systemWide = true;
     package = pkgs.pulseaudio.override {
       x11Support = false;

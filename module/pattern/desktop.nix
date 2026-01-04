@@ -65,7 +65,6 @@ with builtins; with lib;
           libinput.enable = true;
           layout = "eu";
         };
-        pulseaudio.enable = true;
 
         teamviewer.enable = true;
         flatpak.enable = true;
