@@ -70,7 +70,7 @@ with builtins; with lib; {
     vlc
     xsel
     lm_sensors
-    gnome.gnome-tweaks
+    gnome-tweaks
   ];
 
   # KDE complains if power management is disabled (to be precise, if
