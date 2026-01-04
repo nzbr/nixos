@@ -128,7 +128,6 @@ in
 
   environment.systemPackages = with pkgs; [
     unstable.wine64
-    wireguard
     wireguard-tools
   ];
 
