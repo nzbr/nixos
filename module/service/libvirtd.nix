@@ -14,10 +14,7 @@ with builtins; with lib; {
         enable = true;
         onBoot = "start";
         onShutdown = "suspend";
-        qemu = {
-          ovmf.enable = true;
-          package = pkgs.unstable.qemu;
-        };
+        qemu.package = pkgs.unstable.qemu;
       };
 
       security.polkit.enable = true;
