@@ -70,7 +70,7 @@ with builtins; with lib;
 
       programs = {
         zsh.enable = true;
-        ssh.startAgent = true;
+        ssh.startAgent = !config.services.gnome.gcr-ssh-agent.enable;
         mosh.enable = true;
       };
 
