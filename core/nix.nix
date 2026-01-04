@@ -3,6 +3,7 @@ with builtins; with lib;
 {
   nixpkgs.config = {
     allowUnfree = true;
+    nvidia.acceptLicense = true;
 
     packageOverrides = {
       local = inputs.self.packages.${system}; # import local packages
