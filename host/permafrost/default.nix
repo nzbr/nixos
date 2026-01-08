@@ -106,6 +106,14 @@ in
 
   boot.zfs.extraPools = [ "zbackup" ];
 
+  systemd.services.lvm-activate = rec {
+    description = "Import LVM volumes";
+    before = [ "zfs-import-zbackup.service" "zfs-import.target" ];
+    wantedBy = before;
+    script = "${pkgs.lvm2.bin}/bin/vgchange -ay";
+    serviceConfig.Type = "oneshot";
+  };
+
   swapDevices = [
     {
       device = "/dev/disk/by-partuuid/5b42f06e-fe01-4c46-a69c-b5dfd1f8ebf4";
