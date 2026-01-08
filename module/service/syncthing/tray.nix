@@ -5,7 +5,7 @@ with builtins; with lib; {
       let
         syncthingtray = (pkgs.syncthingtray.override {
           kioPluginSupport = false;
-          plasmoidSupport = config.services.xserver.desktopManager.plasma5.enable;
+          plasmoidSupport = config.services.xserver.desktopManager.plasma6.enable;
         });
       in
       {
