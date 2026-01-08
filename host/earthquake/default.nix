@@ -421,7 +421,7 @@ in
 
   services.audiobookshelf = {
     enable = true;
-    package = pkgs.unstable.audiobookshelf;
+    package = pkgs.audiobookshelf;
     group = "media";
     host = config.nzbr.nodeIp;
     openFirewall = false;
