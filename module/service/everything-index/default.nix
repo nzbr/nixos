@@ -35,11 +35,13 @@ with builtins; with lib; {
               {
                 script =
                   let
-                    index = pkgs.replaceVars {
+                    index = pkgs.replaceVarsWith {
                       name = "everything-index";
                       src = ./index.ps1;
                       isExecutable = true;
-                      inherit (pkgs) powershell;
+                      replacements = {
+                        inherit (pkgs) powershell;
+                      };
                     };
                   in
                   "${pkgs.powershell}/bin/pwsh ${index} ${entry.path}";
