@@ -424,6 +424,89 @@ in
   };
 
   networking.firewall.trustedInterfaces = [ "docker0" ];
+  networking.bridges.nspawn0.interfaces = [ ];
+  networking.interfaces.nspawn0.ipv4.addresses = [{ address = "10.16.0.1"; prefixLength = 16; }];
+  networking.interfaces.nspawn0.ipv6.addresses = [{ address = "fd00:10:16::1"; prefixLength = 64; }];
+  networking.nat = {
+    enable = true;
+    enableIPv6 = true;
+    internalInterfaces = [ "nspawn0" ];
+  };
+  services.kea =
+    let
+      domain-name = "nspawn.local";
+      mkOptionData = attrs: map (x: { name = x.name; data = x.value; }) (attrsToList attrs);
+    in
+    rec {
+      dhcp4 = {
+        enable = true;
+        settings = {
+          interfaces-config = {
+            interfaces = [
+              "nspawn0"
+            ];
+          };
+          option-data = mkOptionData {
+            inherit domain-name;
+            domain-name-servers = "100.100.100.100, 8.8.8.8";
+          };
+          # lease-database = {
+          #   name = "/var/lib/kea/dhcp4.leases";
+          #   persist = true;
+          #   type = "memfile";
+          # };
+          subnet4 = [
+            {
+              id = 1;
+              pools = [
+                {
+                  pool = "10.16.0.2 - 10.16.254.254";
+                }
+              ];
+              subnet = "10.16.0.0/16";
+            }
+          ];
+          valid-lifetime = 2592000; # 30 days
+        };
+      };
+      dhcp6 = {
+        enable = true;
+        settings = {
+          interfaces-config = dhcp4.settings.interfaces-config;
+          # lease-database = {
+          #   name = "/var/lib/kea/dhcp6.leases";
+          #   persist = true;
+          #   type = "memfile";
+          # };
+          subnet6 = [
+            {
+              id = 1;
+              pools = [
+                {
+                  pool = "fd00:10:16::2 - fd00:10:16::fffe";
+                }
+              ];
+              subnet = "fd00:10:16::/64";
+            }
+          ];
+          valid-lifetime = dhcp4.settings.valid-lifetime;
+        };
+  systemd.services.nspawn-lego = {
+    description = "Lego Universe Container";
+    restartIfChanged = true;
+    wantedBy = [ "machines.target" ];
+    wants = [ "network.target" ];
+    after = [ "network.target" ];
+    path = [ config.systemd.package pkgs.iproute2 ];
+    serviceConfig = {
+      Type = "notify";
+      Slice = "machine.slice";
+      Delegate = true;
+      KillMode = "mixed";
+      KillSignal = "TERM";
+      ExecStart = "systemd-nspawn --keep-unit --notify-ready=yes --boot -M lego --hostname=lego --network-bridge=nspawn0 -D /storage/machines/lego";
+    };
+  };
 
   systemd.services.backup-media =
     let
