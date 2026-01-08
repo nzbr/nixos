@@ -1,7 +1,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 with builtins; with lib;
 let
-  root = config.nzbr.flake.root;
+  cudaPkgs = pkgs.cudaPackages_13_0;
 in
 {
   networking.hostId = "b93ad358";
@@ -121,9 +121,8 @@ in
       kernelModules = [ ];
       supportedFilesystems = [ "zfs" ];
     };
-    kernelModules = [ "dm-snapshot" "kvm-intel" "nvidia" ];
+    kernelModules = [ "dm-snapshot" "kvm-intel" ];
     supportedFilesystems = [ "zfs" ];
-    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
   };
 
   environment.etc."lukskey" = {
@@ -204,10 +203,16 @@ in
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = false;
+  hardware.nvidia.modesetting.enable = false;
+  hardware.nvidia.nvidiaSettings = true;
+  nixpkgs.config.nvidia.acceptLicense = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_535;
   hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   environment.systemPackages = with pkgs; [
-    config.hardware.nvidia.package
-    cudatoolkit
+    cudaPkgs.cudatoolkit
+    cudaPkgs.cudnn
+    cudaPkgs.cuda_cudart
     (nvtopPackages.nvidia.override (args: { intel = true; }))
   ];
 
