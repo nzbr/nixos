@@ -3,7 +3,7 @@ with builtins; with lib;
 {
   options.nzbr.boot = with types; {
     initrdSecrets = mkOption {
-      type = attrsOf string;
+      type = attrsOf str;
       default = { };
     };
   };
