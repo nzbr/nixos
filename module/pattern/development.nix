@@ -73,10 +73,6 @@ with builtins; with lib;
       programs.adb.enable = true;
       users.groups.adbusers.members = [ config.nzbr.user ];
 
-      services.udev.packages = [
-        pkgs.android-udev-rules
-      ];
-
       virtualisation.docker.enable = mkDefault true;
     }
   );

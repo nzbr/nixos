@@ -138,7 +138,6 @@
   system.build.openDsh = pkgs.openDsh;
 
   programs.adb.enable = true;
-  services.udev.packages = [ pkgs.android-udev-rules ];
 
   # TODO: Ofono
 
