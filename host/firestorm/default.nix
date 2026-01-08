@@ -326,11 +326,11 @@ with lib;
     "d /storage/mysql/data 0755 mysql mysql"
   ];
 
-  services.mailmover = {
-    enable = true;
-    schedule = "*-*-* *:*:1";
-    configFile = config.nzbr.assets."mailmover-config.dhall";
-  };
+  # services.mailmover = {
+  #   enable = true;
+  #   schedule = "*-*-* *:*:1";
+  #   configFile = config.nzbr.assets."mailmover-config.dhall";
+  # };
 
   virtualisation.docker.enable = true;
   virtualisation.docker.autoPrune.enable = true;
