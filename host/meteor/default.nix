@@ -135,4 +135,6 @@ in
     enable = true;
     enableExtensionPack = true;
   };
+
+  nzbr.home.config.home.stateVersion = "25.11";
 }
