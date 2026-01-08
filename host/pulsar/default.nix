@@ -48,7 +48,7 @@ with builtins; with lib; {
 
   users.groups.kvm.members = [ "nzbr" ];
 
-  environment.systemPackages = config.environment.windowsPackages;
+  environment.systemPackages = config.environment.windowsPackages ++ [ pkgs.kmod ];
   environment.windowsPackages = with pkgs; [
     eternal-terminal
     mosh
