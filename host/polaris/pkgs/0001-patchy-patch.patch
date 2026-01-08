@@ -1,0 +1,130 @@
+From eb3def69e15fcea8d34a12dd74b41b29d2ee768e Mon Sep 17 00:00:00 2001
+From: nzbr <mail@nzbr.de>
+Date: Fri, 13 Jun 2025 23:05:51 +0200
+Subject: [PATCH] patchy patch
+
+---
+ .gitignore             |  3 +++
+ include/app/window.hpp |  4 ++--
+ src/app/window.cpp     | 10 +++-------
+ src/dash.cpp           | 37 ++++---------------------------------
+ 4 files changed, 12 insertions(+), 42 deletions(-)
+
+diff --git a/.gitignore b/.gitignore
+index 141c45b..7263220 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -68,3 +68,6 @@ openauto.ini
+ plugins/vehicle/*
+ !plugins/vehicle/test
+ !plugins/vehicle/README.md
++
++*.patch
++.vscode/
+diff --git a/include/app/window.hpp b/include/app/window.hpp
+index a24f40c..50e2c6e 100644
+--- a/include/app/window.hpp
++++ b/include/app/window.hpp
+@@ -58,7 +58,7 @@ class MainWindow : public QMainWindow {
+     Q_OBJECT
+ 
+    public:
+-    MainWindow(QRect geometry);
++    MainWindow();
+     void set_fullscreen(Page *page);
+ 
+    protected:
+@@ -68,5 +68,5 @@ class MainWindow : public QMainWindow {
+     Arbiter arbiter;
+     QStackedWidget *stack;
+ 
+-    MainWindow *init(QRect geometry);
++    MainWindow *init();
+ };
+diff --git a/src/app/window.cpp b/src/app/window.cpp
+index 121e7a3..e1cf065 100644
+--- a/src/app/window.cpp
++++ b/src/app/window.cpp
+@@ -203,9 +203,9 @@ QWidget *Dash::power_control() const
+     return widget;
+ }
+ 
+-MainWindow::MainWindow(QRect geometry)
++MainWindow::MainWindow()
+     : QMainWindow()
+-    , arbiter(this->init(geometry))
++    , arbiter(this->init())
+     , stack(new QStackedWidget())
+ {
+     this->setAttribute(Qt::WA_TranslucentBackground, true);
+@@ -230,12 +230,8 @@ MainWindow::MainWindow(QRect geometry)
+         this->arbiter.set_fullscreen(true);
+ }
+ 
+-MainWindow *MainWindow::init(QRect geometry)
++MainWindow *MainWindow::init()
+ {
+-    // force to either screen or custom size
+-    this->setFixedSize(geometry.size());
+-    this->move(geometry.topLeft());
+-
+     return this;
+ }
+ 
+diff --git a/src/dash.cpp b/src/dash.cpp
+index 1679679..88b44cd 100644
+--- a/src/dash.cpp
++++ b/src/dash.cpp
+@@ -13,45 +13,16 @@ int main(int argc, char *argv[])
+     dash.setApplicationName("dash");
+     dash.installEventFilter(ActionEventFilter::get_instance());
+ 
+-    QSize size = dash.primaryScreen()->size();
+-    QPoint pos = dash.primaryScreen()->geometry().topLeft();
+-    bool fullscreen = true;
+-
+     QSettings settings;
+     DASH_LOG(info) << "loaded config: " << settings.fileName().toStdString();
+ 
+-    QStringList args = dash.arguments();
+-    if (args.size() > 2) {
+-        size = QSize(args.at(1).toInt(), args.at(2).toInt());
+-        if (args.size() > 4)
+-            pos = QPoint(args.at(3).toInt(), args.at(4).toInt());
+-        fullscreen = false;
+-    }
+-    else {
+-        settings.beginGroup("Window");
+-        if (settings.contains("size")) {
+-            size = settings.value("size").toSize();
+-            if (settings.contains("pos"))
+-                pos = settings.value("pos").toPoint();
+-            fullscreen = false;
+-        }
+-    }
+-
+-    QPixmap pixmap(QPixmap(":/splash.png").scaledToHeight(size.height() / 2));
+-    QSplashScreen splash(pixmap);
+-    splash.setMask(pixmap.mask());
+-    splash.move(pos.x() + ((size.width() / 2) - (splash.width() / 2)), pos.y() + ((size.height() / 2) - (splash.height() / 2)));
+-    splash.show();
+-    dash.processEvents();
+-
+-    MainWindow window(QRect(pos, size));
++    MainWindow window;
+     window.setWindowIcon(QIcon(":/logo.png"));
+-    window.setWindowFlags(Qt::FramelessWindowHint);
+-    if (fullscreen)
+-        window.setWindowState(Qt::WindowFullScreen);
+ 
+     window.show();
+-    splash.finish(&window);
++
++    dash.processEvents();
++    window.adjustSize();
+ 
+     return dash.exec();
+ }
+-- 
+2.49.0.windows.1
+

@@ -1,0 +1,51 @@
+From 37341b0e2b6110d7e02d04f263f8ac8bc155a1bc Mon Sep 17 00:00:00 2001
+From: Toon Heyrman <toonheyrman@hotmail.com>
+Date: Thu, 27 Apr 2017 16:49:24 +0200
+Subject: [PATCH] qt5glvideosink: fix of too much red value in video
+
+The red value was too much in the video when using qt5glvideosink.
+This was caused by a wrong color matrix.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=781816
+---
+ elements/gstqtvideosink/painters/openglsurfacepainter.cpp | 6 +++---
+ elements/gstqtvideosink/painters/videomaterial.cpp        | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/elements/gstqtvideosink/painters/openglsurfacepainter.cpp b/elements/gstqtvideosink/painters/openglsurfacepainter.cpp
+index 6cae138..c9f2a77 100644
+--- a/elements/gstqtvideosink/painters/openglsurfacepainter.cpp
++++ b/elements/gstqtvideosink/painters/openglsurfacepainter.cpp
+@@ -146,9 +146,9 @@ void OpenGLSurfacePainter::updateColors(int brightness, int contrast, int hue, i
+ #endif
+     case GST_VIDEO_COLOR_MATRIX_BT709:
+         m_colorMatrix *= QMatrix4x4(
+-                    1.164,  0.000,  1.793, -0.5727,
+-                    1.164, -0.534, -0.213,  0.3007,
+-                    1.164,  2.115,  0.000, -1.1302,
++                    1.164,  0.000,  1.793, -0.969,
++                    1.164, -0.213, -0.533,  0.300,
++                    1.164,  2.112,  0.000, -1.129,
+                     0.0,    0.000,  0.000,  1.0000);
+         break;
+     case GST_VIDEO_COLOR_MATRIX_BT601:
+diff --git a/elements/gstqtvideosink/painters/videomaterial.cpp b/elements/gstqtvideosink/painters/videomaterial.cpp
+index 3073e6d..49a2f47 100644
+--- a/elements/gstqtvideosink/painters/videomaterial.cpp
++++ b/elements/gstqtvideosink/painters/videomaterial.cpp
+@@ -384,9 +384,9 @@ void VideoMaterial::updateColors(int brightness, int contrast, int hue, int satu
+     switch (m_colorMatrixType) {
+     case GST_VIDEO_COLOR_MATRIX_BT709:
+         m_colorMatrix *= QMatrix4x4(
+-                    1.164,  0.000,  1.793, -0.5727,
+-                    1.164, -0.534, -0.213,  0.3007,
+-                    1.164,  2.115,  0.000, -1.1302,
++                    1.164,  0.000,  1.793, -0.969,
++                    1.164, -0.213, -0.533,  0.300,
++                    1.164,  2.112,  0.000, -1.129,
+                     0.0,    0.000,  0.000,  1.0000);
+         break;
+     case GST_VIDEO_COLOR_MATRIX_BT601:
+-- 
+2.7.4
+
