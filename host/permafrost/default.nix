@@ -222,12 +222,20 @@ in
         environment = {
           HOME = "/root";
         };
-        serviceConfig = {
-          Type = "oneshot";
-          ExecStartPre = "${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}/start";
-          ExecStart = "${pkgs.rclone}/bin/rclone sync -vv /backup jotta-archive:permafrost";
-          ExecStartPost = "${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}";
+        unitConfig = {
+          ConditionPathExists =
+            map
+              (user: "${user.home}/config")
+              (filter
+                (user: hasPrefix "/backup/" user.home)
+                (attrValues config.users.users)
+              );
         };
+        script = ''
+          ${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}/start
+          ${pkgs.rclone}/bin/rclone sync -vv --track-renames --exclude-from /backup/.rcloneignore /backup jotta-archive:permafrost
+          ${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}/$?
+        '';
       };
     timers.upload = {
       wantedBy = [ "timers.target" ];
