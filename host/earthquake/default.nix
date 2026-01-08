@@ -496,6 +496,9 @@ in
           ];
           valid-lifetime = dhcp4.settings.valid-lifetime;
         };
+      };
+    };
+
   systemd.services.nspawn-lego = {
     description = "Lego Universe Container";
     restartIfChanged = true;
