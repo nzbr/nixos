@@ -46,10 +46,7 @@ in
         enable = true;
         domain = "earthquake.nzbr.de";
       };
-      gitlab-runner = {
-        enable = true;
-        extraTags = [ "kube-deploy" ];
-      };
+      gitlab-runner.enable = true;
       borgbackup = {
         enable = true;
         repoUrl = "ssh://permafrost-backup/backup/${config.networking.hostName}";

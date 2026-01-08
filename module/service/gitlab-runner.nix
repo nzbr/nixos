@@ -2,16 +2,12 @@
 with builtins; with lib; {
   options.nzbr.service.gitlab-runner = with types; {
     enable = mkEnableOption "GitLab Runner";
-    extraTags = mkOption {
-      type = listOf str;
-      default = [ ];
-    };
   };
 
   config =
     let
       cfg = config.nzbr.service.gitlab-runner;
-      nix-setup = pkgs.writeScript "nix-setup" ''
+      nix-setup = pkgs.writeShellScript "nix-setup" ''
         mkdir -p -m 0755 /nix/var/log/nix/drvs
         mkdir -p -m 0755 /nix/var/nix/gcroots
         mkdir -p -m 0755 /nix/var/nix/profiles
@@ -51,12 +47,10 @@ with builtins; with lib; {
         services =
           {
             nix = {
-              registrationConfigFile = config.nzbr.assets."git.nzbr.de-runner-registration-docker.env";
+              registrationConfigFile = config.nzbr.assets."git.nzbr.de-runner-registration-nix.env";
               registrationFlags = [
                 "--name ${config.networking.hostName}-nix"
               ];
-              tagList = [ "nix" ];
-              runUntagged = false;
               executor = "docker";
               dockerImage = "archlinux";
               dockerPrivileged = true;
@@ -66,12 +60,10 @@ with builtins; with lib; {
             };
 
             docker = {
-              registrationConfigFile = config.nzbr.assets."git.nzbr.de-runner-registration-nix.env";
+              registrationConfigFile = config.nzbr.assets."git.nzbr.de-runner-registration-docker.env";
               registrationFlags = [
                 "--name ${config.networking.hostName}"
               ];
-              tagList = [ "docker" "linux" ] ++ cfg.extraTags;
-              runUntagged = true;
               executor = "docker";
               dockerImage = "archlinux";
               dockerPrivileged = true;
