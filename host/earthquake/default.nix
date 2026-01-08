@@ -432,16 +432,17 @@ in
     {
       description = "Backup media";
       after = [ "network.target" ];
-      restartIfChanged = false;
       environment = {
         HOME = "/root";
       };
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStartPre = "${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}/start";
-        ExecStart = "${pkgs.rclone}/bin/rclone sync -vv /storage/media media-encrypted:earthquake-media";
-        ExecStartPost = "${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}";
+      unitConfig = {
+        ConditionPathExists = [ "/storage/media/.rcloneignore" ];
       };
+      script = ''
+        ${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}/start
+        ${pkgs.rclone}/bin/rclone sync --track-renames --exclude-from /storage/media/.rcloneignore -vv /storage/media media-encrypted:earthquake-media
+        ${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}/$?
+      '';
     };
   systemd.timers.backup-media = {
     wantedBy = [ "timers.target" ];
