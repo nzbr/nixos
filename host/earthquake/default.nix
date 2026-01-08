@@ -49,7 +49,7 @@ in
       gitlab-runner.enable = true;
       borgbackup = {
         enable = true;
-        repoUrl = "ssh://permafrost-backup/backup/${config.networking.hostName}";
+        repoUrl = "ssh://u523435-sub2@hetzner/home/repo";
         zfs.pools = [
           {
             name = "zroot";

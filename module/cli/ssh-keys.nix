@@ -44,6 +44,10 @@ in
             HostName permafrost.dragon-augmented.ts.net
             User ${config.networking.hostName}
             IdentityFile ${config.nzbr.assets."ssh/permafrost"}
+          Host hetzner
+            HostName u523435.your-storagebox.de
+            Port 23
+            IdentityFile ${config.nzbr.assets."ssh/permafrost"}
         '';
       })
   ];
