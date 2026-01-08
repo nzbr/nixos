@@ -87,7 +87,7 @@ with builtins; with lib; {
                       nebula.id = "3LXFJEH-7XU7B7X-C3UQNMD-OZ2UVYJ-2EGXDEW-SH22AMB-K6DHR53-X4SU7QO";
                       pulsar-win.id = "RXTBIQ6-C6SQFBC-DO2MIUA-FL7RUW2-PN6ILZC-4QMIIZX-UYP5RB7-FC3H5QK";
                       uli.id = "ZOTIOGW-NRF4IWB-BXJGBLB-QGZLA6A-NEOX3CV-5DK5O2V-6PFKBXH-VK4F3AK";
-                      juno.id = "WQMPNZ6-RZLROTP-4QWU5WC-M76RKGZ-SEPRFG4-MDU75FE-NWG2KF4-RRYUHAU";
+                      borealis.id = "PCEFGSJ-LCJ7MN5-AINGYGA-DK6B7XP-4OMKTI5-PKWUGPE-3M6BXOV-7FJPJAO";
                     }
                   );
                 folders =
