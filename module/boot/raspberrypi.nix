@@ -7,6 +7,7 @@ with builtins; with lib; {
   options.nzbr.boot.raspberrypi = with types; {
     enable = mkEnableOption "raspberrypi bootloader/firmware builder";
     initrd = mkEnableOption "boot using an initial ramdisk";
+    uefi = mkEnableOption "UEFI firmware";
     config = mkOption {
       type = lazyAttrsOf (
         lazyAttrsOf (
@@ -84,7 +85,6 @@ with builtins; with lib; {
         };
 
         installer.sdcard = {
-          enable = true;
           firmwareSize = 512;
           populateFirmwareCommands = firmwareCommands config.system.build.toplevel;
         };
@@ -101,8 +101,18 @@ with builtins; with lib; {
         kernelParams = [
           "console=serial0,115200"
           "console=tty1"
-          "root=PARTUUID=${removePrefix "0x" config.nzbr.installer.sdcard.firmwarePartitionID}-02"
-          "rootfstype=ext4"
+          (
+            if config.nzbr.installer.sdcard.enable
+            then "root=PARTUUID=${removePrefix "0x" config.nzbr.installer.sdcard.firmwarePartitionID}-02"
+            else
+              if hasPrefix "/dev/disk/by-partuuid/" config.fileSystems."/".device
+              then "root=PARTUUID=${removePrefix "/dev/disk/by-partuuid/" config.fileSystems."/".device}"
+              else
+                if hasPrefix "/dev/disk/by-label" config.fileSystems."/".device
+                then "root=LABEL=${removePrefix "/dev/disk/by-label/" config.fileSystems."/".device}"
+                else "root=${config.fileSystems."/".device}"
+          )
+          "rootfstype=${config.fileSystems."/".fsType}"
           "rootwait"
           "net.ifnames=0"
           "plymouth.ignore-serial-consoles"
