@@ -190,6 +190,7 @@
             src = ./script/depgraph;
             dir = "bin";
             isExecutable = true;
+            meta.mainProgram = "depgraph";
 
             replacements = {
               inherit (pkgs) python3 nix;
@@ -200,6 +201,8 @@
             src = ./script/deploy;
             dir = "bin";
             isExecutable = true;
+            meta.mainProgram = "deploy";
+
             replacements = {
               inherit (pkgs) powershell nix openssh;
               nom = pkgs.nix-output-monitor;
@@ -210,6 +213,8 @@
             src = ./script/enrage;
             dir = "bin";
             isExecutable = true;
+            meta.mainProgram = "enrage";
+
             replacements = {
               inherit (pkgs) bash nix gnused rage;
             };
@@ -219,8 +224,21 @@
             src = ./script/rerage;
             dir = "bin";
             isExecutable = true;
+            meta.mainProgram = "rerage";
+
             replacements = {
               inherit (pkgs) bash nix gnused rage jq findutils parallel;
+            };
+          };
+          "unrage" = pkgs.replaceVarsWith {
+            name = "unrage";
+            src = ./script/unrage;
+            dir = "bin";
+            isExecutable = true;
+            meta.mainProgram = "unrage";
+
+            replacements = {
+              inherit (pkgs) bash rage;
             };
           };
           "s3-collect-garbage" = pkgs.replaceVarsWith {
@@ -228,6 +246,8 @@
             src = ./script/s3-collect-garbage;
             dir = "bin";
             isExecutable = true;
+            meta.mainProgram = "s3-collect-garbage";
+
             replacements = {
               inherit (pkgs) powershell;
             };
@@ -237,17 +257,10 @@
             src = ./script/s3-create-gcroot;
             dir = "bin";
             isExecutable = true;
+            meta.mainProgram = "s3-create-gcroot";
+
             replacements = {
               inherit (pkgs) powershell;
-            };
-          };
-          "unrage" = pkgs.replaceVarsWith {
-            name = "unrage";
-            src = ./script/unrage;
-            dir = "bin";
-            isExecutable = true;
-            replacements = {
-              inherit (pkgs) bash rage;
             };
           };
         };
@@ -289,7 +302,7 @@
               name
               {
                 type = "app";
-                program = "${value}";
+                program = "${lib.getExe value}";
               }
           )
           (scripts // packages);
