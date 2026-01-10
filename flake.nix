@@ -184,45 +184,73 @@
         python3 = pkgs.python3.withPackages (pypi: with pypi; [
           pygraphviz
         ]);
-        scripts = (
-          # legacy scripts.nix
-          mapAttrs (name: script: pkgs.writeShellScriptBin name script) ((import ./scripts.nix) { inherit lib self; pkgs = (pkgs // self.packages.${system}); })
-        ) // (
-          # collect from script directory
-          listToAttrs (
-            map
-              (file: rec {
-                name = unsafeDiscardStringContext (replaceStrings [ "/" ] [ "-" ] (removePrefix "${self}/script/" file)); # this is safe, actually
-                value = pkgs.replaceVarsWith {
-                  inherit name;
-                  src = file;
-                  dir = "bin";
-                  isExecutable = true;
+        scripts = {
+          "depgraph" = pkgs.replaceVarsWith {
+            name = "depgraph";
+            src = ./script/depgraph;
+            dir = "bin";
+            isExecutable = true;
 
-                  replacements = {
-                    inherit python3;
-
-                    # packages that are available to the scripts
-                    inherit (pkgs)
-                      bash
-                      gnused
-                      findutils
-                      jq
-                      nix
-                      openssh
-                      parallel
-                      powershell
-                      rage
-                      ;
-                    wireguard = pkgs.wireguard-tools;
-                    nom = pkgs.nix-output-monitor;
-                    nixpkgs = toString inputs.nixpkgs;
-                  };
-                };
-              })
-              (findModules "" "${self}/script")
-          )
-        );
+            replacements = {
+              inherit (pkgs) python3 nix;
+            };
+          };
+          "deploy" = pkgs.replaceVarsWith {
+            name = "deploy";
+            src = ./script/deploy;
+            dir = "bin";
+            isExecutable = true;
+            replacements = {
+              inherit (pkgs) powershell nix openssh;
+              nom = pkgs.nix-output-monitor;
+            };
+          };
+          "enrage" = pkgs.replaceVarsWith {
+            name = "enrage";
+            src = ./script/enrage;
+            dir = "bin";
+            isExecutable = true;
+            replacements = {
+              inherit (pkgs) bash nix gnused rage;
+            };
+          };
+          "rerage" = pkgs.replaceVarsWith {
+            name = "rerage";
+            src = ./script/rerage;
+            dir = "bin";
+            isExecutable = true;
+            replacements = {
+              inherit (pkgs) bash nix gnused rage jq findutils parallel;
+            };
+          };
+          "s3-collect-garbage" = pkgs.replaceVarsWith {
+            name = "s3-collect-garbage";
+            src = ./script/s3-collect-garbage;
+            dir = "bin";
+            isExecutable = true;
+            replacements = {
+              inherit (pkgs) powershell;
+            };
+          };
+          "s3-create-gcroot" = pkgs.replaceVarsWith {
+            name = "s3-create-gcroot";
+            src = ./script/s3-create-gcroot;
+            dir = "bin";
+            isExecutable = true;
+            replacements = {
+              inherit (pkgs) powershell;
+            };
+          };
+          "unrage" = pkgs.replaceVarsWith {
+            name = "unrage";
+            src = ./script/unrage;
+            dir = "bin";
+            isExecutable = true;
+            replacements = {
+              inherit (pkgs) bash rage;
+            };
+          };
+        };
       in
       (with builtins; with nixpkgs; with lib; rec {
 
@@ -259,14 +287,12 @@
           (name: value:
             nameValuePair'
               name
-              (flake-utils.lib.mkApp
-                {
-                  inherit name;
-                  drv = value;
-                }
-              )
+              {
+                type = "app";
+                program = "${value}";
+              }
           )
-          scripts // packages;
+          (scripts // packages);
 
         packages =
           filterAttrs
