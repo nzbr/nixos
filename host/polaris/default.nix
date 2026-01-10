@@ -199,7 +199,7 @@
   #   program = "${pkgs.openDsh}/bin/dash";
   # };
 
-  programs.xwayland.enable = false;
+  programs.xwayland.enable = lib.mkForce false;
 
   environment.systemPackages = [
     # pkgs.adw-gtk3
