@@ -138,8 +138,8 @@ with builtins; with lib; {
 
   users.groups.pulse-access.members = [ "root" config.nzbr.user ];
 
-  # services.xserver = {
-  #   enable = true;
+  # services = {
+  #   xserver.enable = true;
   #   displayManager.lightdm.enable = true;
   #   displayManager.lightdm.greeters.slick.enable = true;
   #   desktopManager.lxqt.enable = true;

@@ -159,39 +159,13 @@
 
   services.openssh.enable = true;
 
-  services.xserver = {
+  services.xserver.enable = true;
+  services.displayManager.sddm = {
     enable = true;
-    # displayManager.lightdm.enable = true;
-    # desktopManager.session = lib.mkForce [
-    #   {
-    #     name = "openauto";
-    #     start = ''
-    #       ${pkgs.openbox}/bin/openbox &
-    #       exec ${pkgs.openauto}/bin/autoapp
-    #     '';
-    #   }
-    # ];
-    # displayManager.lightdm.greeters.slick.enable = true;
-    # displayManager.gdm.enable = true;
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-    };
-    # desktopManager.phosh = {
-    #   enable = true;
-    #   user = config.nzbr.user;
-    #   group = config.users.users.${config.nzbr.user}.group;
-    #   # for better compatibility with x11 applications
-    #   phocConfig = {
-    #     xwayland = "immediate";
-    #     outputs."DSI-1".scale = 1;
-    #   };
-    # };
-    # desktopManager.lxqt.enable = true;
-    # desktopManager.gnome.enable = true;
-    # desktopManager.plasma5.mobile.enable = true;
-    desktopManager.plasma6.enable = true;
+    wayland.enable = true;
   };
+  # services.desktopManager.plasma5.mobile.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # services.cage = {
   #   enable = true;

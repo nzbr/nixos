@@ -99,20 +99,19 @@ with builtins; with lib; {
     xserver = {
       enable = true;
       libinput.enable = true;
+    };
 
-      ### GNOME ###
-
-      displayManager = {
-        gdm = {
-          wayland = false;
-          # autoSuspend makes the machine automatically suspend after inactivity.
-          # It's possible someone could/try to ssh'd into the machine and obviously
-          # have issues because it's inactive.
-          # See:
-          # * https://github.com/NixOS/nixpkgs/pull/63790
-          # * https://gitlab.gnome.org/GNOME/gnome-control-center/issues/22
-          autoSuspend = false;
-        };
+    ### GNOME ###
+    displayManager = {
+      gdm = {
+        wayland = false;
+        # autoSuspend makes the machine automatically suspend after inactivity.
+        # It's possible someone could/try to ssh'd into the machine and obviously
+        # have issues because it's inactive.
+        # See:
+        # * https://github.com/NixOS/nixpkgs/pull/63790
+        # * https://gitlab.gnome.org/GNOME/gnome-control-center/issues/22
+        autoSuspend = false;
       };
     };
 

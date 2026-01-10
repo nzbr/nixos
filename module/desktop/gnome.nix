@@ -7,15 +7,13 @@ with builtins; with lib; {
   config = mkIf config.nzbr.desktop.gnome.enable {
     nzbr.desktop.theme.enable = true;
 
-    services.xserver = {
-      desktopManager.gnome = {
+    services.desktopManager.gnome = {
+      enable = true;
+    };
+    services.displayManager = {
+      gdm = {
         enable = true;
-      };
-      displayManager = {
-        gdm = {
-          enable = true;
-          wayland = lib.mkDefault true;
-        };
+        wayland = lib.mkDefault true;
       };
     };
     services.displayManager.autoLogin = {
@@ -81,7 +79,7 @@ with builtins; with lib; {
           );
       in
       {
-        dconf.settings = lib.mkIf config.services.xserver.desktopManager.gnome.enable {
+        dconf.settings = lib.mkIf config.services.desktopManager.gnome.enable {
           "org/gnome/desktop/background" = {
             picture-options = "zoom";
             picture-uri = "file://${config.nzbr.assets."Starfield2.png"}";

@@ -33,7 +33,7 @@ with builtins; with lib; {
       nzbr.pattern.common.enable = true;
       nzbr.desktop.gnome.enable = true;
 
-      services.xserver.displayManager.gdm.enable = lib.mkForce false;
+      services.displayManager.gdm.enable = lib.mkForce false;
       services.displayManager.autoLogin.enable = lib.mkForce false;
 
       networking.networkmanager.enable = lib.mkForce false;

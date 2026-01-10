@@ -1,11 +1,11 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, ... }:
 with builtins; with lib; {
   config = mkIf (config.nzbr.service.syncthing.enable && config.services.xserver.enable)
     (
       let
         syncthingtray = (pkgs.syncthingtray.override {
           kioPluginSupport = false;
-          plasmoidSupport = config.services.xserver.desktopManager.plasma6.enable;
+          plasmoidSupport = config.services.desktopManager.plasma6.enable;
         });
       in
       {
