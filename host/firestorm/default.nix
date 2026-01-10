@@ -230,7 +230,7 @@ with lib;
     in
     {
       enable = true;
-      package = pkgs.postgresql_13;
+      package = pkgs.postgresql_18;
       dataDir = "/storage/postgres/${config.services.postgresql.package.psqlSchema}";
       enableTCPIP = true;
       authentication = ''
