@@ -37,13 +37,13 @@
       };
       extraFirmwareCommands =
         let
-          tsl2563-dtbo = pkgs.runCommand "ts2563.dtbo" {} ''
+          tsl2563-dtbo = pkgs.runCommand "ts2563.dtbo" { } ''
             ${pkgs.dtc}/bin/dtc -I dts -O dtb ${./overlays/tsl2563.dtso} > $out
           '';
         in
-          ''
-            cp ${tsl2563-dtbo} $PWD/overlays/tsl2563.dtbo
-          '';
+        ''
+          cp ${tsl2563-dtbo} $PWD/overlays/tsl2563.dtbo
+        '';
     };
 
     agenix.enable = false;

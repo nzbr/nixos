@@ -1,5 +1,4 @@
-{
-  stdenv
+{ stdenv
 , fetchFromGitHub
 , cmake
 , ...

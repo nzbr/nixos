@@ -1,5 +1,4 @@
-{
-  stdenvNoCC
+{ stdenvNoCC
 , writeText
 , openDsh
 , ...

@@ -1,5 +1,4 @@
-{
-  stdenv
+{ stdenv
 , fetchFromGitHub
 , cmake
 , pkg-config
@@ -24,25 +23,25 @@ stdenv.mkDerivation {
   };
 
   patches =
-  let
-    source = fetchFromGitHub {
-      owner = "archlinux";
-      repo = "svntogit-packages";
-      rev = "da653f08641f941c49a2d475811fbcd12b330444";
-      sha256 = "sha256-JEUhQ+7s8feLFPnsxzTq8WLccVrxq0R26uhPcyuKDm4=";
-    };
-  in
-  [
-    "${source}/trunk/gstreamer-1.6.patch"
-    "${source}/trunk/gstreamer-1.16.patch"
-    "${source}/trunk/qt-gstreamer-1.18.patch"
-    "${source}/trunk/qt-gstreamer-gcc11.patch"
+    let
+      source = fetchFromGitHub {
+        owner = "archlinux";
+        repo = "svntogit-packages";
+        rev = "da653f08641f941c49a2d475811fbcd12b330444";
+        sha256 = "sha256-JEUhQ+7s8feLFPnsxzTq8WLccVrxq0R26uhPcyuKDm4=";
+      };
+    in
+    [
+      "${source}/trunk/gstreamer-1.6.patch"
+      "${source}/trunk/gstreamer-1.16.patch"
+      "${source}/trunk/qt-gstreamer-1.18.patch"
+      "${source}/trunk/qt-gstreamer-gcc11.patch"
 
-    # Fixes the red tint in openauto
-    # Issue: https://bugzilla.gnome.org/show_bug.cgi?id=781816
-    # Patch: https://bugzilla.gnome.org/attachment.cgi?id=350558
-    ./red-artifact.patch
-  ];
+      # Fixes the red tint in openauto
+      # Issue: https://bugzilla.gnome.org/show_bug.cgi?id=781816
+      # Patch: https://bugzilla.gnome.org/attachment.cgi?id=350558
+      ./red-artifact.patch
+    ];
 
   nativeBuildInputs = [
     wrapQtAppsHook
