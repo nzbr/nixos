@@ -39,8 +39,6 @@ in
       # gnome.gnome-boxes
       gnome-tweaks
       seahorse
-
-      local.gnome-shell-extension-pop-shell
     ] ++ extensions;
 
     programs.dconf.enable = true;
