@@ -211,37 +211,35 @@ in
   ];
 
   # TODO: Upload from zfs snapshot
-  systemd = {
-    services.upload =
-      let
-        hc-id = "1766fc92-dd2b-46b0-afe8-a692118e8ab0";
-      in
-      {
-        description = "Upload backups to remote";
-        after = [ "network.target" ];
-        environment = {
-          HOME = "/root";
-        };
-        unitConfig = {
-          ConditionPathExists =
-            map
-              (user: "${user.home}/config")
-              (filter
-                (user: hasPrefix "/backup/" user.home)
-                (attrValues config.users.users)
-              );
-        };
-        script = ''
-          ${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}/start
-          ${pkgs.rclone}/bin/rclone sync -vv --track-renames --exclude-from /backup/.rcloneignore /backup jotta-archive:permafrost
-          ${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}/$?
-        '';
+  systemd.services.upload =
+    let
+      hc-id = "1766fc92-dd2b-46b0-afe8-a692118e8ab0";
+    in
+    {
+      description = "Upload backups to remote";
+      after = [ "network.target" ];
+      environment = {
+        HOME = "/root";
       };
-    timers.upload = {
-      wantedBy = [ "timers.target" ];
-      partOf = [ "upload.service" ];
-      timerConfig.OnCalendar = "*-*-* 02:00:00";
+      unitConfig = {
+        ConditionPathExists =
+          map
+            (user: "${user.home}/config")
+            (filter
+              (user: hasPrefix "/backup/" user.home)
+              (attrValues config.users.users)
+            );
+      };
+      script = ''
+        ${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}/start
+        ${pkgs.rclone}/bin/rclone sync -vv --track-renames --exclude-from /backup/.rcloneignore /backup jotta-archive:permafrost
+        ${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}/$?
+      '';
     };
+  systemd.timers.upload = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "upload.service" ];
+    timerConfig.OnCalendar = "*-*-* 02:00:00";
   };
 
   system.stateVersion = "23.05";
