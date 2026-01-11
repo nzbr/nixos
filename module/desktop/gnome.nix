@@ -1,5 +1,18 @@
 { config, lib, pkgs, modulesPath, ... }:
-with builtins; with lib; {
+with builtins; with lib;
+let
+  extensions = with pkgs.gnomeExtensions; [
+    appindicator
+    arcmenu
+    bluetooth-quick-connect
+    caffeine
+    dash-to-panel
+    gsconnect
+    hibernate-status-button
+    user-themes
+  ];
+in
+{
   options.nzbr.desktop.gnome = with types; {
     enable = mkEnableOption "GNOME Desktop Environment";
   };
@@ -28,16 +41,7 @@ with builtins; with lib; {
       seahorse
 
       local.gnome-shell-extension-pop-shell
-    ] ++ (
-      let
-        extensions =
-          pkgs.gnome41Extensions
-            // { "arcmenu@arcmenu.com" = pkgs.unstable.gnomeExtensions.arcmenu; }; # other arcmenu package is broken for some reason
-      in
-      map
-        (ext: extensions.${ext})
-        config.nzbr.home.config.dconf.settings."org/gnome/shell".enabled-extensions
-    );
+    ] ++ extensions;
 
     programs.dconf.enable = true;
     services.dbus.packages = with pkgs; [ dconf ];
@@ -110,26 +114,7 @@ with builtins; with lib; {
           };
           "org/gnome/shell" = {
             disable-user-extensions = false;
-            enabled-extensions = [
-              "appindicatorsupport@rgcjonas.gmail.com"
-              "arcmenu@arcmenu.com"
-              # "audio-switcher@albertomosconi"
-              "bluetooth-quick-connect@bjarosze.gmail.com"
-              "caffeine@patapon.info"
-              "dash-to-panel@jderose9.github.com"
-              "drive-menu@gnome-shell-extensions.gcampax.github.com"
-              "expandable-notifications@kaan.g.inam.org"
-              "gsconnect@andyholmes.github.io"
-              # "hibernate@dafne.rocks"
-              "hibernate-status@dromi" # Placeholder for the above extension
-              "notification-position@drugo.dev"
-              # "remmina-search-provider@alexmurray.github.com"
-              "spotify-artwork-fixer@wjt.me.uk"
-              # "tweaks-system-menu@extensions.gnome-shell.fifi.org"
-              "user-theme@gnome-shell-extensions.gcampax.github.com"
-              # "blur-my-shell@aunetx"
-              # "trayIconsReloaded@selfmade.pl"
-            ];
+            enabled-extensions = map (ext: ext.extensionUuid) extensions;
             favorite-apps = [
               "firefox.desktop"
               "org.gnome.Nautilus.desktop"
@@ -138,8 +123,6 @@ with builtins; with lib; {
               "idea-ultimate.desktop"
               "gitkraken.desktop"
               "timeular.desktop"
-              # "discord.desktop"
-              # "spotify.desktop"
             ];
             welcome-dialog-last-shown-version = pkgs.gnome-shell.version;
           };
