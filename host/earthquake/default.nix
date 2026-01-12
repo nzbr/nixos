@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, ... }:
 with builtins; with lib;
 let
   cudaPkgs = pkgs.cudaPackages_13_0;
@@ -13,15 +13,6 @@ in
     nodeIp6 = "fd7a:115c:a1e0:ab12:4843:cd96:6247:c828";
 
     deployment.targetHost = "earthquake.dragon-augmented.ts.net";
-
-    boot = {
-      remoteUnlock = {
-        enable = true;
-        tailscale = true;
-        luks = false;
-        zfs = [ "zroot" ];
-      };
-    };
 
     container = {
       watchtower.enable = true;
@@ -52,7 +43,7 @@ in
         repoUrl = "ssh://u523435-sub2@hetzner/home/repo";
         zfs.pools = [
           {
-            name = "zroot";
+            name = "zroot/root";
             mountpoint = "/";
             recursive = true;
           }
@@ -104,21 +95,26 @@ in
 
     initrd = {
       availableKernelModules = [
+        "uhci_hcd"
         "xhci_pci"
         "ehci_pci"
         "ahci"
-        "mpt3sas"
-        "nvme"
-        "usbhid"
-        "usb_storage"
         "sd_mod"
-        "hid_roccat"
-        "hid_roccat_common"
-        "hid_roccat_isku"
-
-        "e1000e" # Early boot network
+        "sr_mod"
+        "virtio_net"
+        "virtio_pci"
+        "virtio_mmio"
+        "virtio_blk"
+        "virtio_scsi"
+        "9p"
+        "9pnet_virtio"
       ];
-      kernelModules = [ ];
+      kernelModules = [
+        "virtio_balloon"
+        "virtio_console"
+        "virtio_rng"
+        "virtio_gpu"
+      ];
       supportedFilesystems = [ "zfs" ];
     };
     kernelModules = [ "dm-snapshot" "kvm-intel" ];
@@ -146,7 +142,7 @@ in
     in
     {
       "/" = {
-        device = "zroot";
+        device = "zroot/root";
         fsType = "zfs";
       };
       "/boot" = {
@@ -192,15 +188,6 @@ in
 
   boot.zfs.extraPools = [ "hoard" ];
 
-  swapDevices = [
-    {
-      device = "/dev/disk/by-partuuid/36a4546f-0d97-4a1b-818a-9aa7bffa9df4";
-      randomEncryption = {
-        enable = true;
-      };
-    }
-  ];
-
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = false;
   hardware.nvidia.modesetting.enable = false;
@@ -224,9 +211,7 @@ in
 
   networking = {
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
-    interfaces.eno1 = {
-      useDHCP = true;
-    };
+    interfaces.ens18.useDHCP = true;
     tempAddresses = "disabled";
     dhcpcd.extraConfig = ''
       slaac hwaddr
