@@ -372,7 +372,7 @@ in
     in
     {
       enable = true;
-      package = pkgs.postgresql_14;
+      package = pkgs.postgresql_18;
       enableTCPIP = true;
       authentication = ''
         host all all 10.42.0.0/24 md5
