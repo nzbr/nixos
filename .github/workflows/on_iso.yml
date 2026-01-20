@@ -16,18 +16,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Build toplevel ❄️
-        uses: nzbr/actions/nix-build@main
-        with:
-          expression: .#nixosConfigurations.live.config.system.build.toplevel
-          cache: true
-          cache-tag: live-iso
-          secret-key: ${{ secrets.SECRET_DECRYPTION_KEY }}
-
       - name: Build ISO 💿
         uses: nzbr/actions/nix-build@main
         with:
           expression: .#nixosConfigurations.live.config.system.build.isoImage
+          cache: true
+          cache-tag: live-iso
+          secret-key: ${{ secrets.SECRET_DECRYPTION_KEY }}
 
       - name: Upload ISO 📤
         uses: actions/upload-artifact@v4
