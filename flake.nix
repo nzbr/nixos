@@ -267,22 +267,27 @@
           buildInputs =
             let
               ifAvailable = collection: package: (orElse collection system { ${package} = [ ]; }).${package};
+              packages =
+                with pkgs; (flatten [
+                  nix
+                  (ifAvailable inputs.agenix.packages "agenix")
+                  graphviz
+                  morph
+                  nh # nixos-rebuild etc wrapper
+                  nixpkgs-fmt
+                  rage
+                  (ifAvailable inputs.nirgenx.packages "helm-update")
+                  (ifAvailable inputs.nirgenx.packages "yaml2nix")
+                  python3
+                ])
+                ++
+                mapAttrsToList
+                  (name: drv: pkgs.writeShellScriptBin name "set -ex\nexec ${pkgs.nix}/bin/nix run .#${name} \"$@\"")
+                  scripts;
             in
-            with pkgs; (flatten [
-              nix
-              (ifAvailable inputs.agenix.packages "agenix")
-              graphviz
-              morph
-              nixpkgs-fmt
-              rage
-              (ifAvailable inputs.nirgenx.packages "helm-update")
-              (ifAvailable inputs.nirgenx.packages "yaml2nix")
-              python3
-            ])
-            ++
-            mapAttrsToList
-              (name: drv: pkgs.writeShellScriptBin name "set -ex\nexec ${pkgs.nix}/bin/nix run .#${name} \"$@\"")
-              scripts;
+            [
+              (pkgs.linkFarmFromDrvs "devshell" packages)
+            ];
         };
 
         checks = {
