@@ -25,7 +25,7 @@ with builtins; with lib;
 
         # Language servers
         unstable.nil
-        nixd.nixd
+        nixd
 
       ] ++ (
         if config.nzbr.pattern.development.guiTools then

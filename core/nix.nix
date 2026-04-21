@@ -7,7 +7,6 @@ with builtins; with lib;
 
     packageOverrides = {
       local = inputs.self.packages.${system}; # import local packages
-      nixd = inputs.nixd.packages.${system};
     } //
     # import packages from inputs
     lib.mapAttrs

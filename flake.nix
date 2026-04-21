@@ -56,10 +56,6 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixd = {
-      url = "github:nix-community/nixd";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
 
     argocd = {
       url = "github:argoproj/argo-cd/stable";
