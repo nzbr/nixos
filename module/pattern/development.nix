@@ -31,8 +31,6 @@ with builtins; with lib;
       ] ++ (
         if config.nzbr.pattern.development.guiTools then
           [
-            jetbrains.idea-ultimate
-            jetbrains.rider
             gitbutler
           ] ++ (if config.nzbr.pattern.wsl.enable then [ ] else [
             vscode
