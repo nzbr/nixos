@@ -14,6 +14,7 @@ with builtins; with lib;
         gh
         gnumake
         nix-output-monitor
+        nh
         powershell
         # (python3.withPackages (pypi: with pypi; [
         #   autopep8
@@ -32,7 +33,7 @@ with builtins; with lib;
           [
             jetbrains.idea-ultimate
             jetbrains.rider
-            gitkraken
+            gitbutler
           ] ++ (if config.nzbr.pattern.wsl.enable then [ ] else [
             vscode
             scrcpy
