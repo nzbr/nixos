@@ -31,7 +31,7 @@ with builtins; with lib;
       ] ++ (
         if config.nzbr.pattern.development.guiTools then
           [
-            gitbutler
+            unstable.gitbutler
           ] ++ (if config.nzbr.pattern.wsl.enable then [ ] else [
             vscode
             scrcpy
