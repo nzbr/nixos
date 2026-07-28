@@ -85,7 +85,7 @@ with builtins; with lib; {
                       hurricane-win.id = "ORTVEOF-CUZIQQI-HXPIVQW-FSS4B3F-JVSDTQV-GBB233Q-ESXFKKW-GWNPNQN";
                       magnetar.id = "P2OE7AV-FBSSBQ6-36CIVTO-COUVSML-NPOBSBL-IBFNQYF-3MGIFEI-3MXOYQB";
                       nebula.id = "3LXFJEH-7XU7B7X-C3UQNMD-OZ2UVYJ-2EGXDEW-SH22AMB-K6DHR53-X4SU7QO";
-                      pulsar-win.id = "RXTBIQ6-C6SQFBC-DO2MIUA-FL7RUW2-PN6ILZC-4QMIIZX-UYP5RB7-FC3H5QK";
+                      pulsar-win.id = "A6YJTJX-B45QT6P-Y5RGB67-V6JZZXV-YBSSKEM-H7FJPHM-ARMNI5R-NFHZHQ7";
                       uli.id = "ZOTIOGW-NRF4IWB-BXJGBLB-QGZLA6A-NEOX3CV-5DK5O2V-6PFKBXH-VK4F3AK";
                       borealis.id = "PCEFGSJ-LCJ7MN5-AINGYGA-DK6B7XP-4OMKTI5-PKWUGPE-3M6BXOV-7FJPJAO";
                     }
