@@ -10,6 +10,7 @@ with builtins; with lib;
     {
       environment.systemPackages = with pkgs; [
         # androidComposition.androidsdk
+        android-tools
 
         gh
         gnumake
@@ -69,7 +70,6 @@ with builtins; with lib;
         userInfo = true;
       };
 
-      programs.adb.enable = true;
       users.groups.adbusers.members = [ config.nzbr.user ];
 
       virtualisation.docker.enable = mkDefault true;
