@@ -23,9 +23,10 @@ with builtins; with lib; {
             PATH=$PATH:${extraPath}
             export DOT_NOINSTALL=1 && source $HOME/.dotfiles/control.sh && autolink_all
             rm -f $HOME/{.cache,.config,.local/{bin,share,lib}}/.stowkeep
-            sha256sum $HOME/.zsh_plugins.txt $HOME/.zshrc > $HOME/.zsh.sha
-            mkdir -p "$HOME/.cache/antibody"
-            ln -sf "${pkgs.antibody}/bin/antibody" "$HOME/.cache/antibody/antibody"
+            if [ -f "$HOME/.zshrc" ]; then
+              mkdir -p "$HOME/.cache/antidote"
+              ln -sf "${pkgs.antidote}/share/antidote/antidote.zsh" "$HOME/.cache/antidote/antidote.zsh"
+            fi
           '';
           createFileEntries = dir:
             flatten (
