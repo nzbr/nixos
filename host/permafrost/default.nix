@@ -36,6 +36,7 @@ in
     };
 
     initrd = {
+      systemd.enable = false;
       kernelModules = [
         "r8169" # Early boot network
       ];
