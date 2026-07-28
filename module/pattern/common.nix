@@ -22,7 +22,7 @@ with builtins; with lib;
         service = {
           ssh = {
             enable = true;
-            authorizedSystems = [ "hurricane" "meteor" "pulsar" ];
+            authorizedSystems = [ "hurricane" "pulsar" ];
           };
         };
 
