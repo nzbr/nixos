@@ -48,10 +48,6 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    xyno-experiments = {
-      url = "github:thexyno/x";
-      inputs.nixpkgs.follows = "nixpkgs-2305";
-    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";

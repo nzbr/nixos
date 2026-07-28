@@ -5,7 +5,6 @@ with builtins; with lib; {
     (mapAttrsToList (n: v: v) nixos-wsl.nixosModules)
     agenix.nixosModules.age
     nirgenx.nixosModules.nirgenx
-    xyno-experiments.nixosModule
     disko.nixosModules.disko
 
     "${self}/host/${hostName}"
