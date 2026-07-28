@@ -4,6 +4,8 @@ with builtins; with lib; {
     enable = mkEnableOption "GitLab";
     dataPath = mkStrOpt "/var/lib/gitlab";
     dnsIP = mkStrOpt "10.13.0.10";
+    shmSize = mkStrOpt "256M";
+    logLevel = mkStrOpt "info"; # debug, info, warn, error, fatal
   };
 
   config =
@@ -24,8 +26,12 @@ with builtins; with lib; {
           "${config.nzbr.nodeIp}:20080:80"
           "${config.nzbr.nodeIp}:20090:8099"
         ];
+        environment = {
+          "GITLAB_LOG_LEVEL" = cfg.logLevel;
+        };
         extraOptions = [
           "--dns=${cfg.dnsIP}"
+          "--shm-size=${cfg.shmSize}"
           "--label=com.centurylinklabs.watchtower.enable=true"
         ];
       };
