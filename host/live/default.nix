@@ -104,7 +104,6 @@ with builtins; with lib; {
     ### GNOME ###
     displayManager = {
       gdm = {
-        wayland = false;
         # autoSuspend makes the machine automatically suspend after inactivity.
         # It's possible someone could/try to ssh'd into the machine and obviously
         # have issues because it's inactive.

@@ -26,7 +26,6 @@ in
     services.displayManager = {
       gdm = {
         enable = true;
-        wayland = lib.mkDefault true;
       };
     };
     services.displayManager.autoLogin = {
