@@ -47,6 +47,7 @@ with builtins; with lib; {
   wsl.usbip.enable = true;
 
   users.groups.kvm.members = [ "nzbr" ];
+  users.groups.docker.members = [ "nzbr" ];
 
   environment.systemPackages = config.environment.windowsPackages ++ [ pkgs.kmod ];
   environment.windowsPackages = with pkgs; [
