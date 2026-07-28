@@ -2,6 +2,7 @@
 with builtins; with lib; {
   options.nzbr.service.borgbackup = with types; {
     enable = mkEnableOption "Borg Backups";
+    backupBlockDevices = mkEnableOption "backing up raw block devices";
     rcloneRemote = mkOption {
       type = str;
     };
@@ -16,6 +17,23 @@ with builtins; with lib; {
       description = "List of paths to exclude from the backup, gets prepended with the snapshot mount path";
       type = listOf str;
       default = [ ];
+    };
+    cephfs = {
+      snapDir = mkOption {
+        type = str;
+        default = ".snap";
+        description = "Virtual directory under which the cephfs client manages snapshots";
+      };
+      snapshotName = mkOption {
+        type = str;
+        default = "borgbackup";
+        description = "Name of the ZFS snapshot to use for the backup";
+      };
+      directories = mkOption {
+        type = listOf str;
+        default = [ ];
+        description = "CephFS mounted directories to backup";
+      };
     };
     zfs = {
       snapshotName = mkOption {
@@ -69,25 +87,25 @@ with builtins; with lib; {
       cfg = config.nzbr.service.borgbackup;
       opt = options.nzbr.service.borgbackup;
       runDir = "/run/borg";
-      cachePath = "${runDir}/rclone-cache";
-      mountPath = "${runDir}/rclone-mount";
-      repoPath = cfg.repoUrl or "${mountPath}/borg/${config.networking.hostName}";
-      snapshotPath = "${runDir}/snapshot";
+      rcloneCachePath = "${runDir}/rclone-cache";
+      rcloneMountPath = "${runDir}/rclone-mount";
+      repoPath = cfg.repoUrl or "${rcloneMountPath}/borg/${config.networking.hostName}";
+      snapshotMountPath = "${runDir}/snapshot";
       specialFilesList = "${runDir}/special-files";
     in
     {
       systemd.tmpfiles.rules = [
-        "d ${cachePath} 0755 root root -"
+        "d ${rcloneCachePath} 0755 root root -"
       ];
 
-      system.fsPackages = [
+      system.fsPackages = mkIf opt.rcloneRemote.isDefined [
         (pkgs.runCommand "mount.rclone" { } ''
           mkdir -p $out/bin
           ln -s ${pkgs.rclone}/bin/rclone $out/bin/mount.rclone
         '')
       ];
 
-      fileSystems.${mountPath} =
+      fileSystems.${rcloneMountPath} =
         assert (opt.rcloneRemote.isDefined) != (opt.repoUrl.isDefined);
         mkIf opt.rcloneRemote.isDefined {
           device = "${cfg.rcloneRemote}:";
@@ -102,7 +120,7 @@ with builtins; with lib; {
             "vfs-cache-mode=writes"
             "vfs-cache-max-size=1G"
             "config=/root/.config/rclone/rclone.conf"
-            "cache-dir=${cachePath}"
+            "cache-dir=${rcloneCachePath}"
             "log-file=${runDir}/rclone.log"
             "x-systemd.automount"
             "x-systemd.mount-timeout=5"
@@ -120,7 +138,7 @@ with builtins; with lib; {
         recursiveUpdate
           {
             exclude_caches = true;
-            read_special = true;
+            read_special = cfg.backupBlockDevices;
             encryption_passcommand = "cat ${config.nzbr.assets."backup.password"}";
             compression = "auto,zstd,9";
             checkpoint_interval = 300;
@@ -132,18 +150,18 @@ with builtins; with lib; {
 
             source_directories = flatten [
               cfg.paths
-              snapshotPath
+              snapshotMountPath
             ];
 
-            exclude_from = [
-              specialFilesList
+            exclude_from = flatten [
+              (optional cfg.backupBlockDevices specialFilesList)
             ];
 
-            exclude_patterns = map (path: assert hasPrefix "/" path; "${snapshotPath}${path}") cfg.excludeFromSnapshot;
+            exclude_patterns = map (path: assert hasPrefix "/" path; "${snapshotMountPath}${path}") cfg.excludeFromSnapshot;
 
             keep_daily = 7;
-            keep_monthly = 12;
             keep_weekly = 4;
+            keep_monthly = 12;
             keep_yearly = 5;
 
             check_last = 7;
@@ -166,12 +184,12 @@ with builtins; with lib; {
               }
             ];
 
-            before_backup = [
+            before_backup = flatten [
               (pkgs.writeShellScript "borg-pre-backup_snapshot" ''
                 set -euxo pipefail
 
-                umount -R ${snapshotPath} || true
-                mount --mkdir -t tmpfs tmpfs ${snapshotPath}
+                umount -R ${snapshotMountPath} || true
+                mount --mkdir -t tmpfs tmpfs ${snapshotMountPath}
 
                 ${concatStringsSep "\n" (
                   map
@@ -180,8 +198,8 @@ with builtins; with lib; {
                     let
                       mountpoint =
                         if pool.mountpoint == null
-                        then "${snapshotPath}/"
-                        else "${snapshotPath}/${removePrefix "/" pool.mountpoint}";
+                        then "${snapshotMountPath}/"
+                        else "${snapshotMountPath}/${removePrefix "/" pool.mountpoint}";
                     in
                     ''
                       zfs destroy -r ${pool.name}@${cfg.zfs.snapshotName} || true
@@ -211,17 +229,39 @@ with builtins; with lib; {
                   )
                   cfg.zfs.pools
                 )}
+
+                ${concatStringsSep "\n" (
+                  map
+                    (dir:
+                      let
+                        snapshot = "${dir}/${cfg.cephfs.snapDir}/${cfg.cephfs.snapshotName}";
+                      in
+                      ''
+                      if [[ -d "${snapshot}" ]]; then
+                        rmdir "${snapshot}"
+                      fi
+                      mkdir "${snapshot}"
+
+                      mount --mkdir -o bind "${snapshot}" "${snapshotMountPath}${dir}"
+                    '')
+                    cfg.cephfs.directories
+                )}
               '')
-              (pkgs.writeShellScript "borg-pre-backup_find-special" ''
+              (optional cfg.backupBlockDevices (pkgs.writeShellScript "borg-pre-backup_find-special" ''
                 set -euxo pipefail
-                find ${snapshotPath} -xtype b,c,p,s -fprint ${specialFilesList}
+                find ${snapshotMountPath} -xtype b,c,p,s -fprint ${specialFilesList}
                 echo "Excluding $(wc -l ${specialFilesList} | ${pkgs.gawk}/bin/awk '{print $1;}') special files"
-              '')
+              ''))
             ];
             after_backup = [
               (pkgs.writeShellScript "borg-post-backup" ''
                 set -euxo pipefail
-                umount -R ${snapshotPath}
+                umount -R ${snapshotMountPath}
+
+                ${concatStringsSep "\n" (map
+                  (dir: "rmdir '${dir}/${cfg.cephfs.snapDir}/${cfg.cephfs.snapshotName}'")
+                  (reverseList cfg.cephfs.directories)
+                )}
 
                 ${concatStringsSep "\n" (map
                   (pool: "zfs destroy -r ${pool.name}@${cfg.zfs.snapshotName}")
