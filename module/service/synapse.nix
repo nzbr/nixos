@@ -17,6 +17,15 @@ with builtins; with lib; {
         enable = true;
         dataDir = "/storage/synapse";
         withJemalloc = true;
+        log = {
+          loggers = {
+            "synapse.access.http".level = "WARNING";
+            "synapse.federation".level = "WARNING";
+            "synapse.http.federation".level = "WARNING";
+            "synapse.http.client".level = "WARNING";
+            "synapse.replication.tcp.resource".level = "WARNING";
+          };
+        };
         settings = {
           public_baseurl = "https://nzbr.de:8448/";
           enable_registration = false;
