@@ -9,12 +9,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        host:
-          - earthquake
-          - firestorm
-          - permafrost
-          - pulsar
-    runs-on: ubuntu-latest
+        config:
+          - '{"runner": "ubuntu-24.04", "host": "earthquake"}'
+          - '{"runner": "ubuntu-24.04", "host": "firestorm"}'
+          - '{"runner": "ubuntu-24.04", "host": "permafrost"}'
+          - '{"runner": "ubuntu-24.04", "host": "pulsar"}'
+          - '{"runner": "ubuntu-24.04-arm", "host": "buildpi"}'
+          - '{"runner": "ubuntu-24.04-arm", "host": "shockwave"}'
+    runs-on: ${{ fromJson(matrix.config).runner }}
+    env:
+      HOST: ${{ fromJson(matrix.config).host }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -24,7 +28,7 @@ jobs:
       - name: Build toplevel ❄️
         uses: nzbr/actions/nix-build@main
         with:
-          expression: .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
+          expression: .#nixosConfigurations.${{ env.HOST }}.config.system.build.toplevel
           cache: true
-          cache-tag: ${{ matrix.host }}
+          cache-tag: ${{ env.HOST }}
           secret-key: ${{ secrets.SECRET_DECRYPTION_KEY }}
