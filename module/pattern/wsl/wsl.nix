@@ -42,7 +42,6 @@ with builtins; with lib; {
         systemPackages = with pkgs; [
           firefox
           virt-manager
-          wslu
           wsl-open
           xdg-utils
         ];
