@@ -108,6 +108,7 @@ with lib;
         value = {
           device = from;
           options = [ "bind" ];
+          fsType = "auto";
         };
       }
     )
