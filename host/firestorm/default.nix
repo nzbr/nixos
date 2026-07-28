@@ -81,6 +81,7 @@ with lib;
     };
 
     initrd = {
+      systemd.enable = false;
       availableKernelModules = [
         "ata_piix"
         "uhci_hcd"
