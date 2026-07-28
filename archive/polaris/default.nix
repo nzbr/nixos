@@ -176,6 +176,8 @@
   programs.xwayland.enable = lib.mkForce false;
 
   environment.systemPackages = [
+    pkgs.android-tools
+
     # pkgs.adw-gtk3
     # pkgs.phosh-mobile-settings
     # pkgs.epiphany
@@ -187,8 +189,6 @@
     pkgs.tmux
     pkgs.vim
   ];
-
-  programs.adb.enable = true;
 
   # TODO: Ofono
 
