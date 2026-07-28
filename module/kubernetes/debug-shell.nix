@@ -5,8 +5,8 @@ let
     "base"
     "base-devel"
     "bind-tools"
+    "fastfetch"
     "git"
-    "neofetch"
     "nmap"
     "vim"
     "wget"
@@ -30,7 +30,7 @@ in
             containers = [{
               name = "shell";
               image = "docker.io/library/archlinux";
-              command = [ "bash" "-c" "pacman -Syu --noconfirm ${concatStringsSep " " pkgs} && neofetch && exec sleep infinity" ];
+              command = [ "bash" "-c" "pacman -Syu --noconfirm ${concatStringsSep " " pkgs} && fastfetch && exec sleep infinity" ];
             }];
             terminationGracePeriodSeconds = 30;
             tolerations = [{

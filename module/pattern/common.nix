@@ -42,13 +42,13 @@ with builtins; with lib;
         diskus
         eza
         eternal-terminal
+        fastfetch
         file
         git
         gnupg
         htop
         inetutils
         killall
-        neofetch
         pv
         rsync
         stow
