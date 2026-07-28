@@ -16,7 +16,10 @@ in
 
     container = {
       watchtower.enable = true;
-      gitlab.enable = true;
+      gitlab = {
+        enable = true;
+        dataPath = "/mnt/hoard/lib/gitlab";
+      };
     };
 
     network.k3s-firewall.enable = true;
@@ -47,19 +50,13 @@ in
             mountpoint = "/";
             recursive = true;
           }
-          {
-            name = "hoard";
-            mountpoint = "/storage";
-            recursive = true;
-          }
         ];
-        paths = [
-          "/dev/zvol/hoard/*@${config.nzbr.service.borgbackup.zfs.snapshotName}"
-          "/dev/zvol/hoard/libvirt/*@${config.nzbr.service.borgbackup.zfs.snapshotName}"
+        cephfs.directories = [
+          "/mnt/hoard"
         ];
         healthcheckUrl = "https://hc-ping.com/f904595a-cd31-4261-b714-21b14be2cdc2";
         excludeFromSnapshot = [
-          "/storage/media"
+          "/mnt/hoard/media"
         ];
       };
       # urbackup = {
@@ -94,6 +91,7 @@ in
     };
 
     initrd = {
+      systemd.enable = false;
       availableKernelModules = [
         "uhci_hcd"
         "xhci_pci"
@@ -159,48 +157,34 @@ in
       "/run/.luks/cr_storage_1" = zfsOnLuks "cr_storage_1" "8f10e1ac-53df-452b-8036-dc957d346194";
       "/run/.luks/cr_storage_2" = zfsOnLuks "cr_storage_2" "b61c0648-cccd-41fd-9e1b-5f2331d3a71e";
       "/run/.luks/cr_storage_3" = zfsOnLuks "cr_storage_3" "dd8c521a-9539-480b-bfe6-49a0fe045016";
-    };
 
-  systemd.mounts = lib.mapAttrsToList
-    (to: attrs:
-      rec {
-        what = attrs.from;
-        where = to;
-        type = "none";
-        options = "bind";
-
-        after = [ "zfs.target" ];
-        wants = after;
-
-        wantedBy = (attrs.wantedBy or [ ]) ++ [ "local-fs.target" ];
-        before = wantedBy;
-      }
-    )
-    {
-      "/var/lib/libvirt" = {
-        from = "/storage/libvirt";
-        wantedBy = [ "libvirtd.service" ];
-      };
-      "/var/lib/machines" = {
-        from = "/storage/machines";
+      "/mnt/hoard" = {
+        device = "10.0.1.4:/nas";
+        fsType = "ceph";
+        options = [
+          "name=earthquake"
+          "mds_namespace=hoard"
+          "mon_addr=10.0.1.4"
+          "secretfile=${config.nzbr.assets."ceph-hoard.key"}"
+          "x-systemd.automount"
+          "x-systemd.idle-timeout=5m"
+          "noatime"
+          "_netdev"
+        ];
       };
     };
 
-  boot.zfs.extraPools = [ "hoard" ];
 
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = false;
-  hardware.nvidia.modesetting.enable = false;
-  hardware.nvidia.nvidiaSettings = true;
-  nixpkgs.config.nvidia.acceptLicense = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_535;
-  hardware.opengl.enable = true;
-  hardware.graphics.enable = true;
+
+  systemd.services.docker-gitlab.requires = [ "mnt-hoard.mount" ];
+  systemd.services.plex.requires = [ "mnt-hoard.mount" ];
+  systemd.services.samba-nmbd.requires = [ "mnt-hoard.mount" ];
+  systemd.services.samba-smbd.requires = [ "mnt-hoard.mount" ];
+  systemd.services.samba-windindd.requires = [ "mnt-hoard.mount" ];
+  systemd.services.syncthing.requires = [ "mnt-hoard.mount" ];
+
   environment.systemPackages = with pkgs; [
-    cudaPkgs.cudatoolkit
-    cudaPkgs.cudnn
-    cudaPkgs.cuda_cudart
-    (nvtopPackages.nvidia.override (args: { intel = true; }))
+    ceph-client
   ];
 
   services.zfs = {
@@ -242,7 +226,7 @@ in
 
     shares = {
       Backup = {
-        path = "/storage/backup";
+        path = "/mnt/hoard/backup";
         browseable = "yes";
         public = "no";
         "read only" = "no";
@@ -254,7 +238,7 @@ in
         "inherit acls" = "yes";
       };
       nzbr = {
-        path = "/storage/nzbr";
+        path = "/mnt/hoard/nzbr";
         browseable = "yes";
         public = "no";
         "read only" = "no";
@@ -267,7 +251,7 @@ in
         "inherit acls" = "yes";
       };
       Media = {
-        path = "/storage/media";
+        path = "/mnt/hoard/media";
         browseable = "yes";
         public = "no";
         "read only" = "no";
@@ -303,7 +287,6 @@ in
 
   systemd.tmpfiles.rules = [
     "d /tmp/smb 0770 nzbr users 1d"
-    "d /storage/postgres 0755 postgres users"
   ];
 
   networking.firewall.allowedTCPPorts = [
@@ -332,8 +315,8 @@ in
 
   nzbr.service.syncthing.enable = true;
   nzbr.service.syncthing.scanInterval = 24 * 3600;
-  services.syncthing.dataDir = "/storage/nzbr";
-  services.syncthing.settings.folders.mp3.path = lib.mkForce "/storage/media/MP3";
+  services.syncthing.dataDir = "/mnt/hoard/nzbr";
+  services.syncthing.settings.folders.mp3.path = lib.mkForce "/mnt/hoard/media/MP3";
 
   nzbr.program.java.enable = true;
 
@@ -345,9 +328,9 @@ in
   };
 
   nzbr.everythingIndex = [
-    { path = "/storage/backup"; schedule = "*-*-* 04:00:00"; }
-    { path = "/storage/media"; schedule = "*-*-* 0/3:00:00"; }
-    { path = "/storage/nzbr"; schedule = "*-*-* *:0/30:00"; }
+    { path = "/mnt/hoard/backup"; schedule = "*-*-* 04:00:00"; }
+    { path = "/mnt/hoard/media"; schedule = "*-*-* 0/3:00:00"; }
+    { path = "/mnt/hoard/nzbr"; schedule = "*-*-* *:0/30:00"; }
   ];
 
   nixpkgs.overlays = [
@@ -358,7 +341,7 @@ in
   services.plex = {
     enable = true;
     openFirewall = true;
-    dataDir = "/storage/media/.plex";
+    dataDir = "/mnt/hoard/media/.plex";
     user = "nzbr";
     group = "media";
   };
@@ -398,7 +381,7 @@ in
   };
   services.postgresqlBackup = {
     enable = true;
-    location = "/storage/backup/pg-backup";
+    location = "/mnt/hoard/backup/pg-backup";
     compression = "none";
     databases = config.services.postgresql.ensureDatabases;
   };
@@ -413,94 +396,6 @@ in
     port = 8000;
   };
 
-  networking.firewall.trustedInterfaces = [ "docker0" ];
-  networking.bridges.nspawn0.interfaces = [ ];
-  networking.interfaces.nspawn0.ipv4.addresses = [{ address = "10.16.0.1"; prefixLength = 16; }];
-  networking.interfaces.nspawn0.ipv6.addresses = [{ address = "fd00:10:16::1"; prefixLength = 64; }];
-  networking.nat = {
-    enable = true;
-    enableIPv6 = true;
-    internalInterfaces = [ "nspawn0" ];
-  };
-  services.kea =
-    let
-      domain-name = "nspawn.local";
-      mkOptionData = attrs: map (x: { name = x.name; data = x.value; }) (attrsToList attrs);
-    in
-    rec {
-      dhcp4 = {
-        enable = true;
-        settings = {
-          interfaces-config = {
-            interfaces = [
-              "nspawn0"
-            ];
-          };
-          option-data = mkOptionData {
-            inherit domain-name;
-            domain-name-servers = "100.100.100.100, 8.8.8.8";
-          };
-          # lease-database = {
-          #   name = "/var/lib/kea/dhcp4.leases";
-          #   persist = true;
-          #   type = "memfile";
-          # };
-          subnet4 = [
-            {
-              id = 1;
-              pools = [
-                {
-                  pool = "10.16.0.2 - 10.16.254.254";
-                }
-              ];
-              subnet = "10.16.0.0/16";
-            }
-          ];
-          valid-lifetime = 2592000; # 30 days
-        };
-      };
-      dhcp6 = {
-        enable = true;
-        settings = {
-          interfaces-config = dhcp4.settings.interfaces-config;
-          # lease-database = {
-          #   name = "/var/lib/kea/dhcp6.leases";
-          #   persist = true;
-          #   type = "memfile";
-          # };
-          subnet6 = [
-            {
-              id = 1;
-              pools = [
-                {
-                  pool = "fd00:10:16::2 - fd00:10:16::fffe";
-                }
-              ];
-              subnet = "fd00:10:16::/64";
-            }
-          ];
-          valid-lifetime = dhcp4.settings.valid-lifetime;
-        };
-      };
-    };
-
-  systemd.services.nspawn-lego = {
-    description = "Lego Universe Container";
-    restartIfChanged = true;
-    wantedBy = [ "machines.target" ];
-    wants = [ "network.target" ];
-    after = [ "network.target" ];
-    path = [ config.systemd.package pkgs.iproute2 ];
-    serviceConfig = {
-      Type = "notify";
-      Slice = "machine.slice";
-      Delegate = true;
-      KillMode = "mixed";
-      KillSignal = "TERM";
-      ExecStart = "systemd-nspawn --keep-unit --notify-ready=yes --boot -M lego --hostname=lego --network-bridge=nspawn0 -D /storage/machines/lego";
-    };
-  };
-
   systemd.services.backup-media =
     let
       hc-id = "e7634aae-01b2-48a6-84cd-d99c76d24a29";
@@ -512,11 +407,11 @@ in
         HOME = "/root";
       };
       unitConfig = {
-        ConditionPathExists = [ "/storage/media/.rcloneignore" ];
+        ConditionPathExists = [ "/mnt/hoard/media/.rcloneignore" ];
       };
       script = ''
         ${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}/start
-        ${pkgs.rclone}/bin/rclone sync --track-renames --exclude-from /storage/media/.rcloneignore -vv /storage/media media-encrypted:earthquake-media
+        ${pkgs.rclone}/bin/rclone sync --track-renames --exclude-from /mnt/hoard/media/.rcloneignore -vv /mnt/hoard/media media-encrypted:earthquake-media
         ${pkgs.curl}/bin/curl -fs -m 10 --retry 5 -o /dev/null https://hc-ping.com/${hc-id}/$?
       '';
     };

@@ -2,7 +2,7 @@
 with builtins; with lib; {
   options.nzbr.container.gitlab = {
     enable = mkEnableOption "GitLab";
-    dataPath = mkStrOpt "/storage/gitlab";
+    dataPath = mkStrOpt "/var/lib/gitlab";
     dnsIP = mkStrOpt "10.13.0.10";
   };
 
