@@ -88,6 +88,7 @@ with builtins; with lib; {
                       pulsar-win.id = "A6YJTJX-B45QT6P-Y5RGB67-V6JZZXV-YBSSKEM-H7FJPHM-ARMNI5R-NFHZHQ7";
                       uli.id = "ZOTIOGW-NRF4IWB-BXJGBLB-QGZLA6A-NEOX3CV-5DK5O2V-6PFKBXH-VK4F3AK";
                       borealis.id = "PCEFGSJ-LCJ7MN5-AINGYGA-DK6B7XP-4OMKTI5-PKWUGPE-3M6BXOV-7FJPJAO";
+                      zenith.id = "UWXURLZ-GNULTAL-HAKXI7X-CJE6KHU-LZD5BUE-6HRVS4Z-BG36XMZ-4E2TTQX";
                     }
                   );
                 folders =
