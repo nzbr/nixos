@@ -4,7 +4,7 @@ let
   host = "plex.nzbr.de";
   name = "plex";
   namespace = "plex";
-  portName = "www";
+  port = 32400;
 in
 {
   nirgenx.deployment.plex = {
@@ -20,33 +20,9 @@ in
           inherit namespace name;
         };
         spec = {
-          type = "ClusterIP";
-          ports = [
-            {
-              protocol = "TCP";
-              name = portName;
-              port = 32400;
-            }
-          ];
+          type = "ExternalName";
+          externalName = "vortex.dragon-augmented.ts.net";
         };
-      }
-      {
-        apiVersion = "v1";
-        kind = "Endpoints";
-        metadata = {
-          inherit namespace name;
-        };
-        subsets = [{
-          addresses = [{
-            ip = inputs.self.nixosConfigurations.earthquake.config.nzbr.nodeIp;
-          }];
-          ports = [
-            {
-              name = portName;
-              port = 32400;
-            }
-          ];
-        }];
       }
 
       {
@@ -62,7 +38,7 @@ in
             http.paths = [{
               backend.service = {
                 inherit name;
-                port.name = portName;
+                port.number = port;
               };
               path = "/";
               pathType = "Prefix";
