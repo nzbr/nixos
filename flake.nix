@@ -52,10 +52,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    argocd = {
-      url = "github:argoproj/argo-cd/stable";
-      flake = false;
-    };
     dotfiles = {
       url = "github:nzbr/dotfiles";
       # TODO: submodules = true; (once that is supported)

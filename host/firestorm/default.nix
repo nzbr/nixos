@@ -1,8 +1,9 @@
 { config, lib, pkgs, modulesPath, ... }:
+with lib;
 let
+  inherit (builtins) toJSON;
   root = config.nzbr.flake.root;
 in
-with lib;
 {
   imports = [
     ./disk-configuration.nix
@@ -155,6 +156,193 @@ with lib;
     role = "server";
     # dbEndpoint = "sqlite:///storage/kubernetes/kine.db?_journal=wal";
     dbEndpoint = "mysql://";
+    manifests = {
+      "01-argocd".content = {
+        apiVersion = "helm.cattle.io/v1";
+        kind = "HelmChart";
+        metadata = {
+          name = "argocd";
+          namespace = "kube-system";
+        };
+        spec = {
+          repo = "https://argoproj.github.io/argo-helm";
+          chart = "argo-cd";
+          version = "10.5.0";
+          targetNamespace = "argocd";
+          valuesContent = toJSON {
+            configs = {
+              cm = {
+                "accounts.github-actions" = "apiKey";
+                "statusbadge.enabled" = true;
+              };
+              params = {
+                "reposerver.enable.git.submodule" = "false";
+              };
+              rbac = {
+                "policy.default" = "role:readonly";
+                "policy.csv" = ''
+                  p, github-actions, applications, *, ci/*, allow
+                '';
+              };
+              secret.createSecret = false;
+            };
+            notifications = {
+              secret.create = false; # We create it form an age-encrypted file ourselves further down
+              notifiers."service.github" = toJSON {
+                appID = "910267";
+                installationID = "51398439";
+                privateKey = "$github-privateKey";
+              };
+              templates."template.github" =
+                let
+                  argocdUrl = "https://argocd.nzbr.de";
+                  appHealth = "{{ if and (eq .app.status.sync.status \"Healthy\") (eq .app.status.health.status \"Healthy\") }}success{{ else if or (eq .app.status.sync.status \"Degraded\") (eq .app.status.health.status \"Degraded\") }}failure{{ else }}pending{{ end }}";
+                in
+                toJSON {
+                  github = {
+                    repoURLPath = "{{.app.spec.source.repoURL}}";
+                    revisionPath = "{{.app.status.operationState.syncResult.revision}}";
+                    status = {
+                      state = appHealth;
+                      label = "ArgoCD/{{.app.metadata.name}}";
+                      targetURL = "${argocdUrl}/applications/{{.app.metadata.name}}?operation=true";
+                    };
+                    deployment = {
+                      state = appHealth;
+                      environment = "{{.app.spec.source.targetRevision}}";
+                      logURL = "${argocdUrl}/applications/{{.app.metadata.name}}?operation=true";
+                      requiredContexts = [ ];
+                      autoMerge = true;
+                      transientEnvironment = false;
+                      reference = "{{.app.spec.source.targetRevision}}";
+                    };
+                  };
+              };
+              triggers."trigger.on-status-change" = toJSON (
+                flatten (
+                  map
+                    (status:
+                      [
+                        { send = [ "github" ]; when = "app.status.sync.status in ['${status}']"; }
+                        { send = [ "github" ]; when = "app.status.health.status in ['${status}']"; }
+                      ]
+                    )
+                    [ "Healthy" "Progressing" "Degraded" ]
+                )
+              );
+            };
+          };
+        };
+      };
+      "02-argocd-notificatons-secret".source = config.nzbr.assets."k8s/argocd-notifications-secret.yaml";
+      "03-argocd-approject-default".content = {
+        apiVersion = "argoproj.io/v1alpha1";
+        kind = "AppProject";
+        metadata = {
+          namespace = "argocd";
+          name = "default";
+        };
+        spec = {
+          clusterResourceWhitelist = [
+            { group = "*"; kind = "*"; }
+          ];
+          destinations = [
+            { namespace = "*"; server = "*"; }
+          ];
+          sourceRepos = [
+            "*"
+          ];
+        };
+      };
+      "03-argocd-approject-ci".content = {
+        apiVersion = "argoproj.io/v1alpha1";
+        kind = "AppProject";
+        metadata = {
+          namespace = "argocd";
+          name = "ci";
+        };
+        spec = {
+          clusterResourceWhitelist = [
+            {
+              group = "*";
+              kind = "*";
+            }
+          ];
+          destinations = [
+            {
+              namespace = "*";
+              server = "https://kubernetes.default.svc";
+            }
+          ];
+          sourceRepos = [
+            "*"
+          ];
+        };
+      };
+      # TODO: Move to VPN-Only
+      "04-argocd-ingress".content = {
+        apiVersion = "networking.k8s.io/v1";
+        kind = "Ingress";
+        metadata = {
+          namespace = "argocd";
+          name = "argocd";
+          annotations = {
+            "kubernetes.io/ingress.class" = "nginx";
+            "nginx.ingress.kubernetes.io/backend-protocol" = "HTTPS";
+          };
+        };
+        spec = {
+          rules = [
+            {
+              host = "argocd.nzbr.de";
+              http = {
+                paths = [
+                  {
+                    path = "/";
+                    pathType = "Prefix";
+                    backend = {
+                      service = {
+                        name = "argocd-server";
+                        port = {
+                          number = 443;
+                        };
+                      };
+                    };
+                  }
+                ];
+              };
+            }
+          ];
+        };
+      };
+      "99-argocd-application-infrastructure".content = {
+        apiVersion = "argoproj.io/v1alpha1";
+        kind = "Application";
+        metadata = {
+          namespace = "argocd";
+          name = "infrastructure";
+          annotations = {
+            "notifications.argoproj.io/subscribe.on-status-change.github" = "";
+          };
+        };
+        spec = {
+          project = "default";
+          source = {
+            repoURL = "https://github.com/nzbr/infrastructure.git";
+            path = "kubernetes";
+            targetRevision = "main";
+          };
+          destination = {
+            namespace = "default";
+            server = "https://kubernetes.default.svc";
+          };
+          syncPolicy.automated = {
+            prune = true;
+            selfHeal = true;
+          };
+        };
+      };
+    };
   };
   nirgenx = {
     enable = true;
@@ -166,7 +354,6 @@ with lib;
     deployment = {
       # amp.enable = true;
       audiobookshelf.enable = true;
-      argocd.enable = true;
       cert-manager.enable = true;
       # debug-shell.enable = true;
       gitlab.enable = true;
@@ -327,12 +514,6 @@ with lib;
     "d /storage/postgres 0755 postgres postgres"
     "d /storage/mysql/data 0755 mysql mysql"
   ];
-
-  # services.mailmover = {
-  #   enable = true;
-  #   schedule = "*-*-* *:*:1";
-  #   configFile = config.nzbr.assets."mailmover-config.dhall";
-  # };
 
   virtualisation.docker.enable = true;
   virtualisation.docker.autoPrune.enable = true;

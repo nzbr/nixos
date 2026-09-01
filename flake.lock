@@ -47,23 +47,6 @@
         "type": "github"
       }
     },
-    "argocd": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1783613282,
-        "narHash": "sha256-hM7ss948dr7KntUGwiFDhr1OrbI+LAJlDgUMnegm+es=",
-        "owner": "argoproj",
-        "repo": "argo-cd",
-        "rev": "564b94973b284b8de98da7cee6eeade2cb941e46",
-        "type": "github"
-      },
-      "original": {
-        "owner": "argoproj",
-        "ref": "stable",
-        "repo": "argo-cd",
-        "type": "github"
-      }
-    },
     "base": {
       "inputs": {
         "agenix": "agenix_2",
@@ -595,7 +578,6 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "argocd": "argocd",
         "base": "base",
         "cert-manager-desec": "cert-manager-desec",
         "disko": "disko",
