@@ -328,9 +328,9 @@ in
   };
 
   nzbr.everythingIndex = [
-    { path = "/mnt/hoard/backup"; schedule = "*-*-* 04:00:00"; }
-    { path = "/mnt/hoard/media"; schedule = "*-*-* 0/3:00:00"; }
-    { path = "/mnt/hoard/nzbr"; schedule = "*-*-* *:0/30:00"; }
+    { path = "/mnt/hoard/backup"; schedule = "Mon *-*-* 06:00:00"; }
+    { path = "/mnt/hoard/media"; schedule = "*-*-* 5:00:00"; }
+    { path = "/mnt/hoard/nzbr"; schedule = "*-*-* 5:30:00"; }
   ];
 
   nixpkgs.overlays = [
