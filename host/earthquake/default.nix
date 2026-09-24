@@ -177,7 +177,6 @@ in
 
 
   systemd.services.docker-gitlab.requires = [ "mnt-hoard.mount" ];
-  systemd.services.plex.requires = [ "mnt-hoard.mount" ];
   systemd.services.samba-nmbd.requires = [ "mnt-hoard.mount" ];
   systemd.services.samba-smbd.requires = [ "mnt-hoard.mount" ];
   systemd.services.samba-windindd.requires = [ "mnt-hoard.mount" ];
@@ -332,19 +331,6 @@ in
     { path = "/mnt/hoard/media"; schedule = "*-*-* 5:00:00"; }
     { path = "/mnt/hoard/nzbr"; schedule = "*-*-* 5:30:00"; }
   ];
-
-  nixpkgs.overlays = [
-    (self: super: {
-      plex = super.unstable.plex;
-    })
-  ];
-  services.plex = {
-    enable = true;
-    openFirewall = true;
-    dataDir = "/mnt/hoard/media/.plex";
-    user = "nzbr";
-    group = "media";
-  };
 
   services.postgresql =
     let
