@@ -59,7 +59,7 @@ in
               }];
               containers = [{
                 name = "keycloak";
-                image = "quay.io/keycloak/keycloak:latest";
+                image = "quay.io/keycloak/keycloak:26.7.2";
                 imagePullPolicy = "Always";
                 workingDir = "/opt/keycloak";
                 command = [ "/opt/keycloak/bin/kc.sh" "start" ];
