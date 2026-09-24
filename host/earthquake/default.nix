@@ -314,6 +314,7 @@ in
 
   nzbr.service.syncthing.enable = true;
   nzbr.service.syncthing.scanInterval = 24 * 3600;
+  services.syncthing.configDir = "/home/nzbr/.config";
   services.syncthing.dataDir = "/mnt/hoard/nzbr";
   services.syncthing.settings.folders.mp3.path = lib.mkForce "/mnt/hoard/media/MP3";
 
