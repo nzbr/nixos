@@ -18,11 +18,11 @@ with builtins; with lib; {
             mkdir -p $out
             cp -r "${inputs.dotfiles}/." $out/.dotfiles
             export HOME=$out
-            mkdir -p $HOME/{.cache,.config,.local/{bin,share,lib}}
-            touch $HOME/{.cache,.config,.local/{bin,share,lib}}/.stowkeep
+            mkdir -p $HOME/{.cache,.config,.local/{bin,share,lib},.coi,.claude,.codex}
+            touch $HOME/{.cache,.config,.local/{bin,share,lib},.coi,.claude,.codex}/.stowkeep
             PATH=$PATH:${extraPath}
             export DOT_NOINSTALL=1 && source $HOME/.dotfiles/control.sh && autolink_all
-            rm -f $HOME/{.cache,.config,.local/{bin,share,lib}}/.stowkeep
+            rm -f $HOME/{.cache,.config,.local/{bin,share,lib},.coi,.claude,.codex}/.stowkeep
             if [ -f "$HOME/.zshrc" ]; then
               mkdir -p "$HOME/.cache/antidote"
               ln -sf "${pkgs.antidote}/share/antidote/antidote.zsh" "$HOME/.cache/antidote/antidote.zsh"

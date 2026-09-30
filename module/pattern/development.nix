@@ -24,11 +24,15 @@ with builtins; with lib;
         # ]))
         conda
         mamba
+        jq
 
         # Language servers
         unstable.nil
         nixd
 
+        master.claude-code
+        master.codex
+        local.code-on-incus
       ] ++ (
         if config.nzbr.pattern.development.guiTools then
           [
@@ -70,9 +74,26 @@ with builtins; with lib;
         userInfo = true;
       };
 
-      users.groups.adbusers.members = [ config.nzbr.user ];
+      nzbr.cli.agent-login-bridge.enable = true;
 
       virtualisation.docker.enable = mkDefault true;
+
+      virtualisation.incus.enable = mkDefault true;
+      boot.supportedFilesystems.btrfs = mkDefault true;
+      networking.nftables = {
+        enable = true;
+        flushRuleset = false;
+      };
+      networking.firewall.interfaces.incusbr0 = {
+        allowedTCPPorts = [ 53 67 ];
+        allowedUDPPorts = [ 53 67 ];
+      };
+      networking.firewall.trustedInterfaces = [ "incusbr0" ];
+
+      users.groups = {
+        adbusers.members = [ config.nzbr.user ];
+        incus-admin.members = [ config.nzbr.user ];
+      };
     }
   );
 }

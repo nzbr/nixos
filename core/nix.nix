@@ -16,6 +16,7 @@ with builtins; with lib;
       })
       (with inputs; {
         unstable = nixpkgs-unstable;
+        master = nixpkgs-master;
         "2505" = nixpkgs-2505;
       });
   };

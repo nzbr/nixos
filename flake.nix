@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-2505.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -80,6 +81,10 @@
     syncthing-key-generator = {
       flake = false;
       url = "github:mtreece/syncthing-key-generator";
+    };
+    code-on-incus = {
+      flake = false;
+      url = "github:mensfeld/code-on-incus";
     };
   };
 

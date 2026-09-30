@@ -1,0 +1,20 @@
+diff --git a/internal/container/commands.go b/internal/container/commands.go
+index 8646a5a..7fe0772 100644
+--- a/internal/container/commands.go
++++ b/internal/container/commands.go
+@@ -774,6 +774,15 @@ func EnableNICSecurity(containerName string) error {
+ // Returns an error if any key cannot be set; callers treat it as non-fatal so
+ // unmanaged/static/macvlan NICs degrade to nft-only enforcement.
+ func EnableNICSecurity(containerName string) error {
++	// WSL's kernel does not implement the nftables bridge family. Incus accepts
++	// the device configuration, but then refuses to start the instance while
++	// creating its bridge filter table. Detect it before adding those settings so
++	// COI can still run on WSL; the caller logs this as a reduced-hardening mode.
++	if release, err := os.ReadFile("/proc/sys/kernel/osrelease"); err == nil &&
++		strings.Contains(strings.ToLower(string(release)), "microsoft") {
++		return fmt.Errorf("NIC security hardening is unavailable on WSL: its kernel lacks nftables bridge-family support")
++	}
++
+ 	const nic = "eth0"
+ 	// Materialize the profile NIC at the instance level so device keys can be
+ 	// set on it. Ignored on failure: a re-run (e.g. persistent container that
