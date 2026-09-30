@@ -382,6 +382,7 @@ in
     openFirewall = false;
     port = 8000;
   };
+  systemd.services.audiobookshelf.environment.DISABLE_SSRF_REQUEST_FILTER = "1";
 
   systemd.services.backup-media =
     let
