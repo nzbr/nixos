@@ -40,7 +40,7 @@ in
         enable = true;
         domain = "earthquake.nzbr.de";
       };
-      gitlab-runner.enable = true;
+      # gitlab-runner.enable = true;
       borgbackup = {
         enable = true;
         repoUrl = "ssh://u523435-sub2@hetzner/home/repo";
@@ -67,14 +67,14 @@ in
       #     files = "zbackup/UrBackup/files";
       #   };
       # };
-      gogBackup = {
-        enable = true;
-        destination = "/storage/media/ROM/PC/GOG";
-        platform = "all";
-        language = "de+en";
-        exclude = "patches";
-        schedule = "monthly";
-      };
+      # gogBackup = {
+      #   enable = true;
+      #   destination = "/mnt/hoard/media/ROM/PC/GOG";
+      #   platform = "all";
+      #   language = "de+en";
+      #   exclude = "patches";
+      #   schedule = "monthly";
+      # };
     };
 
     program = {
@@ -277,12 +277,12 @@ in
     };
   };
 
-  services.nfs.server = {
-    enable = true;
-    exports = ''
-      /storage/media/ROM fd87:7593:4cee:0:695:bec:37c4:9734/64 (ro)
-    '';
-  };
+  # services.nfs.server = {
+  #   enable = true;
+  #   exports = ''
+  #     /mnt/hoard/media/ROM fd87:7593:4cee:0:695:bec:37c4:9734/64 (ro)
+  #   '';
+  # };
 
   systemd.tmpfiles.rules = [
     "d /tmp/smb 0770 nzbr users 1d"
