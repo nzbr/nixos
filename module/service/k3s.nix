@@ -32,7 +32,7 @@ with builtins; with lib; {
         serviceConfig = {
           ExecStart = mkForce (
             let
-              options = concatStringsSep " " ([
+              options = concatStringsSep " " (flatten ([
                 "--node-ip=${config.nzbr.nodeIp},${config.nzbr.nodeIp6}"
                 "--node-external-ip=${config.nzbr.nodeIp},${config.nzbr.nodeIp6}"
                 "--flannel-iface=tailscale0"
@@ -52,10 +52,11 @@ with builtins; with lib; {
                 "--flannel-backend=vxlan"
                 "--flannel-ipv6-masq"
                 "--disable-network-policy"
+                "--embedded-registry"
                 "--write-kubeconfig ${kubeconfigPath}"
               ] else [
                 " --server https://${cfg.serverAddr}:6443"
-              ]));
+              ])));
             in
             "${pkgs.busybox}/bin/sh -c '"
             # + "export PATH=$PATH:${pkgs.fuse-overlayfs}/bin:${pkgs.fuse3}/bin && " # PATH is set with ENVIRONMENT= and not Path=, so it can't be easily overwritten, irrelevant for docker
@@ -79,6 +80,13 @@ with builtins; with lib; {
 
       environment.variables = {
         KUBECONFIG = mkIf isServer kubeconfigPath;
+      };
+
+      environment.etc."rancher/k3s/registries.yaml".text = builtins.toJSON {
+        mirrors = {
+          "docker.io" = {};
+          "registry.k8s.io" = {};
+        };
       };
 
       networking.firewall.trustedInterfaces = [ "tunl0" "flannel.1" "cni0" ];
