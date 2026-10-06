@@ -603,6 +603,40 @@ in
     };
   };
 
+  # cinder cron webhook
+  systemd.services.cinder-webhook = rec {
+    wants = [ "network-online.target" ];
+    after = wants;
+    path = [ pkgs.curl ];
+    script = ''
+      token="$(< "''${CREDENTIALS_DIRECTORY}/cinder-token")"
+      printf 'header = "OAI-Sites-Authorization: Bearer %s"\n' "$token" |
+        curl --config - --fail-with-body --silent --show-error \
+          --connect-timeout 15 --max-time 840 \
+          --json '{"action":"collect","args":{}}' \
+          "https://cinder-briefing.arsoncopperflame.chatgpt.site/api/editor"
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      LoadCredential = [ "cinder-token:${config.nzbr.assets."cinder.key"}" ];
+      DynamicUser = true;
+      TimeoutStartSec = "15min";
+      NoNewPrivileges = true;
+      ProtectSystem = "strict";
+      ProtectHome = true;
+      PrivateTmp = true;
+      UMask = "0077";
+    };
+  };
+  systemd.timers.cinder-webhook = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*-*-* *:0/5:00";
+      Persistent = true;
+      AccuracySec = "10s";
+    };
+  };
+
   system.stateVersion = "23.05";
   nzbr.home.config.home.stateVersion = "23.05";
 }
