@@ -17,7 +17,7 @@ buildGoModule rec {
   src = inputs.code-on-incus;
   patches = [ ./skip-nic-security-on-wsl.patch ];
 
-  vendorHash = "sha256-XSTbxBrLzHBNLhzCz7aDqZ5ioaQlZgIWexjtpbX9xk0=";
+  vendorHash = "sha256-8vpdfCF/kNspxncEKuFpIVzKuOSzo+rGy4i3+l++H2o=";
   subPackages = [ "cmd/coi" ];
 
   nativeBuildInputs = [ pkg-config makeWrapper ];
