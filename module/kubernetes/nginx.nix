@@ -50,6 +50,7 @@ with builtins; with lib; {
                 kind = "DaemonSet";
                 allowSnippetAnnotations = true;
                 config = {
+                  use-http2 = false;
                   hsts-preload = true;
                   ssl-redirect = true;
                   force-ssl-redirect = true;
