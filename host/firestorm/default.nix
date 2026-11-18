@@ -357,7 +357,7 @@ in
       cert-manager.enable = true;
       # debug-shell.enable = true;
       gitlab.enable = true;
-      hedgedoc.enable = true;
+      # hedgedoc.enable = true;
       kadalu.enable = true;
       keycloak.enable = true;
       matrix.enable = true;
