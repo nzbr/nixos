@@ -30,6 +30,8 @@ with builtins; with lib; {
 
   services.syncthing.guiAddress = "127.0.0.1:8385";
 
+  virtualisation.docker.daemon.settings.dns = [ "172.22.16.1" ];
+
   services.flatpak.enable = true;
 
   fileSystems."/tmp".options = mkForce [ "size=16G" ];
