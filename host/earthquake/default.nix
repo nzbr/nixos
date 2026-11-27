@@ -17,7 +17,7 @@ in
     container = {
       watchtower.enable = true;
       gitlab = {
-        enable = true;
+        enable = false;
         dataPath = "/mnt/hoard/lib/gitlab";
       };
     };
