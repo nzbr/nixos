@@ -5,8 +5,12 @@
         "digest": "d5087e764420927b2fddf1ee6c5def1c70c80ff2afed352c7218906358360df6",
         "url": "https://charts.appscode.com/stable/acaas/acaas-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "545baffe1263b16e91a7357ee6c16fc06d12bac8eb15697fc2aeb9ff13c1b9a9",
+        "url": "https://charts.appscode.com/stable/acaas/acaas-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "d7e487ebbcd6e29af4b6f1284823ba34c1f43e9bc6604b820d711ed39c0124e4",
+        "digest": "8fa4a7caff9d67c3ebc51d6174b41839c6ade3354e9f932c0e6f64bf2fa6ed75",
         "url": "https://charts.appscode.com/stable/acaas/acaas-v2026.10.30.tgz"
       },
       "v2026.10.12": {
@@ -126,6 +130,10 @@
       "v2026.11.30": {
         "digest": "5d21c145698a599cbe32a3f090295cc1efc673e315072be4e7f0f9063daa95d7",
         "url": "https://charts.appscode.com/stable/accounts-ui/accounts-ui-v2026.11.30.tgz"
+      },
+      "v2026.11.15": {
+        "digest": "0e6dcefa0173072fdc68f8b77718dd39d4f68eb74433b2017c8049e87252c255",
+        "url": "https://charts.appscode.com/stable/accounts-ui/accounts-ui-v2026.11.15.tgz"
       },
       "v2026.10.30": {
         "digest": "7472349ce58fa8a02212bc7f6584427d2ff8f0be475aa552008e18d30021a9ee",
@@ -337,8 +345,12 @@
         "digest": "14aecc5da4084eea82243afca596b29fbbbd0f89f512aa0a73c78d5a6cd37456",
         "url": "https://charts.appscode.com/stable/ace/ace-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "bf185dbc28d0aba98a7b87be8242decc07285f8fb321de93ec3ed55e572f148b",
+        "url": "https://charts.appscode.com/stable/ace/ace-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "dd5e4d6d18f240054bd9a8c6fae6232e7b98a40b78afccf55c7be7980dcbf496",
+        "digest": "7cb4e8c3609e576c2720721db4dbf7c881e979a840e04b7e40803bdace0ae9f1",
         "url": "https://charts.appscode.com/stable/ace/ace-v2026.10.30.tgz"
       },
       "v2026.10.15": {
@@ -579,8 +591,12 @@
         "digest": "5b0fc68f31e6275bf70cf6e9d99d682ccb9021ebe444f033a637ab1bf6a0160d",
         "url": "https://charts.appscode.com/stable/ace-installer/ace-installer-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "ea051b55a6010311afc093581a6936793bd6f34418f0a2cc48945e1be123ebb4",
+        "url": "https://charts.appscode.com/stable/ace-installer/ace-installer-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "e9bfc0e9a3dd72116ff58b8cf60f3e4ddd0ce74f490e9763f9e45a4574444a60",
+        "digest": "4e9e45e8b8d03992fc6be98da3d646c2de6ad22c3f246e84fc96698777560b92",
         "url": "https://charts.appscode.com/stable/ace-installer/ace-installer-v2026.10.30.tgz"
       },
       "v2026.10.15": {
@@ -810,7 +826,7 @@
         "url": "https://charts.appscode.com/stable/ace-installer-certified/ace-installer-certified-2026.11.30.tgz"
       },
       "2026.10.30": {
-        "digest": "6aab4687748b71aa16a4cbcede02d012370a5bfe4a350d0cf13758b0b4822eb7",
+        "digest": "36da8edbe7e8b4d79aa2b9f679c5da9a9163c3f845bc44ddf59a881f0a27444e",
         "url": "https://charts.appscode.com/stable/ace-installer-certified/ace-installer-certified-2026.10.30.tgz"
       },
       "2026.10.12": {
@@ -864,7 +880,7 @@
         "url": "https://charts.appscode.com/stable/ace-installer-certified-crds/ace-installer-certified-crds-2026.11.30.tgz"
       },
       "2026.10.30": {
-        "digest": "700bafd35e9645f46ee8ef631114caf6f5537c343f6f5f04fab661755a880420",
+        "digest": "2801de71c610b6edb4fb7b1efede764c5c5ab91e1083c29757d7a09abb8e23db",
         "url": "https://charts.appscode.com/stable/ace-installer-certified-crds/ace-installer-certified-crds-2026.10.30.tgz"
       },
       "2026.10.12": {
@@ -997,6 +1013,10 @@
         "digest": "c097cf57a03fb3615e401921d2ddf0e72563d17a833a7666e29bbd02e15f759a",
         "url": "https://charts.appscode.com/stable/acerproxy/acerproxy-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "1ae01cded9f6bec5d35b073535e40339b56f604fdb638af9e5b50a4f361ac3a9",
+        "url": "https://charts.appscode.com/stable/acerproxy/acerproxy-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
         "digest": "bfa0f3a56b0924311a86f5b787397aa8749876c3f6e49d3ab91bf339bbdb4841",
         "url": "https://charts.appscode.com/stable/acerproxy/acerproxy-v2026.10.30.tgz"
@@ -1086,6 +1106,10 @@
       "v2026.11.30": {
         "digest": "3c6248f5117e97dad8669316ff798e9d7fda8ddba417626f26b9f8146a048d7b",
         "url": "https://charts.appscode.com/stable/aceshifter/aceshifter-v2026.11.30.tgz"
+      },
+      "v2026.11.15": {
+        "digest": "7470dcae18216f267cd05b630fcb98d0ea268f89bb91b570cf64dc67ab1a876c",
+        "url": "https://charts.appscode.com/stable/aceshifter/aceshifter-v2026.11.15.tgz"
       },
       "v2026.10.30": {
         "digest": "15d48636f25b309a5feb4fbc73fc378ae8063305e8b23d89cdc37d17cc87ed7b",
@@ -1217,13 +1241,43 @@
         "digest": "49df23e284b0d2d46f8958330cc267d3500e28779fb13897a52023cca3aa5d1c",
         "url": "https://charts.appscode.com/stable/akp-crd-manager/akp-crd-manager-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "242179a7f1e352ca5eb76f80a6d8f584b061065009793d8f6a5fc9b6868ab5d8",
+        "url": "https://charts.appscode.com/stable/akp-crd-manager/akp-crd-manager-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "94a11d6758158046817ab2ba9f91796e8469cf4176a53dfe8bfb72abc4b233ae",
+        "digest": "fd1bb558f6b79dd59f7e0db15fa04379369e079b322e9030542819b5648325bf",
         "url": "https://charts.appscode.com/stable/akp-crd-manager/akp-crd-manager-v2026.10.30.tgz"
       },
       "v2026.10.12": {
         "digest": "4c3e6949c6f2c81b458c78d9c900fc853777291d9724d440d35bb181fe883b8c",
         "url": "https://charts.appscode.com/stable/akp-crd-manager/akp-crd-manager-v2026.10.12.tgz"
+      }
+    },
+    "akp-installer": {
+      "v2026.11.15": {
+        "digest": "f1f29268a089a3d1bfe5738cdd38b8610139c37a13af666030ae8e25c1f0c646",
+        "url": "https://charts.appscode.com/stable/akp-installer/akp-installer-v2026.11.15.tgz"
+      },
+      "v2026.10.30": {
+        "digest": "4dc48d77df2ef623501346a379d2af20cac32e68f1efc507491b4b605c846e82",
+        "url": "https://charts.appscode.com/stable/akp-installer/akp-installer-v2026.10.30.tgz"
+      }
+    },
+    "akp-installer-certified": {
+      "2026.10.30": {
+        "digest": "ec481958bd0388ae06768f299a25f91787d321a6d359ce73d36ce856f4934bf1",
+        "url": "https://charts.appscode.com/stable/akp-installer-certified/akp-installer-certified-2026.10.30.tgz"
+      }
+    },
+    "akp-installer-certified-crds": {
+      "2026.11.15": {
+        "digest": "610a5939a98e2a7d479614645aa624dc340198e7b901d9019f2e4219f52a74e5",
+        "url": "https://charts.appscode.com/stable/akp-installer-certified-crds/akp-installer-certified-crds-2026.11.15.tgz"
+      },
+      "2026.10.30": {
+        "digest": "d2b392cc72a9f2179d8c0082877149df1d32b5f2989737df4fac3e38b8b8c2e8",
+        "url": "https://charts.appscode.com/stable/akp-installer-certified-crds/akp-installer-certified-crds-2026.10.30.tgz"
       }
     },
     "appcatalog": {
@@ -1312,7 +1366,7 @@
     },
     "b3-alerts": {
       "v2026.7.14": {
-        "digest": "5e9d1dd01e7cfaa3ba1fef2a8d0aae3b6f8fa13251189a0711841bce86d2be45",
+        "digest": "2909da95400e9ac646c1b1bc16f9f24ee737f741eaf7c2f90d92841f23a060f5",
         "url": "https://charts.appscode.com/stable/b3-alerts/b3-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -1328,6 +1382,10 @@
       "v2026.11.30": {
         "digest": "2f50639753954dbf9a88c831aac74a99cefe918bd12b91d5449759a353dafa81",
         "url": "https://charts.appscode.com/stable/billing/billing-v2026.11.30.tgz"
+      },
+      "v2026.11.15": {
+        "digest": "48d1353bd14d313f98c189aa9014cbfbc5841d1c0fd0baff72b682b3dd2356a2",
+        "url": "https://charts.appscode.com/stable/billing/billing-v2026.11.15.tgz"
       },
       "v2026.10.30": {
         "digest": "209ab9aef1bea56d2e6ba7cf5446ac234e1f8a4de513bcdf26f31798c93be003",
@@ -1539,8 +1597,12 @@
         "digest": "acb09d5757b866e34c2d2f67cf19d12abdb3976bd9dfa983a4681283b6062278",
         "url": "https://charts.appscode.com/stable/billing-ui/billing-ui-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "b9573728cdb84ee9add60c3e8fbd3a6c99969edc67d3148cc7cc1ea4fa7d1ea6",
+        "url": "https://charts.appscode.com/stable/billing-ui/billing-ui-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "224830a11bf2cc57f6b0e747a2d02aaa0d078a37a25619a5234e12e4228ad54d",
+        "digest": "976b6f3cc0e8bb1e156aa509303db0b77167689eb25ff431353ab34db30c2acb",
         "url": "https://charts.appscode.com/stable/billing-ui/billing-ui-v2026.10.30.tgz"
       },
       "v2026.10.12": {
@@ -1834,7 +1896,7 @@
     },
     "cassandra-alerts": {
       "v2026.7.14": {
-        "digest": "74c13f5b0caa1ca202fee325e0bfbd2c91ce889f1cc886a5cf3b17e1d790ecca",
+        "digest": "4b5ac75a074d51108786076faed4f804e3305b50b5b415b70d63bbefd4b0355c",
         "url": "https://charts.appscode.com/stable/cassandra-alerts/cassandra-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -1870,6 +1932,10 @@
       "v2026.11.30": {
         "digest": "ee53c38c5788f3a2ec992e8b7c557eecc6dd3090fa600967b5cd2cd746b80f4e",
         "url": "https://charts.appscode.com/stable/catalog-manager/catalog-manager-v2026.11.30.tgz"
+      },
+      "v2026.11.15": {
+        "digest": "6ed91196d3220237b1a786cec62e19d918a2209f39d8ed30eae4c32eb11eb86f",
+        "url": "https://charts.appscode.com/stable/catalog-manager/catalog-manager-v2026.11.15.tgz"
       },
       "v2026.10.30": {
         "digest": "2a23610378508ff222992edea31ba4855019200368bfed9ae9007dd4967f0f79",
@@ -2038,7 +2104,7 @@
     },
     "cert-manager-csi-driver-cacerts": {
       "v2026.9.18": {
-        "digest": "7200e48592158cee3a9f02160b0e3207b4d9f7ecbece6e1fa02c4cf214561588",
+        "digest": "61b4a47f0565595c8ccdcfcfe4ed6cb01d9a78a553efaa8bc55fef9605650ced",
         "url": "https://charts.appscode.com/stable/cert-manager-csi-driver-cacerts/cert-manager-csi-driver-cacerts-v2026.9.18.tgz"
       },
       "v2026.1.15": {
@@ -2098,6 +2164,10 @@
       "v2026.11.30": {
         "digest": "0b6fbee89fc366f4f25cc6b38407abdad753b36d3106686d6f8170bf2bfee494",
         "url": "https://charts.appscode.com/stable/cert-manager-webhook-ace/cert-manager-webhook-ace-v2026.11.30.tgz"
+      },
+      "v2026.11.15": {
+        "digest": "a2b73c959f10a6940013a0c8d003780a7e84b37b5753c2ebfb6d249b007bfb40",
+        "url": "https://charts.appscode.com/stable/cert-manager-webhook-ace/cert-manager-webhook-ace-v2026.11.15.tgz"
       },
       "v2026.10.30": {
         "digest": "69bd96fdace2ec26750b3c0e0051521774fee2d46af011982558683b5475d710",
@@ -2214,7 +2284,7 @@
     },
     "clickhouse-alerts": {
       "v2026.7.14": {
-        "digest": "37a6adf6a8b9d52c680ae2eaf9f17e901cae8a809f9fd303aa9c8d1316eb1929",
+        "digest": "201f9399619739dd8a3fe180568b6a5afe3e9c06e390f66239ea2c678e3a5f61",
         "url": "https://charts.appscode.com/stable/clickhouse-alerts/clickhouse-alerts-v2026.7.14.tgz"
       }
     },
@@ -2226,7 +2296,7 @@
     },
     "cloud-platform": {
       "v0.3.0": {
-        "digest": "c47da814e190b94ce2ec68fc0bdd21816933d7f48b61f3d26f95fd1e577c4154",
+        "digest": "8e9a06aaf95d5909e1b0ca8439203e0ff7c4460ea473f72aff11617167646e12",
         "url": "https://charts.appscode.com/stable/cloud-platform/cloud-platform-v0.3.0.tgz"
       },
       "v0.3.0-alpha": {
@@ -2296,7 +2366,7 @@
     },
     "cluster-auth-manager": {
       "v2026.2.16": {
-        "digest": "8a437b7fecfb540922a0c5ed731d4dbe759d438c2e32a755f3d5ab43aac1f981",
+        "digest": "9592ce9ae211fa63a079cd20506d78f90f92bd634a2a73534cf1f8847c84b7bd",
         "url": "https://charts.appscode.com/stable/cluster-auth-manager/cluster-auth-manager-v2026.2.16.tgz"
       },
       "v2025.5.16": {
@@ -2408,7 +2478,7 @@
     },
     "cluster-gateway-manager": {
       "v2026.6.26": {
-        "digest": "3cf261fffe5db17df1d51d8f1f586bad4c72da6b08ea90cf32bb4b63d22cde97",
+        "digest": "01efa911cfd1c08106bd14b218df98405b28e47f3ae552c9677371eb8551d526",
         "url": "https://charts.appscode.com/stable/cluster-gateway-manager/cluster-gateway-manager-v2026.6.26.tgz"
       },
       "v2026.2.16": {
@@ -2444,6 +2514,10 @@
       "v2026.11.30": {
         "digest": "1a260c6a301cf84848740303c73ea7861c61dfc3133e4c45d301948db862c7df",
         "url": "https://charts.appscode.com/stable/cluster-importer/cluster-importer-v2026.11.30.tgz"
+      },
+      "v2026.11.15": {
+        "digest": "12310c215a36e204e7268188e3b3927af352b081184619f96cc922c1d6b6424b",
+        "url": "https://charts.appscode.com/stable/cluster-importer/cluster-importer-v2026.11.15.tgz"
       },
       "v2026.10.30": {
         "digest": "672990639d305f38d85820600ce2695eb8037a81d7bebdb5cd4eff2d78acf233",
@@ -2719,6 +2793,10 @@
         "digest": "3e1c95545ddee3c1155cae58ea72de23b14906d609bbe957b1edb8241643188c",
         "url": "https://charts.appscode.com/stable/cluster-presets/cluster-presets-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "93f7ca3776c5abf82e2d202a12fabe39a958f2a125b69c49ab687b09f928835d",
+        "url": "https://charts.appscode.com/stable/cluster-presets/cluster-presets-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
         "digest": "6b7cf913f699a11da45ff58bc8bc050923b280117ef0876c1775763c65c90383",
         "url": "https://charts.appscode.com/stable/cluster-presets/cluster-presets-v2026.10.30.tgz"
@@ -2881,6 +2959,10 @@
       }
     },
     "cluster-profile-manager": {
+      "v2026.11.7": {
+        "digest": "3b79e4ec0545a2f854e84259d27610728682453a49341dcfbd98b7dd895a84e4",
+        "url": "https://charts.appscode.com/stable/cluster-profile-manager/cluster-profile-manager-v2026.11.7.tgz"
+      },
       "v2026.9.18": {
         "digest": "e8939576d1449ac0d1db7b70691531374ddc89fa031f36ae02563f6810672d87",
         "url": "https://charts.appscode.com/stable/cluster-profile-manager/cluster-profile-manager-v2026.9.18.tgz"
@@ -2937,8 +3019,12 @@
       }
     },
     "cluster-proxy-manager": {
+      "v2026.11.11": {
+        "digest": "02648667ea58cf8721fb72db2034816288705790e46356bd5c11f6a3e360bdd2",
+        "url": "https://charts.appscode.com/stable/cluster-proxy-manager/cluster-proxy-manager-v2026.11.11.tgz"
+      },
       "v2026.6.26": {
-        "digest": "87c1e941a9ca97da8c538d445658ec79b286d1819d22cddfa123bc4b300985fe",
+        "digest": "3f5eaa5d1bf3269ec3f56cbfbaa97ea95668bdcdb3918357e0e4c052a88751cb",
         "url": "https://charts.appscode.com/stable/cluster-proxy-manager/cluster-proxy-manager-v2026.6.26.tgz"
       },
       "v2026.2.16": {
@@ -2967,8 +3053,12 @@
         "digest": "941eb601b87706ccd87309bd3656e4cc558b4c9e229bb68d0def40e2f410d4ef",
         "url": "https://charts.appscode.com/stable/cluster-ui/cluster-ui-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "83b5845e0182cefc00d7525f51210cc9972494535e202f1f3e0aa6e7e411f5fb",
+        "url": "https://charts.appscode.com/stable/cluster-ui/cluster-ui-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "69d8bd2e55f4377e42054356e8270609ef559a7f2d5df1ec82e0cbe86f30b7a5",
+        "digest": "73d43b28a46100a8a3974d52d070c98231aaba02f0b0f66160d3085917bf6c87",
         "url": "https://charts.appscode.com/stable/cluster-ui/cluster-ui-v2026.10.30.tgz"
       },
       "v2026.10.12": {
@@ -3173,6 +3263,10 @@
       }
     },
     "config-syncer": {
+      "v1.0.0": {
+        "digest": "dfc0ebe41d1045dfaf2d4832c743e970b508946ad487c4328dd014bfc5badb00",
+        "url": "https://charts.appscode.com/stable/config-syncer/config-syncer-v1.0.0.tgz"
+      },
       "v0.15.5": {
         "digest": "8b4e4b3d5675003f10c4537da36b798802b7a0605f4114b9fd1153694d0baf9f",
         "url": "https://charts.appscode.com/stable/config-syncer/config-syncer-v0.15.5.tgz"
@@ -3234,9 +3328,15 @@
         "url": "https://charts.appscode.com/stable/config-syncer/config-syncer-v0.14.0-rc.0.tgz"
       }
     },
+    "config-syncer-manager": {
+      "v1.0.0": {
+        "digest": "d616166b63620b1c55bfc7b882e6cc736b0446f1efa40ef8bfc9a0c0c1f9eea4",
+        "url": "https://charts.appscode.com/stable/config-syncer-manager/config-syncer-manager-v1.0.0.tgz"
+      }
+    },
     "connectcluster-alerts": {
       "v2026.7.14": {
-        "digest": "04daeef436b2d070c9ca3ef48452c8d5130c00cde15af62955643c0d72bf59dd",
+        "digest": "08852160f88eba96adc3eb1c95d094aeb34d920859a8d2e2a0574596157df2d3",
         "url": "https://charts.appscode.com/stable/connect-cluster-alerts/connectcluster-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -3334,6 +3434,10 @@
       "v2026.11.30": {
         "digest": "73d729e96be3509885af0db9768dc14548bda3e7c9caa7bd0458df3880181a44",
         "url": "https://charts.appscode.com/stable/deploy-ui/deploy-ui-v2026.11.30.tgz"
+      },
+      "v2026.11.15": {
+        "digest": "96ae823f00b49e380e4cce872c0cda1d2d8d8fe4faa6fd188b073d439ebf7c9f",
+        "url": "https://charts.appscode.com/stable/deploy-ui/deploy-ui-v2026.11.15.tgz"
       },
       "v2026.10.30": {
         "digest": "d1cc276b267685ef0853fe66eb8220fab72c32f52ab5825ce2c088eb88e777af",
@@ -3497,8 +3601,12 @@
         "digest": "5c0c1c1c903e3c88e8187e6ace5e08b550e8f67112c5f1ade4f2fc8eeaa70294",
         "url": "https://charts.appscode.com/stable/dns-proxy/dns-proxy-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "fc08cf7789ab890aa925a276b80ff4eb5a4dabc86fb3cc2ae4319253c617921d",
+        "url": "https://charts.appscode.com/stable/dns-proxy/dns-proxy-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "4d1c84a4c108192b5f8d17470ec316598e2140546fdbd7735ba6ecb8079292d4",
+        "digest": "58a58f29b1dee8dbde82129ed1d43a9253f4dacdc9e6419b939af0febae7a612",
         "url": "https://charts.appscode.com/stable/dns-proxy/dns-proxy-v2026.10.30.tgz"
       },
       "v2026.10.12": {
@@ -3662,7 +3770,7 @@
     },
     "druid-alerts": {
       "v2026.7.14": {
-        "digest": "b4be74a962f2cf5e44ea3a1e12181618088771ca48796c2e9292fb9f58a4715d",
+        "digest": "cd9ad1f0658ba06ef7d6fcc7a14b97d96be2375fc319b9bf6d04289fc7d4cd5d",
         "url": "https://charts.appscode.com/stable/druid-alerts/druid-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -3696,7 +3804,7 @@
     },
     "elasticsearch-alerts": {
       "v2026.7.14": {
-        "digest": "982d52bd743ffdef1b81b46925cfbd4f3223b419ab2a0866b2956c45c99455eb",
+        "digest": "100650664bce6d6b270278c85fbf626c14efbf09f188bf430f7783158b1d3be6",
         "url": "https://charts.appscode.com/stable/elasticsearch-alerts/elasticsearch-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -3798,7 +3906,7 @@
     },
     "fargocd": {
       "v2026.9.18": {
-        "digest": "814a0bd7f4a1b48a9933a4afa34e2a7532103280ba2683743b5e6ebb4e4b022e",
+        "digest": "54c9420667530ad79e0b78765b58679ee76726e16bc9527fc1e17b8847c3b4db",
         "url": "https://charts.appscode.com/stable/fargocd/fargocd-v2026.9.18.tgz"
       },
       "v2026.5.22": {
@@ -3824,7 +3932,7 @@
     },
     "fargocd-manager": {
       "v2026.9.18": {
-        "digest": "4f82795b04306cbc78508ca09cb3ef31f9ce1b7358a8fb7e97f2250ebc09f290",
+        "digest": "57d88e2977ce852555f66c6b3a8bcf8805826848c9d3a847033f9c01edb4ddb0",
         "url": "https://charts.appscode.com/stable/fargocd-manager/fargocd-manager-v2026.9.18.tgz"
       },
       "v2026.5.22": {
@@ -3840,7 +3948,7 @@
     },
     "fluxcd-manager": {
       "v2026.9.18": {
-        "digest": "1028a0e53ded5550f3f95c3f8233ac018ec6ca20f4f6dc1662d9d5472a59688c",
+        "digest": "03f99e75bc3506dbe4123dcf49f9c298b61ee17dd57f537f4b4fe521ce6f34a5",
         "url": "https://charts.appscode.com/stable/fluxcd-manager/fluxcd-manager-v2026.9.18.tgz"
       },
       "v2026.2.16": {
@@ -3983,6 +4091,10 @@
         "digest": "1344c259e6be39afc48da275a1f0034a50fe14629de3cb033c3a8fed85016124",
         "url": "https://charts.appscode.com/stable/gh-ci-webhook/gh-ci-webhook-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "1ff2c8a78567a65bc026da910ade77e11571882a0575618283349f37b4b9cea9",
+        "url": "https://charts.appscode.com/stable/gh-ci-webhook/gh-ci-webhook-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
         "digest": "01fd9a33d6961c1f8e7ef5c9e48bada5efd5522445fd1888b6d7f2325552c2af",
         "url": "https://charts.appscode.com/stable/gh-ci-webhook/gh-ci-webhook-v2026.10.30.tgz"
@@ -4094,6 +4206,10 @@
       "v2026.11.30": {
         "digest": "1702f3d055a19c3f2512ab84ad8d3482d4f8e7d06de22649bf65b0ef741673b9",
         "url": "https://charts.appscode.com/stable/grafana/grafana-v2026.11.30.tgz"
+      },
+      "v2026.11.15": {
+        "digest": "921281ec34d08978504373ab4e9681ac5677996470f7a53cc21396c2f936d107",
+        "url": "https://charts.appscode.com/stable/grafana/grafana-v2026.11.15.tgz"
       },
       "v2026.10.30": {
         "digest": "047e782fc553dbc20088760f96caf3d61f662f2944209bcb6ee77ec23f0ca9b9",
@@ -4356,7 +4472,7 @@
     },
     "hanadb-alerts": {
       "v2026.7.14": {
-        "digest": "9dda5f0ae7feaacd354a735d2ae68387458f11ef925d7dffa121042f7a09c898",
+        "digest": "604cd2229ebc9188aaa5d8821baf9feab691f3f398e8e1c290cb9c5ebe10e9d8",
         "url": "https://charts.appscode.com/stable/hanadb-alerts/hanadb-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -4366,7 +4482,7 @@
     },
     "hazelcast-alerts": {
       "v2026.7.14": {
-        "digest": "1d4e80f666a9fb009144851a9c32930560ebf383e4f9f1606303eb4d773d6c87",
+        "digest": "c48603026ceb99b95a8ddfa59b2c1607326699f8eaf61e0d5ea99ab791c489b2",
         "url": "https://charts.appscode.com/stable/hazelcast-alerts/hazelcast-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -4391,6 +4507,10 @@
       }
     },
     "hub-cluster-robot": {
+      "v2026.11.11": {
+        "digest": "c593f60acaa3bc9ed3777b38035a359946a82ae9b856c4591b839f79fc9c52af",
+        "url": "https://charts.appscode.com/stable/hub-cluster-robot/hub-cluster-robot-v2026.11.11.tgz"
+      },
       "v2026.2.16": {
         "digest": "b5a69362ef9f3fee197b4fd75e1de1eee62abc376d913e2cccbca9e266150980",
         "url": "https://charts.appscode.com/stable/hub-cluster-robot/hub-cluster-robot-v2026.2.16.tgz"
@@ -4408,7 +4528,7 @@
     },
     "ignite-alerts": {
       "v2026.7.14": {
-        "digest": "b46b103f62ffcb0013efa15ca35a722f1e99f230abec62a73b693b1b733da561",
+        "digest": "2289ac8d9bfcdfdb2622554d3cf12d33dd4d2d9c5f7d120e45a0896c43c42f35",
         "url": "https://charts.appscode.com/stable/ignite-alerts/ignite-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -4479,8 +4599,12 @@
         "digest": "83f0dfe40920eb06a5029d0f4b43b31f5a5490db12b85db2da4ab2ebb3e93eae",
         "url": "https://charts.appscode.com/stable/inbox-ui/inbox-ui-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "764a87f8a037211325fd7ab837e4291bd1e1f3d91eca6fb1b76654f099ed515e",
+        "url": "https://charts.appscode.com/stable/inbox-ui/inbox-ui-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "def0754e01f70c3fa14d0c58e1c47e46ecf7b8fb5b9dcf20c9b90dd4f04f19a8",
+        "digest": "b74d35171834f89488f8fd61012b6c979c6e2e51b921ab21df1680cf4a9eea5a",
         "url": "https://charts.appscode.com/stable/inbox-ui/inbox-ui-v2026.10.30.tgz"
       },
       "v2026.10.12": {
@@ -4644,7 +4768,7 @@
     },
     "kafka-alerts": {
       "v2026.7.14": {
-        "digest": "e5247eab79c8c6633275a8df018625ce0b84c4ae7f113d3b084fb48bcc9c30cd",
+        "digest": "7bd39dc21124d03a3932b219bf2964dffdeb7bfd5dc0039acdbcedf56323159a",
         "url": "https://charts.appscode.com/stable/kafka-alerts/kafka-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -4704,7 +4828,7 @@
     },
     "kmodules-crds": {
       "v0.25.1": {
-        "digest": "f6577b7797cc95c66a49f2c7f8d3a79ad8eff70224060903da070bb883ece938",
+        "digest": "79305098d0c4b57ec009c5f22bf5cdf692d2ac7497f8cb286320d8ba6ced959e",
         "url": "https://charts.appscode.com/stable/kmodules-crds/kmodules-crds-v0.25.1.tgz"
       },
       "v0.1.0": {
@@ -4787,8 +4911,12 @@
         "digest": "27ffc8664b256a9450213bec9646ec6e482a46f75823d1bc3508fa1992adb77a",
         "url": "https://charts.appscode.com/stable/kube-ui-server/kube-ui-server-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "554ae2bb93efd00309b8376305d43ec1d0cbe88b34be41b17a559fa98914f710",
+        "url": "https://charts.appscode.com/stable/kube-ui-server/kube-ui-server-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "075f3d0f5751e163af382a459bbd09d1f8946f16fba9ab657479eb8799a9b93c",
+        "digest": "252ec3cce499c7a4e21888aef6f63dfb11257177fb17c41e129295a386205381",
         "url": "https://charts.appscode.com/stable/kube-ui-server/kube-ui-server-v2026.10.30.tgz"
       },
       "v2026.10.12": {
@@ -5093,6 +5221,10 @@
       }
     },
     "kubedb": {
+      "v2026.11.15": {
+        "digest": "1f90e9ed6f018a32b3d04509b5d74de5e54682f879a2f9ae4ae120e854cf7d08",
+        "url": "https://charts.appscode.com/stable/kubedb/kubedb-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "fc7a2f48ac3b261b30a9f656c3db166727e8a8ced6d50a28fa162b5cb76c1d27",
         "url": "https://charts.appscode.com/stable/kubedb/kubedb-v2026.10.12.tgz"
@@ -5531,6 +5663,10 @@
       }
     },
     "kubedb-autoscaler": {
+      "v0.54.0": {
+        "digest": "8bef03b0fffe5d5528a036010f4aedd855c72a8df8a2ee2cb28fabd52d6a8e32",
+        "url": "https://charts.appscode.com/stable/kubedb-autoscaler/kubedb-autoscaler-v0.54.0.tgz"
+      },
       "v0.53.0": {
         "digest": "6d4a4398dff538d14667663a99febfc0858ec66a49985be246aec443e1802c6b",
         "url": "https://charts.appscode.com/stable/kubedb-autoscaler/kubedb-autoscaler-v0.53.0.tgz"
@@ -5873,6 +6009,10 @@
       }
     },
     "kubedb-catalog": {
+      "v2026.11.15": {
+        "digest": "3c0f018fc1568d450ccf3ba511a3423cf00122cc617804d90210badd0ea59035",
+        "url": "https://charts.appscode.com/stable/kubedb-catalog/kubedb-catalog-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "ee84b55bb6dcfb24c51c903043c14ba24ed37676e1e466379fe27d9f482a47aa",
         "url": "https://charts.appscode.com/stable/kubedb-catalog/kubedb-catalog-v2026.10.12.tgz"
@@ -6345,6 +6485,10 @@
       }
     },
     "kubedb-certified-crds": {
+      "2026.11.15": {
+        "digest": "14fa5707bd2a9673e3cbeb1c57706056cc6e4035a0716110fb4e27bf0bddb937",
+        "url": "https://charts.appscode.com/stable/kubedb-certified-crds/kubedb-certified-crds-2026.11.15.tgz"
+      },
       "2026.10.12": {
         "digest": "6ad1784e08192a97f0da2062e08212b4c18de6c5e6c47a41b727d7da57b9d450",
         "url": "https://charts.appscode.com/stable/kubedb-certified-crds/kubedb-certified-crds-2026.10.12.tgz"
@@ -6461,6 +6605,10 @@
       }
     },
     "kubedb-courier": {
+      "v0.9.0": {
+        "digest": "77e164bcdbc37afdebc0513bbed5ea4a3e5ee55b12da9191aa36a2c55ee7e550",
+        "url": "https://charts.appscode.com/stable/kubedb-courier/kubedb-courier-v0.9.0.tgz"
+      },
       "v0.8.0": {
         "digest": "10ddcaecdc0f9dc70eb45ea507d4eaa430349058cb3069e4977c3fed5e7b24a2",
         "url": "https://charts.appscode.com/stable/kubedb-courier/kubedb-courier-v0.8.0.tgz"
@@ -6479,6 +6627,10 @@
       }
     },
     "kubedb-courier-addon-manager": {
+      "v0.9.0": {
+        "digest": "7459897073d262d92ed80a9dfefd4f0f324075ab5fd32b3bbd984f54cc5a0868",
+        "url": "https://charts.appscode.com/stable/kubedb-courier-addon-manager/kubedb-courier-addon-manager-v0.9.0.tgz"
+      },
       "v0.8.0": {
         "digest": "f00e66dc76020d9308cbe33fdd4b4a4a8f43a15a062de770fb5f15a678cdef3d",
         "url": "https://charts.appscode.com/stable/kubedb-courier-addon-manager/kubedb-courier-addon-manager-v0.8.0.tgz"
@@ -6489,6 +6641,10 @@
       }
     },
     "kubedb-crd-manager": {
+      "v0.24.0": {
+        "digest": "bf6f76bd9a0c1cd7b1c111ac359d5d0d04d197de8ad884d59c4459c2a804e7c2",
+        "url": "https://charts.appscode.com/stable/kubedb-crd-manager/kubedb-crd-manager-v0.24.0.tgz"
+      },
       "v0.23.0": {
         "digest": "440854376990bed46669fa0405ead42fadbcb0a3936767c07251bded89631056",
         "url": "https://charts.appscode.com/stable/kubedb-crd-manager/kubedb-crd-manager-v0.23.0.tgz"
@@ -6675,6 +6831,10 @@
       }
     },
     "kubedb-crds": {
+      "v2026.11.15": {
+        "digest": "1fe9a25dbaedfaef36954215141d60800b4e6cdee778e8360031231dec3233fd",
+        "url": "https://charts.appscode.com/stable/kubedb-crds/kubedb-crds-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "b46761a3b6626c3b59e3adb60daa6d9f27756aa1c3bbce71f132d784bf096b03",
         "url": "https://charts.appscode.com/stable/kubedb-crds/kubedb-crds-v2026.10.12.tgz"
@@ -7013,6 +7173,10 @@
       }
     },
     "kubedb-dashboard": {
+      "v0.45.0": {
+        "digest": "62227de1a5dc031b954831fef85a6c5cb69c278b8007a565efdaa72db2627015",
+        "url": "https://charts.appscode.com/stable/kubedb-dashboard/kubedb-dashboard-v0.45.0.tgz"
+      },
       "v0.44.0": {
         "digest": "466b054baf6d241c7fe3dbdc429c041b31154caade807950e666b48507c11c58",
         "url": "https://charts.appscode.com/stable/kubedb-dashboard/kubedb-dashboard-v0.44.0.tgz"
@@ -7389,6 +7553,10 @@
       }
     },
     "kubedb-gitops": {
+      "v0.17.0": {
+        "digest": "b31c7e3100ad7e29917e7a4bc37af2b620e2155bac00a481ff1bd51c6c1e6909",
+        "url": "https://charts.appscode.com/stable/kubedb-gitops/kubedb-gitops-v0.17.0.tgz"
+      },
       "v0.16.0": {
         "digest": "63ed3401050eb28223db0af40ac5688123147fa7f6caff843411d3a6ae3ed5b6",
         "url": "https://charts.appscode.com/stable/kubedb-gitops/kubedb-gitops-v0.16.0.tgz"
@@ -7491,6 +7659,10 @@
       }
     },
     "kubedb-grafana-dashboards": {
+      "v2026.11.15": {
+        "digest": "ba616d1d949db62ceee69d5d607aba898eced0e70cb4e8386b53441ec2dbbd91",
+        "url": "https://charts.appscode.com/stable/kubedb-grafana-dashboards/kubedb-grafana-dashboards-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "10877227ac75d57e24c69a36e4352ed92a7b32851a4167a221fa10478f62c927",
         "url": "https://charts.appscode.com/stable/kubedb-grafana-dashboards/kubedb-grafana-dashboards-v2026.10.12.tgz"
@@ -7777,6 +7949,10 @@
       }
     },
     "kubedb-kubestash-catalog": {
+      "v2026.11.15": {
+        "digest": "e51ff821a221731e0c2cd670f0b500e4f3fe235a9aab89b4f43b863122568944",
+        "url": "https://charts.appscode.com/stable/kubedb-kubestash-catalog/kubedb-kubestash-catalog-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "42e5964fef15531230b76c53eb9658619cbd8d7fa96be41e77767f113f7c4df1",
         "url": "https://charts.appscode.com/stable/kubedb-kubestash-catalog/kubedb-kubestash-catalog-v2026.10.12.tgz"
@@ -7979,6 +8155,10 @@
       }
     },
     "kubedb-metrics": {
+      "v2026.11.15": {
+        "digest": "5691537f10464219c605029d0d84fb91bde9aeddeded0c4b504a757ad29c03a6",
+        "url": "https://charts.appscode.com/stable/kubedb-metrics/kubedb-metrics-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "19ef68d1bf6d5dea78b1661d20756ab58a2c967dbe9e7f4ebe776618d6891554",
         "url": "https://charts.appscode.com/stable/kubedb-metrics/kubedb-metrics-v2026.10.12.tgz"
@@ -8393,6 +8573,10 @@
       }
     },
     "kubedb-ops-manager": {
+      "v0.56.0": {
+        "digest": "9103762d1006ba9a1cfc0da1c3c459ec44a35d951e7b3890f8ffd6898d58edc1",
+        "url": "https://charts.appscode.com/stable/kubedb-ops-manager/kubedb-ops-manager-v0.56.0.tgz"
+      },
       "v0.55.0": {
         "digest": "c4ebe32652a89931c8156e73885ab407c1ee914e8e0809b72b137b389353782a",
         "url": "https://charts.appscode.com/stable/kubedb-ops-manager/kubedb-ops-manager-v0.55.0.tgz"
@@ -8671,6 +8855,10 @@
       }
     },
     "kubedb-opscenter": {
+      "v2026.11.15": {
+        "digest": "e1c47260e7170bf247b446b936ce72b56010516218511b69bd3c1040b98e4330",
+        "url": "https://charts.appscode.com/stable/kubedb-opscenter/kubedb-opscenter-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "27c5b0a8be8e1075c2b662b59c3cb638b89f87c7c8954109a7da079fde7b832c",
         "url": "https://charts.appscode.com/stable/kubedb-opscenter/kubedb-opscenter-v2026.10.12.tgz"
@@ -8969,6 +9157,10 @@
       }
     },
     "kubedb-perses-dashboards": {
+      "v2026.11.15": {
+        "digest": "a0104c31ad87840392d6e1a7c04225d02ca3eb46a7c9c9ec4b8a11dd4a02474f",
+        "url": "https://charts.appscode.com/stable/kubedb-perses-dashboards/kubedb-perses-dashboards-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "f9545a5c46e7059b3a1dfe27e0f9bfb4306e93f4cb3bcd00defaa75947b7fcbd",
         "url": "https://charts.appscode.com/stable/kubedb-perses-dashboards/kubedb-perses-dashboards-v2026.10.12.tgz"
@@ -9031,6 +9223,10 @@
       }
     },
     "kubedb-provider-aws": {
+      "v2026.11.15": {
+        "digest": "64e7b3fb3fbb1a324d928edb2e7e90cf29c45b7e23ee2981695f8feee0dc32e2",
+        "url": "https://charts.appscode.com/stable/kubedb-provider-aws/kubedb-provider-aws-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "6d2e7e290789eef3fdb831200ccf5dcc926b37479d101c978e3055652fc32d0c",
         "url": "https://charts.appscode.com/stable/kubedb-provider-aws/kubedb-provider-aws-v2026.10.12.tgz"
@@ -9229,6 +9425,10 @@
       }
     },
     "kubedb-provider-azure": {
+      "v2026.11.15": {
+        "digest": "453b1253efbfb43884fd435186100a446cac6ca6d7515dd4bec955c9ff8abbe0",
+        "url": "https://charts.appscode.com/stable/kubedb-provider-azure/kubedb-provider-azure-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "aff164f1db454532cbfdfecd4771a4d68ccd2da7c188d83aa2060316e241c75b",
         "url": "https://charts.appscode.com/stable/kubedb-provider-azure/kubedb-provider-azure-v2026.10.12.tgz"
@@ -9427,6 +9627,10 @@
       }
     },
     "kubedb-provider-gcp": {
+      "v2026.11.15": {
+        "digest": "8bf36cbbe73e23068acfbf14d498db73deec42fd267615885817afd6ed85f050",
+        "url": "https://charts.appscode.com/stable/kubedb-provider-gcp/kubedb-provider-gcp-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "8dc5346bbe4c551a50e2e4da6241fe292e5867c4e4b4d6ac83f58c25a5f6920a",
         "url": "https://charts.appscode.com/stable/kubedb-provider-gcp/kubedb-provider-gcp-v2026.10.12.tgz"
@@ -9625,6 +9829,10 @@
       }
     },
     "kubedb-provisioner": {
+      "v0.69.0": {
+        "digest": "87be7b89f324a82a61123f277b9c8769edf46916440a17521a56d1ea89e85781",
+        "url": "https://charts.appscode.com/stable/kubedb-provisioner/kubedb-provisioner-v0.69.0.tgz"
+      },
       "v0.68.0": {
         "digest": "f02c1a86cf76ea69cb95b6fb24eeae8aedc62ef22544ba03e4742780d80af8c9",
         "url": "https://charts.appscode.com/stable/kubedb-provisioner/kubedb-provisioner-v0.68.0.tgz"
@@ -9907,6 +10115,10 @@
       }
     },
     "kubedb-schema-manager": {
+      "v0.45.0": {
+        "digest": "88835b1de38049042a09b0fb3993fbe74ed9ce95b71cfb51dd1bd3288d701f4a",
+        "url": "https://charts.appscode.com/stable/kubedb-schema-manager/kubedb-schema-manager-v0.45.0.tgz"
+      },
       "v0.44.0": {
         "digest": "fda993cfe8d0339e8a2563a24d292b2a1aac01e90c74f6cd934a4481083eb00b",
         "url": "https://charts.appscode.com/stable/kubedb-schema-manager/kubedb-schema-manager-v0.44.0.tgz"
@@ -10193,8 +10405,12 @@
         "digest": "c57eec208f2432ce38d0653e7f418fb10a64b92f8f5a04d4b8f011a5aa930209",
         "url": "https://charts.appscode.com/stable/kubedb-ui/kubedb-ui-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "d0e398a36595f7ee4a21c097ac4365f956966f21ae40f6d25a8403c90902c68f",
+        "url": "https://charts.appscode.com/stable/kubedb-ui/kubedb-ui-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "fe88656f99a225fb874937d707d44436caff908b87113b1b0707a9bc4c2b4622",
+        "digest": "5d3b9472580029d8de6ca07449168eb9f64e8827e71ca114c64ff3d0a0a2b7fe",
         "url": "https://charts.appscode.com/stable/kubedb-ui/kubedb-ui-v2026.10.30.tgz"
       },
       "v2026.10.12": {
@@ -10403,6 +10619,10 @@
         "digest": "3745ee5d20b9bb7223a55154ee0c3c2258db77da15f720740da8e44d12eb93a4",
         "url": "https://charts.appscode.com/stable/kubedb-ui-presets/kubedb-ui-presets-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "0847a59986ba860cd194d9140fb6f78414ad1912bbcfefd00ca9d1d16e22408f",
+        "url": "https://charts.appscode.com/stable/kubedb-ui-presets/kubedb-ui-presets-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
         "digest": "e30a81694b565e43597c187353cbf6b999d55c32c1f78517f51edcb566310732",
         "url": "https://charts.appscode.com/stable/kubedb-ui-presets/kubedb-ui-presets-v2026.10.30.tgz"
@@ -10572,6 +10792,10 @@
       "v2021.11.24": {
         "digest": "200fbe10892edd32481eece91b6ddad19732352c2c918f8507ca4d38fc19354a",
         "url": "https://charts.appscode.com/stable/kubedb-ui-server/kubedb-ui-server-v2021.11.24.tgz"
+      },
+      "v0.45.0": {
+        "digest": "89002cb6dca76de663e6563a623c00b7f72f8444c34a6d69761a8e46aa925d67",
+        "url": "https://charts.appscode.com/stable/kubedb-ui-server/kubedb-ui-server-v0.45.0.tgz"
       },
       "v0.44.0": {
         "digest": "7902196731f5f84a2481972aee0314f74e0736f8c19c0b3f9a7b613a20de80d2",
@@ -10855,6 +11079,10 @@
       }
     },
     "kubedb-webhook-server": {
+      "v0.45.0": {
+        "digest": "2370e3068c23c9a1f1efcf78c80b03088091af959f4fbc7a72433483565b5b0f",
+        "url": "https://charts.appscode.com/stable/kubedb-webhook-server/kubedb-webhook-server-v0.45.0.tgz"
+      },
       "v0.44.0": {
         "digest": "05ec425595734c5b675c30c4b4c9c959529c835a6568995011d109a672aafa92",
         "url": "https://charts.appscode.com/stable/kubedb-webhook-server/kubedb-webhook-server-v0.44.0.tgz"
@@ -11173,8 +11401,16 @@
       }
     },
     "kubestash": {
+      "v2026.11.15": {
+        "digest": "0635ec5c8a7d349529acc4795e86d82c8b14a8e4786f274f14c4b1d136220420",
+        "url": "https://charts.appscode.com/stable/kubestash/kubestash-v2026.11.15.tgz"
+      },
+      "v2026.11.10": {
+        "digest": "b2b5e7a23b613401e936da2914ae7abcc1148d28adfb099ce86acf7d0b056503",
+        "url": "https://charts.appscode.com/stable/kubestash/kubestash-v2026.11.10.tgz"
+      },
       "v2026.10.12": {
-        "digest": "7a18c0c282abb00cacd3b05670e35eade9206b33efab323aa7e6fdbe369b3632",
+        "digest": "14ecd665643f50701556596265ba1f0cb1f95badcbddfaccd218444b021e090b",
         "url": "https://charts.appscode.com/stable/kubestash/kubestash-v2026.10.12.tgz"
       },
       "v2026.8.12-rc.0": {
@@ -11351,6 +11587,14 @@
       }
     },
     "kubestash-catalog": {
+      "v2026.11.15": {
+        "digest": "9e151caf2ee192352b8a4344583ae64fde2a437e76f463b0f72808e8b5b727c8",
+        "url": "https://charts.appscode.com/stable/kubestash-catalog/kubestash-catalog-v2026.11.15.tgz"
+      },
+      "v2026.11.10": {
+        "digest": "8de6eb5fd6465b506810a4a11a42224db4f2fa0e4ebefa6783f0f70a4d8e5a96",
+        "url": "https://charts.appscode.com/stable/kubestash-catalog/kubestash-catalog-v2026.11.10.tgz"
+      },
       "v2026.10.12": {
         "digest": "51229a897f2e99b14e6671cdc096f4b59529abb58d313468c690d1ed9317d92e",
         "url": "https://charts.appscode.com/stable/kubestash-catalog/kubestash-catalog-v2026.10.12.tgz"
@@ -11571,6 +11815,14 @@
       }
     },
     "kubestash-certified-crds": {
+      "2026.11.15": {
+        "digest": "947a2e68b71d262c66288065b4ad20ce8f217166f30d70131842a379418e1cf6",
+        "url": "https://charts.appscode.com/stable/kubestash-certified-crds/kubestash-certified-crds-2026.11.15.tgz"
+      },
+      "2026.11.10": {
+        "digest": "8ac4d3a59fe7483c6b6b1aa01a968ef6921a2546f2edf4be1aa6fe1823bfc12c",
+        "url": "https://charts.appscode.com/stable/kubestash-certified-crds/kubestash-certified-crds-2026.11.10.tgz"
+      },
       "2026.10.12": {
         "digest": "b689ea468b36237be3ba729d111f9ddb1dd2369b4c2ab4daec31305f7113a64d",
         "url": "https://charts.appscode.com/stable/kubestash-certified-crds/kubestash-certified-crds-2026.10.12.tgz"
@@ -11629,6 +11881,14 @@
       }
     },
     "kubestash-metrics": {
+      "v2026.11.15": {
+        "digest": "f11a5b48e6a6b65e6fe569a14e04c2fe559d7295527dcd5960fd5ddce7677b38",
+        "url": "https://charts.appscode.com/stable/kubestash-metrics/kubestash-metrics-v2026.11.15.tgz"
+      },
+      "v2026.11.10": {
+        "digest": "f4f85890ca6163c845c9b994dacaade0c6d4e0ca24e472ab0addfe5a96f56ece",
+        "url": "https://charts.appscode.com/stable/kubestash-metrics/kubestash-metrics-v2026.11.10.tgz"
+      },
       "v2026.10.12": {
         "digest": "e7d410b964236a7997729d0f1942ff2408bd7940ecb749fbd9eb9acd77d0f5fc",
         "url": "https://charts.appscode.com/stable/kubestash-metrics/kubestash-metrics-v2026.10.12.tgz"
@@ -11759,8 +12019,16 @@
       }
     },
     "kubestash-operator": {
+      "v0.32.0": {
+        "digest": "4dd8cc4c6a5fecf26411c03007e3bc4905ce156b2beee06f919804e7a00ac64a",
+        "url": "https://charts.appscode.com/stable/kubestash-operator/kubestash-operator-v0.32.0.tgz"
+      },
+      "v0.31.0": {
+        "digest": "3b7c8391ea97ec6d3d9a6606b7b12d905f08a759ee5589881a95280a4fc276b1",
+        "url": "https://charts.appscode.com/stable/kubestash-operator/kubestash-operator-v0.31.0.tgz"
+      },
       "v0.30.0": {
-        "digest": "aa2038f4062a2e834d7d4e32df9736065603779088b82645f5cea721430059d1",
+        "digest": "8ab17570bd1a1e016d2aa7a2391acc6dc2c657b5a5157b992e55612c38d8ca2c",
         "url": "https://charts.appscode.com/stable/kubestash-operator/kubestash-operator-v0.30.0.tgz"
       },
       "v0.29.0": {
@@ -11937,8 +12205,16 @@
       }
     },
     "kubestash-opscenter": {
+      "v2026.11.15": {
+        "digest": "469f44108ddebe1c6b6ef72b7f137e78cf8c21458d249349680a0c25c1cdd3c2",
+        "url": "https://charts.appscode.com/stable/kubestash-opscenter/kubestash-opscenter-v2026.11.15.tgz"
+      },
+      "v2026.11.10": {
+        "digest": "fb51e251f2ddcc4c1aa86f194f9589333454fbb8b9e8ef542ff85751ab7c8026",
+        "url": "https://charts.appscode.com/stable/kubestash-opscenter/kubestash-opscenter-v2026.11.10.tgz"
+      },
       "v2026.10.12": {
-        "digest": "ea84e66f7a2ff3743cfa0217e061afde01d9f3063efc40dc3a2e7008e5beb39b",
+        "digest": "c98edb28fe46e4229cdf40ba27465b697c916e7f16d4c7bf75097be6b2db27b9",
         "url": "https://charts.appscode.com/stable/kubestash-opscenter/kubestash-opscenter-v2026.10.12.tgz"
       }
     },
@@ -11961,12 +12237,24 @@
       }
     },
     "kubestash-ui-server": {
+      "v0.4.0": {
+        "digest": "fa9e4291905becaefcfc3f722d3a56ed1787b684fbf37db799ed53635faa1e3e",
+        "url": "https://charts.appscode.com/stable/kubestash-ui-server/kubestash-ui-server-v0.4.0.tgz"
+      },
+      "v0.3.0": {
+        "digest": "e750e0145fb7f79287f8b26b073827a42775624035d0dda124300cc4814c2f36",
+        "url": "https://charts.appscode.com/stable/kubestash-ui-server/kubestash-ui-server-v0.3.0.tgz"
+      },
       "v0.2.0": {
         "digest": "b89b9744fb7160872d466c8359f3482676cd5b359c9a5786ad9fec1be17d2d9c",
         "url": "https://charts.appscode.com/stable/kubestash-ui-server/kubestash-ui-server-v0.2.0.tgz"
       }
     },
     "kubevault": {
+      "v2026.11.15": {
+        "digest": "ce11b1adffbedf7b7e4e8e86713619984b26fc4c1db1da63d1c9defa44020d68",
+        "url": "https://charts.appscode.com/stable/kubevault/kubevault-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "674bd697c8b9a190c4b32bce290989f2aa12f88568d1f40aceb9c6532f4699c1",
         "url": "https://charts.appscode.com/stable/kubevault/kubevault-v2026.10.12.tgz"
@@ -12105,6 +12393,10 @@
       }
     },
     "kubevault-catalog": {
+      "v2026.11.15": {
+        "digest": "71e512df9b4efa4c1df22f82255a4d68d630e532de281e61249f21da324c35cb",
+        "url": "https://charts.appscode.com/stable/kubevault-catalog/kubevault-catalog-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "c25756206bde3839da515245d5610b7c2d2d010c8de2bcbe0738e898c57b0647",
         "url": "https://charts.appscode.com/stable/kubevault-catalog/kubevault-catalog-v2026.10.12.tgz"
@@ -12261,6 +12553,10 @@
       }
     },
     "kubevault-certified-crds": {
+      "2026.11.15": {
+        "digest": "ab9780e15106c8048ea6d78837cd08ce30ce5b5cb3346b9d802d456b42448858",
+        "url": "https://charts.appscode.com/stable/kubevault-certified-crds/kubevault-certified-crds-2026.11.15.tgz"
+      },
       "2026.10.12": {
         "digest": "f47c883668f3e99699632217d614406bc79a8cb50c7494e5d7d93968a2d4e533",
         "url": "https://charts.appscode.com/stable/kubevault-certified-crds/kubevault-certified-crds-2026.10.12.tgz"
@@ -12294,9 +12590,17 @@
       "v2026.10.12": {
         "digest": "09f6a9326ebbb6c1c2e5b60ae55f832f179aab9688ea61748e91c45602771181",
         "url": "https://charts.appscode.com/stable/kubevault-crd-manager/kubevault-crd-manager-v2026.10.12.tgz"
+      },
+      "v0.3.0": {
+        "digest": "626ca37c0ea579a04870a4714563f14db37607a9ba00357b01cf4dad6f8928a5",
+        "url": "https://charts.appscode.com/stable/kubevault-crd-manager/kubevault-crd-manager-v0.3.0.tgz"
       }
     },
     "kubevault-crds": {
+      "v2026.11.15": {
+        "digest": "f806abb629b71be344b587eba5a115e34b6cbb69e05cac0fedbe2fa4da17fe9d",
+        "url": "https://charts.appscode.com/stable/kubevault-crds/kubevault-crds-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "44726c22089747de84a31e8fc65dc40aa0e4f40da16e9685c39bd8c3246e5da4",
         "url": "https://charts.appscode.com/stable/kubevault-crds/kubevault-crds-v2026.10.12.tgz"
@@ -12439,6 +12743,10 @@
       }
     },
     "kubevault-grafana-dashboards": {
+      "v2026.11.15": {
+        "digest": "5eac1602354160bc818c77bb24d40aee3dd2861914a04e159f437538bec5ec81",
+        "url": "https://charts.appscode.com/stable/kubevault-grafana-dashboards/kubevault-grafana-dashboards-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "52db8e6b2bbcfbbb450b2287a61e38555532e45a639ccb0550f3d5d2c3737756",
         "url": "https://charts.appscode.com/stable/kubevault-grafana-dashboards/kubevault-grafana-dashboards-v2026.10.12.tgz"
@@ -12525,6 +12833,10 @@
       }
     },
     "kubevault-metrics": {
+      "v2026.11.15": {
+        "digest": "5ab86de17c84965c042c55a3e9936c470095049cc84c03670f84519af03db3ff",
+        "url": "https://charts.appscode.com/stable/kubevault-metrics/kubevault-metrics-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "9b8a788eaa97c20e4b6d1a8a3fc292870e38b9cedd30e07ea76132319eee7777",
         "url": "https://charts.appscode.com/stable/kubevault-metrics/kubevault-metrics-v2026.10.12.tgz"
@@ -12651,6 +12963,10 @@
       }
     },
     "kubevault-operator": {
+      "v0.27.0": {
+        "digest": "66acbac772f7e20058d25790d729b6de1e35be73fb117746cb22d58ec2aa726c",
+        "url": "https://charts.appscode.com/stable/kubevault-operator/kubevault-operator-v0.27.0.tgz"
+      },
       "v0.26.0": {
         "digest": "67efe8a0d010c92f00d3648a7e4e83f17a16547b9e4742e7e9a6a3abf3d2a9ea",
         "url": "https://charts.appscode.com/stable/kubevault-operator/kubevault-operator-v0.26.0.tgz"
@@ -12785,6 +13101,10 @@
       }
     },
     "kubevault-opscenter": {
+      "v2026.11.15": {
+        "digest": "0eef8e132e255e640cba055419985fb5a838b94a5fb4e3f285d45c1b2718e9bf",
+        "url": "https://charts.appscode.com/stable/kubevault-opscenter/kubevault-opscenter-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "343d8d683310c160f61ad646dc1e0ed3196ccdfe84b7fc03a40259d7f44b8f63",
         "url": "https://charts.appscode.com/stable/kubevault-opscenter/kubevault-opscenter-v2026.10.12.tgz"
@@ -12871,6 +13191,10 @@
       }
     },
     "kubevault-webhook-server": {
+      "v0.27.0": {
+        "digest": "d6af4dd3367964f753c4e28a5d88160194ce48e0dc1b6b46ec0511ebf5d67dde",
+        "url": "https://charts.appscode.com/stable/kubevault-webhook-server/kubevault-webhook-server-v0.27.0.tgz"
+      },
       "v0.26.0": {
         "digest": "1b9452ad8cae69a51af043095b4eff7f267c572c8a951364ec118a8fbb585bb0",
         "url": "https://charts.appscode.com/stable/kubevault-webhook-server/kubevault-webhook-server-v0.26.0.tgz"
@@ -12994,7 +13318,7 @@
     },
     "license-proxyserver": {
       "v2026.9.18": {
-        "digest": "a10ea2f8ab6070d248f134fa718581d274c319ee3a7e925d882fb2fefbe7d567",
+        "digest": "ebfab2a725a09a336c949c64e6edcd6e8fc663909b325127b272f569299f08ec",
         "url": "https://charts.appscode.com/stable/license-proxyserver/license-proxyserver-v2026.9.18.tgz"
       },
       "v2026.2.16": {
@@ -13114,7 +13438,7 @@
     },
     "license-proxyserver-manager": {
       "v2026.9.18": {
-        "digest": "a20ee0173eec7a05a99d62f49f2e7ab4710c352c5669d4edddfbdbe11d047c35",
+        "digest": "b09153a0c399bf6b043019d022b810eebe736ec83d2156624d4c40c97811ff99",
         "url": "https://charts.appscode.com/stable/license-proxyserver-manager/license-proxyserver-manager-v2026.9.18.tgz"
       },
       "v2026.2.16": {
@@ -13202,7 +13526,7 @@
     },
     "loadbalancer-controller": {
       "v0.2.0-ac": {
-        "digest": "c5afb9ebc847fbc1b8b633e7883c578290628b031c4d395243eb4dd44c247ce6",
+        "digest": "bcafc0af310c791c76379c86dcdf16feb4ca69e26ff2645209c86f4ba744ca24",
         "url": "https://charts.appscode.com/stable/loadbalancer-controller/loadbalancer-controller-v0.2.0-ac.tgz"
       },
       "v0.1.0": {
@@ -13222,7 +13546,7 @@
     },
     "managed-serviceaccount-manager": {
       "v2026.2.16": {
-        "digest": "9759cc55619b55bfc10a2b62387dc962f3da62ee864761c548f45c3e0f4a3597",
+        "digest": "a6a16157f5df4aa44bec1f1a9e2a186cd88691901dc4c0c2dce81b5e21b0fd89",
         "url": "https://charts.appscode.com/stable/managed-serviceaccount-manager/managed-serviceaccount-manager-v2026.2.16.tgz"
       },
       "v2025.5.16": {
@@ -13248,7 +13572,7 @@
     },
     "mariadb-alerts": {
       "v2026.7.14": {
-        "digest": "51bf84b295d1f5096f380ad10e89949234c7eb4815bc3af802df23bc12665ae2",
+        "digest": "4751e1be3aa49805409f5cf03b800503730f26d5de4c1ed716db20cabc4e7c74",
         "url": "https://charts.appscode.com/stable/mariadb-alerts/mariadb-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -13292,6 +13616,10 @@
       "v2026.11.30": {
         "digest": "8e761d28c1dcfd6bba3a029d36f030a9b7d28c20abdfc3bedb2607205eec09db",
         "url": "https://charts.appscode.com/stable/marketplace-api/marketplace-api-v2026.11.30.tgz"
+      },
+      "v2026.11.15": {
+        "digest": "88e43e7e2e940898ebdbf18179ab879e6aab8605b3247c33576c803eb20e20df",
+        "url": "https://charts.appscode.com/stable/marketplace-api/marketplace-api-v2026.11.15.tgz"
       },
       "v2026.10.30": {
         "digest": "0e6179a82e3d513ba2c0e912e8ca409194a14910c690840e80b975d9d5b1a40a",
@@ -13415,6 +13743,10 @@
         "digest": "b80e740b81610b5c56bd78233e0839f0c3dab9e369339501cca3194ce5a5754a",
         "url": "https://charts.appscode.com/stable/marketplace-ui/marketplace-ui-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "2c445e953083a3c853575a81c67f30fbd2cc24e98186d9d9886d7fad90ca18f5",
+        "url": "https://charts.appscode.com/stable/marketplace-ui/marketplace-ui-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
         "digest": "54aa965ce8ffe3b073e8f5965d056d48e27eec5014bdd5fcb5c375b2339b862d",
         "url": "https://charts.appscode.com/stable/marketplace-ui/marketplace-ui-v2026.10.30.tgz"
@@ -13534,7 +13866,7 @@
     },
     "memcached-alerts": {
       "v2026.7.14": {
-        "digest": "00c5924644b06f5a8c312ec1c819b9467c62477600c1bd14ded1645e74bce5e7",
+        "digest": "156919f5b94bccd295b07dd84603f51c4786434cbbf45c4f90c4689a1bc5eb2e",
         "url": "https://charts.appscode.com/stable/memcached-alerts/memcached-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -13568,7 +13900,7 @@
     },
     "milvus-alerts": {
       "v2026.7.14": {
-        "digest": "6842e3f6c8eb130f60f77729213c1b8c28e18630027ed28d9846e1c19dae824d",
+        "digest": "e181fb1a65e49b9ced4b161bc888e40340679175643121b35bf9cd1fdf092c94",
         "url": "https://charts.appscode.com/stable/milvus-alerts/milvus-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -13722,7 +14054,7 @@
     },
     "mongodb-alerts": {
       "v2026.7.14": {
-        "digest": "cfee06041a0e7a13286287cc292cf18663d61e770801e581354635292c1be14f",
+        "digest": "96b622079f0200a9363f5f45b3f08fd075457c008f0b1e0506d66748434c986a",
         "url": "https://charts.appscode.com/stable/mongodb-alerts/mongodb-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -13858,7 +14190,7 @@
     },
     "mssqlserver-alerts": {
       "v2026.7.14": {
-        "digest": "e81e9fd146e611c63ce920e49e291f34d5919d3266c3f0919dd90347b60eb137",
+        "digest": "f507eacd6b3442c4fa8c9e1dc3e52f748e2199a2ad7066da24e2f5229c46d146",
         "url": "https://charts.appscode.com/stable/mssqlserver-alerts/mssqlserver-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -13920,7 +14252,7 @@
     },
     "mysql-alerts": {
       "v2026.7.14": {
-        "digest": "b1deb9748bc67e24596fdd940050c2e33ecf5dfa167f2cf227cf61a623e69457",
+        "digest": "4d5c29fecb3ad8ce76ce6891740edd927470f4291d8e1e2a1a30b50658e4a6c0",
         "url": "https://charts.appscode.com/stable/mysql-alerts/mysql-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -13962,7 +14294,7 @@
     },
     "nats-alerts": {
       "v2026.7.14": {
-        "digest": "7e7fbbbaf6f51079bd3425d811b750bedd8c07a4c1ae88cd630091540e2712d8",
+        "digest": "8e71491f48aacb36010fb17b9f81ca8f3584afb94e3ed7c585e2f617bb6d745b",
         "url": "https://charts.appscode.com/stable/nats-alerts/nats-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -13988,7 +14320,7 @@
     },
     "neo4j-alerts": {
       "v2026.7.14": {
-        "digest": "c5be0fa1bb3e66e2806173d807344d3c6b1303cbe5273c1ab7d010f0a6607e4d",
+        "digest": "85655a5d64289c3c7ec34fc47475e6c88dcc6002ea5442abb7f4a6be672523eb",
         "url": "https://charts.appscode.com/stable/neo4j-alerts/neo4j-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -14004,6 +14336,10 @@
       "v2026.11.30": {
         "digest": "4ac2ba4e8e389def698979f870bcafff9f5ec6031e6e9077fc29d0789a9e80c1",
         "url": "https://charts.appscode.com/stable/offline-license-server/offline-license-server-v2026.11.30.tgz"
+      },
+      "v2026.11.15": {
+        "digest": "2ab89a89c6a1500e4c0704588e014b563f0c5f220b7e4a3492060618f947fb4c",
+        "url": "https://charts.appscode.com/stable/offline-license-server/offline-license-server-v2026.11.15.tgz"
       },
       "v2026.10.30": {
         "digest": "fd00bb9fa7bf934eb93d54b6dc9938f17dcb4e1e1d6aad8a59371e80f971006d",
@@ -14114,7 +14450,7 @@
     },
     "openfga-alerts": {
       "v2026.7.14": {
-        "digest": "5515a12ed3a2ae118861e6d4cba59fbbce635135eacd0d069df82e2be742ef65",
+        "digest": "073a93b61c77b2f98803a395d068a5c8d404406785dc4ee390e2f591f968f390",
         "url": "https://charts.appscode.com/stable/openfga-alerts/openfga-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -14219,8 +14555,12 @@
         "digest": "69aa2066ac4cb8bdc074cb645c92dae19d4d33e1e8664edd9166ae899beed927",
         "url": "https://charts.appscode.com/stable/opscenter-features/opscenter-features-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "a05d0dffda64a959f584854cdff663a14399f1f2c0a571f8656ea0ee5e765116",
+        "url": "https://charts.appscode.com/stable/opscenter-features/opscenter-features-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "95fe7064f3bf9de3fc2563d0d5e31f282f257412c56db045ee05f127aed32878",
+        "digest": "f1abcd04a77080be368d2801d1cb1d86c71a6afa132142789c055438ac451bfd",
         "url": "https://charts.appscode.com/stable/opscenter-features/opscenter-features-v2026.10.30.tgz"
       },
       "v2026.10.12": {
@@ -14426,7 +14766,7 @@
     },
     "oracle-alerts": {
       "v2026.7.14": {
-        "digest": "2b911478049ac37aab83dafa7551d4dfd79ff27a411cd2725f72c5fe2b4affca",
+        "digest": "4ee674a78b6410278c67316759874559f3d35532cb76e94870d3d03d50e5f9bc",
         "url": "https://charts.appscode.com/stable/oracle-alerts/oracle-alerts-v2026.7.14.tgz"
       },
       "v2025.06.30": {
@@ -14450,6 +14790,10 @@
       "v2026.11.30": {
         "digest": "14acd3d3f9d719248b9fdc6d68ac306835b16a8bd11fc08915d3e2a95c909d8f",
         "url": "https://charts.appscode.com/stable/outbox-syncer/outbox-syncer-v2026.11.30.tgz"
+      },
+      "v2026.11.15": {
+        "digest": "18160e83541cb39d5744a724e309cfb83c631ca4c08175d0f39559cd5efce0d3",
+        "url": "https://charts.appscode.com/stable/outbox-syncer/outbox-syncer-v2026.11.15.tgz"
       },
       "v2026.10.30": {
         "digest": "39b85f880e296aea795faaac1faca2ba18ece4f8c52a25115fba912f7aaf245e",
@@ -14562,7 +14906,7 @@
     },
     "panopticon": {
       "v2026.9.18": {
-        "digest": "d73a09aa93b58c27cd478b7c42de38a163fd47319e39aac401be050055fcc5db",
+        "digest": "2a7e1c2014265f45969ac99eacee5969681e78a63019324ccd6f5d1f9ee60215",
         "url": "https://charts.appscode.com/stable/panopticon/panopticon-v2026.9.18.tgz"
       },
       "v2026.6.22": {
@@ -14652,7 +14996,7 @@
     },
     "perconaxtradb-alerts": {
       "v2026.7.14": {
-        "digest": "09e8a5ad4df969ddcb003aa1302826c2070d6d7cc112ab37e99859d81a867d3a",
+        "digest": "fcb9a6b358585a0d6043463bb6a8d514be1386951fe0fedb35109eeb3ceb114a",
         "url": "https://charts.appscode.com/stable/perconaxtradb-alerts/perconaxtradb-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -14792,7 +15136,7 @@
     },
     "pgbouncer-alerts": {
       "v2026.7.14": {
-        "digest": "8e59294a987336ab564f4c88eef87860e48ca8aa0a2e9bfbc1517cbf9ce6172c",
+        "digest": "64d93c04489f614201208b0bee92f159aeb24ed9782b263a7ece50935a56b451",
         "url": "https://charts.appscode.com/stable/pgbouncer-alerts/pgbouncer-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -14844,7 +15188,7 @@
     },
     "pgpool-alerts": {
       "v2026.7.14": {
-        "digest": "06091f70c2b227af59936b464725c3579be14a69095525436902ad3c4b8097da",
+        "digest": "f9fd503121e0d9155ba25f51951a4a8482c80be166a97b61678a34b42a1d944a",
         "url": "https://charts.appscode.com/stable/pgpool-alerts/pgpool-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -14907,8 +15251,12 @@
         "digest": "8be7c9adb428f1ea72d2196a908fd057c08c14a862b434542aed39de2fca8213",
         "url": "https://charts.appscode.com/stable/platform-api/platform-api-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "9d5d7998cfcf155db1d5a5803c72631ddd6e56fc8572af6f85bcf1509d562f5f",
+        "url": "https://charts.appscode.com/stable/platform-api/platform-api-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "39df1559a7a7f849116468d755cf68285a958f8eef2064a3d2bf94b0d4b70cfd",
+        "digest": "877c0e83e16a4c47b22804a9be0b706386805fc414fb7d2e8e4b88941e53198e",
         "url": "https://charts.appscode.com/stable/platform-api/platform-api-v2026.10.30.tgz"
       },
       "v2026.10.15": {
@@ -15121,6 +15469,10 @@
         "digest": "925b6fea5b1bc180c12887053e6a8a1f32813cdb328c6a4b57cda87b3be96ed7",
         "url": "https://charts.appscode.com/stable/platform-grafana-dashboards/platform-grafana-dashboards-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "20955c8e6fc153f6bc0b964bfc11975b6cd59fb0fff12fe7922a09aa8b273587",
+        "url": "https://charts.appscode.com/stable/platform-grafana-dashboards/platform-grafana-dashboards-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
         "digest": "2fa2db502b121b58e5e27a76df9d114c3f5c75818b5175515caf90a861904d61",
         "url": "https://charts.appscode.com/stable/platform-grafana-dashboards/platform-grafana-dashboards-v2026.10.30.tgz"
@@ -15190,6 +15542,10 @@
       "v2026.11.30": {
         "digest": "d30bfdefa0b61c384e77eaba7eb82131a8fb5ed8c5ab3b7032fd9a6b5be81d6f",
         "url": "https://charts.appscode.com/stable/platform-links/platform-links-v2026.11.30.tgz"
+      },
+      "v2026.11.15": {
+        "digest": "dcd4d77aa72b24c9a227d9488b042c0507584efff303b1a445ad63a44fb1edc6",
+        "url": "https://charts.appscode.com/stable/platform-links/platform-links-v2026.11.15.tgz"
       },
       "v2026.10.30": {
         "digest": "dabdd5a1636693401d9dcde90b36f37786e48a829499355f62412ffac7a756f8",
@@ -15397,6 +15753,10 @@
         "digest": "d10843dfe17671e845c6957a16eb1532da59c6c6fc5b76e811aa29efb4790d11",
         "url": "https://charts.appscode.com/stable/platform-opscenter/platform-opscenter-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "679981cb6d3ee4c38755f626bc0cd5b13ad353f5727ee662e0c1cf42d6405292",
+        "url": "https://charts.appscode.com/stable/platform-opscenter/platform-opscenter-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
         "digest": "e0a4f569617fbdb3fc082f4b9c6beb3179930658c06a5cc4607c8f779800195a",
         "url": "https://charts.appscode.com/stable/platform-opscenter/platform-opscenter-v2026.10.30.tgz"
@@ -15459,8 +15819,12 @@
         "digest": "8ba4db329b4b0f86c7d745495e9f7a5891c22407cbfb5239d0ece6e7de24998f",
         "url": "https://charts.appscode.com/stable/platform-ui/platform-ui-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "32ccad79cb73c58191c2a9f0bb8a5f25728d568da80ca2d0f981cc0be2888843",
+        "url": "https://charts.appscode.com/stable/platform-ui/platform-ui-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "642589cb552e5b77367e99c20886d8a798441b74cf39c85d83c28c1cb1e8f7df",
+        "digest": "6b83ede92d1e0ab0a556688bc08e15c852b9321d8bb4218d8abbfa43ec38a5d0",
         "url": "https://charts.appscode.com/stable/platform-ui/platform-ui-v2026.10.30.tgz"
       },
       "v2026.10.12": {
@@ -15672,7 +16036,7 @@
     },
     "postgres-alerts": {
       "v2026.7.14": {
-        "digest": "cb048c46c02a964266ed21783ebde1612f37f1092f55ad8d68bb7ddaa8a6250e",
+        "digest": "82d66f432fed4607ebab6715dfd8ba5a4333b693b711f7eee4023a4330d7a073",
         "url": "https://charts.appscode.com/stable/postgres-alerts/postgres-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -15713,6 +16077,10 @@
       }
     },
     "prepare-cluster": {
+      "v2026.11.15": {
+        "digest": "360f64f975ef08b920b329d6e43394105c8c2a1bc1c0659e08414679333d0952",
+        "url": "https://charts.appscode.com/stable/prepare-cluster/prepare-cluster-v2026.11.15.tgz"
+      },
       "v2026.10.12": {
         "digest": "0d1efb11b1f450e9e233de6ab59e7339d67719d6dfe78170a9ffa79e096f8e6d",
         "url": "https://charts.appscode.com/stable/prepare-cluster/prepare-cluster-v2026.10.12.tgz"
@@ -15976,7 +16344,7 @@
     },
     "proxysql-alerts": {
       "v2026.7.14": {
-        "digest": "bcfe10bacc4854db3aa47df9849511f92e429a0fe801f83950e5948fbda07c4b",
+        "digest": "1d3ba1ce3eb06558efc0cbdbc91b2d538c5167a25bad97153950571677ca62cf",
         "url": "https://charts.appscode.com/stable/proxysql-alerts/proxysql-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -16018,7 +16386,7 @@
     },
     "qdrant-alerts": {
       "v2026.7.14": {
-        "digest": "2cbd1f871bdf092056757db90ac1d0738e84e5e015c29f74e38dca9ae557a059",
+        "digest": "858db45c528a37eeaf936938196fee285c6b3813b68cf7e859655f4b78d8e979",
         "url": "https://charts.appscode.com/stable/qdrant-alerts/qdrant-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -16032,7 +16400,7 @@
     },
     "rabbitmq-alerts": {
       "v2026.7.14": {
-        "digest": "c291d183c5236ffa70195ec08a03e50037c3ea3c2d5be4ea08ddd555943c5899",
+        "digest": "71cb6ec596fa3a1bc641b59d55a3bcc5a80b3b5548ece8afaddd06058289e79f",
         "url": "https://charts.appscode.com/stable/rabbitmq-alerts/rabbitmq-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -16066,7 +16434,7 @@
     },
     "redis-alerts": {
       "v2026.7.14": {
-        "digest": "c0f418064da33b7ab95db3422d1bec4a72ac54d2b4f88345cbc50a4025097264",
+        "digest": "122b7b1c891223007d81cbd91ec2652c88985c3a97274347930df20f156f7635",
         "url": "https://charts.appscode.com/stable/redis-alerts/redis-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -16111,6 +16479,10 @@
         "digest": "853704e01af37f0181655e76191270f3ed507faf9d60d26a288659647a5551fb",
         "url": "https://charts.appscode.com/stable/regcache/regcache-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "c45ecf7f44af52bb13e1a07c311e4325f8e3b5d6c8067569e786368aaee5764a",
+        "url": "https://charts.appscode.com/stable/regcache/regcache-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
         "digest": "bc30f3d7580a3860c51bd1e9d0c2233805dc837d579d7e72b4f2a4cb1ed914bf",
         "url": "https://charts.appscode.com/stable/regcache/regcache-v2026.10.30.tgz"
@@ -16137,6 +16509,10 @@
         "digest": "f7460e989f28cff12c2cb29544b0a1a43f3ab1d78598488a6a0798ec1f6b50b8",
         "url": "https://charts.appscode.com/stable/rustfs/rustfs-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "679a55bbed92a8348a6fdd0825bbaa260e1fac3f5dd9ce247f534215dd6485a6",
+        "url": "https://charts.appscode.com/stable/rustfs/rustfs-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
         "digest": "eef857b84307437fc2df6fc72c1b3643405b93d4edf69d831300ec4cc68540a6",
         "url": "https://charts.appscode.com/stable/rustfs/rustfs-v2026.10.30.tgz"
@@ -16151,8 +16527,12 @@
         "digest": "ab3b76a4dc200fa1998b7f386672f613ec56c7c0408baa7c0739f954fcde570c",
         "url": "https://charts.appscode.com/stable/s3proxy/s3proxy-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "395e65d75a21a3c03a45111272440eb8f661f2fa5ee3771af8ca2dd2e19bbe99",
+        "url": "https://charts.appscode.com/stable/s3proxy/s3proxy-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "86a25af58e6ad0bf7b3ac83886d25e3ced53e7abf112fc52d19f05da216c6d11",
+        "digest": "f68ff4785ab2504206047ee9d3663ae58f4db9c4af5aec266188f7e47b2abf3b",
         "url": "https://charts.appscode.com/stable/s3proxy/s3proxy-v2026.10.30.tgz"
       },
       "v2026.10.12": {
@@ -16469,8 +16849,12 @@
         "digest": "02dd34644eccd68aed635c3f4b6a6e9b2c5cdfea37b54a9cd386a97952089d95",
         "url": "https://charts.appscode.com/stable/service-backend/service-backend-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "e0765474476bd86ca4f752e8fb26641ac94aa99de35ae730811cd03c904067bd",
+        "url": "https://charts.appscode.com/stable/service-backend/service-backend-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "2a0a9213cd13b03dde0efa18cff72daf028a46e8fe10680a69e4779348d0c468",
+        "digest": "d85dbd63abaa5cdefed8c752b23a94799ac1b49b139951ba316c5c9ef4c88ee5",
         "url": "https://charts.appscode.com/stable/service-backend/service-backend-v2026.10.30.tgz"
       },
       "v2026.10.12": {
@@ -16637,8 +17021,12 @@
         "digest": "41adb3eee373c96c520f383c78339a7cc5b7477b785cc3508cc186469d0f6aaf",
         "url": "https://charts.appscode.com/stable/service-gateway/service-gateway-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "b21e8cd178e90c67ed6ed98ccfc9eca824e45bf24e68c7d1aaa9fe20c0e6a17d",
+        "url": "https://charts.appscode.com/stable/service-gateway/service-gateway-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "f9fa52daa1931adae2b19fa41af77ce3ddf1cc160733bfc7795c4033b5b43a9e",
+        "digest": "b3ff5f1bce964ec5206fd221e50ebaf8009c73baa0e9bae6e0955aec7e518650",
         "url": "https://charts.appscode.com/stable/service-gateway/service-gateway-v2026.10.30.tgz"
       },
       "v2026.10.12": {
@@ -16767,8 +17155,12 @@
         "digest": "264622c82b74309cca4508b6ae32ea40703174195f89109e27a1e84f26823365",
         "url": "https://charts.appscode.com/stable/service-gateway-presets/service-gateway-presets-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "0bbbd4bb16b5eca1b017dbecd9ce04ce81fb16e874d2f92a2bd15a563ac5dea0",
+        "url": "https://charts.appscode.com/stable/service-gateway-presets/service-gateway-presets-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "1061551158976e74da8987e02554170c8509691a62e2b3dc99ad3b7e7d92e301",
+        "digest": "e9ac8d0666717ef6d56147670238953f07c39b145735101a6e90f1a0ac887202",
         "url": "https://charts.appscode.com/stable/service-gateway-presets/service-gateway-presets-v2026.10.30.tgz"
       },
       "v2026.10.12": {
@@ -16919,6 +17311,10 @@
         "digest": "4fb668a8c1bfddddea37879817f78d6538396d31fd294afa0cf184d792851810",
         "url": "https://charts.appscode.com/stable/service-provider/service-provider-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "39f4c9eea904df7aea592ab4bab7fa2c2a4e248fd965087d9a39643a102c65c4",
+        "url": "https://charts.appscode.com/stable/service-provider/service-provider-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
         "digest": "23cf2102cead2eb50ce9ce005db87c02c9ae316f800f2e535631daf00afad9e1",
         "url": "https://charts.appscode.com/stable/service-provider/service-provider-v2026.10.30.tgz"
@@ -17065,8 +17461,12 @@
         "digest": "ff3ced71f4d40a4fcd4299cf2b256acc080d61f69bd46c7c3b6feb0a56b4d66d",
         "url": "https://charts.appscode.com/stable/service-vault/service-vault-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "bc65557027e18a378b96fc27de7ecef1f9a2b48646633c1a18f958f4a03c8242",
+        "url": "https://charts.appscode.com/stable/service-vault/service-vault-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "c09d62e4b4df1fc52a2d703e91fa5f70353ad20902f4c416790c0e444191b341",
+        "digest": "8d7e79e8798f0c9e18d26a0f94df5fa11b5d0bc5f965a322191a8b1536249daa",
         "url": "https://charts.appscode.com/stable/service-vault/service-vault-v2026.10.30.tgz"
       },
       "v2026.10.12": {
@@ -17226,7 +17626,7 @@
     },
     "singlestore-alerts": {
       "v2026.7.14": {
-        "digest": "f0b0233bc482053cc9789937388cd53a4440ba427865dd1e1cac3dab34c32dd6",
+        "digest": "f9f721084058a87f77ae609e86c45e23eb640ec603fdc130bd9ebe561e94734f",
         "url": "https://charts.appscode.com/stable/singlestore-alerts/singlestore-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -17263,8 +17663,12 @@
         "digest": "12c93265c597102f32d2f4a34e60899f84e844dc0aaa4c37ce120e1e670ae65e",
         "url": "https://charts.appscode.com/stable/smtprelay/smtprelay-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "83904b8bf4be28e703b57c11b04bbb41965fa73287de79043d3349b6285cbf01",
+        "url": "https://charts.appscode.com/stable/smtprelay/smtprelay-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
-        "digest": "d1e084ae2d718d6eefff6620454784f4f2f0b11e1d4f3e39dd44068784264763",
+        "digest": "7c1a5506e5806c1e0513592bc656d0a055d29ca952a4077358a3c303503aba7d",
         "url": "https://charts.appscode.com/stable/smtprelay/smtprelay-v2026.10.30.tgz"
       },
       "v2026.10.12": {
@@ -17398,7 +17802,7 @@
     },
     "solr-alerts": {
       "v2026.7.14": {
-        "digest": "4615100623adeb37a12471b46f557dfbc5cdbe39fd5fa5b389f2ca7cf7cf7857",
+        "digest": "8c5f8763fca583f122a071f1e226a9d1505f0043d3ee3a472e5aaaa498715827",
         "url": "https://charts.appscode.com/stable/solr-alerts/solr-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -19799,6 +20203,10 @@
         "digest": "9445daa7d9882a1164c444d55891089cd615bbb036b80773d723c234c9e846e1",
         "url": "https://charts.appscode.com/stable/stash-presets/stash-presets-v2026.11.30.tgz"
       },
+      "v2026.11.15": {
+        "digest": "7654cfd08e09956ba9b5aef8e7765b6a84bd9db2b7a7f7fc78973b7eef44ff2f",
+        "url": "https://charts.appscode.com/stable/stash-presets/stash-presets-v2026.11.15.tgz"
+      },
       "v2026.10.30": {
         "digest": "fe207b884b34b6c015c108478f6c3aa15c648ca73460a31561e3c701a4c4c63c",
         "url": "https://charts.appscode.com/stable/stash-presets/stash-presets-v2026.10.30.tgz"
@@ -20360,7 +20768,7 @@
     },
     "vaultserver-alerts": {
       "v2026.7.14": {
-        "digest": "26f7472ea16902d104815bcdeead5b142e6b24fa750c4af99376473a3f66febb",
+        "digest": "0a05b3dd6cfe78deac27f1e4a7822eb5d22818a1ecf039ede242d7a2e7714ca6",
         "url": "https://charts.appscode.com/stable/vaultserver-alerts/vaultserver-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -20818,7 +21226,7 @@
     },
     "weaviate-alerts": {
       "v2026.7.14": {
-        "digest": "714e7f764d1d1b323675831970d881fa2f0bdde05b6d29265e6a5a960e91fe43",
+        "digest": "e04a9120391b07875ec6c2fcf0a3267d1102fb3ead73e77d230af65002f02ca5",
         "url": "https://charts.appscode.com/stable/weaviate-alerts/weaviate-alerts-v2026.7.14.tgz"
       }
     },
@@ -20826,6 +21234,10 @@
       "v2026.11.30": {
         "digest": "454366c95d0824c800986129e1635d22120f0302257e5cf340fba101086e3f21",
         "url": "https://charts.appscode.com/stable/website/website-v2026.11.30.tgz"
+      },
+      "v2026.11.15": {
+        "digest": "c42d0ed610e0cf8084a3c8f0f557f711eadaae9ca48c7428bce901f7c0f937d0",
+        "url": "https://charts.appscode.com/stable/website/website-v2026.11.15.tgz"
       },
       "v2026.10.30": {
         "digest": "96c18905d92c6939ebe9262965db93a972a695e80599d1b2f10ebfd8a3a3e4f8",
@@ -20946,7 +21358,7 @@
     },
     "zookeeper-alerts": {
       "v2026.7.14": {
-        "digest": "93b1e39c16d53cd1d7ae7e2e55877406e14eb7157c15671d1a56370f7583eeaf",
+        "digest": "931cd4de4b9c5c3ec4c99594f02fd81ff4e5747d946a10080a860e2d8eafcf87",
         "url": "https://charts.appscode.com/stable/zookeeper-alerts/zookeeper-alerts-v2026.7.14.tgz"
       },
       "v2026.2.24": {
@@ -25617,6 +26029,22 @@
       }
     },
     "aspnet-core": {
+      "9.5.12": {
+        "digest": "88cde150922a0e368f4338f056b367a70094c0fde6471e4f5c8740d0f1098549",
+        "url": "oci://registry-1.docker.io/bitnamicharts/aspnet-core:9.5.12"
+      },
+      "9.5.11": {
+        "digest": "5ecdd756a11731183b366c99d90d5a10cf83bae2540859921e36cf8e6a1a25b0",
+        "url": "oci://registry-1.docker.io/bitnamicharts/aspnet-core:9.5.11"
+      },
+      "9.5.10": {
+        "digest": "36c79b72c94374dfe7fc5538df95b4929db11a02dbfbfdfc6122444884b10642",
+        "url": "oci://registry-1.docker.io/bitnamicharts/aspnet-core:9.5.10"
+      },
+      "9.5.9": {
+        "digest": "2f31d23a95aa4aaf3f4949bb32c4736304ccff2f35ad0d9ee2612080bcaea6e3",
+        "url": "oci://registry-1.docker.io/bitnamicharts/aspnet-core:9.5.9"
+      },
       "9.5.8": {
         "digest": "e5383cb5a148f3a01834ab73c60c157143838b1bad998b490c576ba2e8e83c9e",
         "url": "oci://registry-1.docker.io/bitnamicharts/aspnet-core:9.5.8"
@@ -45221,6 +45649,30 @@
       }
     },
     "haproxy": {
+      "4.2.24": {
+        "digest": "6eb75c2ba549df41e2657587970fe6eca1b2ac8461544d9e740a166e592d8e3d",
+        "url": "oci://registry-1.docker.io/bitnamicharts/haproxy:4.2.24"
+      },
+      "4.2.23": {
+        "digest": "e14210d8ae40640bd6f640210c82797503f511d8a3c0009ef1eea5a05249caf4",
+        "url": "oci://registry-1.docker.io/bitnamicharts/haproxy:4.2.23"
+      },
+      "4.2.22": {
+        "digest": "0aaadacf1c010c4d80533cdc2a7ad170fada5ea4ec15a3bff518d17c859ea44b",
+        "url": "oci://registry-1.docker.io/bitnamicharts/haproxy:4.2.22"
+      },
+      "4.2.21": {
+        "digest": "1ca934b855b3d0d489bd409d8d5dc13e547808087a34d051cdc9229a9d3e1499",
+        "url": "oci://registry-1.docker.io/bitnamicharts/haproxy:4.2.21"
+      },
+      "4.2.20": {
+        "digest": "a653dcd368622eca8eb19ca91abca73903430f960670ab57574acc76359d83af",
+        "url": "oci://registry-1.docker.io/bitnamicharts/haproxy:4.2.20"
+      },
+      "4.2.19": {
+        "digest": "af54423cf7d8f98950c01690563338b8dd5c94e51b99ff1a2fdf8238ed704adc",
+        "url": "oci://registry-1.docker.io/bitnamicharts/haproxy:4.2.19"
+      },
       "4.2.18": {
         "digest": "6bd9523e5b4cc1c854b04509a77ff009c1a2167b5c8fae548c9fb2470f971bb0",
         "url": "oci://registry-1.docker.io/bitnamicharts/haproxy:4.2.18"
@@ -58233,6 +58685,22 @@
       }
     },
     "mariadb": {
+      "28.1.9": {
+        "digest": "1663266d0bcf229935eb69fcd295d0c2cac941e84c6f1b17234fd51deba9fd9c",
+        "url": "oci://registry-1.docker.io/bitnamicharts/mariadb:28.1.9"
+      },
+      "28.1.8": {
+        "digest": "8b1318a00707756ca3c909d7e414995db85c11db25e6a0dfc3560aae33faaf0f",
+        "url": "oci://registry-1.docker.io/bitnamicharts/mariadb:28.1.8"
+      },
+      "28.1.7": {
+        "digest": "8f14ae42eea57cfe1882ece2d12f629490ab9f953b77e101f4c195cd6ad48e80",
+        "url": "oci://registry-1.docker.io/bitnamicharts/mariadb:28.1.7"
+      },
+      "28.1.6": {
+        "digest": "c77a41c69c237be80f8d4f83cd39779df53013b3e71c8ca1bfcbb717c6e6afa5",
+        "url": "oci://registry-1.docker.io/bitnamicharts/mariadb:28.1.6"
+      },
       "28.1.5": {
         "digest": "d0a2de8ee16e9f18f723eece4df400a4dc9163f803a42ed843208ad8fe3b347d",
         "url": "oci://registry-1.docker.io/bitnamicharts/mariadb:28.1.5"
@@ -61199,6 +61667,14 @@
       }
     },
     "memcached": {
+      "8.8.8": {
+        "digest": "1d2a4f87782350117744d874d13464888664b1e463146d5cbf60fedf52963687",
+        "url": "oci://registry-1.docker.io/bitnamicharts/memcached:8.8.8"
+      },
+      "8.8.7": {
+        "digest": "da11f1c73eaa1d645fcf6839ab51961e4350e64157f776d852644bb348919c3e",
+        "url": "oci://registry-1.docker.io/bitnamicharts/memcached:8.8.7"
+      },
       "8.8.6": {
         "digest": "5298b59c95aba118a3a060ce478e0af7c889ac25e5052a0b41109d1b345c8bb9",
         "url": "oci://registry-1.docker.io/bitnamicharts/memcached:8.8.6"
@@ -65461,6 +65937,30 @@
       }
     },
     "mongodb": {
+      "20.0.23": {
+        "digest": "f5f95b56730e8d53ef541465618acd3734794093d83ba95e2e3235531ea97175",
+        "url": "oci://registry-1.docker.io/bitnamicharts/mongodb:20.0.23"
+      },
+      "20.0.22": {
+        "digest": "233a6e567f58e003a4d5b524e1dc67689fc572cc527c0eb6a9a2d1c4bae67602",
+        "url": "oci://registry-1.docker.io/bitnamicharts/mongodb:20.0.22"
+      },
+      "20.0.21": {
+        "digest": "ebb06efdc554b00de34b235a181b166057829546c0ff3e549d2799c4ab4eed0c",
+        "url": "oci://registry-1.docker.io/bitnamicharts/mongodb:20.0.21"
+      },
+      "20.0.20": {
+        "digest": "4258b4d950ad9dd429ed8799082ddc653412800290594395cba7c7e490dcc6fc",
+        "url": "oci://registry-1.docker.io/bitnamicharts/mongodb:20.0.20"
+      },
+      "20.0.17": {
+        "digest": "dcd8ed01e7ca2ea8c8af420acf466cb3e1d00ea7583518839c050e7e2159d457",
+        "url": "oci://registry-1.docker.io/bitnamicharts/mongodb:20.0.17"
+      },
+      "20.0.16": {
+        "digest": "b81bbe42ccdeb721b669c802947a7bd1a928a8d50ff288bc4b8d894727afbdb2",
+        "url": "oci://registry-1.docker.io/bitnamicharts/mongodb:20.0.16"
+      },
       "20.0.14": {
         "digest": "daed2f6a881fe12ad58190d05aadc67d00d8485b298dbae6b27823dc4c92d6f4",
         "url": "oci://registry-1.docker.io/bitnamicharts/mongodb:20.0.14"
@@ -70299,6 +70799,30 @@
       }
     },
     "nginx": {
+      "25.2.19": {
+        "digest": "e1a4c1abc8cd8f26bc067df11ac122475cb9250aee70c9b37867ca202d583b08",
+        "url": "oci://registry-1.docker.io/bitnamicharts/nginx:25.2.19"
+      },
+      "25.2.18": {
+        "digest": "47fd01f278cda48886043493336c5947cbc6e87a77a03f6a944fa8659ba0957a",
+        "url": "oci://registry-1.docker.io/bitnamicharts/nginx:25.2.18"
+      },
+      "25.2.17": {
+        "digest": "901166ed7174410f2fe61df3e2e173bd46d33f05dc6723d9fc9295253ba29ef0",
+        "url": "oci://registry-1.docker.io/bitnamicharts/nginx:25.2.17"
+      },
+      "25.2.16": {
+        "digest": "87f9cc47946ecefc5de6760e568c510bf8139f67ffe0ff52d0ef48d954672f22",
+        "url": "oci://registry-1.docker.io/bitnamicharts/nginx:25.2.16"
+      },
+      "25.2.15": {
+        "digest": "d67c5c040c0ed3d907a7d175866524f43cd82c7a515e80f66f5423ee7da3f37b",
+        "url": "oci://registry-1.docker.io/bitnamicharts/nginx:25.2.15"
+      },
+      "25.2.14": {
+        "digest": "ef3ed08dc49bc85d85d7178b73142fbc9fe2ccc2e4a28efdb7ca9bd07bafc381",
+        "url": "oci://registry-1.docker.io/bitnamicharts/nginx:25.2.14"
+      },
       "25.2.13": {
         "digest": "0164416c41a5017060799251cdb5b1a86a0dbe68326609c65629dd106c0087d0",
         "url": "oci://registry-1.docker.io/bitnamicharts/nginx:25.2.13"
@@ -76793,6 +77317,46 @@
       }
     },
     "postgresql": {
+      "18.12.28": {
+        "digest": "79674c60404d05c67c8dc89dd904ec1622ed223861e230af619fc892f39bdad0",
+        "url": "oci://registry-1.docker.io/bitnamicharts/postgresql:18.12.28"
+      },
+      "18.12.27": {
+        "digest": "64c21d807b90de36a7428b2eae6254f48c9a5df6f101faaf566cbe20f5c4aa60",
+        "url": "oci://registry-1.docker.io/bitnamicharts/postgresql:18.12.27"
+      },
+      "18.12.26": {
+        "digest": "f2e5f1883d3627b9fb0b66b362da43090b703f74794c7bffa9d66556511f6a81",
+        "url": "oci://registry-1.docker.io/bitnamicharts/postgresql:18.12.26"
+      },
+      "18.12.25": {
+        "digest": "cafb304e3c60d5119da673797bd74292f181081a399abbbd7d36f188bcee0a4b",
+        "url": "oci://registry-1.docker.io/bitnamicharts/postgresql:18.12.25"
+      },
+      "18.12.24": {
+        "digest": "bf8949574244b3c653747ea7f43b58ecf1bb669bdd99221841d8c4885953cc7d",
+        "url": "oci://registry-1.docker.io/bitnamicharts/postgresql:18.12.24"
+      },
+      "18.12.23": {
+        "digest": "36c6ed39223f4ae0b93dc0930f71b824fe8be6631136ff1d7097a8fce9705001",
+        "url": "oci://registry-1.docker.io/bitnamicharts/postgresql:18.12.23"
+      },
+      "18.12.20": {
+        "digest": "19c21e1b63748cf3c8f4d62e946190962756014b793387c50449c0d52a99e36e",
+        "url": "oci://registry-1.docker.io/bitnamicharts/postgresql:18.12.20"
+      },
+      "18.12.19": {
+        "digest": "22c799e4bd596065643045b17e771465e939c706ca11456b69bbb9b91f86db98",
+        "url": "oci://registry-1.docker.io/bitnamicharts/postgresql:18.12.19"
+      },
+      "18.12.18": {
+        "digest": "ea56d67d7e265d8ca1fe9b9746fd54e77a3224f14ed534d9115535154bf078e3",
+        "url": "oci://registry-1.docker.io/bitnamicharts/postgresql:18.12.18"
+      },
+      "18.12.17": {
+        "digest": "0bd5ab1d823c361f6a62ce0d9af943ed910f0a7552d282b844e86a29f006a9ce",
+        "url": "oci://registry-1.docker.io/bitnamicharts/postgresql:18.12.17"
+      },
       "18.12.16": {
         "digest": "589e7d100f8aadc735e5c4533c448249a23048dbfc7b37c05caebf61ffe9b46b",
         "url": "oci://registry-1.docker.io/bitnamicharts/postgresql:18.12.16"
@@ -80509,6 +81073,22 @@
       }
     },
     "pytorch": {
+      "5.10.11": {
+        "digest": "66988bdf5465b1d592ad305e4852d3dc1d01ef0d4bb363f34d6045b0980a9df5",
+        "url": "oci://registry-1.docker.io/bitnamicharts/pytorch:5.10.11"
+      },
+      "5.10.10": {
+        "digest": "d3c307c40ff9ab38b069253aa657d33b323f5f2e5f1f845abb09f0fd930865ab",
+        "url": "oci://registry-1.docker.io/bitnamicharts/pytorch:5.10.10"
+      },
+      "5.10.9": {
+        "digest": "84e7a90394c962d82203126ae22e55e65aa6c77b709196cb3415302f07c7a2ed",
+        "url": "oci://registry-1.docker.io/bitnamicharts/pytorch:5.10.9"
+      },
+      "5.10.8": {
+        "digest": "b1e6d33f897803d6cd6c197b25d0f9c5620dae9b410b894ea895a8e067fa1713",
+        "url": "oci://registry-1.docker.io/bitnamicharts/pytorch:5.10.8"
+      },
       "5.10.7": {
         "digest": "95148a380c50243ec390bfe22a866f9068c22447084246a79a619f96aae0be04",
         "url": "oci://registry-1.docker.io/bitnamicharts/pytorch:5.10.7"
@@ -82851,6 +83431,18 @@
       }
     },
     "redis": {
+      "28.3.16": {
+        "digest": "16af4d7a8906bc7f2a8596edb0d616854861f77621690d2b2d6341e925e3aaec",
+        "url": "oci://registry-1.docker.io/bitnamicharts/redis:28.3.16"
+      },
+      "28.3.15": {
+        "digest": "58ab653984e2508ad2e36d6b7d64e4db6ccdf2bd27c91fe5e3f54a4c324201a7",
+        "url": "oci://registry-1.docker.io/bitnamicharts/redis:28.3.15"
+      },
+      "28.3.12": {
+        "digest": "26dfb7fd4bf7cc6915ec951d637c902da58ceba40b037fa30334f02589f337b7",
+        "url": "oci://registry-1.docker.io/bitnamicharts/redis:28.3.12"
+      },
       "28.3.10": {
         "digest": "c47ee5452f27fc7e3380a758fa3fa4066ca1d8a50141d1400553683183bbb844",
         "url": "oci://registry-1.docker.io/bitnamicharts/redis:28.3.10"
@@ -91235,6 +91827,30 @@
       }
     },
     "tomcat": {
+      "13.6.44": {
+        "digest": "3bf93aad3375241eae3fc72f2ce70e369717c15a1ea7fbda6dbe84450c745750",
+        "url": "oci://registry-1.docker.io/bitnamicharts/tomcat:13.6.44"
+      },
+      "13.6.43": {
+        "digest": "5de4924327e1f5d39aac9775526a6a85985b7fe443eaa7941c95b46d92fd0e9b",
+        "url": "oci://registry-1.docker.io/bitnamicharts/tomcat:13.6.43"
+      },
+      "13.6.42": {
+        "digest": "7bb0005ded9ff8020d3d1ddbd92f3559ed7b3df0438a8b7574596ac17cf3bcc4",
+        "url": "oci://registry-1.docker.io/bitnamicharts/tomcat:13.6.42"
+      },
+      "13.6.41": {
+        "digest": "dd78d10fc0bbfa3c1229c11582f0494aba5b9c3018064e79fd57211db57956a5",
+        "url": "oci://registry-1.docker.io/bitnamicharts/tomcat:13.6.41"
+      },
+      "13.6.40": {
+        "digest": "7ebd261ab4c1ce10673f5c1c671915e618c58578b3e82cbeefd2f1dec4c300b7",
+        "url": "oci://registry-1.docker.io/bitnamicharts/tomcat:13.6.40"
+      },
+      "13.6.39": {
+        "digest": "938aec9bddb4735b7491e7e5e60c9699a72cfb195b37e3ca95020c8926c4999e",
+        "url": "oci://registry-1.docker.io/bitnamicharts/tomcat:13.6.39"
+      },
       "13.6.38": {
         "digest": "c3fc4c3bd59f84fe27bba39cb62163d4b899ea86afd2497fd26d36ab2b1ebcea",
         "url": "oci://registry-1.docker.io/bitnamicharts/tomcat:13.6.38"
@@ -92233,6 +92849,22 @@
       }
     },
     "valkey": {
+      "6.3.19": {
+        "digest": "f1fdb45c8a91a58e97187056f444588b8c4d091a1e013a9c00b523cb6aa439a8",
+        "url": "oci://registry-1.docker.io/bitnamicharts/valkey:6.3.19"
+      },
+      "6.3.17": {
+        "digest": "8b55b633b98523677e05a23bf01a2702ffd7947821865e6986a15c19d91c5b0f",
+        "url": "oci://registry-1.docker.io/bitnamicharts/valkey:6.3.17"
+      },
+      "6.3.15": {
+        "digest": "058c17eeeebe3115ad7a46e8c352774da2dc79c367c888992e6a859db56ebc28",
+        "url": "oci://registry-1.docker.io/bitnamicharts/valkey:6.3.15"
+      },
+      "6.3.14": {
+        "digest": "dabecfcfee9a8b15d3e779d4d61eb1271b7400d126bb8734b93603149406e561",
+        "url": "oci://registry-1.docker.io/bitnamicharts/valkey:6.3.14"
+      },
       "6.3.13": {
         "digest": "12932b9940b42b499d6fd16afc03a758c7b358cd87cf43c138ce3c2b7ee6439b",
         "url": "oci://registry-1.docker.io/bitnamicharts/valkey:6.3.13"
@@ -94921,6 +95553,34 @@
       }
     },
     "wordpress": {
+      "34.2.12": {
+        "digest": "b45c5f04ba143d9768b950f2efa151fc71d6d4aeaa4f8ced662dff8af653dfe4",
+        "url": "oci://registry-1.docker.io/bitnamicharts/wordpress:34.2.12"
+      },
+      "34.2.11": {
+        "digest": "8bb02a240f1850841d604810cdd82d03dbb970b4a446d39e9c04dc2e63e73980",
+        "url": "oci://registry-1.docker.io/bitnamicharts/wordpress:34.2.11"
+      },
+      "34.2.10": {
+        "digest": "bd97238d62d7d9da99356a60ffb2432dabba2417b1b9c3ad6617a740802d059b",
+        "url": "oci://registry-1.docker.io/bitnamicharts/wordpress:34.2.10"
+      },
+      "34.2.9": {
+        "digest": "dfe8284871b081cb9b399b8ab92f989639fc9409704a04de338b1a60c8f0ea47",
+        "url": "oci://registry-1.docker.io/bitnamicharts/wordpress:34.2.9"
+      },
+      "34.2.8": {
+        "digest": "126fa8b337867d73afadbd74983869750028b9d90543c360ba55efdad29b5156",
+        "url": "oci://registry-1.docker.io/bitnamicharts/wordpress:34.2.8"
+      },
+      "34.2.7": {
+        "digest": "f8004df9377cc614c486321c81a04aa1b0328b1ee53d566b09ed5cd9332ffb5d",
+        "url": "oci://registry-1.docker.io/bitnamicharts/wordpress:34.2.7"
+      },
+      "34.2.6": {
+        "digest": "ab33ed9ea462dd583e510f2785e2f0282651390e11f41b5a7ad0572c34d1e707",
+        "url": "oci://registry-1.docker.io/bitnamicharts/wordpress:34.2.6"
+      },
       "34.2.5": {
         "digest": "3aacfd026da35f54e773bee9cf17ac79310141ea95c90af2123e2f1ae7a388e4",
         "url": "oci://registry-1.docker.io/bitnamicharts/wordpress:34.2.5"
@@ -97904,6 +98564,84 @@
         "url": "https://gitlab-charts.s3.amazonaws.com/apparmor-0.2.0.tgz"
       }
     },
+    "artifact-registry": {
+      "3.210.0": {
+        "digest": "97e0bfec308c9051d588b880c9daf3957eab7f5282aa8972286c6994a6a4bd5c",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.210.0.tgz"
+      },
+      "3.209.0": {
+        "digest": "9dc44a5245469fbe328818da2bbcc8e26cd8fbf80970c36038d579319b77d89e",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.209.0.tgz"
+      },
+      "3.208.0": {
+        "digest": "4b666e6ced5e9b2745aa09eac258433c30a1391c4276253afc26de3fde1ffe67",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.208.0.tgz"
+      },
+      "3.207.0": {
+        "digest": "a8b27af957b8b99c8f33b577bbae9cb8b0bbaba1d6027b186bfadddd5b0b656f",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.207.0.tgz"
+      },
+      "3.206.0": {
+        "digest": "1dcb511c1a70ef4c52bbd3a7395c2c1864ced5625c482b546a95a55bed388188",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.206.0.tgz"
+      },
+      "3.205.0": {
+        "digest": "818a0550a05d36bea2cab0a477a02db452694c6a4229c1b1f8729a3d8ed5537a",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.205.0.tgz"
+      },
+      "3.204.0": {
+        "digest": "90d00b9a62ffa03e7e1354897132d1f4226b9ddae524117b844bf45138272374",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.204.0.tgz"
+      },
+      "3.203.0": {
+        "digest": "21fff40868a3be08f0711eef84e7bb682e5acd0bfaf714ec1822dddadc2e27a4",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.203.0.tgz"
+      },
+      "3.202.0": {
+        "digest": "2d6d96cae9572ba7f27a78fc7605d587b24156742f8d4085e2aff35edeefe7f4",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.202.0.tgz"
+      },
+      "3.201.0": {
+        "digest": "c8574ec1d7a1c5e79856aecd266221f824f6ee39f3cc4bad248b5e776953e2b4",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.201.0.tgz"
+      },
+      "3.200.0": {
+        "digest": "e8a10f12ba163e177a9ffa83ec44c47a1b1e3ea9ac0e71026ac4b099daa0f964",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.200.0.tgz"
+      },
+      "3.199.0": {
+        "digest": "ef4759e7265bde470e7464cb8df98327f2eba3ff9b7ec562729ae13b4affb0a5",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.199.0.tgz"
+      },
+      "3.198.0": {
+        "digest": "a414de944694927f88b48fc382442cc54953ccd60a97d7d02746ac756ffa2408",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.198.0.tgz"
+      },
+      "3.197.0": {
+        "digest": "37d14cae6ace9266851755e5d179592ec23b01e13ee243c0ad202ce3edbef91c",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.197.0.tgz"
+      },
+      "3.196.0": {
+        "digest": "a1c535b242c7f3abe24110709a4fcd637c155717790e37e123c2c0fda85dac70",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.196.0.tgz"
+      },
+      "3.195.0": {
+        "digest": "402faf792e8932d77eaec940fb5140510e55ab1211016e37e22b9d5d12af6731",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.195.0.tgz"
+      },
+      "3.194.0": {
+        "digest": "4edc9489d961a329fdc17d20ec278d3837e52d9ddb2de70b6782ee8743ec1ea1",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.194.0.tgz"
+      },
+      "3.193.0": {
+        "digest": "a3deb86ffaae261d9bd3983eadef990993d531d22017228336386d125ff1da1a",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.193.0.tgz"
+      },
+      "3.192.0": {
+        "digest": "7b98dd54282ae3ff7c4ca8364f7c2fa03a70e83d02dcb510c54ef6110ba2421c",
+        "url": "https://gitlab-charts.s3.amazonaws.com/artifact-registry-3.192.0.tgz"
+      }
+    },
     "auto-deploy-app": {
       "0.8.1": {
         "digest": "05f3e583be88da47b1aa9804fafcfed5ae3bedd1d0489d954fd20c57b3383fb3",
@@ -98023,6 +98761,46 @@
       }
     },
     "gitlab": {
+      "10.6.3": {
+        "digest": "5d108c1e844255d259f970fa7a6fae036a0028458917ba42b3ee6fe3a0fb3c6a",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.6.3.tgz"
+      },
+      "10.6.2": {
+        "digest": "679dce4652bd349e1ae5099379ccdce0c85781485e1268890c6d14c62849e878",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.6.2.tgz"
+      },
+      "10.6.1": {
+        "digest": "aa3647b697372ee16760a2750f38b8a21a7b6c5e50e04bf838c698e94c4f2849",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.6.1.tgz"
+      },
+      "10.6.0": {
+        "digest": "fd6eb91d0646ddc2c0dab3c3f93e070a6772f4092f51ae5b65a75d45f7285f1d",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.6.0.tgz"
+      },
+      "10.5.11": {
+        "digest": "c8218208433a6581729966921c8ddbc0722833ca521af11959c44533beaab715",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.5.11.tgz"
+      },
+      "10.5.10": {
+        "digest": "0a295fa28113f466cb37e6e91af5319344bcf5f409b8c8dd366aac50769a1ddc",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.5.10.tgz"
+      },
+      "10.5.9": {
+        "digest": "f882b1dc28becc417647e2f194c5e00a651aeb8275c0af1070493095e675e50b",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.5.9.tgz"
+      },
+      "10.5.7": {
+        "digest": "07c6fdc357704fcdbbd682b6e3546c78a9dcdfe0de00996bc01a426850bda069",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.5.7.tgz"
+      },
+      "10.5.6": {
+        "digest": "3828431ce2f6e790431a7344f62f919bc3eebc4cadc5ee2664770b7514cb24cf",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.5.6.tgz"
+      },
+      "10.5.5": {
+        "digest": "94f803d12e24483f7a8a27cbd57eb17891ecefaf3c019de567520d860c10b3d1",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.5.5.tgz"
+      },
       "10.5.4": {
         "digest": "aabc14c99bfc5829a54ecefdc99b2c2f16257e892fddf6425929dfd69375c62c",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.5.4.tgz"
@@ -98038,6 +98816,30 @@
       "10.5.0": {
         "digest": "9b0461fdb5b10b6a1ba108eaf54abc45391d5884473cd0d58f8579412f0d447d",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.5.0.tgz"
+      },
+      "10.4.13": {
+        "digest": "58f2853ca95b73cbf4ac3aa3838a36475ac0a9112af2bacd8ec28d730f928f2b",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.4.13.tgz"
+      },
+      "10.4.12": {
+        "digest": "69745f58dc6c269b4700b7ea5201054d4a12637cc5c00c34fe76a6998b20ab9f",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.4.12.tgz"
+      },
+      "10.4.11": {
+        "digest": "27ae99e30bba88f47782c2dab1d598d1b80a4c5a5c0050c3f227d420a74472d8",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.4.11.tgz"
+      },
+      "10.4.9": {
+        "digest": "b70dd5bc9fe671d7ef9963890382b83f09f71aec9993ab23411fccc44d043a7f",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.4.9.tgz"
+      },
+      "10.4.8": {
+        "digest": "173c912dc8649e0f9af96f0698002ffa2295cdd319d23ab80a9f3e1972f1ab00",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.4.8.tgz"
+      },
+      "10.4.7": {
+        "digest": "36c8e8b837ea7ecdbede829fe7596b3dd3026ed2d4f268abbd5b77e3c9bd8dea",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.4.7.tgz"
       },
       "10.4.6": {
         "digest": "6426a2ee58b8c5859350d94becc1e0ffdd181a04f4750858114b6c5d4d482bfa",
@@ -98062,6 +98864,18 @@
       "10.4.0": {
         "digest": "1840926876839336898fc8b764f6e2862c13f6f2ed509a93972d6c9fe6e8e843",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.4.0.tgz"
+      },
+      "10.3.12": {
+        "digest": "ed5fa8b2bd9fb88ace457ae4c0c4009e84ca8b889722faeefe3b2f9158e8e959",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.3.12.tgz"
+      },
+      "10.3.11": {
+        "digest": "e3fdc37f515e6a4d0261f78fdce2f70fa8c78e271fe4def1f16031687a9c6b4d",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.3.11.tgz"
+      },
+      "10.3.10": {
+        "digest": "1c294d8e3571fd6d95a976db50323e08868629d6f61b7a63b974ffa0a68033cf",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.3.10.tgz"
       },
       "10.3.9": {
         "digest": "6ad56af317781250686a189c2b7492aed167cf86fed803ad2ee2e78e3c374189",
@@ -98103,6 +98917,10 @@
         "digest": "51d0ecb8deebef8621123f2473918e1581b1b9b320b34408e9488ee6fdf812c5",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.3.0.tgz"
       },
+      "10.2.11": {
+        "digest": "41a7b66bd677fb4220ac69e39b47d690042f09cd9c0bbcffcee9e299c791573c",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.2.11.tgz"
+      },
       "10.2.10": {
         "digest": "85524bcd2832987bcef6d5c8d5148cf14c1c6c4601642937139b1260c49f8413",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.2.10.tgz"
@@ -98143,6 +98961,10 @@
         "digest": "127a4ec8f2c3d266064f52a6b7a592461179d5c9f7955872cec0e362a7816243",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.2.0.tgz"
       },
+      "10.1.11": {
+        "digest": "4bdf83fa791e2ace4b42f68cb466308ed712875421680cb37a69c567fced4551",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.1.11.tgz"
+      },
       "10.1.10": {
         "digest": "fd3d0a8448365bc3c867ecf8dd75ec8af5960268a24fcff591d1373e6a39c25c",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.1.10.tgz"
@@ -98182,6 +99004,10 @@
       "10.1.0": {
         "digest": "e86e097227515e01ffca90f429a7835de0e23399ed5d86a62e2751563ad175db",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.1.0.tgz"
+      },
+      "10.0.12": {
+        "digest": "0bbb58f69dc03c903a25e9c0d401ac62c1b452fe8aa21655352fbff290f94522",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.0.12.tgz"
       },
       "10.0.11": {
         "digest": "ea0351c6066d3a2985352eedc131aa686ab38448e78dd12a524a561953dd5839",
@@ -98226,6 +99052,10 @@
       "10.0.0": {
         "digest": "6787dcd77db6cf8a68895c90a2d99138eb84a9a376e62f6306a2a82dacc2d924",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-10.0.0.tgz"
+      },
+      "9.11.17": {
+        "digest": "56ba9aa4b90bc64d66b840ab7600498c276c1c0733f8a0db7b74744b5487b763",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-9.11.17.tgz"
       },
       "9.11.16": {
         "digest": "a6db57c08e30238d4e819744624abbfe484748853d61e03f1ba1312efbb97a31",
@@ -101505,6 +102335,10 @@
       }
     },
     "gitlab-agent": {
+      "2.34.0": {
+        "digest": "ddb42445186bcac420b9e3b0f1ee4abb8a9928ed428c37ffeec446f06784932f",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-agent-2.34.0.tgz"
+      },
       "2.33.0": {
         "digest": "5a780463754750aeac46b6baf09b125a0277ff8c4220780ccb40cb8b0ff227ac",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-agent-2.33.0.tgz"
@@ -101897,6 +102731,38 @@
       }
     },
     "gitlab-operator": {
+      "3.6.3": {
+        "digest": "ba17a708215fcb2b3278fc38e4feffaebde049893a5f2c018d277b86ff053ba5",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.6.3.tgz"
+      },
+      "3.6.2": {
+        "digest": "43b03bf67f8a213f49a1624996b8c55df3c2849f6c1d130576860d60272fa4bc",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.6.2.tgz"
+      },
+      "3.6.1": {
+        "digest": "5b3f547f2452d22b74f21357980cf420c8ae657d5ccc7741784fd20abb2b1b5a",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.6.1.tgz"
+      },
+      "3.6.0": {
+        "digest": "642fc28a45c410c7b34e421dc6efcf7b8e13b5a056dbf39c8b95f0fed80384ad",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.6.0.tgz"
+      },
+      "3.5.7": {
+        "digest": "edff358597bcf45a09db46273ce37f8e00ff509cdfdf70e9bb747a1832a0a7d6",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.5.7.tgz"
+      },
+      "3.5.6": {
+        "digest": "d56026b4dceb9590de445a39f35e4ec576a3c0701da19e76eebc2d56de26decc",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.5.6.tgz"
+      },
+      "3.5.5": {
+        "digest": "d777f62840b75e3b4ef3ef0d6cfc6feba82896ba51cff95b55db69263c5bdcf4",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.5.5.tgz"
+      },
+      "3.5.4": {
+        "digest": "abbe46142d727ceb21f5a00c5f2f6cea9c92ed3f1e345cf28d7fbe493c074d39",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.5.4.tgz"
+      },
       "3.5.3": {
         "digest": "ed1d25b38fcb6be819bb4dd776ae566a3c598c9c9bca7bd45f278374b35a6fc2",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.5.3.tgz"
@@ -101912,6 +102778,10 @@
       "3.5.0": {
         "digest": "452a42aa5dde88a5e7f0967e945d5d5814cfdc5db64d55c97fedc530937a2901",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.5.0.tgz"
+      },
+      "3.4.4": {
+        "digest": "f513d71e2bdef556d964986ea4151857288b22dfeb6e84be330d41325ec24779",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.4.4.tgz"
       },
       "3.4.3": {
         "digest": "ebf22157d1b412470246fdd3251ea3dea32a2302264d1f4933e2ab107a9a7173",
@@ -101929,6 +102799,10 @@
         "digest": "f4de0a90846bb55233772386df1216d0aec314926b5c74624087c2f6622bcf17",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.4.0.tgz"
       },
+      "3.3.4": {
+        "digest": "6854caddd5a68bf8883ab9d45b60adef66b13d80665fe70658ee86d3699ef7fd",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.3.4.tgz"
+      },
       "3.3.3": {
         "digest": "3671ea4d491452436daf86a84cfad3abb3850451ec4638326b435190f50b72da",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.3.3.tgz"
@@ -101944,6 +102818,10 @@
       "3.3.0": {
         "digest": "43ab8c074e976119091719f15c455d63800c8b62b8d7aa7f6603fad27709edf8",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.3.0.tgz"
+      },
+      "3.2.6": {
+        "digest": "ba2dfa1612b9a38fb2c1fd9a83675ad9a001ab0efddb5585922c6563a4ee7126",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.2.6.tgz"
       },
       "3.2.5": {
         "digest": "763c9a03871246cfbeebd49cabb5b72f222ea4e0046cb599fea0799aa9e3934b",
@@ -101968,6 +102846,10 @@
       "3.2.0": {
         "digest": "1f9acb7d4acfaa196d085055d72a4de56e8776b0354293a38716b38d0140b7fe",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.2.0.tgz"
+      },
+      "3.1.7": {
+        "digest": "abcb8d702445de79c94af28ba19daafdb4af7646d44162d775968cc99025c487",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-operator-3.1.7.tgz"
       },
       "3.1.6": {
         "digest": "e1dd4448c7bfdead754ab3f07a7f771a299fb0873d1fbc857149c8bba3f1ca9b",
@@ -102359,6 +103241,22 @@
       }
     },
     "gitlab-runner": {
+      "0.95.1": {
+        "digest": "1f5b635483b926514dc4690fe7af2ed241cd1119fc6422ac9d7af9943d56d573",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-runner-0.95.1.tgz"
+      },
+      "0.95.0": {
+        "digest": "7407579039f4d18339e2a1d66da2f99c01c35478299e7078ba599724f933c1f8",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-runner-0.95.0.tgz"
+      },
+      "0.94.4": {
+        "digest": "a96111d8f08f0e61e4cae669d7120ffd77126bcc110290695cb195a13a77cf83",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-runner-0.94.4.tgz"
+      },
+      "0.94.3": {
+        "digest": "0a7b8ae7b3a76560f5331de479372d166ee95571e51c2c62754560e295151757",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-runner-0.94.3.tgz"
+      },
       "0.94.2": {
         "digest": "6a63ce370db021252f4f6f0414a4ff1fb09f8105d683dd8539ee670263944f21",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-runner-0.94.2.tgz"
@@ -102371,6 +103269,14 @@
         "digest": "036ae85f70db3ab552b853041968f8bb37c4a063a916be065c5d9b54c37b5fb6",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-runner-0.94.0.tgz"
       },
+      "0.93.4": {
+        "digest": "5a92745c062eac52500be1f85440026147cfcb3709c4ffdd93bf9e7bbb40222a",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-runner-0.93.4.tgz"
+      },
+      "0.93.3": {
+        "digest": "d8b7a787d331e356b1bd2534cfd6ca9f9cad9fea74f38efc7399e0f2a7d85dae",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-runner-0.93.3.tgz"
+      },
       "0.93.2": {
         "digest": "b9a3f488ac1499e1f57bc2e7484b7c5ef7b21305898a279f7109a8b51eab890f",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-runner-0.93.2.tgz"
@@ -102378,6 +103284,10 @@
       "0.93.0": {
         "digest": "a8932d04c94724aa93e3147811696e3512df9cbaa5901818d2b3872b0f02f0a9",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-runner-0.93.0.tgz"
+      },
+      "0.92.6": {
+        "digest": "3f2dc77bbba22043d5c895b96a6e869c7d82df6e3e448195a04cc27ba92a6b89",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-runner-0.92.6.tgz"
       },
       "0.92.5": {
         "digest": "2aa047922b42dc91492a8924ad70f75f15ac5f9d8bef7a2a60d760e0f0606fc8",
@@ -103669,6 +104579,14 @@
       }
     },
     "gitlab-zoekt": {
+      "4.1.2": {
+        "digest": "af18f52f774263041be1ed933c0bb030eb733df864d390cfdc04611bc9ef1eb8",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-zoekt-4.1.2.tgz"
+      },
+      "4.1.1": {
+        "digest": "4b009be5455708805b59bf60d3be572c8753d52a284f7b6153e75ccaa1203e10",
+        "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-zoekt-4.1.1.tgz"
+      },
       "4.1.0": {
         "digest": "5a778d10bfb9f5a5a21f6781776ef7d309dd38fcb6f63af3fe743ac4b470f659",
         "url": "https://gitlab-charts.s3.amazonaws.com/gitlab-zoekt-4.1.0.tgz"
@@ -103971,6 +104889,42 @@
       }
     },
     "openbao": {
+      "1.2.4": {
+        "digest": "98d69a00c9e976cf021bb1f1c505c1aeb9504b826714e185a52d6d58569287d7",
+        "url": "https://gitlab-charts.s3.amazonaws.com/openbao-1.2.4.tgz"
+      },
+      "1.2.3": {
+        "digest": "0bf49a72ad572fe87778caa05430f8f5cb52fec388c71fdd9b1f92f8671a589b",
+        "url": "https://gitlab-charts.s3.amazonaws.com/openbao-1.2.3.tgz"
+      },
+      "1.2.2": {
+        "digest": "ab54bec603b2a790529387f95309ef636e8b3fc01983625c647bb16afc1f3695",
+        "url": "https://gitlab-charts.s3.amazonaws.com/openbao-1.2.2.tgz"
+      },
+      "1.2.1": {
+        "digest": "176a4e0fbe0163ff38f1ad58d8c77e140a9e104192bc14bb079406b7fc00144d",
+        "url": "https://gitlab-charts.s3.amazonaws.com/openbao-1.2.1.tgz"
+      },
+      "1.2.0": {
+        "digest": "2b7935b6cd16bb0c883d4377fdb62ebb8c96662f6c16a7c7cdf3eae64a480db0",
+        "url": "https://gitlab-charts.s3.amazonaws.com/openbao-1.2.0.tgz"
+      },
+      "1.1.0": {
+        "digest": "f027b34444546b32d6afadc1a31eb252de684f6e9017682d79ab3454810cbf87",
+        "url": "https://gitlab-charts.s3.amazonaws.com/openbao-1.1.0.tgz"
+      },
+      "1.0.1": {
+        "digest": "ffc41ae8758e3c692888f98d7c407181daac1a3a5cf2c7e56860dec7147f24cc",
+        "url": "https://gitlab-charts.s3.amazonaws.com/openbao-1.0.1.tgz"
+      },
+      "1.0.0": {
+        "digest": "5b4d27c05f088267c3a77d42df9daf85874ca7b58568aa36958b0bc2cd51c1ec",
+        "url": "https://gitlab-charts.s3.amazonaws.com/openbao-1.0.0.tgz"
+      },
+      "0.20.3": {
+        "digest": "680e5f3f16f0ef5ad91375b89475d5ede379639c4bb1ede489c34e512d984917",
+        "url": "https://gitlab-charts.s3.amazonaws.com/openbao-0.20.3.tgz"
+      },
       "0.20.2": {
         "digest": "79b9caaeeedea7b36ece7d58bbff98e3ff0af24c739c4de9bd26887455003b2c",
         "url": "https://gitlab-charts.s3.amazonaws.com/openbao-0.20.2.tgz"
@@ -104809,6 +105763,10 @@
   },
   "jetstack": {
     "cert-manager": {
+      "v1.22.0-alpha.0": {
+        "digest": "2f69c97394eb0653ad448e590b579835b3752daf54f7fc39413fdbf118ad850c",
+        "url": "charts/cert-manager-v1.22.0-alpha.0.tgz"
+      },
       "v1.21.3": {
         "digest": "9ec67938b2981d8b333af61b3fcf53e26b4f6f5deb7ccda3de4ea116bb373a17",
         "url": "charts/cert-manager-v1.21.3.tgz"
@@ -106119,6 +107077,10 @@
       }
     },
     "cert-manager-csi-driver-spiffe": {
+      "v0.16.0": {
+        "digest": "1e9ac94beac9615b6b1b202c0bf91e6c1cb7856b64ca40bdb3ad4fe3d18cc856",
+        "url": "charts/cert-manager-csi-driver-spiffe-v0.16.0.tgz"
+      },
       "v0.15.1": {
         "digest": "25f6fb230459c8400a2a34597543cdafd70bf9108aeff6706c1338bf7b2d315d",
         "url": "charts/cert-manager-csi-driver-spiffe-v0.15.1.tgz"
@@ -106229,6 +107191,14 @@
       }
     },
     "cert-manager-google-cas-issuer": {
+      "v0.15.0": {
+        "digest": "3d574d48643b493eb4240f9cbd04b9c2b285b1600c83e9dbc84ddc1474d32ce2",
+        "url": "charts/cert-manager-google-cas-issuer-v0.15.0.tgz"
+      },
+      "v0.14.0": {
+        "digest": "185f17139af6a70d9bc5f2de53df13792ec2a759e9578bef1bc45a2224a19b0f",
+        "url": "charts/cert-manager-google-cas-issuer-v0.14.0.tgz"
+      },
       "v0.13.0": {
         "digest": "904f26696ccd9eb709a4e8b6f9abd06771e212e6e50699e12e2b69c0ef6952a9",
         "url": "charts/cert-manager-google-cas-issuer-v0.13.0.tgz"
@@ -106703,6 +107673,10 @@
       }
     },
     "version-checker": {
+      "v0.12.0": {
+        "digest": "26b7a5344b51243b3f498d3b947b551ddba91389490f48600cc7622013c3ca5b",
+        "url": "charts/version-checker-v0.12.0.tgz"
+      },
       "v0.11.0": {
         "digest": "009dd4cd23f151368a37476576b43521b7f806287a5373604bac0df38910b37a",
         "url": "charts/version-checker-v0.11.0.tgz"
@@ -106831,6 +107805,26 @@
   },
   "nextcloud": {
     "nextcloud": {
+      "9.4.6": {
+        "digest": "83dd5e141a48386d62d706df11c165ac4e56d38d90b3b5a51a8a143710a437b7",
+        "url": "https://github.com/nextcloud/helm/releases/download/nextcloud-9.4.6/nextcloud-9.4.6.tgz"
+      },
+      "9.4.5": {
+        "digest": "4858c8bf8961f334ae0e9a76e7bc281a1c3150ca33fe244873b2289927b0a8d3",
+        "url": "https://github.com/nextcloud/helm/releases/download/nextcloud-9.4.5/nextcloud-9.4.5.tgz"
+      },
+      "9.4.4": {
+        "digest": "24f40f63f5ce4db6d117328eea7c0f92d3488d5e59b852399fdfa740a7c47ed2",
+        "url": "https://github.com/nextcloud/helm/releases/download/nextcloud-9.4.4/nextcloud-9.4.4.tgz"
+      },
+      "9.4.3": {
+        "digest": "f70629e7f273f676c69d0351ba875058c3b021ee91c5cbc62442f0e24199d6bb",
+        "url": "https://github.com/nextcloud/helm/releases/download/nextcloud-9.4.3/nextcloud-9.4.3.tgz"
+      },
+      "9.4.2": {
+        "digest": "e031a6e33bf0bcc1f3daf104270da5bf1e48b8e73b27b329bc5a52cd29f3ab04",
+        "url": "https://github.com/nextcloud/helm/releases/download/nextcloud-9.4.2/nextcloud-9.4.2.tgz"
+      },
       "9.4.1": {
         "digest": "e3d768864800bcc23eb66e6f65cbf5f0545b1506cf8c65f55a91d21af3bad4bf",
         "url": "https://github.com/nextcloud/helm/releases/download/nextcloud-9.4.1/nextcloud-9.4.1.tgz"
