@@ -177,6 +177,7 @@ in
 
 
   systemd.services.docker-gitlab.requires = [ "mnt-hoard.mount" ];
+  systemd.services.tailscale-up.enable = false;
   systemd.services.samba-nmbd.requires = [ "mnt-hoard.mount" ];
   systemd.services.samba-smbd.requires = [ "mnt-hoard.mount" ];
   systemd.services.samba-windindd.requires = [ "mnt-hoard.mount" ];
